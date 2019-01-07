@@ -176,6 +176,8 @@
  
     </dependencies>
     <build>
+   	<!-- 배포 Default 설정-->
+   	<finalName>ROOT.war</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
