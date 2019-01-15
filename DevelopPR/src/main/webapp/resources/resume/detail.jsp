@@ -6,7 +6,7 @@
 <title>이력서 상세보기</title>
 <link rel="stylesheet" type="text/css" href="resume.css"/>
 </head>
-<body>
+<body> 
 <div class="container">
    <div class="head">
     <header>
