@@ -1,151 +1,143 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="resumeRegist">
 <head>
-<title>¿Ã∑¬º≠ µÓ∑œ</title>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<title>Ïù¥Î†•ÏÑú Îì±Î°ù</title>
+<%@ include file="../../views/include/tag_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
+
 </head>
 <body>
+<form name="form1" method="post" action="${path}/resume/registConfirm">
     <div class="container">
         <header>
             <div class="head">
                <div class="a">DevelopPR</div>
-               <div class="b">¿Ã∑¬º≠ µÓ∑œ</div>
+               <div class="b">Ïù¥Î†•ÏÑú Îì±Î°ù</div>
                <div class="c">"~~~~~~~~~~~~~~~~~~"</div>
             </div>
             <div id="img">
-                + 
+                + <input type="file" name="profile_photo"/>
             </div>
         </header>
-        <div id="pill">* ¥¬ « ºˆ ¿‘∑¬ ªÁ«◊¿‘¥œ¥Ÿ.</div>
+        <div id="pill">* Îäî ÌïÑÏàò ÏûÖÎ†• ÏÇ¨Ìï≠ÏûÖÎãàÎã§.</div>
     
-        <main>
+        <div class="main">
             <div class="detail">
                     <div class="subject">
-                        ªÛºº ¡§∫∏
+                        ÏÉÅÏÑ∏ Ï†ïÎ≥¥
                     </div>
                     <div class="content">
                         <div class="state">             
                             <div class="name">
-                                «ˆ¿Á ±∏¡˜ ªÛ≈¬ *
+                                ÌòÑÏû¨ Íµ¨ÏßÅ ÏÉÅÌÉú *
                             </div> 
                             <div class="s_info">
-                                <div class="button"> </div>±∏¡˜¡ﬂ
-                                <div class="button"> </div>¿Á¡˜¡ﬂ
+                                <input type="radio" name="is_work" value="0" class="button"/>Íµ¨ÏßÅÏ§ë
+                                <input type="radio" name="is_work" value="1" class="button"/>Ïû¨ÏßÅÏ§ë
                             </div>
                         </div>
-                        
+                    </div>
                         
                         <div id="p_name">
                             <div class="name" >
-                            ¿Ã ∏ß *
+                       		     Ïù¥ Î¶Ñ *
                             </div>
                             <div class="p_info">
-                                <input type="text" id="pr_name" placeholder="¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷ººø‰.(2~20¿⁄)"/>
+                                <input type="text" id="pr_name" name="name" placeholder="Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî.(2~20Ïûê)"/>
                             </div>
                         </div>
 
                         <div id="birth">
                             <div class="name">
-                            ª˝ ¿œ * 
+                            ÏÉù Ïùº * 
                             </div>
                             <div class="birth_info">
-                                <select name="year" id="year">
-                                    forπÆ¿∏∑Œ ≥‚µµ~~
-                                    <option>----≥‚</option>
-                                </select>
-                                <select name="month" id="month">
-                                    <option>--ø˘</option>
-                                </select>
-                                <select name="day" id="day">
-                                    <option>--¿œ</option>
-                                </select>
+                                <input type="date" name="birthday" />
                             </div>
                         </div>
 
                         <div id="phone">
                             <div class="name">
-                                «⁄µÂ∆˘π¯»£ *
+                                Ìï∏ÎìúÌè∞Î≤àÌò∏ *
                             </div>
                             <div class="phone_info">
-                                <input type="text" placeholder="010123456578 «¸≈¬∑Œ ¿˚æÓ¡÷ººø‰." class="textshort"/>
-                                <input type="radio" class="phone_radio" value="phoneopen"/>∞¯∞≥
-                                <input type="radio" class="phone_radio" value="phoneclose"/>∫Ò∞¯∞≥
+                                <input type="text" placeholder="010123456578 ÌòïÌÉúÎ°ú Ï†ÅÏñ¥Ï£ºÏÑ∏Ïöî." name="cell_num" class="textshort"/>
+                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>Í≥µÍ∞ú
+                                <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>ÎπÑÍ≥µÍ∞ú
                             </div>
                         </div>
 
                         <div id="email">
                             <div class="name">
-                                ¿Ã∏ﬁ¿œ * 
+                                Ïù¥Î©îÏùº * 
                             </div>
                             <div class="email_info">
-                                <input type="text" placeholder="9~50¿⁄ ¡¶«—" class="textshort"/>
-                                <input type="radio" value="emailopen"/>∞¯∞≥
-                                <input type="radio" value="emailclose"/>∫Ò∞¯∞≥
+                                <input type="text" name="email" placeholder="9~50Ïûê Ï†úÌïú" class="textshort"/>
+                                <input type="radio" name="email_is_open" value="1"/>Í≥µÍ∞ú
+                                <input type="radio" name="email_is_open" value="0"/>ÎπÑÍ≥µÍ∞ú
                             </div>
                         </div>
 
                         <div id="blog">
-                            <div class="name" id="blog">
-                            ∫Ì∑Œ±◊
+                            <div class="name" id="blog" >
+                            Î∏îÎ°úÍ∑∏
                             </div>
                             <div class="info">
-                                <input type="text" placeholder="¡§±‘«•«ˆΩƒ √ﬂ∞°" class="textlong"/>
+                                <input type="text" name="blog" placeholder="Ï†ïÍ∑úÌëúÌòÑÏãù Ï∂îÍ∞Ä" class="textlong"/>
                             </div>
                         </div>
 
                         <div id="address">
                             <div class="name">
-                            ¡÷º“ *
+                            Ï£ºÏÜå *
                             </div>
                             <div class="info">
-                                    <input type="text" placeholder="¡§±‘«•«ˆΩƒ √ﬂ∞°" class="textshort"/>
-                                <input type="radio" value="addressopen"/>∞¯∞≥
-                                <input type="radio" value="addressclose"/>∫Ò∞¯∞≥
+                                    <input type="text" name="address" placeholder="Ï†ïÍ∑úÌëúÌòÑÏãù Ï∂îÍ∞Ä" class="textshort"/>
+                                <input type="radio" name="address_is_open" value="1"/>Í≥µÍ∞ú
+                                <input type="radio" name="address_is_open" value="0"/>ÎπÑÍ≥µÍ∞ú
                             </div>
                         </div>
 
                         <div id="hopeaddress">
                             <div class="name">
-                            »Ò∏¡ ±Ÿπ´¡ˆ
+                            Ìù¨Îßù Í∑ºÎ¨¥ÏßÄ
                             </div>
                             <div class="info">
-                                <input type="text" class="textlong"/>
+                                <input type="text" name="prefer_place" class="textlong"/>
                             </div>
                         </div>
 
                         <div id="comment">
                             <div class="name">
-                            º“∞≥/ ¡¬øÏ∏Ì/ Comment
+                            ÏÜåÍ∞ú/ Ï¢åÏö∞Î™Ö/ Comment
                             </div>
                             <div class="info">
-                                <input type="text" class="textlong"/>
+                                <input type="text" class="textlong" name="motto"/>
                             </div>
                         </div>
-                    </div>
+           </div>
 
             </div>
             
-            <div class="information">
+       <div class="information">
 
                     <div class="acq">
-                        <div class="subject">¿⁄∞›¡§∫∏</div>
+                        <div class="subject">ÏûêÍ≤©Ï†ïÎ≥¥</div>
                         <div class="acq_ok">
-                            <input type="text" class="textmiddle1" placeholder="¿⁄∞›¡ı √ÎµÊ ≥Ø¬•"/>|
-                            <input type="text" class="textmiddle2" placeholder="¿⁄∞›¡ı ¿Ã∏ß"/>
+                            <input type="text" class="textmiddle1" name="acq_date" placeholder="ÏûêÍ≤©Ï¶ù Ï∑®Îìù ÎÇ†Ïßú"/>|
+                            <input type="text" class="textmiddle2" name="acq_name" placeholder="ÏûêÍ≤©Ï¶ù Ïù¥Î¶Ñ"/>
                             <button>+</button>
                         </div>
                     </div>
                 
 
                     <div class="edu">
-                        <div class="subject">«–∑¬/±≥¿∞ ¡§∫∏</div>
+                        <div class="subject">ÌïôÎ†•/ÍµêÏú° Ï†ïÎ≥¥</div>
                         <div class="edu_ok">
-                                <input type="text" class="textmiddle1" placeholder="«–∑¬/±≥¿∞ ≥‚µµ"/>|
-                                <input type="text" class="textmiddle2" placeholder="«–∑¬ / ±≥¿∞ ¿Ã∏ß"/>
+                                <input type="text" class="textmiddle1" name="gradu_year" placeholder="ÌïôÎ†•/ÍµêÏú° ÎÖÑÎèÑ"/>|
+                                <input type="text" class="textmiddle2" name="edu_info" placeholder="ÌïôÎ†• / ÍµêÏú° Ïù¥Î¶Ñ"/>
                                 <button>+</button>
                         </div>
                     
@@ -154,10 +146,10 @@
                 
 
                     <div class="career">
-                        <div class="subject">∞Ê∑¬ ¡§∫∏</div>
+                        <div class="subject">Í≤ΩÎ†• Ï†ïÎ≥¥</div>
                         <div class="career_ok">
-                                <input type="text" class="textmiddle1" placeholder="«–∑¬/±≥¿∞ ≥‚µµ"/>|
-                                <input type="text" class="textmiddle2" placeholder="«–∑¬ / ±≥¿∞ ¿Ã∏ß"/>
+                                <input type="text" class="textmiddle1" name="career_year" placeholder="ÌïôÎ†•/ÍµêÏú° ÎÖÑÎèÑ"/>|
+                                <input type="text" class="textmiddle2" name="career_info" placeholder="ÌïôÎ†• / ÍµêÏú° Ïù¥Î¶Ñ"/>
                                 <button>+</button>
                         </div>
                     </div>
@@ -169,32 +161,18 @@
                             <div class="subject">Tech-stack</div>
                             <div class="tech">
                                 <div class="abb">
-                                    <input type="text" id="abb"/>
+                                    <input type="text" id="abb" name="abb"/>
                                 </div>
                                 <div class="techinfo">
-                                    º˝¿⁄<br/>
-                                    <input type="text" id="techname" placeholder="±‚º˙ ∏Ì"><br/>
-                                  
-                                   <div class="range" data-value="50">
-										<div class="label">
-											<div class="value">50</div>
-											<div class="drop"></div>		
-										</div>
-										<div class="input-box">
-											<input id="input-range" type="range" min="0" max="100" value="0"/>
-											<div class="bar"></div>
-										</div>
-									</div>
+                                    <input type="text" id="techname" placeholder="Í∏∞Ïà† Î™Ö" name="tech_name"><br/>
+                                    <input id="input-range" type="range" min="0" max="100" value="0" tech_percent/>
+								</div>
 									
-									</div>
-                            </div>
+							</div>
             </div>
-        </main>
         
-        <footer>
-            aa
-        </footer>
-    
-</div>
+   </div>
+          <input type="submit"/>
+</form>
 </body>
 </html>
