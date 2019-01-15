@@ -1,0 +1,627 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+/* 초기화 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* ------------------------------------------------ */
+
+.container
+{
+    display:flex;
+    flex-direction :column;
+   
+}
+
+header.main_header
+{
+    border : 1px solid;
+    text-align : center;
+    flex-basis : 500px;
+}
+header.second_header
+{
+  border : 1px solid;
+  text-align : center;
+  flex-basis : 250px;
+}
+nav
+{
+    position :fixed;
+    display :block;
+    width : 70px;
+    height : 70px;
+    top: 0px;
+    right :0px;
+    background : #585858;
+    border : 1px solid;
+    margin-right: 35px;
+    margin-top : 35px;
+    border-radius: 50%;
+    border-color : #585858;
+
+    /* transition : all ease 1s; */
+}
+#navimg
+{
+  position: relative;
+  width : 70px;
+  z-index :5;
+}
+#navspan
+{
+  display: none;
+  position :relative;
+  color : white;
+  font-weight: 800px;
+  font-size: 1.2rem;
+  bottom : 47px;
+  right : 45px;
+}
+nav#min:hover > #navspan
+{
+ display:inline;
+}
+nav#min:hover
+{
+    animation-name: expand;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+    /* transform: scaleX( 2.5 ); */
+}
+nav#min:hover #navimg
+{
+   transform:scale(0.6);
+   transition: 0.3s;
+}
+#full
+{
+  display : none;
+  margin:0;
+  width : 150%;
+  height : 150%;
+  background : #585858;
+  z-index : 5;
+  border-radius : 0% 0% 0% 100%;
+}
+#full > ul
+{
+  position: absolute;
+  left : 60%;
+  width : 380px;
+  margin-top : 5%;
+  color:white;
+}
+.navx
+{
+  
+  animation: rotates 0.9s infinite;
+}
+#navclose
+{
+  position: absolute;
+  top: 50px;
+  right : 45px;
+  width : 50px;
+}
+#full > ul > li
+{
+  height : 60px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 60px;
+}
+#full > ul > li >a
+{
+  display:block;
+  height : 60px;
+  text-decoration: none;
+  color : white;
+}
+.fullmenu
+{
+  opacity: 1;
+}
+.fullmenulist
+{
+  border-bottom : 1px solid #A4A4A4;
+}
+.fullbtn
+{
+  position: relative;
+  margin-top: 20px;
+  border-radius : 10% 10% 10% 10% / 50% 50% 50% 50%;
+}
+#fulljoin
+{
+  background : #FAFAFA;
+  color: black;
+  border : 1px solid #FAFAFA;
+ 
+}
+#fulllogin
+{
+  border : 1px solid;
+}
+#fulljoin:hover
+{
+  background : #585858;
+  transition-duration: 0.4s;
+  color : white;
+}
+#fulllogin:hover
+{
+  background-color:rgba( 255, 255, 255, 0.1 );
+  transition-duration: 0.4s;
+}
+
+section.project_section
+{
+  border : 1px solid;
+  display :flex;
+  flex-direction:column;
+  flex-basis: 1800px;
+  
+}
+section.main_section
+{
+    
+    border : 1px solid;
+    display :flex;
+    flex-direction:column;
+}
+.projectform
+{
+  width : 1500px;
+  height: 1600px;
+  margin-left : 20%;
+  flex-shrink: 0;
+}
+.projectformt
+{
+
+  padding : 20px 0px 10px 100px;
+  border : 1px solid;
+  width : 1100px;
+
+}
+.project_h3
+{
+  font-size : 2rem;
+  padding-top : 10px;
+}
+.project_h1
+{
+  color : gray;
+  font-size : 1.2rem;
+  padding : 10px;
+  margin-bottom: 20px;
+}
+.project_label
+{
+  font-size : 1.2rem;
+  padding: 10px 25px 10px 25px;
+}
+#project_content_label
+{
+  position: relative;
+  bottom : 20px;
+}
+#project_name, #project_content, #project_upload_file,#project_tech_name
+{
+  font-size: 1.2rem;
+  height : 50px;
+  width : 600px;
+}
+#projectupload, #projectgrade
+{
+  height: 150px;
+}
+#project_upload_file
+{
+  position: relative;
+  top : 50px;
+  left : 20px;
+}
+#projectterm, #projectimage
+{
+  height : 250px;
+}
+#projecttech
+{
+  height : 400px;
+}
+.main1
+{
+	margin-top : 50px;
+}
+.main1, .main2, .main3, .animation, .detail
+{
+    
+	flex-basis : 450px;
+    text-align : center;
+    display:flex;
+    flex-shrink: 0;
+
+}
+/* 나중에없애기 */
+.animation, .detail
+{
+    border : 1px solid;
+}
+
+/*  */
+.PR1, .PR4, .PR7
+{
+    margin-left : 15%; 
+}
+.PR2, .PR3, .PR5, .PR6, .PR8, .PR9
+{
+    margin-left : 5%;
+}
+.PR1, .PR2, .PR3, .PR4, .PR5, .PR6, .PR7, .PR8, .PR9
+{
+   
+      /* For Safari 5.1 to 6.0
+      //background: -webkit-linear-gradient(left, red , blue);
+      For Opera 11.1 to 12.0 
+      background: -o-linear-gradient(right, red, blue);
+      //For Firefox 3.6 to 15
+      background: -moz-linear-gradient(right, red, blue);
+      //Standard
+      background: linear-gradient(to right, red , blue); */
+    flex-basis : 400px;
+    width:400px;
+    height : 400px;
+    border-radius: 5%;
+    flex-shrink :0;
+    justify-items: center;
+   
+   
+}
+/* Filter color */
+.filter1
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #e98192;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter2
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #6dbbec;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter3
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #c86a9c;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter4
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #80ccc0;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter5
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #b28fd0;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter6
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #7f99e9;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter7
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #c86a9c;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter8
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background: #e98192;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.15;
+}
+.filter9
+{
+  position : absolute;
+  width : 400px;
+  height: 400px;
+  background:#6dbbec;
+  z-index : 2;
+  border-radius: 5%;
+  opacity: 0.1;
+}
+/* ---------------- */
+.prpic
+{
+    border-radius: 5%;
+}
+footer
+{
+    border : 0px solid;
+    text-align : center;
+    flex-basis: 300px;
+    background: #f6f6f6;
+}
+/* nav애니메이션 */
+@keyframes expand
+{
+  from
+  {
+      border-left-width: 10px;
+  }
+
+  to
+  {
+      border-left-width : 70px; border-radius : 25% 25% 25% 25% / 50% 50% 50% 50%;
+     
+
+  }
+}
+
+/* test */
+.test 
+{
+    position :absolute;
+    display :block;
+    left:900px;
+    top: 200px;
+    width: 100px;
+    height: 100px;
+    background-color: coral;
+    animation: square-to-circle 2s .5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
+}
+@keyframes rotates
+{
+  to
+  {
+    transform:rotate(0deg);
+  }
+  from
+  {
+    transform:rotate(-180deg);
+  }
+}   
+
+  @keyframes square-to-circle 
+  {
+    0%  {
+      border-radius:0 0 0 0;
+      background:coral;
+      transform:rotate(0deg);
+    }
+    25%  {
+      border-radius:50% 0 0 0;
+      background:darksalmon;
+      transform:rotate(45deg);
+    }
+    50%  {
+      border-radius:50% 50% 0 0;
+      background:indianred;
+      transform:rotate(90deg);
+    }
+    75%  { 
+      border-radius:50% 50% 50% 0;
+      background:lightcoral;
+      transform:rotate(135deg);
+    }
+    100% {  
+      border-radius:50%;
+      background:darksalmon;
+      transform:rotate(180deg);
+    }
+  }
+
+  /* pr애니메이션 */
+  figure.prpic 
+  {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height: 400px;
+    background: black;
+    /* color: #ffffff; */
+    color : black;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+  }
+
+  figure.prpic * 
+  {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.45s ease-in-out;
+    transition: all 0.45s ease-in-out;
+  }
+  figure.prpic img 
+  {
+    max-width: 100%;
+    position: relative;
+  }
+  figure.prpic .content 
+  {
+    position: absolute;
+    top: 45%;
+    left: 7%;
+    right: 7%;
+    bottom: 45%;
+    /* border: 1px solid white; */
+    border: 1px solid black;
+    border-width: 1px 1px 0;
+    z-index : 3;
+  }
+  figure.prpic .heading 
+  {
+    overflow: hidden;
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  figure.prpic h2 
+  {
+    display: table;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+    text-align: center;
+    width: auto;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size : 2rem;
+    
+  }
+  figure.prpic h2:before,
+  figure.prpic h2:after 
+  {
+    position: absolute;
+    display: block;
+    width: 1000%;
+    height: 1px;
+    content: '';
+    /* background: white; */
+    background: black;
+    top: 50%;
+  }
+  figure.prpic h2:before 
+  {
+    left: -1000%;
+  }
+  figure.prpic h2:after 
+  {
+    right: -1000%;
+  }
+  figure.prpic p 
+  {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+    opacity: 0;
+    line-height: 1.6em;
+    font-size: 1.2em;
+    z-index : 3;
+  }
+  figure.prpic a 
+  {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 4;
+  }
+  figure.prpic:hover img,
+  figure.prpic.hover img 
+  {
+    opacity: 0.25;
+    color : white;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  figure.prpic:hover .content,
+  figure.prpic.hover .content 
+  {
+  
+    top: 7%;
+    bottom: 7%;
+  }
+  figure.prpic:hover p,
+  figure.prpic.hover p 
+  {
+    opacity: 1;
+    color : white;
+    -webkit-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+  
+  }
+  figure.prpic:hover h2
+  {
+    color : white;
+  }
+/* ----메인 애니메이션 끝---- */
+

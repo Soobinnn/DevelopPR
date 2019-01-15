@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DevelopPR</title>
+<link rel="stylesheet" type="text/css" href="developpr.css"/>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+<script>
+	$(document).ready(function()
+	{
+		$(".top_nav").click(function()
+		{
+			
+			$('.navx').fadeOut(100,function(){$('.navx').fadeTo(500,1,function(){$('.navx').css({'animation-iteration-count':'1'})})});
+			$('#full').animate({width: "toggle", height: "toggle"},400,'easeOutQuad');
+			// $('.navx').rotate({animateTo:-360 , duration:1000});
+			$('.fullmenu').fadeOut(200,function(){$('.fullmenu').fadeTo(500,1);});
+		})
+	})
+</script>
+</head>
+<body>
+<div class="container">
+	<header class="main_header">
+		DevelopPR
+	</header>
+	<nav id="min"class="top_nav">
+		<img id="navimg" src="image/nav.png" alt="nav" />
+		<span id="navspan">MENU</span>
+	</nav>
+	<nav id="full" class="top_nav">
+		<img id="navclose" class="navx" src="image/x.png" alt="x"/>
+		<ul class="fullmenu">
+			<li class="fullmenulist"><a href='#1'>MENU</a></li>
+			<li class="fullmenulist"><a href='#2'>HOME</a></li>
+			<li class="fullmenulist"><a href='#3'>이력서 목록</a></li>
+			<li class="fullmenulist"><a href='#4'>커뮤니티</a></li>
+			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist">이력서 등록</li>
+			<li id="fulljoin"class="fullbtn">개인정보 수정</li>
+			<li id="fulllogin"class="fullbtn">로그아웃</li>
+		</ul>
+	</nav>
+    <div class="test"></div>
+	<section class="main_section">
+		<div class="main1">		
+			<div class="PR1">
+				<div class="filter1"></div>
+				<figure class="prpic">
+					<img src="image/1.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+							<div class="heading">
+								<h2><span>IM SOO BIN</span></h2>
+							</div>
+						</div>
+					<a href="#"></a>
+				</figure>
+			</div>
+			<div class="PR2">
+				<div class="filter2"></div>
+				<figure class="prpic">
+					<img src="image/2.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+							<div class="heading">
+								<h2><span>Kim Ki seong</span></h2>
+							</div>
+							</div>
+					<a href="#"></a>
+				</figure>
+			</div>
+			<div class="PR3">
+				<div class="filter3"></div>
+				<figure class="prpic">
+						<img src="image/3.jpg" alt="pr1" />
+							<div class="content">
+								<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+								<div class="heading">
+									<h2><span>Ko Seok Min</span></h2>
+								</div>
+							</div>
+						<a href="#"></a>
+				</figure>		
+			</div>
+		</div>
+		<div class="main2">
+			<div class="PR4">
+				<div class="filter4"></div>
+				<figure class="prpic">
+					<img src="image/4.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+							<div class="heading">
+								<h2><span>MR C</span></h2>
+							</div>
+						</div>
+					<a href="#"></a>
+				</figure>		
+			</div>
+			<div class="PR5">
+				<div class="filter5"></div>
+				<figure class="prpic">
+					<img src="image/5.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+							<div class="heading">
+								<h2><span>Lee Jun Hyung</span></h2>
+							</div>
+						</div>
+					<a href="#"></a>
+				</figure>		
+			</div>
+			<div class="PR6">
+				<figure id="prfic6"  class="prpic">
+					<div class="filter6"></div>
+					<img src="image/6.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+							<div class="heading">
+								<h2><span>Seo Dong kuk</span></h2>
+							</div>
+						</div>
+					<a href="#"></a>
+				</figure>		
+			</div>
+		</div>
+		<div class="main3">
+			<div class="PR7">
+				<div class="filter7"></div>
+				<figure class="prpic">
+					<img src="image/7.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+								<div class="heading">
+								<h2><span>Kim SO JIN</span></h2>
+							</div>
+						</div>
+					<a href="#"></a>
+				</figure>
+			</div>
+			<div class="PR8">
+				<figure class="prpic">
+					<div class="filter8"></div>
+					<img src="image/8.jpg" alt="pr1" />
+						<div class="content">
+							<p>I say, if your knees aren't green by the end of the day, you ought to seriously re-examine your life.</p>
+							<div class="heading">
+								<h2><span>IM SOO BIN</span></h2>
+							</div>
+						</div>
+					<a href="#"></a>
+				</figure>	
+			</div>
+			<div class="PR9">
+				<div class="filter9"></div>
+					<figure class="prpic">	
+						<img src="image/pl.jpg" alt="pr1" />
+						<a href="#"></a>
+					</figure>		
+			</div>
+		</div>
+		<div class="animation">
+		</div>
+		<div class="detail">
+		</div>
+	</section>
+	<footer>
+		푸터영역
+	</footer>
+</div>
+</body>
+</html>
