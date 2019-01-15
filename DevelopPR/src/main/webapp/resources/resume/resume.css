@@ -1,4 +1,4 @@
-/* �ʱ�ȭ */
+/* ÃÊ±âÈ­ */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -54,49 +54,54 @@ table {
 .resumeDetail .container {
    display:flex;
    flex-direction:column;
-   justify-content: center;
    align-items: center;
 }
 
-.resumeDetail .container header{
-    display:flex;
-    background-image:url(flower.jpg);
-    height: 450px;
-    width:2500px;
-    justify-content:center;
-    align-items: center;
+.resumeDetail .container .head{
+	display:flex;
+	flex-direction:row;
+	height: 300px;
+	width:100%;
+	background-image:url(flower.jpg);
 }
 
-.resumeDetail .container header .comment{
-    flex-basis: 700px;
+.resumeDetail .container .head header{
+	flex-basis:980px;
+	flex-shrink:0;
+}
+
+.resumeDetail .container .comment{
+    flex-basis: 50px;
     flex-shrink: 0;
     text-align:center;
-    margin-bottom:70px;
 }
 
 .resumeDetail .container .img{
    display:flex;
    flex-direction: column;
-   justify-content: center;
    flex-basis:0px;
    flex-shrink: 0;
    align-items : center;
+   position:relative;
+   bottom:195px;
 }
 
 .resumeDetail .container .img img{
-   width: 300px;
-   height:300px;
-   border-radius: 150px;
+   width: 250px;
+   height:250px;
+   border-radius: 175px;
 }
 
 .resumeDetail .container .content{
    background:rgba(255, 255, 255, 0.55);
    z-index: -1;
-   position: flex;
-   padding:100px;
+   display: flex;
+   flex-direction:row;
+   padding:9%;
+   margin-left:10%;
+   margin-right:10%;
    padding-top:200px;
-   width:1400px;
-   flex-shrink: 0;
+   
 }
 
 .resumeDetail .container .impormation{

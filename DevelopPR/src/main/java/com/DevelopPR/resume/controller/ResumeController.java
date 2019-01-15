@@ -15,6 +15,13 @@ public class ResumeController {
       return "resume/regist";
    }
    
+   @RequestMapping("detail")
+   public String resumeDetail() throws Exception{
+	   
+	   
+	   
+      return "resume/detail";
+   }
    
    
 } 
