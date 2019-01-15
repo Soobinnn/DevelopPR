@@ -36,14 +36,14 @@
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">
-			<li class="fullmenulist"><a href='#1'>MENU</a></li>
-			<li class="fullmenulist"><a href='#2'>HOME</a></li>
-			<li class="fullmenulist"><a href='#3'>이력서 목록</a></li>
-			<li class="fullmenulist"><a href='#4'>커뮤니티</a></li>
+			<li class="fullmenulist">MENU</li>
+			<li class="fullmenulist"><a href="<c:url value='${path}/main'/>">HOME</a></li>
+			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
+			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist">이력서 등록</li>
-			<li id="fulljoin"class="fullbtn">개인정보 수정</li>
-			<li id="fulllogin"class="fullbtn">로그아웃</li>
+			<li class="fullmenulist"></li>
+			<li id="fulljoin"class="fullbtn">JOIN US</li>
+			<li id="fulllogin"class="fullbtn">LOGIN</li>
 		</ul>
 	</nav>
     <div class="test"></div>
