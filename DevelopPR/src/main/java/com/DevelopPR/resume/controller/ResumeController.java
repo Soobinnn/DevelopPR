@@ -7,8 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/resume/*")
 public class ResumeController {
+  
+	
+	
    @RequestMapping(value="regist", method=RequestMethod.GET)
    public String resumeRegist() throws Exception{
       return "resume/regist";
    }
+   
+   
+   
 }
