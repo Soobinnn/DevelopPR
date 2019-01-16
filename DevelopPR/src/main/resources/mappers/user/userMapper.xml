@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="user">
+	<!-- 01. 회원 목록 -->
+    <select id="listUser" resultType="UserVO">
+        SELECT 
+          EMAIL AS userEmail,
+          IS_SEEK AS userIs_seek,
+          NICK AS userNick,
+          PW AS userPw,
+          NAME AS userName,
+          JOB AS userJob,
+          JOB_DETAIL AS userJob_detail,
+          RECENT_ACCESS AS userRecent_access,
+          AUTHSTATUS AS userAuthStatus,
+          USER_AUTHCODE AS userAuthCode
+        FROM pr_user
+        ORDER BY Nick
+    </select>
+    
+    <!-- 02. 회원 등록 -->
+    <insert id="insertUser">
+        INSERT INTO tbl_member(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL)
+        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail})    
+    </insert>
+ </mapper>
