@@ -4,7 +4,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.DevelopPR.resume.model.dao.ResumeDAO;
-import com.DevelopPR.resume.model.dto.ResumeVO;
+import com.DevelopPR.resume.model.dto.ResumeVO; 
 
 @Service
 public class ResumeServiceImpl implements ResumeService{
