@@ -6,7 +6,6 @@
 <title>이력서 등록</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
-
 </head>
 <body>
 <form name="form1" method="post" action="${path}/resume/registConfirm">
@@ -165,7 +164,7 @@
                                 </div>
                                 <div class="techinfo">
                                     <input type="text" id="techname" placeholder="기술 명" name="tech_name"><br/>
-                                    <input id="input-range" type="range" min="0" max="100" value="0" tech_percent/>
+                                    <input id="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
 								</div>
 									
 							</div>
