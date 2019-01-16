@@ -1,11 +1,17 @@
 package com.DevelopPR.resume.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.DevelopPR.resume.model.dto.ResumeVO;
 import com.DevelopPR.resume.service.ResumeService;
@@ -15,7 +21,7 @@ import com.DevelopPR.resume.service.ResumeService;
 public class ResumeController {
 
 	@Inject
-	ResumeService resumeService;
+	ResumeService resumeService; 
 	
 	//이력서 등록 폼
    @RequestMapping(value="regist", method=RequestMethod.GET)
@@ -32,8 +38,11 @@ public class ResumeController {
    }
    
    //이력서 상세보기 폼
-   @RequestMapping("detail")
-   public String resumeDetail() throws Exception{
+   @RequestMapping(value="detail", method=RequestMethod.GET)
+   public String resumeDetail(String email, Model model) throws Exception{
+
+	  model.addAttribute("dto", resumeService.resumeDetail(email));
+
       return "resume/detail";
    }
 } 

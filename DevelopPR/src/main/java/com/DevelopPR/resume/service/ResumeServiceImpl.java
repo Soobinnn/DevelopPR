@@ -15,5 +15,11 @@ public class ResumeServiceImpl implements ResumeService{
 		   System.out.println(vo.toString());
 	       resumeDAO.resumeRegistConfirm(vo);
 	}
+	@Override
+	public ResumeVO resumeDetail(String email) throws Exception {
+		return resumeDAO.resumeDetail(email);
+	}
+	
+	
 
 }

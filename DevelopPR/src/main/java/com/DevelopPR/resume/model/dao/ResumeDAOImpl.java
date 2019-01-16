@@ -18,4 +18,10 @@ public class ResumeDAOImpl implements ResumeDAO{
 		 SqlSession.insert("resume.registConfirm", vo);
 	}
 
+	@Override
+	public ResumeVO resumeDetail(String email) throws Exception {
+		return SqlSession.selectOne("resume.resumeDetail", email);
+	}
+
+	
 }

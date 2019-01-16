@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resume">
+
+	<insert id="registConfirm" >
+	   INSERT INTO PR_RESUME VALUES (
+	        #{motto}, #{is_work}, #{profile_photo}, #{name}, #{birthday}, #{cell_num}, #{cnum_is_open}, 
+			#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open}, #{prefer_place}, 
+			#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year}, #{career_info}, #{abb}, #{tech_name}, #{tech_percent}
+			)
+	</insert>
+
+    <select id="resumeDetail" resultType="ResumeVO">
+          SELECT *
+          FROM PR_RESUME
+          WHERE email=#{email}
+    </select>
+
+
+</mapper>

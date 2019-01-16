@@ -98,7 +98,7 @@ table {
    
 }
 
-.resumeDetail .container .impormation{
+.resumeDetail .imformation{
    text-align: center;
    font-size:15pt;
    margin-top:20px;
@@ -106,7 +106,6 @@ table {
 
 .resumeDetail .tech-stack{
    margin:10px;
-   background-color:white;
    height: 200px;
    width:700px;
 }
@@ -131,21 +130,18 @@ table {
 .resumeDetail .left{
 	display:flex;
 	flex-direction:column;
-	margin-left:52px;
-	margin-right:52px;
+	margin-left:50px;
+	margin-right:50px;
 	width:650px;
 	align-items:center;
 }
 
 
-
-
 .resumeDetail .right{
 	display:flex;
 	flex-direction:column;
-	background-color:aqua;
-	margin-left:52px;
-	margin-right:52px;
+	margin-left:50px;
+	margin-right:50px;
 	width:650px;
 	align-items:center;
 }
