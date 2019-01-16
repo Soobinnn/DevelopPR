@@ -7,7 +7,7 @@
 <title>메신저</title>
 <link rel="stylesheet" type="text/css" href="meeting.css"/>
 </head>
-<body>
+<body> 
     <div class="container">
         <div id="list">
             <div class="subject">메신저 목록</div>
