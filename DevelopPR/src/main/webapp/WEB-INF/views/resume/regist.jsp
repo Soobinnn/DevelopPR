@@ -17,7 +17,7 @@
                <div class="c">"~~~~~~~~~~~~~~~~~~"</div>
             </div>
             <div id="img">
-                + <input type="file" name="profile_photo"/>
+                + <input type="text" name="profile_photo"/>
             </div>
         </header>
         <div id="pill">* 는 필수 입력 사항입니다.</div>
