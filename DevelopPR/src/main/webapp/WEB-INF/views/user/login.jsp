@@ -250,7 +250,7 @@
                 return;
             }
             // 폼 내부의 데이터를 전송할 주소
-            document.form1.action="${path}/member/loginCheck.do"
+            document.form1.action="${path}/user/loginCheck"
             // 제출
             document.form1.submit();
         });
@@ -267,7 +267,7 @@
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">
 			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="<c:url value='${path}/main'/>">HOME</a></li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
@@ -299,7 +299,7 @@
    <section>
     <div class="email">   
         
-        <input id="emailinput" type="text" autocomplete="off" value="" placeholder=" 이메일" name="userId" id="userId">
+        <input id="emailinput" type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userId">
 
     </div>
     

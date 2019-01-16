@@ -3,6 +3,7 @@ package com.DevelopPR.user.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService
 	   {
 	       userDao.insertUser(vo);
 	       
-	       /*	   		// 임의의 authkey 생성
+	       /* // 임의의 authkey 생성
 			String authkey = new TempKey().getKey(50, false);
 
 			memberDao.createAuthKey(vo.getUserEmail(), authkey);
@@ -53,5 +54,28 @@ public class UserServiceImpl implements UserService
 					sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();*/
+	   }
+
+	   // 회원 로그인체크
+	   @Override
+	   public boolean loginCheck(UserVO vo, HttpSession session) 
+	   {
+	       boolean result = userDao.loginCheck(vo);
+	       if (result) 
+	       { // true일 경우 세션에 등록
+	           UserVO vo2 = viewlogin(vo);
+	           // 세션 변수 등록
+	           session.setAttribute("userEmail", vo2.getUserEmail());
+	           session.setAttribute("userNick", vo2.getUserNick());
+	           session.setAttribute("userName", vo2.getUserName());
+	       } 
+	       return result;
+	   }
+	   
+	   // 회원 로그인 정보
+	   @Override
+	   public UserVO viewlogin(UserVO vo) 
+	   {
+	       return userDao.viewlogin(vo);
 	   }
 }
