@@ -64,6 +64,7 @@ header.second_header
   text-align : center;
   flex-basis : 250px;
 }
+/* nav- menu  */
 nav
 {
     position :fixed;
@@ -151,13 +152,14 @@ nav#min:hover #navimg
   font-size: 1.2rem;
   line-height: 60px;
 }
-#full > ul > li >a
+#full > ul > .fullmenulist >a
 {
   display:block;
   height : 60px;
   text-decoration: none;
   color : white;
 }
+
 .fullmenu
 {
   opacity: 1;
@@ -165,6 +167,28 @@ nav#min:hover #navimg
 .fullmenulist
 {
   border-bottom : 1px solid #A4A4A4;
+}
+#full > ul > .fullbtn > a
+{
+   display:block;
+  height : 60px;
+  text-decoration: none;
+}
+#fulljoin > a
+{
+  color : black;
+}
+#fulljoin:hover > a
+{
+  color : white;
+}
+#fulllogin > a
+{
+  color : white;
+}
+#fulllogin:hover > a
+{
+  color : black;
 }
 .fullbtn
 {
@@ -194,6 +218,7 @@ nav#min:hover #navimg
   background-color:rgba( 255, 255, 255, 0.1 );
   transition-duration: 0.4s;
 }
+/* ---------------------- */
 
 section.project_section
 {

@@ -28,6 +28,11 @@ public class UserController
 	  return "user/list";
   }
   
+  @RequestMapping("login")
+  public String userLogin()
+  {
+	  return "user/login";
+  }
   // 이용약관 페이지 이동
   @RequestMapping("policy")
   public String userPolicy()

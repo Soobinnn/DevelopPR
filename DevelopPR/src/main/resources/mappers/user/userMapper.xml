@@ -21,7 +21,7 @@
     
     <!-- 02. 회원 등록 -->
     <insert id="insertUser">
-        INSERT INTO tbl_member(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL)
+        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL)
         VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail})    
     </insert>
  </mapper>

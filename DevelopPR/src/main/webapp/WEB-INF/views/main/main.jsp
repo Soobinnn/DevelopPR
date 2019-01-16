@@ -19,13 +19,13 @@
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">
 			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="<c:url value='${path}/main'/>">HOME</a></li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"></li>
-			<li id="fulljoin"class="fullbtn">JOIN US</li>
-			<li id="fulllogin"class="fullbtn">LOGIN</li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
+			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
 		</ul>
 	</nav>
     <div class="test"></div>
