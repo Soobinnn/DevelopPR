@@ -33,8 +33,8 @@
                                 현재 구직 상태 *
                             </div> 
                             <div class="s_info">
-                                <input type="radio" name="is_work" value="0" class="button"/>구직중
-                                <input type="radio" name="is_work" value="1" class="button"/>재직중
+                                <input type="radio" name="is_work" value="0"/>구직중
+                                <input type="radio" name="is_work" value="1"/>재직중
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,16 @@
                        		     이 름 *
                             </div>
                             <div class="p_info">
-                                <input type="text" id="pr_name" name="name" placeholder="이름을 입력해주세요.(2~20자)"/>
+                                <input type="text" class="textlong" name="name" placeholder="이름을 입력해주세요.(2~20자)"/>
+                            </div>
+                        </div>
+                        
+                         <div id="p_name">
+                            <div class="name" >
+                       		    나 이 *
+                            </div>
+                            <div class="p_info">
+                                <input type="text" class="textlong" name="age" placeholder="숫자로 입력해주세요."/>
                             </div>
                         </div>
 
@@ -80,8 +89,8 @@
                         </div>
 
                         <div id="blog">
-                            <div class="name" id="blog" >
-                            블로그
+                            <div class="name">
+                       			     블로그
                             </div>
                             <div class="info">
                                 <input type="text" name="blog" placeholder="정규표현식 추가" class="textlong"/>
@@ -118,60 +127,94 @@
                         </div>
            </div>
 
-            </div>
-            
-       <div class="information">
-
-                    <div class="acq">
-                        <div class="subject">자격정보</div>
-                        <div class="acq_ok">
-                            <input type="text" class="textmiddle1" name="acq_date" placeholder="자격증 취득 날짜"/>|
-                            <input type="text" class="textmiddle2" name="acq_name" placeholder="자격증 이름"/>
-                            <button>+</button>
-                        </div>
+           
+           <div class="information">
+               
+               <div class="acq">
+                   <div class="subject">자격정보</div>
+                   <div class="acq_ok">
+                       <input type="text" class="textmiddle1" name="acq_date" placeholder="자격증 취득 날짜"/>|
+                       <input type="text" class="textmiddle2" name="acq_name" placeholder="자격증 이름"/>
+                       <button>+</button>
                     </div>
+                </div>
                 
-
-                    <div class="edu">
-                        <div class="subject">학력/교육 정보</div>
-                        <div class="edu_ok">
-                                <input type="text" class="textmiddle1" name="gradu_year" placeholder="학력/교육 년도"/>|
-                                <input type="text" class="textmiddle2" name="edu_info" placeholder="학력 / 교육 이름"/>
-                                <button>+</button>
-                        </div>
+                
+                <div class="edu">
+                    <div class="subject">학력/교육 정보</div>
+                    <div class="edu_ok">
+                        <input type="text" class="textmiddle1" name="gradu_year" placeholder="학력/교육 년도"/>|
+                        <input type="text" class="textmiddle2" name="edu_info" placeholder="학력 / 교육 이름"/>
+                        <button>+</button>
+                    </div>
                     
                     
-                    </div>
+                </div>
                 
-
-                    <div class="career">
-                        <div class="subject">경력 정보</div>
-                        <div class="career_ok">
-                                <input type="text" class="textmiddle1" name="career_year" placeholder="학력/교육 년도"/>|
-                                <input type="text" class="textmiddle2" name="career_info" placeholder="학력 / 교육 이름"/>
-                                <button>+</button>
-                        </div>
+                
+                <div class="career">
+                    <div class="subject">경력 정보</div>
+                    <div class="career_ok">
+                        <input type="text" class="textmiddle1" name="career_year" placeholder="학력/교육 년도"/>|
+                        <input type="text" class="textmiddle2" name="career_info" placeholder="학력 / 교육 이름"/>
+                        <button>+</button>
                     </div>
-            
-
+                </div>
+                
+                
             </div>
+        </div>
             
             <div class="skill">
-                            <div class="subject">Tech-stack</div>
-                            <div class="tech">
-                                <div class="abb">
-                                    <input type="text" id="abb" name="abb"/>
-                                </div>
-                                <div class="techinfo">
-                                    <input type="text" id="techname" placeholder="기술 명" name="tech_name"><br/>
-                                    <input id="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-								</div>
-									
-							</div>
+                <div class="subject">Tech-stack</div>
+               
+                <div class="techs">
+                    <div class="tech">
+                        <div>
+                            <input type="text" class="abb" name="abb"/>
+                        </div>
+                        <div class="techinfo">
+                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
+                            숫자
+                        </div>
+                    </div>
+
+                    <div class="tech">
+                        <div>
+                            <input type="text" class="abb" name="abb"/>
+                        </div>
+                        <div class="techinfo">
+                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
+                            숫자
+                        </div>
+                    </div>
+                    
+                    <div class="tech">
+                        <div>
+                            <input type="text" class="abb" name="abb"/>
+                        </div>
+                        <div class="techinfo">
+                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
+                            숫자
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         
    </div>
-          <input type="submit"/>
+
+
+   <div id="button">
+       <div class="holl"></div>
+        <input type="button" class="button1" value="취소"/>
+        <input type="submit" class="button2" value="등록하기"/>
+        <div class="holl"></div>
+    </div>
 </form>
 </body>
 </html>

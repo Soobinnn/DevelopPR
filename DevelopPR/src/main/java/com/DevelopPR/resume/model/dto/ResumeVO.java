@@ -22,8 +22,8 @@ public class ResumeVO {
 	private String career_info;
 	private String abb;
 	private String tech_name;
-	private int tech_percent;
-
+	private String tech_percent;
+	private int age;
 	
 	
 	public String getMotto() {
@@ -278,14 +278,27 @@ public class ResumeVO {
 
 
 
-	public int getTech_percent() {
+
+	public String getTech_percent() {
 		return tech_percent;
 	}
 
 
 
-	public void setTech_percent(int tech_percent) {
+	public void setTech_percent(String tech_percent) {
 		this.tech_percent = tech_percent;
+	}
+
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 

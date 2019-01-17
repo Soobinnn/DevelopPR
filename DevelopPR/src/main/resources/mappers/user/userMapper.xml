@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="user">
-	<!-- 01. 회원 목록 -->
+	<!-- 회원 목록 -->
     <select id="listUser" resultType="UserVO">
         SELECT 
           EMAIL AS userEmail,
@@ -19,9 +19,33 @@
         ORDER BY Nick
     </select>
     
-    <!-- 02. 회원 등록 -->
+    <!-- 회원 등록 -->
     <insert id="insertUser">
         INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL)
         VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail})    
     </insert>
+    
+    <!-- 로그인 체크 -->
+    <select id="loginCheck" resultType="String">
+        SELECT PW AS userPw FROM pr_user
+        WHERE EMAIL = #{userEmail}
+    </select>
+    
+    <!-- 로그인 접속시 최근접속 시간 업데이트 -->
+    <update id="updateRecent">
+		UPDATE pr_user SET RECENT_ACCESS = SYSDATE+9/24 
+		WHERE EMAIL = #{userEmail}
+    </update>
+    
+    <!-- 로그인정보  -->
+    <select id="viewlogin" resultType="UserVO">
+        SELECT 
+            NAME AS userName,
+            NICK AS userNick,
+            EMAIL AS userEmail,
+            IS_SEEK AS userIs_seek
+        FROM pr_user
+        WHERE EMAIL = #{userEmail}
+    </select>
+   
  </mapper>

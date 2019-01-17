@@ -15,6 +15,23 @@
 		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
 		<span id="navspan">MENU</span>
 	</nav>
+	<c:choose>
+	<c:when test="${sessionScope.userEmail == null}">
+	<nav id="full" class="top_nav">
+		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
+		<ul class="fullmenu">
+			<li class="fullmenulist">MENU</li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
+			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
+			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist"></li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
+			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
+		</ul>
+	</nav>
+	</c:when>
+	<c:otherwise>
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">
@@ -23,11 +40,13 @@
 			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"></li>
-			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
+			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
+			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
 	</nav>
+	</c:otherwise>
+	</c:choose>
     <div class="test"></div>
 	<section class="main_section">
 		<div class="main1">		
@@ -123,7 +142,7 @@
 								<h2><span>Kim SO JIN</span></h2>
 							</div>
 						</div>
-					<a href="#"></a>
+					<a href="${path}/resume/detail?email=so97so@naver.com"></a>
 				</figure>
 			</div>
 			<div class="PR8">
@@ -143,7 +162,17 @@
 				<div class="filter9"></div>
 					<figure class="prpic">	
 						<img src="<c:url value='/resources/main/image/pl.jpg'/>" alt="pr1" />
+						<c:choose>
+						<c:when test="${sessionScope.userEmail == null}">
+						<a href='${path}/user/login'></a>
+						</c:when>
+						<%-- <c:when test="${sessionScope.userEmail == null}">
 						<a href="#"></a>
+						</c:when> --%>
+						<c:otherwise>
+						<a href="${path}/resume/regist"></a>
+						</c:otherwise>
+						</c:choose>
 					</figure>		
 			</div>
 		</div>

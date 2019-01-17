@@ -15,7 +15,6 @@ public class UserVO
 	  private int userAuthStatus;
 	  private String userAuthCode;
 	  
-	  
 	public String getUserEmail() 
 	{
 		return userEmail;

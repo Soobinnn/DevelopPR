@@ -98,7 +98,8 @@ table {
    
 }
 
-.resumeDetail .imformation{
+.resumeDetail .information{
+   display:flex;
    text-align: center;
    font-size:15pt;
    margin-top:20px;
@@ -113,11 +114,13 @@ table {
 .resumeDetail .subject{
    padding-bottom:20px;
    padding-top:60px;
+	padding-left:20px;
    color:#02456F;
    font-weight: bold;
    border-bottom: solid 2px #B9B9B9;
    font-size:15pt;
-   width:600px;
+   width:570px;
+   text-align:left;
 }
 
 
@@ -130,9 +133,8 @@ table {
 .resumeDetail .left{
 	display:flex;
 	flex-direction:column;
-	margin-left:50px;
-	margin-right:50px;
-	width:650px;
+	margin-left:150px;
+	width:600px;
 	align-items:center;
 }
 
@@ -141,15 +143,21 @@ table {
 	display:flex;
 	flex-direction:column;
 	margin-left:50px;
-	margin-right:50px;
-	width:650px;
+	margin-right:150px;
+	width:550px;
 	align-items:center;
 }
 
 /*-----------------------------left-detail----------------------------*/
+
 .resumeDetail .detail{
-	width:600px;
+	display:flex;
+	flex-direction:column;
+	border-style:none;
+   border-bottom: solid 2px #B9B9B9;
+   width:590px;
 }
+
 
 .resumeDetail .state{
 	display:flex;
@@ -163,48 +171,22 @@ table {
 }
 
 .resumeDetail .name{
-   padding:15px;
+   padding-top:10px;
+   padding-bottom:10px;
    padding-left:20px;
    font-size:12pt;
-   width:120px;
+   width:150px;
 }
-
-.resumeDetail .p_info{
-   margin-top:10px;
-}
-
-.resumeDetail #pr_name{
-   width:200px;
-   height:30px;
-}
-
-.resumeDetail .birth_info{
-   margin-top:10px;
-   margin-left:10px;
-}
-
-.resumeDetail .birth_info>:nth-child(n){
-   width:90px;
-   height: 25px;
-   font-size:12pt;
-}
-
 
 .resumeDetail .textshort{
-   margin-top:8px;
+   margin-left:50px;
    padding:10px;
-   width:130px;
+   width:250px;
    height:10px;
+   text-align:left;
 }
 
-.resumeDetail .textlong{
-margin-top:8px;
-	width:280px;
-   height:25px;
-}
-
-
-.resumeDetail #p_name, #birth, #phone, #email, #blog, #address, #hopeaddress{
+.resumeDetail .p_name, #birth, #phone, #email, #blog, #address, #hopeaddress{
    display:flex;
    flex-direction: row;
    border-bottom:solid 1px white;
@@ -215,20 +197,30 @@ margin-top:8px;
    flex-direction: row;
 }
 
-.resumeDetail #comment .textlong{
-   margin-top:15px;
+
+/*---------------------project-----------------*/
+
+.resumeDetail .projects{
+	margin-bottom:20px;
 }
-.resumeDetail .detail{
-   border-bottom: solid 2px #B9B9B9;
-   width:480px;
+
+.resumeDetail #p_button{
+	margin-top:20px;
+	margin-bottm:10px;
 }
 
-/*---------------------------------------------*/
+/*------------------tech-stack--------------------*/
+
+.resumeDetail .tech-stack{
+	display:flex;
+	flex-direction:column;
+}
 
 
 
 
 
+/*------------------footer---------------------*/
 
 .resumeDetail footer{
    background:black;
@@ -239,7 +231,6 @@ margin-top:8px;
 /*------------------------- resumeRegist --------------------------*/
 
 .resumeRegist .container{
-   background-color: #EFECEC;
    display:flex;
    flex-direction: column;
    align-items: center;
@@ -247,6 +238,7 @@ margin-top:8px;
 
 /*---------------header----------------*/
 .resumeRegist .container header{
+   background-color: #EFECEC;
    display:flex;
    height:250px;
    border-bottom:solid 2px gray;
@@ -254,7 +246,7 @@ margin-top:8px;
 
 .resumeRegist .head{
    padding:50px;
-   width:700px;
+   width:600px;
    padding-left:70px;
 }
 
@@ -284,7 +276,6 @@ margin-top:8px;
    
    display:flex;
    align-items: center;
-   justify-content: center;
    font-size: 30pt;
    color:#02456F;
 
@@ -294,25 +285,26 @@ margin-top:8px;
 }
 
 /*---------------main-----------------*/
-
+.resumeRegist body{
+   margin-left:10%;
+}
 .resumeRegist #pill{
    color: #3574A7;
    font-size:15px;
    font-weight: bold;
-   width:400px;
+   width:190px;
    position:relative;
    top:30px;
-   left:530px;
+   left:340px;
 }
 
 .resumeRegist .main{
-   width:1000px;
    display:flex;
-   justify-content: space-between;
-   flex-wrap:wrap;
+   flex-wrap: wrap;
 }
 
 .resumeRegist .subject{
+   
    margin-left:10px;
    padding-left:10px;
    padding-right:40px;
@@ -325,7 +317,6 @@ margin-top:8px;
 
 .resumeRegist .content{
    width:450px;
-   padding-left:10px;
 }
 
 .resumeRegist .content .state{
@@ -346,27 +337,11 @@ margin-top:8px;
    width:120px;
 }
 
-.resumeRegist .p_info{
-   margin-top:8px;
-}
 
-.resumeRegist #pr_name{
-   width:200px;
-   height:25px;
-   margin-left:10px;
-}
 
 .resumeRegist .birth_info{
    margin-top:10px;
-   margin-left:10px;
 }
-
-.resumeRegist .birth_info>:nth-child(n){
-   width:90px;
-   height: 25px;
-   font-size:12pt;
-}
-
 
 .resumeRegist .textshort{
    margin-top:8px;
@@ -377,7 +352,7 @@ margin-top:8px;
 
 .resumeRegist .textlong{
 margin-top:8px;
-	width:280px;
+	width:270px;
    height:25px;
 }
 
@@ -394,32 +369,35 @@ margin-top:8px;
 }
 
 .resumeRegist #comment .textlong{
-   margin-top:15px;
+   	margin-top:15px;
 }
 .resumeRegist .detail{
-   border-bottom: solid 2px #B9B9B9;
-   width:480px;
+	display:flex;
+	flex-direction:column;
+	border-style:none;
+   	border-bottom: solid 2px #B9B9B9;
+   	width:450px;
 }
 
 /*--------------information----------------*/
 
 .resumeRegist .information{
-   width:500px;
+   width:450px;
 }
 
 .resumeRegist .textmiddle1{
    margin-top:10px;
    margin-left:30px;
    margin-right:10px;
-   width:170px;
+   width:150px;
    height:25px;
-
 }
+
 .resumeRegist .textmiddle2{
    margin-top:10px;
    margin-left:10px;
    margin-right:10px;
-   width:170px;
+   width:150px;
    height:25px;
 }
 .resumeRegist .acq_ok, .edu_ok, .career_ok{
@@ -430,37 +408,85 @@ margin-top:8px;
 
 /*---------------------skill------------------------*/
 .resumeRegist .skill{
-   width:1000px;
-   height: 300px;
+   display:flex;
+   flex-direction: column;
 }
 
 .resumeRegist .skill .subject{
-   padding-top:30px;
+   padding-top:50px;
+}
+
+.resumeRegist .techs{
+   display:flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   margin-top:20px;
+   margin-bottom:20px;
 }
 
 .resumeRegist .tech{
-   background-color: antiquewhite;
    display:flex;
    flex-direction: row;
-   margin:20px;
-   padding-left:30px;
 }
 
-.resumeRegist .tech #abb{
+.resumeRegist .tech .abb{
    width:80px;
    height:80px;
    border-radius: 20% 20% 20% 20%;
-   background-color: #3574A7;
+   
+   background-color: rgba(255,255,255,0.5);
    text-align: center;
-   border-style: none;
+   font-size:15pt;
+   font-weight: bold;
+   border-style: solid;
+
+   margin-left:20px;
+   margin-bottom:20px;
+   
 }
 
 .resumeRegist .tech .techinfo{
-   background-color: aquamarine;
    padding:10px;
+   margin-bottom:20px;
+   
 }
-/*---------------radio button-------------------*/
 
+.resumeRegist .tech .techinfo .techname{
+   font-size:14pt;
+   border-style: solid;
+   margin-bottom:10px;
+   width:185px;
+}
+
+/*------------resume--regist--button--------------*/
+
+.resumeRegist #button{
+   display:flex;
+   flex-direction: row;
+
+}
+
+.resumeRegist .button1{
+   height:30px;
+   font-size: 15pt;
+   margin-bottom: 40px;
+   flex:0 1 200px;
+   margin-right: 10px;
+}
+
+.resumeRegist .button2{
+   flex:0 1 200px;
+   height:30px;
+   font-size: 15pt;
+   margin-left: 10px;
+}
+
+.resumeRegist .holl{
+   flex-grow:3;
+}
+
+/*---------------radio button-------------------*/
+/* 
 .button{
    width: 14px;
    height: 14px;
@@ -479,7 +505,7 @@ margin-top:8px;
    border-color:black;
    border-style: inset;
 }
-
+ */
 /*-------------footer------------*/
 .resumeRegist footer{
    background-color: #3574A7;

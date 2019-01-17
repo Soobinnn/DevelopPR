@@ -250,7 +250,7 @@
                 return;
             }
             // 폼 내부의 데이터를 전송할 주소
-            document.form1.action="${path}/member/loginCheck.do"
+            document.form1.action="${path}/user/loginCheck"
             // 제출
             document.form1.submit();
         });
@@ -263,19 +263,38 @@
 		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
 		<span id="navspan">MENU</span>
 	</nav>
+	<c:choose>
+	<c:when test="${sessionScope.userEmail == null}">
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">
 			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="<c:url value='${path}/main'/>">HOME</a></li>
-			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
+			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
 		</ul>
 	</nav>
+	</c:when>
+	<c:otherwise>
+	<nav id="full" class="top_nav">
+		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
+		<ul class="fullmenu">
+			<li class="fullmenulist">MENU</li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
+			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
+			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
+			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
+		</ul>
+	</nav>
+	</c:otherwise>
+	</c:choose>
     <form name="form1" method="post">
       <div class="container">
     <div class="item1"></div>
@@ -299,7 +318,7 @@
    <section>
     <div class="email">   
         
-        <input id="emailinput" type="text" autocomplete="off" value="" placeholder=" 이메일" name="userId" id="userId">
+        <input id="emailinput" type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userId">
 
     </div>
     

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService
 	   {
 	       userDao.insertUser(vo);
 	       
-	       /*	   		// 임의의 authkey 생성
+	       /* // 임의의 authkey 생성
 			String authkey = new TempKey().getKey(50, false);
 
 			memberDao.createAuthKey(vo.getUserEmail(), authkey);
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();*/
 	   }
-	   
+
 	   public String authCheck(String phone) throws Exception {
 		   GenerateCertNumber tempNum = new GenerateCertNumber();
 			String authNum = tempNum.executeGenerate();
@@ -81,4 +82,40 @@ public class UserServiceImpl implements UserService
 				return "fail";
 			}
 	   }
+
+	 
+	   // 회원 로그인체크
+	   @Override
+	   public boolean loginCheck(UserVO vo, HttpSession session) 
+	   {
+	       boolean result = userDao.loginCheck(vo);
+	       if (result) 
+	       { // true일 경우 세션에 등록
+	           UserVO vo2 = viewlogin(vo);
+	           // 세션 변수 등록
+	           session.setAttribute("userEmail", vo2.getUserEmail());
+	           session.setAttribute("userNick", vo2.getUserNick());
+	           session.setAttribute("userName", vo2.getUserName());
+	           session.setAttribute("userIs_seek", vo2.getUserIs_seek());
+	       } 
+	       return result;
+	   }
+	   
+	   // 회원 로그인 정보
+	   @Override
+	   public UserVO viewlogin(UserVO vo) 
+	   {
+	       return userDao.viewlogin(vo);
+	   }
+	   
+	   // 회원 로그아웃
+	   @Override
+	   public void logout(HttpSession session)
+	   {
+		   // 세션 변수 개별 삭제
+	       // session.removeAttribute("userId");
+	       // 세션 정보를 초기화 시킴
+	       session.invalidate();
+	   }
+
 }

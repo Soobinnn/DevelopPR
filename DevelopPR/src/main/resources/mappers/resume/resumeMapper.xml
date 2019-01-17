@@ -6,7 +6,7 @@
 	   INSERT INTO PR_RESUME VALUES (
 	        #{motto}, #{is_work}, #{profile_photo}, #{name}, #{birthday}, #{cell_num}, #{cnum_is_open}, 
 			#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open}, #{prefer_place}, 
-			#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year}, #{career_info}, #{abb}, #{tech_name}, #{tech_percent}
+			#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year}, #{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
 			)
 	</insert>
 

@@ -254,7 +254,7 @@ p {
 							<li id="job" style="display: none">
 								<div class="radio_2">
 									<input type="radio" value="0" id="radio5">구직중 <input
-										type="radio" value="1" id="radio6">구직완료
+										type="radio" value="1" id="radio5">구직완료
 								</div>
 							</li>
 							<li><input id="explain" type="text" name="userJob_detail"
