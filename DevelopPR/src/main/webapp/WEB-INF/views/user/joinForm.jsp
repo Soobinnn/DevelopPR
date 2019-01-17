@@ -264,6 +264,9 @@
                           </div>
                     </li>
                     <li>
+                    	 <input id="email" type="text" autocomplete="off" value="" placeholder=" 핸드폰" name="userPhone">  
+                    </li>
+                    <li>
                            <input id="explain" type="text" name="userJob_detail" placeholder=" 간략히 서술해주세요."> 
                     </li>
 
