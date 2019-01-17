@@ -31,12 +31,19 @@
         WHERE EMAIL = #{userEmail}
     </select>
     
+    <!-- 로그인 접속시 최근접속 시간 업데이트 -->
+    <update id="updateRecent">
+		UPDATE pr_user SET RECENT_ACCESS = SYSDATE+9/24 
+		WHERE EMAIL = #{userEmail}
+    </update>
+    
     <!-- 로그인정보  -->
     <select id="viewlogin" resultType="UserVO">
         SELECT 
             NAME AS userName,
             NICK AS userNick,
-            EMAIL AS userEmail
+            EMAIL AS userEmail,
+            IS_SEEK AS userIs_seek
         FROM pr_user
         WHERE EMAIL = #{userEmail}
     </select>

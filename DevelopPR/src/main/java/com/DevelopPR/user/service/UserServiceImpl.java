@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService
 					sendMail.send();*/
 	   }
 
+	 
 	   // 회원 로그인체크
 	   @Override
 	   public boolean loginCheck(UserVO vo, HttpSession session) 
@@ -68,6 +69,7 @@ public class UserServiceImpl implements UserService
 	           session.setAttribute("userEmail", vo2.getUserEmail());
 	           session.setAttribute("userNick", vo2.getUserNick());
 	           session.setAttribute("userName", vo2.getUserName());
+	           session.setAttribute("userIs_seek", vo2.getUserIs_seek());
 	       } 
 	       return result;
 	   }
@@ -77,6 +79,16 @@ public class UserServiceImpl implements UserService
 	   public UserVO viewlogin(UserVO vo) 
 	   {
 	       return userDao.viewlogin(vo);
+	   }
+	   
+	   // 회원 로그아웃
+	   @Override
+	   public void logout(HttpSession session)
+	   {
+		   // 세션 변수 개별 삭제
+	       // session.removeAttribute("userId");
+	       // 세션 정보를 초기화 시킴
+	       session.invalidate();
 	   }
 	   
 }

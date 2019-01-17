@@ -90,14 +90,14 @@ public class UserController
       
       return mav;
   }
-  /*// 로그아웃 처리
-  @RequestMapping("member/logout.do")
+  // 로그아웃 처리
+  @RequestMapping("logout")
   public ModelAndView logout(HttpSession session)
   {
-      memberService.logout(session);
+      userService.logout(session);
       ModelAndView mav = new ModelAndView();
-      mav.setViewName("login");
       mav.addObject("msg", "logout");
+      mav.setViewName("user/login");
       return mav;
-  }*/
+  }
 }

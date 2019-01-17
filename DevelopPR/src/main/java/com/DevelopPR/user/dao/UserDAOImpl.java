@@ -41,7 +41,12 @@ public class UserDAOImpl implements UserDAO
 		 // 로그인 비밀번호 db매칭
 	     String checkPw = sqlSession.selectOne("user.loginCheck", vo);
 	     boolean matchPw = passwordEncoder.matches(vo.getUserPw(), checkPw);
-	     System.out.println(matchPw);
+	     
+	     // 로그인 정보 맞으면 최근시간업데이트
+	     if(matchPw)
+	     {
+	    	 sqlSession.update("user.updateRecent", vo.getUserEmail());
+	     }
 	     return matchPw;
 	 }
 	// 회원 로그인 정보
@@ -51,11 +56,11 @@ public class UserDAOImpl implements UserDAO
 	    return sqlSession.selectOne("user.viewlogin", vo);
 	}
 	
-
-	 /*  // 09. 회원 로그아웃
-	   @Override
-	   public void logout(HttpSession sessin) 
-	   {
-	   }*/
+	 //회원 로그아웃
+	@Override
+	public void logout(HttpSession sessin) 
+	{
+		
+	}
 	   
 }

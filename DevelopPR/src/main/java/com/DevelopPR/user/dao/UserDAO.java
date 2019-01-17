@@ -13,13 +13,12 @@ public interface UserDAO
 	   //02. 회원 입력 ++ 이메일 추가
 	   public void insertUser(UserVO vo) throws Exception;
 	   
-	   
 	   // 회원 로그인 체크
 	   public boolean loginCheck(UserVO vo);
 	   // 회원 로그인 정보
-	   public UserVO viewlogin(UserVO vo);
-	   
-	
+	   public UserVO viewlogin(UserVO vo);  
+	   //회원 로그아웃
+	   public void logout(HttpSession session);
 	   
 	/*   //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
@@ -32,8 +31,7 @@ public interface UserDAO
 	   
 	   
 	   
-	   // 09. 회원 로그아웃
-	   public void logout(HttpSession session);
+	   
 	   
 	   // 이메일 인증
 	   public void userAuth(String userEmail) throws Exception;
