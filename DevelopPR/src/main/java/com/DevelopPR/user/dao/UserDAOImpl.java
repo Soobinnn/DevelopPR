@@ -38,6 +38,7 @@ public class UserDAOImpl implements UserDAO
 	 @Override
 	 public boolean loginCheck(UserVO vo) 
 	 {
+		 // 로그인 비밀번호 db매칭
 	     String checkPw = sqlSession.selectOne("user.loginCheck", vo);
 	     boolean matchPw = passwordEncoder.matches(vo.getUserPw(), checkPw);
 	     System.out.println(matchPw);
