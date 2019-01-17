@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.DevelopPR.user.dto.UserVO;
@@ -16,6 +17,9 @@ public class UserDAOImpl implements UserDAO
 	 @Inject
 	 SqlSession sqlSession;
 	   
+	 @Inject
+	 BCryptPasswordEncoder passwordEncoder;
+	 
 	 // 회원 목록
 	 @Override
 	 public List<UserVO>listUser() 
@@ -34,8 +38,10 @@ public class UserDAOImpl implements UserDAO
 	 @Override
 	 public boolean loginCheck(UserVO vo) 
 	 {
-	     String name = sqlSession.selectOne("user.loginCheck", vo);
-	     return (name == null) ? false : true;
+	     String checkPw = sqlSession.selectOne("user.loginCheck", vo);
+	     boolean matchPw = passwordEncoder.matches(vo.getUserPw(), checkPw);
+	     System.out.println(matchPw);
+	     return matchPw;
 	 }
 	// 회원 로그인 정보
 	@Override
@@ -44,6 +50,7 @@ public class UserDAOImpl implements UserDAO
 	    return sqlSession.selectOne("user.viewlogin", vo);
 	}
 	
+
 	 /*  // 09. 회원 로그아웃
 	   @Override
 	   public void logout(HttpSession sessin) 

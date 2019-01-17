@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +25,9 @@ public class UserController
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
   @Inject
   UserService userService;
+  
+  @Inject
+  BCryptPasswordEncoder passwordEncoder;
   
   // 회원 목록
   @RequestMapping("list")
@@ -50,6 +54,8 @@ public class UserController
   @RequestMapping(value ="joining", method = RequestMethod.POST)
   public String userJoining(@ModelAttribute UserVO vo) throws Exception
   {
+	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
+	  vo.setUserPw(pwdBycrypt);
 	  userService.insertUser(vo);
 	  return "user/joining";
   }
@@ -61,12 +67,13 @@ public class UserController
 	  return "user/login";
   }
   // 로그인 처리
-  @RequestMapping("loginCheck")
+  @RequestMapping(value ="loginCheck", method =RequestMethod.POST)
   public ModelAndView loginCheck(@ModelAttribute UserVO vo, HttpSession session)
   {
+	  
       boolean result = userService.loginCheck(vo, session);
       ModelAndView mav = new ModelAndView();
-      if (result == true) 
+      if (result == true ) 
       { 
     	  // 로그인 성공
           // main.jsp로 이동

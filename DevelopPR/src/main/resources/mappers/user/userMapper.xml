@@ -27,8 +27,8 @@
     
     <!-- 로그인 체크 -->
     <select id="loginCheck" resultType="String">
-        SELECT NAME AS userName FROM pr_user
-        WHERE EMAIL = #{userEmail} AND PW = #{userPw}
+        SELECT PW AS userPw FROM pr_user
+        WHERE EMAIL = #{userEmail}
     </select>
     
     <!-- 로그인정보  -->
@@ -38,6 +38,7 @@
             NICK AS userNick,
             EMAIL AS userEmail
         FROM pr_user
-        WHERE EMAIL = #{userEmail} AND PW = #{userPw}
+        WHERE EMAIL = #{userEmail}
     </select>
+   
  </mapper>

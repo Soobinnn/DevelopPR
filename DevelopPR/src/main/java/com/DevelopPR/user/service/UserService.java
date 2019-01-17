@@ -19,6 +19,7 @@ public interface UserService
 	   // 회원 로그인 정보
 	   public UserVO viewlogin(UserVO vo);
 	   
+	
 	  /* //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정
