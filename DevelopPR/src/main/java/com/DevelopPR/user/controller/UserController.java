@@ -1,13 +1,17 @@
 package com.DevelopPR.user.controller;
 
+import com.DevelopPR.util.*;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.user.service.UserService;
@@ -52,4 +56,24 @@ public class UserController
 	  userService.insertUser(vo);
 	  return "user/joining";
   }
+  // 아이디 찾기 폼
+  @RequestMapping("findId")
+  public String userFindIdForm()
+  {
+	  return "user/findId";
+  }
+  // 휴대폰 인증 폼
+  @RequestMapping("authCheck")
+  public String authCheckForm() {
+	  return "user/authCheck";
+  }
+  // 휴대폰인증
+  @RequestMapping("phoneCheck")
+  public String sendSMS(@RequestParam String phone) throws Exception {
+	  userService.authCheck(phone);
+	  return "user/authCheck";
+  } 
+  
+  
+  
 }

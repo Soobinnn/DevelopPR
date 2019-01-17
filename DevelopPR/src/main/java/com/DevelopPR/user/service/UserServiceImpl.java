@@ -1,13 +1,17 @@
 package com.DevelopPR.user.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.DevelopPR.user.dao.UserDAO;
 import com.DevelopPR.user.dto.UserVO;
+import com.DevelopPR.util.Coolsms;
+import com.DevelopPR.util.GenerateCertNumber;
 
 @Service
 public class UserServiceImpl implements UserService
@@ -53,5 +57,28 @@ public class UserServiceImpl implements UserService
 					sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();*/
+	   }
+	   
+	   public String authCheck(String phone) throws Exception {
+		   GenerateCertNumber tempNum = new GenerateCertNumber();
+			String authNum = tempNum.executeGenerate();
+			String api_key = "NCSDWXRYDLI0MN1B";
+			String api_secret = "T4LZGIPEXI5IUFCO036UF1G5B61CHYI9";
+			Coolsms coolsms = new Coolsms(api_key, api_secret);
+			
+			HashMap<String, String> set = new HashMap<String, String>();
+			set.put("to", phone); //phone으로 받아라 준형아
+			set.put("from", "01071027146"); //발신인 번호
+			set.put("text", "인증번호 받아라." + authNum + "이다."); //메시지내용
+			set.put("type", "sms"); //보내는 형식
+			
+			JSONObject result = coolsms.send(set);
+			if((Boolean) result.get("status") == true) {			
+				System.out.println("성공");
+				return "success";
+			} else {
+				System.out.println("실패");
+				return "fail";
+			}
 	   }
 }

@@ -30,4 +30,6 @@ public interface UserService
 	   
 	   // 이메일 인증
 	   public void userAuth(String userEmail) throws Exception;*/
+	   // 휴대폰 인증
+	   public String authCheck(String phone) throws Exception;
 }
