@@ -17,9 +17,14 @@
         <div class="comment">${dto.motto}</div>
         <img src='<c:url value="/resources/resume/${dto.profile_photo}"/>'/>
         
-        <div class="imformation">
-            <div>정보 공개 </div>
-            <div> 구직중 </div>
+        <div class="information">
+            <div class="textshort">
+            	정보 공개 
+            </div>
+            <div class="textshort">
+		       <c:if test="${dto.is_work==0}">구직중</c:if>
+		       <c:if test="${dto.is_work==1}">재직중</c:if>
+	       	</div>
             <button>포트폴리오</button>
         </div>
     </div>
@@ -39,7 +44,7 @@
 	                            </div>
 	                        </div>
 	                        
-	                        <div id="p_name">
+	                        <div class="p_name">
 	                            <div class="name" >
 	                           		 이 름 
 	                            </div>
@@ -48,7 +53,26 @@
 	                            </div>
 	                        </div>
 	                        
-							
+	                          <div class="p_name">
+	                            <div class="name" >
+	                           		 나 이
+	                            </div>
+	                            <div >
+	                            	<div class="textshort">${dto.age}</div>
+	                            </div>
+	                        </div>
+	                        
+	                          <div class="p_name">
+	                            <div class="name" >
+	                           		 생 일 
+	                            </div>
+	                            <div >
+	                            	<div class="textshort">${dto.birthday}</div>
+	                            </div>
+	                        </div>
+	                        
+	                        
+	                        
 	                        <div id="phone">
 	                            <div class="name">
 	                               		 핸드폰번호 
@@ -78,7 +102,7 @@
 	                        </div>
 	
 	                        <div id="blog">
-	                            <div class="name" id="blog">
+	                            <div class="name">
 	                            	블로그
 	                            </div>
 	                            <div class="info">
@@ -92,7 +116,7 @@
 	                            </div>
 	                            <div class="info">
 	                            	<c:if test="${dto.address_is_open==0}">
-	                            		비공개
+	                            		<div class="textshort">비공개</div>
 	                            	</c:if>
 	                            	<c:if test="${dto.address_is_open==1}">
 	                                   <div class="textshort">${dto.address}</div>
@@ -112,10 +136,12 @@
 	
 	                       
            
-                	<div class="project">
+                	<div class="projects">
                         <div class="subject">프로젝트</div>
-                        <button>+</button>
-                       		 프로젝트이름, 설명,~~
+                          	<input type="button" id="p_button" value="프로젝트 추가"/>
+                          	<div class="project">
+                          		aa
+                          	</div>
                     </div>
                     </div>
                </div>
@@ -148,11 +174,21 @@
        </div> 
             	<div class="tech-stack">
 	                <div class="subject">Tech-stack</div>
-	                 약어 기술명
-	                퍼센트바
-	            </div>	
+	                 
+	                <div class="techs">
+		                    <div class="tech">
+		                        <div>
+		                            ${dto.abb}
+		                        </div>
+		                        <div class="techinfo">
+		                            ${dto.tech_name}<br/>
+		                            <input class="input-range" type="range" value="${dto.tech_percent}" readonly/>
+		                           		${dto.tech_percent}
+		                        </div>
+		                    </div>
+		               </div>
             
-    </div>
+   				 </div>
 
     </div>
     <footer>
