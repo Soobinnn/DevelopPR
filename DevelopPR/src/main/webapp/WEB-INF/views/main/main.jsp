@@ -1,51 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>DevelopPR</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/main/developpr.css'/>"/>
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
-<script>
-	$(document).ready(function()
-	{
-		$(".top_nav").click(function()
-		{
-			
-			$('.navx').fadeOut(100,function(){$('.navx').fadeTo(500,1,function(){$('.navx').css({'animation-iteration-count':'1'})})});
-			$('#full').animate({width: "toggle", height: "toggle"},400,'easeOutQuad');
-			// $('.navx').rotate({animateTo:-360 , duration:1000});
-			$('.fullmenu').fadeOut(200,function(){$('.fullmenu').fadeTo(500,1);});
-		})
-	})
-</script>
+<%@ include file="../../views/include/tag_header.jsp" %>
 </head>
 <body>
 <div class="container">
-	<header class="main_header">
+<header class="main_header">
 		DevelopPR
-	</header>
+</header>
 	<nav id="min"class="top_nav">
 		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
 		<span id="navspan">MENU</span>
 	</nav>
+	<c:choose>
+	<c:when test="${sessionScope.userEmail == null}">
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">
 			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="<c:url value='${path}/main'/>">HOME</a></li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
+			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
+			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist"></li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
+			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
+		</ul>
+	</nav>
+	</c:when>
+	<c:otherwise>
+	<nav id="full" class="top_nav">
+		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
+		<ul class="fullmenu">
+			<li class="fullmenulist">MENU</li>
+			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"></li>
-			<li id="fulljoin"class="fullbtn">JOIN US</li>
-			<li id="fulllogin"class="fullbtn">LOGIN</li>
+			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
+			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
 	</nav>
+	</c:otherwise>
+	</c:choose>
     <div class="test"></div>
 	<section class="main_section">
 		<div class="main1">		
@@ -141,7 +142,7 @@
 								<h2><span>Kim SO JIN</span></h2>
 							</div>
 						</div>
-					<a href="#"></a>
+					<a href="${path}/resume/detail?email=so97so@naver.com"></a>
 				</figure>
 			</div>
 			<div class="PR8">
@@ -161,7 +162,17 @@
 				<div class="filter9"></div>
 					<figure class="prpic">	
 						<img src="<c:url value='/resources/main/image/pl.jpg'/>" alt="pr1" />
+						<c:choose>
+						<c:when test="${sessionScope.userEmail == null}">
+						<a href='${path}/user/login'></a>
+						</c:when>
+						<%-- <c:when test="${sessionScope.userEmail == null}">
 						<a href="#"></a>
+						</c:when> --%>
+						<c:otherwise>
+						<a href="${path}/resume/regist"></a>
+						</c:otherwise>
+						</c:choose>
 					</figure>		
 			</div>
 		</div>

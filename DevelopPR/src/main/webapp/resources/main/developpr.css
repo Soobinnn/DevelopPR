@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
-/* 초기화 */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -64,6 +64,7 @@ header.second_header
   text-align : center;
   flex-basis : 250px;
 }
+/* nav- menu  */
 nav
 {
     position :fixed;
@@ -101,6 +102,7 @@ nav#min:hover > #navspan
 {
  display:inline;
 }
+
 nav#min:hover
 {
     animation-name: expand;
@@ -150,13 +152,14 @@ nav#min:hover #navimg
   font-size: 1.2rem;
   line-height: 60px;
 }
-#full > ul > li >a
+#full > ul > .fullmenulist >a
 {
   display:block;
   height : 60px;
   text-decoration: none;
   color : white;
 }
+
 .fullmenu
 {
   opacity: 1;
@@ -164,6 +167,28 @@ nav#min:hover #navimg
 .fullmenulist
 {
   border-bottom : 1px solid #A4A4A4;
+}
+#full > ul > .fullbtn > a
+{
+   display:block;
+  height : 60px;
+  text-decoration: none;
+}
+#fulljoin > a
+{
+  color : black;
+}
+#fulljoin:hover > a
+{
+  color : white;
+}
+#fulllogin > a
+{
+  color : white;
+}
+#fulllogin:hover > a
+{
+  color : black;
 }
 .fullbtn
 {
@@ -193,6 +218,7 @@ nav#min:hover #navimg
   background-color:rgba( 255, 255, 255, 0.1 );
   transition-duration: 0.4s;
 }
+/* ---------------------- */
 
 section.project_section
 {
@@ -283,7 +309,7 @@ section.main_section
     flex-shrink: 0;
 
 }
-/* 나중에없애기 */
+/* */
 .animation, .detail
 {
     border : 1px solid;
@@ -421,7 +447,7 @@ footer
     flex-basis: 300px;
     background: #f6f6f6;
 }
-/* nav애니메이션 */
+/* nav*/
 @keyframes expand
 {
   from
@@ -490,7 +516,7 @@ footer
     }
   }
 
-  /* pr애니메이션 */
+  /*   */
   figure.prpic 
   {
     font-family: 'Raleway', Arial, sans-serif;
@@ -623,5 +649,5 @@ footer
   {
     color : white;
   }
-/* ----메인 애니메이션 끝---- */
+/* ------- */
 
