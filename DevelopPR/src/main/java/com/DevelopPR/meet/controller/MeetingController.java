@@ -1,5 +1,7 @@
 package com.DevelopPR.meet.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MeetingController 
 {
 	@RequestMapping("/meeting")
-	public String meeting(Model model)
+	public String meeting(Model model, HttpSession session)
 	{
 		return "meet/meeting";
 	}

@@ -5,9 +5,76 @@
 <!DOCTYPE html>
 <html class="m">
 <head>
-
 <title>메신저</title>
 <link rel="stylesheet" type="text/css" href="meeting.css"/>
+<script>
+
+	var socket = null;
+	var id = '${sessionScope.userNick}'
+	
+	function connect()
+	{
+		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
+		socket.onopen = onOpen;
+		socket.onmessage = onMessage;
+		socket.onclose = onClose;
+	}
+	
+	function onOpen(evt)
+	{
+		appendMessage("연결되었습니다.");
+	}
+	function onMessage(evt)
+	{
+		var data = evt.data;
+		if (data.substring(0, 4) == "msg:") 
+		{
+			appendMessage(data.substring(4));
+		}
+	}
+	function onClose(evt)
+	{
+		appendMessage("연결을 끊었습니다.");
+	}
+	function send()
+	{
+		/* var nickname = id; */
+		var msg = $("#chat_text").val();
+		socket.send("msg:" + msg);
+		$("#chat_text").val("");
+	}
+	function appendMessage(msg) 
+	{
+		$("#chatArea").append("<div id='sendchat'>"+ msg+"</div><br>");
+		
+		var chatAreaHeight = $("#chat").height();
+		var maxScroll = $("#chatArea").height() - chatAreaHeight;
+		console.log(maxScroll);
+		$("#chat").scrollTop(maxScroll);
+		
+	}
+
+	
+	$(document).ready(function() 
+	{
+		$("#chat_text").focus();
+		$('#chat_text').keypress(function(event)
+		{
+			var keycode = (event.keyCode ? event.keyCode : event.which);
+			if(keycode == '13')
+			{
+				send();	
+			}
+			event.stopPropagation();
+		});
+		
+		$('.tab1_content').click(function(){ connect();});
+		$('#chat_send').click(function(){ connect();});
+		$('.tab2_content').click(function() { disconnect(); });
+		
+	});
+	
+</script>
 </head>
 <body> 
     <div class="container">
@@ -50,11 +117,12 @@
         </div>
 
         <div id="info">
-            <div id="chat">
-                대화창
+            <div id="chat" style="overflow-y: scroll;">
+                <div id="chatArea"></div>
             </div>
             <div id="chat_in">
                 <input type="text" id="chat_text" placeholder="메시지를 입력하세요."/>
+                <input type="button" id="chat_send" value="전송">
             </div>
         </div>
 
@@ -64,7 +132,8 @@
                     사진
                 </div>
                 <div id="my_name">
-                    내이름
+                  ${sessionScope.userName}
+                  ${sessionScope.userNick}
                 </div>
             </div>
 
@@ -73,7 +142,7 @@
 			    <input id="tab2" type="radio" name="tab" />
 			    <label for="tab1">Tab 1</label>
 			    <label for="tab2">Tab 2</label>
-			    <div class="tab1_content">follower</div>
+			    <div class="tab1_content"><span>follower</span></div>
 			    <div class="tab2_content">following</div>
 			   
 			</div>

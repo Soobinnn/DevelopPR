@@ -49,7 +49,7 @@
 
         <div id="info">
             <div id="chat">
-                대화창
+                <div id="chatc">대화창</div>
             </div>
             <div id="chat_in">
                 <input type="text" id="chat_text" placeholder="메시지를 입력하세요."/>
