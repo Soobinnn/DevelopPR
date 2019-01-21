@@ -1,0 +1,272 @@
+{
+  
+  "languages": {
+   
+    "en": { "title": "English" }
+  },
+
+  
+  "lang": "en",
+
+  
+  "langFolder": "lang",
+
+ 
+  "gui": "default",
+
+  
+  "interfacesFolder": "interfaces",
+
+  
+  "guiMarkup": "layout.xhtml",
+
+ 
+  "guiStyle": "style.css",
+
+  
+  "guiScript": "script.js",
+
+  
+  "viewportWidth": "100%",
+
+  
+  "viewportHeight": "400px",
+
+  
+  "jpegSaveQuality": 0.9,
+
+  
+  "imageWidth": 400,
+
+  "imageHeight": 300,
+
+  "imagePreload": null,
+
+  "backgroundColor": "#fff",
+
+  "fillStyle": "rgba(0,0,255,1)",
+  
+  "strokeStyle": "rgba(0,0,0,1)",
+ 
+  "checkersBackground": true,
+  
+  "guiPlaceholder": null,
+
+  "shapeType": "both",
+
+  "historyLimit": 10,
+
+  "imageZoomStep": 0.1,
+
+  "imageZoomMax": 4,
+
+  "imageZoomMin": 0.2,
+
+  "imageZoomKeys": {
+    "in":    "+",
+    "out":   "-",
+    "reset": "*"
+  },
+
+  "tools": ["bcurve", "cbucket", "cpicker", "ellipse", "eraser", "hand", "insertimg", "line", "pencil", "polygon", "rectangle", "selection", "text"],
+
+  
+  "toolsFolder": "tools",
+
+ 
+  "toolDefault": "line",
+
+  "toolDrawDelay": 80,
+
+  "extensions": ["colormixer", "mousekeys"],
+
+  "extensionsFolder": "extensions",
+
+  "line": {
+    
+    "lineCap": "round",
+
+    "lineJoin": "round",
+
+    "lineWidth": 1,
+
+    "miterLimit": 10
+  },
+
+  "shadow": {
+  
+    "enable": false,
+
+    "shadowColor": "rgba(0,0,0,1)",
+
+    "shadowBlur": 5,
+
+    "shadowOffsetX": 5,
+
+    "shadowOffsetY": 5
+  },
+
+  "selection": {
+    
+    "transform": false,
+
+    "transparent": true,
+
+    "borderWidth": 3,
+
+    "keys": {
+      "selectionCrop": "Control K",
+      "selectionDelete": "Delete",
+      "selectionDrop": "Escape",
+      "selectionFill": "Alt Backspace",
+      "transformToggle": "Enter"
+    }
+  },
+
+  
+  "text": {
+    "bold": false,
+    "italic": false,
+
+    "fontFamilies": ["sans-serif", "serif", "cursive", "fantasy", "monospace"],
+
+    "fontFamily": "sans-serif",
+
+    "fontSize": 36,
+
+    "textAlign": "left",
+
+    "textBaseline": "top"
+  },
+
+  "colormixer": {
+   
+    "inputValues": {
+     
+      "red":   [0, 255, 1],
+      "green": [0, 255, 1],
+      "blue":  [0, 255, 1],
+
+     
+      "hue": [0, 360, 1],
+      "sat": [0, 255, 1],
+      "val": [0, 255, 1],
+
+      "cyan":    [0, 100, 1],
+      "magenta": [0, 100, 1],
+      "yellow":  [0, 100, 1],
+      "black":   [0, 100, 1],
+
+      "cie_l": [   0,   100, 1],
+      "cie_a": [ -86,    98, 1],
+      "cie_b": [-107,    94, 1],
+
+      "alpha": [0, 100, 1]
+    },
+
+   
+    "lab": {
+      
+      "x_r": 0.64,
+      "y_r": 0.33,
+      "x_g": 0.3,
+      "y_g": 0.6,
+      "x_b": 0.13,
+      "y_b": 0.06,
+
+      "ref_x": 0.31271,
+      "ref_y": 0.32902,
+
+      "w_x": 0.95047,
+      "w_y": 1,
+      "w_z": 1.08883,
+
+      "m": [ 0.412424,  0.212656, 0.0193324,
+             0.357579,  0.715158, 0.119193,
+             0.180464, 0.0721856, 0.950444],
+
+      "m_i": [ 3.24071,  -0.969258,   0.0556352,
+              -1.53726,   1.87599,   -0.203996,
+              -0.498571,  0.0415557,  1.05707]
+    },
+
+    "sliderWidth": 0.10,
+
+  
+    "sliderSpacing": 0.03,
+
+    "colorPalettes": {
+      "_saved" : {
+        
+        "colors" : [[1,1,1], [1,1,0], [1,0,1], [0,1,1], [1,0,0], [0,1,0], [0,0,1], [0,0,0]]
+      },
+      "windows" : {
+        "file" : "colors/windows.json"
+      },
+      "macos" : {
+        "file" : "colors/macos.json"
+      },
+      "web" : {
+        "file" : "colors/web.json"
+      }
+    },
+
+    "paletteDefault": "windows"
+  },
+
+  
+  "mousekeys": {
+   
+    "accel": 0.1,
+
+  
+    "actions": {
+      "ButtonToggle": [0],
+      "SouthWest":    [1],
+      "South":        [2],
+      "SouthEast":    [3],
+      "West":         [4],
+      "ButtonClick":  [5],
+      "East":         [6],
+      "NorthWest":    [7],
+      "North":        [8],
+      "NorthEast":    [9]
+
+    }
+  },
+
+  "keys": {
+    
+    "Control Z": { "command": "historyUndo" },
+    "Control Y": { "command": "historyRedo" },
+
+    "Control N": { "command": "imageClear" },
+    "Control S": { "command": "imageSave" },
+
+    "Control A":    { "command": "selectAll" },
+    "Control X":    { "command": "selectionCut" },
+    "Shift Delete": { "command": "selectionCut" },
+    "Control C":    { "command": "selectionCopy" },
+    "Control V":    { "command": "clipboardPaste" },
+
+    
+    "C": { "toolActivate": "cpicker" },
+    "E": { "toolActivate": "ellipse" },
+    "F": { "toolActivate": "cbucket" },
+    "G": { "toolActivate": "polygon" },
+    "H": { "toolActivate": "hand" },
+    "I": { "toolActivate": "insertimg" },
+    "L": { "toolActivate": "line" },
+    "O": { "toolActivate": "eraser" },
+    "P": { "toolActivate": "pencil" },
+    "R": { "toolActivate": "rectangle" },
+    "S": { "toolActivate": "selection" },
+    "T": { "toolActivate": "text" },
+    "V": { "toolActivate": "bcurve" },
+
+    
+    "X":  { "command": "swapFillStroke" },
+    "F1": { "command": "about" }
+  }
+
+}

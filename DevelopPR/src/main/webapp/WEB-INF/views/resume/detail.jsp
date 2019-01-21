@@ -6,6 +6,7 @@
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
+
 </head>
 <body> 
 <div class="container">
@@ -15,17 +16,17 @@
    </div>
     <div class="img">
         <div class="comment">${dto.motto}</div>
-        <img src='<c:url value="/resources/resume/${dto.profile_photo}"/>'/>
+        <img src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
         
         <div class="information">
-            <div class="textshort">
+            <div class="textshort1">
             	정보 공개 
             </div>
-            <div class="textshort">
+            <div class="textshort1">
 		       <c:if test="${dto.is_work==0}">구직중</c:if>
 		       <c:if test="${dto.is_work==1}">재직중</c:if>
 	       	</div>
-            <button>포트폴리오</button>
+            <div class="textshort2">포트폴리오</div>
         </div>
     </div>
     <div class="content">
@@ -149,45 +150,81 @@
                 <div class="right">
                     <div class="certificate">
                         <div class="subject">자격 정보</div>
-                            <ul>
-                                <li>취득날짜 | 자격증 이름</li> 
-                                <li>취득날짜 | 자격증 이름</li> 
-                            </ul>  
+                       
+         				<script type="text/javascript">
+                      
+                        	 var acq_date = "${dto.acq_date}";      
+ 							 var dateSplit = acq_date.split(',');
+ 							
+ 							 var acq_name = "${dto.acq_name}";      
+							 var nameSplit = acq_name.split(',');
+							
+ 							for (var i in dateSplit){
+								 document.write('<div class="acq"><div class="acqdate">' + dateSplit[i] +'</div><div class="acqname">'+nameSplit[i]+ '</div></div>'); 
+							 }
+                          </script>
                     </div>
 
                     <div class="edu">
                         <div class="subject">학력 사항</div>
-                            <ul>
-                                <li>해당년도 | 학력정보</li> 
-                                <li>해당년도 | 학력정보</li> 
-                            </ul>  
+                            <script type="text/javascript">
+                      
+                        	 var gradu_date = "${dto.gradu_year}";      
+ 							 var gdateSplit = gradu_date.split(',');
+ 							
+ 							 var edu_name = "${dto.edu_info}";      
+							 var enameSplit = edu_name.split(',');
+							
+ 							for (var i in gdateSplit){
+								 document.write('<div class="acq"><div class="acqdate">' + gdateSplit[i] +'</div><div class="acqname">'+ enameSplit[i]+ '</div></div>'); 
+							 }
+                          </script> 
                     </div>
 
                     <div class="career">
                         <div class="subject">경력/교육 사항</div>
-                            <ul>
-                                <li>해당년도 | 경력정보</li> 
-                                <li>해당년도 | 경력정보</li> 
-                            </ul>  
+                               <script type="text/javascript">
+                      
+	                        	 var c_date = "${dto.career_year}";      
+	 							 var cdateSplit = c_date.split(',');
+	 							
+	 							 var c_name = "${dto.career_info}";      
+								 var cnameSplit = c_name.split(',');
+								
+	 							for (var i in cdateSplit){
+									 document.write('<div class="acq"><div class="acqdate">' + cdateSplit[i] +'</div><div class="acqname">'+ cnameSplit[i]+ '</div></div>'); 
+								 }
+	                          </script>
                     </div>                
                 </div>
        </div> 
             	<div class="tech-stack">
-	                <div class="subject">Tech-stack</div>
+	                <div class="subject">Tech-stack
+	              
+	                </div>
 	                 
 	                <div class="techs">
-		                    <div class="tech">
-		                        <div>
-		                            ${dto.abb}
-		                        </div>
-		                        <div class="techinfo">
-		                            ${dto.tech_name}<br/>
-		                            <input class="input-range" type="range" value="${dto.tech_percent}" readonly/>
-		                           		${dto.tech_percent}
-		                        </div>
-		                    </div>
-		               </div>
-            
+		                  <script type="text/javascript">
+						 
+							 var abb = "${dto.abb}";      
+							 var abbSplit = abb.split(',');
+							 
+							 var tech_name = "${dto.tech_name}";
+							 var nameSplit = tech_name.split(',');
+							 
+							 var tech_percent = "${dto.tech_percent}";
+							 var percentSplit = tech_percent.split(',');
+							 
+							 
+							 
+							 for (var i in abbSplit){
+								 document.write('<div class="tech"><div class="abb">' + abbSplit[i] + '</div><div class="techinfo"><div class="tech_name">'+nameSplit[i]+ '</div>'
+						       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/>'
+						       		   + percentSplit[i] + '</div></div>'); 
+							 }
+						 
+						 </script>
+            	</div>
    				 </div>
 
     </div>
