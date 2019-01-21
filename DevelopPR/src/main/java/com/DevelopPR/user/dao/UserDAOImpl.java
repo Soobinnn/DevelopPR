@@ -34,6 +34,12 @@ public class UserDAOImpl implements UserDAO
 	     sqlSession.insert("user.insertUser", vo);
 	 }
 	 
+	 @Override
+	 public String findId(String phone)
+	 {
+		return sqlSession.selectOne("user.findId", phone);
+	 }
+	 
 	 // 회원 로그인체크
 	 @Override
 	 public boolean loginCheck(UserVO vo) 
@@ -55,6 +61,8 @@ public class UserDAOImpl implements UserDAO
 	{
 	    return sqlSession.selectOne("user.viewlogin", vo);
 	}
+	
+
 	
 	 //회원 로그아웃
 	@Override

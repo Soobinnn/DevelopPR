@@ -317,9 +317,7 @@
 
    <section>
     <div class="email">   
-        
-        <input id="emailinput" type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userId">
-
+        <input id="emailinput" type="text" autocomplete="off" value="${selectedId}" placeholder=" 이메일" name="userEmail" id="userId">
     </div>
     
 
@@ -343,8 +341,7 @@
     <div class="find">
       <div class="tt"><a id="id" href="${path}/user/findId">아이디 찾기</a></div>
       <div class="tt"><a id="id2" href="#2">패스워드 찾기</a></div>
-      <div class="ttt"><a id="id3" href="${path}/user/policy">회원가입</a></div>
-      
+      <div class="ttt"><a id="id3" href="${path}/user/policy">회원가입</a></div>  
     </div>
 </div>
 <div class="item3"></div>

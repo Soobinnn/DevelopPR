@@ -21,6 +21,9 @@ public interface UserService
 	   
 	   // 회원 로그아웃
 	   public void logout(HttpSession session);
+	   
+	  // 회원 아이디 찾기
+	   public String findId(String phone) throws Exception;
 	
 	  /* //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
@@ -28,11 +31,8 @@ public interface UserService
 	   public void updateUser(UserVO vo);
 	   //05. 회원삭제
 	   public void deleteUser(String userId);
-	   //06. 비밀번호 체크
-	   public boolean checkPw(String userId, String userPw);
+	   
 
-	   // 09. 회원 로그아웃
-	   public void logout(HttpSession session);
 	   
 	   // 이메일 인증
 	   public void userAuth(String userEmail) throws Exception;*/

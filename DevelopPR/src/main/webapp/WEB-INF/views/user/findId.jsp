@@ -7,13 +7,16 @@
 <head>
 <title>아이디 찾기</title>
 <script type="text/JavaScript">
-	function nextStep() {
+	
+	function nextStep(authform) {
+		var url = "${path}/user/authCheck";		
 		var obj = document.getElementById('radio');
 		if(obj.checked == false) {
 			alert("본인인증 수단을 선택해주세요.");
 			return false;
 		}
-		location.href = "${path}/user/authCheck"
+		
+		location.href=url;
 	}
 </script>
 <style>
@@ -57,13 +60,13 @@
 		</div>
 		<div class="area1">
 			<label for="radio"><input type="radio" id="radio">휴대폰 인증</label>
-			<p>내 명의(이름)로 가입된 휴대폰으로 본인 확인을 진행합니다.
+			<p>내 명의로 가입된 휴대폰으로 본인 확인을 진행합니다.
 		</div>
 		<div style="text-align: center;">
 		＊비밀번호를 찾으시나요?
 		<input type="button" name="findPw" value="비밀번호 찾기" >
 		<br><br><br><br><br>
-		<input type="button" name="nextStep" value="다음단계" onclick=nextStep()>
+		<input type="button" name="nextStep" value="다음단계" onclick="nextStep()">
 		</div>
 	</div>
 </body>

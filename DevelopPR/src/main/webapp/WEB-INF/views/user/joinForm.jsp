@@ -229,7 +229,6 @@ p {
 										onclick="display_job()">구직자
 								</div>
 							</li>
-
 							<li><input id="email" type="text" autocomplete="off"
 								value="" placeholder=" 이메일" name="userEmail">
 								<p id="p1">이메일 형식으로 입력해 주세요. 이메일은 아이디로 사용됩니다.</p>
@@ -253,10 +252,13 @@ p {
 							</li>
 							<li id="job" style="display: none">
 								<div class="radio_2">
-									<input type="radio" value="0" id="radio5">구직중 <input
-										type="radio" value="1" id="radio5">구직완료
+									<input type="radio" value="0" name="userJob" id="radio5">구직중
+									<input type="radio" value="1" name="userJob" id="radio6">구직완료
 								</div>
 							</li>
+							<li><input id="email" type="text" autocomplete="off"
+								value="" placeholder=" 핸드폰" name="userPhone"></li>
+
 							<li><input id="explain" type="text" name="userJob_detail"
 								placeholder=" 간략히 서술해주세요."></li>
 						</ul>

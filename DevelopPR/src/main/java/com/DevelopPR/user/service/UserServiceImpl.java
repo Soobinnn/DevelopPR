@@ -59,7 +59,9 @@ public class UserServiceImpl implements UserService
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();*/
 	   }
-
+	   
+	   	   
+	   @Override
 	   public String authCheck(String phone) throws Exception {
 		   GenerateCertNumber tempNum = new GenerateCertNumber();
 			String authNum = tempNum.executeGenerate();
@@ -68,22 +70,21 @@ public class UserServiceImpl implements UserService
 			Coolsms coolsms = new Coolsms(api_key, api_secret);
 			
 			HashMap<String, String> set = new HashMap<String, String>();
-			set.put("to", phone); //phone으로 받아라 준형아
+			set.put("to", phone); //수신인 번호
 			set.put("from", "01071027146"); //발신인 번호
-			set.put("text", "인증번호 받아라." + authNum + "이다."); //메시지내용
+			set.put("text", "인증번호는" + authNum + "입니다."); //메시지내용
 			set.put("type", "sms"); //보내는 형식
 			
 			JSONObject result = coolsms.send(set);
 			if((Boolean) result.get("status") == true) {			
 				System.out.println("성공");
-				return "success";
+				return authNum;
 			} else {
 				System.out.println("실패");
 				return "fail";
 			}
 	   }
-
-	 
+	   
 	   // 회원 로그인체크
 	   @Override
 	   public boolean loginCheck(UserVO vo, HttpSession session) 
@@ -106,6 +107,12 @@ public class UserServiceImpl implements UserService
 	   public UserVO viewlogin(UserVO vo) 
 	   {
 	       return userDao.viewlogin(vo);
+	   }
+	   
+	   @Override
+	   public String findId(String phone) throws Exception
+	   {
+		   return userDao.findId(phone);
 	   }
 	   
 	   // 회원 로그아웃
