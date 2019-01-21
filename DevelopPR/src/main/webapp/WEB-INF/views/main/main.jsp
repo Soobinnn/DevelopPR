@@ -39,7 +39,7 @@
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist"><a href='${path}/meeting'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
