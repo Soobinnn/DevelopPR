@@ -65,4 +65,15 @@
     	WHERE PHONE = #{phone}
     </select>
      
+      <!-- 이메일 인증키 생성 -->
+    <update id="createAuthKey">
+		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode} 
+		WHERE Email = #{userEmail}
+	</update>
+	 
+	<!-- 이메일 인증 성공시 -->
+	<update id="userAuth">
+		UPDATE pr_user SET AUTHSTATUS = 1 
+		WHERE Email = #{userEmail}
+	</update>
  </mapper>

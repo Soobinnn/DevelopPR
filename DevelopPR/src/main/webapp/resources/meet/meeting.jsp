@@ -44,6 +44,32 @@
                             마지막 채팅 내용2
                         </div>
                 </div>
+                <div class="mlist">
+                    <div class="up">
+                        <div class="m_name">
+                            이름2
+                        </div> 
+                        <div class="m_lastday">
+                            마지막 채팅 날짜2
+                            </div>
+                        </div>
+                        <div class="m_info">
+                            마지막 채팅 내용2
+                        </div>
+                </div>
+                <div class="mlist">
+                    <div class="up">
+                        <div class="m_name">
+                            이름2
+                        </div> 
+                        <div class="m_lastday">
+                            마지막 채팅 날짜2
+                            </div>
+                        </div>
+                        <div class="m_info">
+                            마지막 채팅 내용2
+                        </div>
+                </div>
             </div>
         </div>
 

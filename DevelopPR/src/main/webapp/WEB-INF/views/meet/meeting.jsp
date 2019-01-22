@@ -122,7 +122,7 @@
                 <input type="text" id="s_text" placeholder="메신저 검색"/>
                 <input type="button" id="s_button" value="검색"/>
             </div>
-                <div class="listAll">
+            <div class="listAll">
                 <div class="mlist">
                     <div class="up">
                         <div class="m_name">
@@ -137,7 +137,6 @@
                         안녕
                     </div>
                 </div>
-
                 <div class="mlist">
                     <div class="up">
                         <div class="m_name">
@@ -151,6 +150,21 @@
                             마지막 채팅 내용2
                         </div>
                 </div>
+               <c:forEach var="row" items="${list}">
+               <div class="mlist">
+                 	<div class="up">
+                        <div class="m_name">
+                            ${row.receiver_user_id}
+                        </div> 
+                        <div class="m_lastday">
+                            마지막 채팅 날짜2
+                        </div>
+                 	</div>
+                    <div class="m_info">
+                          마지막 채팅 내용2
+                    </div>
+                </div>
+               </c:forEach>    
             </div>
         </div>
 

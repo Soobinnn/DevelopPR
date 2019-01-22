@@ -17,11 +17,13 @@ public class MeetingDAOImpl implements MeetingDAO
 	private SqlSession session;
 	
 	/*채팅방 생성 */
+	@Override
 	public void createRoom(ChatRoomVO vo) throws Exception
 	{
 		session.insert("meet.createRoom", vo);
 	}
 	/*채팅방 목록 */
+	@Override
 	public ChatRoomVO isRoom(ChatRoomVO vo) throws Exception
 	{
 		ChatRoomVO roomvo = null;
@@ -29,6 +31,7 @@ public class MeetingDAOImpl implements MeetingDAO
 		return roomvo;
 	}
 	/* 메시지 전송 */
+	@Override
 	public void insertMessage(MessageVO vo) throws Exception
 	{
 		session.insert("meet.insertMessage" , vo);
@@ -41,5 +44,13 @@ public class MeetingDAOImpl implements MeetingDAO
 		// TODO Auto-generated method stub
 		List<MessageVO> mvo = session.selectList("meet.getRoom", vo);	
 		return mvo.get(0).getSend_user_id();
+	}
+	
+	/* 개인 채팅방 전체 목록*/
+	@Override
+	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
+	{
+		return session.selectList("meet.listChatRoom", userNick);
+	
 	}
 }

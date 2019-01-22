@@ -62,11 +62,19 @@ public class UserController
   }
   // 회원 등록 
   @RequestMapping(value ="joining", method = RequestMethod.POST)
-  public String userJoining(@ModelAttribute UserVO vo) throws Exception
+  public String userJoining(Model model, @ModelAttribute UserVO vo) throws Exception
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
 	  userService.insertUser(vo);
+	  
+	  String userEmail = vo.getUserEmail();
+	  String userName =vo.getUserName();
+	  System.out.println(userEmail);
+	  System.out.println(userName);
+	  model.addAttribute("joinEmail", userEmail);
+	  model.addAttribute("joinName", userName);
+	  
 	  return "user/joining";
   }
 
@@ -155,6 +163,17 @@ public class UserController
       mav.addObject("msg", "logout");
       mav.setViewName("user/login");
       return mav;
+  }
+  
+  // 회원가입 시 이메일 인증
+  @RequestMapping(value = "joinConfirm", method = RequestMethod.GET)
+  public String emailConfirm(String userEmail, Model model) throws Exception 
+  { 	
+	  	// 이메일인증
+	   	System.out.println(userEmail);
+  		userService.userAuth(userEmail);
+  		model.addAttribute("userEmail", userEmail);
+  		return "user/joinConfirm";
   }
 
 }

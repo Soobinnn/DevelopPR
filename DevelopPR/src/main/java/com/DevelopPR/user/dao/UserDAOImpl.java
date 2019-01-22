@@ -75,5 +75,25 @@ public class UserDAOImpl implements UserDAO
 	 {
 		 return sqlSession.selectOne("user.viewId", userNick);
 	 }
+	 
+	 // 회원가입시 이메일 인증 키 생성
+	 @Override
+	 public void createAuthKey(String userEmail, String userAuthCode) throws Exception 
+	 {
+	   		// TODO Auto-generated method stub
+		UserVO vo = new UserVO();
+	   	
+	   	vo.setUserAuthCode(userAuthCode);
+	   	vo.setUserEmail(userEmail);
+
+	   	sqlSession.selectOne("user.createAuthKey", vo);
+	 }
+	 // 인증 시 접근권한
+	 @Override
+	 public void userAuth(String user_email) throws Exception 
+	 {
+		 // TODO Auto-generated method stub
+		 sqlSession.update("user.userAuth", user_email);
+	 }
 	   
 }

@@ -26,4 +26,11 @@
 	SELECT USER_user_id from PR_MESSAGE 
 	WHERE RECEIVER_USER_ID = #{receiver_user_id}
 </select>
+
+<!-- 채팅방 전체목록 -->
+<select id ="listChatRoom" resultType ="ChatRoomVO">
+	SELECT * FROM PR_CHATROOM
+	WHERE SEND_USER_ID = #{userNick}
+</select>
+
 </mapper>

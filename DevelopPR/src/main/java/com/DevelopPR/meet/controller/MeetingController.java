@@ -1,5 +1,7 @@
 package com.DevelopPR.meet.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.DevelopPR.meet.model.dto.ChatRoomVO;
 import com.DevelopPR.meet.service.MeetingService;
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.user.service.UserService;
@@ -21,8 +24,16 @@ public class MeetingController
 	UserService userService;
 	
 	@RequestMapping("/meeting")
-	public String meeting(Model model, HttpSession session)
+	public String meeting(Model model, HttpSession session) throws Exception
 	{
+		// 세션에서 본인 정보 가져온다.
+		UserVO userVo = (UserVO)session.getAttribute("login");
+		String userNick = userVo.getUserNick();
+		
+		// 본인 닉네임과 매칭되어 DB에서 가져온다.
+		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);
+		model.addAttribute("list", listChatRoom);
+		// 모델에 넣어서 전송
 		return "meet/meeting";
 	}
 	
@@ -36,6 +47,7 @@ public class MeetingController
 		model.addAttribute("viewId", viewId);
 		return "meet/meeting";	
 	}
+	
 	
 	/*
 	//채팅방생성
