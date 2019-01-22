@@ -62,5 +62,12 @@ public class UserDAOImpl implements UserDAO
 	{
 		
 	}
+	
+	 // 회원 이메일, 이름, 닉네임 (팔로우)
+	 @Override
+	 public UserVO viewId(String userNick)
+	 {
+		 return sqlSession.selectOne("user.viewId", userNick);
+	 }
 	   
 }

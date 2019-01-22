@@ -10,20 +10,26 @@
 <script>
 
 	var socket = null;
-	var id = '${sessionScope.userNick}'
-	
+	var nick = '${login.userNick}';
+	var email = '${login.userEmail}';
+	var name = '${login.userName}';
 	function connect()
 	{
 		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
+		//서버로 메시지 보낼때
 		socket.onopen = onOpen;
+		//서버로 
 		socket.onmessage = onMessage;
 		socket.onclose = onClose;
 	}
 	
+	//서버로 메시지 보낼때
 	function onOpen(evt)
 	{
 		appendMessage("연결되었습니다.");
 	}
+	
+	 //서버로 부터 받은 메세지 보내주기
 	function onMessage(evt)
 	{
 		var data = evt.data;
@@ -32,15 +38,31 @@
 			appendMessage(data.substring(4));
 		}
 	}
+	//닫힐때 
 	function onClose(evt)
 	{
 		appendMessage("연결을 끊었습니다.");
 	}
+	
+	
 	function send()
 	{
 		/* var nickname = id; */
 		var msg = $("#chat_text").val();
-		socket.send("msg:" + msg);
+		 if(msg != "")
+		  {
+			  var message = {};
+			  message.message_content = $("#chat_text").val()
+			  message.message_sender = nick
+			  message.send_user_id = email
+			  message.send_user_name = name
+			  message.message_receiver = '${viewId.userNick}'
+		  	  message.receiver_user_id = '${viewId.userEmail}'
+		  	  message.receiver_user_name = '${viewId.userName}'
+		  }
+		 console.log(message);
+		/* socket.send("msg:" + msg); */
+		socket.send(JSON.stringify(message));
 		$("#chat_text").val("");
 	}
 	function appendMessage(msg) 
@@ -68,10 +90,26 @@
 			event.stopPropagation();
 		});
 		
-		$('.tab1_content').click(function(){ connect();});
+		$('.tab1_content').click(function(){ connect();}); 
 		$('#chat_send').click(function(){ connect();});
 		$('.tab2_content').click(function() { disconnect(); });
 		
+		/*  $('#follower').click(function(){
+			 var nick = $('#fllw').val();
+			 var _nick = "userNick="+nick;
+			 console.log(nick);
+			$.ajax({
+				type : "get",
+				contentType: "application/json",
+				url : "${path}/meeting/",
+				data : _nick,
+				success: function(result)
+				{
+					connect();
+					console.log(result);
+				}
+			});
+		});  */
 	});
 	
 </script>
@@ -142,7 +180,12 @@
 			    <input id="tab2" type="radio" name="tab" />
 			    <label for="tab1">Tab 1</label>
 			    <label for="tab2">Tab 2</label>
-			    <div class="tab1_content"><span>follower</span></div>
+			    <div class="tab1_content">
+			    	<div id="follower"><span id="fllw"><a href="${path}/meeting/베리">베리</a></span></div>
+			    	${viewId.userName}
+			    	${viewId.userEmail}
+			    	${viewId.userNick}
+			    </div>
 			    <div class="tab2_content">following</div>
 			   
 			</div>

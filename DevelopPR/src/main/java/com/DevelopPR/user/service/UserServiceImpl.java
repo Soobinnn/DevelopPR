@@ -70,6 +70,7 @@ public class UserServiceImpl implements UserService
 	           session.setAttribute("userNick", vo2.getUserNick());
 	           session.setAttribute("userName", vo2.getUserName());
 	           session.setAttribute("userIs_seek", vo2.getUserIs_seek());
+	           session.setAttribute("login", vo2);
 	       } 
 	       return result;
 	   }
@@ -89,6 +90,12 @@ public class UserServiceImpl implements UserService
 	       // session.removeAttribute("userId");
 	       // 세션 정보를 초기화 시킴
 	       session.invalidate();
+	   }
+	   // 회원 이메일, 이름, 닉네임 (팔로우)
+	   @Override
+	   public UserVO viewId(String userNick)
+	   {
+		   return userDao.viewId(userNick);
 	   }
 	   
 }

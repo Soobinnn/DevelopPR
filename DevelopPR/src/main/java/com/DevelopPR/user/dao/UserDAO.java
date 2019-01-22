@@ -20,6 +20,9 @@ public interface UserDAO
 	   //회원 로그아웃
 	   public void logout(HttpSession session);
 	   
+	   // 회원 이메일, 이름, 닉네임 (팔로우)
+	   public UserVO viewId(String userNick);
+	   
 	/*   //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정
