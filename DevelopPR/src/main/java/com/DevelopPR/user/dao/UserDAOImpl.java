@@ -33,6 +33,12 @@ public class UserDAOImpl implements UserDAO
 	 {
 	     sqlSession.insert("user.insertUser", vo);
 	 }
+	 // 아이디 찾기
+	 @Override
+	 public String findId(String phone)
+	 {
+		return sqlSession.selectOne("user.findId", phone);
+	 }
 	 
 	 // 회원 로그인체크
 	 @Override

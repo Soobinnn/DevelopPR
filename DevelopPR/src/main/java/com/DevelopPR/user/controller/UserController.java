@@ -1,19 +1,29 @@
 package com.DevelopPR.user.controller;
 
+import com.DevelopPR.util.*;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+
+import org.json.simple.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.user.service.UserService;
@@ -59,12 +69,58 @@ public class UserController
 	  userService.insertUser(vo);
 	  return "user/joining";
   }
+
+  // 아이디 찾기 폼
+  @RequestMapping("findId")
+  public String userFindIdForm()
+  {
+	  return "user/findId";
+  }
+  // 휴대폰 인증 폼
+  @RequestMapping("authCheck")
+  public String authCheckForm() {
+	  return "user/authCheck";
+  }
+  // 휴대폰인증
+  @RequestMapping("phoneCheck")
+  public ModelAndView sendSMS(@RequestParam String phone) throws Exception {
+	  ModelAndView mav = new ModelAndView();
+	  String tempAuthNum = userService.authCheck(phone);
+	  mav.addObject("phone", phone);
+	  mav.addObject("authNum", tempAuthNum);
+	  mav.setViewName("user/authCheck");
+	  
+	  return mav;
+  }
+  // 아이디 찾기 결과
+  @RequestMapping("findIdResult")
+  public ModelAndView findId(String phone) throws Exception {
+	  System.out.println(phone);
+	  ModelAndView mav = new ModelAndView();
+	  String email = userService.findId(phone);
+	  mav.addObject("email", email);
+	  mav.setViewName("user/findIdResult");
+	  
+	  return mav;
+  }
   
-  // 로그인 화면
-  @RequestMapping("login")
+  // 로그인 화면(GET)
+  @RequestMapping(value="login", method=RequestMethod.GET)
   public String userLogin()
   {
 	  return "user/login";
+  }
+  
+  // 로그인 화면 (POST)
+  @RequestMapping(value="login", method=RequestMethod.POST)
+  public ModelAndView Login(String selectedId)
+  {
+	  ModelAndView mv = new ModelAndView();
+	  mv.addObject("selectedId", selectedId);
+	  mv.setViewName("user/login");
+	  
+	  return mv;
+	  
   }
   // 로그인 처리
   @RequestMapping(value ="loginCheck", method =RequestMethod.POST)
@@ -100,4 +156,5 @@ public class UserController
       mav.setViewName("user/login");
       return mav;
   }
+
 }

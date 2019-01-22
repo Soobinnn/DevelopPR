@@ -28,9 +28,16 @@
 	
 	<context:component-scan base-package="com.DevelopPR" />
 	
+    	
 	<!-- DB PASSWD Security using bcrypt -->
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />  
 	
+
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="100000000" />
+        <beans:property name="maxInMemorySize" value="100000000" />
+    </beans:bean>
+
 	 <!-- 웹소켓 서버 핸들러 -->
   	<websocket:handlers>
 		<websocket:mapping handler="myHandler" path="/chat-ws"/>
@@ -41,5 +48,4 @@
 	
 	<beans:bean id="myHandler" class="com.DevelopPR.meet.util.WebSocket"/>
     
-	
 </beans:beans>

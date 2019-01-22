@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PaintWeb</title>
+    <script type="text/javascript" src="js/paintweb/paintweb.js"></script>
+    <script type="text/javascript" src="js/paintweb/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/paintweb/es6-promise.min.js"></script>
+    <script type="text/javascript" src="js/paintweb/es6-promise.auto.min.js"></script>
+</head>
+<body>
+    <img id="editableImage"/>
+    <div id="PaintWebTarget"></div>
+
+<script type="text/javascript">
+var srcImg = null, img1 =null;
+
+(function () {
+	img1 = document.getElementById('editableImage');
+	img1.src = "111111.png";
+	img1.onload = function () {
+		initEditor();
+		img1.style.display = 'none';
+	}
+})();
+
+function initEditor() {
+	var target = document.getElementById('PaintWebTarget'),
+	pw = new PaintWeb();
+	pw.config.guiPlaceholder = target;
+	pw.config.imageLoad 	 = img1;
+	pw.config.configFile     = 'config-example.json';
+	
+	pw.config.afterImageSave   = afterImageSave;
+	pw.init(pwInit);
+
+	// Function called when the PaintWeb application fires the "appInit" event.
+	function pwInit (ev) {
+		if (ev.state === PaintWeb.INIT_ERROR) {
+			alert('Demo: PaintWeb initialization failed.');
+			return;
+		} else 
+		if (ev.state === PaintWeb.INIT_DONE) {
+			if (window.console && console.log) {
+				console.log("OK");
+			} else if (window.opera) {
+				opera.postError("OK");
+			}
+		} else {
+			alert('Demo: Unrecognized PaintWeb initialization state ' + ev.state);
+			return;
+		}
+	};
+}
+
+function afterImageSave(){
+	alert("This example can not save images because there is no server code.");	
+}
+</script>
+</body>
+
+</html>
