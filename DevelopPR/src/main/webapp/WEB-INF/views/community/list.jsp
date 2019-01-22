@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 목록</title>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/tag_header.jsp" %>
 <style type="text/css">
     body{
         line-height:2em;        
@@ -115,7 +115,6 @@ height : 70px;
 
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
     <h2>커뮤니티</h2>
     
     <!-- 레코드의 갯수를 출력 -->

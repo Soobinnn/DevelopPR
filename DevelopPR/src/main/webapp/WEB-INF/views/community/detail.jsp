@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="community_detail.css?ver=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 보기</title>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/tag_header.jsp" %>
 <script>
     $(document).ready(function(){
         /* 게시글 관련 */
@@ -260,7 +260,6 @@ margin-right : 464px;
 </style>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
 <h2>게시글 보기</h2>
 <form name="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">
     <div class="container">

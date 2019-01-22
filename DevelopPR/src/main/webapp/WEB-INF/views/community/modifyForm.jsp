@@ -4,8 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 수정</title>
-<%@ include file="../include/header.jsp" %>
-<%@ include file="../include/sessionCheck.jsp" %>
+<%@ include file="../include/tag_header.jsp" %>
 <style>
   .container{   /*전체 틀 */
   display : flex;
@@ -103,7 +102,6 @@
 </script>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
  <div class="container">
      <%-- <form name="form1" method="post" action="${path}/board/update.do"> --%>
       

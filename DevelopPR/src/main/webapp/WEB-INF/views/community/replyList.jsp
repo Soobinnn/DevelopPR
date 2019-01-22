@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/tag_header.jsp" %>
 </head>
 <body>
     <table style="width:700px">

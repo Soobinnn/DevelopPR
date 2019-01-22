@@ -4,8 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 작성</title>
-<%@ include file="../include/header.jsp" %>
-<%@ include file="../include/sessionCheck.jsp" %>
+<%@ include file="../include/tag_header.jsp" %>
 <style>
   .container{   /*전체 틀 */
   display : flex;
@@ -109,7 +108,6 @@
 </script>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
  <div class="container">
       <form name="form1" method="post" action="${path}/community/regist" enctype="multipart/form-data">
       <div id ="pageName">게시글 작성</div>
