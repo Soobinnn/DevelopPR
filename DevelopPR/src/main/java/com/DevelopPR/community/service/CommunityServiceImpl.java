@@ -17,30 +17,29 @@ public class CommunityServiceImpl implements CommunityService
     CommunityDAO communityDao;
     
     
-    // 01. �Խñ� ��ü ��� communityDao.listAll�޼��� ȣ��
+    // 01. 
     @Override
     public List<CommunityVO> listAll(int start, int end, String searchOption, String keyword) throws Exception {
         return communityDao.listAll(start, end, searchOption, keyword);
     }
     
     
-    // 02. �Խñ۾���
+    // 
     @Override
     public void regist(CommunityVO vo) throws Exception 
     {
         String title = vo.getTitle();
         String content = vo.getContent();
         String writer = vo.getWriter();
-        // *�±׹��� ó�� (< ==> &lt; > ==> &gt;)
-        // replace(A, B) A�� B�� ����
+        
         title = title.replace("<", "&lt;");
         title = title.replace("<", "&gt;");
         writer = writer.replace("<", "&lt;");
         writer = writer.replace("<", "&gt;");
-        // *���鹮�� ó��
+        
         title = title.replace("  ",    "&nbsp;&nbsp;");
         writer = writer.replace("  ",    "&nbsp;&nbsp;");
-        // *�ٹٲ� ����ó��
+       
         content = content.replace("\n", "<br>");
         vo.setTitle(title);
         vo.setContent(content);
@@ -102,5 +101,10 @@ public class CommunityServiceImpl implements CommunityService
     @Override
     public int countArticle(String searchOption, String keyword) throws Exception {
         return communityDao.countArticle(searchOption, keyword);
+    }
+    
+    @Override
+    public void reply(CommunityVO vo) throws Exception{
+    	communityDao.reply(vo);
     }
 }

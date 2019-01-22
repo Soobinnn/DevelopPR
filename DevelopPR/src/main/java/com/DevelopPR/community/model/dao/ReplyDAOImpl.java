@@ -1,6 +1,8 @@
 package com.DevelopPR.community.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -14,27 +16,40 @@ public class ReplyDAOImpl implements ReplyDAO {
     @Inject
     SqlSession sqlSession;
     
-    // ��� ���
+    // 1. ��� �Է�
+        @Override
+        public void create(ReplyVO vo) {
+            sqlSession.insert("reply.insertReply", vo);
+        }
+    // 2. ��� ���
     @Override
-    public List<ReplyVO> list(Integer bno) {
-        return sqlSession.selectList("reply.listReply", bno);
+    public List<ReplyVO> list(Integer bno,  int start, int end) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("bno", bno);
+        map.put("start", start);
+        map.put("end", end);
+        return sqlSession.selectList("reply.listReply", map);
     }
-    // ��� �ۼ�
+    // 3. ��� �󼼺���
     @Override
-    public void create(ReplyVO vo) {
-        sqlSession.insert("reply.insertReply", vo);
+    public ReplyVO detail(Integer rno) {
+        return sqlSession.selectOne("reply.detailReply", rno);
     }
-    // ��� ����
+    // 4. ��� ����
     @Override
     public void update(ReplyVO vo) {
-        // TODO Auto-generated method stub
- 
+        sqlSession.update("reply.updateReply", vo);
     }
-    // ��� ����
+    // 5. ��� ����
     @Override
     public void delete(Integer rno) {
-        // TODO Auto-generated method stub
- 
+        sqlSession.delete("reply.deleteReply", rno);
+    }
+    // 6. ��� ����
+    @Override
+    public int count(Integer bno) {
+        return sqlSession.selectOne("reply.countReply", bno);
     }
  
 }
+ 

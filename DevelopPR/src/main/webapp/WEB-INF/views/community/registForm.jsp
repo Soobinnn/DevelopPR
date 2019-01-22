@@ -56,12 +56,20 @@
     padding : 10px;
 }
 
-.list_write
+
+.footer
+{
+    display : flex;
+    flex-direction : column;
+    height: 100px;
+    width : 700px;
+  
+}
+#list_write
 {
     border-top :4px double silver;
-    padding-top : 10px;
+    margin-top : 20px;
 }
-
 </style>
 <script>
     $(document).ready(function(){
@@ -103,7 +111,7 @@
 <body>
 <%@ include file="../include/menu.jsp" %>
  <div class="container">
-      <form name="form1" method="post" action="${path}/community/regist">
+      <form name="form1" method="post" action="${path}/community/regist" enctype="multipart/form-data">
       <div id ="pageName">게시글 작성</div>
         
       <div class="title_input">
@@ -116,7 +124,17 @@
         <div id="contentInput"><textarea name="content" style="width:550px; height:350px; text-align : left; padding-left : 8px;" id="_content" placeholder="내용을 입력해주세요"></textarea></div>
     </div>  <!--내용과 입력란 종료--> 
 
-     <div class="list_write"><button type="button" id="btnBack">돌아가기</button>
+<div class="footer">
+      <div id="upload">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="file">
+        <input type="submit" value="업로드"> 
+     </div> <!--end of upload -->
+
+
+
+     <div class="list_write">
+     <button type="button" id="btnBack">돌아가기</button>
+     
        
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,11 +144,14 @@
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <button type="reset">취소</button>
-  &nbsp;&nbsp;&nbsp;
+  &nbsp;
         <button type="button" id="btnSave">등록</button>      
  </div>
-     
+     </div> <!-- end of footer -->
 </form>
 </div> <%--전체 틀 종료 --%>
 </body>

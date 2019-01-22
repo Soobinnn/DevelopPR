@@ -103,14 +103,15 @@ height : 70px;
     $(document).ready(function(){
         $("#btnWrite").click(function(){
             // 페이지 주소 변경(이동)
-            location.href = "${path}/commuinty/registForm";
+            location.href = "${path}/community/registForm";
         });
     });
     // 원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
     function list(page){
-        location.href="${path}/comunity/list?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
+        location.href="${path}/community/list?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
     }
-</script>
+
+      </script>
 
 </head>
 <body>

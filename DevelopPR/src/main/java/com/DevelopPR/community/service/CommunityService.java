@@ -31,4 +31,6 @@ public interface CommunityService
  
      // 08. �Խñ� ���ڵ� ���� �޼ҵ�
     public int countArticle(String searchOption, String keyword) throws Exception;
+    
+    public void reply(CommunityVO vo) throws Exception;
 }

@@ -12,13 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import com.DevelopPR.community.model.dto.CommunityVO;
 
-@Repository    // ���� Ŭ������ dao bean���� ���
+@Repository  
 public class CommunityDAOImpl implements CommunityDAO 
 {
    @Inject
    SqlSession SqlSession;
    
-   //01. �Խñ� ��ü ���
+ 
    @Override
    public List<CommunityVO> listAll(int start, int end, String searchOption, String keyword) throws Exception {
        // �˻��ɼ�, Ű���� �ʿ� ����
@@ -31,20 +31,20 @@ public class CommunityDAOImpl implements CommunityDAO
        return SqlSession.selectList("community.listAll", map);
    }
    
-   //02. �Խñ� �ۼ�
+  
    @Override
    public void regist(CommunityVO vo) throws Exception 
    {
        SqlSession.insert("community.insert", vo);
    }
    
-   //03. �Խñ� �󼼺���
+   
    @Override
    public CommunityVO detail(int bno) throws Exception 
    {
        return SqlSession.selectOne("community.view", bno);
    }
-   //04. �Խñ� ���� �� �ҷ�����
+  
    @Override
    public CommunityVO modifyForm(int bno)
    {
@@ -81,4 +81,17 @@ public class CommunityDAOImpl implements CommunityDAO
     map.put("keyword", keyword);
     return SqlSession.selectOne("community.countArticle", map);
   }
+
+   @Override
+   public void reply(CommunityVO vo) throws Exception 
+   {
+     // transaction ó�� �ʿ�
+     // update step+1(�����ۺ��� ū�� �� +1)
+
+       SqlSession.update("reboard.addStep", vo);
+
+       // insert
+       SqlSession.insert("reboard.reply", vo);
+    }
+
 }

@@ -9,7 +9,7 @@ public class CommunityVO {
     private String content;        // �Խñ� ����
     private String writer;        // �Խñ� �ۼ���
     private String userName;    // �Խñ� �ۼ����� �̸�(ȸ���̸�)
-    private Date regdate;        // �Խñ� �ۼ����� util.Date
+    private Date regdate;        // 
     private int viewcnt;        // �Խñ� ��ȸ��
     private int recnt;            // **�Խñ� ����� �� �߰�
  
