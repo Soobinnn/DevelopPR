@@ -7,10 +7,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/policy.css'/>"/>
 <script type="text/JavaScript">
 
-	function test()
-	{
-		location.href="${path}/user/joinForm"
-	}
 	function check() 
 	{
 		var obj = document.getElementsByName("join");
@@ -18,10 +14,15 @@
 		{
 			if(obj[i].checked == false) 
 			{
-				alert("이용약관에 동의해주시기 바랍니다.");
+				alert("모든 이용약관에 동의해주시기 바랍니다.");
 				return false;
 			}
 		}
+		location.href="${path}/user/joinForm"
+	}
+	
+	function back() {
+		location.href="${path}/user/login"
 	}
 	
 	function chkBox(bool) {
@@ -34,8 +35,6 @@
 </head>
 <body>
 	<h1 align="center">DPR</h1>
-	<form name="joinAgree" action="#" method="post"
-		onsubmit="return check()">
 		<div class="container">
 			<div class="area1">
 				<label for="chkAll">이용약관, 개인정보 수집 및 이용에 모두 동의합니다. 
@@ -188,14 +187,13 @@
 			</div>
 			<div class="area1">
 				<div id="btn">
-					<button type="button" id="agree_btn" onclick=test() >
+					<button type="button" id="agree_btn" onclick=check() >
 						<span>동의</span>
 					</button>
-					<button type="button" id="disagree_btn">
+					<button type="button" id="disagree_btn" onclick=back()>
 						<span>동의하지 않음</span>
 					</button>
 				</div>
 			</div>
 		</div>
-	</form>
 </body>

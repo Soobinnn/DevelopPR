@@ -97,14 +97,13 @@ public class CommunityController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", communityService.modifyForm(bno));
-		mav.setViewName("/community/modifyForm"); // �並 list.jsp�� ����
+		mav.setViewName("/community/modifyForm"); // 
 
-		return mav; // list.jsp�� List�� ���޵ȴ�.
+		return mav; // 
 	}
 
-	// 06. �Խñ� ����, list�� �ƴ϶� view�� �̵��ϵ��� �����Ѵ�.
-	// updateForm���� bno���� ���������� �Ѵ�.
-	// ������ �Է��� ������� @ModelAttribute BoardVO vo�� ���޵�
+	
+	// 
 	@RequestMapping(value="modify", method=RequestMethod.POST)
     public ModelAndView communityModify(@ModelAttribute CommunityVO vo, @RequestParam int bno) throws Exception
     { 
@@ -134,9 +133,9 @@ public class CommunityController {
 		vo.setWriter("");
 		vo.setTitle("RE: " + vo.getTitle());
 
-		vo.setContent("-----������ ����-----<br />" + vo.getContent()
+		vo.setContent("----------------<br />" + vo.getContent()
 
-				+ "<br />-----������ ��-----<br />");
+				+ "<br />----------------<br />");
 
 		map.addAttribute("item", vo);
 

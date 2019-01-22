@@ -19,7 +19,8 @@ public interface UserDAO
 	   public UserVO viewlogin(UserVO vo);  
 	   //회원 로그아웃
 	   public void logout(HttpSession session);
-	   
+	   // 아이디 찾기
+	   public String findId(String phone) throws Exception;
 	/*   //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정
