@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- 컨택스트  패스-->
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <style>
@@ -117,7 +117,7 @@
                            <span id="span2"><Strong>계정을 사용하려면 이메일 주소를 확인하십시오</Strong> </span>
                        </li>
                        <li id="emailConfirm_li">
-                            <span id="span3">${joinName}님의 이메일 주소 유효성을 검사하기 위한 버튼이 포함된 이메일이 ${joinEmail}(으)로 전송되었습니다. </span>
+                            <span id="span3">${userName}님의 이메일 주소 유효성을 검사하기 위한 버튼이 포함된 이메일이 ${userEmail}(으)로 전송되었습니다. </span>
                         </li>
                         <li id="emailConfirm_li">
                             <span id="span4">이메일을 수신하셨습니까? 수신하지 못한 경우 스팸 폴더를 확인하거나 3일 내에 <a href="${path}/user/joiningError">새 확인 이메일 요청</a>을 하십시오. 3일 내로 이메일 주소를 확인하지 않은 경우 새 계정을 만들어야 합니다.</span>

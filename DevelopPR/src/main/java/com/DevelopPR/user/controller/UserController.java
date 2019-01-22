@@ -72,9 +72,8 @@ public class UserController
 	  String userName =vo.getUserName();
 	  System.out.println(userEmail);
 	  System.out.println(userName);
-	  model.addAttribute("joinEmail", userEmail);
-	  model.addAttribute("joinName", userName);
-	  
+	  model.addAttribute("userEmail", userEmail);
+	  model.addAttribute("userName", userName);
 	  return "user/joining";
   }
 
@@ -86,7 +85,8 @@ public class UserController
   }
   // 휴대폰 인증 폼
   @RequestMapping("authCheck")
-  public String authCheckForm() {
+  public String authCheckForm() 
+  {
 	  return "user/authCheck";
   }
   // 휴대폰인증
