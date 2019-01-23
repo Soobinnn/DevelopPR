@@ -1,5 +1,7 @@
 package com.DevelopPR.resume.model.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +14,11 @@ public class ResumeDAOImpl implements ResumeDAO{
 	@Inject
 	   SqlSession SqlSession;
 	 
+	@Override
+	public List<ResumeVO> resumeList() throws Exception {
+		return SqlSession.selectList("resume.resumeList");
+	}
+	
 	@Override
 	public void resumeRegistConfirm(ResumeVO vo) throws Exception {
 		System.out.println(vo.toString());

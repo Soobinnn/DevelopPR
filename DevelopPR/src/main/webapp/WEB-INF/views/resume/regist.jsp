@@ -36,6 +36,19 @@ function fn_removeImage() {
 	$('#uploadImage').removeAttr("src");
 	$('#imageEditor').css('display', 'none');
 }
+
+	function add_item(){
+		// pre_set 에 있는 내용을 읽어와서 처리..
+		var div = document.createElement('div');
+		div.classList.add( 'tech' );
+		div.innerHTML = document.getElementById('pre_set').innerHTML;
+		document.getElementById('techs').appendChild(div);
+	}
+
+	function remove_item(obj){
+		// obj.parentNode 를 이용하여 삭제
+		document.getElementById('techs').removeChild(obj.parentNode);
+	}
 </script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
@@ -183,7 +196,7 @@ function fn_removeImage() {
                        <input type="text" class="textmiddle1" id="acq_date" placeholder="자격증 취득 날짜"/>
                        <input type="text" class="textmiddle2" id="acq_name" placeholder="자격증 이름"/>
                        <input type="button" id="info_button" value="+"/><br/>
-                       <div style="display:flex; flex-direction:row;">
+                       <div class="ajax">
 	                       <div id="date"></div>
 	                       <div id="name"></div>
                        </div>
@@ -201,15 +214,15 @@ function fn_removeImage() {
                        		            type : "get",
                        		            data : document.getElementById("acq_date").value,
                        		            success : function () {
-                       		            	$("#date").append($("<div>").text(document.getElementById("acq_date").value));
+                       		            	$("#date").append($("<div class='infodate'>").text(document.getElementById("acq_date").value));
                        		 
-                       		            	$("#name").append($("<div>").text(document.getElementById("acq_name").value));
-                       		            
+                       		            	$("#name").append($("<div class='infoname'>").text(document.getElementById("acq_name").value));
+                       		            	
                        		            } ,
                        		            error : function () {
-                       		            	$("#date").append($("<div>").text(document.getElementById("acq_date").value));
+                       		            	$("#date").append($("<div class='infodate'>").text(document.getElementById("acq_date").value));
                        		      
-                       		            	$("#name").append($("<div>").text(document.getElementById("acq_name").value));
+                       		            	$("#name").append($("<div class='infoname'>").text(document.getElementById("acq_name").value));
                        		 		
                        		            } 
                        		            
@@ -235,12 +248,13 @@ function fn_removeImage() {
                        <input type="text" class="textmiddle1" id="edu_date" placeholder="자격증 취득 날짜"/>
                        <input type="text" class="textmiddle2" id="edu_name" placeholder="자격증 이름"/>
                        <input type="button" id="info_button2" value="+"/><br/>
-                       <div style="display:flex; flex-direction:row;">
+                       <div class="ajax">
 	                       <div id="date2"></div>
 	                       <div id="name2"></div>
                        </div>
-                       <input type="hidden" id="real_edu_date" name="gradu_year" value=""/>
-                       <input type="hidden" id="real_edu_name" name="edu_info" value=""/>
+	                       <input type="hidden" id="real_edu_date" name="gradu_year" value=""/>
+	                       <input type="hidden" id="real_edu_name" name="edu_info" value=""/>
+	               
                        <script type="text/javascript">
                        		        var name2="";
                        		        var date2="";
@@ -253,15 +267,15 @@ function fn_removeImage() {
                        		            type : "get",
                        		            data : document.getElementById("acq_date").value,
                        		            success : function () {
-                       		            	$("#date2").append($("<div>").text(document.getElementById("edu_date").value));
+                       		            	$("#date2").append($("<div class='infodate'>").text(document.getElementById("edu_date").value));
                        		 
-                       		            	$("#name2").append($("<div>").text(document.getElementById("edu_name").value));
+                       		            	$("#name2").append($("<div class='infoname'>").text(document.getElementById("edu_name").value));
                        		            
                        		            } ,
                        		            error : function () {
-                       		            	$("#date2").append($("<div>").text(document.getElementById("edu_date").value));
+                       		            	$("#date2").append($("<div class='infodate'>").text(document.getElementById("edu_date").value));
                        		      
-                       		            	$("#name2").append($("<div>").text(document.getElementById("edu_name").value));
+                       		            	$("#name2").append($("<div class='infoname'>").text(document.getElementById("edu_name").value));
                        		 		
                        		            } 
                        		            
@@ -285,13 +299,14 @@ function fn_removeImage() {
                 <div class="career">
                     <div class="subject">경력 정보</div>
                     <div class="career_ok">
-                        <input type="text" class="textmiddle1" id="career_date" placeholder="자격증 취득 날짜"/>
+                       <input type="text" class="textmiddle1" id="career_date" placeholder="자격증 취득 날짜"/>
                        <input type="text" class="textmiddle2" id="career_name" placeholder="자격증 이름"/>
                        <input type="button" id="info_button3" value="+"/><br/>
-                       <div style="display:flex; flex-direction:row;">
+                       <div class="ajax">
 	                       <div id="date3"></div>
 	                       <div id="name3"></div>
                        </div>
+                       
                        <input type="hidden" id="real_career_date" name="career_year" value=""/>
                        <input type="hidden" id="real_career_name" name="career_info" value=""/>
                        <script type="text/javascript">
@@ -306,15 +321,15 @@ function fn_removeImage() {
                        		            type : "get",
                        		            data : document.getElementById("career_date").value,
                        		            success : function () {
-                       		            	$("#date3").append($("<div>").text(document.getElementById("career_date").value));
+                       		            	$("#date3").append($("<div class='infodate'>").text(document.getElementById("career_date").value));
                        		 
-                       		            	$("#name3").append($("<div>").text(document.getElementById("career_name").value));
+                       		            	$("#name3").append($("<div class='infoname'>").text(document.getElementById("career_name").value));
                        		            
                        		            } ,
                        		            error : function () {
-                       		            	$("#date3").append($("<div>").text(document.getElementById("career_date").value));
+                       		            	$("#date3").append($("<div class='infodate'>").text(document.getElementById("career_date").value));
                        		      
-                       		            	$("#name3").append($("<div>").text(document.getElementById("career_name").value));
+                       		            	$("#name3").append($("<div class='infoname'>").text(document.getElementById("career_name").value));
                        		 		
                        		            } 
                        		            
@@ -337,44 +352,21 @@ function fn_removeImage() {
         </div>
             
             <div class="skill">
-                <div class="subject">Tech-stack</div>
-               
-                <div class="techs">
-                    <div class="tech">
-                        <div>
-                            <input type="text" class="abb" name="abb"/>
-                        </div>
-                        <div class="techinfo">
-                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-                            숫자
-                        </div>
-                    </div>
-
-                    <div class="tech">
-                        <div>
-                            <input type="text" class="abb" name="abb"/>
-                        </div>
-                        <div class="techinfo">
-                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-                            숫자
-                        </div>
-                    </div>
-                    
-                    <div class="tech">
-                        <div>
-                            <input type="text" class="abb" name="abb"/>
-                        </div>
-                        <div class="techinfo">
-                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-                            숫자
-                        </div>
-                    </div>
-
+                <div class="subject">Tech-stack
+                 <input type="button" value=" 추가 " onclick="add_item()">추가 버튼을 눌러보세요.
                 </div>
-
+                <div id="techs">
+					<div id="pre_set" style="display:none">
+							<div>
+						       <input type="text" class="abb" name="abb"/>
+						    </div>
+						    <div class="techinfo">
+						       <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
+						    </div>
+						       <input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
+					</div>
+                </div>
             </div>
         
    </div>

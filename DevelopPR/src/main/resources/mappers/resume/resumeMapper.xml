@@ -9,6 +9,11 @@
 			#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year}, #{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
 			)
 	</insert>
+	
+	<select id="resumeList" resultType="ResumeVO">
+		SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo
+		FROM pr_resume
+	</select>
 
     <select id="resumeDetail" resultType="ResumeVO">
           SELECT *

@@ -228,6 +228,7 @@
    				 </div>
 
     </div>
+</div>
     <footer>
         footer 고정
     </footer>
