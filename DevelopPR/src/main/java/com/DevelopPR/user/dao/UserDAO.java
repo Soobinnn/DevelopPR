@@ -31,6 +31,16 @@ public interface UserDAO
 	   // 이메일 인증키 생성
 	   public void createAuthKey(String userEmail, String userAuthCode) throws Exception;
 	   
+	   // 로그인시 이메일 인증 여부 체크
+	   public boolean checkAuthStatus(String userEmail);
+	   
+	   // ajax 이메일 중복체크
+	   public int checkMail(String userEmail);
+	   
+	   // ajax 닉네임 중복체크
+	   public int checkNick(String userNick);
+	   
+	   
 	/*   //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정

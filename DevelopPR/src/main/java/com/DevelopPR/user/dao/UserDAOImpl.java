@@ -47,7 +47,6 @@ public class UserDAOImpl implements UserDAO
 		 // 로그인 비밀번호 db매칭
 	     String checkPw = sqlSession.selectOne("user.loginCheck", vo);
 	     boolean matchPw = passwordEncoder.matches(vo.getUserPw(), checkPw);
-	     
 	     // 로그인 정보 맞으면 최근시간업데이트
 	     if(matchPw)
 	     {
@@ -96,4 +95,26 @@ public class UserDAOImpl implements UserDAO
 		 sqlSession.update("user.userAuth", user_email);
 	 }
 	   
+	 // 로그인시 이메일 인증 여부 체크
+	 @Override
+	 public boolean checkAuthStatus(String userEmail)
+	 {
+		 int userAuth = sqlSession.selectOne("user.checkAuthStatus", userEmail);
+		 System.out.println(userAuth);
+		 return (userAuth == 1 ? true : false);
+	 }
+	 
+	  // ajax 이메일 중복체크
+	  @Override
+	  public int checkMail(String userEmail)
+	  {
+	 		return sqlSession.selectOne("user.checkMail", userEmail);
+	  }
+	  
+	   // ajax 닉네임 중복체크
+	  @Override
+	  public int checkNick(String userNick)
+	  {
+		  return sqlSession.selectOne("user.checkNick", userNick);
+	  }
 }

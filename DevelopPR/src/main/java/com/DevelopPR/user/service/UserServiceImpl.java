@@ -100,12 +100,16 @@ public class UserServiceImpl implements UserService
 	       if (result) 
 	       { // true일 경우 세션에 등록
 	           UserVO vo2 = viewlogin(vo);
-	           // 세션 변수 등록
-	           session.setAttribute("userEmail", vo2.getUserEmail());
-	           session.setAttribute("userNick", vo2.getUserNick());
-	           session.setAttribute("userName", vo2.getUserName());
-	           session.setAttribute("userIs_seek", vo2.getUserIs_seek());
-	           session.setAttribute("login", vo2);
+	           if(vo2.getUserAuthStatus() > 0 )
+	           {
+	        	   // 세션 변수 등록
+	        	   	session.setAttribute("userEmail", vo2.getUserEmail());
+	           		session.setAttribute("userNick", vo2.getUserNick());
+	           		session.setAttribute("userName", vo2.getUserName());
+	           		session.setAttribute("userIs_seek", vo2.getUserIs_seek());
+	           		session.setAttribute("login", vo2);
+	           }
+	           System.out.println("세션등록안됨");
 	       } 
 	       return result;
 	   }
@@ -140,11 +144,31 @@ public class UserServiceImpl implements UserService
 		   return userDao.viewId(userNick);
 	   }
 	   
-	   // 사용자확인
+	   // 이메일 인증확인
 	   @Override
 	   public void userAuth(String userEmail) throws Exception 
 	   {
 			userDao.userAuth(userEmail);
+	   }
+	   
+	   // 로그인시 이메일 인증 여부 체크
+	   @Override
+	   public boolean checkAuthStatus(String userEmail)
+	   {
+		   return userDao.checkAuthStatus(userEmail);
+	   }
+	   
+	   // ajax 이메일 중복체크
+	   @Override
+	   public int checkMail(String userEmail)
+	   {
+		   return userDao.checkMail(userEmail);
+	   }
+	   // ajax 닉네임 중복체크
+	   @Override
+	   public int checkNick(String userNick)
+	   {
+		   return userDao.checkNick(userNick);
 	   }
 
 }
