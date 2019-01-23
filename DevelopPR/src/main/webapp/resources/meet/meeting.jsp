@@ -44,12 +44,38 @@
                             마지막 채팅 내용2
                         </div>
                 </div>
+                <div class="mlist">
+                    <div class="up">
+                        <div class="m_name">
+                            이름2
+                        </div> 
+                        <div class="m_lastday">
+                            마지막 채팅 날짜2
+                            </div>
+                        </div>
+                        <div class="m_info">
+                            마지막 채팅 내용2
+                        </div>
+                </div>
+                <div class="mlist">
+                    <div class="up">
+                        <div class="m_name">
+                            이름2
+                        </div> 
+                        <div class="m_lastday">
+                            마지막 채팅 날짜2
+                            </div>
+                        </div>
+                        <div class="m_info">
+                            마지막 채팅 내용2
+                        </div>
+                </div>
             </div>
         </div>
 
         <div id="info">
             <div id="chat">
-                대화창
+                <div id="chatc">대화창</div>
             </div>
             <div id="chat_in">
                 <input type="text" id="chat_text" placeholder="메시지를 입력하세요."/>

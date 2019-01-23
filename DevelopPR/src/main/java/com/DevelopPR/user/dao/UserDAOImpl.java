@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO
 	 {
 	     sqlSession.insert("user.insertUser", vo);
 	 }
-	 
+	 // 아이디 찾기
 	 @Override
 	 public String findId(String phone)
 	 {
@@ -62,13 +62,38 @@ public class UserDAOImpl implements UserDAO
 	    return sqlSession.selectOne("user.viewlogin", vo);
 	}
 	
-
-	
 	 //회원 로그아웃
 	@Override
 	public void logout(HttpSession sessin) 
 	{
 		
 	}
+	
+	 // 회원 이메일, 이름, 닉네임 (팔로우)
+	 @Override
+	 public UserVO viewId(String userNick)
+	 {
+		 return sqlSession.selectOne("user.viewId", userNick);
+	 }
+	 
+	 // 회원가입시 이메일 인증 키 생성
+	 @Override
+	 public void createAuthKey(String userEmail, String userAuthCode) throws Exception 
+	 {
+	   		// TODO Auto-generated method stub
+		UserVO vo = new UserVO();
+	   	
+	   	vo.setUserAuthCode(userAuthCode);
+	   	vo.setUserEmail(userEmail);
+
+	   	sqlSession.selectOne("user.createAuthKey", vo);
+	 }
+	 // 인증 시 접근권한
+	 @Override
+	 public void userAuth(String user_email) throws Exception 
+	 {
+		 // TODO Auto-generated method stub
+		 sqlSession.update("user.userAuth", user_email);
+	 }
 	   
 }

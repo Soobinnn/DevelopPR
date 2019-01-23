@@ -7,12 +7,16 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.DevelopPR.user.dao.UserDAO;
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.util.Coolsms;
 import com.DevelopPR.util.GenerateCertNumber;
+import com.DevelopPR.util.MailHandler;
+import com.DevelopPR.util.TempKey;
 
 @Service
 public class UserServiceImpl implements UserService
@@ -21,8 +25,9 @@ public class UserServiceImpl implements UserService
 	   @Inject
 	   UserDAO userDao;
 	   
-	  /* @Inject
-		private JavaMailSender mailSender;	*/
+	   @Inject
+	   private JavaMailSender mailSender;
+	   
 	   // 01. 회원 목록
 	   @Override
 	   public List<UserVO> listUser() 
@@ -32,24 +37,22 @@ public class UserServiceImpl implements UserService
 	   
 	   // 02. 회원 등록 ++ 이메일 인증
 	   @Override
-	   /* @Transactional*/
+	   @Transactional
 	   public void insertUser(UserVO vo) throws Exception
 	   {
 	       userDao.insertUser(vo);
 	       
-	       /* // 임의의 authkey 생성
+	       // 임의의 authkey 생성
 			String authkey = new TempKey().getKey(50, false);
 
-			memberDao.createAuthKey(vo.getUserEmail(), authkey);
-				vo.setAuthkey(authkey);
-			memberDao.updateAuthkey(vo);
+			userDao.createAuthKey(vo.getUserEmail(), authkey);
 			// mail 작성 관련 
 			MailHandler sendMail = new MailHandler(mailSender);
 		
 			sendMail.setSubject("[DevelopPR] 회원가입 이메일 인증");
 			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-					.append("<a href='http://localhost:8080/spring2/member/emailConfirm?userEmail=")
+					.append("<a href='http://localhost:8080/DevelopPR/user/joinConfirm?userEmail=")
 					.append(vo.getUserEmail())
 					.append("&authkey=")
 					.append(authkey)					
@@ -57,12 +60,13 @@ public class UserServiceImpl implements UserService
 					.toString());
 					sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
 					sendMail.setTo(vo.getUserEmail());
-					sendMail.send();*/
+					sendMail.send();
 	   }
 	   
-	   	   
+	   // 본인 인증 확인	   
 	   @Override
-	   public String authCheck(String phone) throws Exception {
+	   public String authCheck(String phone) throws Exception 
+	   {
 		   GenerateCertNumber tempNum = new GenerateCertNumber();
 			String authNum = tempNum.executeGenerate();
 			String api_key = "NCSDWXRYDLI0MN1B";
@@ -76,10 +80,13 @@ public class UserServiceImpl implements UserService
 			set.put("type", "sms"); //보내는 형식
 			
 			JSONObject result = coolsms.send(set);
-			if((Boolean) result.get("status") == true) {			
+			if((Boolean) result.get("status") == true) 
+			{			
 				System.out.println("성공");
 				return authNum;
-			} else {
+			} 
+			else 
+			{
 				System.out.println("실패");
 				return "fail";
 			}
@@ -98,6 +105,7 @@ public class UserServiceImpl implements UserService
 	           session.setAttribute("userNick", vo2.getUserNick());
 	           session.setAttribute("userName", vo2.getUserName());
 	           session.setAttribute("userIs_seek", vo2.getUserIs_seek());
+	           session.setAttribute("login", vo2);
 	       } 
 	       return result;
 	   }
@@ -108,7 +116,7 @@ public class UserServiceImpl implements UserService
 	   {
 	       return userDao.viewlogin(vo);
 	   }
-	   
+	   // 아이디 찾기
 	   @Override
 	   public String findId(String phone) throws Exception
 	   {
@@ -123,6 +131,20 @@ public class UserServiceImpl implements UserService
 	       // session.removeAttribute("userId");
 	       // 세션 정보를 초기화 시킴
 	       session.invalidate();
+	   }
+	   
+	   // 회원 이메일, 이름, 닉네임 (팔로우)
+	   @Override
+	   public UserVO viewId(String userNick)
+	   {
+		   return userDao.viewId(userNick);
+	   }
+	   
+	   // 사용자확인
+	   @Override
+	   public void userAuth(String userEmail) throws Exception 
+	   {
+			userDao.userAuth(userEmail);
 	   }
 
 }

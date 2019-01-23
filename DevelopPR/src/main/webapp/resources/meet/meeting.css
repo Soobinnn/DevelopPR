@@ -129,7 +129,7 @@ table {
 }
 
 .m .container #info #chat_in #chat_text{
-    width:100%;
+    width:90%;
     height:40px;
 }
 
@@ -223,3 +223,8 @@ table {
 
 
 /*----------------------------follow_tab_end-------------------------*/
+#sendchat
+{
+    text-align :right;
+    padding : 30px;
+}

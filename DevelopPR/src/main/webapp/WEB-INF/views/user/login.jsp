@@ -271,7 +271,7 @@
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
@@ -286,7 +286,7 @@
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='${path}/resume/list'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"><a href='${path}/resume/regist'>이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>

@@ -15,6 +15,7 @@ public class UserVO
 	  private int userAuthStatus;
 	  private String userAuthCode;
 	  private String userPhone;
+	  private String authkey;
 	  
 	public String getUserPhone() 
 	{
@@ -104,6 +105,12 @@ public class UserVO
 		this.userAuthCode = userAuthCode;
 	}
 	  
+	public String getAuthkey() {
+		return authkey;
+	}
+	public void setAuthkey(String authkey) {
+		this.authkey = authkey;
+	}
 	// toString()
     @Override
     public String toString() 
