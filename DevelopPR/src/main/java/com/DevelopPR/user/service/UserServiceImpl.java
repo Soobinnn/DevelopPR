@@ -98,6 +98,7 @@ public class UserServiceImpl implements UserService
 	           session.setAttribute("userNick", vo2.getUserNick());
 	           session.setAttribute("userName", vo2.getUserName());
 	           session.setAttribute("userIs_seek", vo2.getUserIs_seek());
+	           session.setAttribute("login", vo2);
 	       } 
 	       return result;
 	   }

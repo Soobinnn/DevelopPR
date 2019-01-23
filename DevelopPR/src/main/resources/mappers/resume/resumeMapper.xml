@@ -15,6 +15,18 @@
           FROM PR_RESUME
           WHERE email=#{email}
     </select>
+    
+    <insert id="followMember">
+    	INSERT INTO PR_FOLLOW(follower_nick, following_nick)
+    	VALUES (#{follower_nick}, #{following_nick})
+    </insert>
+    
+    <select id="chkFollow" resultType="FollowVO">
+    	SELECT *
+    	FROM PR_FOLLOW
+    	WHERE follower_nick = #{follower_nick}
+    	AND following_nick = #{following_nick}
+    </select>
 
 
 </mapper>

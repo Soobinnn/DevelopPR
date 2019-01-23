@@ -5,6 +5,38 @@
 <head>
 <title>이력서 등록</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
+<script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+<script type="text/javascript">	
+function fn_uploadImage() {
+	$("#uploadImageFile").click();
+}
+
+function uploadImageFileChange() {
+	var formData = new FormData();
+	formData.append('upfile', $('#uploadImageFile')[0].files[0]); 
+	$.ajax({
+		url: "${path}/fileUpload",
+	    data: formData,
+	    type: 'POST',
+	    contentType: false,
+	    processData: false,
+	    success : function(data){
+	    	$('#uploadImage').attr("src", "${path}/fileDownload?filename="+data);
+	    	$('#imageEditor').css('display', 'inline-block');
+	    	$('#uploadImg').attr("value", data);
+        }
+	});
+}
+
+function fn_modifyImage() {
+	var w = window.open("../imageEditor", "", "width=800,height=650,top=0px,left=200px,status=,resizable=false,scrollbars=no");
+}
+
+function fn_removeImage() {
+	$('#uploadImage').removeAttr("src");
+	$('#imageEditor').css('display', 'none');
+}
+</script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
 <body>
@@ -17,8 +49,21 @@
                <div class="c">"~~~~~~~~~~~~~~~~~~"</div>
             </div>
             <div id="img">
-                + <input type="text" name="profile_photo"/>
+	            <div style="min-height: 260px">
+					<img id="uploadImage" />
+					<input type="hidden" id= "uploadImg" name="profile_photo"/>
+					
+				</div>
+				<div id="upload_button" style="text-align:center; margin-top: 5px;">
+					<a href="javascript:fn_uploadImage('')" class="btn sty13">Load Image</a>
+					<div id="imageEditor" style="display:none;">
+						<a href="javascript:fn_modifyImage('');" class="btn sty13">Image Editor</a>
+						<a href="javascript:fn_removeImage('');" class="btn sty13">Delete</a>
+					</div>	
+					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none"/>
+				</div>
             </div>
+             
         </header>
         <div id="pill">* 는 필수 입력 사항입니다.</div>
     
@@ -130,22 +175,107 @@
            
            <div class="information">
                
+               
+     
                <div class="acq">
                    <div class="subject">자격정보</div>
                    <div class="acq_ok">
-                       <input type="text" class="textmiddle1" name="acq_date" placeholder="자격증 취득 날짜"/>|
-                       <input type="text" class="textmiddle2" name="acq_name" placeholder="자격증 이름"/>
-                       <button>+</button>
+                       <input type="text" class="textmiddle1" id="acq_date" placeholder="자격증 취득 날짜"/>
+                       <input type="text" class="textmiddle2" id="acq_name" placeholder="자격증 이름"/>
+                       <input type="button" id="info_button" value="+"/><br/>
+                       <div style="display:flex; flex-direction:row;">
+	                       <div id="date"></div>
+	                       <div id="name"></div>
+                       </div>
+                       <input type="hidden" id="real_acq_date" name="acq_date" value=""/>
+                       <input type="hidden" id="real_acq_name" name="acq_name" value=""/>
+                       <script type="text/javascript">
+                       		        var name="";
+                       		        var date="";
+                    
+                       		$(document).ready(function () {
+                       		    $('#info_button').on('click', function () {
+                       		        // property를 설정한다.
+                       		        $.ajax({
+                       		            url : "list.jsp",
+                       		            type : "get",
+                       		            data : document.getElementById("acq_date").value,
+                       		            success : function () {
+                       		            	$("#date").append($("<div>").text(document.getElementById("acq_date").value));
+                       		 
+                       		            	$("#name").append($("<div>").text(document.getElementById("acq_name").value));
+                       		            
+                       		            } ,
+                       		            error : function () {
+                       		            	$("#date").append($("<div>").text(document.getElementById("acq_date").value));
+                       		      
+                       		            	$("#name").append($("<div>").text(document.getElementById("acq_name").value));
+                       		 		
+                       		            } 
+                       		            
+                       		        });
+                       		     	date+=document.getElementById("acq_date").value + ",";
+                       		     	name+=document.getElementById("acq_name").value + ",";
+                       		     	document.getElementById("real_acq_date").value=date;
+                       		  		document.getElementById("real_acq_name").value=name;
+                    		     	
+                       		    })
+                       		});
+                  
+                       </script>
+                       
                     </div>
                 </div>
+                
                 
                 
                 <div class="edu">
                     <div class="subject">학력/교육 정보</div>
                     <div class="edu_ok">
-                        <input type="text" class="textmiddle1" name="gradu_year" placeholder="학력/교육 년도"/>|
-                        <input type="text" class="textmiddle2" name="edu_info" placeholder="학력 / 교육 이름"/>
-                        <button>+</button>
+                       <input type="text" class="textmiddle1" id="edu_date" placeholder="자격증 취득 날짜"/>
+                       <input type="text" class="textmiddle2" id="edu_name" placeholder="자격증 이름"/>
+                       <input type="button" id="info_button2" value="+"/><br/>
+                       <div style="display:flex; flex-direction:row;">
+	                       <div id="date2"></div>
+	                       <div id="name2"></div>
+                       </div>
+                       <input type="hidden" id="real_edu_date" name="gradu_year" value=""/>
+                       <input type="hidden" id="real_edu_name" name="edu_info" value=""/>
+                       <script type="text/javascript">
+                       		        var name2="";
+                       		        var date2="";
+                    
+                       		$(document).ready(function () {
+                       		    $('#info_button2').on('click', function () {
+                       		        // property를 설정한다.
+                       		        $.ajax({
+                       		            url : "list.jsp",
+                       		            type : "get",
+                       		            data : document.getElementById("acq_date").value,
+                       		            success : function () {
+                       		            	$("#date2").append($("<div>").text(document.getElementById("edu_date").value));
+                       		 
+                       		            	$("#name2").append($("<div>").text(document.getElementById("edu_name").value));
+                       		            
+                       		            } ,
+                       		            error : function () {
+                       		            	$("#date2").append($("<div>").text(document.getElementById("edu_date").value));
+                       		      
+                       		            	$("#name2").append($("<div>").text(document.getElementById("edu_name").value));
+                       		 		
+                       		            } 
+                       		            
+                       		        });
+                       		     	date2+=document.getElementById("edu_date").value + ",";
+                       		     	name2+=document.getElementById("edu_name").value + ",";
+                       		     	document.getElementById("real_edu_date").value=date2;
+                       		  		document.getElementById("real_edu_name").value=name2;
+                    		     	
+                       		    })
+                       		});
+                  
+                       </script>
+                       
                     </div>
                     
                     
@@ -155,9 +285,50 @@
                 <div class="career">
                     <div class="subject">경력 정보</div>
                     <div class="career_ok">
-                        <input type="text" class="textmiddle1" name="career_year" placeholder="학력/교육 년도"/>|
-                        <input type="text" class="textmiddle2" name="career_info" placeholder="학력 / 교육 이름"/>
-                        <button>+</button>
+                        <input type="text" class="textmiddle1" id="career_date" placeholder="자격증 취득 날짜"/>
+                       <input type="text" class="textmiddle2" id="career_name" placeholder="자격증 이름"/>
+                       <input type="button" id="info_button3" value="+"/><br/>
+                       <div style="display:flex; flex-direction:row;">
+	                       <div id="date3"></div>
+	                       <div id="name3"></div>
+                       </div>
+                       <input type="hidden" id="real_career_date" name="career_year" value=""/>
+                       <input type="hidden" id="real_career_name" name="career_info" value=""/>
+                       <script type="text/javascript">
+                       		        var name3="";
+                       		        var date3="";
+                    
+                       		$(document).ready(function () {
+                       		    $('#info_button3').on('click', function () {
+                       		        // property를 설정한다.
+                       		        $.ajax({
+                       		            url : "list.jsp",
+                       		            type : "get",
+                       		            data : document.getElementById("career_date").value,
+                       		            success : function () {
+                       		            	$("#date3").append($("<div>").text(document.getElementById("career_date").value));
+                       		 
+                       		            	$("#name3").append($("<div>").text(document.getElementById("career_name").value));
+                       		            
+                       		            } ,
+                       		            error : function () {
+                       		            	$("#date3").append($("<div>").text(document.getElementById("career_date").value));
+                       		      
+                       		            	$("#name3").append($("<div>").text(document.getElementById("career_name").value));
+                       		 		
+                       		            } 
+                       		            
+                       		        });
+                       		     	date3+=document.getElementById("career_date").value + ",";
+                       		     	name3+=document.getElementById("career_name").value + ",";
+                       		     	document.getElementById("real_career_date").value=date3;
+                       		  		document.getElementById("real_career_name").value=name3;
+                    		     	
+                       		    })
+                       		});
+                  
+                       </script>
+                       
                     </div>
                 </div>
                 

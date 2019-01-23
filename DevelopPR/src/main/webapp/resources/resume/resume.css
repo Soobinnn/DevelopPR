@@ -100,11 +100,26 @@ table {
 
 .resumeDetail .information{
    display:flex;
-   text-align: center;
    font-size:15pt;
    margin-top:20px;
+   width:400px;
 }
 
+.resumeDetail .information .textshort1{
+	flex:0 1 200px;
+	padding-left:26px;
+	padding-top:10px;
+	height:30px;
+}
+
+.resumeDetail .information .textshort2{
+	flex:0 1 200px;
+	padding-top:10px;
+	padding-left:10px;
+	font-weight:bold;
+	background-color:antiquewhite;
+	height:30px;
+}
 .resumeDetail .tech-stack{
    margin:10px;
    height: 200px;
@@ -197,6 +212,19 @@ table {
    flex-direction: row;
 }
 
+.resumeDetail .acq{
+	display:flex;
+	width:500px;
+	height:30px;
+	font-size:14pt;
+}
+.resumeDetail .acqdate{
+	width:200px;
+	padding-left:100px;
+}
+
+
+
 
 /*---------------------project-----------------*/
 
@@ -212,20 +240,63 @@ table {
 /*------------------tech-stack--------------------*/
 
 .resumeDetail .tech-stack{
-	display:flex;
-	flex-direction:column;
+	margin-left:150px;
+	margin-right:150px;
+	width:81%;
+	height:100%;
 }
 
+.resumeDetail .tech-stack .subject{
+	width:98.2%;
+}
 
+.resumeDetail .techs{
+	display:flex;
+	flex-wrap:wrap;
+}
 
+.resumeDetail .tech{
+	display:flex;	
+	align-items:center;
+	margin:10px;
+}
+
+.resumeDetail .abb{
+   width:80px;
+   height:80px;
+   border-radius: 20% 20% 20% 20%;
+   
+   background-color: rgba(255,255,255,0.5);
+   text-align: center;
+   font-size:15pt;
+   font-weight: bold;
+   border-style: solid;
+
+   margin-left:20px;
+   margin-bottom:20px;
+   margin-right:10px;
+}
+
+.resumeDetail .tech .techinfo{
+   padding:10px;
+   margin-bottom:20px;
+   
+}
+
+.resumeDetail .tech .techinfo .tech_name{
+   font-size:14pt;
+   border-style: solid;
+   margin-bottom:10px;
+   width:185px;
+}
 
 
 /*------------------footer---------------------*/
 
 .resumeDetail footer{
-   background:black;
-   color:white;
-   height:100px;
+	background-color:rgba(255,255,255,0.5);
+   height:50px;
+   width:100%;
    text-align: center;
 }
 /*------------------------- resumeRegist --------------------------*/
@@ -267,7 +338,7 @@ table {
    font-size:15px;
 }
 
-.resumeRegist #img{
+.resumeRegist #uploadImage{
    width:200px;
    height:200px;
    border:solid 4px #02456F;
@@ -281,7 +352,13 @@ table {
 
    position: relative;
    right:50px;
-   top:25px;
+   top:10px;
+}
+
+.resumeRegist #img #upload_button{
+	position:relative;
+	right:55px;
+	bottom:40px;
 }
 
 /*---------------main-----------------*/
