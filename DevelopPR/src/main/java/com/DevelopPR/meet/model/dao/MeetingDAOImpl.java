@@ -30,7 +30,7 @@ public class MeetingDAOImpl implements MeetingDAO
 		roomvo = session.selectOne("meet.isRoom", vo);
 		return roomvo;
 	}
-	/* 메시지 전송 */
+	/* 메시지 전송 내용 저장 */
 	@Override
 	public void insertMessage(MessageVO vo) throws Exception
 	{

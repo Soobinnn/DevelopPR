@@ -94,7 +94,7 @@
 		$('#chat_send').click(function(){ connect();});
 		$('.tab2_content').click(function() { disconnect(); });
 		
-		/*  $('#follower').click(function(){
+	/* 	 $('#follower').click(function(){
 			 var nick = $('#fllw').val();
 			 var _nick = "userNick="+nick;
 			 console.log(nick);
@@ -109,7 +109,11 @@
 					console.log(result);
 				}
 			});
-		});  */
+		});   */
+/* 		$('#testss').on('click', function(e){
+			
+		}); */
+		
 	});
 	
 </script>
@@ -195,7 +199,7 @@
 			    <label for="tab1">Tab 1</label>
 			    <label for="tab2">Tab 2</label>
 			    <div class="tab1_content">
-			    	<div id="follower"><span id="fllw"><a href="${path}/meeting/베리">베리</a></span></div>
+			    	<div id="follower"><span id="fllw"><a href="${path}/meeting/베리" id="testss">베리</a></span></div>
 			    	${viewId.userName}
 			    	${viewId.userEmail}
 			    	${viewId.userNick}

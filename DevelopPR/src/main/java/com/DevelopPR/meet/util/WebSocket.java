@@ -107,12 +107,17 @@ public class WebSocket extends TextWebSocketHandler
 	         System.out.println(map);
 	         System.out.println(map.toString());
 	         UserVO login = (UserVO) map.get("login");
-
+	         System.out.println("test map : "+login);
+	         
+	         // DB에 채팅내용 저장
+	         meetService.insertMessage(messageVO);
+	         
 	         //받는사람
 	         if (login.getUserNick().equals(messageVO.getMessage_sender())) 
 	         {
 	            Gson gson = new Gson();
 	            String msgJson = gson.toJson(messageVO);
+	            System.out.println(messageVO.toString());
 	            websocketSession.sendMessage(new TextMessage(msgJson));
 	         }
 	    }

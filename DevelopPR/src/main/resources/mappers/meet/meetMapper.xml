@@ -17,8 +17,8 @@
 <!-- 메세지 전송-->
 <insert id = "insertMessage">
 	INSERT INTO PR_MESSAGE (MESSAGE_SENDER , MESSAGE_RECEIVER, MESSAGE_CONTENT, MESSAGE_SENDTIME,
-	CHATROOM_CHATROOM_ID, USER_user_id , RECEIVER_USER_ID)
-	VALUES (#{message_sender}, #{message_receiver}, #{message_content},SYSDATE+9/24, #{chatroom_chatroom_id} , #{send_user_id}, #{receiver_user_id})
+	 SEND_USER_ID , RECEIVER_USER_ID, SEND_USER_NAME, RECEIVER_USER_NAME)
+	VALUES (#{message_sender}, #{message_receiver}, #{message_content},SYSDATE+9/24, #{send_user_id}, #{receiver_user_id}, #{send_user_name}, #{receiver_user_name})
 </insert>
 
 <!-- 개인 채팅방 입장 -->
