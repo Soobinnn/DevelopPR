@@ -36,6 +36,19 @@ function fn_removeImage() {
 	$('#uploadImage').removeAttr("src");
 	$('#imageEditor').css('display', 'none');
 }
+
+	function add_item(){
+		// pre_set 에 있는 내용을 읽어와서 처리..
+		var div = document.createElement('div');
+		div.classList.add( 'tech' );
+		div.innerHTML = document.getElementById('pre_set').innerHTML;
+		document.getElementById('techs').appendChild(div);
+	}
+
+	function remove_item(obj){
+		// obj.parentNode 를 이용하여 삭제
+		document.getElementById('techs').removeChild(obj.parentNode);
+	}
 </script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
@@ -65,7 +78,7 @@ function fn_removeImage() {
             </div>
              
         </header>
-        <div id="pill">* 는 필수 입력 사항입니다.</div>
+        <div id="pill">* 는 필수 입력 사항입니다.<br/> <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
     
         <div class="main">
             <div class="detail">
@@ -178,203 +191,104 @@ function fn_removeImage() {
                
      
                <div class="acq">
-                   <div class="subject">자격정보</div>
-                   <div class="acq_ok">
-                       <input type="text" class="textmiddle1" id="acq_date" placeholder="자격증 취득 날짜"/>
-                       <input type="text" class="textmiddle2" id="acq_name" placeholder="자격증 이름"/>
-                       <input type="button" id="info_button" value="+"/><br/>
-                       <div style="display:flex; flex-direction:row;">
-	                       <div id="date"></div>
-	                       <div id="name"></div>
-                       </div>
-                       <input type="hidden" id="real_acq_date" name="acq_date" value=""/>
-                       <input type="hidden" id="real_acq_name" name="acq_name" value=""/>
-                       <script type="text/javascript">
-                       		        var name="";
-                       		        var date="";
-                    
-                       		$(document).ready(function () {
-                       		    $('#info_button').on('click', function () {
-                       		        // property를 설정한다.
-                       		        $.ajax({
-                       		            url : "list.jsp",
-                       		            type : "get",
-                       		            data : document.getElementById("acq_date").value,
-                       		            success : function () {
-                       		            	$("#date").append($("<div>").text(document.getElementById("acq_date").value));
-                       		 
-                       		            	$("#name").append($("<div>").text(document.getElementById("acq_name").value));
-                       		            
-                       		            } ,
-                       		            error : function () {
-                       		            	$("#date").append($("<div>").text(document.getElementById("acq_date").value));
-                       		      
-                       		            	$("#name").append($("<div>").text(document.getElementById("acq_name").value));
-                       		 		
-                       		            } 
-                       		            
-                       		        });
-                       		     	date+=document.getElementById("acq_date").value + ",";
-                       		     	name+=document.getElementById("acq_name").value + ",";
-                       		     	document.getElementById("real_acq_date").value=date;
-                       		  		document.getElementById("real_acq_name").value=name;
-                    		     	
-                       		    })
-                       		});
-                  
-                       </script>
+	               <div class="subject">자격 정보 <input type="button" value=" + " class="plus" onclick="add_acqitem()"></div>
+	                    <div class="acq_ok">
+	                       <div id="acqs">
+		                       <div class="acq">
+			                       <input type="text" class="textmiddle1" id="acq_date" name="acq_date" placeholder="자격증 취득 날짜"/>
+			                       <input type="text" class="textmiddle2" id="acq_name" name="acq_name" placeholder="자격증 이름"/>
+			                       <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
+			                   </div>
+	                       </div>
+                   
+		                       <script type="text/javascript">
+				                       function add_acqitem(){
+					                   		var div = document.createElement('div');
+					                   		div.classList.add( 'acq' );
+					                   		div.innerHTML = document.getElementById('acq').innerHTML;
+					                   		document.getElementById('acqs').appendChild(div);
+					                   	}
+					                   	function remove_acqitem(obj){
+					                   		document.getElementById('acqs').removeChild(obj.parentNode);
+					                   	}
+		                       </script>
                        
-                    </div>
+                    	</div>
                 </div>
                 
                 
                 
                 <div class="edu">
-                    <div class="subject">학력/교육 정보</div>
+                    <div class="subject">학력/교육 정보 <input type="button" value=" + " class="plus" onclick="add_eduitem()"></div>
                     <div class="edu_ok">
-                       <input type="text" class="textmiddle1" id="edu_date" placeholder="자격증 취득 날짜"/>
-                       <input type="text" class="textmiddle2" id="edu_name" placeholder="자격증 이름"/>
-                       <input type="button" id="info_button2" value="+"/><br/>
-                       <div style="display:flex; flex-direction:row;">
-	                       <div id="date2"></div>
-	                       <div id="name2"></div>
+                       <div id="edus">
+	                       <div class="edu">
+		                       <input type="text" class="textmiddle1" id="edu_date" name="gradu_year" placeholder="학력/교육 해당 년도"/>
+		                       <input type="text" class="textmiddle2" id="edu_name" name="edu_info" placeholder="학력/교육 이름"/>
+		                       <input type="button" value="삭제" onclick="remove_eduitem(this)"/>
+							</div>
                        </div>
-                       <input type="hidden" id="real_edu_date" name="gradu_year" value=""/>
-                       <input type="hidden" id="real_edu_name" name="edu_info" value=""/>
                        <script type="text/javascript">
-                       		        var name2="";
-                       		        var date2="";
-                    
-                       		$(document).ready(function () {
-                       		    $('#info_button2').on('click', function () {
-                       		        // property를 설정한다.
-                       		        $.ajax({
-                       		            url : "list.jsp",
-                       		            type : "get",
-                       		            data : document.getElementById("acq_date").value,
-                       		            success : function () {
-                       		            	$("#date2").append($("<div>").text(document.getElementById("edu_date").value));
-                       		 
-                       		            	$("#name2").append($("<div>").text(document.getElementById("edu_name").value));
-                       		            
-                       		            } ,
-                       		            error : function () {
-                       		            	$("#date2").append($("<div>").text(document.getElementById("edu_date").value));
-                       		      
-                       		            	$("#name2").append($("<div>").text(document.getElementById("edu_name").value));
-                       		 		
-                       		            } 
-                       		            
-                       		        });
-                       		     	date2+=document.getElementById("edu_date").value + ",";
-                       		     	name2+=document.getElementById("edu_name").value + ",";
-                       		     	document.getElementById("real_edu_date").value=date2;
-                       		  		document.getElementById("real_edu_name").value=name2;
-                    		     	
-                       		    })
-                       		});
-                  
+			                   	function add_eduitem(){
+			                   		var div = document.createElement('div');
+			                   		div.classList.add( 'edu' );
+			                   		div.innerHTML = document.getElementById('edu').innerHTML;
+			                   		document.getElementById('edus').appendChild(div);
+			                   	}
+			                   	function remove_eduitem(obj){
+			                   		document.getElementById('edus').removeChild(obj.parentNode);
+			                   	}
                        </script>
-                       
                     </div>
-                    
-                    
                 </div>
                 
                 
                 <div class="career">
-                    <div class="subject">경력 정보</div>
+                    <div class="subject">경력 정보 <input type="button" value=" + " class="plus" onclick="add_caritem()"></div>
                     <div class="career_ok">
-                        <input type="text" class="textmiddle1" id="career_date" placeholder="자격증 취득 날짜"/>
-                       <input type="text" class="textmiddle2" id="career_name" placeholder="자격증 이름"/>
-                       <input type="button" id="info_button3" value="+"/><br/>
-                       <div style="display:flex; flex-direction:row;">
-	                       <div id="date3"></div>
-	                       <div id="name3"></div>
-                       </div>
-                       <input type="hidden" id="real_career_date" name="career_year" value=""/>
-                       <input type="hidden" id="real_career_name" name="career_info" value=""/>
-                       <script type="text/javascript">
-                       		        var name3="";
-                       		        var date3="";
-                    
-                       		$(document).ready(function () {
-                       		    $('#info_button3').on('click', function () {
-                       		        // property를 설정한다.
-                       		        $.ajax({
-                       		            url : "list.jsp",
-                       		            type : "get",
-                       		            data : document.getElementById("career_date").value,
-                       		            success : function () {
-                       		            	$("#date3").append($("<div>").text(document.getElementById("career_date").value));
-                       		 
-                       		            	$("#name3").append($("<div>").text(document.getElementById("career_name").value));
-                       		            
-                       		            } ,
-                       		            error : function () {
-                       		            	$("#date3").append($("<div>").text(document.getElementById("career_date").value));
-                       		      
-                       		            	$("#name3").append($("<div>").text(document.getElementById("career_name").value));
-                       		 		
-                       		            } 
-                       		            
-                       		        });
-                       		     	date3+=document.getElementById("career_date").value + ",";
-                       		     	name3+=document.getElementById("career_name").value + ",";
-                       		     	document.getElementById("real_career_date").value=date3;
-                       		  		document.getElementById("real_career_name").value=name3;
-                    		     	
-                       		    })
-                       		});
-                  
-                       </script>
+                        
+                       <div id="careers">
+	                       	<div class="career">
+		                       <input type="text" class="textmiddle1" id="career_date" name="career_year" placeholder="경력 해당 년도"/>
+		                       <input type="text" class="textmiddle2" id="career_name" name="career_info" placeholder="회사 이름"/>
+		                       <input type="button" value="삭제" onclick="remove_caritem(this)"/>
+		                	</div>
                        
+                       </div>
+                       <script type="text/javascript">
+			                   	function add_caritem(){
+			                   		// pre_set 에 있는 내용을 읽어와서 처리..
+			                   		var div = document.createElement('div');
+			                   		div.classList.add( 'career' );
+			                   		div.innerHTML = document.getElementById('career').innerHTML;
+			                   		document.getElementById('careers').appendChild(div);
+			                   	}
+			                   	function remove_caritem(obj){
+			                   		// obj.parentNode 를 이용하여 삭제
+			                   		document.getElementById('careers').removeChild(obj.parentNode);
+			                   	}
+                       </script>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
             
             <div class="skill">
-                <div class="subject">Tech-stack</div>
-               
-                <div class="techs">
-                    <div class="tech">
-                        <div>
-                            <input type="text" class="abb" name="abb"/>
-                        </div>
-                        <div class="techinfo">
-                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-                            숫자
-                        </div>
-                    </div>
-
-                    <div class="tech">
-                        <div>
-                            <input type="text" class="abb" name="abb"/>
-                        </div>
-                        <div class="techinfo">
-                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-                            숫자
-                        </div>
-                    </div>
-                    
-                    <div class="tech">
-                        <div>
-                            <input type="text" class="abb" name="abb"/>
-                        </div>
-                        <div class="techinfo">
-                            <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-                            <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-                            숫자
-                        </div>
-                    </div>
-
+                <div class="subject">Tech-stack 
+					<input type="button" value=" + " class="plus" onclick="add_item()">
                 </div>
-
+                <div id="techs">
+	                <div class="tech">
+						<div>
+							<input type="text" class="abb" name="abb"/>
+						</div>
+						<div class="techinfo">
+							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+							<input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
+						</div>
+						<input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
+					</div>
+                </div>
             </div>
         
    </div>
@@ -386,6 +300,35 @@ function fn_removeImage() {
         <input type="submit" class="button2" value="등록하기"/>
         <div class="holl"></div>
     </div>
+
+					<div id="pre_set" style="display:none">
+							<div>
+						       <input type="text" class="abb" name="abb"/>
+						    </div>
+						    <div class="techinfo">
+						       <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
+						    </div>
+						       <input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
+					</div>
+					
+					<div id="career" style="display:none">
+	                       <input type="text" class="textmiddle1" id="career_date" name="career_year" placeholder="경력 해당 년도"/>
+	                       <input type="text" class="textmiddle2" id="career_name" name="career_info" placeholder="회사 이름"/>
+	                       <input type="button" value="삭제" onclick="remove_caritem(this)"/>
+	                </div>
+					
+					<div id="edu" style="display:none">
+                       <input type="text" class="textmiddle1" id="edu_date" name="gradu_year" placeholder="학력/교육 해당 년도"/>
+                       <input type="text" class="textmiddle2" id="edu_name" name="edu_info" placeholder="학력/교육 이름"/>
+                       <input type="button" value="삭제" onclick="remove_eduitem(this)"/>
+					</div>
+					
+					<div id="acq" style="display:none">
+                       <input type="text" class="textmiddle1" id="acq_date" name="acq_date" placeholder="자격증 취득 날짜"/>
+                       <input type="text" class="textmiddle2" id="acq_name" name="acq_name" placeholder="자격증 이름"/>
+                        <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
+                   	</div>
 </form>
 </body>
 </html>

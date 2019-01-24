@@ -215,19 +215,17 @@
 							 var tech_percent = "${dto.tech_percent}";
 							 var percentSplit = tech_percent.split(',');
 							 
-							 
-							 
-							 for (var i in abbSplit){
+							for (var i=0; i<abbSplit.length-1;i++){
 								 document.write('<div class="tech"><div class="abb">' + abbSplit[i] + '</div><div class="techinfo"><div class="tech_name">'+nameSplit[i]+ '</div>'
 						       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/>'
 						       		   + percentSplit[i] + '</div></div>'); 
-							 }
-						 
-						 </script>
+							}
+							 </script>
             	</div>
    				 </div>
 
     </div>
+</div>
     <footer>
         footer 고정
     </footer>
