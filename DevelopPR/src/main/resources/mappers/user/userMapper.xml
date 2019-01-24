@@ -93,4 +93,9 @@
 		 SELECT NVL(COUNT(*),0)
     	FROM pr_user WHERE NICK = #{userNick}
 	</select>
+	<update id="updateAuthKey">
+		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode}
+		WHERE EMAIL = #{userEmail}
+	</update>
+	
  </mapper>

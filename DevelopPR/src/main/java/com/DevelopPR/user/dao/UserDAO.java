@@ -40,6 +40,9 @@ public interface UserDAO
 	   // ajax 닉네임 중복체크
 	   public int checkNick(String userNick);
 	   
+	   // 회원가입 - 이메일 인증 에러시 재전송
+	   // 인증키 변경
+	   public void updateAuthKey(String reUserEmail, String userAuthCode);
 	   
 	/*   //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);

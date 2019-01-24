@@ -2,7 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<html>
 <head>
+<script>
+	function joiningErrorSubmit()
+	{
+		joinErrorForm.submit();
+	}
+</script>
     <style>
         #emailConfirm_header
         {
@@ -137,14 +144,16 @@
                             <span id="span3">귀하의 이메일 주소 유효성을 검사하기 위한 버튼이 포함된 이메일이 ${userEmail}(으)로 전송되었습니다. </span>
                         </li>
                         <li id="emailConfirm_li">
-                            <span id="span4">이메일을 수신하셨습니까? 수신하지 못한 경우 스팸 폴더를 확인하거나 3일 내에 <a href="${path}/user/joiningError">새 확인 이메일 요청</a>을 하십시오. 3일 내로 이메일 주소를 확인하지 않은 경우 새 계정을 만들어야 합니다.</span>
+                            <span id="span4">이메일을 수신하셨습니까? 수신하지 못한 경우 스팸 폴더를 확인하거나 3일 내에 <a href="javascript:joiningErrorSubmit();">새 확인 이메일 요청</a>을 하십시오. 3일 내로 이메일 주소를 확인하지 않은 경우 새 계정을 만들어야 합니다.</span>
                         </li>
                    </ul>
                    <button id="emailConfirm_main" type="button" onclick="location='${path}/main'">메인으로</button>
                    <button id="emailConfirm_login"type="button" onclick="location='${path}/user/login'">로그인</button> 
             </div>
             <div class="emailConfirm_sec_area3">
-                
+            <form name="joinErrorForm"id="joinErrorForm" action="${path}/user/joiningError" method="post">
+            	<input type="hidden" name="userEmail" value="${userEmail}"/> 
+            </form>
             </div>
 
     </section>
@@ -152,3 +161,4 @@
     </footer>
 
 </body>
+</html>

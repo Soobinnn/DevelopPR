@@ -171,4 +171,29 @@ public class UserServiceImpl implements UserService
 		   return userDao.checkNick(userNick);
 	   }
 
+	   // 회원가입 - 이메일 인증 에러시 재전송
+	   // 이메일체크 후 메일 재전송
+	   @Override
+	   public void reJoining(String reUserEmail) throws Exception
+	   {
+			// 임의의 authkey 생성
+		   String authkey = new TempKey().getKey(50, false);
+
+		   userDao.updateAuthKey(reUserEmail, authkey);
+			// mail 작성 관련 
+			MailHandler sendMail = new MailHandler(mailSender);
+			
+			sendMail.setSubject("[DevelopPR] (재전송) 회원가입 이메일 인증");
+			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
+					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
+					.append("<a href='http://localhost:8080/DevelopPR/user/joinConfirm?userEmail=")
+					.append(reUserEmail)
+					.append("&authkey=")
+					.append(authkey)					
+					.append("' target='_blenk'>이메일 인증 확인</a>")
+					.toString());
+					sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+					sendMail.setTo(reUserEmail);
+					sendMail.send();
+	   }
 }

@@ -117,4 +117,15 @@ public class UserDAOImpl implements UserDAO
 	  {
 		  return sqlSession.selectOne("user.checkNick", userNick);
 	  }
+	  
+	  // 회원가입 - 이메일 인증 에러시 재전송
+	   // 인증키 변경
+	   public void updateAuthKey(String reUserEmail, String userAuthCode)
+	   {
+			UserVO vo = new UserVO();   	
+		   	vo.setUserAuthCode(userAuthCode);
+		   	vo.setUserEmail(reUserEmail);
+		   	sqlSession.update("user.updateAuthKey", vo);
+	   }
+
 }

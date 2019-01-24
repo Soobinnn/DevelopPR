@@ -63,8 +63,6 @@ public class UserController
 	  
 	  String userEmail = vo.getUserEmail();
 	  String userName =vo.getUserName();
-	  System.out.println(userEmail);
-	  System.out.println(userName);
 	  model.addAttribute("userEmail", userEmail);
 	  model.addAttribute("userName", userName);
 	  return "user/joining";
@@ -196,6 +194,35 @@ public class UserController
 	 
 	  int checkNick =userService.checkNick(uservo.getUserNick());
 	  return checkNick;
+  }
+  
+  // 회원가입 - 이메일 인증 에러시 재전송 폼
+  @RequestMapping(value ="joiningError", method = RequestMethod.POST)
+  public String joingError(Model model, @RequestParam String userEmail)
+  {
+	  model.addAttribute("userEmail", userEmail);
+	  return "user/joiningError";
+  }
+  
+  //회원가입 - 이메일 인증 에러시 재전송
+  @RequestMapping(value="reJoining", method  = RequestMethod.POST)
+  public String reJoining(Model model,@RequestParam String userEmail, @RequestParam String reUserEmail) throws Exception
+  {  
+	  String _userEmail = userEmail;
+	  String _reUserEmail = reUserEmail; 
+	  System.out.println(_userEmail);
+	  System.out.println(reUserEmail);
+	  if(_userEmail.equals(_reUserEmail))
+	  {
+		  userService.reJoining(_reUserEmail);
+		  return "user/joining";
+	  }
+	  else
+	  {	 
+		  model.addAttribute("userEmail", userEmail);
+		  model.addAttribute("msg", "이메일이 일치하지 않습니다. 다시입력해주세요");
+		  return "user/joiningError";
+	  }
   }
   
 }
