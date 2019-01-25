@@ -9,7 +9,6 @@
 <%@ include file="../../views/include/tag_header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/resources/resume/resume.css'/>" />
-
 </head>
 <body>
 	<div class="container">
@@ -28,18 +27,29 @@
 					<c:if test="${dto.is_work==1}">재직중</c:if>
 				</div>
 				<div class="textshort2">포트폴리오</div>
-				<div>
-					<!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->
-					<form action="${path}/resume/following" name="follow_form" method="post">
+				<c:choose>
+				<c:when test="${chkFollow == 1}">
+				<div id="unfollow">
+					<!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->		
+					<form action="${path}/resume/unfollowing" name="unfollow_form" method="post" >
+						<input type="hidden" value="${dto.email}" name="email"> 
+						<input type="hidden" value="${sessionScope.userName}" name="follower_nick"> 
+						<input type="hidden" value="${dto.name}" name="following_nick">
+						<input type="submit" name="unfollow" value="언팔로우">
+					</form>
+				</div>
+				</c:when>
+				<c:otherwise>
+				<div id="follow">		
+					<form action="${path}/resume/following" name="follow_form" method="post" >
 						<input type="hidden" value="${dto.email}" name="email"> 
 						<input type="hidden" value="${sessionScope.userName}" name="follower_nick"> 
 						<input type="hidden" value="${dto.name}" name="following_nick"> 
-						<input type="submit" name="follow" id="follow" value="팔로우">
-					</form>
-					<form action="#" name="unfollow_form" method="post">
-						<input type="submit" name="unfollow" id="unfollow" value="언팔로우">
+						<input type="submit" name="follow"  value="팔로우" class="follow">
 					</form>
 				</div>
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div class="content">

@@ -5,7 +5,7 @@
 <configuration>
 
 	<typeAliases>
-		<package name="com.DevelopPR" />
-	</typeAliases>
+		<package name="com.DevelopPR" /> <!-- 매퍼의 resultType경로를 클래스명만 적어도 잡아준다.  -->
+	</typeAliases> 
 
 </configuration>

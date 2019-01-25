@@ -19,8 +19,18 @@ public interface UserDAO
 	   public UserVO viewlogin(UserVO vo);  
 	   //회원 로그아웃
 	   public void logout(HttpSession session);
+
+	   // 회원 이메일, 이름, 닉네임 (팔로우)
+	   public UserVO viewId(String userNick);
+
 	   // 아이디 찾기
 	   public String findId(String phone) throws Exception;
+	   
+	   // 이메일 인증확인
+	   public void userAuth(String userEmail) throws Exception;
+	   // 이메일 인증키 생성
+	   public void createAuthKey(String userEmail, String userAuthCode) throws Exception;
+	   
 	/*   //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정
@@ -29,13 +39,5 @@ public interface UserDAO
 	   public void deleteUser(String userId);
 	   //06. 비밀번호 체크
 	   public boolean checkPw(String userId, String userPw);
-	   
-	   
-	   
-	   
-	   
-	   // 이메일 인증
-	   public void userAuth(String userEmail) throws Exception;
-	   //인증키
-	   public void createAuthKey(String user_email, String user_authCode) throws Exception;*/
+	  */
 }

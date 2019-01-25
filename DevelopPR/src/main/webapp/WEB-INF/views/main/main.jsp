@@ -23,7 +23,7 @@
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
@@ -38,7 +38,7 @@
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/meeting'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
@@ -142,7 +142,7 @@
 								<h2><span>Kim SO JIN</span></h2>
 							</div>
 						</div>
-					<a href="${path}/resume/detail?email=so97so@naver.com"></a>
+					<a href="${path}/resume/detail?email=so97so@naver.com&name=${sessionScope.userName}"></a>
 				</figure>
 			</div>
 			<div class="PR8">

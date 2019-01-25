@@ -1,5 +1,8 @@
 package com.DevelopPR.resume.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +27,22 @@ public class ResumeServiceImpl implements ResumeService{
 	public void following(FollowVO vo) throws Exception {
 		resumeDAO.following(vo);
 	}
-	/*@Override
-	public FollowVO chkFollowing(FollowVO vo) throws Exception {
-		return resumeDAO.chkFollowing(vo);
-	}*/
+	@Override
+	public void unfollowing(FollowVO vo) throws Exception {
+		resumeDAO.unfollowing(vo);
+	}
+	@Override
+	public String is_following(Map<String, Object> map) throws Exception {
+		return resumeDAO.is_following(map);
+	}
+	@Override
+	public List<FollowVO> followingList(String follower_nick) throws Exception {
+		return resumeDAO.followingList(follower_nick);
+	}
+	@Override
+	public List<FollowVO> followerList(String following_nick) throws Exception {
+		return resumeDAO.followerList(following_nick);
+	}
 	
 	
 

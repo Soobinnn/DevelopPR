@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class GenerateCertNumber {
 	
+	// 생성할 난수 자리수
 	private int certNumLength = 6;
 	
 	public String executeGenerate() {

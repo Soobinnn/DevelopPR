@@ -48,11 +48,32 @@
         WHERE EMAIL = #{userEmail}
     </select>
     
+
+    <!--  회원 이메일, 이름, 닉네임 (팔로우) -->
+    <select id="viewId" resultType="UserVO">
+    	SELECT 
+    		NAME AS userName,
+            NICK AS userNick,
+            EMAIL AS userEmail
+        FROM pr_user
+        WHERE NICK = #{userNick}
+    </select>
+
     <!-- 아이디찾기 -->
     <select id="findId" parameterType="String" resultType="String">
     	SELECT EMAIL FROM pr_user
     	WHERE PHONE = #{phone}
     </select>
-    
-   
+     
+      <!-- 이메일 인증키 생성 -->
+    <update id="createAuthKey">
+		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode} 
+		WHERE Email = #{userEmail}
+	</update>
+	 
+	<!-- 이메일 인증 성공시 -->
+	<update id="userAuth">
+		UPDATE pr_user SET AUTHSTATUS = 1 
+		WHERE Email = #{userEmail}
+	</update>
  </mapper>
