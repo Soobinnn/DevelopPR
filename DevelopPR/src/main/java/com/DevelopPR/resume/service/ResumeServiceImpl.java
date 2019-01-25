@@ -14,16 +14,19 @@ public class ResumeServiceImpl implements ResumeService{
 	ResumeDAO resumeDAO;
 	
 	@Override
-	public List<ResumeVO> resumeList() throws Exception {
+	public List<ResumeVO> resumeList() throws Exception 
+	{
 		return resumeDAO.resumeList();
 	}
 	@Override
-	public void resumeRegistConfirm(ResumeVO vo) throws Exception {
+	public void resumeRegistConfirm(ResumeVO vo) throws Exception 
+	{
 		   System.out.println(vo.toString());
 	       resumeDAO.resumeRegistConfirm(vo);
 	}
 	@Override
-	public ResumeVO resumeDetail(String email) throws Exception {
+	public ResumeVO resumeDetail(String email) throws Exception 
+	{
 		return resumeDAO.resumeDetail(email);
 	}
 	

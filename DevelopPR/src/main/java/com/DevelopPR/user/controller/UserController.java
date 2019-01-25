@@ -47,12 +47,14 @@ public class UserController
   {
 	  return "user/policy";
   }
+  
   // 회원가입 페이지 이동
   @RequestMapping("joinForm")
   public String userJoinForm()
   {
 	  return "user/joinForm";
   }
+  
   // 회원 등록 
   @RequestMapping(value ="joining", method = RequestMethod.POST)
   public String userJoining(Model model, @ModelAttribute UserVO vo) throws Exception

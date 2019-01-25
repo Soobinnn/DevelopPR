@@ -26,7 +26,6 @@ public class MeetingController
 	@RequestMapping("/meeting")
 	public String meeting(Model model, HttpSession session) throws Exception
 	{
-		// 세션에서 본인 정보 가져온다.
 		UserVO userVo = (UserVO)session.getAttribute("login");
 		String userNick = userVo.getUserNick();
 		

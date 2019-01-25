@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService
 	           		session.setAttribute("userIs_seek", vo2.getUserIs_seek());
 	           		session.setAttribute("login", vo2);
 	           }
-	           System.out.println("세션등록안됨");
+	          
 	       } 
 	       return result;
 	   }

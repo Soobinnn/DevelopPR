@@ -33,6 +33,10 @@
 	function onMessage(evt)
 	{
 		var data = evt.data;
+		console.log(data);
+		// 서버 - > view 파싱
+		var obj = JSON.parse(data);
+		appendMessage(obj.message_content);
 		if (data.substring(0, 4) == "msg:") 
 		{
 			appendMessage(data.substring(4));
@@ -199,7 +203,7 @@
 			    <label for="tab1">Tab 1</label>
 			    <label for="tab2">Tab 2</label>
 			    <div class="tab1_content">
-			    	<div id="follower"><span id="fllw"><a href="${path}/meeting/베리" id="testss">베리</a></span></div>
+			    	<div id="follower"><span id="fllw"><a href="${path}/meeting/soso" id="testss">soso</a></span></div>
 			    	${viewId.userName}
 			    	${viewId.userEmail}
 			    	${viewId.userNick}
