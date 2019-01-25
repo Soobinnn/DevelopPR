@@ -67,28 +67,38 @@ public class UserServiceImpl implements UserService
 	   @Override
 	   public String authCheck(String phone) throws Exception 
 	   {
+		   // 6자리 난수 생성 객체 생성
 		   GenerateCertNumber tempNum = new GenerateCertNumber();
+		   // 6자리 난수를 받아온다.
 			String authNum = tempNum.executeGenerate();
+			// CoolSms 계정의 key값
 			String api_key = "NCSDWXRYDLI0MN1B";
+			// CoolSms 계정의 secret값
 			String api_secret = "T4LZGIPEXI5IUFCO036UF1G5B61CHYI9";
+			// Coolsms 객체 생성
 			Coolsms coolsms = new Coolsms(api_key, api_secret);
 			
+			// 맵에 받아온 phone 번호, 발신번호, 내용, 형식을 담는다.
 			HashMap<String, String> set = new HashMap<String, String>();
 			set.put("to", phone); //수신인 번호
 			set.put("from", "01071027146"); //발신인 번호
 			set.put("text", "인증번호는" + authNum + "입니다."); //메시지내용
 			set.put("type", "sms"); //보내는 형식
 			
+			// 맵에 담긴 정보로 메시지를 보낸후 result 변수로 받는다.
 			JSONObject result = coolsms.send(set);
+			// 메시지를 성공적으로 받으면 status를 받는다.
 			if((Boolean) result.get("status") == true) 
 			{			
 				System.out.println("성공");
+				// 성공했을경우 인증번호를 리턴
 				return authNum;
 			} 
 			else 
 			{
 				System.out.println("실패");
-				return "fail";
+				// 실패할 경우 fail 리턴 
+				return "fail"; 
 			}
 	   }
 	   
@@ -124,6 +134,7 @@ public class UserServiceImpl implements UserService
 	   @Override
 	   public String findId(String phone) throws Exception
 	   {
+		   // phone 번호로 email 찾아줌
 		   return userDao.findId(phone);
 	   }
 	   

@@ -142,7 +142,7 @@
 								<h2><span>Kim SO JIN</span></h2>
 							</div>
 						</div>
-					<a href="${path}/resume/detail?email=so97so@naver.com"></a>
+					<a href="${path}/resume/detail?email=so97so@naver.com&name=${sessionScope.userName}"></a>
 				</figure>
 			</div>
 			<div class="PR8">

@@ -2,12 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resume">
 
-	<insert id="registConfirm" >
-	   INSERT INTO PR_RESUME VALUES (
-	        #{motto}, #{is_work}, #{profile_photo}, #{name}, #{birthday}, #{cell_num}, #{cnum_is_open}, 
-			#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open}, #{prefer_place}, 
-			#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year}, #{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
-			)
+	<insert id="registConfirm">
+		INSERT INTO PR_RESUME VALUES (
+		#{motto}, #{is_work}, #{profile_photo}, #{name}, #{birthday}, #{cell_num},
+		#{cnum_is_open},
+		#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open},
+		#{prefer_place},
+		#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year},
+		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
+		)
 	</insert>
 	
 	<select id="resumeList" resultType="ResumeVO">
@@ -15,11 +18,44 @@
 		FROM pr_resume
 	</select>
 
-    <select id="resumeDetail" resultType="ResumeVO">
-          SELECT *
-          FROM PR_RESUME
-          WHERE email=#{email}
-    </select>
+	<select id="resumeDetail" resultType="ResumeVO">
+		SELECT *
+		FROM PR_RESUME
+		WHERE email=#{email}
+	</select>
+	
+	<!-- 팔로우 -->
+	<insert id="followMember">
+		INSERT INTO PR_FOLLOW(follower_nick, following_nick)
+		VALUES (#{follower_nick}, #{following_nick})
+	</insert>
+	
+	<!-- 언팔로우 -->
+	<delete id="unfollowMember">
+		DELETE FROM PR_FOLLOW
+		WHERE follower_nick = #{follower_nick}
+		AND following_nick = #{following_nick}
+	</delete>
+	
+	<!-- 팔로잉 하고 있는지 체크 -->
+	<select id="is_follow" parameterType="Map" resultType="String">
+		SELECT COUNT(*)
+		FROM PR_FOLLOW
+		WHERE follower_nick = #{follower_nick}
+		AND following_nick = #{following_nick}
+	</select>
+
+	<!-- 팔로잉 목록 -->
+	<select id="followingList" parameterType="String" resultType="FollowVO">
+		SELECT * FROM PR_FOLLOW
+		WHERE follower_nick = #{FOLLOWER_NICK}
+	</select>
+	
+	<!-- 팔로워 목록 -->
+	<select id="followerList" parameterType="String" resultType="FollowVO">
+		SELECT * FROM PR_FOLLOW
+		WHERE following_nick = #{following_nick}
+	</select>
 
 
 </mapper>

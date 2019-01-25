@@ -72,7 +72,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+						<a href="${path}/resume/detail?email=${list.email}&name=${sessionScope.userName}"></a>
 					</figure>
 				</div>
 		</c:forEach>
@@ -100,7 +100,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+						<a href="${path}/resume/detail?email=${list.email}&name=${sessionScope.userName}"></a>
 					</figure>
 				</div>
 		</c:forEach>
@@ -127,7 +127,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+						<a href="${path}/resume/detail?email=${list.email}&name=${sessionScope.userName}"></a>
 					</figure>
 				</div>
 		</c:forEach>

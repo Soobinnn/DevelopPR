@@ -33,4 +33,6 @@
 	WHERE SEND_USER_ID = #{userNick}
 </select>
 
+
+
 </mapper>

@@ -87,8 +87,11 @@ public class UserController
   public ModelAndView sendSMS(@RequestParam String phone) throws Exception 
   {
 	  ModelAndView mav = new ModelAndView();
+	  // jsp에서 인증번호를 비교하기위해 임시로 인증번호를 받아온다.
 	  String tempAuthNum = userService.authCheck(phone);
+	  // phone번호 다시 jsp에 띄우기 위해 phone번호 모델에 담고
 	  mav.addObject("phone", phone);
+	  // 임시 인증번호도 담는다.
 	  mav.addObject("authNum", tempAuthNum);
 	  mav.setViewName("user/authCheck");
 	  
@@ -96,12 +99,14 @@ public class UserController
   }
   // 아이디 찾기 결과
   @RequestMapping("findIdResult")
-  public ModelAndView findId(String phone) throws Exception 
-  {
-	  System.out.println(phone);
+  public ModelAndView findId(String phone) throws Exception {
+
 	  ModelAndView mav = new ModelAndView();
+	  // DB에서 이메일을 찾아 이메일 가져온다.
 	  String email = userService.findId(phone);
+	  // email 담고,
 	  mav.addObject("email", email);
+	  // findIdResult.jsp로 넘긴다.
 	  mav.setViewName("user/findIdResult");
 	  
 	  return mav;
@@ -119,6 +124,8 @@ public class UserController
   public ModelAndView Login(String selectedId)
   {
 	  ModelAndView mv = new ModelAndView();
+	  // 이메일 찾고나서 해당 이메일 라디오 버튼 누르고 로그인 페이지로 갔을때
+	  // 이메일 입력란에 해당 이메일 바로 보여주기 위해 selectedId 사용
 	  mv.addObject("selectedId", selectedId);
 	  mv.setViewName("user/login");
 	  
