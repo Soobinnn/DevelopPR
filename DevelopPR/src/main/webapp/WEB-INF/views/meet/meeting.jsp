@@ -88,6 +88,7 @@
 		});
 
 		/*  $('#follower').click(function(){
+
 			 var nick = $('#fllw').val();
 			 var _nick = "userNick="+nick;
 			 console.log(nick);
@@ -102,10 +103,15 @@
 					console.log(result);
 				}
 			});
-		});  */
+		});   */
+/* 		$('#testss').on('click', function(e){
+			
+		}); */
+		
 	});
 </script>
 </head>
+
 <body>
 	<div class="container">
 		<div id="list">

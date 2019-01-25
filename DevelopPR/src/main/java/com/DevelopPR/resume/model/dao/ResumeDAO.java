@@ -1,5 +1,7 @@
 package com.DevelopPR.resume.model.dao;
 
+import java.util.List;
+
 import com.DevelopPR.resume.model.dto.ResumeVO;
 
 import java.util.List;
@@ -9,6 +11,9 @@ import com.DevelopPR.resume.model.dto.FollowVO;
 
 public interface ResumeDAO {
 	
+	//이력서 목록보기
+	public List<ResumeVO> resumeList() throws Exception;
+		
 	//이력서 등록 처리
 	public void resumeRegistConfirm(ResumeVO vo) throws Exception;
 	

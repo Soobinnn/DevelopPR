@@ -191,6 +191,8 @@
 						</script>
 					</div>
 
+
+
 					<div class="career">
 						<div class="subject">경력/교육 사항</div>
 						<script type="text/javascript">
@@ -242,5 +244,10 @@
 
 		</div>
 		<footer> footer 고정 </footer>
+    </div>
+</div>
+    <footer>
+        footer 고정
+    </footer>
 </body>
 </html>

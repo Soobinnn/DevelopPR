@@ -1,6 +1,7 @@
 package com.DevelopPR.resume.model.dao;
 
 import java.util.List;
+
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -16,6 +17,11 @@ public class ResumeDAOImpl implements ResumeDAO{
 	@Inject
 	   SqlSession SqlSession;
 	 
+	@Override
+	public List<ResumeVO> resumeList() throws Exception {
+		return SqlSession.selectList("resume.resumeList");
+	}
+	
 	@Override
 	public void resumeRegistConfirm(ResumeVO vo) throws Exception {
 		System.out.println(vo.toString());

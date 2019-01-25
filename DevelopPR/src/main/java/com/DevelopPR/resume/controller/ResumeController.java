@@ -4,6 +4,7 @@ import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -34,21 +35,33 @@ public class ResumeController {
 	@Inject
 	ResumeService resumeService; 
 	
-	//이력서 등록 폼
+	//이력서 목록 폼 보기
+	@RequestMapping("list")
+	public ModelAndView resumeList() throws Exception{	
+
+	 List<ResumeVO> list = resumeService.resumeList();
+	
+	 ModelAndView mav = new ModelAndView();
+     mav.addObject("list", list); 
+     mav.setViewName("resume/list");
+     System.out.println(list);
+	   return mav;
+	}
+	
+	//이력서 등록 폼 보기
    @RequestMapping(value="regist", method=RequestMethod.GET)
    public String resumeRegist() throws Exception{
-	  
       return "resume/regist";
    }
    
    //이력서 등록 처리
    @RequestMapping(value="registConfirm", method=RequestMethod.POST)
    public String resumeRegistConfirm(@ModelAttribute ResumeVO vo, @RequestParam("profile_photo") String file) throws Exception{
-	  System.out.println(vo.toString());
+	  
 	  vo.setProfile_photo(file.toString());
-	  System.out.println(vo.toString());
 	  resumeService.resumeRegistConfirm(vo);
-      return "resume/registConfirm";
+	  
+      return "redirect:detail?email="+ vo.getEmail();  
    }
    
    //이력서 상세보기 폼

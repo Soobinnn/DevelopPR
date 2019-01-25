@@ -1,29 +1,22 @@
 package com.DevelopPR.user.controller;
 
-import com.DevelopPR.util.*;
-import java.util.HashMap;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-
-import org.json.simple.JSONObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.user.service.UserService;
@@ -91,7 +84,8 @@ public class UserController
   }
   // 휴대폰인증
   @RequestMapping("phoneCheck")
-  public ModelAndView sendSMS(@RequestParam String phone) throws Exception {
+  public ModelAndView sendSMS(@RequestParam String phone) throws Exception 
+  {
 	  ModelAndView mav = new ModelAndView();
 	  // jsp에서 인증번호를 비교하기위해 임시로 인증번호를 받아온다.
 	  String tempAuthNum = userService.authCheck(phone);
@@ -106,6 +100,7 @@ public class UserController
   // 아이디 찾기 결과
   @RequestMapping("findIdResult")
   public ModelAndView findId(String phone) throws Exception {
+
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
 	  String email = userService.findId(phone);
@@ -148,8 +143,18 @@ public class UserController
       { 
     	  // 로그인 성공
           // main.jsp로 이동
-          mav.addObject("msg", "success");
-          mav.setViewName("main/main");
+    	  boolean authStatus = userService.checkAuthStatus(vo.getUserEmail());
+    	  if(authStatus)
+    	  {
+    		  mav.addObject("msg", "success");
+              mav.setViewName("main/main");
+    	  }
+    	  // 이메일 인증안했을 경우 로그인
+    	  else
+    	  {
+    		  mav.addObject("userEmail", vo.getUserEmail());
+    		  mav.setViewName("user/joining");
+    	  }
       } 
       else 
       {
@@ -182,5 +187,22 @@ public class UserController
   		model.addAttribute("userEmail", userEmail);
   		return "user/joinConfirm";
   }
-
+  // 회원가입 - ajax 이메일 중복 체크
+  @RequestMapping(value ="checkUse", method = RequestMethod.POST)
+  @ResponseBody
+  public int checkUse(Model model, @ModelAttribute UserVO uservo)
+  {
+	  int checkMail =userService.checkMail(uservo.getUserEmail());
+	  return checkMail;
+  }
+  // 회원가입 - ajax 닉네임 중복 체크
+  @RequestMapping(value ="checkNick", method = RequestMethod.POST)
+  @ResponseBody
+  public int checkNick(Model model, @ModelAttribute UserVO uservo)
+  {
+	 
+	  int checkNick =userService.checkNick(uservo.getUserNick());
+	  return checkNick;
+  }
+  
 }

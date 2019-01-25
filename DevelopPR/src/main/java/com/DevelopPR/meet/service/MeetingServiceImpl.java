@@ -28,7 +28,7 @@ public class MeetingServiceImpl implements MeetingService
 	{
 		return meetingDao.isRoom(vo);
 	}
-	/* 메시지 전송 */
+	/* 메시지 전송 내용 저장 */
 	@Override
 	public void insertMessage(MessageVO vo) throws Exception
 	{
