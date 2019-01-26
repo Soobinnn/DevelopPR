@@ -46,7 +46,7 @@ public class MeetingController
 		model.addAttribute("followingList", followingList);
 		model.addAttribute("followerList", followerList);
 		// 모델에 넣어서 전송합니다.
-		return "meet/meeting";
+		return "basic/meet/meeting";
 	}
 	
 	@RequestMapping("/meeting/{userNick}")
@@ -57,7 +57,7 @@ public class MeetingController
 		UserVO viewId = userService.viewId(userNick);
 		
 		model.addAttribute("viewId", viewId);
-		return "meet/meeting";	
+		return "basic/meet/meeting";	
 	}
 	
 	

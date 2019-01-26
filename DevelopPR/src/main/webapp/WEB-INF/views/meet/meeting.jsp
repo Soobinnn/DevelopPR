@@ -113,7 +113,10 @@
 /* 		$('#testss').on('click', function(e){
 			
 		}); */
-		
+		$('.mlist').click(function(){
+			var tests = $('.mlist').children('.up').children('.m_name').text();
+			console.log(tests);
+		});
 	});
 </script>
 </head>
@@ -126,21 +129,6 @@
 					type="button" id="s_button" value="검색" />
 			</div>
 			<div class="listAll">
-				<div class="mlist">
-					<div class="up">
-						<div class="m_name">홍길동</div>
-						<div class="o"></div>
-						<div class="m_lastday">2019-01-16</div>
-					</div>
-					<div class="m_info">안녕</div>
-				</div>
-				<div class="mlist">
-					<div class="up">
-						<div class="m_name">이름2</div>
-						<div class="m_lastday">마지막 채팅 날짜2</div>
-					</div>
-					<div class="m_info">마지막 채팅 내용2</div>
-				</div>
 				<c:forEach var="row" items="${list}">
 					<div class="mlist">
 						<div class="up">

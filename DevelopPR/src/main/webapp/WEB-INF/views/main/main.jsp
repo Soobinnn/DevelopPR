@@ -1,53 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../../views/include/tag_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>DevelopPR</title>
-<%@ include file="../../views/include/tag_header.jsp" %>
 </head>
 <body>
 <div class="container">
-<header class="main_header">
-		DevelopPR
-</header>
-	<nav id="min"class="top_nav">
-		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
-		<span id="navspan">MENU</span>
-	</nav>
-	<c:choose>
-	<c:when test="${sessionScope.userEmail == null}">
-	<nav id="full" class="top_nav">
-		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
-		<ul class="fullmenu">
-			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
-			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"></li>
-			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
-		</ul>
-	</nav>
-	</c:when>
-	<c:otherwise>
-	<nav id="full" class="top_nav">
-		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
-		<ul class="fullmenu">
-			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
-			<li class="fullmenulist"><a href='${path}/resume/list'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='${path}/meeting'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"><a href='${path}/resume/regist'>이력서 등록</a></li>
-			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
-		</ul>
-	</nav>
-	</c:otherwise>
-	</c:choose>
-    <div class="test"></div>
 	<section class="main_section">
 		<div class="main1">		
 			<div class="PR1">
@@ -181,9 +141,6 @@
 		<div class="detail">
 		</div>
 	</section>
-	<footer>
-		푸터영역
-	</footer>
 </div>
 </body>
 </html>

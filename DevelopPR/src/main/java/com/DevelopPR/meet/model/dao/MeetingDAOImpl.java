@@ -26,9 +26,9 @@ public class MeetingDAOImpl implements MeetingDAO
 	@Override
 	public ChatRoomVO isRoom(ChatRoomVO vo) throws Exception
 	{
-		ChatRoomVO roomvo = null;
-		roomvo = session.selectOne("meet.isRoom", vo);
-		return roomvo;
+		ChatRoomVO roomVO = null;
+		roomVO = session.selectOne("meet.isRoom", vo);
+		return roomVO;
 	}
 	/* 메시지 전송 내용 저장 */
 	@Override
@@ -50,6 +50,7 @@ public class MeetingDAOImpl implements MeetingDAO
 	@Override
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
 	{
+		/*List<ChatRoomVO> list = new List<ChatRoomVO>();*/
 		return session.selectList("meet.listChatRoom", userNick);
 	
 	}

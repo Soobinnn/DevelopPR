@@ -1,10 +1,14 @@
 package com.DevelopPR.meet.model.dto;
 
+import java.util.Date;
+
 public class ChatRoomVO 
 {
 	private String chatroom_id;
 	private String send_user_id;
 	private String receiver_user_id;
+	private Date lastTime;
+	private String lastMessage;
 	
 	public String getChatroom_id() {
 		return chatroom_id;
@@ -23,6 +27,18 @@ public class ChatRoomVO
 	}
 	public void setReceiver_user_id(String receiver_user_id) {
 		this.receiver_user_id = receiver_user_id;
+	}
+	public Date getLastTime() {
+		return lastTime;
+	}
+	public void setLastTime(Date lastTime) {
+		this.lastTime = lastTime;
+	}
+	public String getLastMessage() {
+		return lastMessage;
+	}
+	public void setLastMessage(String lastMessage) {
+		this.lastMessage = lastMessage;
 	}
 	
 	

@@ -19,7 +19,7 @@ public class HomeController
 	@RequestMapping(value="main", method=RequestMethod.GET)
 	public String main() throws Exception
 	{
-	    return "main/main";
+	    return "basic/main/main";
 	 }
 	   
 }

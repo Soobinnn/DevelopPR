@@ -223,10 +223,6 @@ height : 70px;
     </form>
 </ul>
      </div>           
-                
-                
-
-           
            <!--  <li id='liSearchOption'>
                 <div>
                     <select id='selSearchOption' >
