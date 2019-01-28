@@ -5,6 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>DevelopPR</title>
+<script>
+	var socket = null;
+	var success = null;
+	success = '${msg}';
+	var nick = '${login.userNick}';
+	
+	function connect() 
+	{
+		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
+		
+	
+	}
+	
+	$(document).ready(function() 
+	{
+		console.log("msg의 상태가??" +success);
+		console.log("세션의 상태가..?" + nick);
+		if(nick==null || success == null)
+		{
+			disconnect();
+			console.log("연결 끊김.");
+		}
+		else
+		{
+			connect();
+			console.log("연결됨.");
+		}
+	})
+</script>
 </head>
 <body>
 <div class="container">

@@ -33,11 +33,14 @@
 	function onMessage(evt) {
 		var data = evt.data;
 
-		console.log(data);
+		console.log("서버로부터 받은 메시지 : "+data);
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
 	/* 	appendMessage(obj.message_content); */
 		appendMessage(obj);
+	
+		//채팅 리스트
+		getList(obj);
 		if (data.substring(0, 4) == "msg:") 
 		{
 			appendMessage(data.substring(4));
@@ -66,7 +69,6 @@
 		/* socket.send("msg:" + msg); */
 		socket.send(JSON.stringify(message));
 		$("#chat_text").val("");
-		getList(message);
 	}
 	function appendMessage(msg) 
 	{
@@ -129,15 +131,18 @@
 	        	 for(var i in data)
 	        	 {
 	        		 getlist = data[i];
-	        		 console.log(getlist);
+	        		/* 	 console.log(getlist); */
+	        		 viewList(getlist);
 	        	 }
 	         }
 		})
 	}
 	function viewList(getlist)
 	{
-		var out ;
+		var date = getlist.lastTime;
 		
+		
+		$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"');\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
 	}
 	$(document).ready(function() 
 	{
