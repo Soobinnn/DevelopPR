@@ -21,7 +21,7 @@
 	$(document).ready(function() 
 	{
 		console.log("msg의 상태가??" +success);
-		console.log("세션의 상태가..?" + nick);
+		console.log("세션의 상태가..?" +nick);
 		if(nick==null || success == null)
 		{
 			disconnect();
