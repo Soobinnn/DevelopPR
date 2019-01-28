@@ -25,6 +25,7 @@
             <div class="textshort1">
 		       <c:if test="${dto.is_work==0}">구직중</c:if>
 		       <c:if test="${dto.is_work==1}">재직중</c:if>
+		       
 	       	</div>
             <div class="textshort2">포트폴리오</div>
         </div>
@@ -166,7 +167,7 @@
                     </div>
 
                     <div class="edu">
-                        <div class="subject">학력 사항</div>
+                        <div class="subject">학력/교육 사항</div>
                             <script type="text/javascript">
                       
                         	 var gradu_date = "${dto.gradu_year}";      
@@ -182,7 +183,7 @@
                     </div>
 
                     <div class="career">
-                        <div class="subject">경력/교육 사항</div>
+                        <div class="subject">경력 사항</div>
                                <script type="text/javascript">
                       
 	                        	 var c_date = "${dto.career_year}";      
@@ -193,7 +194,7 @@
 								
 	 							for (var i in cdateSplit){
 									 document.write('<div class="acq"><div class="acqdate">' + cdateSplit[i] +'</div><div class="acqname">'+ cnameSplit[i]+ '</div></div>'); 
-								 }
+								}
 	                          </script>
                     </div>                
                 </div>

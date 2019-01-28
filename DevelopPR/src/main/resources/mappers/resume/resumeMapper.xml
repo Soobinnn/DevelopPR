@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resume">
+	
+	<select id="resumeList" resultType="ResumeVO">
+		<include refid="pagingHeader"></include>
+            SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo
+            FROM pr_resume
+            <include refid="search"></include>
+        <include refid="pagingFooter"></include>    
+	</select>
+	
+	<select id="countArticle" resultType="int">
+       SELECT COUNT(*)  FROM pr_resume
+       <include refid="search"></include>
+    </select>
+	
 
 	<insert id="registConfirm" >
 	   INSERT INTO PR_RESUME VALUES (
@@ -10,16 +24,58 @@
 			)
 	</insert>
 	
-	<select id="resumeList" resultType="ResumeVO">
-		SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo
-		FROM pr_resume
-	</select>
-
     <select id="resumeDetail" resultType="ResumeVO">
           SELECT *
           FROM PR_RESUME
           WHERE email=#{email}
     </select>
 
+   <update id="modify">
+          UPDATE pr_resume 
+          SET 
+          motto = #{motto}, is_work=#{is_work}, profile_photo=#{profile_photo}, name=#{name}, birthday=#{birthday}, cell_num=#{cell_num}, cnum_is_open=#{cnum_is_open}, 
+		  email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
+		  acq_date=#{acq_date}, acq_name=#{acq_name}, gradu_year=#{gradu_year}, edu_info=#{edu_info}, 
+		  career_year=#{career_year}, career_info=#{career_info}, abb=#{abb}, tech_name=#{tech_name}, tech_percent=#{tech_percent}, age=#{age}
+          WHERE email=#{email}
+    </update>
 
+
+	<sql id="search">
+	    <choose>
+	        <!-- 검색옵션이 전체 검색일 경우 -->
+	        <when test="searchOption == 'all'">
+	        WHERE    
+	            (
+	            name like '%'||#{keyword}||'%'
+	            OR prefer_place like '%'||#{keyword}||'%'
+	            OR acq_name like '%'||#{keyword}||'%'
+	            OR tech_name like '%'||#{keyword}||'%'
+	            )
+	        </when>
+	    
+	        <!-- 전체 검색이 아닐 경우 -->
+	        <otherwise>
+	            WHERE ${searchOption} like '%'||#{keyword}||'%'
+	        </otherwise>
+	    </choose>
+	</sql>
+	
+		<!-- 페이징 sql -->
+	<sql id="pagingHeader">
+	    SELECT * FROM (
+	        SELECT ROWNUM AS rn, A.* FROM (
+	</sql>
+	
+	<sql id="pagingFooter">
+	        ) A
+	    ) WHERE rn BETWEEN #{start} AND #{end}
+	</sql>
+	
+	<select id="mainList" resultType="ResumeVO">
+		SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo 
+		FROM pr_resume 
+		ORDER BY dbms_random.value
+	</select>
+	
 </mapper>
