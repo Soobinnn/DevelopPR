@@ -4,33 +4,41 @@
 
 <!-- 채팅방 생성 -->
 <insert id = "createRoom">
-	INSERT INTO PR_CHATROOM (SEND_USER_ID , RECEIVER_USER_ID) 
-	values(#{send_user_id}, #{receiver_user_id})
+	INSERT INTO PR_CHATROOM (CHATROOM_ID, SEND_USER_ID , RECEIVER_USER_ID) 
+	values(#{chatroom_id}, #{send_user_id}, #{receiver_user_id})
 </insert>
 
-<!--  채팅방 목록-->
+<!-- 채팅시 채팅방 목록-->
 <select id ="isRoom" resultType = "ChatRoomVO">
 	SELECT * FROM PR_CHATROOM 
-	WHERE SEND_USER_ID = #{send_user_id} and RECEIVER_USER_ID = #{receiver_user_id} 
+	WHERE chatroom_id LIKE '%'||#{send_user_id}||'%' AND chatroom_id LIKE '%'||#{receiver_user_id}||'%' 
 </select>
 
 <!-- 메세지 전송-->
 <insert id = "insertMessage">
-	INSERT INTO PR_MESSAGE (MESSAGE_SENDER , MESSAGE_RECEIVER, MESSAGE_CONTENT, MESSAGE_SENDTIME,
-	CHATROOM_CHATROOM_ID, USER_user_id , RECEIVER_USER_ID)
-	VALUES (#{message_sender}, #{message_receiver}, #{message_content},SYSDATE+9/24, #{chatroom_chatroom_id} , #{send_user_id}, #{receiver_user_id})
+	INSERT INTO PR_MESSAGE (CHATROOM_CHATROOM_ID, MESSAGE_SENDER , MESSAGE_RECEIVER, MESSAGE_CONTENT, MESSAGE_SENDTIME,
+	 SEND_USER_ID , RECEIVER_USER_ID, SEND_USER_NAME, RECEIVER_USER_NAME)
+	VALUES (#{chatroom_id},#{message_sender}, #{message_receiver}, #{message_content},SYSDATE+9/24, #{send_user_id}, #{receiver_user_id}, #{send_user_name}, #{receiver_user_name})
 </insert>
 
 <!-- 개인 채팅방 입장 -->
 <select id = "getRoom" resultType = "MessageVO">
-	SELECT USER_user_id from PR_MESSAGE 
-	WHERE RECEIVER_USER_ID = #{receiver_user_id}
+	SELECT * from PR_MESSAGE 
+	WHERE chatroom_chatRoom_id = #{chatroom_id}
 </select>
 
 <!-- 채팅방 전체목록 -->
 <select id ="listChatRoom" resultType ="ChatRoomVO">
-	SELECT * FROM PR_CHATROOM
-	WHERE SEND_USER_ID = #{userNick}
+	SELECT chatroom_id 
+       ,send_user_id
+       ,receiver_user_id
+       ,(select message_content from pr_message where chatroom_chatroom_id = a.chatroom_id ORDER BY MESSAGE_SENDTIME DESC FETCH FIRST 1 ROW ONLY) as lastMessage
+       ,(select message_sendtime from pr_message where chatroom_chatroom_id = a.chatroom_id ORDER BY MESSAGE_SENDTIME DESC FETCH FIRST 1 ROW ONLY) as lastTime
+	FROM pr_chatroom a
+	WHERE chatroom_id LIKE '%'||#{userNick}||'%'
+	ORDER BY LASTTIME DESC
 </select>
+
+
 
 </mapper>

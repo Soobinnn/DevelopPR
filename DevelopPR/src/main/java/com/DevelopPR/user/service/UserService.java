@@ -33,6 +33,18 @@ public interface UserService
 	   // 휴대폰 인증
 	   public String authCheck(String phone) throws Exception;
 	   
+	   // 로그인시 이메일 인증 여부 체크
+	   public boolean checkAuthStatus(String userEmail);
+	   
+	   
+	   // ajax 이메일 중복체크
+	   public int checkMail(String userEmail);
+	   // ajax 닉네임 중복체크
+	   public int checkNick(String userNick);
+	   
+	   // 회원가입 - 이메일 인증 에러시 재전송
+	   // 이메일체크 후 메일 재전송
+	   public void reJoining(String reUserEmail) throws Exception;
 	  /* //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정

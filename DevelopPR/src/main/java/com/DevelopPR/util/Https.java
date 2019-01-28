@@ -12,17 +12,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-/*
- * Https.class
- * Https request, response�? �?리하?�� class ?��?��?��.
- */
+
 public class Https
 {
-	/*
-	 * postRequest (POST)
-	 * @param StringBuffer : data 
-	 * @param String : image
-	 */
+
 	@SuppressWarnings("unchecked")
 	public JSONObject postRequest(String url_string, HashMap<String, String> params) {
 		JSONObject obj = new JSONObject();
@@ -39,11 +32,11 @@ public class Https
 			params.put("signature", signature);
 			params.put("timestamp", timestamp);
 
-			// data ?��?�� �? ?��?��?�� 구분?�� ?��?�� delimiter ?��?��
+			
 			StringBuffer postDataBuilder = new StringBuffer();
 			postDataBuilder.append(delimiter);
 
-			// params?�� image�? ?��?���? �??��?�� ?��?�� request�? ?��르게 보낸?��
+		
 			String image = null;
 			String image_path = null;
 			for (Entry<String, String> entry : params.entrySet()) {
@@ -86,13 +79,13 @@ public class Https
 				FileInputStream fileStream = new FileInputStream(image_path + image);
 				outputStream.writeUTF(postDataBuilder.toString());
 				
-				// ?��?��?��?�� ?��?�� ?��?��
+				
 				int maxBufferSize = 1024;
 				int bufferSize = Math.min(fileStream.available(), maxBufferSize);
 				byte[] buffer = new byte[bufferSize];
-				// 버퍼 ?��기만?�� ?��?��로�??�� 바이?�� ?��?��?���? ?��?��?��
+				
 				int byteRead = fileStream.read(buffer, 0, bufferSize);
-				// ?��?��
+				
 				while (byteRead > 0) {
 					outputStream.write(buffer);
 					bufferSize = Math.min(fileStream.available(), maxBufferSize);
@@ -110,7 +103,7 @@ public class Https
 			String inputLine; 
 			int response_code = connection.getResponseCode();
 			BufferedReader in = null;
-			// response ?���? 
+		
 			if (response_code != 200) {
 				in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
 			} else {
@@ -176,20 +169,20 @@ public class Https
 			BufferedReader in = null;
 			int response_code = connection.getResponseCode();
 			if (response_code != 200) {
-				// ?��류발?��?��
+				
 				in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
 			} else {
 				in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			}
 
 			String response = null;
-			String inputLine; // ?��버로 �??�� 받�? response�? 받을 �??��
+			String inputLine; 
 			while ((inputLine = in.readLine()) != null) {
 				response = inputLine;
 			}
 
 			if (response != null) {
-				// response �? object ?�� array?�� ?��?�� parse�? ?��르게?��?��.
+				
 				try {
 					obj = (JSONObject) JSONValue.parse(response);
 				} catch (Exception e) {
@@ -215,20 +208,14 @@ public class Https
 		return obj;
 	}
 
-	/*
-     * ?��로드?�� ?��?��?�� ???�� 메�? ?��?��?���? ?��?��?��?��.
-     * @param key : ?��버에?�� ?��?��?�� ?��?�� �??���?
-     * @param fileName : ?��버에?�� ???��?�� ?��?���?
-     */
+	
 	public String setFile(String key, String fileName) {
 		return "Content-Disposition: form-data; name=\"" + key
 				+ "\";filename=\"" + fileName
 				+ "\"\r\nContent-type: image/jpeg;\r\n";
 	}
 
-	/*
-	 * String?�� POST ?��?��?�� 맞게 Input 
-	 */
+	
 	public StringBuffer setPostData(StringBuffer builder, String key, String value, String delimiter) {
 		try {
 			builder.append(setValue(key, value));
@@ -240,9 +227,7 @@ public class Https
 		return builder;
 	}
 
-	/*
-	 * String?�� GET 방식?���? �?�?
-	 */
+	
 	public String setGetData(String data, String key, String value, String charSet) {
 		try {
 			data += "&"
@@ -310,11 +295,7 @@ public class Https
 		return timestamp;
 	}
 
-	/*
-     * Map ?��?��?���? Key?? Value�? ?��?��?��?��.
-     * @param key : ?��버에?�� ?��?��?�� �??���?
-     * @param value : �??��명에 ?��?��?��?�� ?��?�� �?
-     */
+	
 	public String setValue(String key, String value) {
 		return "Content-Disposition: form-data; name=\"" + key + "\"\r\n\r\n"+ value;
 	}

@@ -28,7 +28,7 @@ public class MeetingServiceImpl implements MeetingService
 	{
 		return meetingDao.isRoom(vo);
 	}
-	/* 메시지 전송 */
+	/* 메시지 전송 내용 저장 */
 	@Override
 	public void insertMessage(MessageVO vo) throws Exception
 	{
@@ -37,9 +37,9 @@ public class MeetingServiceImpl implements MeetingService
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public String getRoom(ChatRoomVO vo) throws Exception
+	public List<MessageVO> getRoom(String chatroom_id)
 	{
-		return meetingDao.getRoom(vo);
+		return meetingDao.getRoom(chatroom_id);
 	}
 	
 	/*개인 채팅방 전체 목록*/

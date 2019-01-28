@@ -43,7 +43,8 @@
             NAME AS userName,
             NICK AS userNick,
             EMAIL AS userEmail,
-            IS_SEEK AS userIs_seek
+            IS_SEEK AS userIs_seek,
+            AUTHSTATUS AS userAuthStatus
         FROM pr_user
         WHERE EMAIL = #{userEmail}
     </select>
@@ -76,4 +77,25 @@
 		UPDATE pr_user SET AUTHSTATUS = 1 
 		WHERE Email = #{userEmail}
 	</update>
+	<!-- 로그인시 이메일 인증 여부 체크 -->
+	<select id ="checkAuthStatus" resultType="int">
+		SELECT AUTHSTATUS
+		FROM pr_user
+		WHERE EMAIL = #{userEmail}
+	</select>
+	<!-- ajax 이메일 중복 체크 -->
+	<select id ="checkMail" resultType="int">
+		 SELECT NVL(COUNT(*),0)
+    	FROM pr_user WHERE EMAIL = #{userEmail}
+	</select>
+	<!-- ajax 닉네임 중복 체크 -->
+	<select id ="checkNick" resultType="int">
+		 SELECT NVL(COUNT(*),0)
+    	FROM pr_user WHERE NICK = #{userNick}
+	</select>
+	<update id="updateAuthKey">
+		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode}
+		WHERE EMAIL = #{userEmail}
+	</update>
+	
  </mapper>

@@ -28,6 +28,29 @@
 		       
 	       	</div>
             <div class="textshort2">포트폴리오</div>
+            <c:choose>
+            <c:when test="${chkFollow == 1}">
+            <div id="unfollow">
+               <!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->      
+               <form action="${path}/resume/unfollowing" name="unfollow_form" method="post" >
+                  <input type="hidden" value="${dto.email}" name="email"> 
+                  <input type="hidden" value="${sessionScope.userName}" name="follower_nick"> 
+                  <input type="hidden" value="${dto.name}" name="following_nick">
+                  <input type="submit" name="unfollow" value="언팔로우">
+               </form>
+            </div>
+            </c:when>
+            <c:otherwise>
+            <div id="follow">      
+               <form action="${path}/resume/following" name="follow_form" method="post" >
+                  <input type="hidden" value="${dto.email}" name="email"> 
+                  <input type="hidden" value="${sessionScope.userName}" name="follower_nick"> 
+                  <input type="hidden" value="${dto.name}" name="following_nick"> 
+                  <input type="submit" name="follow"  value="팔로우" class="follow">
+               </form>
+            </div>
+            </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="content">

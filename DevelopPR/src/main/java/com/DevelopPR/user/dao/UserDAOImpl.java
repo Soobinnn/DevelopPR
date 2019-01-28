@@ -37,6 +37,7 @@ public class UserDAOImpl implements UserDAO
 	 @Override
 	 public String findId(String phone)
 	 {
+		//DB에서 phone번호에 매칭되는 email을 하나 리턴(가입할때 폰번호 중복허용하려면 selectList로..)
 		return sqlSession.selectOne("user.findId", phone);
 	 }
 	 
@@ -47,7 +48,6 @@ public class UserDAOImpl implements UserDAO
 		 // 로그인 비밀번호 db매칭
 	     String checkPw = sqlSession.selectOne("user.loginCheck", vo);
 	     boolean matchPw = passwordEncoder.matches(vo.getUserPw(), checkPw);
-	     
 	     // 로그인 정보 맞으면 최근시간업데이트
 	     if(matchPw)
 	     {
@@ -96,4 +96,37 @@ public class UserDAOImpl implements UserDAO
 		 sqlSession.update("user.userAuth", user_email);
 	 }
 	   
+	 // 로그인시 이메일 인증 여부 체크
+	 @Override
+	 public boolean checkAuthStatus(String userEmail)
+	 {
+		 int userAuth = sqlSession.selectOne("user.checkAuthStatus", userEmail);
+		 System.out.println(userAuth);
+		 return (userAuth == 1 ? true : false);
+	 }
+	 
+	  // ajax 이메일 중복체크
+	  @Override
+	  public int checkMail(String userEmail)
+	  {
+	 		return sqlSession.selectOne("user.checkMail", userEmail);
+	  }
+	  
+	   // ajax 닉네임 중복체크
+	  @Override
+	  public int checkNick(String userNick)
+	  {
+		  return sqlSession.selectOne("user.checkNick", userNick);
+	  }
+	  
+	  // 회원가입 - 이메일 인증 에러시 재전송
+	   // 인증키 변경
+	   public void updateAuthKey(String reUserEmail, String userAuthCode)
+	   {
+			UserVO vo = new UserVO();   	
+		   	vo.setUserAuthCode(userAuthCode);
+		   	vo.setUserEmail(reUserEmail);
+		   	sqlSession.update("user.updateAuthKey", vo);
+	   }
+
 }

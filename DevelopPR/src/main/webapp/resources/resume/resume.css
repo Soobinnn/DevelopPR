@@ -633,11 +633,9 @@ table {
 }
  */
 /*-------------footer------------*/
-.resumeRegist footer{
+.resumeRegist footer
+{
    background-color: #3574A7;
    height:100px;
    width:1600px;
 }
-
-
-

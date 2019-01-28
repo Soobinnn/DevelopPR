@@ -7,11 +7,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.DevelopPR.meet.model.dto.ChatRoomVO;
+import com.DevelopPR.meet.model.dto.MessageVO;
 import com.DevelopPR.meet.service.MeetingService;
+import com.DevelopPR.resume.model.dto.FollowVO;
+import com.DevelopPR.resume.service.ResumeService;
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.user.service.UserService;
 
@@ -22,34 +28,50 @@ public class MeetingController
 	MeetingService meetingService;
 	@Inject
 	UserService userService;
+	@Inject
+	ResumeService resumeService;
 	
 	@RequestMapping("/meeting")
 	public String meeting(Model model, HttpSession session) throws Exception
 	{
-		// 세션에서 본인 정보 가져온다.
 		UserVO userVo = (UserVO)session.getAttribute("login");
 		String userNick = userVo.getUserNick();
+		// userVO에서 본인의 닉네임(임시로 이름)을 가져온다.
+		String follow_nick = userVo.getUserName();
 		
 		// 본인 닉네임과 매칭되어 DB에서 가져온다.
 		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);
+		// 자신의 아이디로 팔로잉 하는 사람들의 목록을 가지고온다.
+		List<FollowVO> followingList = resumeService.followingList(follow_nick);
+		// 자신을 팔로우 하는 사람들의 목록을 가지고온다.
+		List<FollowVO> followerList = resumeService.followerList(follow_nick);
+		
 		model.addAttribute("list", listChatRoom);
-		// 모델에 넣어서 전송
-		return "meet/meeting";
+		model.addAttribute("followingList", followingList);
+		model.addAttribute("followerList", followerList);
+		// 모델에 넣어서 전송합니다.
+		return "basic/meet/meeting";
 	}
 	
-	@RequestMapping("/meeting/{userNick}")
-	public String chatRoom(Model model, @PathVariable String userNick, HttpSession session)
+	// 채팅방의 메시지 불러오기
+	@RequestMapping(value="/getRoom",method = RequestMethod.POST)
+	@ResponseBody
+	public List<MessageVO> getRoom(Model model, @ModelAttribute MessageVO messageVO)
 	{
-		System.out.println(userNick);
-		
-		UserVO viewId = userService.viewId(userNick);
-		
-		model.addAttribute("viewId", viewId);
-		return "meet/meeting";	
+		List<MessageVO> messageList = meetingService.getRoom(messageVO.getChatroom_id());
+		return messageList;
 	}
 	
-	
-	/*
+	@RequestMapping(value="/getList", method =RequestMethod.POST)
+	@ResponseBody
+	public List<ChatRoomVO> getList(Model model, @ModelAttribute MessageVO messageVO) throws Exception
+	{
+		System.out.println("받아왔능가?" + messageVO);
+		String message_sender = messageVO.getMessage_sender();
+		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(message_sender);
+		return listChatRoom; 
+	}
+	/* 
 	//채팅방생성
 	@RequestMapping("chat.do/{userId}")
 	public String chatRoom(Model model, @PathVariable("userId") String receiver_user_id, ChatRoomVO chatroom)

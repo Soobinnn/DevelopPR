@@ -37,10 +37,10 @@ public class HomeController
 		
 	     ModelAndView mav = new ModelAndView();
 	     mav.addObject("list", list); 
-	     mav.setViewName("main/main");
+	     mav.setViewName("basic/main/main");
 	     System.out.println(list);
 	     
 		return mav;
 	}
-	   
+
 }
