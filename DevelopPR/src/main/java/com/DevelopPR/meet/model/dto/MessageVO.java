@@ -5,13 +5,12 @@ import com.google.gson.Gson;
 
 public class MessageVO 
 {
-	private String message_id;
 	private String message_sender;
 	private String message_receiver;
 	private String message_content;
 	private Date message_sendTime;
 	private Date message_readTime;
-	private String chatroom_chatroom_id;
+	private String chatroom_id;
 	private String send_user_id;
 	private String receiver_user_id;
 	private String user_profileImagePath;
@@ -25,17 +24,19 @@ public class MessageVO
 		MessageVO message = new MessageVO();
 		Gson gson = new Gson();
 		message = gson.fromJson(source,  MessageVO.class);
-		System.out.println("test2"+message.toString());
 		return message;
 	}
 
-	public String getMessage_id() {
-		return message_id;
+
+	public String getChatroom_id() {
+		return chatroom_id;
 	}
 
-	public void setMessage_id(String message_id) {
-		this.message_id = message_id;
+
+	public void setChatroom_id(String chatroom_id) {
+		this.chatroom_id = chatroom_id;
 	}
+
 
 	public String getMessage_sender() {
 		return message_sender;
@@ -77,13 +78,6 @@ public class MessageVO
 		this.message_readTime = message_readTime;
 	}
 
-	public String getChatroom_chatroom_id() {
-		return chatroom_chatroom_id;
-	}
-
-	public void setChatroom_chatroom_id(String chatroom_chatroom_id) {
-		this.chatroom_chatroom_id = chatroom_chatroom_id;
-	}
 
 	public String getSend_user_id() {
 		return send_user_id;
@@ -143,8 +137,8 @@ public class MessageVO
 	@Override
 	public String toString()
 	{
-		return "MessageVO [message_id=" + message_id + ", message_sender" + message_sender +", message_receiver" + message_receiver + ", message_content" + message_content +
-				", message_sendTime" + message_sendTime + ",  message_readTime : "+  message_readTime + ", chatroom_chatroom_id" + chatroom_chatroom_id + "send_user_id" + send_user_id +
+		return "MessageVO [chatroom_id=" + chatroom_id + ", message_sender" + message_sender +", message_receiver" + message_receiver + ", message_content" + message_content +
+				", message_sendTime" + message_sendTime + ",  message_readTime : "+  message_readTime +"send_user_id" + send_user_id +
 				", receiver_user_id" + receiver_user_id + ", user_profileImagePath" + user_profileImagePath + ", receiver_user_profileImagePath" + receiver_user_profileImagePath +
 				", send_user_name" + send_user_name + ", receiver_user_name" + receiver_user_name + ", unReadCount" + unReadCount+"]";
 	}

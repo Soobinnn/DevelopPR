@@ -39,11 +39,11 @@ public class MeetingDAOImpl implements MeetingDAO
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public String getRoom(ChatRoomVO vo) throws Exception 
+	public List<MessageVO> getRoom(String chatroom_id)
 	{
 		// TODO Auto-generated method stub
-		List<MessageVO> mvo = session.selectList("meet.getRoom", vo);	
-		return mvo.get(0).getSend_user_id();
+		List<MessageVO> mvo = session.selectList("meet.getRoom",chatroom_id);	
+		return mvo;
 	}
 	
 	/* 개인 채팅방 전체 목록*/
@@ -51,6 +51,7 @@ public class MeetingDAOImpl implements MeetingDAO
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
 	{
 		/*List<ChatRoomVO> list = new List<ChatRoomVO>();*/
+		System.out.println("test유저닉"+userNick);
 		return session.selectList("meet.listChatRoom", userNick);
 	
 	}

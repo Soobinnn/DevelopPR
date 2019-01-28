@@ -7,10 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.DevelopPR.meet.model.dto.ChatRoomVO;
+import com.DevelopPR.meet.model.dto.MessageVO;
 import com.DevelopPR.meet.service.MeetingService;
 import com.DevelopPR.resume.model.dto.FollowVO;
 import com.DevelopPR.resume.service.ResumeService;
@@ -49,19 +53,25 @@ public class MeetingController
 		return "basic/meet/meeting";
 	}
 	
-	@RequestMapping("/meeting/{userNick}")
-	public String chatRoom(Model model, @PathVariable String userNick, HttpSession session)
+	// 채팅방의 메시지 불러오기
+	@RequestMapping(value="/getRoom",method = RequestMethod.POST)
+	@ResponseBody
+	public List<MessageVO> getRoom(Model model, @ModelAttribute MessageVO messageVO)
 	{
-		System.out.println(userNick);
-		
-		UserVO viewId = userService.viewId(userNick);
-		
-		model.addAttribute("viewId", viewId);
-		return "basic/meet/meeting";	
+		List<MessageVO> messageList = meetingService.getRoom(messageVO.getChatroom_id());
+		return messageList;
 	}
 	
-	
-	/*
+	@RequestMapping(value="/getList", method =RequestMethod.POST)
+	@ResponseBody
+	public List<ChatRoomVO> getList(Model model, @ModelAttribute MessageVO messageVO) throws Exception
+	{
+		System.out.println("받아왔능가?" + messageVO);
+		String message_sender = messageVO.getMessage_sender();
+		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(message_sender);
+		return listChatRoom; 
+	}
+	/* 
 	//채팅방생성
 	@RequestMapping("chat.do/{userId}")
 	public String chatRoom(Model model, @PathVariable("userId") String receiver_user_id, ChatRoomVO chatroom)

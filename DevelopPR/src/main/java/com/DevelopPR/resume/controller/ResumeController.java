@@ -43,7 +43,7 @@ public class ResumeController {
 	
 	 ModelAndView mav = new ModelAndView();
      mav.addObject("list", list); 
-     mav.setViewName("resume/list");
+     mav.setViewName("basic/resume/list");
      System.out.println(list);
 	   return mav;
 	}

@@ -70,7 +70,7 @@
                             마지막 채팅 내용2
                         </div>
                 </div>
-            </div>
+            </di	v>
         </div>
 
         <div id="info">

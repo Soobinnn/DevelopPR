@@ -13,7 +13,9 @@
 	var nick = '${login.userNick}';
 	var email = '${login.userEmail}';
 	var name = '${login.userName}';
-	function connect() {
+	var receiverNick = null;
+	function connect() 
+	{
 		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
 		//서버로 메시지 보낼때
 		socket.onopen = onOpen;
@@ -34,7 +36,8 @@
 		console.log(data);
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
-		appendMessage(obj.message_content);
+	/* 	appendMessage(obj.message_content); */
+		appendMessage(obj);
 		if (data.substring(0, 4) == "msg:") 
 		{
 			appendMessage(data.substring(4));
@@ -50,11 +53,12 @@
 		var msg = $("#chat_text").val();
 		if (msg != "") {
 			var message = {};
+			message.chatroom_id = nick +","+receiverNick
 			message.message_content = $("#chat_text").val()
 			message.message_sender = nick
 			message.send_user_id = email
 			message.send_user_name = name
-			message.message_receiver = '${viewId.userNick}'
+			message.message_receiver = receiverNick
 			message.receiver_user_id = '${viewId.userEmail}'
 			message.receiver_user_name = '${viewId.userName}'
 		}
@@ -62,20 +66,84 @@
 		/* socket.send("msg:" + msg); */
 		socket.send(JSON.stringify(message));
 		$("#chat_text").val("");
+		getList(message);
 	}
-	function appendMessage(msg) {
-		$("#chatArea").append("<div id='sendchat'>" + msg + "</div><br>");
-
+	function appendMessage(msg) 
+	{
+		/* console.log("닉상태가 : " +nick);
+		console.log("샌더상태가 : " +msg.message_sender); */
+		if(nick===msg.message_sender)
+		{
+			$("#chatArea").append("<div id='sendchat'>" + msg.message_content + "</div><br>");
+		}
+		else
+		{
+			$('#sendchat').css({"text-align" :"left"});
+			$("#chatArea").append("<div id='sendchat'>" + msg.message_content + "</div><br>");	
+		}
 		var chatAreaHeight = $("#chat").height();
 		var maxScroll = $("#chatArea").height() - chatAreaHeight;
-		console.log(maxScroll);
+		
 		$("#chat").scrollTop(maxScroll);
-
 	}
-
-	$(document).ready(function() {
+	function readyChat(follow)
+	{
+		receiverNick =follow;
+		console.log("보낼 대상 선택 : "+receiverNick);	
+	}
+	function getRoom(chatroom_id, receiver_user_id)
+	{
+		var param = "chatroom_id="+chatroom_id
+		$.ajax({                                                                                                                          
+			 async : true,
+	         type :'POST',
+	         data : param,
+	         url : "${path}/getRoom",
+	         success : function(data)
+	         {
+	        	 $("#chatArea").empty();
+	        	 var messagelist;
+	        	 for(var i in data)
+	        	 {
+	        		 messagelist =data[i];
+	        		 appendMessage(messagelist);
+	        	 }
+	        	//대상변경
+        		 readyChat(receiver_user_id);
+	         }
+		})
+	}
+	function getList(message)
+	{
+		var msg = message;
+		$.ajax({                                                                                                                          
+			 async : true,
+	         type :'POST',
+	         data : msg,
+	         url : "${path}/getList",
+	         success : function(data)
+	         {
+	        	 $('.listAll').empty();
+	        	 console.log("ajax처리했능가 : "+data);
+	        	 var getlist;
+	        	 for(var i in data)
+	        	 {
+	        		 getlist = data[i];
+	        		 console.log(getlist);
+	        	 }
+	         }
+		})
+	}
+	function viewList(getlist)
+	{
+		var out ;
+		
+	}
+	$(document).ready(function() 
+	{
 		$("#chat_text").focus();
-		$('#chat_text').keypress(function(event) {
+		$('#chat_text').keypress(function(event) 
+		{
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			if (keycode == '13') {
 				send();
@@ -83,16 +151,18 @@
 			event.stopPropagation();
 		});
 
-		$('.tab1_content').click(function() {
+	/* 	$('.tab1_content').click(function() 
+		{
+			connect();
+		}); */
+		$('#chat_send').click(function() 
+		{
 			connect();
 		});
-		$('#chat_send').click(function() {
-			connect();
-		});
-		$('.tab2_content').click(function() {
+/* 		$('.tab2_content').click(function() {
 			disconnect();
-		});
-
+		}); */
+	
 		/*  $('#follower').click(function(){
 
 			 var nick = $('#fllw').val();
@@ -113,10 +183,6 @@
 /* 		$('#testss').on('click', function(e){
 			
 		}); */
-		$('.mlist').click(function(){
-			var tests = $('.mlist').children('.up').children('.m_name').text();
-			console.log(tests);
-		});
 	});
 </script>
 </head>
@@ -132,10 +198,11 @@
 				<c:forEach var="row" items="${list}">
 					<div class="mlist">
 						<div class="up">
+							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.receiver_user_id}');"></a>
 							<div class="m_name">${row.receiver_user_id}</div>
-							<div class="m_lastday">마지막 채팅 날짜2</div>
+							<div class="m_lastday"><fmt:formatDate value="${row.lastTime}" pattern="yy-MM-dd HH : mm"/></div>
 						</div>
-						<div class="m_info">마지막 채팅 내용2</div>
+						<div class="m_info">${row.lastMessage}</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -160,20 +227,20 @@
 
 			<div id="css_tabs">
 				<input id="tab1" type="radio" name="tab" checked="checked" /> <input
-					id="tab2" type="radio" name="tab" /> <label for="tab1">팔로워</label>
-				<label for="tab2">팔로잉</label>
+					id="tab2" type="radio" name="tab" /> <label for="tab1">팔로잉</label>
+				<label for="tab2">팔로워</label>
 				<div class="tab1_content">
-					<c:forEach items="${followerList}" var="list">
+					<c:forEach items="${followingList}" var="list">
 						<div>
-							<a href="${path}/meeting/팔로워 이메일">${list.follower_nick}</a>
-							
+							<a href="javascript:readyChat('${list.following_nick}');">${list.following_nick}</a>
 						</div>
 					</c:forEach>
 				</div>
 				<div class="tab2_content">
-					<c:forEach items="${followingList}" var="list">
+					<c:forEach items="${followerList}" var="list">
 						<div>
-							<a href="${path}/meeting/팔로잉하는 이메일">${list.following_nick}</a>
+							<a href="javascript:readyChat('${list.follower_nick}');">${list.follower_nick}</a>
+							
 						</div>
 					</c:forEach>
 				</div>
