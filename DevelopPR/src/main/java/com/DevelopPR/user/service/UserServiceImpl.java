@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService
 			String authkey = new TempKey().getKey(50, false);
 
 			userDao.createAuthKey(vo.getUserEmail(), authkey);
+			
 			// mail 작성 관련 
 			MailHandler sendMail = new MailHandler(mailSender);
 		
@@ -62,7 +64,6 @@ public class UserServiceImpl implements UserService
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();
 	   }
-	   
 	   // 본인 인증 확인	   
 	   @Override
 	   public String authCheck(String phone) throws Exception 

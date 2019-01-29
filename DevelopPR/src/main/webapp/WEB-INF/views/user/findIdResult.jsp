@@ -25,6 +25,8 @@
 		<br>고객님의 정보와 일치하는 아이디 목록입니다.
 		<br>
 		<div class="my-box">
+		
+		
 			<form action="${path}/user/login" method="post">
 				<table>
 				<%-- <s:iterator value="%{list}" status="stat">

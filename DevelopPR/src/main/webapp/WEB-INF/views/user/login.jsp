@@ -2,83 +2,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인페이지</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <style>
-    .body
+    
+    .login_container
     {
-        display: flex;
-        border:1px solid white;
-            
-    }
-   .container
-    {
-      
       display: flex;  
-     border:1px solid white;
-     flex-direction: row;
-      height : 650px;        
+      
+      flex-direction: row;
+      flex-shrink: 0;
+      flex-basis: 500px;
+      height : 900px;        
     }
-
-    header{
+    .login_section
+    {
+        height: 600px;
+        
+    }
+    #login_header{
         display: flex;
         flex-direction: column;
         width : 500px;
         height : 300px;
-        border:1px solid white;
         font-size: 30px;
         text-align : center;
+        align-items: center;
     }
-    #head2
-    {
-        display:flex;
-        flex-direction:row;
-        border: 1px solid white;
-        height : 180px;
-    }
-    #head2_1
-    {
-        border : 1px solid white;
-        padding-right : 27.8%;
-        
-    }
-    #head2_2
-    {
-        display : block;
-        background : white;
-        
-        border : 1px solid white;
-        padding-right : 40%;
-        
-    }
-    #head2_3
-    {
-        border : 1px solid white;
-        padding-right : 27.8%;
-    }
-    #head3
-    {
-        border: 1px solid white;
-    }
-    footer{
-        border:1px solid white;
-        height : 150px;
-    }
-    .login_img
-    {
-        display: flex;
-        flex-direction: column;
-        border:1px solid white;
-        width : 500px;
     
-        height: 60px;
-    }
     #logo
     {
+        
         display : block;
-        width : 210;
+        width : 220;
     }
+    
     #login
     {
         position: relative;
@@ -90,7 +50,7 @@
         margin-top : 40px;
         border : 2px solid black;
         padding-top : 15px;
-        border-radius : 5% 5% 5% 5% / 50% 50% 50% 50%;
+        border-radius : 3% 3% 3% 3% / 50% 50% 50% 50%;
         width: 300px;
 
     }
@@ -102,51 +62,49 @@
     }
     
     .email{
-       
-        
-        border:1px solid white;
         margin-top: 35px;
 
     }
-    #emailinput
+    
+    #userEmail
     {
         position : relative;
         left : 95px;
         width : 300px;
         height: 45px;
         border : 2px solid;
-        border-radius: 5% 5% 5% 5% / 50% 50% 50% 50%;
+        border-radius: 11px/ 11px;
         background : white;
     }
+    
     .password{
-        border:1px solid white;
         margin-top: 20px;
         margin-bottom: 20px;
     }
    
-   #passwordinput{
-    position : relative;
+    #userPw{
+      position : relative;
         left : 95px;
        width : 300px;
        height : 45px;
        border : 2px solid;
-       border-radius: 5% 5% 5% 5% / 50% 50% 50% 50%;
-   }
+       border-radius: 11px/ 11px;
+    }
    
     .item1
     {
-        border:1px solid white;
-        width : 40%;
+       
+        width : 50%;
     }
     .item2
     {
-        border:1px solid white;
+        
         width : 500px;
     }
     .item3
     { 
-        border:1px solid white;
-        width : 600px;
+   
+        width : 50%;
     }
     .find
     {
@@ -171,6 +129,7 @@
     {
         width : 30px;
     }
+    
     #id
     {
         position:relative;
@@ -187,20 +146,40 @@
         position:relative;
         right : 8px;
     }
-    a
+    #login_findid
     {
+        position : relative;
+        left : 11px;
         display : block;
-        
         width : 110px;
         text-decoration: none;
         color : black;
     }
-
+    #login_findpw
+    {
+        position : relative;
+        left : 5px;
+        display : block;
+        width : 110px;
+        text-decoration: none;
+        color : black;
+    }
+    
+    #login_user
+    {
+        position : relative;
+        right : 10px;
+        display : block;
+        width : 110px;
+        text-decoration: none;
+        color : black;
+    }
+    
     #login_btn
     {
         display : block;
         position:relative;
-        left : 98px;
+        left : 96.5px;
         margin-top : 30px;
         margin-bottom: 20px;
         width: 300px;
@@ -209,7 +188,7 @@
         font-size : 20px;
         height : 65px;
         font-size : 23px;
-        border-radius: 5% 5% 5% 5% / 50% 50% 50% 50%;
+        border-radius: 11px/ 11px;
         border : 2px solid;
     }
 
@@ -218,6 +197,7 @@
         width : 100px;
         background: black;
     }
+    
     #text1
     {
         position : relative;
@@ -231,30 +211,120 @@
         left : 180px;
         margin-bottom : 5px;
     }
+    
+    .login_footer
+    {
+       
+        height : 150px;
+        border : 1px solid white;
+    }
+    
+    .login_connect>a>img
+    {
+        border:1px solid darkkhaki;
+    width : 60px;
+    position:relative;
+    left : 120px;
+    top : 30px;
+    }
+    
+    #login_other
+    {
+    position:relative;
+    top : 50px;
+    left : 170px;
+    }
+    
+    #login_other>span
+    {
+    color : gray;
+    }
+    
 </style>
+
 <script>
     $(document).ready(function(){
-        $("#login_btn").click(function(){
+       $("#login_btn").click(function(){
             // 태크.val() : 태그에 입력된 값
             // 태크.val("값") : 태그의 값을 변경 
-            var userId = $("#userId").val();
+            var userEmail = $("#userEmail").val();
             var userPw = $("#userPw").val();
-            if(userId == ""){
-                alert("아이디를 입력하세요.");
-                $("#userId").focus(); // 입력포커스 이동
+            
+            
+            if(userEmail == "" ){
+                alert("이메일을 입력하세요.");
+                $("#userEmail").focus(); // 입력포커스 이동
                 return; // 함수 종료
             }
+            
             if(userPw == ""){
-                alert("아이디를 입력하세요.");
+                alert("비밀번호를 입력하세요.");
                 $("#userPw").focus();
                 return;
+          }
+        });  
+    });
+
+    $(document).ready(function(){
+     
+        // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+        var key = getCookie("key");
+        $("#userEmail").val(key); 
+         
+        if($("#userEmail").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
+            $("#emailSave").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+        }
+         
+        $("#idSaveCheck").change(function(){ // 체크박스에 변화가 있다면,
+            if($("#emailSave").is(":checked")){ // ID 저장하기 체크했을 때,
+                setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
+            }else{ // ID 저장하기 체크 해제 시,
+                deleteCookie("key");
             }
-            // 폼 내부의 데이터를 전송할 주소
-            document.form1.action="${path}/user/loginCheck"
-            // 제출
-            document.form1.submit();
+        });
+         
+        // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+        $("#userEmail").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+            if($("#emailSave").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+                setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
+            }
         });
     });
+    
+    function setCookie(cookieName, value, exdays){
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+        document.cookie = cookieName + "=" + cookieValue;
+    }
+     
+    function deleteCookie(cookieName){
+        var expireDate = new Date();
+        expireDate.setDate(expireDate.getDate() - 1); // 어제 날짜를 쿠키 소멸 날짜로 지정.
+        document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+    }
+     
+    function getCookie(cookieName) {
+        cookieName = cookieName + '=';
+        var cookieData = document.cookie;
+        var start = cookieData.indexOf(cookieName);
+        var cookieValue = '';
+        if(start != -1){
+            start += cookieName.length;
+            var end = cookieData.indexOf(';', start);
+            if(end == -1)end = cookieData.length;
+            cookieValue = cookieData.substring(start, end);
+        }
+        return unescape(cookieValue);
+
+        /*     cookieName = 쿠키 이름
+
+        value = 쿠키에 넣을 값
+
+        exdays = 만료일 (일 단위)
+     */
+
+    }
 </script>
 
 </head>
@@ -271,7 +341,7 @@
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
 			<li class="fullmenulist"></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
@@ -285,48 +355,39 @@
 		<ul class="fullmenu">
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
-			<li class="fullmenulist"><a href='${path}/resume/list'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
+			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
+			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"><a href='${path}/resume/regist'>이력서 등록</a></li>
+			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
 	</nav>
 	</c:otherwise>
 	</c:choose>
-    <form name="form1" method="post">
-      <div class="container">
-    <div class="item1"></div>
+    <form name="form1" method="post" action="${path}/user/loginCheck">
+    <div class="login_container">
+    <div class="item1">
+
+    </div>
     <div class="item2">
-    <header>
-     <div class="login_img">
-        </div>
-        <div id="head2">
-               <div id="head2_1"></div>
-               <div id="head2_2">
+        <header id="login_header">
                    <%--  <img id="logo" src="<c:url value=' >" alt"">  --%>
+         </header>
 
-                   </div>
-               <div id="head2_3"> </div> 
+      <section class="login_section">
+                <div class="email">   
+                     <input type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userEmail">
+                </div>
+ 
+            <div class="password">
+            <input type="password" value="" placeholder=" 비밀번호"  name="userPw" id="userPw">
             </div>
-
-        <div id="head3"> </div>
-      
-   </header>
-
-   <section>
-    <div class="email">   
-        <input id="emailinput" type="text" autocomplete="off" value="${selectedId}" placeholder=" 이메일" name="userEmail" id="userId">
-    </div>
-    
-
-    <div class="password">
-    <input id="passwordinput" type="password" value="" placeholder=" 비밀번호"  name="userPw" id="userPw">
-    </div>
-    <div class="login">
-     <button type="button" id="login_btn">로그인</button>
-     <c:if test="${msg == 'failure'}">
+            <input type="checkbox" id="emailSave" >
+            <label for="emailSave"><span>이메일 저장</span></label>
+            <div class="login">
+             <button type="submit" id="login_btn">로그인</button>
+             <c:if test="${msg == 'failure'}">
                     <div id="text1" style="color: red">
                         아이디 또는 비밀번호가 일치하지 않습니다.
                     </div>
@@ -335,21 +396,27 @@
                     <div id="text2" style="color: red">
                         로그아웃되었습니다.
                     </div>
-                </c:if>
-    </div>
+                </c:if> 
+            </div>
     
     <div class="find">
-      <div class="tt"><a id="id" href="${path}/user/findId">아이디 찾기</a></div>
-      <div class="tt"><a id="id2" href="#2">패스워드 찾기</a></div>
-      <div class="ttt"><a id="id3" href="${path}/user/policy">회원가입</a></div>  
+      <div class="tt"><a id="login_findid" href="#1">이메일 찾기</a></div>
+      <div class="tt"><a id="login_findpw" href="${path}/user/findPassword">비밀번호 찾기</a></div>
+      <div class="ttt"><a id="login_user" href="${path}/user/policy">회원가입</a></div>
     </div>
-</div>
-<div class="item3"></div>
-</form>
-</section>
-</body>
-</div>
-<footer>
 
-</footer>  
+    <div class="login_connect">
+       <a href="#1"><img id="kakao" src="<c:url value='/resources/login_connect_image/kakao.png'/>"></a> 
+       <a href="#2"><img id="naver" src="<c:url value='/resources/login_connect_image/naver.png'/>"></a>
+       <a href="#3"><img id="facebook" src="<c:url value='/resources/login_connect_image/facebook.png'/>"></a>
+       <a href="#4"><img id="google" src="<c:url value='/resources/login_connect_image/google.png'/>"></a>
+    </div>
+    <div id="login_other">
+    	<span id="other">다른 계정으로 로그인</span></div>
+    </div>
+    </section>
+    <div class="item3"></div>
+</div>
+</form>
+</body>
 </html>

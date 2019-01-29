@@ -59,6 +59,7 @@ public class UserController
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
+	  
 	  userService.insertUser(vo);
 	  
 	  String userEmail = vo.getUserEmail();
@@ -70,12 +71,48 @@ public class UserController
 	  return "user/joining";
   }
 
-  // 아이디 찾기 폼
-  @RequestMapping("findId")
-  public String userFindIdForm()
+  // 이메일 찾기 폼
+  @RequestMapping("findEmail")
+  public String userFindEmail()
   {
-	  return "user/findId";
+	  return "user/findEmail";
   }
+  //PW 찾기 폼으로 이동 , 기능매핑에 추가해야함.
+  @RequestMapping(value="findPassword",method=RequestMethod.GET)
+  public String userFindPwdForm() {
+	  return "user/findPassword";
+  }
+  
+  // PW 찾기 할때 Ajax 이메일 인증 
+  @RequestMapping(value="findPassword", method=RequestMethod.POST)
+  @ResponseBody
+  public int userFindPassword(String userEmail)
+  {
+	
+	int temp=userService.checkMail(userEmail);
+	  System.out.println(temp);
+	  return temp;
+  }
+  
+ //Pw 찾기시 이메일 확인 인증 
+  @RequestMapping(value="findPwEmail", method=RequestMethod.POST)
+  public String userFindPwEmail(Model model, String userEmail) throws Exception
+  {
+	  model.addAttribute("userEmail",userEmail);
+	  return "user/findPwEmail";
+  }
+  //Pw 찾기 재설정 폼
+  @RequestMapping(value="findPwReset")
+  public String userFindPwReset(String userEmail) {
+	  return "user/findPwReset";
+  }
+  
+  /*@RequestMapping(value="findPwReset" , method=RequestMethod.POST)
+  public String userFindPwReseted(String userPw) {
+	  
+  }*/
+  
+
   // 휴대폰 인증 폼
   @RequestMapping("authCheck")
   public String authCheckForm() 
@@ -185,7 +222,7 @@ public class UserController
   @ResponseBody
   public int checkUse(Model model, @ModelAttribute UserVO uservo)
   {
-	  int checkMail =userService.checkMail(uservo.getUserEmail());
+	  int checkMail = userService.checkMail(uservo.getUserEmail());
 	  return checkMail;
   }
   // 회원가입 - ajax 닉네임 중복 체크

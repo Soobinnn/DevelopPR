@@ -95,8 +95,8 @@
         #emailConfirm_main
         {
             position: relative;
-            left: 380px;
-            top: 11px;
+            left: 270px;
+            bottom: 5px;
             width: 100px;
             height: 45px;
             background: #0B173B;
@@ -131,7 +131,7 @@
                            <span id="span1"><strong>이메일을 확인하십시오</strong></span>
                        </li>
                        <li id="emailConfirm_li">
-                           <span id="span2"><Strong>계정을 사용하려면 이메일 주소를 확인하십시오</Strong> </span>
+                           <span id="span2"><Strong>비밀번호 재설정을 위한 이메일 주소를 확인하십시오</Strong> </span>
                        </li>
                        <li id="emailConfirm_li">
                             <span id="span3">귀하의 이메일 주소 유효성을 검사하기 위한 버튼이 포함된 이메일이 ${userEmail}(으)로 전송되었습니다. </span>
@@ -141,7 +141,7 @@
                         </li>
                    </ul>
                    <button id="emailConfirm_main" type="button" onclick="location='${path}/main'">메인으로</button>
-                   <button id="emailConfirm_login"type="button" onclick="location='${path}/user/login'">로그인</button> 
+                   <%-- <button id="emailConfirm_login"type="button" onclick="location='${path}/user/findPwReset'">재설정</button> --%> 
             </div>
             <div class="emailConfirm_sec_area3">
                 
