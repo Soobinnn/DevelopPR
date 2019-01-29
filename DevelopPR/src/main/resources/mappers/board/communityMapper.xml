@@ -66,10 +66,6 @@
     </sql>
 
 
-
-
-
- 
     <!-- 02. 게시글 작성 -->
     <insert id="insert">
         INSERT INTO tbl_board (
@@ -151,9 +147,6 @@ WHERE bno = #{bno}
        values(#bno}, #{title}, #{content}, #{writer},#{step}+1,#{depth}+1,#{ref})
 
         </insert>
-
-
-
 
 
 </mapper>

@@ -25,12 +25,14 @@
 	}
 
 	//서버로 메시지 보낼때
-	function onOpen(evt) {
-		appendMessage("연결되었습니다.");
+	function onOpen(evt) 
+	{
+		console.log("open");
 	}
 
 	//서버로 부터 받은 메세지 보내주기
-	function onMessage(evt) {
+	function onMessage(evt) 
+	{
 		var data = evt.data;
 
 		console.log("서버로부터 받은 메시지 : "+data);
@@ -41,6 +43,7 @@
 	
 		//채팅 리스트
 		getList(obj);
+		
 		if (data.substring(0, 4) == "msg:") 
 		{
 			appendMessage(data.substring(4));
@@ -66,9 +69,17 @@
 			message.receiver_user_name = '${viewId.userName}'
 		}
 		console.log(message);
+		
 		/* socket.send("msg:" + msg); */
-		socket.send(JSON.stringify(message));
-		$("#chat_text").val("");
+		if(message.message_receiver==null||message.message_receiver=="")
+		{
+			alert("보낼 대상을 선택하세요.(예외처리하기)");
+		}
+		else
+		{
+			socket.send(JSON.stringify(message));
+			$("#chat_text").val("");
+		}
 	}
 	function appendMessage(msg) 
 	{
@@ -112,12 +123,15 @@
 	        	 }
 	        	//대상변경
         		 readyChat(receiver_user_id);
+	        	//카운트 사라지게
 	         }
 		})
 	}
 	function getList(message)
 	{
-		var msg = message;
+		// 메시지를 파라미터로 받을 필요가 없는것 같다 .
+		var session = '${sessionScope.login.userNick}';
+		var msg = "userNick=" +session; 
 		$.ajax({                                                                                                                          
 			 async : true,
 	         type :'POST',
@@ -141,33 +155,42 @@
 	{
 		var date = getlist.lastTime;
 		
-		
-		$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"');\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
+		var checkUserNick = '${sessionScope.login.userNick}';
+		var getlistNick = getlist.receiver_user_id;
+		console.log(getlist);
+		if(checkUserNick === getlistNick)
+		{
+			console.log("세션 = Receiver");
+			$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"');\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
+		}
+		else
+		{
+			console.log("세션 = sender");
+			$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"');\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
+		}
 	}
 	$(document).ready(function() 
 	{
 		$("#chat_text").focus();
 		$('#chat_text').keypress(function(event) 
 		{
+			console.log("check: a");
 			var keycode = (event.keyCode ? event.keyCode : event.which);
-			if (keycode == '13') {
+			console.log("check: b");
+			if (keycode == '13') 
+			{
+				console.log("check: c");
 				send();
 			}
 			event.stopPropagation();
 		});
 
-	/* 	$('.tab1_content').click(function() 
-		{
-			connect();
-		}); */
+
 		$('#chat_send').click(function() 
 		{
-			connect();
+			send();
 		});
-/* 		$('.tab2_content').click(function() {
-			disconnect();
-		}); */
-	
+
 		/*  $('#follower').click(function(){
 
 			 var nick = $('#fllw').val();
@@ -185,9 +208,7 @@
 				}
 			});
 		});   */
-/* 		$('#testss').on('click', function(e){
-			
-		}); */
+
 	});
 </script>
 </head>
@@ -203,11 +224,24 @@
 				<c:forEach var="row" items="${list}">
 					<div class="mlist">
 						<div class="up">
-							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.receiver_user_id}');"></a>
+						<c:choose>
+							<c:when test="${sessionScope.login.userNick == row.receiver_user_id}">
+							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.send_user_id}');"></a>	
+							<div class="m_name">${row.send_user_id}</div>
+							</c:when>
+							<c:otherwise>
+							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.receiver_user_id}');"></a>	
 							<div class="m_name">${row.receiver_user_id}</div>
+							</c:otherwise>
+						</c:choose>				
 							<div class="m_lastday"><fmt:formatDate value="${row.lastTime}" pattern="yy-MM-dd HH : mm"/></div>
 						</div>
-						<div class="m_info">${row.lastMessage}</div>
+						<div class="down">
+							<div class="m_info">${row.lastMessage}</div>
+							<c:if test="${row.unReadCount >0}">
+							<div class="m_readcount">${row.unReadCount}</div>
+							</c:if>
+						</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -245,7 +279,6 @@
 					<c:forEach items="${followerList}" var="list">
 						<div>
 							<a href="javascript:readyChat('${list.follower_nick}');">${list.follower_nick}</a>
-							
 						</div>
 					</c:forEach>
 				</div>

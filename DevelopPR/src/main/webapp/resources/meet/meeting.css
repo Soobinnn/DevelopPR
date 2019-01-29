@@ -87,6 +87,16 @@ table {
     display:flex;
     align-items: center;
 }
+.m #list .mlist .down
+{
+    display:flex;
+}
+.m .mlist .m_readcount
+{
+    position :relative;
+	 padding-top:20px;
+    padding-left:20px;
+}
 .m .mlist .up .m_name{
     font-size:15pt;
     padding-left: 10%;
@@ -106,7 +116,13 @@ table {
 
 .m .mlist .m_info{
     padding:20px;
+    flex-basis : 250px;
     padding-left:40px;
+}
+.m .mlist .m_readcount
+{
+	 padding-top:10px;
+    padding-left:20px;
 }
 
 /*------------------------info------------------------*/

@@ -16,11 +16,36 @@
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 	
 	<script>
+	var socket = null;
+	var success = null;
+	success = '${msg}';
+	var nick = '${login.userNick}';
+	
+	function connect() 
+	{
+		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
+		socket.onmessage = onMessage;
+		socket.onopen = function() 
+		{
+		    console.log('open');
+		};
+	}
+	//서버로 부터 받은 메세지 보내주기
+	function onMessage(evt) 
+	{
+		console.log("띠링띠링");
+	}
 	$(document).ready(function()
 	{
+		console.log("msg의 상태가??" +success);
+		console.log("세션의 상태가..?" +nick);
+		if(!(success==""&&nick==""))
+		{
+			connect();	
+		}
+		
 		$(".top_nav").click(function()
 		{
-			
 			$('.navx').fadeOut(100,function(){$('.navx').fadeTo(500,1,function(){$('.navx').css({'animation-iteration-count':'1'})})});
 			$('#full').animate({width: "toggle", height: "toggle"},400,'easeOutQuad');
 			// $('.navx').rotate({animateTo:-360 , duration:1000});
@@ -36,7 +61,7 @@
 		<span id="navspan">MENU</span>
 	</nav>
 	<c:choose>
-	<c:when test="${sessionScope.userEmail == null}">
+	<c:when test="${sessionScope.login.userEmail == null}">
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">

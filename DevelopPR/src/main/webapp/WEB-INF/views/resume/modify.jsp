@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html class="resumeRegist">
 <head>
-<title>이력서 등록</title>
+<title>이력서 수정</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
 <script type="text/javascript">	
@@ -53,17 +53,17 @@ function fn_removeImage() {
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
 <body>
-<form name="form1" method="post" action="${path}/resume/registConfirm">
+<form name="form1" method="post" action="${path}/resume/modifyupdate">
     <div class="container">
         <header>
             <div class="head">
                <div class="a">DevelopPR</div>
-               <div class="b">이력서 등록</div>
+               <div class="b">이력서 수정</div>
                <div class="c">"~~~~~~~~~~~~~~~~~~"</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
-					<img id="uploadImage" />
+					<img id="uploadImage" src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
 					<input type="hidden" id= "uploadImg" name="profile_photo"/>
 					
 				</div>
@@ -94,8 +94,14 @@ function fn_removeImage() {
                                 현재 구직 상태 *
                             </div> 
                             <div class="s_info">
-                                <input type="radio" name="is_work" value="0"/>구직중
-                                <input type="radio" name="is_work" value="1"/>재직중
+                              <c:if test="${dto.is_work==0}">
+                                <input type="radio" name="is_work" value="0" checked/>구직중
+                            	<input type="radio" name="is_work" value="1"/>재직중    
+                              </c:if>
+                              <c:if test="${dto.is_work==1}">
+	                              <input type="radio" name="is_work" value="0"/>구직중
+	                              <input type="radio" name="is_work" value="1" checked/>재직중
+                              </c:if>
                             </div>
                         </div>
                     </div>
@@ -105,7 +111,7 @@ function fn_removeImage() {
                        		     이 름 *
                             </div>
                             <div class="p_info">
-                                <input type="text" class="textlong" name="name" placeholder="이름을 입력해주세요.(2~20자)"/>
+                                <input type="text" class="textlong" name="name" value="${dto.name}" placeholder="이름을 입력해주세요.(2~20자)"/>
                             </div>
                         </div>
                         
@@ -114,7 +120,7 @@ function fn_removeImage() {
                        		    나 이 *
                             </div>
                             <div class="p_info">
-                                <input type="text" class="textlong" name="age" placeholder="숫자로 입력해주세요."/>
+                                <input type="text" class="textlong" name="age" value="${dto.age}" placeholder="숫자로 입력해주세요."/>
                             </div>
                         </div>
 
@@ -123,7 +129,7 @@ function fn_removeImage() {
                             생 일 * 
                             </div>
                             <div class="birth_info">
-                                <input type="date" name="birthday" />
+                                <input type="date" value="${dto.birthday}" name="birthday" />
                             </div>
                         </div>
 
@@ -132,9 +138,17 @@ function fn_removeImage() {
                                 핸드폰번호 *
                             </div>
                             <div class="phone_info">
-                                <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" class="textshort"/>
+                                <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" value="${dto.cell_num}" class="textshort"/>
+                           
+                           	<c:if test="${dto.cnum_is_open==0}">
                                 <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>공개
+                                <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose" checked/>비공개
+                            </c:if>
+                          	<c:if test="${dto.cnum_is_open==1}">
+                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
+                            </c:if>
+                            
                             </div>
                         </div>
 
@@ -142,10 +156,19 @@ function fn_removeImage() {
                             <div class="name">
                                 이메일 * 
                             </div>
-                            <div class="email_info">
-                                <input type="text" name="email" placeholder="9~50자 제한" class="textshort"/>
-                                <input type="radio" name="email_is_open" value="1"/>공개
-                                <input type="radio" name="email_is_open" value="0"/>비공개
+                            <div class="email_info" style="display:flex;">
+                                <div class="textshort">${dto.email}</div>
+                                <input type="hidden" value="${dto.email}" name="email"/>
+                                <div style="padding-top:20px">
+                              	<c:if test="${dto.email_is_open==0}">
+	                                <input type="radio" name="email_is_open" value="1"/>공개
+	                                <input type="radio" name="email_is_open" value="0" checked/>비공개
+	                            </c:if>
+	                            <c:if test="${dto.email_is_open==1}">
+	                                <input type="radio" name="email_is_open" value="1" checked/>공개
+	                                <input type="radio" name="email_is_open" value="0"/>비공개
+	                            </c:if>
+	                            </div>
                             </div>
                         </div>
 
@@ -154,7 +177,7 @@ function fn_removeImage() {
                        			     블로그
                             </div>
                             <div class="info">
-                                <input type="text" name="blog" placeholder="정규표현식 추가" class="textlong"/>
+                                <input type="text" name="blog" placeholder="정규표현식 추가" value="${dto.blog}" class="textlong"/>
                             </div>
                         </div>
 
@@ -163,9 +186,17 @@ function fn_removeImage() {
                             주소 *
                             </div>
                             <div class="info">
-                                    <input type="text" name="address" placeholder="정규표현식 추가" class="textshort"/>
-                                <input type="radio" name="address_is_open" value="1"/>공개
-                                <input type="radio" name="address_is_open" value="0"/>비공개
+                                    <input type="text" name="address" placeholder="정규표현식 추가" value="${dto.address}" class="textshort"/>
+                                    
+                                	<c:if test="${dto.address_is_open==0}">    
+		                                <input type="radio" name="address_is_open" value="1"/>공개
+		                                <input type="radio" name="address_is_open" value="0" checked/>비공개
+		                            </c:if>
+		                            <c:if test="${dto.address_is_open==1}">    
+		                                <input type="radio" name="address_is_open" value="1" checked/>공개
+		                                <input type="radio" name="address_is_open" value="0"/>비공개
+		                            </c:if>
+		                            
                             </div>
                         </div>
 
@@ -174,7 +205,7 @@ function fn_removeImage() {
                             희망 근무지
                             </div>
                             <div class="info">
-                                <input type="text" name="prefer_place" class="textlong"/>
+                                <input type="text" name="prefer_place" value="${dto.prefer_place}" class="textlong"/>
                             </div>
                         </div>
 
@@ -183,7 +214,7 @@ function fn_removeImage() {
                             소개/ 좌우명/ Comment
                             </div>
                             <div class="info">
-                                <input type="text" class="textlong" name="motto"/>
+                                <input type="text" class="textlong" value="${dto.motto}" name="motto"/>
                             </div>
                         </div>
            </div>
@@ -197,13 +228,23 @@ function fn_removeImage() {
 	               <div class="subject">자격 정보 <input type="button" value=" + " class="plus" onclick="add_acqitem()"></div>
 	                    <div class="acq_ok">
 	                       <div id="acqs">
-		                       <div class="acq">
-			                       <input type="text" class="textmiddle1" id="acq_date" name="acq_date" placeholder="자격증 취득 날짜"/>
-			                       <input type="text" class="textmiddle2" id="acq_name" name="acq_name" placeholder="자격증 이름"/>
-			                       <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
-			                   </div>
-	                       </div>
-                   
+	                   			<script type="text/javascript">
+		      
+		                        	 var acq_date = "${dto.acq_date}";      
+		 							 var dateSplit = acq_date.split(',');
+		 							
+		 							 var acq_name = "${dto.acq_name}";      
+									 var nameSplit = acq_name.split(',');
+									
+		 							for (var i in dateSplit){
+										 document.write('<div class="acq">'+
+												 '<input type="text" class="textmiddle1" id="acq_date" value="'+dateSplit[i]+'" name="acq_date" placeholder="자격증 취득 날짜"/>'+
+												 '<input type="text" class="textmiddle2" id="acq_name" value="'+nameSplit[i]+'" name="acq_name" placeholder="자격증 이름"/>'+
+							                     '<input type="button" value="삭제" onclick="remove_acqitem(this)"/></div>'); 
+									 }
+	                          </script>
+                          </div>
+                          
 		                       <script type="text/javascript">
 				                       function add_acqitem(){
 					                   		var div = document.createElement('div');
@@ -225,12 +266,26 @@ function fn_removeImage() {
                     <div class="subject">학력/교육 정보 <input type="button" value=" + " class="plus" onclick="add_eduitem()"></div>
                     <div class="edu_ok">
                        <div id="edus">
-	                       <div class="edu">
-		                       <input type="text" class="textmiddle1" id="edu_date" name="gradu_year" placeholder="학력/교육 해당 년도"/>
-		                       <input type="text" class="textmiddle2" id="edu_name" name="edu_info" placeholder="학력/교육 이름"/>
-		                       <input type="button" value="삭제" onclick="remove_eduitem(this)"/>
-							</div>
+	                       
+							 <script type="text/javascript">
+                      
+                        	 var gradu_date = "${dto.gradu_year}";      
+ 							 var gdateSplit = gradu_date.split(',');
+ 							
+ 							 var edu_name = "${dto.edu_info}";      
+							 var enameSplit = edu_name.split(',');
+							
+ 							for (var i in gdateSplit){
+								 document.write('<div class="edu"><input type="text" class="textmiddle1" id="edu_date" value="'+ gdateSplit[i] +'" name="gradu_year" placeholder="학력/교육 해당 년도"/>'+
+										 		'<input type="text" class="textmiddle2" id="edu_name" value="'+ enameSplit[i]+ '" name="edu_info" placeholder="학력/교육 이름"/>'+
+						                        '<input type="button" value="삭제" onclick="remove_eduitem(this)"/></div>'); 
+							 }
+                          </script> 
+							
                        </div>
+                       
+                       
+                       
                        <script type="text/javascript">
 			                   	function add_eduitem(){
 			                   		var div = document.createElement('div');
@@ -251,13 +306,23 @@ function fn_removeImage() {
                     <div class="career_ok">
                         
                        <div id="careers">
-	                       	<div class="career">
-		                       <input type="text" class="textmiddle1" id="career_date" name="career_year" placeholder="경력 해당 년도"/>
-		                       <input type="text" class="textmiddle2" id="career_name" name="career_info" placeholder="회사 이름"/>
-		                       <input type="button" value="삭제" onclick="remove_caritem(this)"/>
-		                	</div>
-                       
+                       		   <script type="text/javascript">
+                      
+	                        	 var c_date = "${dto.career_year}";      
+	 							 var cdateSplit = c_date.split(',');
+	 							
+	 							 var c_name = "${dto.career_info}";      
+								 var cnameSplit = c_name.split(',');
+								
+	 							for (var i in cdateSplit){
+									 document.write('<div class="career">'+
+											 '<input type="text" class="textmiddle1" id="career_date" value="' + cdateSplit[i] +'" name="career_year" placeholder="경력 해당 년도"/>'+
+											 '<input type="text" class="textmiddle2" id="career_name" value="'+ cnameSplit[i]+ '" name="career_info" placeholder="회사 이름"/>'+
+							                 '<input type="button" value="삭제" onclick="remove_caritem(this)"/></div>'); 
+								 }
+	                          </script>   
                        </div>
+                       
                        <script type="text/javascript">
 			                   	function add_caritem(){
 			                   		// pre_set 에 있는 내용을 읽어와서 처리..
@@ -281,16 +346,27 @@ function fn_removeImage() {
 					<input type="button" value=" + " class="plus" onclick="add_item()">
                 </div>
                 <div id="techs">
-	                <div class="tech">
-						<div>
-							<input type="text" class="abb" name="abb"/>
-						</div>
-						<div class="techinfo">
-							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-							<input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-						</div>
-						<input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
-					</div>
+	              
+					    <script type="text/javascript">
+						 
+							 var abb = "${dto.abb}";      
+							 var abbSplit = abb.split(',');
+							 
+							 var tech_name = "${dto.tech_name}";
+							 var nameSplit = tech_name.split(',');
+							 
+							 var tech_percent = "${dto.tech_percent}";
+							 var percentSplit = tech_percent.split(',');
+							 
+							for (var i=0; i<abbSplit.length;i++){
+								 document.write('<div class="tech"><div><input type="text" class="abb" value="'+abbSplit[i]+'" name="abb"/></div>'+
+										 		'<div class="techinfo"><input type="text" class="techname" value="'+nameSplit[i]+ '" placeholder="기술 명" name="tech_name"/><br/>'+
+												'<input class="input-range" type="range" value="'+ percentSplit[i] +'"min="0" max="100" value="0" name="tech_percent"/>'+
+												'</div><input type="button" value="삭제" class="removebutton" onclick="remove_item(this)"></div>'); 
+							}
+							 </script>
+					
+					
                 </div>
             </div>
         

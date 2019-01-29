@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.DevelopPR.meet.model.dto.ChatRoomVO;
@@ -64,11 +65,11 @@ public class MeetingController
 	
 	@RequestMapping(value="/getList", method =RequestMethod.POST)
 	@ResponseBody
-	public List<ChatRoomVO> getList(Model model, @ModelAttribute MessageVO messageVO) throws Exception
+	public List<ChatRoomVO> getList(Model model,  @RequestParam("userNick") String userNick) throws Exception
 	{
-		System.out.println("받아왔능가?" + messageVO);
-		String message_sender = messageVO.getMessage_sender();
-		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(message_sender);
+		/*System.out.println("받아왔능가?" + userNick);*/
+		String _userNick = userNick;
+		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);
 		return listChatRoom; 
 	}
 	/* 
