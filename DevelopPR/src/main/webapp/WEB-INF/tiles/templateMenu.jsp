@@ -36,7 +36,7 @@
 		<span id="navspan">MENU</span>
 	</nav>
 	<c:choose>
-	<c:when test="${sessionScope.userEmail == null}">
+	<c:when test="${sessionScope.login.userEmail == null}">
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
 		<ul class="fullmenu">

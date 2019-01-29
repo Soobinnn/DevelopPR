@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resume">
+	<insert id="registConfirm">
+		INSERT INTO PR_RESUME VALUES (
+		#{motto}, #{is_work}, #{profile_photo}, #{name}, #{birthday}, #{cell_num},
+		#{cnum_is_open},
+		#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open},
+		#{prefer_place},
+		#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year},
+		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
+		)
+	</insert>
+	
 	
 	<select id="resumeList" resultType="ResumeVO">
 		<include refid="pagingHeader"></include>
@@ -14,23 +25,7 @@
        SELECT COUNT(*)  FROM pr_resume
        <include refid="search"></include>
     </select>
-	
 
-	<insert id="registConfirm">
-		INSERT INTO PR_RESUME VALUES (
-		#{motto}, #{is_work}, #{profile_photo}, #{name}, #{birthday}, #{cell_num},
-		#{cnum_is_open},
-		#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open},
-		#{prefer_place},
-		#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year},
-		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
-		)
-	</insert>
-	
-	<select id="resumeList" resultType="ResumeVO">
-		SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo
-		FROM pr_resume
-	</select>
 
 	<select id="resumeDetail" resultType="ResumeVO">
 		SELECT *
@@ -38,42 +33,8 @@
 		WHERE email=#{email}
 	</select>
 	
-	<!-- 팔로우 -->
-	<insert id="followMember">
-		INSERT INTO PR_FOLLOW(follower_nick, following_nick)
-		VALUES (#{follower_nick}, #{following_nick})
-	</insert>
-	
-	<!-- 언팔로우 -->
-	<delete id="unfollowMember">
-		DELETE FROM PR_FOLLOW
-		WHERE follower_nick = #{follower_nick}
-		AND following_nick = #{following_nick}
-	</delete>
-	
-	<!-- 팔로잉 하고 있는지 체크 -->
-	<select id="is_follow" parameterType="Map" resultType="String">
-		SELECT COUNT(*)
-		FROM PR_FOLLOW
-		WHERE follower_nick = #{follower_nick}
-		AND following_nick = #{following_nick}
-	</select>
-
-	<!-- 팔로잉 목록 -->
-	<select id="followingList" parameterType="String" resultType="FollowVO">
-		SELECT * FROM PR_FOLLOW
-		WHERE follower_nick = #{FOLLOWER_NICK}
-	</select>
-	
-	<!-- 팔로워 목록 -->
-	<select id="followerList" parameterType="String" resultType="FollowVO">
-		SELECT * FROM PR_FOLLOW
-		WHERE following_nick = #{following_nick}
-	</select>
-
-   <update id="modify">
-          UPDATE pr_resume 
-          SET 
+   <update id="modify">   
+          UPDATE pr_resume SET 
           motto = #{motto}, is_work=#{is_work}, profile_photo=#{profile_photo}, name=#{name}, birthday=#{birthday}, cell_num=#{cell_num}, cnum_is_open=#{cnum_is_open}, 
 		  email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
 		  acq_date=#{acq_date}, acq_name=#{acq_name}, gradu_year=#{gradu_year}, edu_info=#{edu_info}, 
@@ -118,5 +79,58 @@
 		FROM pr_resume 
 		ORDER BY dbms_random.value
 	</select>
+	
+	<!-- 팔로우 -->
+	<insert id="followMember">
+		INSERT INTO PR_FOLLOW(follower_nick, following_nick)
+		VALUES (#{follower_nick}, #{following_nick})
+	</insert>
+		
+	<!-- 언팔로우 -->
+	<delete id="unfollowMember">
+		DELETE FROM PR_FOLLOW
+		WHERE follower_nick = #{follower_nick}
+		AND following_nick = #{following_nick}
+	</delete>
+	
+	<!-- 팔로잉 하고 있는지 체크 -->
+	<select id="is_follow" parameterType="Map" resultType="String">
+		SELECT COUNT(*)
+		FROM PR_FOLLOW
+		WHERE follower_nick = #{follower_nick}
+		AND following_nick = #{following_nick}
+	</select>
+
+	<!-- 팔로잉 목록 -->
+	<select id="followingList" parameterType="String" resultType="FollowVO">
+		SELECT * FROM PR_FOLLOW
+		WHERE follower_nick = #{FOLLOWER_NICK}
+	</select>
+	
+	<!-- 팔로워 목록 -->
+	<select id="followerList" parameterType="String" resultType="FollowVO">
+		SELECT * FROM PR_FOLLOW
+		WHERE following_nick = #{following_nick}
+	</select>
+	
+	<!-- 팔로워 카운트 -->
+	<select id="followerCount" parameterType="String" resultType="FollowVO">
+		select count(*) from pr_follow where following_nick=#{following_nick}
+	</select>
+	
+	
+	
+	<!-- 좋아요 -->
+	
+	
+	<!-- 좋아요 취소 -->
+	
+	
+	<!-- 내가 좋아요 하고 있는지 체크 -->
+	
+	
+	<!-- 이력서 좋아요 수 카운트 -->
+	
+	
 	
 </mapper>

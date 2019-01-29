@@ -94,7 +94,7 @@ function fn_removeImage() {
                                 현재 구직 상태 *
                             </div> 
                             <div class="s_info">
-                                <input type="radio" name="is_work" value="0"/>구직중
+                                <input type="radio" name="is_work" value="0" checked/>구직중
                                 <input type="radio" name="is_work" value="1"/>재직중
                             </div>
                         </div>
@@ -133,7 +133,7 @@ function fn_removeImage() {
                             </div>
                             <div class="phone_info">
                                 <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" class="textshort"/>
-                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>공개
+                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
                             </div>
                         </div>
@@ -144,7 +144,7 @@ function fn_removeImage() {
                             </div>
                             <div class="email_info">
                                 <input type="text" name="email" placeholder="9~50자 제한" class="textshort"/>
-                                <input type="radio" name="email_is_open" value="1"/>공개
+                                <input type="radio" name="email_is_open" value="1" checked/>공개
                                 <input type="radio" name="email_is_open" value="0"/>비공개
                             </div>
                         </div>
@@ -164,7 +164,7 @@ function fn_removeImage() {
                             </div>
                             <div class="info">
                                     <input type="text" name="address" placeholder="정규표현식 추가" class="textshort"/>
-                                <input type="radio" name="address_is_open" value="1"/>공개
+                                <input type="radio" name="address_is_open" value="1" checked/>공개
                                 <input type="radio" name="address_is_open" value="0"/>비공개
                             </div>
                         </div>

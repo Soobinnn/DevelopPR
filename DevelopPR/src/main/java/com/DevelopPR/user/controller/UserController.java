@@ -1,7 +1,6 @@
 package com.DevelopPR.user.controller;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -33,8 +32,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+ 
+import com.DevelopPR.resume.model.dto.ResumeVO;
+import com.DevelopPR.resume.service.ResumeService;
 import com.DevelopPR.user.dto.UserVO;
 import com.DevelopPR.user.service.UserService;
 import com.DevelopPR.util.JsonParser;
@@ -50,6 +50,8 @@ public class UserController
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
   @Inject
   UserService userService;
+  @Inject
+  ResumeService resumeService; 
   // DB 암호화
   @Inject
   BCryptPasswordEncoder passwordEncoder;
@@ -170,7 +172,7 @@ public class UserController
   }
   // 로그인 처리
   @RequestMapping(value ="loginCheck", method =RequestMethod.POST)
-  public ModelAndView loginCheck(@ModelAttribute UserVO vo, HttpSession session)
+  public ModelAndView loginCheck(@ModelAttribute UserVO vo, HttpSession session) throws Exception
   {
 	  
       boolean result = userService.loginCheck(vo, session);
@@ -182,6 +184,9 @@ public class UserController
     	  boolean authStatus = userService.checkAuthStatus(vo.getUserEmail());
     	  if(authStatus)
     	  {
+    		  List<ResumeVO> list = resumeService.mainList();
+    		   
+    		  mav.addObject("list", list); 
     		  mav.addObject("msg", "success");
               mav.setViewName("basic/main/main");
     	  }

@@ -24,14 +24,15 @@
 									자격증 : ${list.acq_name}<br/>
 									tech-stack : ${list.tech_name}<br/>
 									comment : ${list.motto}<br/><br/>
-									100_♥   10_follow
+									100_♥ 10_follow
+								         
 									<input type="button" class="pp" value="포트폴리오"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+						<a href="${path}/resume/detail?email=${list.email}&name=${sessionScope.userName}"></a>
 					</figure>
 				</div>
 		</c:forEach>
@@ -57,7 +58,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+						<a href="${path}/resume/detail?email=${list.email}&name=${sessionScope.userName}"></a>
 					</figure>
 				</div>
 		</c:forEach>
@@ -84,7 +85,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+						<a href="${path}/resume/detail?email=${list.email}&name=${sessionScope.userName}"></a>
 					</figure>
 				</div>
 		</c:forEach>

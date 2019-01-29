@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.DevelopPR.resume.model.dto.ResumeVO;
 
-import java.util.List;
+
 import java.util.Map;
 
 import com.DevelopPR.resume.model.dto.FollowVO;

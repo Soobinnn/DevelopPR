@@ -150,9 +150,9 @@ public class UserServiceImpl implements UserService
 	   
 	   // 회원 이메일, 이름, 닉네임 (팔로우)
 	   @Override
-	   public UserVO viewId(String userNick)
+	   public UserVO viewId(String email)
 	   {
-		   return userDao.viewId(userNick);
+		   return userDao.viewId(email);
 	   }
 	   
 	   // 이메일 인증확인

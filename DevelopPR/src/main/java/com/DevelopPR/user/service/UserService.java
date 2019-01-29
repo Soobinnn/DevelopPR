@@ -26,7 +26,7 @@ public interface UserService
 	   public String findId(String phone) throws Exception;
 	
 	   // 회원 이메일, 이름, 닉네임 (팔로우)
-	   public UserVO viewId(String userNick);
+	   public UserVO viewId(String email);
 	   
 	   // 이메일 인증
 	   public void userAuth(String userEmail) throws Exception;

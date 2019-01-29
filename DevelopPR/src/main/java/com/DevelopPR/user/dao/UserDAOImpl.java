@@ -71,9 +71,9 @@ public class UserDAOImpl implements UserDAO
 	
 	 // 회원 이메일, 이름, 닉네임 (팔로우)
 	 @Override
-	 public UserVO viewId(String userNick)
+	 public UserVO viewId(String email)
 	 {
-		 return sqlSession.selectOne("user.viewId", userNick);
+		 return sqlSession.selectOne("user.viewId", email);
 	 }
 	 
 	 // 회원가입시 이메일 인증 키 생성
