@@ -105,8 +105,9 @@ function fn_removeImage() {
                        		     이 름 *
                             </div>
                             <div class="p_info">
-                                <input type="text" class="textlong" name="name" placeholder="이름을 입력해주세요.(2~20자)"/>
+                                <div class="textshort">${dto.userName}</div>
                             </div>
+                              <input type="hidden" name="name" value="${dto.userName}"/> 
                         </div>
                         
                          <div id="p_name">
@@ -142,8 +143,9 @@ function fn_removeImage() {
                             <div class="name">
                                 이메일 * 
                             </div>
+                           		<input type="hidden" name="email" value="${dto.userEmail}"/> 
                             <div class="email_info">
-                                <input type="text" name="email" placeholder="9~50자 제한" class="textshort"/>
+                                <p class="textshort">${dto.userEmail}</p>
                                 <input type="radio" name="email_is_open" value="1" checked/>공개
                                 <input type="radio" name="email_is_open" value="0"/>비공개
                             </div>
@@ -190,9 +192,6 @@ function fn_removeImage() {
 
            
            <div class="information">
-               
-               
-     
                <div class="acq">
 	               <div class="subject">자격 정보 <input type="button" value=" + " class="plus" onclick="add_acqitem()"></div>
 	                    <div class="acq_ok">

@@ -24,6 +24,7 @@
     
     <!-- 메뉴 만 -->
     <definition name="menu" template="/WEB-INF/tiles/templateMenu.jsp">
+    
     </definition>
     
      <definition name="*/*.part" extends="Empty">

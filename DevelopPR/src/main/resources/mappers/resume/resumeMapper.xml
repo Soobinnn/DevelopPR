@@ -14,16 +14,19 @@
 	
 	
 	<select id="resumeList" resultType="ResumeVO">
-		<include refid="pagingHeader"></include>
-            SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo
-            FROM pr_resume
-            <include refid="search"></include>
+		<include refid="pagingHeader"></include>           
+			SELECT a.name, a.age, a.prefer_place, a.acq_name, a.tech_name, a.motto, a.email, a.profile_photo,
+			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
+			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
+			FROM pr_resume a, pr_user b
+			where a.email = b.email
+            and <include refid="search"></include>
         <include refid="pagingFooter"></include>    
 	</select>
 	
 	<select id="countArticle" resultType="int">
-       SELECT COUNT(*)  FROM pr_resume
-       <include refid="search"></include>
+       SELECT COUNT(*) FROM pr_resume a 
+       where <include refid="search"></include>
     </select>
 
 
@@ -47,18 +50,15 @@
 	    <choose>
 	        <!-- 검색옵션이 전체 검색일 경우 -->
 	        <when test="searchOption == 'all'">
-	        WHERE    
-	            (
-	            name like '%'||#{keyword}||'%'
-	            OR prefer_place like '%'||#{keyword}||'%'
-	            OR acq_name like '%'||#{keyword}||'%'
-	            OR tech_name like '%'||#{keyword}||'%'
-	            )
+	           ( a.name like '%'||#{keyword}||'%'
+	            OR a.prefer_place like '%'||#{keyword}||'%'
+	            OR a.acq_name like '%'||#{keyword}||'%'
+	            OR a.tech_name like '%'||#{keyword}||'%' )
 	        </when>
 	    
 	        <!-- 전체 검색이 아닐 경우 -->
 	        <otherwise>
-	            WHERE ${searchOption} like '%'||#{keyword}||'%'
+	           a.${searchOption} like '%'||#{keyword}||'%'
 	        </otherwise>
 	    </choose>
 	</sql>
@@ -75,9 +75,12 @@
 	</sql>
 	
 	<select id="mainList" resultType="ResumeVO">
-		SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo 
-		FROM pr_resume 
-		ORDER BY dbms_random.value
+		SELECT a.name, a.age, a.prefer_place, a.acq_name, a.tech_name, a.motto, a.email, a.profile_photo,
+			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
+			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
+			FROM pr_resume a, pr_user b
+			where a.email = b.email
+			ORDER BY dbms_random.value
 	</select>
 	
 	<!-- 팔로우 -->
@@ -112,25 +115,29 @@
 		SELECT * FROM PR_FOLLOW
 		WHERE following_nick = #{following_nick}
 	</select>
-	
-	<!-- 팔로워 카운트 -->
-	<select id="followerCount" parameterType="String" resultType="FollowVO">
-		select count(*) from pr_follow where following_nick=#{following_nick}
-	</select>
-	
+
 	
 	
 	<!-- 좋아요 -->
-	
+	<insert id="good">
+		INSERT INTO PR_GOOD(good_nick, good_email)
+		VALUES (#{good_nick}, #{good_email})
+	</insert>
 	
 	<!-- 좋아요 취소 -->
-	
+	<delete id="ungood">
+		DELETE FROM PR_GOOD
+		WHERE good_nick = #{good_nick}
+		AND good_email = #{good_email}
+	</delete>
 	
 	<!-- 내가 좋아요 하고 있는지 체크 -->
-	
-	
-	<!-- 이력서 좋아요 수 카운트 -->
-	
+	<select id="is_good" parameterType="GoodVO" resultType="String">
+		SELECT COUNT(*)
+		FROM PR_GOOD
+		WHERE good_nick = #{good_nick}
+		AND good_email = #{good_email}
+	</select>
 	
 	
 </mapper>
