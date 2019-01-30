@@ -33,7 +33,36 @@
 	//서버로 부터 받은 메세지 보내주기
 	function onMessage(evt) 
 	{
-		console.log("띠링띠링");
+		var msg = "userNick="+nick;
+		$.ajax({                                                                                                                          
+			 async : true,
+	         type :'POST',
+	         data : msg,
+	         url : "${path}/alarm",
+	         success : function(data)
+	         {
+	        	console.log("띠링, 문자왔어여"+data);
+	        	alarmMsg(data);
+	         }
+		})
+	}
+	
+	function alarmMsg(data)
+	{
+		if(data > 0)
+		{
+			$('#alarm').empty();
+			$('#alarm').css({"display" : "block"});
+			$('#alarm').append(data);
+			$('#chatmenu').empty();
+			$('#chatmenu').css({"display" : "block"});
+			$('#chatmenu').append(data);
+		}
+		else
+		{
+			$('#alarm').empty();
+			$('#alarm').css({"display" : "none"});
+		}
 	}
 	$(document).ready(function()
 	{
@@ -57,6 +86,7 @@
 </head>
 <body>
   <nav id="min"class="top_nav">
+  		<div id="alarm"></div>
 		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
 		<span id="navspan">MENU</span>
 	</nav>
@@ -84,7 +114,7 @@
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='${path}/resume/list'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='${path}/meeting'>CHAT / FOLLOW</a></li>
+			<li class="fullmenulist"><a href='${path}/meeting'>CHAT / FOLLOW</a><div id="chatmenu"></div></li>
 			<li class="fullmenulist"><a href='${path}/resume/regist'>이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>

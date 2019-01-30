@@ -14,6 +14,7 @@
 	var email = '${login.userEmail}';
 	var name = '${login.userName}';
 	var receiverNick = null;
+	var lookRoom = null;
 	function connect() 
 	{
 		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
@@ -40,7 +41,8 @@
 		var obj = JSON.parse(data);
 	/* 	appendMessage(obj.message_content); */
 		appendMessage(obj);
-	
+		
+		
 		//채팅 리스트
 		getList(obj);
 		
@@ -80,6 +82,22 @@
 			socket.send(JSON.stringify(message));
 			$("#chat_text").val("");
 		}
+		// 메시지 보낼때 읽음표시 사라지기
+		if(lookRoom == message.chatroom_id)
+		{
+			var _chatroomId = "chatroom_id="+message.chatroom_id;
+			/* console.log("보고있는 방하고 같음"+_chatroomId); */
+			//보낼때 내껀 읽음 표시하기
+			readUpdate(_chatroomId);
+		}
+		else
+		{
+			var _chatroomId = "chatroom_id=" + lookRoom;
+			/* console.log("보고있는 방하고 다름"+_chatroomId); */
+			//보낼때 내껀 읽음 표시하기
+			readUpdate(_chatroomId);
+		}
+		
 	}
 	function appendMessage(msg) 
 	{
@@ -102,11 +120,18 @@
 	function readyChat(follow)
 	{
 		receiverNick =follow;
-		console.log("보낼 대상 선택 : "+receiverNick);	
+		console.log("보낼 대상 선택 : "+receiverNick);
+		
 	}
-	function getRoom(chatroom_id, receiver_user_id)
+	function getRoom(chatroom_id, receiver_user_id, bool)
 	{
 		var param = "chatroom_id="+chatroom_id
+		//내가 보고있는 룸 넣기
+		lookRoom = chatroom_id;
+		if(bool == true)
+		{
+			readUpdate(param);
+		}
 		$.ajax({                                                                                                                          
 			 async : true,
 	         type :'POST',
@@ -132,6 +157,7 @@
 		// 메시지를 파라미터로 받을 필요가 없는것 같다 .
 		var session = '${sessionScope.login.userNick}';
 		var msg = "userNick=" +session; 
+		
 		$.ajax({                                                                                                                          
 			 async : true,
 	         type :'POST',
@@ -161,22 +187,50 @@
 		if(checkUserNick === getlistNick)
 		{
 			console.log("세션 = Receiver");
-			$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"');\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
+			if(getlist.unReadCount == 0)
+			{
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");	
+			}
+			else
+			{
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
+			}
 		}
 		else
 		{
 			console.log("세션 = sender");
-			$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"');\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
+			if(getlist.unReadCount == 0)
+			{
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");
+			}
+			else
+			{
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
+			}
 		}
+	}
+	
+	function readUpdate(param)
+	{
+		var msg = param+'&userNick='+'${sessionScope.login.userNick}';
+		console.log('업뎃메세징'+msg);
+		$.ajax({                                                                                                                          
+			 async : true,
+	         type :'POST',
+	         data : msg,
+	         url : "${path}/readUpdate",
+	         success : function(data)
+	         {
+	        	getList(data);
+	         }
+		})
 	}
 	$(document).ready(function() 
 	{
 		$("#chat_text").focus();
 		$('#chat_text').keypress(function(event) 
-		{
-			console.log("check: a");
+		{	
 			var keycode = (event.keyCode ? event.keyCode : event.which);
-			console.log("check: b");
 			if (keycode == '13') 
 			{
 				console.log("check: c");
@@ -226,11 +280,11 @@
 						<div class="up">
 						<c:choose>
 							<c:when test="${sessionScope.login.userNick == row.receiver_user_id}">
-							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.send_user_id}');"></a>	
+							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.send_user_id}',true);"></a>	
 							<div class="m_name">${row.send_user_id}</div>
 							</c:when>
 							<c:otherwise>
-							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.receiver_user_id}');"></a>	
+							<a class="getChatRoom" href="javascript:getRoom('${row.chatroom_id}','${row.receiver_user_id}',true);"></a>	
 							<div class="m_name">${row.receiver_user_id}</div>
 							</c:otherwise>
 						</c:choose>				

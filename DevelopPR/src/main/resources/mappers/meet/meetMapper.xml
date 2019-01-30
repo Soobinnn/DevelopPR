@@ -41,7 +41,15 @@
 	WHERE chatroom_id LIKE '%'||#{userNick}||'%' AND (SEND_USER_ID = #{userNick} OR RECEIVER_USER_ID = #{userNick})
 	ORDER BY LASTTIME DESC
 </select>
+<update id = "readUpdate">
+	update PR_MESSAGE SET MESSAGE_READ = 0
+	WHERE CHATROOM_CHATROOM_ID = #{chatroom_id} AND MESSAGE_RECEIVER = #{message_receiver}
+</update>
 
-
-
+<!-- 다른 페이지에 있을 시 실시간 알림 -->
+<select id = "alarm" resultType ="int">
+	select count(*) as unReadCount
+	from pr_message
+	where message_receiver = #{userNick} AND MESSAGE_READ = 1
+</select>	
 </mapper>

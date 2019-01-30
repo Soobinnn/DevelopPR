@@ -72,6 +72,28 @@ public class MeetingController
 		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);
 		return listChatRoom; 
 	}
+	
+	//메시지 읽음 표시
+	@RequestMapping(value="/readUpdate", method =RequestMethod.POST)
+	@ResponseBody
+	public String readUpdate(@RequestParam("chatroom_id") String chatroom_id,  @RequestParam("userNick") String userNick) throws Exception
+	{
+		
+		meetingService.readUpdate(chatroom_id, userNick);
+		String msg = "success";
+		/*	List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);*/
+		return msg; 
+	}
+	
+	//실시간 알림
+	@RequestMapping(value="/alarm", method =RequestMethod.POST)
+	@ResponseBody
+	public int alarm(@RequestParam("userNick") String userNick) throws Exception
+	{
+		int _alarm = meetingService.alarm(userNick);
+		/*	List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);*/
+		return _alarm; 
+	}
 	/* 
 	//채팅방생성
 	@RequestMapping("chat.do/{userId}")
