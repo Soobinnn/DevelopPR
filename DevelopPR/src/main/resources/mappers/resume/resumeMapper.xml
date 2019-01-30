@@ -8,7 +8,7 @@
 		#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open},
 		#{prefer_place},
 		#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year},
-		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
+		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}, #{color}
 		)
 	</insert>
 	
@@ -41,7 +41,7 @@
           motto = #{motto}, is_work=#{is_work}, profile_photo=#{profile_photo}, name=#{name}, birthday=#{birthday}, cell_num=#{cell_num}, cnum_is_open=#{cnum_is_open}, 
 		  email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
 		  acq_date=#{acq_date}, acq_name=#{acq_name}, gradu_year=#{gradu_year}, edu_info=#{edu_info}, 
-		  career_year=#{career_year}, career_info=#{career_info}, abb=#{abb}, tech_name=#{tech_name}, tech_percent=#{tech_percent}, age=#{age}
+		  career_year=#{career_year}, career_info=#{career_info}, abb=#{abb}, tech_name=#{tech_name}, tech_percent=#{tech_percent}, age=#{age}, color=#{color}
           WHERE email=#{email}
     </update>
 

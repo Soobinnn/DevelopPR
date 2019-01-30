@@ -217,5 +217,12 @@ public class ResumeController {
 	  return chkGood;
    }
    
-   
+   @RequestMapping(value="background", method=RequestMethod.POST)
+   @ResponseBody
+   public String color(@RequestParam("color") String color) throws Exception
+   {
+	   System.out.println("color:"+color);
+	   String url="/DevelopPR/resources/resume/"+color+".jpg";
+	   return url;
+   }
 } 

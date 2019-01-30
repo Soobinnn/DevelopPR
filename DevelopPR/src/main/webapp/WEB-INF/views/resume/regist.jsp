@@ -5,8 +5,8 @@
 <head>
 <title>이력서 등록</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<script type="text/javascript" src="jquery-2.2.3.min.js"></script>
-<script type="text/javascript">	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>	
 function fn_uploadImage() {
 	$("#uploadImageFile").click();
 }
@@ -49,6 +49,24 @@ function fn_removeImage() {
 		// obj.parentNode 를 이용하여 삭제
 		document.getElementById('techs').removeChild(obj.parentNode);
 	}
+	
+	$(document).ready(function () {
+		$('.color').click(function () {
+			var color = $('input[name="color"]:checked').val();
+			var param = "color="+color;
+			 $.ajax({
+			        async : true,
+			        type :'POST',
+			        data : param,
+			        url : '${path}/resume/background',
+			        success : function(data)
+			        {
+			        	console.log("success:"+data);
+			        	$(".header").attr("src", data);
+			        }
+			    })
+		})
+	})
 </script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
@@ -56,6 +74,7 @@ function fn_removeImage() {
 <form name="form1" method="post" action="${path}/resume/registConfirm">
     <div class="container">
         <header>
+			<img src="/DevelopPR/resources/resume/gray.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 등록</div>
@@ -78,6 +97,30 @@ function fn_removeImage() {
             </div>
              
         </header>
+           	<div class="colors">
+           		<div>background</div>
+           			<div class="a">
+	           		<input type="radio" name="color" class="color" value="black"/>Black
+	           		<input type="radio" name="color" class="color" value="bluewhite"/>BlueWhite
+	           		<input type="radio" name="color" class="color" value="brown"/>Brown
+	           		</div>
+	           		<div class="b">
+	           		<input type="radio" name="color" class="color" value="colorful"/>Colorful
+	           		<input type="radio" name="color" class="color" value="colorful2"/>Colorful2
+	           		<input type="radio" name="color" class="color" value="gray" checked/>Gray
+	           		</div>
+	           		<div class="c">
+	           		<input type="radio" name="color" class="color" value="green"/>Green
+	           		<input type="radio" name="color" class="color" value="mint"/>Mint
+	           		<input type="radio" name="color" class="color" value="pink"/>Pink
+					</div>
+	           		<div class="d">
+	           		<input type="radio" name="color" class="color" value="purple"/>Purple
+	           		<input type="radio" name="color" class="color" value="white"/>White
+	           		<input type="radio" name="color" class="color" value="yellow"/>Yellow
+	           		</div>
+     
+           	</div>
         <div id="pills">
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
 	        <div class="pill">2. <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>

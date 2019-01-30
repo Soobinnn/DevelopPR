@@ -151,9 +151,8 @@ function ungood()
 </head>
 <body> 
 <div class="container">
-   <div class="head" style='background-image:url(<c:url value="/resources/resume/flower.jpg"/>);'>
-    <header>
-    </header>
+   <div class="head">
+    	<img id="color" src='<c:url value="/resources/resume/${dto.color}.jpg"/>'/>
    </div>
     <div class="img">
         <div class="comment">${dto.motto}</div>
