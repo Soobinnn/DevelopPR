@@ -28,6 +28,21 @@
 		socket.onopen = function() 
 		{
 		    console.log('open');
+		    // 로그인상태 일 때, 페이지 넘어 갈때마다 메시지 확인
+		    if(!(nick == null || nick ==""))
+		    {
+		    	var msg = "userNick="+nick;
+				$.ajax({                                                                                                                          
+					 async : true,
+			         type :'POST',
+			         data : msg,
+			         url : "${path}/alarm",
+			         success : function(data)
+			         {
+			        	alarmMsg(data);
+			         }
+				})
+		    }
 		};
 	}
 	//서버로 부터 받은 메세지 보내주기
@@ -41,7 +56,6 @@
 	         url : "${path}/alarm",
 	         success : function(data)
 	         {
-	        	console.log("띠링, 문자왔어여"+data);
 	        	alarmMsg(data);
 	         }
 		})

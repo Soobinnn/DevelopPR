@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../views/include/tag_header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/meet/meeting.css'/>" />
 <!DOCTYPE html>
 <html class="m">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/meet/meeting.css'/>" />
 <head>
 <title>메신저</title>
 <link rel="stylesheet" type="text/css" href="meeting.css" />
@@ -40,16 +39,20 @@
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
 	/* 	appendMessage(obj.message_content); */
-		appendMessage(obj);
 		
+		// 내가 보고있는 채팅방일 경우에만, 메시지 띄워주기
+		if(lookRoom == obj.chatroom_id)
+		{
+			appendMessage(obj);
+		}
 		
 		//채팅 리스트
 		getList(obj);
 		
-		if (data.substring(0, 4) == "msg:") 
+		/* if (data.substring(0, 4) == "msg:") 
 		{
 			appendMessage(data.substring(4));
-		}
+		} */
 	}
 	//닫힐때 
 	function onClose(evt) {
@@ -72,7 +75,7 @@
 		}
 		console.log(message);
 		
-		/* socket.send("msg:" + msg); */
+		/* 보낼대상 선택안할시 예외처리 */
 		if(message.message_receiver==null||message.message_receiver=="")
 		{
 			alert("보낼 대상을 선택하세요.(예외처리하기)");
@@ -99,30 +102,34 @@
 		}
 		
 	}
+	// 받은 메시지를 나타냄
 	function appendMessage(msg) 
 	{
-		/* console.log("닉상태가 : " +nick);
+		/* 	console.log("닉상태가 : " +nick);
 		console.log("샌더상태가 : " +msg.message_sender); */
+		
 		if(nick===msg.message_sender)
 		{
-			$("#chatArea").append("<div id='sendchat'>" + msg.message_content + "</div><br>");
+			$("#chatArea").append("<div id='sendchat' style='text-align : right'>" + msg.message_content + "</div><br>");
 		}
 		else
 		{
-			$('#sendchat').css({"text-align" :"left"});
-			$("#chatArea").append("<div id='sendchat'>" + msg.message_content + "</div><br>");	
+			$("#chatArea").append("<div id='sendchat' style='text-align : left'>" + msg.message_content + "</div><br>");	
 		}
 		var chatAreaHeight = $("#chat").height();
 		var maxScroll = $("#chatArea").height() - chatAreaHeight;
 		
 		$("#chat").scrollTop(maxScroll);
 	}
+	
+	//보낼대상을 선택함
 	function readyChat(follow)
 	{
 		receiverNick =follow;
 		console.log("보낼 대상 선택 : "+receiverNick);
 		
 	}
+	
 	function getRoom(chatroom_id, receiver_user_id, bool)
 	{
 		var param = "chatroom_id="+chatroom_id
@@ -152,6 +159,7 @@
 	         }
 		})
 	}
+	// 해당 채팅방 내용을 불러옴
 	function getList(message)
 	{
 		// 메시지를 파라미터로 받을 필요가 없는것 같다 .
@@ -177,10 +185,12 @@
 	         }
 		})
 	}
+	//채팅방 리스트를 불러옴
 	function viewList(getlist)
 	{
-		var date = getlist.lastTime;
-		
+		var date = new Date(getlist.lastTime);
+		/* console.log("날짜테스트!" + date.getFullYear() + date.getMonth() + date.getDate()+date.getHours() +date.getMinutes()); */
+		/* console.log("날짜테스트 : "+ date.format("yy-MM-dd hh:mm")); */
 		var checkUserNick = '${sessionScope.login.userNick}';
 		var getlistNick = getlist.receiver_user_id;
 		console.log(getlist);
@@ -189,11 +199,11 @@
 			console.log("세션 = Receiver");
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");	
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");	
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.send_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
 			}
 		}
 		else
@@ -201,15 +211,16 @@
 			console.log("세션 = sender");
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ getlist.lastTime +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
+				$(".listAll").append("<div class='mlist'><div class='up'><a class='getChatRoom' href=\""+"javascript:getRoom('"+getlist.chatroom_id +"','"+ getlist.receiver_user_id +"',true);\""+"></a><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
 			}
 		}
 	}
 	
+	// 읽은 채팅을 읽음표시로 만듬
 	function readUpdate(param)
 	{
 		var msg = param+'&userNick='+'${sessionScope.login.userNick}';
@@ -264,6 +275,42 @@
 		});   */
 
 	});
+	
+	 // date format 함수  : Date 내장 객체에 format함수 추가
+    Date.prototype.format = function(f) 
+    {    
+        if (!this.valueOf()) return " ";     
+        
+        var weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];    
+        var d = this;         
+        
+        return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {        
+            switch ($1) {            
+               case "yyyy": return d.getFullYear();            
+               case "yy": return (d.getFullYear() % 1000).zf(2);            
+               case "MM": return (d.getMonth() + 1).zf(2);            
+               case "dd": return d.getDate().zf(2);            
+               case "E": return weekName[d.getDay()];            
+               case "HH": return d.getHours().zf(2);            
+               case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);            
+               case "mm": return d.getMinutes().zf(2);            
+               case "ss": return d.getSeconds().zf(2);            
+               case "a/p": return d.getHours() < 12 ? "오전" : "오후";            
+               default: return $1;        
+             }    
+        });}; 
+
+    //한자리일경우 앞에 0을 붙여준다.
+    String.prototype.string = function(len)
+    {
+        var s = '', i = 0; 
+        while (i++ < len) { s += this; } 
+        return s;
+    }; 
+    String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
+    Number.prototype.zf = function(len){return this.toString().zf(len);};
+
+
 </script>
 </head>
 <body>
