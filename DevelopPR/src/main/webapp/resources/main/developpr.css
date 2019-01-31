@@ -392,11 +392,7 @@ section.main_section
     display:flex;
     flex-shrink: 0;
 }
-/* */
-.animation, .detail
-{
-    border : 1px solid;
-}
+
 
 /*  */
 .PR1, .PR4, .PR7
@@ -760,7 +756,7 @@ footer
 	  animation-iteration-count: infinite;
 	  animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
 	  animation-direction: alternate;
-	  border:solid 20px #378577;
+
 
 }
 #element1,#element2, #element3, #element4,
@@ -785,14 +781,49 @@ footer
 .animation #element1414, 
 .animation #element1515{
 	position:absolute;
-  	background:#378577;
  	transform:rotateY(0deg);
   	animation-name: tutsFade1;
 	animation-iteration-count: infinite;
 	animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
 	animation-direction: alternate;
-
  }
+
+.animation #element111,
+.animation #element66,
+.animation #element1414,
+.animation #element77,
+.animation #element1313{
+	background:#378577;
+}
+.animation #element1,.animation #element6,.animation #element14,
+.animation #element7,.animation #element13{
+	border:solid 20px #378577;
+}
+
+.animation #element1212,
+.animation #element55,
+.animation #element22,
+.animation #element1010,
+.animation #element1515{
+   	background:#7ec8bb;
+}
+.animation #element12,.animation #element5,.animation #element2,
+.animation #element10,.animation #element15{
+	border:solid 20px #7ec8bb;
+}
+ 
+.animation #element33,
+.animation #element44,
+.animation #element99,
+.animation #element1111,
+.animation #element88{
+	 background:#59ad9d;
+}
+.animation #element3,.animation #element4,.animation #element9,
+.animation #element11,.animation #element8{
+	border:solid 20px #59ad9d;
+} 
+ 
 #element111, #element22,#element33,#element44,#element55,#element66,#element77,#element88{
  	width:210px;
 	height:210px;

@@ -46,6 +46,11 @@ table {
 .resumeDetail{
    background-color:#EFECEC;
 }
+.resumeDetail .container #color{
+	height:300px;
+	width:100%;
+	z-index:-3;
+}
 .resumeDetail .container {
    display:flex;
    flex-direction:column;
@@ -315,12 +320,27 @@ table {
 
 /*---------------header----------------*/
 .resumeRegist .container header{
-   background-color: #EFECEC;
    display:flex;
    height:250px;
    border-bottom:solid 2px gray;
 }
+.resumeRegist .header{
+	z-index:-3;
+	position:absolute;
+	width:930px;
+	height:250px;
 
+}
+.resumeRegist .colors{
+	display:flex;
+	width:650px;
+	margin-top:10px;
+}
+.resumeRegist .color{
+	margin-left:50px;
+	margin-bottom:10px;
+	color:red;
+}
 .resumeRegist .head{
    padding:50px;
    width:600px;
@@ -589,7 +609,6 @@ table {
 .resumeRegist #button{
    display:flex;
    flex-direction: row;
-
 }
 
 .resumeRegist .button1{

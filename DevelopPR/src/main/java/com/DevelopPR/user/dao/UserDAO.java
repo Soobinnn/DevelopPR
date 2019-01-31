@@ -21,7 +21,7 @@ public interface UserDAO
 	   public void logout(HttpSession session);
 
 	   // 회원 이메일, 이름, 닉네임 (팔로우)
-	   public UserVO viewId(String userNick);
+	   public UserVO viewId(String email);
 
 	   // 아이디 찾기
 	   public String findId(String phone) throws Exception;

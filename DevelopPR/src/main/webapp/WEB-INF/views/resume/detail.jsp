@@ -6,13 +6,153 @@
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+window.onload = function (){
+	if('${chkFollow}'=='1'){
+		var f=document.getElementById('unfollow');
+		f.style="opacity:1";
+		var ff=document.getElementById('follow');
+		ff.style="opacity:0";
+	}
+	if('${chkFollow}'=='0'){
+		var f=document.getElementById('unfollow');
+		f.style="opacity:0";
+		var ff=document.getElementById('follow');
+		ff.style="opacity:1";
+	}
+	if('${chkGood}'=='1'){
+		var g=document.getElementById('ungood');
+		g.style="opacity:1";
+		var gg=document.getElementById('good');
+		gg.style="opacity:0";
+	}
+	if('${chkGood}'=='0'){
+		var g=document.getElementById('ungood');
+		g.style="opacity:0";
+		var gg=document.getElementById('good');
+		gg.style="opacity:1";
+	}
+}
+function follow()
+{
+   	var Email = '${dto.email}';
+    console.log(Email);
+	var param = "email="+Email;
+    $.ajax({
+        async : true,
+        type :'POST',
+        data : param,
+        url : "${path}/resume/follow",
+        success : function(data)
+        {
+        	console.log(data);
+        	if(data=='1'){
+        		var f=document.getElementById('unfollow');
+        		f.style="opacity:1";
+        		var ff=document.getElementById('follow');
+        		ff.style="opacity:0";
+        	}
+        	if(data=='0'){
+        		var f=document.getElementById('unfollow');
+        		f.style="opacity:0";
+        		var ff=document.getElementById('follow');
+        		ff.style="opacity:1";
+        	}
+        }  
+    })
+}
 
+function unfollow()
+{
+   	var Email = '${dto.email}';
+    console.log(Email);
+	var param = "email="+Email;
+    $.ajax({
+        async : true,
+        type :'POST',
+        data : param,
+        url : "${path}/resume/unfollow",
+        success : function(data)
+        {
+         	console.log(data);
+        	if(data=='1'){
+        		var f=document.getElementById('unfollow');
+        		f.style="opacity:1";
+        		var ff=document.getElementById('follow');
+        		ff.style="opacity:0";
+        	}
+        	if(data=='0'){
+        		var f=document.getElementById('unfollow');
+        		f.style="opacity:0";
+        		var ff=document.getElementById('follow');
+        		ff.style="opacity:1";
+        	}
+        }
+    })
+}
+
+function good()
+{
+   	var param = 'good_email='+'${dto.email}'+'&good_nick='+'${sessionScope.userNick}';
+    console.log(param);
+    $.ajax({
+        async : true,
+        type :'POST',
+        data : param,
+        url : "${path}/resume/good",
+        success : function(data)
+        {
+        	console.log(data);
+        	if(data=='1'){
+        		var g=document.getElementById('ungood');
+        		g.style="opacity:1";
+        		var gg=document.getElementById('good');
+        		gg.style="opacity:0";
+        	}
+        	if(data=='0'){
+        		var g=document.getElementById('ungood');
+        		g.style="opacity:0";
+        		var gg=document.getElementById('good');
+        		gg.style="opacity:1";
+        	}
+        }  
+    })
+}
+
+function ungood()
+{
+   	var param = 'good_email='+'${dto.email}'+'&good_nick='+'${sessionScope.userNick}';
+    console.log(param);
+    $.ajax({
+        async : true,
+        type :'POST',
+        data : param,
+        url : "${path}/resume/ungood",
+        success : function(data)
+        {
+         	console.log(data);
+          	if(data=='1'){
+        		var g=document.getElementById('ungood');
+        		g.style="opacity:1";
+        		var gg=document.getElementById('good');
+        		gg.style="opacity:0";
+        	}
+        	if(data=='0'){
+        		var g=document.getElementById('ungood');
+        		g.style="opacity:0";
+        		var gg=document.getElementById('good');
+        		gg.style="opacity:1";
+        	}
+        }
+    })
+}
+</script>
 </head>
 <body> 
 <div class="container">
-   <div class="head" style='background-image:url(<c:url value="/resources/resume/flower.jpg"/>);'>
-    <header>
-    </header>
+   <div class="head">
+    	<img id="color" src='<c:url value="/resources/resume/${dto.color}.jpg"/>'/>
    </div>
     <div class="img">
         <div class="comment">${dto.motto}</div>
@@ -21,6 +161,7 @@
         <div class="information">
             <div class="textshort1">
             	정보 공개 
+            	
             </div>
             <div class="textshort1">
 		       <c:if test="${dto.is_work==0}">구직중</c:if>
@@ -28,29 +169,26 @@
 		       
 	       	</div>
             <div class="textshort2">포트폴리오</div>
-            <c:choose>
-            <c:when test="${chkFollow == 1}">
-            <div id="unfollow">
-               <!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->      
-               <form action="${path}/resume/unfollowing" name="unfollow_form" method="post" >
-                  <input type="hidden" value="${dto.email}" name="email"> 
-                  <input type="hidden" value="${sessionScope.userName}" name="follower_nick"> 
-                  <input type="hidden" value="${dto.name}" name="following_nick">
-                  <input type="submit" name="unfollow" value="언팔로우">
-               </form>
+             
+             
+            <div id="unfollow" style="opacity:0">
+               <!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->       
+               	  <input type="hidden"  value="${dto.email}"> 
+                  <input type="button" onclick="unfollow()" name="unfollow" value="언팔로우">
             </div>
-            </c:when>
-            <c:otherwise>
-            <div id="follow">      
-               <form action="${path}/resume/following" name="follow_form" method="post" >
-                  <input type="hidden" value="${dto.email}" name="email"> 
-                  <input type="hidden" value="${sessionScope.userName}" name="follower_nick"> 
-                  <input type="hidden" value="${dto.name}" name="following_nick"> 
-                  <input type="submit" name="follow"  value="팔로우" class="follow">
-               </form>
+            <div id="follow" style="opacity:0">      
+            	  <input type="hidden" value="${dto.email}" > 
+                  <input type="button" onclick="follow()" name="follow"  value="팔로우">
             </div>
-            </c:otherwise>
-            </c:choose>
+            
+            <div id="ungood" style="opacity:0">
+               <!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->       
+                  <input type="button" onclick="ungood()" name="ungood" value="좋아요 취소">
+            </div>
+            <div id="good" style="opacity:0">      
+                  <input type="button" onclick="good()" name="good"  value="좋아요">
+            </div>
+            
         </div>
     </div>
     <div class="content">
@@ -250,6 +388,15 @@
 
     </div>
 </div>
+	<div class="button">
+		<a href="history.back()">BACK</a>
+		<a href="${path}/resume/list">LIST</a>
+		<a href="${path}/main">HOME</a>
+		<c:if test="${sessionScope.userEmail==dto.email}">
+			<input type="hidden" value="${dto.email}" name="email"/>
+			<a href="${path}/resume/modify/${dto.email}/">MODIFY</a>
+		</c:if>
+	</div>
     <footer>
         footer 고정
     </footer>

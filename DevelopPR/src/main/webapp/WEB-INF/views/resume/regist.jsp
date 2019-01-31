@@ -5,8 +5,8 @@
 <head>
 <title>이력서 등록</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<script type="text/javascript" src="jquery-2.2.3.min.js"></script>
-<script type="text/javascript">	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>	
 function fn_uploadImage() {
 	$("#uploadImageFile").click();
 }
@@ -49,6 +49,24 @@ function fn_removeImage() {
 		// obj.parentNode 를 이용하여 삭제
 		document.getElementById('techs').removeChild(obj.parentNode);
 	}
+	
+	$(document).ready(function () {
+		$('.color').click(function () {
+			var color = $('input[name="color"]:checked').val();
+			var param = "color="+color;
+			 $.ajax({
+			        async : true,
+			        type :'POST',
+			        data : param,
+			        url : '${path}/resume/background',
+			        success : function(data)
+			        {
+			        	console.log("success:"+data);
+			        	$(".header").attr("src", data);
+			        }
+			    })
+		})
+	})
 </script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
@@ -56,6 +74,7 @@ function fn_removeImage() {
 <form name="form1" method="post" action="${path}/resume/registConfirm">
     <div class="container">
         <header>
+			<img src="/DevelopPR/resources/resume/gray.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 등록</div>
@@ -78,6 +97,30 @@ function fn_removeImage() {
             </div>
              
         </header>
+           	<div class="colors">
+           		<div>background</div>
+           			<div class="a">
+	           		<input type="radio" name="color" class="color" value="black"/>Black
+	           		<input type="radio" name="color" class="color" value="bluewhite"/>BlueWhite
+	           		<input type="radio" name="color" class="color" value="brown"/>Brown
+	           		</div>
+	           		<div class="b">
+	           		<input type="radio" name="color" class="color" value="colorful"/>Colorful
+	           		<input type="radio" name="color" class="color" value="colorful2"/>Colorful2
+	           		<input type="radio" name="color" class="color" value="gray" checked/>Gray
+	           		</div>
+	           		<div class="c">
+	           		<input type="radio" name="color" class="color" value="green"/>Green
+	           		<input type="radio" name="color" class="color" value="mint"/>Mint
+	           		<input type="radio" name="color" class="color" value="pink"/>Pink
+					</div>
+	           		<div class="d">
+	           		<input type="radio" name="color" class="color" value="purple"/>Purple
+	           		<input type="radio" name="color" class="color" value="white"/>White
+	           		<input type="radio" name="color" class="color" value="yellow"/>Yellow
+	           		</div>
+     
+           	</div>
         <div id="pills">
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
 	        <div class="pill">2. <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
@@ -94,7 +137,7 @@ function fn_removeImage() {
                                 현재 구직 상태 *
                             </div> 
                             <div class="s_info">
-                                <input type="radio" name="is_work" value="0"/>구직중
+                                <input type="radio" name="is_work" value="0" checked/>구직중
                                 <input type="radio" name="is_work" value="1"/>재직중
                             </div>
                         </div>
@@ -105,8 +148,9 @@ function fn_removeImage() {
                        		     이 름 *
                             </div>
                             <div class="p_info">
-                                <input type="text" class="textlong" name="name" placeholder="이름을 입력해주세요.(2~20자)"/>
+                                <div class="textshort">${dto.userName}</div>
                             </div>
+                              <input type="hidden" name="name" value="${dto.userName}"/> 
                         </div>
                         
                          <div id="p_name">
@@ -133,7 +177,7 @@ function fn_removeImage() {
                             </div>
                             <div class="phone_info">
                                 <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" class="textshort"/>
-                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>공개
+                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
                             </div>
                         </div>
@@ -142,9 +186,10 @@ function fn_removeImage() {
                             <div class="name">
                                 이메일 * 
                             </div>
+                           		<input type="hidden" name="email" value="${dto.userEmail}"/> 
                             <div class="email_info">
-                                <input type="text" name="email" placeholder="9~50자 제한" class="textshort"/>
-                                <input type="radio" name="email_is_open" value="1"/>공개
+                                <p class="textshort">${dto.userEmail}</p>
+                                <input type="radio" name="email_is_open" value="1" checked/>공개
                                 <input type="radio" name="email_is_open" value="0"/>비공개
                             </div>
                         </div>
@@ -164,7 +209,7 @@ function fn_removeImage() {
                             </div>
                             <div class="info">
                                     <input type="text" name="address" placeholder="정규표현식 추가" class="textshort"/>
-                                <input type="radio" name="address_is_open" value="1"/>공개
+                                <input type="radio" name="address_is_open" value="1" checked/>공개
                                 <input type="radio" name="address_is_open" value="0"/>비공개
                             </div>
                         </div>
@@ -190,9 +235,6 @@ function fn_removeImage() {
 
            
            <div class="information">
-               
-               
-     
                <div class="acq">
 	               <div class="subject">자격 정보 <input type="button" value=" + " class="plus" onclick="add_acqitem()"></div>
 	                    <div class="acq_ok">
