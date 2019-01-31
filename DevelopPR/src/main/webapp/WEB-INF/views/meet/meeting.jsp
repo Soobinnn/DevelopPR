@@ -126,13 +126,39 @@
 	function readyChat(follow)
 	{
 		receiverNick =follow;
-		console.log("보낼 대상 선택 : "+receiverNick);
-		
+	}
+	
+	// 팔로워/팔로잉 유저에게 처음 채팅할때
+	function readyRoom(follow)
+	{
+		receiverNick = follow;
+		//방이있는지 확인하기
+		var param = "send_user_id="+nick+"&receiver_user_id="+receiverNick;
+		$.ajax({                                                                                                                          
+			 async : true,
+	         type :'POST',
+	         data : param,
+	         url : "${path}/checkRoom",
+	         success : function(data)
+	         {
+	        	 $("#chatArea").empty();
+	        	var messagelist;
+	        	var _chatRoomId; 
+	        	 for(var i in data)
+	        	 {
+	        		 messagelist = data[i];	 
+	        		 _chatRoomId = data[i].chatroom_id;
+	        		 console.log("왓더~"+_chatRoomId);
+	        		 appendMessage(messagelist);
+	        	 }
+	        	 lookRoom = _chatRoomId;
+	         }
+		})
 	}
 	
 	function getRoom(chatroom_id, receiver_user_id, bool)
 	{
-		var param = "chatroom_id="+chatroom_id
+		var param = "chatroom_id="+chatroom_id;
 		//내가 보고있는 룸 넣기
 		lookRoom = chatroom_id;
 		if(bool == true)
@@ -159,7 +185,7 @@
 	         }
 		})
 	}
-	// 해당 채팅방 내용을 불러옴
+	// 본인의 채팅방리스트 불러옴
 	function getList(message)
 	{
 		// 메시지를 파라미터로 받을 필요가 없는것 같다 .
@@ -372,14 +398,14 @@
 				<div class="tab1_content">
 					<c:forEach items="${followingList}" var="list">
 						<div>
-							<a href="javascript:readyChat('${list.following_nick}');">${list.following_nick}</a>
+							<a href="javascript:readyRoom('${list.following_nick}');">${list.following_nick}</a>
 						</div>
 					</c:forEach>
 				</div>
 				<div class="tab2_content">
 					<c:forEach items="${followerList}" var="list">
 						<div>
-							<a href="javascript:readyChat('${list.follower_nick}');">${list.follower_nick}</a>
+							<a href="javascript:readyRoom('${list.follower_nick}');">${list.follower_nick}</a>
 						</div>
 					</c:forEach>
 				</div>

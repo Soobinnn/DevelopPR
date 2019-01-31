@@ -24,7 +24,8 @@
 
 <!-- 개인 채팅방 입장 -->
 <select id = "getRoom" resultType = "MessageVO">
-	SELECT * from PR_MESSAGE 
+	SELECT CHATROOM_CHATROOM_ID AS chatroom_id, message_sender, send_user_id, send_user_name, message_receiver,receiver_user_id, receiver_user_name, message_content, message_sendtime, message_read 
+	FROM PR_MESSAGE 
 	WHERE chatroom_chatRoom_id = #{chatroom_id}
 	ORDER BY MESSAGE_SENDTIME ASC
 </select>

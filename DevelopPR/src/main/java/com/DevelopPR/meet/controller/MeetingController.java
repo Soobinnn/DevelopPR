@@ -1,5 +1,6 @@
 package com.DevelopPR.meet.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,14 +38,14 @@ public class MeetingController
 		UserVO userVo = (UserVO)session.getAttribute("login");
 		String userNick = userVo.getUserNick();
 		// userVO에서 본인의 닉네임(임시로 이름)을 가져온다.
-		String follow_nick = userVo.getUserName();
+		/*String follow_nick = userVo.getUserName();*/
 		
 		// 본인 닉네임과 매칭되어 DB에서 가져온다.
 		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);
 		// 자신의 아이디로 팔로잉 하는 사람들의 목록을 가지고온다.
-		List<FollowVO> followingList = resumeService.followingList(follow_nick);
+		List<FollowVO> followingList = resumeService.followingList(userNick);
 		// 자신을 팔로우 하는 사람들의 목록을 가지고온다.
-		List<FollowVO> followerList = resumeService.followerList(follow_nick);
+		List<FollowVO> followerList = resumeService.followerList(userNick);
 		
 		model.addAttribute("list", listChatRoom);
 		model.addAttribute("followingList", followingList);
@@ -93,21 +94,32 @@ public class MeetingController
 		/*	List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);*/
 		return _alarm; 
 	}
-	/* 
-	//채팅방생성
-	@RequestMapping("chat.do/{userId}")
-	public String chatRoom(Model model, @PathVariable("userId") String receiver_user_id, ChatRoomVO chatroom)
+	
+	//팔로우 선택시 이미 방이 있는지 확인
+	@RequestMapping(value="/checkRoom", method =RequestMethod.POST)
+	@ResponseBody
+	public List<MessageVO> checkRoom(@ModelAttribute ChatRoomVO chatRoomVo) throws Exception
 	{
-		//해당 정보로 방을 DB에 생성( 이미 방이 존재한다면 생성하지 않는다 )
-		ChatDto dto = projectChatService.checkRoom(chat.getName());
-		ChatRoomVO chatroomvo =  projectChatService.checkRoom(chatroom.getSend_user_id());
-		if(dto ==null) 
+		ChatRoomVO checkRoom = meetingService.isRoom(chatRoomVo);
+		System.out.println("후움"+checkRoom);
+		/*System.out.println("가꼬온나 : "+checkRoom.getChatroom_id());*/
+		List<MessageVO> msgList = new ArrayList<MessageVO>();
+		if(checkRoom==null)
 		{
-			projectChatService.createChatRoom(chat);
+			MessageVO msg = new MessageVO();
+			msg.setChatroom_id(chatRoomVo.getSend_user_id()+","+chatRoomVo.getReceiver_user_id());
+			msg.setMessage_sender(chatRoomVo.getSend_user_id());
+			msg.setMessage_receiver(chatRoomVo.getReceiver_user_id());
+			msg.setMessage_content(chatRoomVo.getReceiver_user_id()+" 님과 연결합니다.");;
+			msgList.add(msg);
 		}
-		ChatRoomVO chatroomvo = new ChatRoomVO();
-		chatroomvo.setReceiver_user_id(receiver_user_id);
-		model.addAttribute("startChat",chatroomvo);
-		return "chat";
-	}*/
+		else
+		{
+			msgList  = meetingService.getRoom(checkRoom.getChatroom_id());
+		}
+		
+		return msgList;
+	}
+	
+	
 }
