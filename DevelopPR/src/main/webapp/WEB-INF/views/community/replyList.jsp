@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Reply List</title>
 <%@ include file="../include/tag_header.jsp" %>
 </head>
 <body>
@@ -12,12 +12,12 @@
         <c:forEach var="row" items="${list}">
         <tr>    
             <td>
-                ${row.userName}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
+                ${row.replyer}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
                 <br>
                 ${row.replytext}
                 <br>
                 <!-- 본인 댓글만 수정버튼 생성되도록 처리 -->
-                <c:if test="${sessionScope.userId == row.replyer}">
+                <c:if test="${sessionScope.userNick == row.replyer}">
                     <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')">
                 </c:if>
                 <hr>

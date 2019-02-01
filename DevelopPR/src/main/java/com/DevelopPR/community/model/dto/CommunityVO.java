@@ -4,35 +4,37 @@ package com.DevelopPR.community.model.dto;
 import java.util.Date;
 
 public class CommunityVO {
-    private int bno;            // �Խñ� ��ȣ
-    private String title;        // �Խñ� ����
-    private String content;        // �Խñ� ����
-    private String writer;        // �Խñ� �ۼ���
-    private String userName;    // �Խñ� �ۼ����� �̸�(ȸ���̸�)
+    private int bno;            // 
+    private String title;        //
+    private String content;        //
+    private String writer;        // 
+    private String userName;    // 
     private Date regdate;        // 
-    private int viewcnt;        // �Խñ� ��ȸ��
-    private int recnt;            // **�Խñ� ����� �� �߰�
- 
-    //��� �߰�
-    /*
-     * ������ �Խ����� ���� �߰� �ʵ�
-     * originNo, groupOrd, groupLayer 
-     */
+    private int viewcnt;        // 
+    private int recnt;            // 
+    private String[] files;      // 파일 업로드 추가
     
-    /** ���� ��ȣ **/
     private int originNo;
     
-    /** ����(�������)�� ���� ���� **/
+    
     private int groupOrd;
  
-    /** ��� ���� **/
+    
     private int groupLayer;
     
-    int remove; //���� ���� -> 0: ����, 1: ����
+    int remove; //
     
     
     
     
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+
 	public int getOriginNo() {
 		return originNo;
 	}
@@ -135,7 +137,8 @@ public class CommunityVO {
     @Override
     public String toString() {
         return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-                + ", userName=" + userName + ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", recnt=" + recnt + "]";
+                + ", userName=" + userName + ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", recnt=" + recnt
+                + ", files=" + files + "]";
     }
         
 }

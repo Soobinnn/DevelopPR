@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="co_detail">
 <head>
 <link rel="stylesheet" type="text/css" href="community_detail.css?ver=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,18 +11,10 @@
         /* 게시글 관련 */
         // 1. 게시글 수정
         $("#btnUpdete").click(function(){
-            /* var title = document.form1.title.value; ==> name속성으로 처리할 경우
-            var content = document.form1.content.value;
-            var writer = document.form1.writer.value; */
+            
             var title = $("#title").val();
             var content = $("#content").val();
-            //var writer = $("#writer").val();
-            
-              /* if(writer == ""){
-                alert("이름을 입력하세요");
-                document.form1.writer.focus();
-                return;
-            } */
+           
             document.form1.action="${path}/community/modifyForm"
             // 폼에 입력한 데이터를 서버로 전송
             document.form1.submit();
@@ -104,9 +96,8 @@
             }),
             success: function(){
                 alert("댓글이 등록되었습니다.");
-                // 댓글 입력 완료후 댓글 목록 불러오기 함수 호출
-                //listReply("1");     // 전통적인 Controller방식
-                //listReply2();     // json리턴 방식
+               
+                $('#replytext').val(''); // 댓글입력란 초기화
                 listReplyRest("1"); // Rest 방식
             }
         });
@@ -183,23 +174,23 @@
     }
 </script>
 <style>
-.container{
+.co_detail .container{
   height:450px;
   display:flex;
   flex-direction:column;
   width:700px;
   min-width : 350px;
   }
-ul,li
+.co_detail ul,li
 {
   list-style : none;
 }
-#name, #viewcnt, #title_reg, #name_cnt, #content{
+.co_detail #name, #viewcnt, #title_reg, #name_cnt, #content{
   display : flex;
   flex-basis : 50px;
 }
 
-#title_reg
+.co_detail #title_reg
 {
  background-color:#81F7F3;
  display : flex;
@@ -208,18 +199,17 @@ ul,li
  border-radius : 10px;
    vertical-align:baseline;
 }
-#title{
+.co_detail #title{
   padding-top : 10px;
   padding-left : 10px;
   flex-basis : 570px;
      vertical-align:baseline;
      }
-#regdate{
+.co_detail #regdate{
   flex-basis : 220px;
   padding-top : 10px;
         }
-
-#name
+.co_detail #name
 {
  padding-top : 10px;
  padding-left : 10px;
@@ -227,12 +217,12 @@ ul,li
  flex-basis : 100px;
 margin-right : 464px; 
 }
-#viewcnt
+.co_detail #viewcnt
 {
   padding-top : 10px;
   flex-basis : 120px;
 }
-#content
+.co_detail #content
 {
   display : flex;
   padding-top : 20px;
@@ -240,16 +230,10 @@ margin-right : 464px;
   padding-left : 20px;
   flex-basis : 300px; 
   border-bottom : 1px solid silver;
+  overflow: scroll;
 }
 
-
-
-
-
-
-
-
-    #modifyReply {
+.co_detail #modifyReply {
         width: 600px;
         height: 130px;
         background-color: gray;
@@ -260,31 +244,31 @@ margin-right : 464px;
 </style>
 </head>
 <body>
-<h2>게시글 보기</h2>
-<form name="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">
+
+<form name="form1" id="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">
     <div class="container">
    <div id="title_reg">
    <div id="title">${dto.title}</div>
    <div id="regdate"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/></div>
   </div>
       <div id="name_cnt">
-        <div id="name">${dto.userName}</div>
+        <div id="name">${dto.writer}</div>  <%--쿼리문 보고 수정 필요 -> 이름이 아니라  닉네임으로 변경--%>
         <div id="viewcnt">조회수 : ${dto.viewcnt}</div>
       </div>
-     <div id="content">${dto.content}</div>
+     <div id="content"><pre>${dto.content}</pre></div>  
   </div>
   
   
   <!-- 게시물번호를 hidden으로 처리 -->
      <input type="hidden" id="bno" name="bno" value="${dto.bno}">
      <input type="hidden" name="title" value="${dto.title}">
-     <input type="hidden" name="content" value="${dto.content}">  
+   
      <input type="hidden" name="userName" value="${dto.userName}"> 
      <input type="hidden" name="writer" value="${dto.writer}">
   
   <button type="button"style="margin: 0 auto;" id="btnRe">답글쓰기</button>
   <!-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 -->
-    <c:if test="${sessionScope.userId == dto.writer}"> 
+    <c:if test="${sessionScope.userNick == dto.writer}"> 
          <button type="button" style="margin: 0 auto;" id="btnUpdete">수정</button>
         <button type="button" style="margin: 0 auto;" id="btnDelete">삭제</button>
     </c:if>  
@@ -299,7 +283,7 @@ margin-right : 464px;
      <div style="width:650px; text-align: center;">
         <br>
         <!-- 로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
-        <c:if test="${sessionScope.userId != null}">    
+        <c:if test="${sessionScope.userNick != null}">    
             <textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
             <br>
             <!-- 비밀댓글 체크박스 -->

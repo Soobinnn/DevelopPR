@@ -47,5 +47,14 @@
 	</websocket:handlers>
 	
 	<beans:bean id="myHandler" class="com.DevelopPR.meet.util.WebSocket"/>
+	
+	<!-- 게시판 파일 업로드 경로 추가 -->
+	<!-- String uploadPath = new String("업로드 경로") -->
+<beans:bean id="uploadPath" class="java.lang.String">
+    <!-- 파일업로드 디렉토리-->
+    <beans:constructor-arg value="C:\\upload\\"/>
+   </beans:bean> 
+	
+	
     
 </beans:beans>

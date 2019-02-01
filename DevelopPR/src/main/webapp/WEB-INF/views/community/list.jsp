@@ -1,28 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="co_list">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 목록</title>
 <%@ include file="../include/tag_header.jsp" %>
 <style type="text/css">
-    body{
+
+.co_list body{
         line-height:2em;        
         font-family:"맑은 고딕";
 }
-    ul, li{ 
+.co_list ul, li{ 
         list-style:none;
         text-align:center;
         padding:0;
         margin:0;
 }
 
-    #mainWrapper{
+.co_list #mainWrapper{
         width: 800px;
         margin: 0 auto; /*가운데 정렬*/
     }
 
-    #mainWrapper > ul > li:first-child {
+.co_list #mainWrapper > ul > li:first-child {
         text-align: center;
         font-size:14pt;
         height:40px;
@@ -30,23 +31,23 @@
         line-height:30px;
 }
 
-    #ulTable {margin-top:10px;}
+.co_list #ulTable {margin-top:10px;}
     
 
-    #ulTable > li:first-child > ul > li {
+.co_list #ulTable > li:first-child > ul > li {
         background-color:#81F7F3;
         /* background-color:#c9c9c9; */
         font-weight:bold;
         text-align:center;
 }
 
-    #ulTable > li > ul {
+.co_list #ulTable > li > ul {
         clear:both;
         padding:0px auto;
         position:relative;
         min-width:40px;
 }
-    #ulTable > li > ul > li { 
+.co_list #ulTable > li > ul > li { 
         float:left;
         font-size:10pt;
         border-bottom:1px solid silver;
@@ -54,13 +55,13 @@
         border-radius : 8px;
 }    
 
-    #ulTable > li > ul > li:first-child                {width:10%;} /*No 열 크기*/
-    #ulTable > li > ul > li:first-child +li            {width:40%;} /*제목 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li         {width:20%;} /*작성일 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li      {width:12%;} /*작성자 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li+li   {width:7%;} /*조회수 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li+li+li{width:7%;} /*추천수 열 크기*/
-    #divPaging {
+.co_list #ulTable > li > ul > li:first-child                {width:10%;} /*No 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li            {width:40%;} /*제목 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li         {width:20%;} /*작성일 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li+li      {width:12%;} /*작성자 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li+li+li   {width:7%;} /*조회수 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li+li+li+li{width:7%;} /*추천수 열 크기*/
+.co_list #divPaging {
           border: 1px solid;
           clear:both; 
         margin:0 auto; 
@@ -68,15 +69,15 @@
         height:50px;
 }
 
-    #divPaging > div {
+.co_list #divPaging > div {
         float:left;
         width: 30px;
         margin:0 auto;
         text-align:center;
 }
 
-    #liSearchOption {clear:both;}
-    #liSearchOption > div {
+.co_list #liSearchOption {clear:both;}
+.co_list #liSearchOption > div {
         margin:0 auto; 
         margin-top: 30px; 
         width:auto; 
@@ -84,11 +85,11 @@
 
 }
 
-    .left {
+.co_list .left {
         text-align : left;
 }
 
-.footer
+.co_list .footer
 {
 direction : flex;
 margin : 40px;
@@ -217,7 +218,9 @@ height : 70px;
         <input name="keyword" value="${map.keyword}">
         <input type="submit" value="조회">
     <!-- 로그인한 사용자만 글쓰기 버튼을 활성화 -->
-    <c:if test="${sessionScope.userId != null}">
+    <%-- <c:if test="${sessionScope.userId != null}"> --%>
+    
+    <c:if test="${sessionScope.userName != null}">
         <button type="button" id="btnWrite">글쓰기</button>
     </c:if>
     </form>
