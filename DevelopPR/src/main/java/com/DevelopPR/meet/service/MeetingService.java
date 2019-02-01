@@ -15,11 +15,17 @@ public interface MeetingService
 	public void insertMessage(MessageVO vo) throws Exception;
 	
 	/* 개인 채팅방 입장 */
-	public String getRoom(ChatRoomVO vo) throws Exception;
+	public List<MessageVO> getRoom(String chatroom_id);
 	
 	/*개인 채팅방 전체 목록*/
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception;
-/*	
+
+	/* 읽은메시지 변경 */
+	public void readUpdate(String chatroom_id,String userNick);
+	
+	/* 실시간 알람*/
+	public int alarm(String userNick);
+	/*	
 	public String getProfile(String str) throws Exception;
 	public String getName(String str) throws Exception;
 	public List<MessageVO> getMessageList(String str) throws Exception;

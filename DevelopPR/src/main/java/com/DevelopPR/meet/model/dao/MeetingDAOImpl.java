@@ -26,9 +26,9 @@ public class MeetingDAOImpl implements MeetingDAO
 	@Override
 	public ChatRoomVO isRoom(ChatRoomVO vo) throws Exception
 	{
-		ChatRoomVO roomvo = null;
-		roomvo = session.selectOne("meet.isRoom", vo);
-		return roomvo;
+		ChatRoomVO roomVO = null;
+		roomVO = session.selectOne("meet.isRoom", vo);
+		return roomVO;
 	}
 	/* 메시지 전송 내용 저장 */
 	@Override
@@ -39,18 +39,38 @@ public class MeetingDAOImpl implements MeetingDAO
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public String getRoom(ChatRoomVO vo) throws Exception 
+	public List<MessageVO> getRoom(String chatroom_id)
 	{
 		// TODO Auto-generated method stub
-		List<MessageVO> mvo = session.selectList("meet.getRoom", vo);	
-		return mvo.get(0).getSend_user_id();
+		List<MessageVO> mvo = session.selectList("meet.getRoom",chatroom_id);	
+		return mvo;
 	}
 	
 	/* 개인 채팅방 전체 목록*/
 	@Override
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
 	{
+		/*List<ChatRoomVO> list = new List<ChatRoomVO>();*/
+		System.out.println("test유저닉"+userNick);
 		return session.selectList("meet.listChatRoom", userNick);
 	
+	}
+	
+	/* 읽은메시지 변경 */
+	@Override
+	public void readUpdate(String chatroom_id,String userNick)
+	{
+		MessageVO vo = new MessageVO();
+		vo.setChatroom_id(chatroom_id);
+		vo.setMessage_receiver(userNick);
+		session.update("meet.readUpdate",vo);
+	}
+	
+	/* 실시간 알람*/
+	@Override
+	public int alarm(String userNick)
+	{
+		int _alarm = session.selectOne("meet.alarm", userNick);
+		return _alarm;
 	}
 }

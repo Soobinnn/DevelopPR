@@ -82,6 +82,20 @@ nav
 
     /* transition : all ease 1s; */
 }
+#alarm
+{
+  display : none;
+  position : absolute;
+  left : 50px;
+  top : 70px;
+  width : 50px;
+  height : 50px;
+  border-radius : 50%;
+  background-color : red;
+  color : white;
+  text-align : center;
+  line-height: 45px; 
+}
 #navimg
 {
   position: relative;
@@ -97,6 +111,19 @@ nav
   font-size: 1.2rem;
   bottom : 47px;
   right : 45px;
+}
+#chatmenu
+{
+  position: relative;
+  display : none;
+  background: red;
+  width : 40px;
+  height : 40px;
+  bottom : 50px;
+  left : 280px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 40px;
 }
 nav#min:hover > #navspan
 {
@@ -296,11 +323,60 @@ section.main_section
 {
   height : 400px;
 }
+
+.search{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:50px;
+  height:100px;
+}
+
+.search #search_select{
+    font-size:16pt;
+    position:relative;
+    top:28px;
+    right:10px;
+}
+
+.search #keyword{
+    font-size:15pt;
+    position:relative;
+    top:25px;
+}
+
+.search #search_submit{
+    font-size:14pt;
+    position:relative;
+    left:10px;
+    top:25px;
+}
+
+.search #search_submit:hover{
+  font-size:14pt;
+  position:relative;
+  top:25px;
+  background:darkblue;
+  color:white;
+}
+
+.search #count{
+  position:relative;
+  top:50px;
+  font-size:13pt;
+}
+
+.resume_paging{
+   text-align:center;
+   font-size:18pt;
+   padding-bottom:50px;
+}
+
 .main1
 {
 	margin-top : 50px;
 }
-.main1, .main2, .main3, .animation, .detail
+.main1, .main2, .main3, .detail
 {
     
 	flex-basis : 450px;
@@ -309,11 +385,14 @@ section.main_section
     flex-shrink: 0;
 
 }
-/* */
-.animation, .detail
-{
-    border : 1px solid;
+.animation{
+	    
+	flex-basis : 950px;
+    text-align : center;
+    display:flex;
+    flex-shrink: 0;
 }
+
 
 /*  */
 .PR1, .PR4, .PR7
@@ -651,4 +730,265 @@ footer
     color : white;
   }
 /* ------- */
+/*-----------------animation-start----------------*/
+.animation #animation_img{
+	height:1400px;
+	width:1900px;
+}
+.animation #element1,
+.animation #element2,
+.animation #element3,
+.animation #element4,
+.animation #element5,
+.animation #element6,
+.animation #element7,
+.animation #element8,
+.animation #element9, 
+.animation #element10,
+.animation #element11,
+.animation #element12, 
+.animation #element13, 
+.animation #element14, 
+.animation #element15{
+	position:absolute;
+	transform: rotateY(0deg);
+	  animation-name: tutsFade;
+	  animation-iteration-count: infinite;
+	  animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
+	  animation-direction: alternate;
 
+
+}
+#element1,#element2, #element3, #element4,
+#element5,#element6, #element7, #element8{
+	width:170px;
+	height:170px;
+}
+
+.animation #element111,
+.animation #element22,
+.animation #element33,
+.animation #element44,
+.animation #element55,
+.animation #element66,
+.animation #element77,
+.animation #element88,
+.animation #element99, 
+.animation #element1010,
+.animation #element1111,
+.animation #element1212, 
+.animation #element1313, 
+.animation #element1414, 
+.animation #element1515{
+	position:absolute;
+ 	transform:rotateY(0deg);
+  	animation-name: tutsFade1;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
+	animation-direction: alternate;
+ }
+
+.animation #element111,
+.animation #element66,
+.animation #element1414,
+.animation #element77,
+.animation #element1313{
+	background:#378577;
+}
+.animation #element1,.animation #element6,.animation #element14,
+.animation #element7,.animation #element13{
+	border:solid 20px #378577;
+}
+
+.animation #element1212,
+.animation #element55,
+.animation #element22,
+.animation #element1010,
+.animation #element1515{
+   	background:#7ec8bb;
+}
+.animation #element12,.animation #element5,.animation #element2,
+.animation #element10,.animation #element15{
+	border:solid 20px #7ec8bb;
+}
+ 
+.animation #element33,
+.animation #element44,
+.animation #element99,
+.animation #element1111,
+.animation #element88{
+	 background:#59ad9d;
+}
+.animation #element3,.animation #element4,.animation #element9,
+.animation #element11,.animation #element8{
+	border:solid 20px #59ad9d;
+} 
+ 
+#element111, #element22,#element33,#element44,#element55,#element66,#element77,#element88{
+ 	width:210px;
+	height:210px;
+}
+#element1, #element111{
+	top:2105px;
+	left:690px;
+	animation-delay: 1s;
+	animation-duration:4s;
+}
+#element2, #element22{
+	left:690px;
+	top:2350px;
+	animation-delay:2s;
+	animation-duration:4s;
+ }
+#element3, #element33{
+	left:690px;
+	top:2600px;
+	animation-delay: 1s;
+	animation-duration:4s;
+}
+#element4, #element44{
+	left:930px;
+	top:2175px;
+	animation-delay: 3s;
+	animation-duration:4s;
+}
+#element5, #element55{
+	left:930px;
+	top:2425px;
+	animation-delay: 1s;
+	animation-duration:4s;
+}
+#element6, #element66{
+	left:930px;
+	top:2670px;
+	animation-delay: 3s;
+	animation-duration:4s;
+}
+#element7, #element77{
+	left:1170px;
+	top:2140px;
+	animation-delay: 2s;
+	animation-duration:4s;
+}
+#element8, #element88{
+	left:455px;
+	top:2345px;
+	animation-delay: 1s;
+		  animation-duration:4s;
+}
+
+#element9, #element99{
+	left:1170px;
+	top:2385px;
+	animation-delay: 3s;
+	animation-duration:4s;
+}
+#element9{
+	width:230px;
+	height:125px;
+}
+#element99{
+	width:270px;
+	height:165px;
+}
+#element10, #element1010{
+	left:1170px;
+	top:2580px;
+	animation-delay: 2s;
+		  animation-duration:4s;
+   }
+#element10{
+	width:110px;
+	height:215px;
+}
+#element1010{
+	width:150px;
+	height:255px;
+}
+#element11, #element1111{
+	left:515px;
+	top:2590px;
+	animation-delay: 2s;
+	animation-duration:4s;
+}
+#element11{
+	width:110px;
+	height:215px;
+}  
+#element1111{
+	width:150px;
+	height:265px;
+}
+
+#element12, #element1212{
+	left:550px;
+	top:2140px;
+	animation-delay: 3s;
+	animation-duration:4s;
+   }
+#element12{
+	width:70px;
+	height:135px;
+}
+#element1212{
+	width:110px;
+	height:175px;
+}
+#element13, #element1313{	
+	left:320px;
+	top:2590px;
+	animation-delay: 3s;
+		  animation-duration:4s;
+}
+#element13{
+	width:130px;
+	height:75px;
+}
+#element1313{
+	width:170px;
+	height:115px;
+}
+
+#element14, #element1414{
+	left:1345px;
+	top:2582px;
+	animation-delay: 1s;
+	animation-duration:4s;
+}
+#element14{
+	width:125px;
+	height:75px;
+}
+#element1414{
+	width:165px;
+	height:115px;
+}
+#element15, #element1515{
+	left:320px;
+	top:2440px;
+	animation-delay: 2s;
+	animation-duration:4s;
+}
+#element15{
+	width:75px;
+	height:75px;
+}
+#element1515{
+	width:115px;
+	height:115px;	
+}
+
+@keyframes tutsFade{
+  to {
+	z-index:2;
+   transform: rotateY(180deg);
+  }
+}
+ @keyframes tutsFade1{
+  to {
+  	z-index:3;
+  	transform:rotateY(180deg);
+  
+  }
+}
+/*-------------------animation-end---------------------*/

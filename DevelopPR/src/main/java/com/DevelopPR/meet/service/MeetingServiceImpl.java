@@ -37,9 +37,9 @@ public class MeetingServiceImpl implements MeetingService
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public String getRoom(ChatRoomVO vo) throws Exception
+	public List<MessageVO> getRoom(String chatroom_id)
 	{
-		return meetingDao.getRoom(vo);
+		return meetingDao.getRoom(chatroom_id);
 	}
 	
 	/*개인 채팅방 전체 목록*/
@@ -47,5 +47,19 @@ public class MeetingServiceImpl implements MeetingService
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
 	{
 		return meetingDao.listChatRoom(userNick);
+	}
+	
+	/* 읽은메시지 변경 */
+	@Override
+	public void readUpdate(String chatroom_id,String userNick)
+	{
+		meetingDao.readUpdate(chatroom_id, userNick);
+	}
+	
+	/* 실시간 알람*/
+	@Override
+	public int alarm(String userNick)
+	{
+		return meetingDao.alarm(userNick);
 	}
 }
