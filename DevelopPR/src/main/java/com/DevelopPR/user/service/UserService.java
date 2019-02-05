@@ -45,6 +45,7 @@ public interface UserService
 	   // 회원가입 - 이메일 인증 에러시 재전송
 	   // 이메일체크 후 메일 재전송
 	   public void reJoining(String reUserEmail) throws Exception;
+	   
 	  /* //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정
@@ -53,6 +54,7 @@ public interface UserService
 	   public void deleteUser(String userId);
 	   */
 
-	   
+	   // 간편로그인 API 시 정보 입력
+	   public void insertUserApi(UserVO vo) throws Exception;
 	  
 }

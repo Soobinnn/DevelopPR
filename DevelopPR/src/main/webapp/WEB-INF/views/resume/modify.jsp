@@ -7,11 +7,13 @@
 <%@ include file="../../views/include/tag_header.jsp" %>
 <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
 <script type="text/javascript">	
-function fn_uploadImage() {
+function fn_uploadImage() 
+{
 	$("#uploadImageFile").click();
 }
 
-function uploadImageFileChange() {
+function uploadImageFileChange() 
+{
 	var formData = new FormData();
 	formData.append('upfile', $('#uploadImageFile')[0].files[0]); 
 	$.ajax({

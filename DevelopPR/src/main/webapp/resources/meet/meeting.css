@@ -80,7 +80,7 @@ table {
 
 .m #list .listAll{
     width:100%;
-    overflow:auto;
+
 }
 .m #list .mlist .up{
     border-top:solid 2px black;
@@ -243,13 +243,4 @@ table {
 {
     text-align :right;
     padding : 30px;
-}
-.getChatRoom
-{
-   position : absolute;
-   display:block;
-   height:80px;
-   width :545px;
-   margin-top : 25px;
-   z-index : 2;
 }

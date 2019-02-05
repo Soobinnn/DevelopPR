@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.google.api.Google;
@@ -40,6 +41,7 @@ import com.DevelopPR.user.service.UserService;
 import com.DevelopPR.util.JsonParser;
 import com.DevelopPR.util.Kakaologinapi;
 import com.DevelopPR.util.NaverloginBO;
+import com.DevelopPR.util.TempKey;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
@@ -293,7 +295,8 @@ public class UserController
     String name = null;
     String email = null;
     String thumbnail= null; 
-    String profile= null; 
+    String profile= null;
+    Boolean checMail = false;
     // 유저정보 카카오에서 가져오기 Get properties
     JsonNode properties = userInfo.path("properties");
     JsonNode kakao_account = userInfo.path("kakao_account");
@@ -302,21 +305,56 @@ public class UserController
     email = kakao_account.path("email").asText();
     thumbnail = properties.path("thumbnail_image").asText();
     profile = properties.path("profile_image").asText();
+    checMail = kakao_account.path("has_email").asBoolean();
     
     System.out.println("id : " + id);
     System.out.println("name : " + name);
     System.out.println("email : " + email);
     System.out.println("thumbnail :" + thumbnail);
     System.out.println("profile : " + profile);
+    System.out.println("이메일 유무테스트" + checMail);
+ 
+    int checkMail =userService.checkMail(email+"_kakao");
 
-    /*UserVO vo = Kakaologinapi.changeData(profile);
-    vo.setUser_snsId("k"+vo.getUser_snsId());
+    UserVO vo = new UserVO();
+    
+    // 이메일 허용 체크 안했을 경우 예외처리
+    if(checMail)
+    {
+      vo.setUserEmail(email+"_kakao");
+    }
+    else
+    {
+    	vo.setUserEmail(id+"@daum.net_kakao");
+    }
+	  vo.setUserIs_seek(0);
+	  vo.setUserNick(id);
+	  vo.setUserName(name);
+	  vo.setProfile(profile);
+	  
+	  // DB에 없을 시에
+    if(checkMail ==0)
+    {
+  	  String pw = new TempKey().getKey(20, false);
+  	  String pwBycrypt = passwordEncoder.encode(pw);
+  	  	    
+  	  vo.setUserPw(pwBycrypt);
+  	  vo.setUserJob("0");
+  	  vo.setUserJob_detail("카카오계정 로그인 입니다. 정보를 변경해주세요.");
+  	  vo.setUserAuthStatus(1);
+  	  vo.setUserPhone("010########");
+  	  
+  	  userService.insertUserApi(vo);
+    }
 
-    System.out.println(session);
-    session.setAttribute("login", vo);
-    System.out.println(vo.toString());
-
-    vo = service.kakaoLogin(vo);  */
+    // 세션 등록
+    UserVO vo2 = new UserVO();
+    vo2.setUserEmail(vo.getUserEmail());
+    vo2.setUserNick(vo.getUserNick());
+    vo2.setUserName(vo.getUserName());
+    vo2.setUserIs_seek(vo.getUserIs_seek());
+    session.setAttribute("login", vo2 );
+    
     return "user/kakaologin";
   }
   
@@ -352,6 +390,34 @@ public class UserController
 		vo = json.changeJson(apiResult); // vo에 userEmail, userGender, userNaver 저장
 
 		System.out.println("vo : " + vo);
+		int checkMail =userService.checkMail(vo.getUserEmail()+"_naver");
+
+	      
+	    vo.setUserEmail(vo.getUserEmail()+"_naver");
+		vo.setUserIs_seek(0);
+		  
+		  // DB에 없을 시에
+	      if(checkMail ==0)
+	      {
+	    	  String pw = new TempKey().getKey(20, false);
+	    	  String pwBycrypt = passwordEncoder.encode(pw);
+	    	  	    
+	    	  vo.setUserPw(pwBycrypt);
+	    	  vo.setUserJob("0");
+	    	  vo.setUserJob_detail("네이버계정 로그인 입니다. 정보를 변경해주세요.");
+	    	  vo.setUserAuthStatus(1);
+	    	  vo.setUserPhone("010########");
+	    	  
+	    	  userService.insertUserApi(vo);
+	    	      	
+	      }
+	      // 세션 등록
+	      UserVO vo2 = new UserVO();
+	      vo2.setUserEmail(vo.getUserEmail());
+	      vo2.setUserNick(vo.getUserNick());
+	      vo2.setUserName(vo.getUserName());
+	      vo2.setUserIs_seek(vo.getUserIs_seek());
+	      session.setAttribute("login", vo2 );
 		return "user/callback";
   }
 
@@ -383,7 +449,6 @@ public class UserController
       {
           accessToken = accessGrant.getRefreshToken();
           System.out.printf("accessToken is expired. refresh token = {}", accessToken);
-
       }
 
       Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
@@ -392,20 +457,43 @@ public class UserController
 
       PlusOperations plusOperations = google.plusOperations();
       Person profile = plusOperations.getGoogleProfile();
-      System.out.println("User id : " + profile.getId());
-      System.out.println("User Name : " + profile.getDisplayName());
-      System.out.println("User Email : " + profile.getAccountEmail());
-      System.out.println("User Profile : " + profile.getImageUrl());
       
+      int checkMail =userService.checkMail(profile.getAccountEmail()+"_google");
+
       UserVO vo = new UserVO();
-      /*vo.setUser_email("구글 로그인 계정");
-      vo.setUser_name(profile.getDisplayName());
-      vo.setUser_snsId("g"+profile.getId());
+      
+      vo.setUserEmail(profile.getAccountEmail()+"_google");
+	  vo.setUserIs_seek(0);
+	  vo.setUserNick(profile.getId());
+	  vo.setUserName(profile.getDisplayName());
+	  vo.setProfile(profile.getImageUrl());
+	  
+	  // DB에 없을 시에
+      if(checkMail ==0)
+      {
+    	  String pw = new TempKey().getKey(20, false);
+    	  String pwBycrypt = passwordEncoder.encode(pw);
+    	  	    
+    	  vo.setUserPw(pwBycrypt);
+    	  vo.setUserJob("0");
+    	  vo.setUserJob_detail("구글계정 로그인 입니다. 정보를 변경해주세요.");
+    	  vo.setUserAuthStatus(1);
+    	  vo.setUserPhone("010########");
+    	  
+    	  userService.insertUserApi(vo);	  
+      }
+
+      // 세션 등록
+      UserVO vo2 = new UserVO();
+      vo2.setUserEmail(vo.getUserEmail());
+      vo2.setUserNick(vo.getUserNick());
+      vo2.setUserName(vo.getUserName());
+      vo2.setUserIs_seek(vo.getUserIs_seek());
+      
       HttpSession session = request.getSession();
-      vo = service.googleLogin(vo);
-
-      session.setAttribute("login", vo );*/
-
+      session.setAttribute("login", vo2 );
+      
+      
       // Access Token 취소
       try 
       {
@@ -431,5 +519,18 @@ public class UserController
       }
       return "redirect:/main";
 
+  }
+  
+  // 장기미접속유저 메일 보내기
+  /*@Scheduled(cron="0/30 * * * * ?")*/
+  @Scheduled(cron="0 0 0 * * ?")
+  public void mailSend()
+  {
+	System.out.println("스케쥴 테스뜨");  
+	//3개월이상 미접속 인원 가져온다.
+	//6개월이상 미접속 인원 가져온다.
+	//1년이상 미접속 인원 가져온다.
+	//1년이상 미접속인원 삭제한다.
+	
   }
 }

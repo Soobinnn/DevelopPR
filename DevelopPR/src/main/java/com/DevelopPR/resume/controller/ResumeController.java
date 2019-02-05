@@ -124,7 +124,7 @@ public class ResumeController {
 	  System.out.println("modify:"+email);
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
 
-      return "resume/modify";
+      return "basic/resume/modify";
    }
 
 
