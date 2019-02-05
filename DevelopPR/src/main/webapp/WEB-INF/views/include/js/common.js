@@ -10,7 +10,7 @@
 		// 이미지 파일일 경우
 		if(checkImageType(fullName)){
 			// 이미지 파열 경로(썸네일)
-			imgsrc = "/spring02/upload/displayFile?fileName="+fullName;
+			imgsrc = "/upload/displayFile?fileName="+fullName;
 			console.log(imgsrc);
 			// 업로드 파일명
 			fileLink = fullName.substr(14);
@@ -22,7 +22,7 @@
 			var end = fullName.substr(14);
 			console.log(end);
 			// 원본이미지 파일 디렉토리
-			getLink = "/spring02/upload/displayFile?fileName="+front+end;
+			getLink = "/upload/displayFile?fileName="+front+end;
 			console.log(getLink);
 		// 이미지 파일이 아닐경우
 		} else {
