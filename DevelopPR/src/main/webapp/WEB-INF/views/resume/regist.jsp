@@ -7,6 +7,8 @@
 <%@ include file="../../views/include/tag_header.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>	
+
+
 function fn_uploadImage() {
 	$("#uploadImageFile").click();
 }
@@ -67,11 +69,88 @@ function fn_removeImage() {
 			    })
 		})
 	})
+	
+	function checks(){
+		if($('#userPhone').val() =="")
+		{
+		    alert("휴대폰번호를 입력해주세요.");
+		    $("#userPhone").focus();
+		    return false;
+		}
+		if($('#uploadImageFile').val() =="")
+		{
+		    alert("사진을 업로드 해주세요.");
+		    $("#uploadImageFile").focus();
+		    return false;
+		}
+		if($('#age').val() =="")
+		{
+		    alert("나이를 입력해주세요.");
+		    $("#userage").focus();
+		    return false;
+		}
+		if($('#date').val() =="")
+		{
+		    alert("생일을 입력해주세요.");
+		    $("#date").focus();
+		    return false;
+		}
+		if($('#address2').val() =="")
+		{
+		    alert("주소를 입력해주세요.");
+		    $("#address2").focus();
+		    return false;
+		}
+		if($('#commentss').val() =="")
+		{
+		    alert("comment를 입력해주세요.");
+		    $("#commentss").focus();
+		    return false;
+		}
+	}
+	
+	$(function(){
+		$('#userPhone').blur(function()
+		{
+				    // 핸드폰 숫자형식 9~11자
+				    var userPhoneCheck = /^[0-9]{9,11}$/;
+				    if(!userPhoneCheck.test($('#userPhone').val()))
+				    {
+				        $('#userPhone').css({"border" :"2px solid red","background-color":"#FFCECE"});
+				        $('#phoneCheckMsg').text('휴대폰번호 형식에 맞게 입력해주세요.').css("color","red");
+			
+				    }
+				    else
+				    {
+				        $('#userPhone').css({"border" :"2px solid green","background-color":"white"});
+				        $('#phoneCheckMsg').text('').css("color","green");
+			
+				    }
+		});
+		$('#commentss').blur(function()
+				{
+						    var userCCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
+						    if(!userCCheck.test($('#commentss').val()))
+						    {
+						        $('#commentss').css({"border" :"2px solid red","background-color":"#FFCECE"});
+						        $('#CCheckMsg').text('1~1000자로 작성해주세요.').css("color","red");
+					
+						    }
+						    else
+						    {
+						        $('#commentss').css({"border" :"2px solid green","background-color":"white"});
+						        $('#CCheckMsg').text('').css("color","green");
+					
+						    }
+				});
+	});
+
 </script>	
+
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
 <body>
-<form name="form1" method="post" action="${path}/resume/registConfirm">
+<form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
         <header>
 			<img src="/DevelopPR/resources/resume/gray.jpg" class="header"/>
@@ -158,8 +237,9 @@ function fn_removeImage() {
                        		    나 이 *
                             </div>
                             <div class="p_info">
-                                <input type="text" class="textlong" name="age" placeholder="숫자로 입력해주세요."/>
+                                <input type="text" class="textlong" name="age" id="age" placeholder="숫자로 입력해주세요."/>
                             </div>
+                            <span id="ageCheckMsg"></span>
                         </div>
 
                         <div id="birth">
@@ -167,18 +247,19 @@ function fn_removeImage() {
                             생 일 * 
                             </div>
                             <div class="birth_info">
-                                <input type="date" name="birthday" />
+                                <input type="date" id="date" name="birthday" />
                             </div>
                         </div>
 
                         <div id="phone">
                             <div class="name">
-                                핸드폰번호 *
+                                휴대폰번호 *
                             </div>
                             <div class="phone_info">
-                                <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" class="textshort"/>
+                            <input id="userPhone" type="text" autocomplete="off" value="" placeholder="ex) 01012345678" name="cell_num" class="textshort">
                                 <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
+                                <br/> <span id="phoneCheckMsg"></span>
                             </div>
                         </div>
 
@@ -199,7 +280,7 @@ function fn_removeImage() {
                        			     블로그
                             </div>
                             <div class="info">
-                                <input type="text" name="blog" placeholder="정규표현식 추가" class="textlong"/>
+                                <input type="text" name="blog" placeholder="" class="textlong"/>
                             </div>
                         </div>
 
@@ -208,7 +289,7 @@ function fn_removeImage() {
                             주소 *
                             </div>
                             <div class="info">
-                                    <input type="text" name="address" placeholder="정규표현식 추가" class="textshort"/>
+                                    <input type="text" name="address" id="address2" placeholder="" class="textshort"/>
                                 <input type="radio" name="address_is_open" value="1" checked/>공개
                                 <input type="radio" name="address_is_open" value="0"/>비공개
                             </div>
@@ -228,7 +309,8 @@ function fn_removeImage() {
                             소개/ 좌우명/ Comment
                             </div>
                             <div class="info">
-                                <input type="text" class="textlong" name="motto"/>
+                                <input type="text" class="textlong" placeholder="1~1000자로 입력해주세요." id="commentss" name="motto"/>
+                                <br/> <span id="CCheckMsg"></span>
                             </div>
                         </div>
            </div>
@@ -325,7 +407,7 @@ function fn_removeImage() {
                 <div id="techs">
 	                <div class="tech">
 						<div>
-							<input type="text" class="abb" name="abb"/>
+							<input type="text" placeholder="기술약자" class="abb" name="abb"/>
 						</div>
 						<div class="techinfo">
 							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
@@ -341,8 +423,8 @@ function fn_removeImage() {
 
    <div id="button">
        <div class="holl"></div>
-        <input type="button" class="button1" value="취소"/>
-        <input type="submit" class="button2" value="등록하기"/>
+        <input type="button" class="button1" onclick="history.back()" value="취소"/>
+        <input type="submit" id="confirm" class="button2" value="등록하기"/>
         <div class="holl"></div>
     </div>
 

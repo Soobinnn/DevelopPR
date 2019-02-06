@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,6 @@ var userJobCheck = false;
 
 function checks()
 {
-
 // 이메일 형식만 가능
 var userEmailCheck = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
 // 한글이름 2~4자
@@ -57,7 +56,7 @@ if($('#userName').val() =="")
 if($('#userPhone').val() =="")
 {
     alert("휴대폰번호를 입력해주세요.");
-    $("#userPw").focus();
+    $("#userPhone").focus();
     return false;
 }
 if($('#userPw').val() =="")

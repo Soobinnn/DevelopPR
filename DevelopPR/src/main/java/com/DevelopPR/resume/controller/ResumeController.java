@@ -131,7 +131,7 @@ public class ResumeController {
    //이력서 수정하기
    @RequestMapping(value="modifyupdate", method=RequestMethod.POST)
    public String resumeModify(@ModelAttribute ResumeVO vo, @RequestParam("profile_photo") String file) throws Exception{
-	   
+	   	
 		  vo.setProfile_photo(file.toString());
 		  resumeService.resumeModify(vo);
 		  

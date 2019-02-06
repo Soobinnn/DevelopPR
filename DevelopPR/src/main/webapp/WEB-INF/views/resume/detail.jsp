@@ -303,7 +303,7 @@ function ungood()
                         <div class="subject">프로젝트</div>
                           	<input type="button" id="p_button" value="프로젝트 추가"/>
                           	<div class="project">
-                          		aa
+                          		
                           	</div>
                     </div>
                     </div>
