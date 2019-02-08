@@ -21,7 +21,7 @@ public class CommunityDAOImpl implements CommunityDAO
  
    @Override
    public List<CommunityVO> listAll(int start, int end, String searchOption, String keyword) throws Exception {
-       // �˻��ɼ�, Ű���� �ʿ� ����
+       // 
        Map<String, Object> map = new HashMap<String, Object>();
        map.put("searchOption", searchOption);
        map.put("keyword", keyword);
@@ -51,31 +51,31 @@ public class CommunityDAOImpl implements CommunityDAO
    	return SqlSession.selectOne("community.updateForm", bno);
    }
    
-   //05. �Խñ� ����
+   //05. 
    @Override
    public void modify(CommunityVO vo) throws Exception 
    {
        SqlSession.update("community.updateArticle", vo);
    }
    
-   //06. �Խñ� ����
+   //06. 
    @Override
    public void remove(int bno) throws Exception 
    {
        SqlSession.delete("community.deleteArticle",bno);
    }
 
-   //07. �Խñ� ��ȸ�� ����
+   //07.
    @Override
    public void increaseViewcnt(int bno) throws Exception 
    {
        SqlSession.update("community.increaseViewcnt", bno);
    }
    
-   // 08. �Խñ� ���ڵ� ����
+   // 08. 
    @Override
    public int countArticle(String searchOption, String keyword) throws Exception {
-    // �˻��ɼ�, Ű���� �ʿ� ����
+    // 
     Map<String, String> map = new HashMap<String, String>();
     map.put("searchOption", searchOption);
     map.put("keyword", keyword);
@@ -85,13 +85,20 @@ public class CommunityDAOImpl implements CommunityDAO
    @Override
    public void reply(CommunityVO vo) throws Exception 
    {
-     // transaction ó�� �ʿ�
-     // update step+1(�����ۺ��� ū�� �� +1)
+     // transaction 
+     // update step+1
 
        SqlSession.update("reboard.addStep", vo);
 
        // insert
        SqlSession.insert("reboard.reply", vo);
     }
+
+
+   @Override
+   public void addAttach(String fullName) {
+       SqlSession.insert("board.addAttach", fullName);
+   }
+
 
 }

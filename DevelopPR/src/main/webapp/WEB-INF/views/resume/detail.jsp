@@ -297,15 +297,8 @@ function ungood()
 	                            </div>
 	                        </div>
 	
-	                       
-           
-                	<div class="projects">
-                        <div class="subject">프로젝트</div>
-                          	<input type="button" id="p_button" value="프로젝트 추가"/>
-                          	<div class="project">
-                          		
-                          	</div>
-                    </div>
+	                    
+                    
                     </div>
                </div>
 
@@ -360,6 +353,28 @@ function ungood()
                     </div>                
                 </div>
        </div> 
+                    <div class="projects">
+                        <div class="subject">프로젝트</div> 
+                        	<c:if test="${sessionScope.userEmail==dto.email}">
+                        		<a href="${path}/project/registForm">프로젝트 추가</a>
+							</c:if>
+                        <div class="project">
+        	                <c:forEach var="project" items="${project}" varStatus="status">	
+								<div class="pros">
+								  	<img src='<c:url value="/resources/photo/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
+									<div class="pro">
+										<div class="proname">${project.project_name}</div>
+										<div class="proterm">기간 : ${project.project_term1} ~ ${project.project_term2}</div>
+										<div class="prostack">기술 : ${project.techstack}</div>
+											<c:if test="${sessionScope.userEmail==dto.email}">
+												<a href="${path}/project/modifyForm/${project.pno}">수정</a>
+												<a href="${path}/project/remove/${project.pno}">삭제</a>
+											</c:if>
+        							</div>
+								</div>
+                          	</c:forEach>
+                        </div>
+                    </div>
             	<div class="tech-stack">
 	                <div class="subject">Tech-stack
 	              

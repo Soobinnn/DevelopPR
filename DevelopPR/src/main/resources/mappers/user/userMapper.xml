@@ -21,8 +21,8 @@
     
     <!-- 회원 등록 -->
     <insert id="insertUser">
-        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL, PHONE)
-        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail}, #{userPhone})    
+        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL, PHONE, PROFILE)
+        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail}, #{userPhone}, #{profile})    
     </insert>
     
     <!-- 로그인 체크 -->

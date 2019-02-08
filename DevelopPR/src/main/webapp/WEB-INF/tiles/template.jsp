@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/main/developpr.css'/>"/>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
-	
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 	<script>
 	var socket = null;
 	var success = null;

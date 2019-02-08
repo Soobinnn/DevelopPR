@@ -62,7 +62,7 @@ public class MeetingController
 		List<MessageVO> messageList = meetingService.getRoom(messageVO.getChatroom_id());
 		return messageList;
 	}
-	
+	// 채팅방목록불러오기
 	@RequestMapping(value="/getList", method =RequestMethod.POST)
 	@ResponseBody
 	public List<ChatRoomVO> getList(Model model,  @RequestParam("userNick") String userNick) throws Exception

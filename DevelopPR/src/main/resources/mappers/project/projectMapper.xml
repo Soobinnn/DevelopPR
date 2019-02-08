@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project">
+<!-- 프로젝트 등록 -->
+    <insert id="insert">
+        INSERT INTO PR_PROJECT 
+            (pno, project_name, project_content, project_term1, project_term2, project_tech_name, project_grade, nick)
+        VALUES 
+            (
+				(SELECT NVL(MAX(pno)+1, 1)FROM pr_project),
+				#{project_name}, #{project_content}, #{project_term1}, #{project_term2}, #{techstack}, #{project_grade}, #{nick})    
+    </insert>
+
+
+
+<!-- 테이블명 : techname, 컬럼명 name --> <!-- select로 선택하는 이름은 VO의 변수와 일치해야 한다. 일치하지 않는다면 as를 써서 일치시켜 준다. -->
+<select id="lookup" resultType="ProjectVO">
+        SELECT name as tech_name_input    
+        FROM techname
+        where upper (name) LIKE '%'|| upper(#{tech_name_input})||'%'
+    </select>
+
+  <!-- where name like '%' ||  #{tech_name_input} || '%' -->
+
+
+
+
+
+
+<!-- 프로젝트 목록 보기 -->
+<select id="projectlist" resultType="ProjectVO">
+	SELECT pno, project_name, project_term1, project_term2, project_tech_name as techstack
+	FROM pr_project
+	where nick=#{nick}
+	order by project_term1 asc
+</select>
+
+
+<!-- 프로젝트 수정 폼 -->
+<select id="modifyForm" resultType="ProjectVO">
+	SELECT *
+	FROM pr_project
+	where pno=#{pno}
+</select>
+<update id="modify">
+         UPDATE pr_project SET 
+         project_name=#{project_name}, 
+         project_content=#{project_content}, 
+         project_term1=#{project_term1}, 
+         project_term2=#{project_term2}, 
+         project_tech_name=#{techstack}, 
+         project_grade=#{project_grade}
+         WHERE pno=#{pno}
+</update>
+
+<delete id="remove">
+	DELETE FROM pr_project
+	where pno=#{pno}
+</delete>
+
+</mapper>

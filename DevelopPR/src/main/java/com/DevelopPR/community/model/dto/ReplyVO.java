@@ -12,12 +12,27 @@ public class ReplyVO {
     private Date updatedate;    // 
     private String secretReply;    // 
     private String writer;        // 
+    private Integer parent;   //대댓글 추가, 부모 그룹
+    private Integer depth;    //대댓글 추가, 댓글의 순번?
     
     // Getter/Setter
+    
     public Integer getRno() {
         return rno;
     }
-    public void setRno(Integer rno) {
+    public Integer getParent() {
+		return parent;
+	}
+	public void setParent(Integer parent) {
+		this.parent = parent;
+	}
+	public Integer getDepth() {
+		return depth;
+	}
+	public void setDepth(Integer depth) {
+		this.depth = depth;
+	}
+	public void setRno(Integer rno) {
         this.rno = rno;
     }
     public Integer getBno() {

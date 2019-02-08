@@ -207,4 +207,11 @@ public class UserServiceImpl implements UserService
 					sendMail.setTo(reUserEmail);
 					sendMail.send();
 	   }
+	   // 간편로그인 API 시 정보 입력
+	   @Override
+	   public void insertUserApi(UserVO vo) throws Exception
+	   {
+		   userDao.insertUser(vo);
+		   userDao.userAuth(vo.getUserEmail());
+	   }
 }
