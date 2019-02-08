@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -308,6 +308,7 @@ $('#userPhone').blur(function()
         CheckPhone = true;
     }
 });
+
 $(document).keyup(function()
 {
     console.log("test");
@@ -676,8 +677,8 @@ border: 1px solid white;
                  </li>
                  
 
-                 <li class="user_li8">
-                     <input id="explain" type="text" name="userJob_detail"
+                 <li class="user_li8"> <!-- 입력 자동완성 제거 : 준형 -->
+                     <input id="explain" type="text" name="userJob_detail" autocomplete="off"
                     placeholder="학생이면 학교, 기업이면 기업에 대하여 입력해주세요.">
                       <span id="userjobdetailCheckMsg"></span>   
                  </li>

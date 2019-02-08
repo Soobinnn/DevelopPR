@@ -158,7 +158,7 @@ function authCheck() {
    		</div>
    <div id="sec2">
       <ul id="authCheck_ul">
-      <form name="auth_form" action="${path}/user/phoneCheck" method="post">  
+      <form name="auth_form" action="${path}/user/findEmailPhoneCheck" method="post">  
       <li id="authCheck_li1">
          <span id="authCheck_span"><strong>휴대폰 본인 인증</strong></span>
       </li>
