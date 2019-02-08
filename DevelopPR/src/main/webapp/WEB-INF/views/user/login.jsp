@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <title>로그인페이지</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <style>
@@ -93,17 +95,15 @@
    
     .item1
     {
-       
         width : 50%;
     }
     .item2
     {
-        
         width : 500px;
     }
     .item3
     { 
-   
+        
         width : 50%;
     }
     .find
@@ -239,53 +239,70 @@
     {
     color : gray;
     }
-    
+    #emailSave
+    {
+        position : relative;
+        left : 100px;
+        bottom : 7px;
+        width: 25px;
+        height: 20px;
+        border:1px solid black;
+    }
+    #emailSave_span
+    {
+        color: gray;
+        font-size:15px;
+        position: relative;
+        left: 95px;
+        bottom : 11px;
+    }
 </style>
 
 <script>
     $(document).ready(function(){
-       $("#login_btn").click(function(){
+        $("#login_btn").click(function(){
             // 태크.val() : 태그에 입력된 값
             // 태크.val("값") : 태그의 값을 변경 
             var userEmail = $("#userEmail").val();
             var userPw = $("#userPw").val();
-            
-            
-            if(userEmail == "" ){
+            if(userEmail == ""){
                 alert("이메일을 입력하세요.");
                 $("#userEmail").focus(); // 입력포커스 이동
                 return; // 함수 종료
             }
-            
             if(userPw == ""){
                 alert("비밀번호를 입력하세요.");
                 $("#userPw").focus();
                 return;
-          }
-        });  
+            }
+           /*--->  // 폼 내부의 데이터를 전송할 주소
+            document.form1.action="${path}/user/loginCheck"
+            // 제출
+            document.form1.submit(); <-- 준형 : form태그 안에 넣음*/
+        });
     });
-
-    $(document).ready(function(){
-     
-        // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+  //--> 준형 : 이메일 저장 쿠키 추가
+    $(document).ready(function(){ 
+        
+        // 저장된 쿠키값을 가져와서 email 칸에 넣어준다. 없으면 공백으로 들어감.
         var key = getCookie("key");
         $("#userEmail").val(key); 
          
-        if($("#userEmail").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
-            $("#emailSave").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+        if($("#userEmail").val() != ""){ // 그 전에 email를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 email가 표시된 상태라면,
+            $("#emailSave").attr("checked", true); // email 저장하기를 체크 상태로 두기.
         }
          
-        $("#idSaveCheck").change(function(){ // 체크박스에 변화가 있다면,
-            if($("#emailSave").is(":checked")){ // ID 저장하기 체크했을 때,
+        $("#emailSave").change(function(){ // 체크박스에 변화가 있다면,
+            if($("#emailSave").is(":checked")){ // email 저장하기 체크했을 때,
                 setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
-            }else{ // ID 저장하기 체크 해제 시,
+            }else{ // email 저장하기 체크 해제 시,
                 deleteCookie("key");
             }
         });
          
-        // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
-        $("#userEmail").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
-            if($("#emailSave").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+        // email 저장하기를 체크한 상태에서 email를 입력하는 경우, 이럴 때도 쿠키 저장.
+        $("#userEmail").keyup(function(){ // email 입력 칸에 email를 입력할 때,
+            if($("#emailSave").is(":checked")){ // email 저장하기를 체크한 상태라면,
                 setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
             }
         });
@@ -323,49 +340,15 @@
 
         exdays = 만료일 (일 단위)
      */
-
+ //---> 이메일 저장 쿠키 추가 
     }
+   
 </script>
 
 </head>
 <body>
-	<nav id="min"class="top_nav">
-		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
-		<span id="navspan">MENU</span>
-	</nav>
-	<c:choose>
-	<c:when test="${sessionScope.userEmail == null}">
-	<nav id="full" class="top_nav">
-		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
-		<ul class="fullmenu">
-			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
-			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"></li>
-			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
-		</ul>
-	</nav>
-	</c:when>
-	<c:otherwise>
-	<nav id="full" class="top_nav">
-		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
-		<ul class="fullmenu">
-			<li class="fullmenulist">MENU</li>
-			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
-			<li class="fullmenulist"><a href='#3'>RESUME LIST</a></li>
-			<li class="fullmenulist"><a href='#4'>COMMUNITY</a></li>
-			<li class="fullmenulist"><a href='#5'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"><a href='#5'>이력서 등록</a></li>
-			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
-		</ul>
-	</nav>
-	</c:otherwise>
-	</c:choose>
-    <form name="form1" method="post" action="${path}/user/loginCheck">
+ 
+    <form name="form1" method="post" action="${path}/user/loginCheck"> <%--스크립트 form 코드 태그안에 추가 : 준형 --%>
     <div class="login_container">
     <div class="item1">
 
@@ -374,17 +357,20 @@
         <header id="login_header">
                    <%--  <img id="logo" src="<c:url value=' >" alt"">  --%>
          </header>
-
-      <section class="login_section">
-                <div class="email">   
+            <section class="login_section">
+             <div class="email">   
                      <input type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userEmail">
                 </div>
- 
             <div class="password">
             <input type="password" value="" placeholder=" 비밀번호"  name="userPw" id="userPw">
             </div>
+            
+            <%--이메일 저장 추가 : 준형 ---------------------%>
             <input type="checkbox" id="emailSave" >
-            <label for="emailSave"><span>이메일 저장</span></label>
+            <label id="emailSave_label" for="emailSave"><span id="emailSave_span">이메일 저장</span></label>
+            <%--이메일 저장 추가 : 준형 ---------------------%>
+            
+            <%--로그인 버튼 클릭시 예외처리 (c:if문), button->submit 변경 : 준형 ------%>
             <div class="login">
              <button type="submit" id="login_btn">로그인</button>
              <c:if test="${msg == 'failure'}">
@@ -398,25 +384,28 @@
                     </div>
                 </c:if> 
             </div>
-    
+    		<%--로그인 버튼 클릭시 예외처리 : 준형 ---------------------------%>
+    		
+    		
     <div class="find">
-      <div class="tt"><a id="login_findid" href="#1">이메일 찾기</a></div>
-      <div class="tt"><a id="login_findpw" href="${path}/user/findPassword">비밀번호 찾기</a></div>
+      <div class="tt"><a id="login_findid" href="${path}/user/findEmail">이메일 찾기</a></div>
+      <div class="tt"><a id="login_findpw" href="${path}/user/findPasswordForm">패스워드 찾기</a></div>
       <div class="ttt"><a id="login_user" href="${path}/user/policy">회원가입</a></div>
     </div>
 
     <div class="login_connect">
-       <a href="#1"><img id="kakao" src="<c:url value='/resources/login_connect_image/kakao.png'/>"></a> 
-       <a href="#2"><img id="naver" src="<c:url value='/resources/login_connect_image/naver.png'/>"></a>
-       <a href="#3"><img id="facebook" src="<c:url value='/resources/login_connect_image/facebook.png'/>"></a>
-       <a href="#4"><img id="google" src="<c:url value='/resources/login_connect_image/google.png'/>"></a>
+       <a href="https://kauth.kakao.com/oauth/authorize?client_id=ddf96236e7a9d02c46ce6f523dc484a3&redirect_uri=http://localhost:8080/DevelopPR/user/kakaooauth&response_type=code "><img id="kakao" src="<c:url value='/resources/user/kakao.png'/>"></a> 
+       <a href="${path}/user/naverLogin"><img id="naver" src="<c:url value='/resources/user/naver.png'/>"></a>
+       <a href="#3"><img id="facebook" src="<c:url value='/resources/user/facebook.png'/>"></a>
+       <a href="${path}/user/googleLogin"><img id="google" src="<c:url value='/resources/user/google.png'/>"></a>
     </div>
     <div id="login_other">
-    	<span id="other">다른 계정으로 로그인</span></div>
-    </div>
+       <span id="other">다른 계정으로 로그인</span></div>
+ 
     </section>
+    </div>
     <div class="item3"></div>
+
 </div>
 </form>
 </body>
-</html>

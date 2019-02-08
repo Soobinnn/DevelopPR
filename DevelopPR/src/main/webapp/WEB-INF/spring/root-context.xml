@@ -32,6 +32,7 @@
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>	
+     <!-- email 인증 : gmail 준형- 주석추가 -->  
         <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
@@ -48,10 +49,23 @@
 			</props>
 		</property>
 	</bean>
+	
 	<!-- 트랜잭션 관련 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	<!-- 트랜잭션 관련 어노테이션을 자동인식하는 옵션 -->
 	<tx:annotation-driven/>
+	
+	<!-- Google 소셜 로그인 연결 설정 -->
+	<bean id = "googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="201807397119-uamv9c4rn5fckennlpcjvl5mn2goq92f.apps.googleusercontent.com"/>
+		<constructor-arg value="99N0jUk2EytdUOaHqmSSmGMR"/>    
+	</bean>
+ 
+	<bean id = "googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login"></property>
+		<property name="redirectUri" value="http://localhost:8080/DevelopPR/user/googleCallback"/>
+	</bean>
+	
 </beans>

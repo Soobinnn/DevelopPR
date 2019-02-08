@@ -38,8 +38,10 @@ public class WebSocket extends TextWebSocketHandler
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception 
 	{
 		log(session.getId() + " 연결 됨");
+	
 		users.put(session.getId(), session);
 		sessionList.add(session);
+		System.out.println("세션" + session);
 	}
 	
 	//통신 연결끊었을때실행
@@ -62,7 +64,7 @@ public class WebSocket extends TextWebSocketHandler
 		MessageVO messageVO = MessageVO.convertMessage(message.getPayload());
 		
 		ChatRoomVO roomVO  = new ChatRoomVO();
-		
+		roomVO.setChatroom_id(messageVO.getChatroom_id());
 		roomVO.setSend_user_id(messageVO.getMessage_sender()); // 전송인
 		roomVO.setReceiver_user_id(messageVO.getMessage_receiver()); //발송인
 		
@@ -71,6 +73,7 @@ public class WebSocket extends TextWebSocketHandler
 		if(!messageVO.getMessage_sender().equals(messageVO.getMessage_receiver())) 
 		{
 		    	  System.out.println("a");
+		    	
 		    	  //채팅방목록에 없다면 방생성
 		    	  if(meetService.isRoom(roomVO) == null ) 
 		    	  {
@@ -91,7 +94,7 @@ public class WebSocket extends TextWebSocketHandler
 			croom = meetService.isRoom(roomVO);
 		}
 		
-		messageVO.setChatroom_chatroom_id(croom.getChatroom_id());
+		messageVO.setChatroom_id(croom.getChatroom_id());
 		if(croom.getSend_user_id().equals(messageVO.getMessage_sender())) 
 	     {
 	    	  messageVO.setMessage_receiver(roomVO.getReceiver_user_id());
@@ -104,16 +107,17 @@ public class WebSocket extends TextWebSocketHandler
 		for (WebSocketSession websocketSession : sessionList) 
 	    {
 	         map = websocketSession.getAttributes();
-	         System.out.println(map);
-	         System.out.println(map.toString());
+	         System.out.println("******map*******"+map);
 	         UserVO login = (UserVO) map.get("login");
 	         System.out.println("test map : "+login);
 	         
 	         // DB에 채팅내용 저장
 	         meetService.insertMessage(messageVO);
-	         
+	         System.out.println("로긴: "+login.getUserNick());
+	         System.out.println("sender : " +messageVO.getMessage_sender());
+	         System.out.println("receiver : " +messageVO.getMessage_receiver());
 	         //받는사람
-	         if (login.getUserNick().equals(messageVO.getMessage_sender())) 
+	         if (login.getUserNick().equals(messageVO.getMessage_sender()) || login.getUserNick().equals(messageVO.getMessage_receiver())) 
 	         {
 	            Gson gson = new Gson();
 	            String msgJson = gson.toJson(messageVO);

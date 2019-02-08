@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">	
+<script type="text/javascript">   
 var userIs_seekCheck = false;
 var CheckEmail = false;
 var CheckName = false;
@@ -96,7 +96,7 @@ if(!userEmailCheck.test($('#userEmail').val()))
 {
     alert('이메일형식에 맞게 입력해주세요.')
     $('#userEmail').focus();
-    return  false;
+    return false;
 }
 if(!userNameCheck.test($('#userName').val()))
 {
@@ -122,7 +122,7 @@ if(!userPhoneCheck.test($('#userPhone').val()))
     $('#userPhone').focus();
     return false;
 }
-return true;	
+return true;   
 }
 
 function display_visit() 
@@ -155,7 +155,7 @@ $('#userEmail').blur(function()
         success : function(data)
         {
             if(!userEmailCheck.test(_userEmail))
-            {		
+            {      
                 $('#userEmail').css({"border" :"2px solid red","background-color":"#FFCECE"});
                 /* $('#userEmail').focus(); */
                 $('#emailCheckMsg').text('이메일형식에 맞게 입력해주세요.').css("color","red");
@@ -165,14 +165,14 @@ $('#userEmail').blur(function()
             {
                 /* 중복이 없을경우 */
                 if(data == '0')
-                {						
+                {                  
                     $('#userEmail').css({"border" :"2px solid green","background-color":"white"});
                     $('#emailCheckMsg').text('가입 가능한 이메일입니다.').css("color","green");
                      CheckEmail = true;
                     
                 }
                 else if(data == '1')
-                {					
+                {               
                     $('#userEmail').css({"border" :"2px solid red","background-color":"#FFCECE"});
                     $('#emailCheckMsg').text('이미 가입된 이메일입니다.').css("color","red");
                      CheckEmail = false;
@@ -196,7 +196,7 @@ $('#userName').blur(function()
         $('#nameCheckMsg').text('이름 형식에 맞게 입력해주세요.').css("color","red");
         CheckName = false;
     }
-    else	
+    else   
     {
         $('#userName').css({"border" :"2px solid green","background-color":"white"});
         $('#nameCheckMsg').text('').css("color","green");
@@ -215,7 +215,7 @@ $('#userPw').blur(function()
         $('#userPw').focus();
         CheckPw = false;
     }
-    else	
+    else   
     {
         $('#userPw').css({"border" :"2px solid green","background-color":"white"});
         $('#pwCheckMsg').text('사용 가능한 비밀번호 입니다.').css("color","green");
@@ -262,7 +262,7 @@ $('#userNick').blur(function()
             success : function(data)
             {
                 if(!userNickCheck.test(_userNick))
-                {		
+                {      
                     $('#userNick').css({"border" :"2px solid red","background-color":"#FFCECE"});
                     /* $('#userEmail').focus(); */
                     $('#nickCheckMsg').text('닉네임 형식에 맞게 입력해주세요.').css("color","red");
@@ -272,13 +272,13 @@ $('#userNick').blur(function()
                 {
                     /* 중복이 없을경우 */
                     if(data == '0')
-                    {						
+                    {                  
                         $('#userNick').css({"border" :"2px solid green","background-color":"white"});
                         $('#nickCheckMsg').text('사용 가능한 닉네임입니다.').css("color","green");
                         CheckNick = true;
                     }
                     else if(data == '1')
-                    {					
+                    {               
                         $('#userNick').css({"border" :"2px solid red","background-color":"#FFCECE"});
                         $('#nickCheckMsg').text('이미 사용된 닉네임입니다.').css("color","red");
                         CheckNick = false;
@@ -309,6 +309,7 @@ $('#userPhone').blur(function()
         CheckPhone = true;
     }
 });
+
 $(document).keyup(function()
 {
     console.log("test");
@@ -677,8 +678,8 @@ border: 1px solid white;
                  </li>
                  
 
-                 <li class="user_li8">
-                     <input id="explain" type="text" name="userJob_detail"
+                 <li class="user_li8"> <!-- 입력 자동완성 제거 : 준형 -->
+                     <input id="explain" type="text" name="userJob_detail" autocomplete="off"
                     placeholder="학생이면 학교, 기업이면 기업에 대하여 입력해주세요.">
                       <span id="userjobdetailCheckMsg"></span>   
                  </li>

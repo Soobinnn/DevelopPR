@@ -60,8 +60,8 @@
         WHERE NICK = #{userNick}
     </select>
 
-    <!-- 아이디찾기 -->
-    <select id="findId" parameterType="String" resultType="String">
+    <!-- 이메일 찾기 -->
+    <select id="findEmail" parameterType="String" resultType="String">
     	SELECT EMAIL FROM pr_user
     	WHERE PHONE = #{phone}
     </select>
@@ -77,6 +77,7 @@
 		UPDATE pr_user SET AUTHSTATUS = 1 
 		WHERE Email = #{userEmail}
 	</update>
+	
 	<!-- 로그인시 이메일 인증 여부 체크 -->
 	<select id ="checkAuthStatus" resultType="int">
 		SELECT AUTHSTATUS
@@ -93,4 +94,59 @@
 		 SELECT NVL(COUNT(*),0)
     	FROM pr_user WHERE NICK = #{userNick}
 	</select>
+	
+	<update id="updateAuthKey">
+		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode}
+		WHERE EMAIL = #{userEmail}
+	</update>
+	
+	<!-- 비밀번호 재설정 : 준형-->
+	 <update id="updatePasswd">
+        UPDATE pr_user SET PW = #{userPw} WHERE EMAIL = #{userEmail}
+    </update>
+    
+    <!-- 회원정보 수정 폼 불러오기 : 준형 -->
+    <select id="modifyform" resultType="UserVO">
+    	SELECT
+    	    IS_SEEK AS userIs_seek,
+        	EMAIL AS userEmail,
+        	NAME AS userName,
+        	NICK AS userNick,
+        	PHONE AS userPhone,
+        	JOB AS userJob,
+        	JOB_DETAIL AS userJob_detail
+        FROM pr_user
+        WHERE EMAIL = #{userEmail}
+    </select>
+    
+    <!-- 회원 정보 수정  : 준형-->
+    <update id="modifyInfo">
+    	UPDATE pr_user 
+    	SET 
+    	EMAIL = #{userEmail}, 
+    	IS_SEEK = #{userIs_seek}, 
+    	NICK = #{userNick}, 
+    	PW = #{userPw}, 
+    	NAME = #{userName}, 
+    	JOB = #{userJob}, 
+    	JOB_DETAIL = #{userJob_detail}, 
+    	PHONE = #{userPhone}
+    WHERE
+    	EMAIL = #{userEmail}
+    </update>
+   
+   	<!-- 회원 탈퇴 위한 비밀번호 체크 : 준형 -->
+   	<select id="checkPw" resultType="String">
+   		select PW AS userPw
+   		from pr_user
+   		where EMAIL = #{userEmail}  	
+   	</select> 
+   	
+   	<!-- 회원 탈퇴  : 준형-->
+   	<delete id="deleteUser">
+   		delete from pr_user
+   		where EMAIL = #{userEmail}	
+   	</delete>
+   	
+    
  </mapper>

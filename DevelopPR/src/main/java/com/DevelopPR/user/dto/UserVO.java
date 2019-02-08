@@ -16,6 +16,7 @@ public class UserVO
 	  private String userAuthCode;
 	  private String userPhone;
 	  private String authkey;
+	  private String profile;
 	  
 	public String getUserPhone() 
 	{
@@ -111,13 +112,23 @@ public class UserVO
 	public void setAuthkey(String authkey) {
 		this.authkey = authkey;
 	}
-	// toString()
+	
+	
+	public String getProfile() 
+	{
+		return profile;
+	}
+	public void setProfile(String profile) 
+	{
+		this.profile = profile;
+	}
+	// toString() , 준형 phone 추가
     @Override
     public String toString() 
     {
         return "UserVO [userEmail=" + userEmail + ", userIs_seek=" + userIs_seek + ", userNick=" + userNick + ", userPw="
                 + userPw +", userName=" +userName+ ", userJob=" + userJob + ", userJob_detail=" + userJob_detail + ", userRecent_access=" 
-        		+ userRecent_access + ", userAuthStatus=" + userAuthStatus+ ",userAuthCode=" +userAuthCode +"]";
+        		+ userRecent_access + ", userAuthStatus=" + userAuthStatus+ ",userAuthCode=" +userAuthCode + ", profile=" + profile +" , userPhone=" + userPhone+"]";
     }  
 	  
 }

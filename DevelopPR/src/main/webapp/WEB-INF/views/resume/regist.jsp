@@ -78,8 +78,11 @@ function fn_removeImage() {
             </div>
              
         </header>
-        <div id="pill">* 는 필수 입력 사항입니다.<br/> <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
-    
+        <div id="pills">
+	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
+	        <div class="pill">2. <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
+	    	<div class="pill">3. 자격증, 학력/교육, 경력, tech-stack 정보 기입 시 빈 칸이라면 <input type="button" value="삭제">를 추천합니다.</div>
+	    </div>
         <div class="main">
             <div class="detail">
                     <div class="subject">

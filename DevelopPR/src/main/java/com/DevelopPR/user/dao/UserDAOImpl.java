@@ -1,6 +1,8 @@
 package com.DevelopPR.user.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -33,12 +35,15 @@ public class UserDAOImpl implements UserDAO
 	 {
 	     sqlSession.insert("user.insertUser", vo);
 	 }
-	 // 아이디 찾기
+	// 이메일 찾기 ----- 준형
 	 @Override
 	 public String findId(String phone)
 	 {
-		return sqlSession.selectOne("user.findId", phone);
+		//DB에서 phone번호에 매칭되는 email을 하나 리턴(가입할때 폰번호 중복허용하려면 selectList로..)
+		return sqlSession.selectOne("user.findEmail", phone);
 	 }
+	// 이메일 찾기 ------ 준형
+	 
 	 
 	 // 회원 로그인체크
 	 @Override
@@ -117,4 +122,43 @@ public class UserDAOImpl implements UserDAO
 	  {
 		  return sqlSession.selectOne("user.checkNick", userNick);
 	  }
+	  
+	  // 회원가입 - 이메일 인증 에러시 재전송
+	   // 인증키 변경
+	   public void updateAuthKey(String reUserEmail, String userAuthCode)
+	   {
+			UserVO vo = new UserVO();   	
+		   	vo.setUserAuthCode(userAuthCode);
+		   	vo.setUserEmail(reUserEmail);
+		   	sqlSession.update("user.updateAuthKey", vo);
+	   }
+//----------------------------------------------------------------------------------------------------------------------  
+	 //비밀번호 재설정 - 준형 
+	   
+	   public void updatePasswd(UserVO vo) {
+		   sqlSession.update("user.updatePasswd",vo);
+	   }
+	   
+	 //회원정보 수정 폼- 준형
+	   public UserVO modifyform(String userEmail) {
+		   return sqlSession.selectOne("user.modifyform", userEmail);
+	   }
+	   
+	 //회원 정보 수정
+	   public void modifyInfo(UserVO vo) {
+		  sqlSession.update("modifyInfo",vo);
+	   }
+	 //회원 탈퇴 비밀번호 확인 - 준형
+	   public String checkPw(String userEmail) {
+		   
+		   return sqlSession.selectOne("user.checkPw",userEmail);
+	   }
+	 
+	  //회원 탈퇴 - 준형
+	   public void deleteUser(String userEmail) {
+		   sqlSession.delete("user.deleteUser", userEmail);
+	   }
+	   
+	   
+//----------------------------------------------------------------------------------------------------------------------  
 }

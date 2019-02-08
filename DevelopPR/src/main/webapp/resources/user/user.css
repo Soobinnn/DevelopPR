@@ -1,0 +1,262 @@
+/* modifyInfo */
+.modifyInfo .user_header
+{
+    display : flex;
+    flex-direction : column;
+    flex-shrink: 0;
+    height : 120px;
+}
+.modifyInfo .head 
+{
+    height: 10px;
+}
+.modifyInfo .head2
+{
+
+    height : 90px;
+    text-align : center;
+    font-size : 70px;
+}
+.modifyInfo #information
+{
+    font-size : 23px;
+    position : relative;
+    left : 10px;
+}
+.modifyInfo #obligatory
+{
+    position : relative;
+    left : 460px;
+    color : red;
+}
+.modifyInfo .head3
+{
+
+}
+
+.modifyInfo .user_section{
+    display :flex;
+    flex-direction: row;
+    
+    width: auto;
+}
+
+.modifyInfo .sec1
+{
+    
+    height : 700px;
+    width : 40%;
+}
+
+.modifyInfo .sec2
+{
+    
+    display: flex;
+    height : 800px;
+    width : 800px;
+    flex-shrink : 0;
+    flex-basis : 600px;
+}
+.modifyInfo #sec2_1
+{
+    
+    width : 10%;
+}
+.modifyInfo #sec2_2
+{
+    
+    display : flex;
+    flex-direction: column;
+    height: 700px;
+    width : 800px;
+}
+
+.modifyInfo #top
+{
+    border-bottom:1px solid gray;
+    height : 60px;
+    
+}
+.modifyInfo #middle
+{
+    border : 1px solid white;
+    position : relative;
+    height : 655px;
+    width: 800px;
+
+}
+.modifyInfo .radio_ , .modifyInfo .radio_1 , .modifyInfo .radio_2
+{
+    color : black;
+    font-size : 14px;
+    opacity : 0.6;
+}
+.modifyInfo .radio_1, .modifyInfo .radio_2
+{
+    position: relative;
+    bottom : 17px;
+}
+.modifyInfo #user_ul{
+    position: relative;
+    width : 640px;
+    left : 60px;
+    top : 0px;
+    border : 1px solid white;
+    height: 630px;
+  
+    
+}
+.modifyInfo .user_li1, .modifyInfo .user_li2, .modifyInfo .user_li3, .modifyInfo .user_li4, .modifyInfo .user_li5,.modifyInfo .user_li6, .modifyInfo .user_li7,.modifyInfo .user_li8
+{
+    color : skyblue;
+    font-size : 14px;
+    margin-bottom : 15px;
+}
+.modifyInfo .user_li2
+{
+    margin-bottom : 10px;
+}
+.modifyInfo .user_li3
+{
+    margin-bottom : 5px;
+}
+.modifyInfo .user_li4
+{
+    margin-bottom : 6px;
+}
+.modifyInfo .user_li5
+{
+    margin-bottom : 10px;
+}
+.modifyInfo .user_li6
+{
+    margin-bottom : 10px;
+}
+.modifyInfo .user_li7
+{
+    margin-bottom : 30px;
+}
+.modifyInfo .user_li8
+{
+    margin-bottom : 10px;
+} 
+
+.modifyInfo #userEmail,.modifyInfo #userName,.modifyInfo #userPw,.modifyInfo #userPwChk,.modifyInfo #userNick,.modifyInfo #userPhone
+{
+    width:380px;
+    height : 38px;
+}
+.modifyInfo #userPw
+{
+  
+}
+.modifyInfo #sec2_3
+{
+    width : 10%;
+}
+.modifyInfo .sec3
+{
+    height : 800px;
+    width : 40%;
+}
+.modifyInfo #p1, .modifyInfo #p2, .modifyInfo #p3, .modifyInfo #p4, .modifyInfo #p5, .modifyInfo #p6, .modifyInfo #p7
+{
+    color : gray;
+    font-size : 12px;
+}
+.modifyInfo #p1
+{
+    position:relative;
+    bottom : 3px;
+    left : 4px;
+}
+.modifyInfo #p2
+{
+    position:relative;
+    bottom : 12px;
+    left : 4px;
+}
+.modifyInfo #p3
+{
+    position:relative;
+    bottom : 6px;
+    left : 4px;
+}
+.modifyInfo #p4
+{
+    position:relative;
+    bottom : 5px;
+    left : 4px;
+}
+.modifyInfo #p5
+{
+    position:relative;
+    bottom : 5px;
+    left : 4px;
+}
+.modifyInfo #p6
+{
+    position:relative;
+    bottom : 5px;
+    left : 4px;
+}
+.modifyInfo #p7
+{
+    position : relative;
+    bottom : 5px;
+    left : 4px;
+}
+.modifyInfo #explain
+{
+    width : 380px;
+    height : 50px;
+    box-shadow: 0 0 0 50px white inset;
+}
+.modifyInfo #bottom
+{
+    display : flex;
+    flex-shrink: 0;
+    flex-basis : 20px;
+    border-top: 1px solid gray;
+    height : 110px;
+    
+}
+
+.modifyInfo #modify
+{
+    background : white;
+    border : 1px solid gray;
+    position : relative;
+    left : 32%;
+    top : 24px;
+    height : 35px;
+    width : 70px;
+}
+
+.modifyInfo #cancel
+{
+    background : white;
+    border : 1px solid gray;
+    position : relative;
+    left : 44%;
+    top : 24px;
+    height : 35px;
+    width : 70px;
+}
+.modifyInfo #userPhone
+{
+position : relative;
+
+}
+
+.modifyInfo #modifyInfo_form
+{
+width:800px;
+height: 770px;
+border: 1px solid white;
+}
+.modifyInfo #userIs_seekMsg, .modifyInfo #emailCheckMsg, .modifyInfo #nameCheckMsg, .modifyInfo #pwCheckMsg, .modifyInfo #pwchCheckMsg, .modifyInfo #nickCheckMsg, .modifyInfo #phoneCheckMsg, .modifyInfo #userjobCheckMsg
+{
+    position: relative;
+    left: 7px;
+}

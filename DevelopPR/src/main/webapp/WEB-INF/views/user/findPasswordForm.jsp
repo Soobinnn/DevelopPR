@@ -33,6 +33,7 @@ $('#findPw_email').blur(function(){
     var userEmailCheck = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
     var _userEmail = $('#findPw_email').val();
     var param = "userEmail="+_userEmail;
+    
     $.ajax({
         async : true,
         type :'POST',
