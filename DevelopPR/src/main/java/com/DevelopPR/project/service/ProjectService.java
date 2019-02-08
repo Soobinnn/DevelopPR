@@ -11,6 +11,7 @@ public interface ProjectService
 	public void regist(ProjectVO vo) throws Exception;
 	
 // 프로젝트 수정
+	public ProjectVO modifyForm(int pno) throws Exception;
 	public void modify(ProjectVO vo) throws Exception;
 	
 //프로젝트 삭제
@@ -19,5 +20,7 @@ public interface ProjectService
 //프로젝트명 찾기
 	public List<ProjectVO> lookup(String tech_name_input) throws Exception;
 
+//프로젝트 목록
+	public List<ProjectVO> projectList(String nick) throws Exception;
 
 }

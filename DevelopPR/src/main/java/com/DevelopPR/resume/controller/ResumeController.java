@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.DevelopPR.project.service.ProjectService;
 import com.DevelopPR.resume.model.dto.FollowVO;
 import com.DevelopPR.resume.model.dto.GoodVO;
 import com.DevelopPR.resume.model.dto.ResumeVO;
@@ -34,6 +35,9 @@ public class ResumeController {
 	ResumeService resumeService; 
 	@Inject
 	UserService userService;
+	@Inject
+	ProjectService projectService;
+	
 	
 	//이력서 목록 폼 보기
 	@RequestMapping("list")
@@ -75,7 +79,7 @@ public class ResumeController {
 	   String email = uservo.getUserEmail();
 	   model.addAttribute("dto", userService.viewId(email));
 	   
-      return "resume/regist";
+      return "menu/resume/regist";
    }
    
    //이력서 등록 처리
@@ -94,28 +98,29 @@ public class ResumeController {
 	  // 팔로잉 하는 사람의 닉네임(user의 닉네임)을 가지고 옵니다.
 	  UserVO uservo = (UserVO)session.getAttribute("login");
 	  String myemail = uservo.getUserEmail();
-	  String Fname = userService.viewId(myemail).getUserNick();
+	  String myname = userService.viewId(myemail).getUserNick();
 	  String name= userService.viewId(email).getUserNick(); 
 	  // 맵에 팔로워 닉, 팔로잉 닉을 담아 전송합니다.
 	  // 각 계정마다 임의의 다른 계정을 팔로우 하고 있는지 하지 않고있는지 확인하기 위함.
 	  Map<String, Object> map = new HashMap<String, Object>();
-	  map.put("follower_nick", Fname);
+	  map.put("follower_nick", myname);
 	  map.put("following_nick", name);
 	
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
+	  model.addAttribute("project", projectService.projectList(name));
+	  GoodVO goodvo = new GoodVO();
+	  goodvo.setGood_email(email);
+	  goodvo.setGood_nick(myname);
+	  System.out.println(model);
+	  model.addAttribute("chkFollow", resumeService.is_following(map));
 	  // 내 계정이 다른 계정을 팔로우 하고 있는지 아닌지 확인합니다.
 	  // resumeMapper.xml 에서 is_follow로 만약 내 계정이 다른 임의의 계정을 팔로우 하고있다면
 	  // count()로 1을 return 받고, 아니면 null을 리턴 받습니다.
 	  // (detail.jsp에서 언팔로우 버튼을 누르면 delete되어 버튼이 바뀝니다. 
-	  // 하지만 팔로우를 누르면 insert되어 count를 1로 리턴받아 언팔로우 버튼으로 바뀌어야하는데, DB와 즉각적으로 동기화가 되지 않아 버튼이 변경되지 않습니다.) => Ajax로 변경해야 할 듯 합니다.
+	  // 하지만 팔로우를 누르면 insert되어 count를 1로 리턴받아 언팔로우 버튼으로 바뀌어야하는데, DB와 즉각적으로 동기화가 되지 않아 버튼이 변경되지 않습니다.) => Ajax로 변경.
 	  // 이 과정을 통해 detail.jsp에서 팔로우, 언팔로우 버튼을 각 계정마다 선택적으로 보여줍니다.
-	  GoodVO goodvo = new GoodVO();
-	  goodvo.setGood_email(email);
-	  goodvo.setGood_nick(Fname);
-	  
-	  model.addAttribute("chkFollow", resumeService.is_following(map));
 	  model.addAttribute("chkGood", resumeService.is_good(goodvo));
-      return "resume/detail";
+      return "menu/resume/detail";
    }
    
    //이력서 수정하기
@@ -124,14 +129,14 @@ public class ResumeController {
 	  System.out.println("modify:"+email);
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
 
-      return "basic/resume/modify";
+      return "menu/resume/modify";
    }
 
 
    //이력서 수정하기
    @RequestMapping(value="modifyupdate", method=RequestMethod.POST)
    public String resumeModify(@ModelAttribute ResumeVO vo, @RequestParam("profile_photo") String file) throws Exception{
-	   
+	   	
 		  vo.setProfile_photo(file.toString());
 		  resumeService.resumeModify(vo);
 		  
