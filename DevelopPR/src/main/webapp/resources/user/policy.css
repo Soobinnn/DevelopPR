@@ -235,8 +235,8 @@
 	position : relative;
 	display: block;
 	width : 1980px;
-	padding-top : 50px;
-	padding-bottom : 50px;
+	margin-top : 50px;
+	margin-bottom : 50px;
 	font-weight :900;
 	font-size : 3rem;
 }
