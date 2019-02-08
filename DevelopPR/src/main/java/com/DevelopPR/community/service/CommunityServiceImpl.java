@@ -45,16 +45,24 @@ public class CommunityServiceImpl implements CommunityService
         vo.setContent(content);
         vo.setWriter(writer);
         communityDao.regist(vo);
+     // 게시물의 첨부파일 정보 등록
+        String[] files = vo.getFiles(); // 첨부파일 배열
+        if(files == null) return; // 첨부파일이 없으면 메서드 종료
+        // 첨부파일들의 정보를 tbl_attach 테이블에 insert
+        for(String name : files){ 
+            communityDao.addAttach(name);
+        }
+ 
     }
     
-    // 03. �Խñ� �󼼺���
+    // 03. 
     @Override
     public CommunityVO detail(int bno) throws Exception 
     {
         return communityDao.detail(bno);
     }
     
-    //04. �Խñ� ���� �� �ҷ�����
+    //04. 
     @Override
     public CommunityVO modifyForm(int bno) throws Exception
     {
@@ -86,10 +94,10 @@ public class CommunityServiceImpl implements CommunityService
                                 // ���ǿ��� �о����
          /*  update_time = (long)session.getAttribute("update_time_"+bno);*/
         }
-        // �ý����� ����ð��� current_time�� ����
+        //
         long current_time = System.currentTimeMillis();
-        // �����ð��� ��� �� ��ȸ�� ���� ó�� 24*60*60*1000(24�ð�)
-        // �ý�������ð� - �����ð� > �����ð�(��ȸ�� ������ �����ϵ��� ������ �ð�)
+        //
+        //
         if(current_time - update_time > 5*1000){
             communityDao.increaseViewcnt(bno);
             // ���ǿ� �ð��� ���� : "update_time_"+bno�� �ٸ������� �ߺ����� �ʰ� ����� ��
@@ -97,7 +105,7 @@ public class CommunityServiceImpl implements CommunityService
             
         }
     }
-    // 08. �Խñ� ���ڵ� ���� communityDao.countArticle�޼��� 
+    // 08.  
     @Override
     public int countArticle(String searchOption, String keyword) throws Exception {
         return communityDao.countArticle(searchOption, keyword);

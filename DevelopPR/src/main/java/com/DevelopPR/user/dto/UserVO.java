@@ -17,6 +17,7 @@ public class UserVO
 	  private String userPhone;
 	  private String authkey;
 	  private String profile;
+	  private int unaccess_mail;
 	  
 	public String getUserPhone() 
 	{
@@ -122,7 +123,14 @@ public class UserVO
 	{
 		this.profile = profile;
 	}
-	// toString() , 준형 phone 추가
+	public int getUnaccess_mail() {
+		return unaccess_mail;
+	}
+	public void setUnaccess_mail(int unaccess_mail) {
+		this.unaccess_mail = unaccess_mail;
+	}
+	
+	// toString()
     @Override
     public String toString() 
     {

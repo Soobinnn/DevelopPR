@@ -7,11 +7,13 @@
 <%@ include file="../../views/include/tag_header.jsp" %>
 <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
 <script type="text/javascript">	
-function fn_uploadImage() {
+function fn_uploadImage() 
+{
 	$("#uploadImageFile").click();
 }
 
-function uploadImageFileChange() {
+function uploadImageFileChange() 
+{
 	var formData = new FormData();
 	formData.append('upfile', $('#uploadImageFile')[0].files[0]); 
 	$.ajax({
@@ -375,7 +377,7 @@ function fn_removeImage() {
 
    <div id="button">
        <div class="holl"></div>
-        <input type="button" class="button1" value="취소"/>
+        <input type="button" class="button1" value="취소" onclick="history.back()"/>
         <input type="submit" class="button2" value="등록하기"/>
         <div class="holl"></div>
     </div>

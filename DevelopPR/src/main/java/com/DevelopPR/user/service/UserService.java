@@ -28,7 +28,7 @@ public interface UserService
 	   public String findId(String phone) throws Exception;
 	
 	   // 회원 이메일, 이름, 닉네임 (팔로우)
-	   public UserVO viewId(String userNick);
+	   public UserVO viewId(String email);
 	   
 	   // 이메일 인증
 	   public void userAuth(String userEmail) throws Exception;
@@ -48,6 +48,7 @@ public interface UserService
 	   // 회원가입 - 이메일 인증 에러시 재전송
 	   // 이메일체크 후 메일 재전송
 	   public void reJoining(String reUserEmail) throws Exception;
+	   
 	  /* //03. 회원 정보 상세보기
 	   public UserVO viewUser(String userId);
 	   //04. 회원정보 수정
@@ -55,7 +56,7 @@ public interface UserService
 	   //05. 회원삭제
 	   public void deleteUser(String userId);
 	   */
-	 //----------------------------------------------------------------------------------------------------------------------  	   
+   
 	   // 비밀번호 재설정 - 준형
 	   public void updatePasswd(UserVO vo);
 	   
@@ -70,9 +71,12 @@ public interface UserService
 	   
 	  //회원 탈퇴 - 준형 
 	   public void deleteUser(String userEmail);
-	
-	 //----------------------------------------------------------------------------------------------------------------------  
-	
-	
-	   
+
+	   // 간편로그인 API 시 정보 입력
+	   public void insertUserApi(UserVO vo) throws Exception;
+	  
+	   //장기 미접속 인원 가져오기
+	   public List<UserVO> longUnAccess();
+	   //장기 미접속 인원 메일 보내기
+	   public void unAccessSendMail(List<UserVO> longUnAccess)throws Exception;
 }

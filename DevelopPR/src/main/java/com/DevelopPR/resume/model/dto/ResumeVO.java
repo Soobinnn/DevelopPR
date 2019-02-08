@@ -24,8 +24,49 @@ public class ResumeVO {
 	private String tech_name;
 	private String tech_percent;
 	private int age;
+	private int followCount;
+	private int goodCount;
+	private String color;
 	
 	
+	
+	
+	public String getColor() {
+		return color;
+	}
+
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+
+	public int getFollowCount() {
+		return followCount;
+	}
+
+
+
+	public void setFollowCount(int followCount) {
+		this.followCount = followCount;
+	}
+
+
+
+	public int getGoodCount() {
+		return goodCount;
+	}
+
+
+
+	public void setGoodCount(int goodCount) {
+		this.goodCount = goodCount;
+	}
+
+
+
 	public String getMotto() {
 		return motto;
 	}

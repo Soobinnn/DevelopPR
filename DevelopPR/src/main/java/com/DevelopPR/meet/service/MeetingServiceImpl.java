@@ -48,4 +48,18 @@ public class MeetingServiceImpl implements MeetingService
 	{
 		return meetingDao.listChatRoom(userNick);
 	}
+	
+	/* 읽은메시지 변경 */
+	@Override
+	public void readUpdate(String chatroom_id,String userNick)
+	{
+		meetingDao.readUpdate(chatroom_id, userNick);
+	}
+	
+	/* 실시간 알람*/
+	@Override
+	public int alarm(String userNick)
+	{
+		return meetingDao.alarm(userNick);
+	}
 }

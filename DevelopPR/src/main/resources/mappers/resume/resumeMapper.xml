@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resume">
-	
-	<select id="resumeList" resultType="ResumeVO">
-		<include refid="pagingHeader"></include>
-            SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo
-            FROM pr_resume
-            <include refid="search"></include>
-        <include refid="pagingFooter"></include>    
-	</select>
-	
-	<select id="countArticle" resultType="int">
-       SELECT COUNT(*)  FROM pr_resume
-       <include refid="search"></include>
-    </select>
-	
 
 	<insert id="registConfirm">
 		INSERT INTO PR_RESUME VALUES (
@@ -23,10 +9,25 @@
 		#{email}, #{email_is_open}, #{blog}, #{address}, #{address_is_open},
 		#{prefer_place},
 		#{acq_date}, #{acq_name}, #{gradu_year}, #{edu_info}, #{career_year},
-		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}
+		#{career_info}, #{abb}, #{tech_name}, #{tech_percent}, #{age}, #{color}
 		)
 	</insert>
 	
+	<select id="resumeList" resultType="ResumeVO">
+		<include refid="pagingHeader"></include>           
+			SELECT a.name, a.age, a.prefer_place, a.acq_name, a.tech_name, a.motto, a.email, a.profile_photo,
+			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
+			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
+			FROM pr_resume a, pr_user b
+			where a.email = b.email
+            and <include refid="search"></include>
+        <include refid="pagingFooter"></include>    
+	</select>
+	
+	<select id="countArticle" resultType="int">
+       SELECT COUNT(*) FROM pr_resume a 
+       where <include refid="search"></include>
+    </select>
 
 	<select id="resumeDetail" resultType="ResumeVO">
 		SELECT *
@@ -34,12 +35,59 @@
 		WHERE email=#{email}
 	</select>
 	
+   <update id="modify">   
+          UPDATE pr_resume SET 
+          motto = #{motto}, is_work=#{is_work}, profile_photo=#{profile_photo}, name=#{name}, birthday=#{birthday}, cell_num=#{cell_num}, cnum_is_open=#{cnum_is_open}, 
+		  email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
+		  acq_date=#{acq_date}, acq_name=#{acq_name}, gradu_year=#{gradu_year}, edu_info=#{edu_info}, 
+		  career_year=#{career_year}, career_info=#{career_info}, abb=#{abb}, tech_name=#{tech_name}, tech_percent=#{tech_percent}, age=#{age}, color=#{color}
+          WHERE email=#{email}
+    </update>
+
+
+	<sql id="search">
+	    <choose>
+	        <!-- 검색옵션이 전체 검색일 경우 -->
+	        <when test="searchOption == 'all'">
+	           ( a.name like '%'||#{keyword}||'%'
+	            OR a.prefer_place like '%'||#{keyword}||'%'
+	            OR a.acq_name like '%'||#{keyword}||'%'
+	            OR a.tech_name like '%'||#{keyword}||'%' )
+	        </when>
+	    
+	        <!-- 전체 검색이 아닐 경우 -->
+	        <otherwise>
+	           a.${searchOption} like '%'||#{keyword}||'%'
+	        </otherwise>
+	    </choose>
+	</sql>
+	
+		<!-- 페이징 sql -->
+	<sql id="pagingHeader">
+	    SELECT * FROM (
+	        SELECT ROWNUM AS rn, A.* FROM (
+	</sql>
+	
+	<sql id="pagingFooter">
+	        ) A
+	    ) WHERE rn BETWEEN #{start} AND #{end}
+	</sql>
+	
+	<select id="mainList" resultType="ResumeVO">
+		SELECT a.name, a.age, a.prefer_place, a.acq_name, a.tech_name, a.motto, a.email, a.profile_photo,
+			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
+			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
+			FROM pr_resume a, pr_user b
+			where a.email = b.email
+			ORDER BY dbms_random.value
+	</select>
+	
 	<!-- 팔로우 -->
 	<insert id="followMember">
 		INSERT INTO PR_FOLLOW(follower_nick, following_nick)
 		VALUES (#{follower_nick}, #{following_nick})
 	</insert>
-	
+		
 	<!-- 언팔로우 -->
 	<delete id="unfollowMember">
 		DELETE FROM PR_FOLLOW
@@ -66,53 +114,26 @@
 		SELECT * FROM PR_FOLLOW
 		WHERE following_nick = #{following_nick}
 	</select>
-
-   <update id="modify">
-          UPDATE pr_resume 
-          SET 
-          motto = #{motto}, is_work=#{is_work}, profile_photo=#{profile_photo}, name=#{name}, birthday=#{birthday}, cell_num=#{cell_num}, cnum_is_open=#{cnum_is_open}, 
-		  email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
-		  acq_date=#{acq_date}, acq_name=#{acq_name}, gradu_year=#{gradu_year}, edu_info=#{edu_info}, 
-		  career_year=#{career_year}, career_info=#{career_info}, abb=#{abb}, tech_name=#{tech_name}, tech_percent=#{tech_percent}, age=#{age}
-          WHERE email=#{email}
-    </update>
-
-
-	<sql id="search">
-	    <choose>
-	        <!-- 검색옵션이 전체 검색일 경우 -->
-	        <when test="searchOption == 'all'">
-	        WHERE    
-	            (
-	            name like '%'||#{keyword}||'%'
-	            OR prefer_place like '%'||#{keyword}||'%'
-	            OR acq_name like '%'||#{keyword}||'%'
-	            OR tech_name like '%'||#{keyword}||'%'
-	            )
-	        </when>
-	    
-	        <!-- 전체 검색이 아닐 경우 -->
-	        <otherwise>
-	            WHERE ${searchOption} like '%'||#{keyword}||'%'
-	        </otherwise>
-	    </choose>
-	</sql>
 	
-		<!-- 페이징 sql -->
-	<sql id="pagingHeader">
-	    SELECT * FROM (
-	        SELECT ROWNUM AS rn, A.* FROM (
-	</sql>
+	<!-- 좋아요 -->
+	<insert id="good">
+		INSERT INTO PR_GOOD(good_nick, good_email)
+		VALUES (#{good_nick}, #{good_email})
+	</insert>
 	
-	<sql id="pagingFooter">
-	        ) A
-	    ) WHERE rn BETWEEN #{start} AND #{end}
-	</sql>
+	<!-- 좋아요 취소 -->
+	<delete id="ungood">
+		DELETE FROM PR_GOOD
+		WHERE good_nick = #{good_nick}
+		AND good_email = #{good_email}
+	</delete>
 	
-	<select id="mainList" resultType="ResumeVO">
-		SELECT name, age, prefer_place, acq_name, tech_name, motto, email, profile_photo 
-		FROM pr_resume 
-		ORDER BY dbms_random.value
+	<!-- 내가 좋아요 하고 있는지 체크 -->
+	<select id="is_good" parameterType="GoodVO" resultType="String">
+		SELECT COUNT(*)
+		FROM PR_GOOD
+		WHERE good_nick = #{good_nick}
+		AND good_email = #{good_email}
 	</select>
 	
 </mapper>

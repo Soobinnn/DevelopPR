@@ -99,7 +99,6 @@
 			    <label for="tab2">Tab 2</label>
 			    <div class="tab1_content">follower</div>
 			    <div class="tab2_content">following</div>
-			   
 			</div>
         </div>
 

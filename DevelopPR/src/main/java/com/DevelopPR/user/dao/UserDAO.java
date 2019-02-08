@@ -21,7 +21,7 @@ public interface UserDAO
 	   public void logout(HttpSession session);
 
 	   // 회원 이메일, 이름, 닉네임 (팔로우)
-	   public UserVO viewId(String userNick);
+	   public UserVO viewId(String email);
 
 	// 이메일 찾기 -- 준형
 	   public String findId(String phone) throws Exception;
@@ -55,7 +55,7 @@ public interface UserDAO
 	   //06. 비밀번호 체크
 	   public boolean checkPw(String userId, String userPw);
 	  */
-	 //----------------------------------------------------------------------------------------------------------------------  	
+ 	
 	//비밀번호 재설정 - 준형
 	   public void updatePasswd(UserVO vo);
 	
@@ -71,9 +71,8 @@ public interface UserDAO
 	 //회원 탈퇴 - 준형 
 	   public void deleteUser(String userEmail);
 	    
-	   
-	   
-	 //----------------------------------------------------------------------------------------------------------------------  
+	 //장기 미접속 인원 가져오기
+	  public List<UserVO> longUnAccess();
 }
 
 

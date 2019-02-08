@@ -9,6 +9,7 @@ public class ChatRoomVO
 	private String receiver_user_id;
 	private Date lastTime;
 	private String lastMessage;
+	private int unReadCount;
 	
 	public String getChatroom_id() 
 	{
@@ -48,6 +49,12 @@ public class ChatRoomVO
 	public void setLastMessage(String lastMessage) 
 	{
 		this.lastMessage = lastMessage;
+	}
+	public int getUnReadCount() {
+		return unReadCount;
+	}
+	public void setUnReadCount(int unReadCount) {
+		this.unReadCount = unReadCount;
 	}
 	
 	

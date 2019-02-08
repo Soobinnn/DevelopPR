@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>DevelopPR</title>
-
 </head>
 <body>
 <div class="container">
@@ -24,14 +23,22 @@
 									자격증 : ${list.acq_name}<br/>
 									tech-stack : ${list.tech_name}<br/>
 									comment : ${list.motto}<br/><br/>
-									100_♥   10_follow
-									<input type="button" class="pp" value="포트폴리오"/>
+									follow_${list.followCount} &nbsp;&nbsp;
+									♥_${list.goodCount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									    
+									<input type="button" class="pp" value="이력서"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+								<c:if test="${sessionScope.userEmail!=null}">
+									<a href="${path}/resume/detail/${list.email}/"></a>
+								</c:if>
+								<c:if test="${sessionScope.userEmail==null}">
+									<a href="${path}/user/login"></a>
+								</c:if>
 					</figure>
 				</div>
 		</c:forEach>
@@ -50,15 +57,22 @@
 									자격증 : ${list.acq_name}<br/>
 									tech-stack : ${list.tech_name}<br/>
 									comment : ${list.motto}<br/><br/>
-									100_♥   10_follow
-									<input type="button" class="pp" value="포트폴리오"/>
+									follow_${list.followCount} &nbsp;
+									♥_${list.goodCount}&nbsp;
+									<input type="button" class="pp" value="이력서"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
-					</figure>
+								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+								<c:if test="${sessionScope.userEmail!=null}">
+									<a href="${path}/resume/detail/${list.email}/"></a>
+								</c:if>
+								<c:if test="${sessionScope.userEmail==null}">
+									<a href="${path}/user/login"></a>
+								</c:if>
+						</figure>
 				</div>
 		</c:forEach>
     	</div>
@@ -77,14 +91,21 @@
 									자격증 : ${list.acq_name}<br/>
 									tech-stack : ${list.tech_name}<br/>
 									comment : ${list.motto}<br/><br/>
-									100_♥   10_follow
-									<input type="button" class="pp" value="포트폴리오"/>
+									follow_${list.followCount} &nbsp;
+									♥_${list.goodCount}&nbsp;
+									<input type="button" class="pp" value="이력서"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail?email=${list.email}"></a>
+								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+								<c:if test="${sessionScope.userEmail!=null}">
+									<a href="${path}/resume/detail/${list.email}/"></a>
+								</c:if>
+								<c:if test="${sessionScope.userEmail==null}">
+									<a href="${path}/user/login"></a>
+								</c:if>
 					</figure>
 				</div>
 		</c:forEach>
@@ -103,8 +124,7 @@
 					</figure>		
 			</div>
 		</div>
-
-		
+	
 		<div class="animation">
 			<img id="animation_img" src="<c:url value='/resources/main/image/배경.png'/>"/>
 				<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="0">

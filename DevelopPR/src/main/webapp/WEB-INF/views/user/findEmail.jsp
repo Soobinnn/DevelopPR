@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- jstl 코어 태그 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- jstl 포맷 태그 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -20,147 +23,168 @@
 </script>
 <style>
 
-.findEmail_header
+.findEmail .findEmail_header
 {
    text-align : center;
    font-size: 100px;
    border :1px solid black;
    height:160px;
+   width: auto;
 }
-.findEmail_sec {
+.findEmail .findEmail_sec {
    display: flex;
    flex-direction: row;
    width: auto;
    height: 540px;
-   border :1px solid black;
+   border :1px solid blue;
 }
-#sec1{
+.findEmail #sec1{
    border :1px solid black;
-   width : 50%;
+   width : 40%;
 }
-#sec2{
+.findEmail #sec2{
    display : flex;
+   position: relative;
+   left: 0px;
    flex-shrink: 0;
    flex-basis: 700px;
-   border :1px solid black;
-   width : 1000px;
+   border :1px solid red;
+   width : auto;
    height: auto;
 }
-#sec3{
-   border :1px solid black;
-   width : 50%;
+.findEmail #sec3{
+   border :1px solid orange;
+   width : 40%;
 }
-.container
-{
-  
-}
-.findEmail_ft
+.findEmail .findEmail_ft
 {
  border :1px solid black;
 }
-#findEmail_li1
+.findEmail #findEmail_li1
 {
- color : white;
+ color : black;
  font-size: 37px;
  margin-bottom : 60px;
  text-align : center;
-
- 
+ color : white;
 }
-#findEmail_li2
+
+.findEmail #findEmail_li2
 {
-   color : navy;
+   color : #02456F;
    
    font-size: 20px;
    margin-bottom : 70px;
 }
-#findEmail_li4
+
+.findEmail #findEmail_li3
 {
-   color : navy;
+   color :#02456F;
    font-size: 20px;
    margin-bottom : 60px;
 }
-#findEmail_li5
+.findEmail #findEmail_li4
 {
-   color : white;
    font-size: 17px;
    margin-bottom : 40px;
+   color : white;
 }
-#findEmail_li6
+.findEmail #findEmail_li5
 {
-   color: white;
+   color : white;
    margin-bottom : 30px;
+   
 }
-#findEmail_ul
+.findEmail #findEmail_ul
 {
-   list-style-image : url("${patj}/resources/marker.png");
+   list-style-type: circle;
    width: 500px;
    height: 470px;
    position : relative;
    left : 70px;
    top : 50px;
 }
-#span_Email
+
+.findEmail #span_Email
 {
    color : black;
+   font-family: 'Noto Sans KR', sans-serif;
 }
-#span_Email2
+
+.findEmail #span_Email2
 {
    color : black;
+   font-family: 'Noto Sans KR', sans-serif;
 }
-#span_sell1
+
+.findEmail #span_sell1
 {
    color:black;
-   
+   font-family: 'Noto Sans KR', sans-serif;
 }
-#span_sell2
+
+.findEmail #span_sell2
 {
+  font-family: 'Noto Sans KR', sans-serif;
    position :relative;
-   bottom: 280px;
+   bottom: 290px;
    left : 10px;
 }
-#span_Pw
+.findEmail #span_Pw
 {
-color : blueviolet;
+   font-family: 'Noto Sans KR', sans-serif;
+color : #02456F;
+   font-size : 15px;
 }
-#span_Pw2
+.findEmail #span_Pw2
 {
+   font-family: 'Noto Sans KR', sans-serif;
    color : black;
 }
-#radio
+.findEmail #radio
 {
    position:relative;
-   bottom: 280px;
+   bottom: 290px;
    left : 10px;
    border :1px solid black;
+   height: 20px;
+   width: 20px;
+   
 }
-#findPw
+.findEmail #findPw
 {
-   border: 1px solid  white;
-   background : #0B173B;
+   border: 1px solid  #02456F;
+   background : #02456F;
    color : white;
    position: relative;
    left : 150px;
-   border-radius: 7px / 7px;
-   height : 30px;
+   border-radius: 150px / 150px;
+   height : 33px;
+   font-family: 'Noto Sans KR', sans-serif;
 }
-#nextStep
+.findEmail #nextStep
 {
+   font-family: 'Noto Sans KR', sans-serif;
    width : 120px;
    height: 48px;
-   background : #0B173B;
-   border : 1px solid white;
+   background : #02456F;
+   border : 1px solid #02456F;
    color : white;
    position: relative;
    left : 190px;
    top : 30px;
-   border-radius: 11px / 11px;
-
+   border-radius: 120px / 120px;
+  font-size : 19px;
+}
+.findEmail #nextStep :hover
+{
+   background-color:rgba( 255, 255, 255, 0.1 );
 }
 
 </style>
 </head>
 <body>
+<div class="findEmail">
     <header class="findEmail_header">
          <strong></strong>
     </header>
@@ -176,12 +200,12 @@ color : blueviolet;
                            <span id="span_Email2">
                            이메일 찾기를 위한 본인확인 방법을 선택해주세요.</span>
                         </li>
-                       <li id="findEmail_li4">
+                       <li id="findEmail_li3">
                            <span id="span_sell1">내 명의로 가입된 휴대폰으로 본인 확인을 진행합니다.</span></li>
-                        <li id="findEmail_li5">
-                           <span id="span_Pw">＊</span><span id="span_Pw2">비밀번호를 찾으시나요?</span>
+                        <li id="findEmail_li4">
+                           <span id="span_Pw">＊</span><span id="span_Pw2"> 비밀번호를 찾으시나요?</span>
                            <button id="findPw" type="button" name="findPw" onclick="location='${path}/user/findPasswordForm'" >비밀번호 찾기</button></li>
-                        <li id="findEmail_li6">
+                        <li id="findEmail_li5">
                            <input type="button" id="nextStep" name="nextStep" value="다음단계" onclick="nextStep()">
                         </li>
                               <label for="radio">
@@ -195,5 +219,6 @@ color : blueviolet;
    <footer class="findEmail_ft">
 
    </footer>
+   </div>
 </body>
 </html>

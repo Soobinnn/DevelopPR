@@ -55,4 +55,22 @@ public class MeetingDAOImpl implements MeetingDAO
 		return session.selectList("meet.listChatRoom", userNick);
 	
 	}
+	
+	/* 읽은메시지 변경 */
+	@Override
+	public void readUpdate(String chatroom_id,String userNick)
+	{
+		MessageVO vo = new MessageVO();
+		vo.setChatroom_id(chatroom_id);
+		vo.setMessage_receiver(userNick);
+		session.update("meet.readUpdate",vo);
+	}
+	
+	/* 실시간 알람*/
+	@Override
+	public int alarm(String userNick)
+	{
+		int _alarm = session.selectOne("meet.alarm", userNick);
+		return _alarm;
+	}
 }

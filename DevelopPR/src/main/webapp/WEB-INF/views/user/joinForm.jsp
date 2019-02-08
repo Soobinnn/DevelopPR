@@ -2,7 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -684,12 +683,12 @@ border: 1px solid white;
                       <span id="userjobdetailCheckMsg"></span>   
                  </li>
               </ul>
-        </div>
         <div id="bottom">
            <input id="confirm" type="submit" value="확인" >
            <button id="cancel" type="button" onclick="location='${path}/user/login'">취소</button>
         </div>
         </form>
+         </div>
      </div>
      <div id="sec2_3"></div>
   </div>

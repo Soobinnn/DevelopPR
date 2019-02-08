@@ -21,8 +21,8 @@
     
     <!-- 회원 등록 -->
     <insert id="insertUser">
-        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL, PHONE)
-        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail}, #{userPhone})    
+        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL, PHONE, PROFILE)
+        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail}, #{userPhone}, #{profile})    
     </insert>
     
     <!-- 로그인 체크 -->
@@ -49,7 +49,6 @@
         WHERE EMAIL = #{userEmail}
     </select>
     
-
     <!--  회원 이메일, 이름, 닉네임 (팔로우) -->
     <select id="viewId" resultType="UserVO">
     	SELECT 
@@ -57,7 +56,7 @@
             NICK AS userNick,
             EMAIL AS userEmail
         FROM pr_user
-        WHERE NICK = #{userNick}
+        WHERE EMAIL = #{email}
     </select>
 
     <!-- 이메일 찾기 -->
@@ -99,7 +98,7 @@
 		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode}
 		WHERE EMAIL = #{userEmail}
 	</update>
-	
+
 	<!-- 비밀번호 재설정 : 준형-->
 	 <update id="updatePasswd">
         UPDATE pr_user SET PW = #{userPw} WHERE EMAIL = #{userEmail}
@@ -148,5 +147,11 @@
    		where EMAIL = #{userEmail}	
    	</delete>
    	
-    
+	<!-- 장기 미접속 인원 가져오기 -->
+	<select id ="longUnAccess" resultType="UserVO">
+		SELECT * from pr_user
+		WHERE (unaccess_mail =0 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(180,'DAY')))
+		OR (unaccess_mail =1 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(270,'DAY')))
+		OR (unaccess_mail =2 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTOYMINTERVAL(1,'year')-7))
+	</select>
  </mapper>

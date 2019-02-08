@@ -24,9 +24,10 @@
     
     <!-- 메뉴 만 -->
     <definition name="menu" template="/WEB-INF/tiles/templateMenu.jsp">
+ 
     </definition>
     
-     <definition name="*/*.part" extends="Empty">
+     <definition name="menu/*/*" extends="menu">
          <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
      </definition>
     
