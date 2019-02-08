@@ -30,10 +30,10 @@ public class WebSocket extends TextWebSocketHandler
 	private Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>(); //메세지를 날려주기위한 웹소켓전용 세션
 
-	private Map<WebSocketSession, String> mapList = new HashMap<WebSocketSession, String>(); //실제session의 아이디정보, web소켓정보
+/*	private Map<WebSocketSession, String> mapList = new HashMap<WebSocketSession, String>(); //실제session의 아이디정보, web소켓정보
 	private Map<WebSocketSession,String> roomList = new HashMap<WebSocketSession, String>(); //실제 session의 아이디정보,  room정보
 	private List<String> userList = new ArrayList<String>(); //접속자 명단을 개개인별로 뿌려주기위해 선언한 일반리스트
-	
+*/	
 	//연결되었을때
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception 
@@ -69,7 +69,7 @@ public class WebSocket extends TextWebSocketHandler
 		ChatRoomVO roomVO  = new ChatRoomVO();
 		roomVO.setChatroom_id(messageVO.getChatroom_id());
 		roomVO.setSend_user_id(messageVO.getMessage_sender()); // 전송인
-		roomVO.setReceiver_user_id(messageVO.getMessage_receiver()); //발송인
+		roomVO.setReceiver_user_id(messageVO.getMessage_receiver()); //발신인
 		
 		ChatRoomVO croom = null;
 		
@@ -96,8 +96,7 @@ public class WebSocket extends TextWebSocketHandler
 		{
 			croom = meetService.isRoom(roomVO);
 		}
-		
-		
+				
 		//방이 있다면 있는 채팅방 id로 변경 후 전송
 		messageVO.setChatroom_id(croom.getChatroom_id());
 		// DB에 채팅내용 저장

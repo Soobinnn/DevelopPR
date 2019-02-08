@@ -57,4 +57,8 @@ public interface UserService
 	   // 간편로그인 API 시 정보 입력
 	   public void insertUserApi(UserVO vo) throws Exception;
 	  
+	   //장기 미접속 인원 가져오기
+	   public List<UserVO> longUnAccess();
+	   //장기 미접속 인원 메일 보내기
+	   public void unAccessSendMail(List<UserVO> longUnAccess)throws Exception;
 }

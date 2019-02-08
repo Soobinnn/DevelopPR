@@ -17,6 +17,8 @@ public class UserVO
 	  private String userPhone;
 	  private String authkey;
 	  private String profile;
+	  private int unaccess_mail;
+	  
 	public String getUserPhone() 
 	{
 		return userPhone;
@@ -120,6 +122,13 @@ public class UserVO
 	public void setProfile(String profile) 
 	{
 		this.profile = profile;
+	}
+	
+	public int getUnaccess_mail() {
+		return unaccess_mail;
+	}
+	public void setUnaccess_mail(int unaccess_mail) {
+		this.unaccess_mail = unaccess_mail;
 	}
 	// toString()
     @Override

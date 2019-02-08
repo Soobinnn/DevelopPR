@@ -81,7 +81,7 @@ public class MeetingController
 		
 		meetingService.readUpdate(chatroom_id, userNick);
 		String msg = "success";
-		/*	List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);*/
+		/*List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);*/
 		return msg; 
 	}
 	

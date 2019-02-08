@@ -295,7 +295,7 @@
             </div>
     
     <div class="find">
-      <div class="tt"><a id="login_findid" href="#1">이메일 찾기</a></div>
+      <div class="tt"><a id="login_findid" href="${path}/user/findId">이메일 찾기</a></div>
       <div class="tt"><a id="login_findpw" href="${path}/user/findPassword">패스워드 찾기</a></div>
       <div class="ttt"><a id="login_user" href="${path}/user/policy">회원가입</a></div>
     </div>

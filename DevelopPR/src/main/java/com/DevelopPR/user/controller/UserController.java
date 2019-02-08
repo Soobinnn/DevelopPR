@@ -381,7 +381,6 @@ public class UserController
   @RequestMapping("callback")
   public String callback(@RequestParam String code, @RequestParam String state, HttpSession session, Model model, UserVO vo) throws Exception 
   {
-		/* 네아로 인증이 성공적으로 완료되면 code 파라미터가 전달되며 이를 통해 access token을 발급 */
 		logger.info("naver login............");
 		JsonParser json = new JsonParser();
 
@@ -389,10 +388,8 @@ public class UserController
 		String apiResult = naverLoginBO.getUserProfile(oauthToken);
 		vo = json.changeJson(apiResult); // vo에 userEmail, userGender, userNaver 저장
 
-		System.out.println("vo : " + vo);
 		int checkMail =userService.checkMail(vo.getUserEmail()+"_naver");
-
-	      
+      
 	    vo.setUserEmail(vo.getUserEmail()+"_naver");
 		vo.setUserIs_seek(0);
 		  
@@ -406,10 +403,8 @@ public class UserController
 	    	  vo.setUserJob("0");
 	    	  vo.setUserJob_detail("네이버계정 로그인 입니다. 정보를 변경해주세요.");
 	    	  vo.setUserAuthStatus(1);
-	    	  vo.setUserPhone("010########");
-	    	  
-	    	  userService.insertUserApi(vo);
-	    	      	
+	    	  vo.setUserPhone("010########");	    	  
+	    	  userService.insertUserApi(vo);	    	      	
 	      }
 	      // 세션 등록
 	      UserVO vo2 = new UserVO();
@@ -522,15 +517,11 @@ public class UserController
   }
   
   // 장기미접속유저 메일 보내기
-  /*@Scheduled(cron="0/30 * * * * ?")*/
   @Scheduled(cron="0 0 0 * * ?")
-  public void mailSend()
+  public void mailSend() throws Exception
   {
-	System.out.println("스케쥴 테스뜨");  
-	//3개월이상 미접속 인원 가져온다.
-	//6개월이상 미접속 인원 가져온다.
-	//1년이상 미접속 인원 가져온다.
-	//1년이상 미접속인원 삭제한다.
-	
+	// 6개월 / 9개월 / 1년 7일전  미접속 인원 가져온다.
+	List<UserVO> longUnAccess = userService.longUnAccess();	
+	userService.unAccessSendMail(longUnAccess);
   }
 }

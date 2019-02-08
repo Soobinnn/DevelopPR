@@ -53,4 +53,7 @@ public interface UserDAO
 	   //06. 비밀번호 체크
 	   public boolean checkPw(String userId, String userPw);
 	  */
+	   
+	 //장기 미접속 인원 가져오기
+	  public List<UserVO> longUnAccess();
 }

@@ -128,5 +128,13 @@ public class UserDAOImpl implements UserDAO
 		   	vo.setUserEmail(reUserEmail);
 		   	sqlSession.update("user.updateAuthKey", vo);
 	   }
+	   
+	   //장기 미접속 인원 가져오기
+	   @Override
+	   public List<UserVO> longUnAccess()
+	   {
+		   List<UserVO> listUnAccess = sqlSession.selectList("user.longUnAccess");
+		   return listUnAccess;
+	   }
 
 }

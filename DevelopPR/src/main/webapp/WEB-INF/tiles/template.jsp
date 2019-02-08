@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/main/developpr.css'/>"/>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
-	
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 	<script>
 	var socket = null;
 	var success = null;
@@ -28,7 +28,7 @@
 		socket.onopen = function() 
 		{
 		    console.log('open');
-		    // 로그인상태 일 때, 페이지 넘어 갈때마다 메시지 확인
+		    // 로그아웃 -> 로그인 할 때, 페이지 넘어 갈때마다 메시지 확인
 		    if(!(nick == null || nick ==""))
 		    {
 		    	var msg = "userNick="+nick;
