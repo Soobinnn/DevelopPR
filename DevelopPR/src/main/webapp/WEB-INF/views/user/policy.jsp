@@ -229,6 +229,7 @@ $(function(){
 					<button type="button" id="agree_btn" onclick="check()" >
 						<span>동의</span>
 					</button>
+
 					<button type="button" id="disagree_btn" onclick="back()">
 						<span>동의하지 않음</span>
 					</button>

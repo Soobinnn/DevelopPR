@@ -132,7 +132,7 @@
     <section id="emailConfirm_sec">
             <div class="emailConfirm_sec_area1"></div>
             <div class="emailConfirm_sec_area2">
-                   <img id="msg" src="<c:url value=''/>">
+                   <img id="msg" src="<c:url value='/resources/msg/msg.png'/>">
                    <ul id="emailConfirm_ul">
                        <li id="emailConfirm_li">
                            <span id="span1"><strong>이메일을 확인하십시오</strong></span>

@@ -123,20 +123,20 @@ public class UserVO
 	{
 		this.profile = profile;
 	}
-	
 	public int getUnaccess_mail() {
 		return unaccess_mail;
 	}
 	public void setUnaccess_mail(int unaccess_mail) {
 		this.unaccess_mail = unaccess_mail;
 	}
+	
 	// toString()
     @Override
     public String toString() 
     {
         return "UserVO [userEmail=" + userEmail + ", userIs_seek=" + userIs_seek + ", userNick=" + userNick + ", userPw="
                 + userPw +", userName=" +userName+ ", userJob=" + userJob + ", userJob_detail=" + userJob_detail + ", userRecent_access=" 
-        		+ userRecent_access + ", userAuthStatus=" + userAuthStatus+ ",userAuthCode=" +userAuthCode + ", profile=" + profile +"]";
+        		+ userRecent_access + ", userAuthStatus=" + userAuthStatus+ ",userAuthCode=" +userAuthCode + ", profile=" + profile +" , userPhone=" + userPhone+"]";
     }  
 	  
 }

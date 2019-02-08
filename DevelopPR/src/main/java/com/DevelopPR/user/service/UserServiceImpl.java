@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService
 			String authkey = new TempKey().getKey(50, false);
 
 			userDao.createAuthKey(vo.getUserEmail(), authkey);
+			
 			// mail 작성 관련 
 			MailHandler sendMail = new MailHandler(mailSender);
 		
@@ -62,7 +64,6 @@ public class UserServiceImpl implements UserService
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();
 	   }
-	   
 	   // 본인 인증 확인	   
 	   @Override
 	   public String authCheck(String phone) throws Exception 
@@ -130,7 +131,7 @@ public class UserServiceImpl implements UserService
 	   {
 	       return userDao.viewlogin(vo);
 	   }
-	   // 아이디 찾기
+	   // 이메일 찾기
 	   @Override
 	   public String findId(String phone) throws Exception
 	   {
@@ -206,7 +207,37 @@ public class UserServiceImpl implements UserService
 					sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
 					sendMail.setTo(reUserEmail);
 					sendMail.send();
+	   } 	   
+	 //비밀번호 재설정 - 준형
+	@Override
+	public void updatePasswd(UserVO vo) {
+		userDao.updatePasswd(vo);
+	}
+	
+	//회원 정보 수정 추가 - 준형
+	@Override
+	public UserVO modifyform(String userEmail) {
+		return userDao.modifyform(userEmail);
+	}
+
+	//회원 정보 수정
+	@Override
+	public void modifyInfo(UserVO vo) {
+		   userDao.modifyInfo(vo);
 	   }
+	  
+	//회원 탈퇴 비밀번호 확인 - 준형
+	@Override
+	public String checkPw(String userEmail) {
+		return userDao.checkPw(userEmail);
+	}
+	
+	//회원 탈퇴
+	@Override
+	public void deleteUser(String userEmail) {
+		userDao.deleteUser(userEmail);
+	}
+
 	   // 간편로그인 API 시 정보 입력
 	   @Override
 	   public void insertUserApi(UserVO vo) throws Exception

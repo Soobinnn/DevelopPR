@@ -132,7 +132,7 @@
 			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/meeting'>CHAT / FOLLOW</a><div id="chatmenu"></div></li>
 			<li class="fullmenulist"><a href='${path}/resume/regist'>이력서 등록</a></li>
-			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">MODIFICATION</a></li>
+			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
 	</nav>
