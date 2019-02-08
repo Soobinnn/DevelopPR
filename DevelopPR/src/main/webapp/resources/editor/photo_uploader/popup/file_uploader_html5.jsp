@@ -13,7 +13,7 @@
     //파일 확장자
     String filename_ext = filename.substring(filename.lastIndexOf(".") + 1);
     //확장자를소문자로 변경
-    filename_ext = filename_ext.toLowerCase();
+    filename_ext = filename_ext.toLowerCase(); 
  
     //이미지 검증 배열변수
     String[] allow_file = { "jpg", "png", "bmp", "gif" };

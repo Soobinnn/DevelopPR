@@ -7,7 +7,7 @@ public class ProjectVO
 	//파일 업로드 관련 변수 및 클래스는 따로 작성
 	 
 	
-	
+	private int pno;
 	private String project_name;
 	private String project_content; //프로젝트 내용 소개란
     private Date project_term1;    //프로젝트 시작일
@@ -15,10 +15,22 @@ public class ProjectVO
     private String techstack;       //테크스택(사용가능 언어)
 	private String project_grade;       //프로젝트 등급 (상용화, 팀프로젝트...)
 	private String tech_name_input;   //검색어 ajax 통신에 이용되는 변수, 검색어 값을 담는다.
+	private String nick;
 	
 	
 	
-	
+	public int getPno() {
+		return pno;
+	}
+	public void setPno(int pno) {
+		this.pno = pno;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 	public String getTech_name_input() 
 	{
 		return tech_name_input;

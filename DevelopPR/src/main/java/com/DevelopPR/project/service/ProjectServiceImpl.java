@@ -23,15 +23,21 @@ public void regist(ProjectVO vo) throws Exception
 }
 
 @Override
+public ProjectVO modifyForm(int pno) throws Exception {
+	return projectDao.modifyForm(pno);
+}
+
+@Override
 public void modify(ProjectVO vo) throws Exception
 {
-	
+	projectDao.modify(vo);
 }
+
 
 @Override
 public void remove(int pno) throws Exception
 {
-	
+	projectDao.remove(pno);
 }
 
 @Override
@@ -45,4 +51,11 @@ System.out.println(RV +"서비스단에서 값을 가져오는가?");
   return RV;
 
 }
+
+@Override
+public List<ProjectVO> projectList(String nick) throws Exception {
+	return projectDao.projectList(nick);
+}
+
+
 }
