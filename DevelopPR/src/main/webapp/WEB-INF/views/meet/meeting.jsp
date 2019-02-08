@@ -60,7 +60,6 @@
 	}
 
 	function send() {
-		/* var nickname = id; */
 		var msg = $("#chat_text").val();
 		if (msg != "") {
 			var message = {};
@@ -78,7 +77,7 @@
 		/* 보낼대상 선택안할시 예외처리 */
 		if(message.message_receiver==null||message.message_receiver=="")
 		{
-			alert("보낼 대상을 선택하세요.(예외처리하기)");
+			alert("보낼 대상을 선택하세요.");
 		}
 		else
 		{
@@ -89,7 +88,7 @@
 		if(lookRoom == message.chatroom_id)
 		{
 			var _chatroomId = "chatroom_id="+message.chatroom_id;
-			/* console.log("보고있는 방하고 같음"+_chatroomId); */
+		
 			//보낼때 내껀 읽음 표시하기
 			readUpdate(_chatroomId);
 		}
@@ -155,7 +154,7 @@
 	         }
 		})
 	}
-	
+	// 채팅방의 채팅내용 가져오기
 	function getRoom(chatroom_id, receiver_user_id, bool)
 	{
 		var param = "chatroom_id="+chatroom_id;
@@ -333,9 +332,7 @@
 		{
 			var listChatRoom = $(this).find('#listChatRoom');
 			var listChatThat = $(this).find('#listChatThat');
-			console.log("되니..1"+ listChatRoom.text());
-			console.log("되니..22"+listChatThat.text());
-			getRoom(listChatRoom.text(),listChatThat.text());
+			getRoom(listChatRoom.text(),listChatThat.text(), 1);
 		});
 	});	
 	 // date format 함수  : Date 내장 객체에 format함수 추가

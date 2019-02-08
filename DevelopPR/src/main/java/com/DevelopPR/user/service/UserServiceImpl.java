@@ -214,4 +214,57 @@ public class UserServiceImpl implements UserService
 		   userDao.insertUser(vo);
 		   userDao.userAuth(vo.getUserEmail());
 	   }
+	     
+	   //장기 미접속 인원 가져오기
+	   @Override
+	   public List<UserVO> longUnAccess()
+	   {
+		   return userDao.longUnAccess();
+	   }
+	   
+	   //장기 미접속 인원 메일 보내기
+	   @Override
+	   public void unAccessSendMail(List<UserVO> longUnAccess) throws Exception
+	   {
+		   // mail 작성 관련 
+		   MailHandler sendMail = new MailHandler(mailSender);
+		   
+		   for(UserVO user : longUnAccess)
+			{	
+				//6개월째 미접속 인원
+				if(user.getUnaccess_mail() == 0)
+				{		
+					sendMail.setSubject("[DevelopPR] 6개월 미접속 사용자님. 개인정보 처리에 관한 안내입니다");
+					sendMail.setText(new StringBuffer().append("<h1>미접속 기간이 6개월 지났습니다.</h1>")
+							.append("<p>개인정보 파기 처리에 의거 1년간 미접속시 자동으로 회원 탈퇴처리가 되는 것을 알립니다.</p>")
+							.toString());
+							sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+							sendMail.setTo(user.getUserEmail());
+							sendMail.send();
+				}
+				//9개월째 미접속 인원
+				else if(user.getUnaccess_mail() == 1)
+				{
+					sendMail.setSubject("[DevelopPR] 9개월 미접속 사용자님. 개인정보 처리에 관한 안내입니다");
+					sendMail.setText(new StringBuffer().append("<h1>미접속 기간이 9개월 지났습니다.</h1>")
+							.append("<p>개인정보 파기 처리에 의거 1년간 미접속시 자동으로 회원 탈퇴처리가 되는 것을 알립니다.</p>")
+							.toString());
+							sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+							sendMail.setTo(user.getUserEmail());
+							sendMail.send();
+				}
+				//1년 일주일 전 미접속 인원
+				else if(user.getUnaccess_mail()==2)
+				{
+					sendMail.setSubject("[DevelopPR] 장기 미접속 사용자님. 개인정보 처리에 관한 안내입니다");
+					sendMail.setText(new StringBuffer().append("<h1>미접속 기간이 11개월이상 지났습니다.</h1>")
+							.append("<p>미접속기간이 일주일이 지나면 개인정보 파기 처리에 의거 미접속시 자동으로 회원 탈퇴처리가 되는 것을 알립니다.</p>")
+							.toString());
+							sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+							sendMail.setTo(user.getUserEmail());
+							sendMail.send();
+				}				
+			}
+		   
+	   }
 }

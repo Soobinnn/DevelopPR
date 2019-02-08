@@ -96,5 +96,11 @@
 		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode}
 		WHERE EMAIL = #{userEmail}
 	</update>
-	
+	<!-- 장기 미접속 인원 가져오기 -->
+	<select id ="longUnAccess" resultType="UserVO">
+		SELECT * from pr_user
+		WHERE (unaccess_mail =0 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(180,'DAY')))
+		OR (unaccess_mail =1 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(270,'DAY')))
+		OR (unaccess_mail =2 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTOYMINTERVAL(1,'year')-7))
+	</select>
  </mapper>

@@ -28,7 +28,7 @@
 		socket.onopen = function() 
 		{
 		    console.log('open');
-		    // 로그인상태 일 때, 페이지 넘어 갈때마다 메시지 확인
+		    // 로그아웃 -> 로그인 할 때, 페이지 넘어 갈때마다 메시지 확인
 		    if(!(nick == null || nick ==""))
 		    {
 		    	var msg = "userNick="+nick;
