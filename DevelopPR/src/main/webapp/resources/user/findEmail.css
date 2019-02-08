@@ -1,0 +1,167 @@
+.findEmail
+{
+font-family: 'Noto Sans KR', sans-serif;
+margin-bottom : 150px;
+margin-top : 150px; 
+}
+.findEmail .findEmail_sec {
+   display: flex;
+   flex-direction: row;
+   width: auto;
+   height: 540px;
+
+}
+.findEmail #sec1{
+  
+   width : 40%;
+}
+.findEmail #sec2{
+   display : flex;
+   position: relative;
+   left: 0px;
+   flex-shrink: 0;
+   flex-basis: 700px;
+   border: 2px solid #B9B9B9;
+   background: white;
+   border-radius : 15px;
+   width : auto;
+   height: auto;
+}
+.findEmail #sec3{
+ 
+   width : 40%;
+}
+.findEmail #findEmail_li1
+{
+ color : black;
+ font-size: 37px;
+ margin-bottom : 60px;
+ text-align : center;
+ color : white;
+}
+
+.findEmail #findEmail_li2
+{
+   font-size: 20px;
+   margin-bottom : 70px;
+}
+
+.findEmail #findEmail_li3
+{
+   font-size: 20px;
+   margin-bottom : 60px;
+}
+.findEmail #findEmail_li4
+{
+   font-size: 17px;
+   margin-bottom : 40px;
+   color : white;
+}
+.findEmail #findEmail_li5
+{
+   color : white;
+   margin-bottom : 30px;
+   
+}
+.findEmail #findEmail_ul
+{
+
+   list-style : none;
+   width: 500px;
+   height: 470px;
+   position : relative;
+   left : 100px;
+   top : 35px;
+   margin-bottom : 50px;
+}
+
+.findEmail #span_Email
+{
+   color : black;
+}
+
+.findEmail #span_Email2
+{
+   position:relative;
+   left : 11px;
+   color : black;
+}
+
+.findEmail #span_sell1
+{
+    position:relative;
+   left : 11px;
+   color:black;
+}
+
+.findEmail #span_sell2
+{
+   position :relative;
+   bottom: 304px;
+   left : 40px;
+}
+.findEmail #span_Pw
+{
+   position:relative;
+   left : 40px;
+   color : #02456F;
+   font-size : 15px;
+}
+.findEmail #span_Pw2
+{
+    position:relative;
+   left : 40px;
+   color : black;
+}
+.findEmail #radio
+{
+   position:relative;
+   bottom: 300px;
+   left : 40px;
+   border :1px solid black;
+   height: 20px;
+   width: 20px;
+   
+}
+.findEmail #findPw
+{
+  background: white;
+	border: 2px solid #585858;
+	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
+   
+   position: relative;
+   left : 150px;
+   border-radius: 150px / 150px;
+   height : 40px;
+}
+.findEmail #findPw:hover
+{
+    background: #585858;
+    color : white;
+}
+.findEmail #nextStep
+{
+   width : 120px;
+   height: 48px;
+   background: white;
+	border: 2px solid #585858;
+	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
+  
+   position: relative;
+   left : 190px;
+   top : 30px;
+   border-radius: 120px / 120px;
+  font-size : 19px;
+}
+.findEmail #nextStep:hover
+{
+   background: #585858;
+	color: white;
+}
+#findEmail_img
+{
+    position:relative;
+    top: 9px;
+	width:35px;
+	height:35px;
+}
