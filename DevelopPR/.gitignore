@@ -65,7 +65,7 @@ local.properties
 
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
-MANIFEST.MF
+
 # Annotation Processing
 .apt_generated
 
