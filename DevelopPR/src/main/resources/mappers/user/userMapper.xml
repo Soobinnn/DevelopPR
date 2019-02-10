@@ -21,8 +21,8 @@
     
     <!-- 회원 등록 -->
     <insert id="insertUser">
-        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL, PHONE)
-        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail}, #{userPhone})    
+        INSERT INTO pr_user(EMAIL, IS_SEEK, NICK, PW, NAME, JOB, JOB_DETAIL, PHONE, PROFILE)
+        VALUES(#{userEmail}, #{userIs_seek}, #{userNick}, #{userPw}, #{userName}, #{userJob}, #{userJob_detail}, #{userPhone}, #{profile})    
     </insert>
     
     <!-- 로그인 체크 -->
@@ -59,8 +59,8 @@
         WHERE EMAIL = #{email}
     </select>
 
-    <!-- 아이디찾기 -->
-    <select id="findId" parameterType="String" resultType="String">
+    <!-- 이메일 찾기 -->
+    <select id="findEmail" parameterType="String" resultType="String">
     	SELECT EMAIL FROM pr_user
     	WHERE PHONE = #{phone}
     </select>
@@ -76,6 +76,7 @@
 		UPDATE pr_user SET AUTHSTATUS = 1 
 		WHERE Email = #{userEmail}
 	</update>
+	
 	<!-- 로그인시 이메일 인증 여부 체크 -->
 	<select id ="checkAuthStatus" resultType="int">
 		SELECT AUTHSTATUS
@@ -92,9 +93,65 @@
 		 SELECT NVL(COUNT(*),0)
     	FROM pr_user WHERE NICK = #{userNick}
 	</select>
+	
 	<update id="updateAuthKey">
 		UPDATE pr_user SET USER_AUTHCODE = #{userAuthCode}
 		WHERE EMAIL = #{userEmail}
 	</update>
-	
+
+	<!-- 비밀번호 재설정 : 준형-->
+	 <update id="updatePasswd">
+        UPDATE pr_user SET PW = #{userPw} WHERE EMAIL = #{userEmail}
+    </update>
+    
+    <!-- 회원정보 수정 폼 불러오기 : 준형 -->
+    <select id="modifyform" resultType="UserVO">
+    	SELECT
+    	    IS_SEEK AS userIs_seek,
+        	EMAIL AS userEmail,
+        	NAME AS userName,
+        	NICK AS userNick,
+        	PHONE AS userPhone,
+        	JOB AS userJob,
+        	JOB_DETAIL AS userJob_detail
+        FROM pr_user
+        WHERE EMAIL = #{userEmail}
+    </select>
+    
+    <!-- 회원 정보 수정  : 준형-->
+    <update id="modifyInfo">
+    	UPDATE pr_user 
+    	SET 
+    	EMAIL = #{userEmail}, 
+    	IS_SEEK = #{userIs_seek}, 
+    	NICK = #{userNick}, 
+    	PW = #{userPw}, 
+    	NAME = #{userName}, 
+    	JOB = #{userJob}, 
+    	JOB_DETAIL = #{userJob_detail}, 
+    	PHONE = #{userPhone}
+    WHERE
+    	EMAIL = #{userEmail}
+    </update>
+   
+   	<!-- 회원 탈퇴 위한 비밀번호 체크 : 준형 -->
+   	<select id="checkPw" resultType="String">
+   		select PW AS userPw
+   		from pr_user
+   		where EMAIL = #{userEmail}  	
+   	</select> 
+   	
+   	<!-- 회원 탈퇴  : 준형-->
+   	<delete id="deleteUser">
+   		delete from pr_user
+   		where EMAIL = #{userEmail}	
+   	</delete>
+   	
+	<!-- 장기 미접속 인원 가져오기 -->
+	<select id ="longUnAccess" resultType="UserVO">
+		SELECT * from pr_user
+		WHERE (unaccess_mail =0 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(180,'DAY')))
+		OR (unaccess_mail =1 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(270,'DAY')))
+		OR (unaccess_mail =2 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTOYMINTERVAL(1,'year')-7))
+	</select>
  </mapper>

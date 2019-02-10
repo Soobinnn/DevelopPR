@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html class="resumeRegist">
+<html>
 <head>
 <title>이력서 등록</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>	
+
+
 function fn_uploadImage() {
 	$("#uploadImageFile").click();
 }
@@ -67,18 +69,96 @@ function fn_removeImage() {
 			    })
 		})
 	})
+	
+	function checks(){
+		if($('#userPhone').val() =="")
+		{
+		    alert("휴대폰번호를 입력해주세요.");
+		    $("#userPhone").focus();
+		    return false;
+		}
+		if($('#uploadImageFile').val() =="")
+		{
+		    alert("사진을 업로드 해주세요.");
+		    $("#uploadImageFile").focus();
+		    return false;
+		}
+		if($('#age').val() =="")
+		{
+		    alert("나이를 입력해주세요.");
+		    $("#userage").focus();
+		    return false;
+		}
+		if($('#date').val() =="")
+		{
+		    alert("생일을 입력해주세요.");
+		    $("#date").focus();
+		    return false;
+		}
+		if($('#address2').val() =="")
+		{
+		    alert("주소를 입력해주세요.");
+		    $("#address2").focus();
+		    return false;
+		}
+		if($('#commentss').val() =="")
+		{
+		    alert("comment를 입력해주세요.");
+		    $("#commentss").focus();
+		    return false;
+		}
+	}
+	
+	$(function(){
+		$('#userPhone').blur(function()
+		{
+				    // 핸드폰 숫자형식 9~11자
+				    var userPhoneCheck = /^[0-9]{9,11}$/;
+				    if(!userPhoneCheck.test($('#userPhone').val()))
+				    {
+				        $('#userPhone').css({"border" :"2px solid red","background-color":"#FFCECE"});
+				        $('#phoneCheckMsg').text('휴대폰번호 형식에 맞게 입력해주세요.').css("color","red");
+			
+				    }
+				    else
+				    {
+				        $('#userPhone').css({"border" :"2px solid green","background-color":"white"});
+				        $('#phoneCheckMsg').text('').css("color","green");
+			
+				    }
+		});
+		$('#commentss').blur(function()
+				{
+						    var userCCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{1,1000}$/;
+						    if(!userCCheck.test($('#commentss').val()))
+						    {
+						        $('#commentss').css({"border" :"2px solid red","background-color":"#FFCECE"});
+						        $('#CCheckMsg').text('1~1000자로 작성해주세요.').css("color","red");
+					
+						    }
+						    else
+						    {
+						        $('#commentss').css({"border" :"2px solid green","background-color":"white"});
+						        $('#CCheckMsg').text('').css("color","green");
+					
+						    }
+				});
+	});
+
 </script>	
+
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
 <body>
-<form name="form1" method="post" action="${path}/resume/registConfirm">
+<div class="resumeRegist">
+<form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
         <header>
 			<img src="/DevelopPR/resources/resume/gray.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 등록</div>
-               <div class="c">"~~~~~~~~~~~~~~~~~~"</div>
+               <div class="c">당신의 날개를 펼치세요. Spread Your Wings.</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
@@ -98,33 +178,48 @@ function fn_removeImage() {
              
         </header>
            	<div class="colors">
-           		<div>background</div>
+           		<div>헤더 배경 선택</div>
            			<div class="a">
-	           		<input type="radio" name="color" class="color" value="black"/>Black
-	           		<input type="radio" name="color" class="color" value="bluewhite"/>BlueWhite
-	           		<input type="radio" name="color" class="color" value="brown"/>Brown
+	           			<input type="radio" id="r01" name="color" class="color" value="black"/>
+	                    <label for="r01" class="la"></label> Black
+	                    <input type="radio" id="r02" name="color" class="color" value="bluewhite"/>
+	                    <label for="r02" class="la"></label> BlueWhite
+		           		<input type="radio" id="r03" name="color" class="color" value="brown"/>
+		           		<label for="r03" class="la"></label> Brown
 	           		</div>
+	           		
 	           		<div class="b">
-	           		<input type="radio" name="color" class="color" value="colorful"/>Colorful
-	           		<input type="radio" name="color" class="color" value="colorful2"/>Colorful2
-	           		<input type="radio" name="color" class="color" value="gray" checked/>Gray
+	           		<input type="radio" id="r04" name="color" class="color" value="colorful"/>
+	           		 <label for="r04" class="la"></label> Colorful
+	           		<input type="radio" id="r05" name="color" class="color" value="colorful2"/>
+	           		 <label for="r05" class="la"></label> Colorful2
+	           		<input type="radio" id="r06" name="color" class="color" value="gray" checked/>
+	           		 <label for="r06" class="la"></label> Gray
 	           		</div>
+	           		
 	           		<div class="c">
-	           		<input type="radio" name="color" class="color" value="green"/>Green
-	           		<input type="radio" name="color" class="color" value="mint"/>Mint
-	           		<input type="radio" name="color" class="color" value="pink"/>Pink
+	           		<input type="radio" id="r07" name="color" class="color" value="green"/>
+	           		 <label for="r07" class="la"></label> Green
+	           		<input type="radio" id="r08" name="color" class="color" value="mint"/>
+	           		 <label for="r08" class="la"></label> Mint
+	           		<input type="radio" id="r09" name="color" class="color" value="pink"/>
+	           		 <label for="r09" class="la"></label> Pink
 					</div>
+					
 	           		<div class="d">
-	           		<input type="radio" name="color" class="color" value="purple"/>Purple
-	           		<input type="radio" name="color" class="color" value="white"/>White
-	           		<input type="radio" name="color" class="color" value="yellow"/>Yellow
+	           		<input type="radio" id="r10" name="color" class="color" value="purple"/>
+	           		 <label for="r10" class="la"></label> Purple
+	           		<input type="radio" id="r11" name="color" class="color" value="white"/>
+	           		 <label for="r11" class="la"></label> White
+	           		<input type="radio" id="r12" name="color" class="color" value="yellow"/>
+	           		 <label for="r12" class="la"></label> Yellow
 	           		</div>
      
            	</div>
         <div id="pills">
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
-	        <div class="pill">2. <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
-	    	<div class="pill">3. 자격증, 학력/교육, 경력, tech-stack 정보 기입 시 빈 칸이라면 <input type="button" value="삭제">를 추천합니다.</div>
+	        <div class="pill">2. <input type="button" class="plus" value="+"> 를 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
+	    	<div class="pill">3. 자격증, 학력/교육, 경력, tech-stack 정보 기입 시 빈 칸이라면 <input type="button" class="x" value="X"> 를 추천합니다.</div>
 	    </div>
         <div class="main">
             <div class="detail">
@@ -137,8 +232,10 @@ function fn_removeImage() {
                                 현재 구직 상태 *
                             </div> 
                             <div class="s_info">
-                                <input type="radio" name="is_work" value="0" checked/>구직중
-                                <input type="radio" name="is_work" value="1"/>재직중
+                                <input type="radio" id="r1" name="is_work" value="0" checked/>
+                                <label for="r1" class="la"></label> 구직중 
+                                <input type="radio" id="r2" name="is_work" value="1"/>
+                                <label for="r2" class="la"></label> 재직중
                             </div>
                         </div>
                     </div>
@@ -158,8 +255,9 @@ function fn_removeImage() {
                        		    나 이 *
                             </div>
                             <div class="p_info">
-                                <input type="text" class="textlong" name="age" placeholder="숫자로 입력해주세요."/>
+                                <input type="text" class="textlong" name="age" id="age" placeholder="숫자로 입력해주세요."/>
                             </div>
+                            <span id="ageCheckMsg"></span>
                         </div>
 
                         <div id="birth">
@@ -167,18 +265,21 @@ function fn_removeImage() {
                             생 일 * 
                             </div>
                             <div class="birth_info">
-                                <input type="date" name="birthday" />
+                                <input type="date" id="date" name="birthday" />
                             </div>
                         </div>
 
                         <div id="phone">
                             <div class="name">
-                                핸드폰번호 *
+                                휴대폰번호 *
                             </div>
                             <div class="phone_info">
-                                <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" class="textshort"/>
-                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
-                                <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
+                            <input id="userPhone" type="text" autocomplete="off" value="" placeholder="ex) 01012345678" name="cell_num" class="textshort"><br/>
+                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" id="pr1" value="phoneopen" checked/>
+                                	<label for="pr1"></label>공개
+                                <input type="radio" name="cnum_is_open" value="0" class="phone_radio" id="pr2" value="phoneclose"/>
+                                <label for="pr2"></label>비공개
+                                <br/> <span id="phoneCheckMsg"></span>
                             </div>
                         </div>
 
@@ -189,8 +290,10 @@ function fn_removeImage() {
                            		<input type="hidden" name="email" value="${dto.userEmail}"/> 
                             <div class="email_info">
                                 <p class="textshort">${dto.userEmail}</p>
-                                <input type="radio" name="email_is_open" value="1" checked/>공개
-                                <input type="radio" name="email_is_open" value="0"/>비공개
+                                <input type="radio" name="email_is_open" value="1" id="er1" checked/>
+                                	<label for="er1"></label>공개
+                                <input type="radio" name="email_is_open" value="0" id="er2"/>
+                                	<label for="er2"></label>비공개
                             </div>
                         </div>
 
@@ -199,7 +302,7 @@ function fn_removeImage() {
                        			     블로그
                             </div>
                             <div class="info">
-                                <input type="text" name="blog" placeholder="정규표현식 추가" class="textlong"/>
+                                <input type="text" name="blog" placeholder="" class="textlong"/>
                             </div>
                         </div>
 
@@ -208,9 +311,11 @@ function fn_removeImage() {
                             주소 *
                             </div>
                             <div class="info">
-                                    <input type="text" name="address" placeholder="정규표현식 추가" class="textshort"/>
-                                <input type="radio" name="address_is_open" value="1" checked/>공개
-                                <input type="radio" name="address_is_open" value="0"/>비공개
+                                    <input type="text" name="address" id="address2" placeholder="" class="textshort"/><br/>
+                                <input type="radio" id="ar1" name="address_is_open" value="1" checked/>
+                                	<label for="ar1"></label>공개
+                                <input type="radio" id="ar2" name="address_is_open" value="0"/>
+                                  	<label for="ar2"></label>비공개
                             </div>
                         </div>
 
@@ -228,7 +333,8 @@ function fn_removeImage() {
                             소개/ 좌우명/ Comment
                             </div>
                             <div class="info">
-                                <input type="text" class="textlong" name="motto"/>
+                                <input type="text" class="textlong" placeholder="1~1000자로 입력해주세요." id="commentss" name="motto"/>
+                                <br/> <span id="CCheckMsg"></span>
                             </div>
                         </div>
            </div>
@@ -242,7 +348,7 @@ function fn_removeImage() {
 		                       <div class="acq">
 			                       <input type="text" class="textmiddle1" id="acq_date" name="acq_date" placeholder="자격증 취득 날짜"/>
 			                       <input type="text" class="textmiddle2" id="acq_name" name="acq_name" placeholder="자격증 이름"/>
-			                       <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
+			                       <input type="button" value="X" class="x" onclick="remove_acqitem(this)"/>
 			                   </div>
 	                       </div>
                    
@@ -270,7 +376,7 @@ function fn_removeImage() {
 	                       <div class="edu">
 		                       <input type="text" class="textmiddle1" id="edu_date" name="gradu_year" placeholder="학력/교육 해당 년도"/>
 		                       <input type="text" class="textmiddle2" id="edu_name" name="edu_info" placeholder="학력/교육 이름"/>
-		                       <input type="button" value="삭제" onclick="remove_eduitem(this)"/>
+		                       <input type="button" value="X" class="x" onclick="remove_eduitem(this)"/>
 							</div>
                        </div>
                        <script type="text/javascript">
@@ -296,7 +402,7 @@ function fn_removeImage() {
 	                       	<div class="career">
 		                       <input type="text" class="textmiddle1" id="career_date" name="career_year" placeholder="경력 해당 년도"/>
 		                       <input type="text" class="textmiddle2" id="career_name" name="career_info" placeholder="회사 이름"/>
-		                       <input type="button" value="삭제" onclick="remove_caritem(this)"/>
+		                       <input type="button" value="X" class="x" onclick="remove_caritem(this)"/>
 		                	</div>
                        
                        </div>
@@ -325,13 +431,13 @@ function fn_removeImage() {
                 <div id="techs">
 	                <div class="tech">
 						<div>
-							<input type="text" class="abb" name="abb"/>
+							<input type="text" placeholder="기술약자" class="abb" name="abb"/>
 						</div>
 						<div class="techinfo">
 							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
 							<input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
 						</div>
-						<input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
+						<input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">
 					</div>
                 </div>
             </div>
@@ -341,8 +447,8 @@ function fn_removeImage() {
 
    <div id="button">
        <div class="holl"></div>
-        <input type="button" class="button1" value="취소"/>
-        <input type="submit" class="button2" value="등록하기"/>
+        <input type="button" class="button1" onclick="history.back()" value="취소"/>
+        <input type="submit" id="confirm" class="button2" value="등록하기"/>
         <div class="holl"></div>
     </div>
 
@@ -354,26 +460,27 @@ function fn_removeImage() {
 						       <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
 						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
 						    </div>
-						       <input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
+						       <input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">
 					</div>
 					
 					<div id="career" style="display:none">
 	                       <input type="text" class="textmiddle1" id="career_date" name="career_year" placeholder="경력 해당 년도"/>
 	                       <input type="text" class="textmiddle2" id="career_name" name="career_info" placeholder="회사 이름"/>
-	                       <input type="button" value="삭제" onclick="remove_caritem(this)"/>
+	                       <input type="button" class="x" value="X" onclick="remove_caritem(this)"/>
 	                </div>
 					
 					<div id="edu" style="display:none">
                        <input type="text" class="textmiddle1" id="edu_date" name="gradu_year" placeholder="학력/교육 해당 년도"/>
                        <input type="text" class="textmiddle2" id="edu_name" name="edu_info" placeholder="학력/교육 이름"/>
-                       <input type="button" value="삭제" onclick="remove_eduitem(this)"/>
+                       <input type="button" value="X" class="x" onclick="remove_eduitem(this)"/>
 					</div>
 					
 					<div id="acq" style="display:none">
                        <input type="text" class="textmiddle1" id="acq_date" name="acq_date" placeholder="자격증 취득 날짜"/>
                        <input type="text" class="textmiddle2" id="acq_name" name="acq_name" placeholder="자격증 이름"/>
-                        <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
+                        <input type="button" value="X" class="x" onclick="remove_acqitem(this)"/>
                    	</div>
 </form>
+</div>
 </body>
 </html>

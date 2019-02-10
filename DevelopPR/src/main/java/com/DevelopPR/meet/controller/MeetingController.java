@@ -62,7 +62,7 @@ public class MeetingController
 		List<MessageVO> messageList = meetingService.getRoom(messageVO.getChatroom_id());
 		return messageList;
 	}
-	
+	// 채팅방목록불러오기
 	@RequestMapping(value="/getList", method =RequestMethod.POST)
 	@ResponseBody
 	public List<ChatRoomVO> getList(Model model,  @RequestParam("userNick") String userNick) throws Exception
@@ -81,7 +81,7 @@ public class MeetingController
 		
 		meetingService.readUpdate(chatroom_id, userNick);
 		String msg = "success";
-		/*	List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);*/
+		/*List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);*/
 		return msg; 
 	}
 	

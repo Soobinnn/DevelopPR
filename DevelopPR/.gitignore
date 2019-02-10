@@ -65,7 +65,7 @@ local.properties
 
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
-
+MANIFEST.MF
 # Annotation Processing
 .apt_generated
 
@@ -82,6 +82,7 @@ pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
+pom.properties
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties

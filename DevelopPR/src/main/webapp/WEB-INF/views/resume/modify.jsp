@@ -5,13 +5,15 @@
 <head>
 <title>이력서 수정</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">	
-function fn_uploadImage() {
+function fn_uploadImage() 
+{
 	$("#uploadImageFile").click();
 }
 
-function uploadImageFileChange() {
+function uploadImageFileChange() 
+{
 	var formData = new FormData();
 	formData.append('upfile', $('#uploadImageFile')[0].files[0]); 
 	$.ajax({
@@ -29,7 +31,7 @@ function uploadImageFileChange() {
 }
 
 function fn_modifyImage() {
-	var w = window.open("../imageEditor", "", "width=800,height=650,top=0px,left=200px,status=,resizable=false,scrollbars=no");
+	var w = window.open("${path}/imageEditor", "", "width=800,height=650,top=0px,left=200px,status=,resizable=false,scrollbars=no");
 }
 
 function fn_removeImage() {
@@ -49,13 +51,102 @@ function fn_removeImage() {
 		// obj.parentNode 를 이용하여 삭제
 		document.getElementById('techs').removeChild(obj.parentNode);
 	}
+	
+	
+	$(document).ready(function () {
+		$('.color').click(function () {
+			var color = $('input[name="color"]:checked').val();
+			var param = "color="+color;
+			 $.ajax({
+			        async : true,
+			        type :'POST',
+			        data : param,
+			        url : '${path}/resume/background',
+			        success : function(data)
+			        {
+			        	console.log("success:"+data);
+			        	$(".header").attr("src", data);
+			        }
+			    })
+		})
+	})
+	
+	function checks(){
+		
+		if($('#userPhone').val() =="")
+		{
+		    alert("휴대폰번호를 입력해주세요.");
+		    $("#userPhone").focus();
+		    return false;
+		}
+		if($('#age').val() =="")
+		{
+		    alert("나이를 입력해주세요.");
+		    $("#userage").focus();
+		    return false;
+		}
+		if($('#date').val() =="")
+		{
+		    alert("생일을 입력해주세요.");
+		    $("#date").focus();
+		    return false;
+		}
+		if($('#address2').val() =="")
+		{
+		    alert("주소를 입력해주세요.");
+		    $("#address2").focus();
+		    return false;
+		}
+		if($('#commentss').val() =="")
+		{
+		    alert("comment를 입력해주세요.");
+		    $("#commentss").focus();
+		    return false;
+		}
+	}
+	$(function(){
+		$('#userPhone').blur(function()
+		{
+				    // 핸드폰 숫자형식 9~11자
+				    var userPhoneCheck = /^[0-9]{9,11}$/;
+				    if(!userPhoneCheck.test($('#userPhone').val()))
+				    {
+				        $('#userPhone').css({"border" :"2px solid red","background-color":"#FFCECE"});
+				        $('#phoneCheckMsg').text('휴대폰번호 형식에 맞게 입력해주세요.').css("color","red");
+			
+				    }
+				    else
+				    {
+				        $('#userPhone').css({"border" :"2px solid green","background-color":"white"});
+				        $('#phoneCheckMsg').text('').css("color","green");
+			
+				    }
+		});
+		$('#commentss').blur(function()
+				{
+						    var userCCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
+						    if(!userCCheck.test($('#commentss').val()))
+						    {
+						        $('#commentss').css({"border" :"2px solid red","background-color":"#FFCECE"});
+						        $('#CCheckMsg').text('1~1000자로 작성해주세요.').css("color","red");
+					
+						    }
+						    else
+						    {
+						        $('#commentss').css({"border" :"2px solid green","background-color":"white"});
+						        $('#CCheckMsg').text('').css("color","green");
+					
+						    }
+				});
+	});
 </script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
 <body>
-<form name="form1" method="post" action="${path}/resume/modifyupdate">
+<form name="form1" method="post" action="${path}/resume/modifyupdate" onsubmit="return checks()">
     <div class="container">
         <header>
+        <img src="/DevelopPR/resources/resume/${dto.color}.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 수정</div>
@@ -64,7 +155,8 @@ function fn_removeImage() {
             <div id="img">
 	            <div style="min-height: 260px">
 					<img id="uploadImage" src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
-					<input type="hidden" id= "uploadImg" name="profile_photo"/>
+					
+					<input type="hidden" id="uploadImg" value="${dto.profile_photo}" name="profile_photo"/>
 					
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
@@ -78,6 +170,30 @@ function fn_removeImage() {
             </div>
              
         </header>
+        <div class="colors">
+           		<div>background</div>
+           			<div class="a">
+	           		<input type="radio" name="color" class="color" value="black"/>Black
+	           		<input type="radio" name="color" class="color" value="bluewhite"/>BlueWhite
+	           		<input type="radio" name="color" class="color" value="brown"/>Brown
+	           		</div>
+	           		<div class="b">
+	           		<input type="radio" name="color" class="color" value="colorful"/>Colorful
+	           		<input type="radio" name="color" class="color" value="colorful2"/>Colorful2
+	           		<input type="radio" name="color" class="color" value="gray" checked/>Gray
+	           		</div>
+	           		<div class="c">
+	           		<input type="radio" name="color" class="color" value="green"/>Green
+	           		<input type="radio" name="color" class="color" value="mint"/>Mint
+	           		<input type="radio" name="color" class="color" value="pink"/>Pink
+					</div>
+	           		<div class="d">
+	           		<input type="radio" name="color" class="color" value="purple"/>Purple
+	           		<input type="radio" name="color" class="color" value="white"/>White
+	           		<input type="radio" name="color" class="color" value="yellow"/>Yellow
+	           		</div>
+     
+           	</div>
         <div id="pills">
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
 	        <div class="pill">2. <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
@@ -135,11 +251,10 @@ function fn_removeImage() {
 
                         <div id="phone">
                             <div class="name">
-                                핸드폰번호 *
+                              휴대폰번호 *
                             </div>
                             <div class="phone_info">
-                                <input type="text" placeholder="010123456578 형태로 적어주세요." name="cell_num" value="${dto.cell_num}" class="textshort"/>
-                           
+                            <input id="userPhone" type="text" autocomplete="off" value="${dto.cell_num}" placeholder="ex) 01012345678" name="cell_num" class="textshort">
                            	<c:if test="${dto.cnum_is_open==0}">
                                 <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>공개
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose" checked/>비공개
@@ -148,7 +263,7 @@ function fn_removeImage() {
                                 <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
                             </c:if>
-                            
+                            <br/> <span id="phoneCheckMsg"></span>
                             </div>
                         </div>
 
@@ -214,7 +329,8 @@ function fn_removeImage() {
                             소개/ 좌우명/ Comment
                             </div>
                             <div class="info">
-                                <input type="text" class="textlong" value="${dto.motto}" name="motto"/>
+                               <input type="text" class="textlong" value="${dto.motto}" placeholder="1~1000자로 입력해주세요." id="commentss" name="motto"/>
+                  			   <br/> <span id="CCheckMsg"></span>
                             </div>
                         </div>
            </div>

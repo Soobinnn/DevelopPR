@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/joinForm.css'/>"/>
 <script type="text/javascript">   
 var userIs_seekCheck = false;
 var CheckEmail = false;
@@ -18,13 +18,12 @@ var userJobCheck = false;
 
 function checks()
 {
-
 // 이메일 형식만 가능
 var userEmailCheck = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
 // 한글이름 2~4자
 var userNameCheck = /^[가-힣]{2,4}$/;
 // 비밀번호 최소8자리, 숫자,문자, 특수문자 최소 1개
-var userPwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+var userPwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&^.,/`~;:])[A-Za-z\d$@$!%*#?&^.,/`~;:]{8,}$/;
 // 글자수만 제한
 var userNickCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
 // 핸드폰 숫자형식 9~11자
@@ -57,7 +56,7 @@ if($('#userName').val() =="")
 if($('#userPhone').val() =="")
 {
     alert("휴대폰번호를 입력해주세요.");
-    $("#userPw").focus();
+    $("#userPhone").focus();
     return false;
 }
 if($('#userPw').val() =="")
@@ -140,6 +139,8 @@ $(function(){
 
   // 처음에 등록 활성화 끄기
   $('#confirm').prop("disabled", true).css("background-color", "#aaaaa");
+  // 보이게하기
+  display_visit();
   
 $('#userEmail').blur(function()
 {
@@ -156,7 +157,7 @@ $('#userEmail').blur(function()
         {
             if(!userEmailCheck.test(_userEmail))
             {      
-                $('#userEmail').css({"border" :"2px solid red","background-color":"#FFCECE"});
+                $('#userEmail').css({"border" :"2px solid red","background-color":"#FBF5EF"});
                 /* $('#userEmail').focus(); */
                 $('#emailCheckMsg').text('이메일형식에 맞게 입력해주세요.').css("color","red");
                  CheckEmail = false;
@@ -173,7 +174,7 @@ $('#userEmail').blur(function()
                 }
                 else if(data == '1')
                 {               
-                    $('#userEmail').css({"border" :"2px solid red","background-color":"#FFCECE"});
+                    $('#userEmail').css({"border" :"2px solid red","background-color":"#FBF5EF"});
                     $('#emailCheckMsg').text('이미 가입된 이메일입니다.').css("color","red");
                      CheckEmail = false;
                 }
@@ -192,26 +193,29 @@ $('#userName').blur(function()
     var userNameCheck = /^[가-힣]{2,4}$/;
     if(!userNameCheck.test($('#userName').val()))
     {
-        $('#userName').css({"border" :"2px solid red","background-color":"#FFCECE"});
+        $('#userName').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $('#nameCheckMsg').text('이름 형식에 맞게 입력해주세요.').css("color","red");
+        $('#p3').css("color","red");
         CheckName = false;
     }
     else   
     {
         $('#userName').css({"border" :"2px solid green","background-color":"white"});
         $('#nameCheckMsg').text('').css("color","green");
+        $('#p3').css("color","#B9B9B9");
         CheckName = true;
     }
 });
 $('#userPw').blur(function()
 {
     // 비밀번호 최소8자리, 숫자,문자, 특수문자 최소 1개
-    var userPwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+    var userPwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&^.,/`~;:])[A-Za-z\d$@$!%*#?&^.,/`~;:]{8,}$/;
     if(!userPwCheck.test($('#userPw').val()))
     {
         
-        $('#userPw').css({"border" :"2px solid red","background-color":"#FFCECE"});
+        $('#userPw').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $('#pwCheckMsg').text('비밀번호 형식에 맞게 입력해주세요.').css("color","red");
+        $('#p4').css("color","red");
         $('#userPw').focus();
         CheckPw = false;
     }
@@ -219,6 +223,7 @@ $('#userPw').blur(function()
     {
         $('#userPw').css({"border" :"2px solid green","background-color":"white"});
         $('#pwCheckMsg').text('사용 가능한 비밀번호 입니다.').css("color","green");
+        $('#p4').css("color","#B9B9B9");
         CheckPw = true;
     }
 });
@@ -227,7 +232,7 @@ $('#userPwChk').blur(function()
 {
     if($('#userPw').val() != $('#userPwChk').val())
     {
-        $('#userPwChk').css({"border" :"2px solid red","background-color":"#FFCECE"});
+        $('#userPwChk').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $('#pwchCheckMsg').text('비밀번호가 일치하지 않습니다.').css("color","red");
         CheckPwchk = false;
     }
@@ -235,7 +240,7 @@ $('#userPwChk').blur(function()
     {
         if( $('#userPwChk').val()=='')
         {
-            $('#userPwChk').css({"border" :"2px solid red","background-color":"#FFCECE"});
+            $('#userPwChk').css({"border" :"2px solid red","background-color":"#FBF5EF"});
             $('#pwchCheckMsg').text('비밀번호를 입력하세요.').css("color","red");
             CheckPwchk = false;
         }
@@ -263,7 +268,7 @@ $('#userNick').blur(function()
             {
                 if(!userNickCheck.test(_userNick))
                 {      
-                    $('#userNick').css({"border" :"2px solid red","background-color":"#FFCECE"});
+                    $('#userNick').css({"border" :"2px solid red","background-color":"#FBF5EF"});
                     /* $('#userEmail').focus(); */
                     $('#nickCheckMsg').text('닉네임 형식에 맞게 입력해주세요.').css("color","red");
                     CheckNick = false;
@@ -279,7 +284,7 @@ $('#userNick').blur(function()
                     }
                     else if(data == '1')
                     {               
-                        $('#userNick').css({"border" :"2px solid red","background-color":"#FFCECE"});
+                        $('#userNick').css({"border" :"2px solid red","background-color":"#FBF5EF"});
                         $('#nickCheckMsg').text('이미 사용된 닉네임입니다.').css("color","red");
                         CheckNick = false;
                     }
@@ -298,7 +303,7 @@ $('#userPhone').blur(function()
     var userPhoneCheck = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/;
     if(!userPhoneCheck.test($('#userPhone').val()))
     {
-        $('#userPhone').css({"border" :"2px solid red","background-color":"#FFCECE"});
+        $('#userPhone').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $('#phoneCheckMsg').text('휴대폰번호 형식에 맞게 입력해주세요.').css("color","red");
         CheckPhone = false;
     }
@@ -309,13 +314,31 @@ $('#userPhone').blur(function()
         CheckPhone = true;
     }
 });
+
 $(document).keyup(function()
 {
-    console.log("test");
-    if(CheckEmail && CheckName && CheckPw && CheckPwchk && CheckNick && CheckPhone == true)
+    if(CheckEmail && CheckName && CheckPw && CheckPwchk && CheckNick && CheckPhone && userJobCheck == true)
     {
-         $('#confirm').prop("disabled", false).css("background-color", "gray");
+         $('#confirm').prop("disabled", false).css({"background-color" : "#585858", "color" : "white","border": "2px solid #585858"});
     }
+    else
+    {
+    	$('#confirm').prop("disabled", true).css({"background-color" : "#aaaaa", "color" : "#B9B9B9", "border": "2px solid #B9B9B9"});	
+    }
+});
+
+$('#confirm').hover(function()
+{
+	if(CheckEmail && CheckName && CheckPw && CheckPwchk && CheckNick && CheckPhone && userJobCheck == true)
+	{
+		$('#confirm').css({"background-color":"#b9b9b9"});
+	}
+},function()
+{
+	if(CheckEmail && CheckName && CheckPw && CheckPwchk && CheckNick && CheckPhone && userJobCheck  == true)
+	{
+		$('#confirm').css({"background-color":"#585858", "border":"2px solid #585858", "color":"white"});
+	}
 });
 
 $("input:radio[name='userIs_seek']").click(function()
@@ -332,281 +355,15 @@ $("input:radio[name='userJob']").click(function()
 
 });
 
-
 </script>
-<style>
-.user_header
-{
-    display : flex;
-    flex-direction : column;
-    flex-shrink: 0;
-    height : 120px;
-}
-.head 
-{
-    height: 10px;
-}
-.head2
-{
 
-    height : 90px;
-    text-align : center;
-    font-size : 70px;
-}
-#information
-{
-    font-size : 23px;
-    position : relative;
-    left : 10px;
-}
-#obligatory
-{
-    position : relative;
-    left : 460px;
-    color : red;
-}
-.head3
-{
-
-}
-
-.user_section{
-    display :flex;
-    flex-direction: row;
-    
-    width: auto;
-}
-
-.sec1
-{
-    
-    height : 700px;
-    width : 40%;
-}
-
-.sec2
-{
-    
-    display: flex;
-    height : 800px;
-    width : 800px;
-    flex-shrink : 0;
-    flex-basis : 600px;
-}
-#sec2_1
-{
-    
-    width : 10%;
-}
-#sec2_2
-{
-    
-    display : flex;
-    flex-direction: column;
-    height: 700px;
-    width : 800px;
-}
-
-#top
-{
-    border-bottom:1px solid gray;
-    height : 60px;
-    
-}
-#middle
-{
-    border : 1px solid white;
-    position : relative;
-    height : 655px;
-    width: 800px;
-
-}
-.radio_ , .radio_1, .radio_2
-{
-    color : black;
-    font-size : 14px;
-    opacity : 0.6;
-}
-.radio_1, .radio_2
-{
-    position: relative;
-    bottom : 17px;
-}
-#user_ul{
-    position: relative;
-    width : 640px;
-    left : 60px;
-    top : 0px;
-    border : 1px solid white;
-    height: 630px;
-  
-    
-}
-.user_li1,.user_li2,.user_li3,.user_li4,.user_li5,.user_li6,.user_li7,.user_li8
-{
-    color : skyblue;
-    font-size : 14px;
-    margin-bottom : 15px;
-}
-.user_li2
-{
-    margin-bottom : 10px;
-}
-.user_li3
-{
-    margin-bottom : 5px;
-}
-.user_li4
-{
-    margin-bottom : 6px;
-}
-.user_li5
-{
-    margin-bottom : 10px;
-}
-.user_li6
-{
-    margin-bottom : 10px;
-}
-.user_li7
-{
-    margin-bottom : 30px;
-}
-.user_li8
-{
-    margin-bottom : 10px;
-}
-#userEmail
-{
-    
-
-}
-#userEmail, #userName, #userPw, #userPwChk, #userNick,#userPhone
-{
-    width:380px;
-    height : 38px;
-}
-#userPw
-{
-  
-}
-#sec2_3
-{
-    width : 10%;
-}
-.sec3
-{
-    height : 800px;
-    width : 40%;
-}
-#p1,#p2,#p3,#p4,#p5,#p6,#p7
-{
-    color : gray;
-    font-size : 12px;
-}
-#p1
-{
-    position:relative;
-    bottom : 3px;
-    left : 4px;
-}
-#p2
-{
-    position:relative;
-    bottom : 12px;
-    left : 4px;
-}
-#p3
-{
-    position:relative;
-    bottom : 6px;
-    left : 4px;
-}
-#p4
-{
-    position:relative;
-    bottom : 5px;
-    left : 4px;
-}
-#p5
-{
-    position:relative;
-    bottom : 5px;
-    left : 4px;
-}
-#p6
-{
-    position:relative;
-    bottom : 5px;
-    left : 4px;
-}
-#p7
-{
-    position : relative;
-    bottom : 5px;
-    left : 4px;
-}
-#explain
-{
-    width : 380px;
-    height : 50px;
-    box-shadow: 0 0 0 50px white inset;
-}
-#bottom
-{
-    display : flex;
-    flex-shrink: 0;
-    flex-basis : 20px;
-    border-top: 1px solid gray;
-    height : 110px;
-    
-}
-
-#confirm
-{
-    background : white;
-    border : 1px solid gray;
-    position : relative;
-    left : 32%;
-    top : 24px;
-    height : 35px;
-    width : 70px;
-}
-
-#cancel
-{
-    background : white;
-    border : 1px solid gray;
-    position : relative;
-    left : 44%;
-    top : 24px;
-    height : 35px;
-    width : 70px;
-}
-#userPhone
-{
-position : relative;
-
-}
-
-#joinForm_form
-{
-width:800px;
-height: 770px;
-border: 1px solid white;
-}
-#userIs_seekMsg,#emailCheckMsg,#nameCheckMsg,#pwCheckMsg,#pwchCheckMsg,#nickCheckMsg,#phoneCheckMsg,#userjobCheckMsg
-{
-    position: relative;
-    left: 7px;
-}
-</style>
 </head>
 <body>
+<div id="joinForm">
 <header class="user_header">
   <div class="head"></div>
   <div class="head2">
-     <strong>DPR</strong>
+     <strong>DevelopPR</strong>
   </div>
   <div class="head3"></div>
 </header>
@@ -624,10 +381,10 @@ border: 1px solid white;
               <ul id="user_ul">
                  <li class="user_li1">
                     <div class="radio_">
-                       <input type="radio" value="0" name="userIs_seek" id="radio"
-                          onclick="display_visit()">방문자 <input type="radio"
+                       <input type="radio" value="0" name="userIs_seek" id="radio" checked="checked"
+                          onclick="display_visit()"><label for="radio">방문자</label> <input type="radio"
                           value="1" name="userIs_seek" id="radio2"
-                          onclick="display_job()">구직자
+                          onclick="display_job()"><label for="radio2">구직자</label>
                     </div>
                     <span id="userIs_seekMsg"></span>
                  </li>
@@ -645,7 +402,7 @@ border: 1px solid white;
                  <li class="user_li4"><input id="userPw" type="password" value=""
                     placeholder=" 비밀번호" name="userPw">
                      <span id="pwCheckMsg"></span>
-                    <p id="p4">비밀번호는 최소 8자 이상 영문, 숫자, 특수문자를 조합해 주세요.</p></li>
+                    <p id="p4">비밀번호는 최소 8자 이상, 문자, 숫자, 특수문자 1자 이상 조합해 주세요.</p></li>
                  <li class="user_li5"><input id="userPwChk" type="password" value=""
                     placeholder=" 비밀번호 확인">
                      <span id="pwchCheckMsg"></span>
@@ -663,26 +420,27 @@ border: 1px solid white;
                  
                     <li id="visit" style="display: none">
                     <div class="radio_1">
-                       <input type="radio" value="0" name="userJob" id="radio3">학생
-                       <input type="radio" value="1" name="userJob" id="radio4">기업
+                       <input type="radio" value="0" name="userJob" id="radio3"><label for="radio3">학생</label>
+                       <input type="radio" value="1" name="userJob" id="radio4"><label for="radio4">기업</label>
                         <span id="userjobCheckMsg"></span>
                     </div>
                  </li>
                  <li id="job" style="display: none">
                     <div class="radio_2">
-                       <input type="radio" value="0" name="userJob" id="radio5">구직중
-                       <input type="radio" value="1" name="userJob" id="radio6">구직완료
+                       <input type="radio" value="0" name="userJob" id="radio5"><label for="radio5">구직중</label>
+                       <input type="radio" value="1" name="userJob" id="radio6"><label for="radio6">구직완료</label>
                         <span id="userJobCheckMsg"></span>
                     </div>
                  </li>
                  
 
-                 <li class="user_li8">
-                     <input id="explain" type="text" name="userJob_detail"
+                 <li class="user_li8"> <!-- 입력 자동완성 제거 : 준형 -->
+                     <input id="explain" type="text" name="userJob_detail" autocomplete="off"
                     placeholder="학생이면 학교, 기업이면 기업에 대하여 입력해주세요.">
                       <span id="userjobdetailCheckMsg"></span>   
                  </li>
               </ul>
+              <input type="hidden" name="profile" value="null"/>
         <div id="bottom">
            <input id="confirm" type="submit" value="확인" >
            <button id="cancel" type="button" onclick="location='${path}/user/login'">취소</button>
@@ -694,5 +452,6 @@ border: 1px solid white;
   </div>
   <div class="sec3"></div>
 </section>
+</div>
 </body>
 </html>

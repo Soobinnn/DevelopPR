@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService
 			String authkey = new TempKey().getKey(50, false);
 
 			userDao.createAuthKey(vo.getUserEmail(), authkey);
+			
 			// mail 작성 관련 
 			MailHandler sendMail = new MailHandler(mailSender);
 		
@@ -62,7 +64,6 @@ public class UserServiceImpl implements UserService
 					sendMail.setTo(vo.getUserEmail());
 					sendMail.send();
 	   }
-	   
 	   // 본인 인증 확인	   
 	   @Override
 	   public String authCheck(String phone) throws Exception 
@@ -130,7 +131,7 @@ public class UserServiceImpl implements UserService
 	   {
 	       return userDao.viewlogin(vo);
 	   }
-	   // 아이디 찾기
+	   // 이메일 찾기
 	   @Override
 	   public String findId(String phone) throws Exception
 	   {
@@ -206,5 +207,95 @@ public class UserServiceImpl implements UserService
 					sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
 					sendMail.setTo(reUserEmail);
 					sendMail.send();
+	   } 	   
+	 //비밀번호 재설정 - 준형
+	@Override
+	public void updatePasswd(UserVO vo) {
+		userDao.updatePasswd(vo);
+	}
+	
+	//회원 정보 수정 추가 - 준형
+	@Override
+	public UserVO modifyform(String userEmail) {
+		return userDao.modifyform(userEmail);
+	}
+
+	//회원 정보 수정
+	@Override
+	public void modifyInfo(UserVO vo) {
+		   userDao.modifyInfo(vo);
+	   }
+	  
+	//회원 탈퇴 비밀번호 확인 - 준형
+	@Override
+	public String checkPw(String userEmail) {
+		return userDao.checkPw(userEmail);
+	}
+	
+	//회원 탈퇴
+	@Override
+	public void deleteUser(String userEmail) {
+		userDao.deleteUser(userEmail);
+	}
+
+	   // 간편로그인 API 시 정보 입력
+	   @Override
+	   public void insertUserApi(UserVO vo) throws Exception
+	   {
+		   userDao.insertUser(vo);
+		   userDao.userAuth(vo.getUserEmail());
+	   }
+	     
+	   //장기 미접속 인원 가져오기
+	   @Override
+	   public List<UserVO> longUnAccess()
+	   {
+		   return userDao.longUnAccess();
+	   }
+	   
+	   //장기 미접속 인원 메일 보내기
+	   @Override
+	   public void unAccessSendMail(List<UserVO> longUnAccess) throws Exception
+	   {
+		   // mail 작성 관련 
+		   MailHandler sendMail = new MailHandler(mailSender);
+		   
+		   for(UserVO user : longUnAccess)
+			{	
+				//6개월째 미접속 인원
+				if(user.getUnaccess_mail() == 0)
+				{		
+					sendMail.setSubject("[DevelopPR] 6개월 미접속 사용자님. 개인정보 처리에 관한 안내입니다");
+					sendMail.setText(new StringBuffer().append("<h1>미접속 기간이 6개월 지났습니다.</h1>")
+							.append("<p>개인정보 파기 처리에 의거 1년간 미접속시 자동으로 회원 탈퇴처리가 되는 것을 알립니다.</p>")
+							.toString());
+							sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+							sendMail.setTo(user.getUserEmail());
+							sendMail.send();
+				}
+				//9개월째 미접속 인원
+				else if(user.getUnaccess_mail() == 1)
+				{
+					sendMail.setSubject("[DevelopPR] 9개월 미접속 사용자님. 개인정보 처리에 관한 안내입니다");
+					sendMail.setText(new StringBuffer().append("<h1>미접속 기간이 9개월 지났습니다.</h1>")
+							.append("<p>개인정보 파기 처리에 의거 1년간 미접속시 자동으로 회원 탈퇴처리가 되는 것을 알립니다.</p>")
+							.toString());
+							sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+							sendMail.setTo(user.getUserEmail());
+							sendMail.send();
+				}
+				//1년 일주일 전 미접속 인원
+				else if(user.getUnaccess_mail()==2)
+				{
+					sendMail.setSubject("[DevelopPR] 장기 미접속 사용자님. 개인정보 처리에 관한 안내입니다");
+					sendMail.setText(new StringBuffer().append("<h1>미접속 기간이 11개월이상 지났습니다.</h1>")
+							.append("<p>미접속기간이 일주일이 지나면 개인정보 파기 처리에 의거 미접속시 자동으로 회원 탈퇴처리가 되는 것을 알립니다.</p>")
+							.toString());
+							sendMail.setFrom("DevelopPRmail@gmail.com", "DevelopPR");
+							sendMail.setTo(user.getUserEmail());
+							sendMail.send();
+				}				
+			}
+		   
 	   }
 }

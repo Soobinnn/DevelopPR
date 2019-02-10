@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <title>로그인페이지</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <style>
@@ -94,17 +95,15 @@
    
     .item1
     {
-       
         width : 50%;
     }
     .item2
     {
-        
         width : 500px;
     }
     .item3
     { 
-   
+        
         width : 50%;
     }
     .find
@@ -240,7 +239,23 @@
     {
     color : gray;
     }
-    
+    #emailSave
+    {
+        position : relative;
+        left : 100px;
+        bottom : 7px;
+        width: 25px;
+        height: 20px;
+        border:1px solid black;
+    }
+    #emailSave_span
+    {
+        color: gray;
+        font-size:15px;
+        position: relative;
+        left: 95px;
+        bottom : 11px;
+    }
 </style>
 
 <script>
@@ -260,18 +275,80 @@
                 $("#userPw").focus();
                 return;
             }
-            // 폼 내부의 데이터를 전송할 주소
+           /*--->  // 폼 내부의 데이터를 전송할 주소
             document.form1.action="${path}/user/loginCheck"
             // 제출
-            document.form1.submit();
+            document.form1.submit(); <-- 준형 : form태그 안에 넣음*/
         });
     });
+  //--> 준형 : 이메일 저장 쿠키 추가
+    $(document).ready(function(){ 
+        
+        // 저장된 쿠키값을 가져와서 email 칸에 넣어준다. 없으면 공백으로 들어감.
+        var key = getCookie("key");
+        $("#userEmail").val(key); 
+         
+        if($("#userEmail").val() != ""){ // 그 전에 email를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 email가 표시된 상태라면,
+            $("#emailSave").attr("checked", true); // email 저장하기를 체크 상태로 두기.
+        }
+         
+        $("#emailSave").change(function(){ // 체크박스에 변화가 있다면,
+            if($("#emailSave").is(":checked")){ // email 저장하기 체크했을 때,
+                setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
+            }else{ // email 저장하기 체크 해제 시,
+                deleteCookie("key");
+            }
+        });
+         
+        // email 저장하기를 체크한 상태에서 email를 입력하는 경우, 이럴 때도 쿠키 저장.
+        $("#userEmail").keyup(function(){ // email 입력 칸에 email를 입력할 때,
+            if($("#emailSave").is(":checked")){ // email 저장하기를 체크한 상태라면,
+                setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
+            }
+        });
+    });
+    
+    function setCookie(cookieName, value, exdays){
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+        document.cookie = cookieName + "=" + cookieValue;
+    }
+     
+    function deleteCookie(cookieName){
+        var expireDate = new Date();
+        expireDate.setDate(expireDate.getDate() - 1); // 어제 날짜를 쿠키 소멸 날짜로 지정.
+        document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+    }
+     
+    function getCookie(cookieName) {
+        cookieName = cookieName + '=';
+        var cookieData = document.cookie;
+        var start = cookieData.indexOf(cookieName);
+        var cookieValue = '';
+        if(start != -1){
+            start += cookieName.length;
+            var end = cookieData.indexOf(';', start);
+            if(end == -1)end = cookieData.length;
+            cookieValue = cookieData.substring(start, end);
+        }
+        return unescape(cookieValue);
+
+        /*     cookieName = 쿠키 이름
+
+        value = 쿠키에 넣을 값
+
+        exdays = 만료일 (일 단위)
+     */
+ //---> 이메일 저장 쿠키 추가 
+    }
+   
 </script>
 
 </head>
 <body>
  
-    <form name="form1" method="post">
+    <form name="form1" method="post" action="${path}/user/loginCheck"> <%--스크립트 form 코드 태그안에 추가 : 준형 --%>
     <div class="login_container">
     <div class="item1">
 
@@ -283,20 +360,36 @@
             <section class="login_section">
              <div class="email">   
                      <input type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userEmail">
-        
                 </div>
-    
-
             <div class="password">
             <input type="password" value="" placeholder=" 비밀번호"  name="userPw" id="userPw">
             </div>
+            
+            <%--이메일 저장 추가 : 준형 ---------------------%>
+            <input type="checkbox" id="emailSave" >
+            <label id="emailSave_label" for="emailSave"><span id="emailSave_span">이메일 저장</span></label>
+            <%--이메일 저장 추가 : 준형 ---------------------%>
+            
+            <%--로그인 버튼 클릭시 예외처리 (c:if문), button->submit 변경 : 준형 ------%>
             <div class="login">
-             <button type="button" id="login_btn">로그인</button>
+             <button type="submit" id="login_btn">로그인</button>
+             <c:if test="${msg == 'failure'}">
+                    <div id="text1" style="color: red">
+                        아이디 또는 비밀번호가 일치하지 않습니다.
+                    </div>
+                </c:if>
+                <c:if test="${msg == 'logout'}">
+                    <div id="text2" style="color: red">
+                        로그아웃되었습니다.
+                    </div>
+                </c:if> 
             </div>
-    
+    		<%--로그인 버튼 클릭시 예외처리 : 준형 ---------------------------%>
+    		
+    		
     <div class="find">
-      <div class="tt"><a id="login_findid" href="#1">이메일 찾기</a></div>
-      <div class="tt"><a id="login_findpw" href="${path}/user/findPassword">패스워드 찾기</a></div>
+      <div class="tt"><a id="login_findid" href="${path}/user/findEmail">이메일 찾기</a></div>
+      <div class="tt"><a id="login_findpw" href="${path}/user/findPasswordForm">패스워드 찾기</a></div>
       <div class="ttt"><a id="login_user" href="${path}/user/policy">회원가입</a></div>
     </div>
 
@@ -316,4 +409,3 @@
 </div>
 </form>
 </body>
-</html>

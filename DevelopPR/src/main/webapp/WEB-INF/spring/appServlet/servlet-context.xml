@@ -5,12 +5,14 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security
    		http://www.springframework.org/schema/security/spring-security.xsd
-   				http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+   		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 		
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -72,4 +74,8 @@
     </beans:bean>    
     <!-- naver api -->
     <beans:bean id="naverLoginBO" class="com.DevelopPR.util.NaverloginBO" />
+    
+    <!-- Spring task 스케쥴러설정 -->
+	<task:annotation-driven />
+	<task:scheduler id="scheduler" pool-size="10" />
 </beans:beans>

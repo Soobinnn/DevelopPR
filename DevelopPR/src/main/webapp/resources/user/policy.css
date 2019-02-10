@@ -1,119 +1,255 @@
-.container {
+#policy
+{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#policy .container {
 	position: relative;
-	left: 515px;
+	left: 650px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 500px;
-	height: 660px;
-	border: 2px solid #ddd;
-	background: #eeeeee;
+	width: 650px;
+	height: 750px;
+	border: 2px solid #B9B9B9;
+	background: white;
+	border-radius : 15px;
+	margin-bottom : 100px;
 }
 
-.area1 {
-	width: 500px;
+#policy .area1 {
+	width: 600px;
 	height: 80px;
-	border: 1px solid #ddd;
-	border-bottom: 1px solid #ffffff;
+}
+#policy #area1_1
+{
+	font-size : 1.2rem;
+	border-bottom: 2px solid #585858;
+}
+#policy #area1_1 > label
+{
+	position : relative;
+	display :inline-block;
+	top : 25px;
+	font-weight : 0;
+}
+#policy #area1_1 > label > #chkAll
+{
+	position : relative;
+	display :inline-block;
+	width : 20px;
+	height : 20px;
+	left : 100px; 
+	top : 4px;
+}
+#policy #area1_1 > label > #chkAll1
+{
+	position : relative;
+	display :inline-block;
+	width : 50px;
+	height : 20px;
+	left : 105px; 
+}
+#policy #area1_2 > label
+{
+	position : relative;
+	display :inline-block;
+	top : 25px;
+	font-size : 1.2rem;
+}
+#policy #area1_2 > label > #chk1
+{
+	position : relative;
+	display :inline-block;
+	width : 20px;
+	height : 20px;
+	left : 398px; 
+	top : 4px;
+}
+#policy #area1_2 > label > #chk1_1
+{
+	font-weight : bold;
+}
+#policy #area1_2 > label > #chk1_2
+{
+	position:relative;
+	display:inline-block;
+	left : 5px;
+	color : red;
+	font-weight : 900;
+	font-size : 0.9rem;
+}
+#policy #area1_2 > label > #chk1_3
+{
+	position:relative;
+	display:inline-block;
+	left : 404px;
+}
+#policy #area1_3 > label
+{
+	position : relative;
+	display :inline-block;
+	top :25px;
+	font-size : 1.2rem;
+}
+#policy #area1_3 > label > #chk2
+{
+	position : relative;
+	display :inline-block;
+	width : 20px;
+	height : 20px;
+	left : 296px; 
+	top : 4px;
+}
+#policy #area1_3 > label > #chk2_1
+{
+	font-weight: bold;
+}
+#policy #area1_3 > label > #chk2_2
+{
+	position:relative;
+	display:inline-block;
+	color : red;
+	left : 5px;
+	font-weight : 900;
+	font-size : 0.9rem;
+}
+#policy #area1_3 > label > #chk2_3
+{
+	position:relative;
+	display:inline-block;
+	left : 301px;
 }
 
-.area2 {
-	width: 500px;
+#policy .area2 {
+	width: 600px;
 	height: 120px;
-	border: 1px solid #ddd;
-	border-bottom: 1px solid #ffffff;
+	border: 2px solid #585858;
 	height: 170px;
 	overflow: auto;
 	white-space: pre-wrap;
+	color : #585858;
+	
 }
 
-.area3 {
-	width: 500px;
+#policy .area3 {
+	width: 600px;
 	height: 300px;
-	border: 1px solid #ddd;
-	border-bottom: 1px solid #ffffff;
-	color: #555;
+	color: #585858;
 	margin: 0;
 	padding: 0;
 }
 
-p {
-	margin: 0 0 20px;
-	line-height: 1.5;
+#policy p {
+	margin: 0 0 10px;
+	line-height: 2;
 }
 
-section {
+#policy section {
 	display: none;
-	padding: 20px 0 0;
-	border-top: 1px solid #ddd;
+	padding: 0px 0 0;
+	border-top: 1px solid #585858;
 }
 
-.input {
+#policy .input {
 	display: none;
 }
 
-.label {
+#policy .label {
 	display: inline-block;
 	margin: 0 0 -1px;
-	padding: 15px 37px;
+	padding: 15px 45px;
 	font-weight: 600;
 	text-align: center;
 	color: #bbb;
 	border: 1px solid transparent;
 }
 
-.label:hover {
-	color: #2e9cdf;
+#policy .label:hover {
+	color: #585858;
 	cursor: pointer;
 }
 
-.input:checked+label {
-	color: #555;
-	border: 1px solid #ddd;
-	border-top: 2px solid #2e9cdf;
-	border-bottom: 1px solid #ffffff;
+#policy .input:checked+label {
+	color: #585858;
+	border: 2px solid #585858;
+	border-top: 2px solid #585858;
+	border-bottom: 2px solid #02456F;
+
 }
 
-.text {
+#policy .text {
 	overflow: auto;
-	width: 498px;
+	width: 595px;
 	height: 174px;
+	
 }
 
-#tab1:checked ~ #content1, #tab2:checked ~ #content2, #tab3:checked ~
+#policy #tab1:checked ~ #content1, #tab2:checked ~ #content2, #tab3:checked ~
 	#content3 {
 	display: block;
 }
 
-#btn {
+#policy #btn {
 	position: relative;
-	left: 140px;
-	top: 10px;
+	position: relative;
+	left: 150px;
+	bottom : 5px;
 }
 
-#agree_btn {
-	width: 80px;
-	height: 40px;
+#policy #agree_btn {
+	width: 120px;
+	height: 45px;
 	background: white;
-	border: 1px solid blue;
-	border-radius: 7% 7% 7% 7%;
+	border: 2px solid #585858;
+	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
+	font-weight : 900;
+	font-size : 1rem;
 }
 
-#agree_btn:hover {
-	background: blue;
-	color: white;
+#policy #agree_btn:hover {
+	background-color:rgba( 255, 255, 255, 0.1 );
+	
 }
 
-#disagree_btn {
-	width: 150px;
-	height: 40px;
+#policy #disagree_btn {
+	position :relative;
+	left : 50px;
+	width: 140px;
+	height: 45px;
 	background-color: white;
-	border: 1px solid red;
-	border-radius: 7% 7% 7% 7%;
+	border: 2px solid #585858;
+	border-radius:15% 15% 15% 15% / 50% 50% 50% 50%;
+	font-weight : 700;
+	font-size :1rem;
 }
 
-#disagree_btn:hover {
-	background: orange;
+#policy #disagree_btn:hover {
+	background: #585858;
 	color: white;
+}
+
+#policy h1
+{
+	position : relative;
+	display: block;
+	width : 1980px;
+	margin-top : 50px;
+	margin-bottom : 50px;
+	font-weight :900;
+	font-size : 3rem;
+}
+
+#policy #content1
+{
+	border : 2px solid #585858;
+}
+#policy #content2
+{
+	border : 2px solid #585858;
+}
+#policy #content3
+{
+	border : 2px solid #585858;
 }
