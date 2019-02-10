@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html class="co_modify">
+<html>
 <head>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -8,62 +8,188 @@
 <title>게시글 수정</title>
 <%@ include file="../include/tag_header.jsp" %>
 <style>
-.co_modify .container{   /*전체 틀 */
-  display : flex;
-   width : 700px;
-   height : 550px;
-    flex-direction : column;
- }
-
-.co_modify #pageName {
-    line-height : 30px;
-    text-align : center;
-    vertical-align : middle;
-   border-bottom : 2px solid;
+.co_modify{
+	margin : 0 auto;
 }
+.co_modify .container{   /*전체 틀 */
+  margin : 0 auto;
+   height:730px;
+   
+   }
+
+
+.co_modify #form1{
+	
+	width:850px;
+	height:700px;
+    flex-shrink : 0;
+	margin : 0 auto; /*제목과 내용 div들 가운데 정렬*/
+	
+}
+.co_modify #input{
+    border:solid 3px #b9b9b9;
+    width:900px;
+    border-radius:20px;
+    padding-top:3px;
+   display:flex;
+    flex-direction:column;
+    margin-bottom:30px;
+    min-height:650px;
+    margin : 0 auto;
+   
+    
+}
+.co_modify #pageName {  /*테두리안의 맨 위에 있는 '게시글 작성'부분*/
+    line-height : 90px;
+  
+    text-align : center;
+    font-size:1.9rem;
+    vertical-align : middle;
+    font-weight:900;
+    
+}
+
+.co_modify .regist_body{ /*테두리 안에서 가운데 정렬을 하기 위해 내용 div들을 감싸는 div를 또 만듦 */
+	
+    margin : 0 auto;
+
+}
+
 .co_modify .title_input{
     display : flex;
     flex-direction : row;
-    line-height : 40px;
-    border-bottom : 1px solid silver;
-}
-
-.co_modify #_title {
-    
-    width : 82px;
-    text-align : center;
-    background-color : #EFEFFB;
-    
+    line-height : 35px;
+    align-items:center;
+   
     }
 
+.co_modify #title {
+    min-width : 103px;
+    height:50px;
+    font-size:1.2rem;
+    text-align : center;
+    background-color : #f6f6f6;
+    margin-bottom:5px;
+    padding-top:10px;
+}
+
 .co_modify #titleInput{
-     width : 620px; 
-     padding-left : 11px;
- }
+     width : 120px; 
+}
+.co_modify #_title{
+    border:solid 2px #02456F;
+}
 
 .co_modify .content_input{
    display : flex;
    flex-direction : row;
-   height : 400px;
+   height : 450px;  
+   
 }
 
-.co_modify #_content {
-    height : 380px;
-    width : 83px;
+.co_modify #contents {
+    display:flex;   
+    width : 100px;
+    font-size:1.2rem;
+    height : 410px;
+    /* padding-left:40px; */
+    align-items:center;
     text-align : center;
-    padding-top : 20px;
-    background-color : #EFEFFB;
+    background-color : #f6f6f6;
 }
 .co_modify #contentInput{
-    width : 620px;
-    padding : 10px;
+    width : 600px;
+     padding : 7px;
 }
 
-.co_modify .list_write
+
+/*---------button-------------*/
+.co_modify .upload{
+    position:relative;
+    bottom:30px;
+    left:265px;
+}
+.co_modify .upload #f_label{
+    border:solid 1px #585858;
+    padding:8px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color:white;
+    position:relative;
+    right:314px;
+    border-radius:15px;
+}
+.co_modify .upload #f_label:hover{
+    background-color:#f6f6f6;
+}
+.co_modify .upload #up_label:hover{
+    background-color:#f6f6f6;
+}
+.co_modify .upload #upload{
+    position:relative;
+    left:120px;
+}
+.co_modify .upload #file{
+    font-size:1rem;
+}
+.co_modify #up_label{
+    border:solid 1px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    position:relative;
+    left:40px;
+    border-radius:15px;
+}
+/*---------button-------------*/
+
+.co_modify .footer
+{
+    display : flex;
+    flex-direction : column;
+    height: 100px;
+    width : 700px;
+  
+}
+.co_modify #list_write
 {
     border-top :4px double silver;
-    padding-top : 10px;
+    margin-top : 20px;
+    position : relative;
+    left : 200px;
 }
+
+
+/*-----------돌아가기, 취소, 등록 버튼--------*/
+
+.co_modify .btn{
+border:solid 1px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;	
+}
+.co_modify .btn:hover{  
+    background-color:#f6f6f6;
+}
+
+.co_modify #btnBack{
+	position : relative;
+	left : 10px;
+}
+
+.co_modify #btnCancel{
+    position : relative;
+    left : 20px;
+}
+
+.co_modify #btnSave{
+	position : relative;
+	left : 650px;
+}
+
 
 </style>
 <script>
@@ -100,7 +226,7 @@
                 editor_object.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
                  
                 // 이부분에 에디터 validation 검증
-                const title = $("#title").val();
+                const title = $("#_title").val();
                 const content = $("#content").val();
                 console.log(title);
                 console.log(content);
@@ -124,41 +250,38 @@
 </script>
 </head>
 <body>
+<div class="co_modify"> 
+ 
  <div class="container">
-     <%-- <form name="form1" method="post" action="${path}/board/update.do"> --%>
-      
+       <div id="input">
       <form name="form1" id="form1" method="post" action="${path}/community/modify">
       <input type="hidden" name="bno" id="bno" value="${dto.bno}">
       <input type="hidden" name="userName" value="${dto.userName}">
       <input type="hidden" name="writer" value="${dto.writer}">
       <div id ="pageName">게시글 수정</div>
-        
+      <div id="modify_body">
       <div class="title_input">
-          <div id="_title">제목</div>
-          <div id="titleInput"><input name="title" id="title" style="height:25px; width:550px; text-align:left; padding-left:5px;" size="60" value="${dto.title}"></div>
-        </div> <!--제목과 입력란 종료-->
+          <div id="title">제목</div>
+          <div id="titleInput"><input name="title" id="_title" style="height:40px; width:745px; text-align:left; padding-left:5px;" size="60" value="${dto.title}"></div>
+        </div> <%--제목과 입력란 종료--%>
      
      <div class="content_input">
-        <div id="_content">내용</div>
-        <div id="contentInput"><textarea name="content" style="width:550px; height:350px; text-align : left; padding-left : 8px;" id="content">${dto.content}</textarea></div>
-    </div>  <!--내용과 입력란 종료--> 
-
-     <div class="list_write"><button type="button" id="btnBack">돌아가기</button>
-       
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <button type="reset">취소</button>
-  &nbsp;&nbsp;&nbsp;
-        <button type="button" id="btnSave">수정</button>      
+        <div id="contents">내용</div>
+        <div id="contentInput"><textarea name="content" style="min-width:700px; width:100%; height:350px; text-align : left; padding-left : 8px;" id="content">${dto.content}</textarea></div>
+    </div>  <%--내용과 입력란 종료--%> 
+    <div class="footer">
+     <div class="list_write">
+     <button type="button" class="btn" id="btnBack">돌아가기</button>
+     <button type="reset" class="btn" id="btnCancel">취소</button>
+     <button class="btn" type="button" id="btnSave">수정</button>      
+ </div> 
  </div>
-     
+    </div> 
 </form>
+</div> <%-- div id="input" 종료 --%>
 </div> <%--전체 틀 종료 --%>
+
+</div> <%-- co_modify 종료 --%>
+
 </body>
 </html>

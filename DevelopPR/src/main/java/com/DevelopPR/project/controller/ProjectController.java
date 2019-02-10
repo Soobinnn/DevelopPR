@@ -32,7 +32,7 @@ ProjectService projectService;
 @RequestMapping(value = "registForm", method= RequestMethod.GET)
 public String projectRegistForm() throws Exception
 {
-return "project/registForm";
+return "basic/project/registForm";
 }
 
 
@@ -43,7 +43,7 @@ public String projectRegist(@RequestParam(value="techstack", required=false) Str
 {
 	projectService.regist(vo);
 	
-	return "redirect:registForm"; //나중에 연결할 페이지를 수정해서 표시한다.
+	return "redirect:basic/registForm"; //나중에 연결할 페이지를 수정해서 표시한다.
 }
 
 

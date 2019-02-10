@@ -1,0 +1,179 @@
+<style>
+
+
+.co_registForm{
+	margin : 0 auto;
+}
+.co_registForm .container{   /*전체 틀 */
+  margin : 0 auto;
+   height:730px;
+   
+   }
+
+
+.co_registForm #form1{
+	
+	width:850px;
+	height:700px;
+    flex-shrink : 0;
+	margin : 0 auto; /*제목과 내용 div들 가운데 정렬*/
+	
+}
+.co_registForm #input{
+    border:solid 3px #b9b9b9;
+    width:900px;
+    border-radius:20px;
+    padding-top:3px;
+   display:flex;
+    flex-direction:column;
+    margin-bottom:30px;
+    min-height:650px;
+    margin : 0 auto;
+   
+    
+}
+.co_registForm #pageName {  /*테두리안의 맨 위에 있는 '게시글 작성'부분*/
+    line-height : 90px;
+  
+    text-align : center;
+    font-size:1.9rem;
+    vertical-align : middle;
+    font-weight:900;
+    
+}
+
+.co_registForm .regist_body{ /*테두리 안에서 가운데 정렬을 하기 위해 내용 div들을 감싸는 div를 또 만듦 */
+	
+    margin : 0 auto;
+
+}
+
+.co_registForm .title_input{
+    display : flex;
+    flex-direction : row;
+    line-height : 35px;
+    align-items:center;
+   
+    }
+
+.co_registForm #title {
+    min-width : 103px;
+    height:50px;
+    font-size:1.2rem;
+    text-align : center;
+    background-color : #f6f6f6;
+    margin-bottom:5px;
+    padding-top:10px;
+}
+
+.co_registForm #titleInput{
+     width : 120px; 
+}
+.co_registForm #_title{
+    border:solid 2px #02456F;
+}
+
+.co_registForm .content_input{
+   display : flex;
+   flex-direction : row;
+   height : 450px;  
+   
+}
+
+.co_registForm #contents {
+    display:flex;   
+    width : 100px;
+    font-size:1.2rem;
+    height : 410px;
+    /* padding-left:40px; */
+    align-items:center;
+    background-color : #f6f6f6;
+}
+.co_registForm #contentInput{
+    width : 600px;
+    /* padding : 7px; */
+}
+
+
+/*---------button-------------*/
+.co_registForm .upload{
+    position:relative;
+    bottom:30px;
+    left:265px;
+}
+.co_registForm .upload #f_label{
+    border:solid 1px #585858;
+    padding:8px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color:white;
+    position:relative;
+    right:314px;
+    border-radius:15px;
+}
+.co_registForm .upload #f_label:hover{
+    background-color:#f6f6f6;
+}
+.co_registForm .upload #up_label:hover{
+    background-color:#f6f6f6;
+}
+.co_registForm .upload #upload{
+    position:relative;
+    left:120px;
+}
+.co_registForm .upload #file{
+    font-size:1rem;
+}
+.co_registForm #up_label{
+    border:solid 1px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    position:relative;
+    left:40px;
+    border-radius:15px;
+}
+/*---------button-------------*/
+
+.co_registForm .footer
+{
+    display : flex;
+    flex-direction : column;
+    height: 100px;
+    width : 700px;
+  
+}
+.co_registForm #list_write
+{
+    border-top :4px double silver;
+    margin-top : 20px;
+    position : relative;
+    left : 200px;
+}
+
+
+/*-----------돌아가기, 취소, 등록 버튼--------*/
+
+.co_registForm .btn{
+border:solid 1px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;	
+}
+.co_registForm .btn:hover{  
+    background-color:#f6f6f6;
+}
+
+.co_registForm #btnBack{
+	position : relative;
+	left : 10px;
+}
+.co_registForm #btnSave{
+	position : relative;
+	left : 700px;
+}
+
+</style>

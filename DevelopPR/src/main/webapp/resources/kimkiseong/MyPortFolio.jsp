@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<!-- jstl 코어 태그 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- jstl 포맷 태그 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- 컨택스트  패스-->
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,223 +13,85 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MyPortFolio</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+    
+    <!--커스텀 메인프레임 자바스크립트, css파일 추가 -->
+    <script type="text/javascript" src="./js/mainFrame.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/mainFrame.css">
+    <!-- 파일 추가 종료 -->
 <script>
-$(window).load(function(){
-    var height = window.innerHeight,
-  x= 0, y= height/2,
-    curveX = 10,
-    curveY = 0,
-    targetX = 0,
-    xitteration = 0,
-    yitteration = 0,
-    menuExpanded = false;
-    
-    blob = $('#blob'),
-    blobPath = $('#blob-path'),
 
-    hamburger = $('.hamburger');
 
-    $(this).on('mousemove', function(e){
-        x = e.pageX;
-        
-        y = e.pageY;
-    });
+function call_whoAmI(){ 
 
-    $('.hamburger, .menu-inner').on('mouseenter', function(){
-        $(this).parent().addClass('expanded');
-        menuExpanded = true;
-    });
+	$.ajax({ 
+	  type: "POST", 
+	  url: "${path}/resources/kimkiseong/whoAmI.jsp", 
+	  success: function(result){ 
+	    $("#who_kks").html(result); 
+	  } 
 
-    $('.menu-inner').on('mouseleave', function(){
-        menuExpanded = false;
-        $(this).parent().removeClass('expanded');
-    });
+	})}; // end of call_whoAmI 
 
-    function easeOutExpo(currentIteration, startValue, changeInValue, totalIterations) {
-        return changeInValue * (-Math.pow(2, -10 * currentIteration / totalIterations) + 1) + startValue;
-    }
+	function call_myStory(){ 
 
-    var hoverZone = 150;
-    var expandAmount = 20;
-    
-    function svgCurve() {
-        if ((curveX > x-1) && (curveX < x+1)) {
-            xitteration = 0;
-        } else {
-            if (menuExpanded) {
-                targetX = 0;
-            } else {
-                xitteration = 0;
-                if (x > hoverZone) {
-                    targetX = 0;
-                } else {
-                    targetX = -(((60+expandAmount)/100)*(x-hoverZone));
-                }           
-            }
-            xitteration++;
-        }
+		$.ajax({ 
+		  type: "POST", 
+		  url: "${path}/resources/kimkiseong/myStory.jsp", 
+		  success: function(result){ 
+		    $(".kks #who_kks").html(result); 
+		  } 
 
-        if ((curveY > y-1) && (curveY < y+1)) {
-            yitteration = 0;
-        } else {
-            yitteration = 0;
-            yitteration++;  
-        }
+		})}; // end of call_whoAmI
 
-        curveX = easeOutExpo(xitteration, curveX, targetX-curveX, 100);
-        curveY = easeOutExpo(yitteration, curveY, y-curveY, 100);
+		function call_semiProject(){ 
 
-        var anchorDistance = 200;
-        var curviness = anchorDistance - 40;
+			$.ajax({ 
+			  type: "POST", 
+			  url: "${path}/resources/kimkiseong/semiProject.jsp", 
+			  success: function(result){ 
+			    $("#who_kks").html(result); 
+			  } 
 
-        var newCurve2 = "M60,"+height+"H0V0h60v"+(curveY-anchorDistance)+"c0,"+curviness+","+curveX+","+curviness+","+curveX+","+anchorDistance+"S60,"+(curveY)+",60,"+(curveY+(anchorDistance*2))+"V"+height+"z";
+			})}; // end of call_whoAmI
+	
+	</script>
 
-        blobPath.attr('d', newCurve2);
-
-        blob.width(curveX+60);
-
-        hamburger.css('transform', 'translate('+curveX+'px, '+curveY+'px)');
-    
-    $('h2').css('transform', 'translateY('+curveY+'px)');
-        window.requestAnimationFrame(svgCurve);
-    }
-
-    window.requestAnimationFrame(svgCurve);
-    
-});
-</script>
-<style>
-body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color:#26394E ;
-        }
-
-        #menu {
-            height: 100%;
-            position: fixed;
-            background-color: #FED057;
-            width: 300px;
-            transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
-            transform: translateX(-100%);
-            left: 60px;
-        }
-
-        #menu.expanded {
-            transform: translateX(0%);
-            left: 0px;
-        }
-
-        .menu-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        #blob {
-            top: 0;
-            z-index: -1;
-            right: 60px;
-            transform: translateX(100%);
-            height: 100%;
-            position: absolute;
-        }
-
-        #blob-path {
-            height: 100%;
-            fill:  #FED057;
-        }
-
-        .hamburger {
-            right: 20px;
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            margin-top: -10px;  
-        }
-
-        .hamburger .line {
-            width: 100%;
-            height: 4px;
-            background-color: #fff;
-            position: absolute;
-        }
-
-        .hamburger .line:nth-child(2) {
-            top: 50%;
-            margin-top: -2px;
-        }
-
-        .hamburger .line:nth-child(3) {
-            bottom: 0;
-        }
-
-        h1 {
-            position: fixed;
-            right: 0;
-            margin: 0;
-        }
-
-        ul {
-            padding: 0;
-            list-style: none;
-            width: 80%;
-            margin-left: 10%;
-            position: absolute;
-            top: 10px;
-        }
-
-        ul li {
-            color: #fff;
-            font-family: sans-serif;
-            padding: 20px 0;
-        }
-
-        h2 {
-            position: absolute;
-           left: 50%;
-      color: #fff;
-            margin: 0;
-      font-size: 16px;
-      font-family: sans-serif;
-      font-weight: 100;
-        }
-</style>
 </head>
 <body>
-  
+<div class="kks">  
+<div class="mainContainer">
+    <div id="left"><!-- 왼쪽 여백용 div -->
     <div id="menu">
         <div class="hamburger">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
-        </div>
+        </div> <%--end of menu --%>
+        
         <div class="menu-inner">
-            
-            <ul>
-                <li>My Story</li>
-                <li>Who am I?</li>
-                <li>Semi Project</li>
+           <ul>
+                <li><a href="javascript:call_myStory();">My Story</a></li>             
+                <li><a href="javascript:call_whoAmI();">Who am I?</a></li>
+                <li>Scouting Report</li>
+                <li><a href="javascript:call_semiProject();">Semi Project</a></li>
                 <li>Final Project</li>
-                <li>Visit</li>
                 <li>Contact</li>
             </ul>
-        </div>
-  
+        </div> <%--end of menu-inner --%>
+
   
         
         <svg version="1.1" id="blob"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z"/>
         </svg>
-    </div>
-
-
-<h2> hover close to the menu </h2>    
-
-
-
+    </div> <!-- end of menu div -->
+    </div> <!--  end of left -->
+ 
+ 
+ <div id="who_kks"></div> 
+  
+  
+  </div> <!-- end of mainContainer -->
+</div> <!--  end of kks -->
 </body>
 </html>
