@@ -8,282 +8,31 @@
 
 <title>로그인페이지</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<style>
-    
-    .login_container
-    {
-      display: flex;  
-      
-      flex-direction: row;
-      flex-shrink: 0;
-      flex-basis: 500px;
-      height : 900px;        
-    }
-    .login_section
-    {
-        height: 600px;
-        
-    }
-    #login_header{
-        display: flex;
-        flex-direction: column;
-        width : 500px;
-        height : 300px;
-        font-size: 30px;
-        text-align : center;
-        align-items: center;
-    }
-    
-    #logo
-    {
-        
-        display : block;
-        width : 220;
-    }
-    
-    #login
-    {
-        position: relative;
-        left:95px;
-        font-size : 20px;
-        text-align : center;
-        padding-bottom : 10px;
-        margin-bottom : 40px;
-        margin-top : 40px;
-        border : 2px solid black;
-        padding-top : 15px;
-        border-radius : 3% 3% 3% 3% / 50% 50% 50% 50%;
-        width: 300px;
-
-    }
-
-    #login_btn:hover{
-        background: black;
-        opacity: 0.9;
-        color : white;
-    }
-    
-    .email{
-        margin-top: 35px;
-
-    }
-    
-    #userEmail
-    {
-        position : relative;
-        left : 95px;
-        width : 300px;
-        height: 45px;
-        border : 2px solid;
-        border-radius: 11px/ 11px;
-        background : white;
-    }
-    
-    .password{
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-   
-    #userPw{
-      position : relative;
-        left : 95px;
-       width : 300px;
-       height : 45px;
-       border : 2px solid;
-       border-radius: 11px/ 11px;
-    }
-   
-    .item1
-    {
-        width : 50%;
-    }
-    .item2
-    {
-        width : 500px;
-    }
-    .item3
-    { 
-        
-        width : 50%;
-    }
-    .find
-    {
-        border:1px solid white;
-        position:relative;
-        left : 73px;
-        display:flex;
-        text-align : center;
-        font-size: 11pt;
-        width:350px;
-    }
-
-    .tt
-    {
-        position : relative;
-        
-        border-right : 2px solid;
-        width : 120px;
-    }
-
-    .ttt
-    {
-        width : 30px;
-    }
-    
-    #id
-    {
-        position:relative;
-        left : 9px;
-    }
-
-    #id2
-    {
-        position:relative;
-        left : 5px;
-    }
-    #id3
-    {
-        position:relative;
-        right : 8px;
-    }
-    #login_findid
-    {
-        position : relative;
-        left : 11px;
-        display : block;
-        width : 110px;
-        text-decoration: none;
-        color : black;
-    }
-    #login_findpw
-    {
-        position : relative;
-        left : 5px;
-        display : block;
-        width : 110px;
-        text-decoration: none;
-        color : black;
-    }
-    
-    #login_user
-    {
-        position : relative;
-        right : 10px;
-        display : block;
-        width : 110px;
-        text-decoration: none;
-        color : black;
-    }
-    
-    #login_btn
-    {
-        display : block;
-        position:relative;
-        left : 96.5px;
-        margin-top : 30px;
-        margin-bottom: 20px;
-        width: 300px;
-        background: white;
-        border:1px solid black;
-        font-size : 20px;
-        height : 65px;
-        font-size : 23px;
-        border-radius: 11px/ 11px;
-        border : 2px solid;
-    }
-
-    #btn
-    {
-        width : 100px;
-        background: black;
-    }
-    
-    #text1
-    {
-        position : relative;
-        left : 100px;
-        margin-bottom : 5px;
-    }
-    
-    #text2
-    {
-        position : relative;
-        left : 180px;
-        margin-bottom : 5px;
-    }
-    
-    .login_footer
-    {
-       
-        height : 150px;
-        border : 1px solid white;
-    }
-    
-    .login_connect>a>img
-    {
-        border:1px solid darkkhaki;
-    width : 60px;
-    position:relative;
-    left : 120px;
-    top : 30px;
-    }
-    
-    #login_other
-    {
-    position:relative;
-    top : 50px;
-    left : 170px;
-    }
-    
-    #login_other>span
-    {
-    color : gray;
-    }
-    #emailSave
-    {
-        position : relative;
-        left : 100px;
-        bottom : 7px;
-        width: 25px;
-        height: 20px;
-        border:1px solid black;
-    }
-    #emailSave_span
-    {
-        color: gray;
-        font-size:15px;
-        position: relative;
-        left: 95px;
-        bottom : 11px;
-    }
-</style>
 
 <script>
-    $(document).ready(function(){
-        $("#login_btn").click(function(){
-            // 태크.val() : 태그에 입력된 값
-            // 태크.val("값") : 태그의 값을 변경 
-            var userEmail = $("#userEmail").val();
-            var userPw = $("#userPw").val();
-            if(userEmail == ""){
-                alert("이메일을 입력하세요.");
-                $("#userEmail").focus(); // 입력포커스 이동
-                return; // 함수 종료
-            }
-            if(userPw == ""){
-                alert("비밀번호를 입력하세요.");
-                $("#userPw").focus();
-                return;
-            }
-           /*--->  // 폼 내부의 데이터를 전송할 주소
-            document.form1.action="${path}/user/loginCheck"
-            // 제출
-            document.form1.submit(); <-- 준형 : form태그 안에 넣음*/
-        });
-    });
-  //--> 준형 : 이메일 저장 쿠키 추가
+  // 준형 : 이메일 저장 쿠키 추가
     $(document).ready(function(){ 
-        
+    	  $("#login_btn").click(function(){
+              // 태크.val() : 태그에 입력된 값
+              // 태크.val("값") : 태그의 값을 변경 
+              var userEmail = $("#userEmail").val();
+              var userPw = $("#userPw").val();
+              if(userEmail == ""){
+                  alert("이메일을 입력하세요.");
+                  $("#userEmail").focus(); // 입력포커스 이동
+                  return; // 함수 종료
+              }
+              if(userPw == ""){
+                  alert("비밀번호를 입력하세요.");
+                  $("#userPw").focus();
+                  return;
+              }
+             /*--->  // 폼 내부의 데이터를 전송할 주소
+              document.form1.action="${path}/user/loginCheck"
+              // 제출
+              document.form1.submit(); <-- 준형 : form태그 안에 넣음*/
+          });
+    	  
         // 저장된 쿠키값을 가져와서 email 칸에 넣어준다. 없으면 공백으로 들어감.
         var key = getCookie("key");
         $("#userEmail").val(key); 
@@ -306,6 +55,27 @@
                 setCookie("key", $("#userEmail").val(), 7); // 7일 동안 쿠키 보관
             }
         });
+        
+        // 엔터 시 로그인
+        $('#userEmail').keypress(function(event) 
+        {	
+        	var keycode = (event.keyCode ? event.keyCode : event.which);
+        	if (keycode == '13') 
+        	{
+        		document.form1.submit();
+        	}
+        	event.stopPropagation();
+        });
+        $('#userPw').keypress(function(event) 
+        {	
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') 
+            {
+                document.form1.submit();
+            }
+            event.stopPropagation();
+        });
+        
     });
     
     function setCookie(cookieName, value, exdays){
@@ -344,19 +114,38 @@
     }
    
 </script>
-
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/login.css'/>"/>
 </head>
 <body>
- 
+<div id="loginn">
     <form name="form1" method="post" action="${path}/user/loginCheck"> <%--스크립트 form 코드 태그안에 추가 : 준형 --%>
+            <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,150 C0,65 120,65 120,150" fill="#e0a243" stroke="#000" stroke-width="2.5" />
+            <g class="ears">
+                <path d="M46,32 L46,30 C46,16 26,16 26,30 L26,32" fill="#e0a243" stroke="#000" stroke-width="2.5" stroke-linecap="round" transform="rotate(-10,38,24)" />
+                <path d="M74,32 L74,30 C74,16 94,16 94,30 L94,32" fill="#e0a243" stroke="#000" stroke-width="2.5" stroke-linecap="round" transform="rotate(10,82,24)" />
+            </g>
+            <circle cx="60" cy="60" r="40" fill="#e0a243" stroke="#000" stroke-width="2.5" />
+            <g class="eyes">
+                <!-- left eye and eyebrow-->
+                <line x1="37" x2="50" y1="46" y2="46" stroke="#000" stroke-width="3" stroke-linecap="round" />
+                <circle cx="44" cy="55" r="3" fill="#000" />
+                <!-- right eye and eyebrow -->
+                <line x1="70" x2="83" y1="46" y2="46" stroke="#000" stroke-width="3" stroke-linecap="round" />
+                <circle cx="76" cy="55" r="3" fill="#000" />
+            </g>
+            <g class="muzzle">
+                <path d="M60,66 C58.5,61 49,63 49,69 C49,75 58,77 60,71 M60,66 C61.5,61 71,63 71,69 C71,75 62,77 60,71" fill="#fff" />
+                <path d="M60,66 C58.5,61 49,63 49,69 C49,75 58,77 60,71 M60,66 C61.5,61 71,63 71,69 C71,75 62,77 60,71" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+                <polygon points="59,63.5,60,63.4,61,63.5,60,65" fill="#000" stroke="#000" stroke-width="5" stroke-linejoin="round" />
+            </g>
+            <path d="M40,105 C10,140 110,140 80,105 L80,105 L70,111 L60,105 L50,111 L40,105" fill="#fff" />
+        </svg>
     <div class="login_container">
     <div class="item1">
 
     </div>
     <div class="item2">
-        <header id="login_header">
-                   <%--  <img id="logo" src="<c:url value=' >" alt"">  --%>
-         </header>
             <section class="login_section">
              <div class="email">   
                      <input type="text" autocomplete="off" value="" placeholder=" 이메일" name="userEmail" id="userEmail">
@@ -408,4 +197,6 @@
 
 </div>
 </form>
+</div>
+<script src="<c:url value='/resources/user/login.js'/>"></script>
 </body>

@@ -1,0 +1,334 @@
+#loginn form {
+    width: 650px;
+    padding-top : 70px;
+    padding-left : 15px;
+    padding-right : 15px;
+    margin: 50px auto;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border : 2px solid #b9b9b9;
+    border-radius : 20px;
+}
+
+#loginn svg {
+    width: 40%;
+    border : 2px solid #585858;
+    border-radius: 50%;
+    background: #fff;
+    margin-bottom: 40px;
+    align-self: center;
+    transform-style: preserve-3d;
+}
+
+#loginn #userEmail, #userPw {
+    font-size: 16px; 
+    outline: 0;
+    padding: 10px 15px;
+    margin-top: 15px;
+}
+
+@keyframes lookaway-up {
+    from {
+        transform: rotate3d(.2, 0, -.01, 20deg);
+    }
+
+    to {
+        transform: rotate3d(.2, -.05, -.01, 20deg);
+    }
+}
+
+@keyframes lookaway-down {
+    0% {
+        transform: rotate3d(-.2, 0, -.01, 20deg);
+    }
+
+    100% {
+        transform: rotate3d(-.2, -.05, .01, 20deg);
+    }
+}
+
+.ears {
+    transform-origin: 50% 50% 5px;
+}
+
+.eyes {
+    transform-origin: 50% 50% -40px;
+}
+
+.muzzle {
+    transform-origin: 50% 50% -44px;
+}
+
+.ears, .eyes, .muzzle {
+    transition: transform .5s;
+}
+
+.focused {
+    transition: transform .1s;
+}
+
+.look-away .ears,
+.look-away .eyes,
+.look-away .muzzle {
+    transition-duration: .3s;
+    animation: 3s infinite alternate;
+}
+
+.look-away.up .ears,
+.look-away.up .eyes,
+.look-away.up .muzzle {
+    transform: rotate3d(.2, 0, 0, 20deg) !important;
+}
+
+.look-away.down .ears,
+.look-away.down .eyes,
+.look-away.down .muzzle {
+    transform: rotate3d(-.2, 0, 0, 20deg) !important;    
+}
+
+.look-away.playing.up .ears,
+.look-away.playing.up .eyes,
+.look-away.playing.up .muzzle {
+    animation-name: lookaway-up;
+}
+
+.look-away.playing.down .ears,
+.look-away.playing.down .eyes,
+.look-away.playing.down .muzzle {
+    animation-name: lookaway-down;
+}
+  
+    .login_container
+    {
+      display: flex;  
+      
+      flex-direction: row;
+      flex-shrink: 0;
+      flex-basis: 650px;
+      height : 650px;        
+    }
+    .login_section
+    {
+        height: 400px;
+        
+    }
+   
+    
+    #logo
+    {
+        
+        display : block;
+        width : 220;
+    }
+    
+    #login
+    {
+        position: relative;
+        left:95px;
+        font-size : 20px;
+        text-align : center;
+        padding-bottom : 10px;
+        margin-bottom : 40px;
+        margin-top : 40px;
+        border : 2px solid black;
+        padding-top : 15px;
+        border-radius : 3% 3% 3% 3% / 50% 50% 50% 50%;
+        width: 300px;
+
+    }
+
+    #login_btn:hover{
+        background: #585858;
+        color : #585858;
+    }
+    
+    .email
+    {
+        margin-top: 10px;
+    }
+    
+    #userEmail
+    {
+        position : relative;
+        width : 320px;
+        height: 35px;
+        border : 2px solid #585858;
+        border-radius: 11px/ 11px;
+        background : white;
+    }
+    
+    .password{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+   
+    #userPw{
+      position : relative;
+
+       width : 320px;
+       height : 35px;
+       margin-bottom : 10px;
+       border : 2px solid #585858;
+       border-radius: 11px/ 11px;
+    }
+   
+#loginn .item1
+{
+   width : 50%;
+}
+#loginn .item2
+{
+   width : 500px;
+}
+#loginn .item3
+{ 
+   width : 50%;
+}
+    .find
+    {
+        border:1px solid white;
+        position:relative;
+        display:flex;
+        text-align : center;
+        font-size: 11pt;
+        width:350px;
+    }
+
+    .tt
+    {
+        position : relative;
+        
+        border-right : 2px solid;
+        width : 120px;
+    }
+
+    .ttt
+    {
+        width : 30px;
+    }
+    
+    #id
+    {
+        position:relative;
+        left : 9px;
+    }
+
+    #id2
+    {
+        position:relative;
+        left : 5px;
+    }
+    #id3
+    {
+        position:relative;
+        right : 8px;
+    }
+    #login_findid
+    {
+        position : relative;
+        left : 11px;
+        display : block;
+        width : 110px;
+        text-decoration: none;
+        color : black;
+    }
+    #login_findpw
+    {
+        position : relative;
+        left : 5px;
+        display : block;
+        width : 110px;
+        text-decoration: none;
+        color : black;
+    }
+    
+#login_user
+{
+        position : relative;
+        right : 10px;
+        display : block;
+        width : 110px;
+        text-decoration: none;
+        color : black;
+}
+    
+#loginn #login_btn
+{
+       display : block;
+       position:relative;
+        margin-bottom: 35px;     
+        width: 354px;
+        background: white;
+        border:1px solid black;
+        font-size : 20px;
+        height : 75px;
+        font-size : 23px;
+        border-radius: 11px/ 11px;
+        border : 2px solid;
+}
+
+    #btn
+    {
+        width : 100px;
+        background: black;
+    }
+    
+    #text1
+    {
+        position : relative;
+        left : 100px;
+        margin-bottom : 5px;
+    }
+    
+    #text2
+    {
+        position : relative;
+        left : 180px;
+        margin-bottom : 5px;
+    }
+    
+    .login_footer
+    {
+       
+        height : 150px;
+        border : 1px solid white;
+    }
+    
+    .login_connect>a>img
+    {
+    width : 60px;
+    position:relative;
+    left : 40px;
+    top : 10px;
+    margin-top : 10px;
+    margin-right : 5px;
+    }
+    
+    #login_other
+    {
+    position:relative;
+    top : 30px;
+    left : 100px;
+    }
+    
+    #login_other>span
+    {
+    color : gray;
+    }
+    #emailSave
+    {
+        position : relative;
+        bottom : 7px;
+        width: 25px;
+        height: 20px;
+        border:1px solid black;
+        margin-bottom : 10px;
+    }
+    #emailSave_span
+    {
+        color: gray;
+        font-size:15px;
+        position: relative;
+        bottom : 11px;
+    }
