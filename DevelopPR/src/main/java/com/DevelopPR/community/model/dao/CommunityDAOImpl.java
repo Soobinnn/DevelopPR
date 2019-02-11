@@ -25,7 +25,7 @@ public class CommunityDAOImpl implements CommunityDAO
        Map<String, Object> map = new HashMap<String, Object>();
        map.put("searchOption", searchOption);
        map.put("keyword", keyword);
-       // BETWEEN #{start}, #{end}�� �Էµ� ���� �ʿ� 
+       // BETWEEN #{start}, #{end}
        map.put("start", start);
        map.put("end", end);
        return SqlSession.selectList("community.listAll", map);

@@ -15,19 +15,19 @@
           $(document).ready(function()
             {
         	  <%--프로젝트명 추가부분, 프로젝트 등급 버튼 --%>
-        	  const ul = document.querySelector('.techstacklist'); 
+        	  var ul = document.querySelector('.techstacklist'); 
  		     $('.gradebtn').click(function(){
-                       const text =  $(this).val();
+                       var text =  $(this).val();
                        $('#project_grade').val(text);
                    });
    
             
               <%--값 전송 버튼 시작 --%>  
  		      $("#btnSave").click(function(){
-                    const project_name = $("#project_name").val();
-                    const project_content = $("#project_content").val();
-                    const project_term1 = $("#project_term1").val();
-                    const project_term2 = $("#project_term2").val();
+                    var project_name = $("#project_name").val();
+                    var project_content = $("#project_content").val();
+                    var project_term1 = $("#project_term1").val();
+                    var project_term2 = $("#project_term2").val();
                     
                     console.log(project_name);
                     console.log(project_content);
@@ -106,66 +106,64 @@
       /* ajax 검색 로직 추가 */           
     $(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
         $(".project_tech_name").keyup(function() {
-				console.log('키이벤트작동하는가?');
+				
         	
-		    var tech_name_input = $('.project_tech_name').val();
-        	var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-        	console.log('값이 담기는가 :' +tech_name_input);
-        	$.ajax({ // Ajax 요청을 작성
-                url: "${path}/project/autocomplete",
-                data: param,
-                method: "POST",
-                success : function(result) 
-            {    
-                if (tech_name_input === "" || tech_name_input === null) // techstack 입력란이 비워져 있을 경우
-                	{                                     //start of if
-                    	$( 'ul' ).empty();             //입력값이 있을 경우 td에 출력이 되는데  입력값이 없을 경우 td안의 값을 비운다.
-                 	} else {                             //end of if and start of else
-                        
-                 		var output = document.createElement('div');     
-                 	   for(var i in result)        // result에서 받아온 값의 개수만큼 for문을 돌린다.
-            	         	{
-                               var techName = result[i].tech_name_input;
-                        	  /*  var listItem = document.createElement('li'); */
-                 			   var listBtn = document.createElement('button');
-                                                            
-                              /* output.appendChild(listItem); */
-                             listBtn.textContent = techName;
-                              output.appendChild(listBtn);
-                              listBtn.type='button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
-                              listBtn.value="techbutton";
-                              listBtn.id=techName;  //각 버튼의 value를 지정한다.
-            	             
-                              
-                              $(".techstacklist").html(output);
-            	         	
-                            <%--버튼 체크박스 연동 로직 추가 --%>
-                  		     $('button').click(function(){
-                  		    	var buttons = $('button');
-                  		    	
-                  		    
-                  		    	$('input:checkbox[name = "techstack"]').each(function(){
-                  		    		
-                  		    		if(this.value === listBtn.id){
-                  		    			this.checked = true;
-                  		    		   console.log('if문 작동하는가?')
-                  		    		}
-                  		    	});
-                  		   	
-                  		
-                  		     }); //end of button-check
-            	
-            	         	
-            	         	} //end of for
-                              
-                 	} //end of else
-                  		
-        } // end of success
+        	console.log('키이벤트작동하는가?');
+        	
+		        var tech_name_input = $('.project_tech_name').val();
+        	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
+         	console.log('값이 담기는가 :' +tech_name_input);
+        	
+         	$.ajax({ // Ajax 요청을 작성
+         	    url: "${path}/project/autocomplete",
+         	    data: param,
+         	    method: "POST",
+         	    success: function (result) {
+         	        if (tech_name_input === "" || tech_name_input === null) { // techstack 입력란이 비워져 있을 경우
+         	            //start of if
+         	            $('ul').empty();             //입력값이 있을 경우 td에 출력이 되는데  입력값이 없을 경우 td안의 값을 비운다.
+         	        } else {                             //end of if and start of else
+         	            var output = document.createElement('div');
+         	            for (var i in result)        // result에서 받아온 값의 개수만큼 for문을 돌린다
+         	            {
+         	                var techName = result[i].tech_name_input;
+         	                
+         	                var listBtn = document.createElement('button');
+        	                
+         	                listBtn.textContent = techName;
+         	                listBtn.type = 'button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
+         	                listBtn.value = techName;
+         	                listBtn.style.marginTop = '6px';
+         	                listBtn.style.marginRight = '6px';
+         	                listBtn.setAttribute('class', "techbuttons");  //각 버튼의 value를 지정한다.
+         	                output.appendChild(listBtn);
 
- 
-        	}); //end of ajax
-     
-       
+         	                $(".techstacklist").html(output);
+
+         	                $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
+         	                   var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
+         	                   var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
+         	                   for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
+         	                	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
+         	                		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
+         	                		  	 chkbox_obj[k].checked = true;                    //체크하고
+         	                		  }
+         	                		  else {
+         	                			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
+         	                		  }
+         	                	   }
+         	                   }
+         	                }); //end of button-check
+
+         	            } //end of for
+
+         	        } //end of else
+
+         	    } // end of success
+
+
+         	}); //end of ajax
+
     }); // end of keyup function
         	
     });
@@ -177,9 +175,10 @@
    <style>
            .projectRegist .techstacklist
             {
-                display : flex;
+                display : flex; /*....*/
                 flex-wrap :wrap;
-
+				width: 360px;
+				margin-left: 148px;
             }
            .projectRegist .techstacklist > li
             {
@@ -234,9 +233,9 @@
                             <input type="date" id="project_term2" name="project_term2"/>
                     </div>
                     <div id="projecttech" class="projectformt">
-                            <ul class="techstacklist"></ul>
                             <label for="project_tech_name" class="project_label">Tech Stack</label>
                             <input type="text" class="project_tech_name" name="project_tech_name" placeholder="...Tech Stack"/> <%-- 입력폼 --%>
+                            <ul class="techstacklist"></ul>
                             <br>
                             <input type="checkbox" id="techstack_javascript" name="techstack" value="JavaScript" class="techstack">
                             <label for="techstack_javascript">Javascript</label>
@@ -246,7 +245,7 @@
                             <label for="techstack_c#">c#</label>
                             <input type="checkbox" id="techstack_php"name="techstack" value="php" class="techstack">
                             <label for="techstack_php">php</label>
-                            <input type="checkbox" id="techstack_android"name="techstack" value="android" class="techstack">
+                            <input type="checkbox" id="techstack_android" name="techstack" value="android" class="techstack">
                             <label for="techstack_android">android</label>
                             <input type="checkbox" id="techstack_jquery"name="techstack" value="jquery" class="techstack">
                             <label for="techstack_jquery">jquery</label>

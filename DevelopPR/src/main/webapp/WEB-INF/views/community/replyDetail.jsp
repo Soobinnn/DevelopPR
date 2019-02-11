@@ -5,6 +5,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/tag_header.jsp" %>
+<style>
+
+.re_detail{
+margin : 0 auto;
+}
+
+</style>
+
+
+
 <script>
     //3. 댓글 수정
     $("#btnReplyUpdate").click(function(){
@@ -55,6 +65,9 @@
 </script>
 </head>
 <body>
+<div class="re_detail">
+
+
     댓글 번호 : ${vo.rno}<br>
     <textarea id="detailReplytext" rows="5" cols="82">${vo.replytext}</textarea>
     <div style="text-align: center;">
@@ -65,5 +78,9 @@
         </c:if>
         <button type="button" id="btnReplyClose" >닫기</button>
     </div>
+
+</div>  <%--end of re_detail --%>
+
+
 </body>
 </html>
