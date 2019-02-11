@@ -69,7 +69,7 @@ public interface UserService
 	   //회원 탈퇴 비밀번호 확인 - 준형
 	   public String checkPw(String userEmail);
 	   
-	  //회원 탈퇴 - 준형 
+	   //회원 탈퇴 - 준형 
 	   public void deleteUser(String userEmail);
 
 	   // 간편로그인 API 시 정보 입력
@@ -79,4 +79,7 @@ public interface UserService
 	   public List<UserVO> longUnAccess();
 	   //장기 미접속 인원 메일 보내기
 	   public void unAccessSendMail(List<UserVO> longUnAccess)throws Exception;
+	   
+	   //이메일 찾기 Ajax 핸드폰 번호인증 추가 :: 준형
+	   public int checkphone(String phone);
 }

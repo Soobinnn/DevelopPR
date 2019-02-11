@@ -1,9 +1,9 @@
 .findEmail
 {
-font-family: 'Noto Sans KR', sans-serif;
-margin-bottom : 150px;
-margin-top : 150px; 
-}
+    margin-bottom:180px;
+    margin-top:180px;
+    font-family: 'Noto Sans KR', sans-serif;
+    }
 .findEmail .findEmail_sec {
    display: flex;
    flex-direction: row;
@@ -34,7 +34,7 @@ margin-top : 150px;
 .findEmail #findEmail_li1
 {
  color : black;
- font-size: 37px;
+ font-size: 2.4rem;
  margin-bottom : 60px;
  text-align : center;
  color : white;
@@ -42,18 +42,18 @@ margin-top : 150px;
 
 .findEmail #findEmail_li2
 {
-   font-size: 20px;
+   font-size: 1.3rem;
    margin-bottom : 70px;
 }
 
 .findEmail #findEmail_li3
 {
-   font-size: 20px;
+   font-size: 1.3rem;
    margin-bottom : 60px;
 }
 .findEmail #findEmail_li4
 {
-   font-size: 17px;
+   font-size: 1.1rem;
    margin-bottom : 40px;
    color : white;
 }
@@ -105,7 +105,7 @@ margin-top : 150px;
    position:relative;
    left : 40px;
    color : #02456F;
-   font-size : 15px;
+   font-size : 1rem;
 }
 .findEmail #span_Pw2
 {
@@ -128,7 +128,7 @@ margin-top : 150px;
   background: white;
 	border: 2px solid #585858;
 	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
-   
+  	font-size: 0.8rem; 
    position: relative;
    left : 150px;
    border-radius: 150px / 150px;
@@ -141,17 +141,17 @@ margin-top : 150px;
 }
 .findEmail #nextStep
 {
-   width : 120px;
-   height: 48px;
+ font-size:1.2rem;
+   width : 170px;
+   height: 53px;
    background: white;
-	border: 2px solid #585858;
-	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
-  
+   border: 2px solid #585858;
+   border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
    position: relative;
-   left : 190px;
+   left : 170px;
    top : 30px;
    border-radius: 120px / 120px;
-  font-size : 19px;
+  
 }
 .findEmail #nextStep:hover
 {
@@ -164,4 +164,43 @@ margin-top : 150px;
     top: 9px;
 	width:35px;
 	height:35px;
+}
+
+.findEmail input[type='radio']{
+	display:none;
+}
+
+.findEmail input[type='radio'] + label{
+	    
+	    display:inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left:20px;
+        margin-right:5px;
+        background: url('../../resources/resume/20_off.png');
+}
+
+.findEmail input[type='radio']:checked + label{ 
+  
+		display:inline-block;
+        background: url('../../resources/resume/20_on.png');  
+        width:20px;
+        height:20px;
+}
+#findEmail_label 
+{
+	position:relative;
+	bottom:295px;
+	left:30px;
+}
+#findEmail_label2
+{
+	position:relative;
+	bottom:299px;
+	left:30px;
+	font-size:1.1rem;
+}
+.findEmail *:focus
+{
+   outline:none;
 }

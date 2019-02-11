@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmail.css'/>"/>
 <title>이메일 찾기</title>
 <script type="text/JavaScript">
@@ -49,10 +50,11 @@
                         <li id="findEmail_li5">
                            <input type="button" id="nextStep" name="nextStep" value="다음단계" onclick="nextStep()">
                         </li>
-                              <label for="radio">
+                              
                                  <input type="radio" id="radio">
-                              <span id="span_sell2">휴대폰 인증</span>
-                              </label>
+                              
+                              <label for="radio" id="findEmail_label"></label>
+                              <label for="radio" id="findEmail_label2">휴대폰 인증</label>
                   </ul>   
             </div>
          <div id="sec3"></div>

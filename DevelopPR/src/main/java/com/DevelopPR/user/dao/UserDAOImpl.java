@@ -171,5 +171,11 @@ public class UserDAOImpl implements UserDAO
 		   List<UserVO> listUnAccess = sqlSession.selectList("user.longUnAccess");
 		   return listUnAccess;
 	   }
+	   
+	 //이메일 찾기 Ajax 핸드폰 번호인증 추가 :: 준형
+	   @Override
+	   public int checkphone(String phone) {
+		   return sqlSession.selectOne("user.checkPhone",phone);
+	   }
 
 }

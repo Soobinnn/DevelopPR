@@ -78,10 +78,10 @@ public class UserController
   private OAuth2Parameters googleOAuth2Parameters;
   private OAuth2Operations oauthOperations;
   
-//준형 findPwEmail 추가
+  //findPwEmail 추가
   @Inject 
   private JavaMailSender mailSender;
-//
+
   
   // 회원 목록
   @RequestMapping("list")
@@ -112,7 +112,7 @@ public class UserController
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
-	  
+	  System.out.println(vo);
 	  userService.insertUser(vo);
 	  
 	  String userEmail = vo.getUserEmail();
@@ -121,7 +121,6 @@ public class UserController
 	  model.addAttribute("userName", userName);
 	  return "basic/user/joining";
   }
-//--이메일 찾기 수정 : 준형---------------------------------------------------------------------------------------------------------
   // 이메일 찾기 폼
   @RequestMapping("findEmail")
   public String userFindEmail()
@@ -167,13 +166,20 @@ public class UserController
 	  
 	  return mav;
   }
-//--이메일 찾기 수정 : 준형------------------------------------------------------------------------------------------------------------
- 
-//Pw 찾기 준형 --------------------------------------------------------------------------------------------------------------------
+  //이메일 찾기 본인인증 폰번호 체크 Ajax :: 준형-----------------------------------------------------------------------------------
+  @RequestMapping("PhoneCheck")
+  @ResponseBody
+  public int PhoneCheck(String phone) throws Exception{
+	  System.out.println(phone);
+	  int temp = userService.checkphone(phone);
+	  System.out.println(temp);
+	return temp;
+  }
+ //--------------------------------------------------------------------------------------------------------------------
  //PW 찾기 폼으로 이동 , 기능매핑에 추가해야함. 
  @RequestMapping(value="findPasswordForm")
  public String userFindPwForm() {
-	  return "user/findPasswordForm";
+	  return "basic/user/findPasswordForm"; // tiles basic 추가 :: 준형-------------------------------------------------
  }
  
  // PW 찾기 할때 Ajax 이메일 중복체크
@@ -212,10 +218,10 @@ public class UserController
 	  System.out.println(keyCode);
 	  System.out.println(userEmail);
 	  
-	  return "user/findPwEmail";
+	  return "basic/user/findPwEmail"; // tiles basic 추가 :: 준형------------------------------------------------------------
  }
  
- //Pw 찾기 인증번호 ajax : 준형
+ //Pw 찾기 인증번호 ajax
  @RequestMapping(value="findPwAuth")
  @ResponseBody
  public boolean userFindPwAuth(HttpSession session, String AuthNum) {
@@ -232,7 +238,7 @@ public class UserController
 }
 
  
- //Pw 찾기 재설정 : 준형
+ //Pw 찾기 재설정
  @RequestMapping(value="findPwReset" , method=RequestMethod.POST)
  public String userFindPwReset(@ModelAttribute UserVO vo) {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
@@ -241,8 +247,6 @@ public class UserController
 	
 	  return "user/findPwResetConfirm";
  }
-//Pw 찾기 준형 ------------------------------------------------------------------------------------------------------------------------
- 
  
   // 로그인 화면(GET)
   @RequestMapping(value="login", method=RequestMethod.GET)
