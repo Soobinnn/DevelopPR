@@ -1,22 +1,14 @@
 =\=\=\=\=\=\=
-<<<<<<< HEAD
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/Soobinnn/DevelopPR.git
-=======
->>>>>>> branch 'master' of https://github.com/Soobinnn/DevelopPR.git
 eclipse.preferences.version=1
 encoding//src/main/java/com/DevelopPR/community/service/ReplyService.java=UTF-8
 encoding//src/main/java/com/DevelopPR/community/service/ReplyServiceImpl.java=UTF-8
-<<<<<<< HEAD
 encoding//src/main/webapp/resources/kimkiseong/MyPortFolio.jsp=UTF-8
 encoding//src/main/webapp/resources/kimkiseong/whoAmI.jsp=UTF-8
-=======
->>>>>>> branch 'master' of https://github.com/Soobinnn/DevelopPR.git
 encoding//src/main/webapp/resources/paintweb/lang/ko.json=UTF-8
+encoding//src/main/webapp/resources/resume/colorful2.jpg=UTF-8
 encoding//src/main/webapp/resources/resume/resume.css=UTF-8
-<<<<<<< HEAD
-=======
 encoding//src/main/webapp/resources/user/user.css=UTF-8
 encoding//target/m2e-wtp/web-resources/META-INF/MANIFEST.MF=UTF-8
->>>>>>> branch 'master' of https://github.com/Soobinnn/DevelopPR.git
 encoding/<project>=UTF-8

@@ -7,8 +7,12 @@
 <%@ include file="../../views/include/tag_header.jsp" %>
 
 <script>	
-
-
+window.onload = function() {
+	  var input = document.getElementById("hash").focus();
+}
+$('#hash').blur(function(){
+	$('#comment').css('display', 'none');
+})
 function fn_uploadImage() {
 	$("#uploadImageFile").click();
 }
@@ -25,6 +29,7 @@ function uploadImageFileChange() {
 	    success : function(data){
 	    	$('#uploadImage').attr("src", "${path}/fileDownload?filename="+data);
 	    	$('#imageEditor').css('display', 'inline-block');
+	    	$('#LoadImage').css('display', 'none');
 	    	$('#uploadImg').attr("value", data);
         }
 	});
@@ -35,8 +40,9 @@ function fn_modifyImage() {
 }
 
 function fn_removeImage() {
-	$('#uploadImage').removeAttr("src");
+	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.png");
 	$('#imageEditor').css('display', 'none');
+	$('#LoadImage').css('display', 'inline-block');
 }
 
 	function add_item(){
@@ -56,6 +62,7 @@ function fn_removeImage() {
 		$('.color').click(function () {
 			var color = $('input[name="color"]:checked').val();
 			var param = "color="+color;
+
 			 $.ajax({
 			        async : true,
 			        type :'POST',
@@ -65,10 +72,76 @@ function fn_removeImage() {
 			        {
 			        	console.log("success:"+data);
 			        	$(".header").attr("src", data);
+			        	hash();
 			        }
 			    })
+			    
+			    
+			  
 		})
 	})
+	function hash() {
+			var color = $('input[name="color"]:checked').val();
+			var text = "초기값";
+				if(color=="black"){
+					text=" # 이력서   # 포트폴리오  # 면접  # 두근두근  # 누가볼지궁금";
+				}
+			   else if(color=="bluewhite") {
+				   text=" # 이력서   # 포트폴리오  # 나무보다숲  # 두근두근  # 누가볼지궁금";
+			   }
+			   else if(color=="brown") {
+				   text="brown";
+			   }
+			   else if(color=="colorful") {
+				   text="colorful";
+			   }
+			   else if(color=="colorful2") {
+				   text="colorful2";
+			   }
+			   else if(color=="gray") {
+				   text="gray";
+			   }
+			   else if(color=="green") {
+				   text="green";
+			   }
+			   else if(color=="mint") {
+				   text="mint";
+			   }
+			   else if(color=="pink") {
+				   text="pink";
+			   }
+			   else if(color=="purple") {
+				   text="purple";
+			   }
+			   else if(color=="white") {
+				   text="white";
+			   }
+			   else if(color=="yellow") {
+				   text="yellow";
+			   }
+			   else {
+				   text="실패..";
+			   }
+	        	$("#hash").attr("value", text);
+	}
+	
+	function backgroundtext(){
+		var color = $('input[name="color"]:checked').val();
+		var param = "colortext="+color;
+
+		  $.ajax({
+		        async : true,
+		        type :'POST',
+		        data : param,
+		        url : '${path}/resume/backgroundtext',
+		        success : function(data)
+		        {	
+		        	console.log("success:"+data);
+		        	
+		        	$("#hash").attr("value", data);
+		        }
+		    })
+	}
 	
 	function checks(){
 		if($('#userPhone').val() =="")
@@ -154,33 +227,38 @@ function fn_removeImage() {
 <form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
         <header>
-			<img src="/DevelopPR/resources/resume/gray.jpg" class="header"/>
+			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 등록</div>
-               <div class="c">당신의 날개를 펼치세요. Spread Your Wings.</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
-					<img id="uploadImage" />
+					<img id="uploadImage" src="/DevelopPR/resources/resume/person.png"/>
 					<input type="hidden" id= "uploadImg" name="profile_photo"/>
 					
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
-					<a href="javascript:fn_uploadImage('')" class="btn sty13">Load Image</a>
+					<div id="LoadImage">
+						<a href="javascript:fn_uploadImage('')" class="btn sty13">이력서 사진 추가</a>
+					</div>
 					<div id="imageEditor" style="display:none;">
-						<a href="javascript:fn_modifyImage('');" class="btn sty13">Image Editor</a>
-						<a href="javascript:fn_removeImage('');" class="btn sty13">Delete</a>
+						<a href="javascript:fn_modifyImage('');" class="btn sty13">사진 수정</a>
+						<a href="javascript:fn_removeImage('');" class="btn sty13">사진 삭제</a>
 					</div>	
 					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none"/>
 				</div>
             </div>
              
         </header>
+        	<div id="comments">
+	        	<div id="comment">Comment</div>
+	        	<input type="text" name="motto" class="hash" id="hash" value=" # 이력서   # 포트폴리오  # 면접  # 두근두근  # 누가볼지궁금"/>
+	        </div>
            	<div class="colors">
-           		<div>헤더 배경 선택</div>
+           		<div id="HeadBack">헤더 배경 선택</div>
            			<div class="a">
-	           			<input type="radio" id="r01" name="color" class="color" value="black"/>
+	           			<input type="radio" id="r01" name="color" class="color" value="black" checked/>
 	                    <label for="r01" class="la"></label> Black
 	                    <input type="radio" id="r02" name="color" class="color" value="bluewhite"/>
 	                    <label for="r02" class="la"></label> BlueWhite
@@ -193,7 +271,7 @@ function fn_removeImage() {
 	           		 <label for="r04" class="la"></label> Colorful
 	           		<input type="radio" id="r05" name="color" class="color" value="colorful2"/>
 	           		 <label for="r05" class="la"></label> Colorful2
-	           		<input type="radio" id="r06" name="color" class="color" value="gray" checked/>
+	           		<input type="radio" id="r06" name="color" class="color" value="gray"/>
 	           		 <label for="r06" class="la"></label> Gray
 	           		</div>
 	           		
@@ -217,6 +295,7 @@ function fn_removeImage() {
      
            	</div>
         <div id="pills">
+        	<div id="danger">주의사항</div>
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
 	        <div class="pill">2. <input type="button" class="plus" value="+"> 를 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
 	    	<div class="pill">3. 자격증, 학력/교육, 경력, tech-stack 정보 기입 시 빈 칸이라면 <input type="button" class="x" value="X"> 를 추천합니다.</div>
@@ -250,7 +329,7 @@ function fn_removeImage() {
                               <input type="hidden" name="name" value="${dto.userName}"/> 
                         </div>
                         
-                         <div id="p_name">
+                         <div id="p_age">
                             <div class="name" >
                        		    나 이 *
                             </div>
@@ -327,21 +406,11 @@ function fn_removeImage() {
                                 <input type="text" name="prefer_place" class="textlong"/>
                             </div>
                         </div>
-
-                        <div id="comment">
-                            <div class="name">
-                            소개/ 좌우명/ Comment
-                            </div>
-                            <div class="info">
-                                <input type="text" class="textlong" placeholder="1~1000자로 입력해주세요." id="commentss" name="motto"/>
-                                <br/> <span id="CCheckMsg"></span>
-                            </div>
-                        </div>
            </div>
 
            
            <div class="information">
-               <div class="acq">
+               <div class="acqall">
 	               <div class="subject">자격 정보 <input type="button" value=" + " class="plus" onclick="add_acqitem()"></div>
 	                    <div class="acq_ok">
 	                       <div id="acqs">
@@ -369,7 +438,7 @@ function fn_removeImage() {
                 
                 
                 
-                <div class="edu">
+                <div class="eduall">
                     <div class="subject">학력/교육 정보 <input type="button" value=" + " class="plus" onclick="add_eduitem()"></div>
                     <div class="edu_ok">
                        <div id="edus">
@@ -394,7 +463,7 @@ function fn_removeImage() {
                 </div>
                 
                 
-                <div class="career">
+                <div class="careerall">
                     <div class="subject">경력 정보 <input type="button" value=" + " class="plus" onclick="add_caritem()"></div>
                     <div class="career_ok">
                         
@@ -430,14 +499,10 @@ function fn_removeImage() {
                 </div>
                 <div id="techs">
 	                <div class="tech">
-						<div>
 							<input type="text" placeholder="기술약자" class="abb" name="abb"/>
-						</div>
-						<div class="techinfo">
 							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-							<input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-						</div>
-						<input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">
+							<input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/><br/>
+							<input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">							
 					</div>
                 </div>
             </div>
@@ -453,14 +518,10 @@ function fn_removeImage() {
     </div>
 
 					<div id="pre_set" style="display:none">
-							<div>
-						       <input type="text" class="abb" name="abb"/>
-						    </div>
-						    <div class="techinfo">
+						       <input type="text" class="abb" placeholder="기술약자" name="abb"/>
 						       <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-						    </div>
-						       <input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">
+						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/><br/>
+						       <input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">						        
 					</div>
 					
 					<div id="career" style="display:none">
