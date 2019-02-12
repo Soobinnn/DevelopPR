@@ -442,7 +442,7 @@ public class UserController
 
     // 세션 등록
     UserVO vo2 = new UserVO();
-    vo2.setUserEmail(vo.getUserEmail());
+    vo2.setUserEmail(vo.getUserEmail()+"_kakao");
     vo2.setUserNick(vo.getUserNick());
     vo2.setUserName(vo.getUserName());
     vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -501,7 +501,7 @@ public class UserController
 	      }
 	      // 세션 등록
 	      UserVO vo2 = new UserVO();
-	      vo2.setUserEmail(vo.getUserEmail());
+	      vo2.setUserEmail(vo.getUserEmail()+"_naver.com");
 	      vo2.setUserNick(vo.getUserNick());
 	      vo2.setUserName(vo.getUserName());
 	      vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -573,7 +573,7 @@ public class UserController
 
       // 세션 등록
       UserVO vo2 = new UserVO();
-      vo2.setUserEmail(vo.getUserEmail());
+      vo2.setUserEmail(vo.getUserEmail()+"_google");
       vo2.setUserNick(vo.getUserNick());
       vo2.setUserName(vo.getUserName());
       vo2.setUserIs_seek(vo.getUserIs_seek());
