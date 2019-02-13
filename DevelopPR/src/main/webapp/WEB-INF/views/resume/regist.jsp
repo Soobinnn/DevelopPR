@@ -10,9 +10,18 @@
 window.onload = function() {
 	  var input = document.getElementById("hash").focus();
 }
+$(function(){
 $('#hash').blur(function(){
 	$('#comment').css('display', 'none');
+	$('#hash').css('border','none');
 })
+$('#hash').focus(function(){
+	$('#comment').css('display','inline-block');
+	$('#hash').css('border','solid 2px #585858');
+	
+})
+})
+
 function fn_uploadImage() {
 	$("#uploadImageFile").click();
 }
@@ -51,6 +60,20 @@ function fn_removeImage() {
 		div.classList.add( 'tech' );
 		div.innerHTML = document.getElementById('pre_set').innerHTML;
 		document.getElementById('techs').appendChild(div);
+		   var rangeSlider = function(){
+		    	  var slider = $('.tech'),
+		    	      range = $('.input-range'),
+		    	      value = $('.value');
+		    	    
+		    	  slider.each(function(){
+
+		    	    range.on('input', function(){
+		    	      $(this).next(value).html(this.value);
+		    	    });
+		    	  });
+		    	};
+
+		    	rangeSlider();
 	}
 
 	function remove_item(obj){
@@ -226,8 +249,8 @@ function fn_removeImage() {
 <div class="resumeRegist">
 <form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
-        <header>
 			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
+        <header>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 등록</div>
@@ -498,12 +521,14 @@ function fn_removeImage() {
 					<input type="button" value=" + " class="plus" onclick="add_item()">
                 </div>
                 <div id="techs">
-	                <div class="tech">
+	                 <div class="tech">
 							<input type="text" placeholder="기술약자" class="abb" name="abb"/>
 							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-							<input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/><br/>
-							<input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">							
-					</div>
+							<input class="input-range" type="range" min="0" step="5" max="100" value="0" name="tech_percent"/>
+							 <div class="value">0</div>
+							<br/>
+							<input type="button" class="x" value="X" onclick="remove_item(this)">							
+					</div> 
                 </div>
             </div>
         
@@ -516,12 +541,36 @@ function fn_removeImage() {
         <input type="submit" id="confirm" class="button2" value="등록하기"/>
         <div class="holl"></div>
     </div>
+    
+    <script>
+		    var rangeSlider = function(){
+		    	  var slider = $('.tech'),
+		    	      range = $('.input-range'),
+		    	      value = $('.value');
+		    	    
+		    	  slider.each(function(){
+
+		    	    value.each(function(){
+		    	      var value = $(this).prev().attr('value');
+		    	      $(this).html(value);
+		    	    });
+
+		    	    range.on('input', function(){
+		    	      $(this).next(value).html(this.value);
+		    	    });
+		    	  });
+		    	};
+
+		    	rangeSlider();
+    </script>
 
 					<div id="pre_set" style="display:none">
-						       <input type="text" class="abb" placeholder="기술약자" name="abb"/>
-						       <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/><br/>
-						       <input type="button" class="x" value="X" class="removebutton" onclick="remove_item(this)">						        
+						  	<input type="text" placeholder="기술약자" class="abb" name="abb"/>
+							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+							<input class="input-range" type="range" min="0" step="5" max="100" value="0" name="tech_percent"/>
+							 <div class="value">0</div>
+							<br/>
+							<input type="button" class="x" value="X" onclick="remove_item(this)">					        
 					</div>
 					
 					<div id="career" style="display:none">
