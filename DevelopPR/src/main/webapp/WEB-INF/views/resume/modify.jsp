@@ -139,6 +139,7 @@ function fn_removeImage() {
 						    }
 				});
 	});
+
 </script>	
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
@@ -151,7 +152,6 @@ function fn_removeImage() {
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 수정</div>
-               <div class="c">"~~~~~~~~~~~~~~~~~~"</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
@@ -171,29 +171,47 @@ function fn_removeImage() {
             </div>
              
         </header>
+        	<div id="comments">
+	        	<div id="comment">Comment</div>
+	        	<input type="text" name="motto" class="hash" id="hash" value="${dto.motto}"/>
+	        </div>
         <div class="colors">
            		<div>background</div>
-           			<div class="a">
-	           		<input type="radio" name="color" class="color" value="black"/>Black
-	           		<input type="radio" name="color" class="color" value="bluewhite"/>BlueWhite
-	           		<input type="radio" name="color" class="color" value="brown"/>Brown
+           	<div class="a">
+	           			<input type="radio" id="r01" name="color" class="color" value="black"/>
+	                    <label for="r01" class="la5"><p class="p_label">Black</p></label>
+	                    <input type="radio" id="r02" name="color" class="color" value="bluewhite"/>
+	                    <label for="r02" class="la1"><p class="p_label">BlueWhite</p></label>
+		           		<input type="radio" id="r03" name="color" class="color" value="brown"/>
+		           		<label for="r03" class="la5"><p class="p_label">Brown</p></label>
 	           		</div>
+	           		
 	           		<div class="b">
-	           		<input type="radio" name="color" class="color" value="colorful"/>Colorful
-	           		<input type="radio" name="color" class="color" value="colorful2"/>Colorful2
-	           		<input type="radio" name="color" class="color" value="gray" checked/>Gray
+	           		<input type="radio" id="r04" name="color" class="color" value="colorful"/>
+	           		 <label for="r04" class="la1"><p class="p_label">Colorful1</p></label>
+	           		<input type="radio" id="r05" name="color" class="color" value="colorful2"/>
+	           		 <label for="r05" class="la1"><p class="p_label">Colorful2</p></label>
+	           		<input type="radio" id="r06" name="color" class="color" value="gray"/>
+	           		 <label for="r06" class="la4"><p class="p_label">Gray</p></label>
 	           		</div>
+	           		
 	           		<div class="c">
-	           		<input type="radio" name="color" class="color" value="green"/>Green
-	           		<input type="radio" name="color" class="color" value="mint"/>Mint
-	           		<input type="radio" name="color" class="color" value="pink"/>Pink
+	           		<input type="radio" id="r07" name="color" class="color" value="green"/>
+	           		 <label for="r07" class="la5"><p class="p_label">Green</p></label>
+	           		<input type="radio" id="r08" name="color" class="color" value="mint"/>
+	           		 <label for="r08" class="la4"><p class="p_label">Mint</p></label>
+	           		<input type="radio" id="r09" name="color" class="color" value="pink"/>
+	           		 <label for="r09" class="la4"><p class="p_label">Pink</p></label>
 					</div>
+					
 	           		<div class="d">
-	           		<input type="radio" name="color" class="color" value="purple"/>Purple
-	           		<input type="radio" name="color" class="color" value="white"/>White
-	           		<input type="radio" name="color" class="color" value="yellow"/>Yellow
+	           		<input type="radio" id="r10" name="color" class="color" value="purple"/>
+	           		 <label for="r10" class="la6"><p class="p_label">Purple</p></label>
+	           		<input type="radio" id="r11" name="color" class="color" value="white"/>
+	           		 <label for="r11" class="la5"><p class="p_label">White</p></label>
+	           		<input type="radio" id="r12" name="color" class="color" value="yellow"/>
+	           		 <label for="r12" class="la6"><p class="p_label">Yellow</p></label>
 	           		</div>
-     
            	</div>
         <div id="pills">
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
@@ -212,13 +230,16 @@ function fn_removeImage() {
                             </div> 
                             <div class="s_info">
                               <c:if test="${dto.is_work==0}">
-                                <input type="radio" name="is_work" value="0" checked/>구직중
-                            	<input type="radio" name="is_work" value="1"/>재직중    
+                                <input type="radio" id="r1" name="is_work" value="0" checked/>
+                                <label for="r1" class="la2"><p class="p_label">구직중 </p></label>
+                            	<input type="radio" id="r2"  name="is_work" value="1"/>
+ 								<label for="r2" class="la2"><p class="p_label">재직중 </p></label>
                               </c:if>
                               <c:if test="${dto.is_work==1}">
-	                              <input type="radio" name="is_work" value="0"/>구직중
-	                              <input type="radio" name="is_work" value="1" checked/>재직중
-                              </c:if>
+                                <input type="radio" id="r1" name="is_work" value="0"/>
+                                <label for="r1" class="la2"><p class="p_label">구직중 </p></label>
+                            	<input type="radio" id="r2"  name="is_work" value="1" checked/>
+ 								<label for="r2" class="la2"><p class="p_label">재직중 </p></label>                              </c:if>
                             </div>
                         </div>
                     </div>
@@ -232,13 +253,14 @@ function fn_removeImage() {
                             </div>
                         </div>
                         
-                         <div id="p_name">
+                         <div id="p_age">
                             <div class="name" >
                        		    나 이 *
                             </div>
                             <div class="p_info">
                                 <input type="text" class="textlong" name="age" value="${dto.age}" placeholder="숫자로 입력해주세요."/>
                             </div>
+                              <span id="ageCheckMsg"></span>
                         </div>
 
                         <div id="birth">
@@ -257,12 +279,17 @@ function fn_removeImage() {
                             <div class="phone_info">
                             <input id="userPhone" type="text" autocomplete="off" value="${dto.cell_num}" placeholder="ex) 01012345678" name="cell_num" class="textshort">
                            	<c:if test="${dto.cnum_is_open==0}">
-                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>공개
-                                <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose" checked/>비공개
+                                <input type="radio" id="pr1" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>
+                                <label for="pr1" class="la" ><p class="p_label">공개 </p></label>
+                                <input type="radio" id="pr2" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose" checked/>
+                                <label for="pr2" class="la" ><p class="p_label">비공개 </p></label>
+                       
                             </c:if>
                           	<c:if test="${dto.cnum_is_open==1}">
-                                <input type="radio" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>공개
-                                <input type="radio" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>비공개
+                                 <input type="radio" id="pr1" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>
+                                <label for="pr1" class="la" ><p class="p_label">공개 </p></label>
+                                <input type="radio" id="pr2" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>
+                                <label for="pr2" class="la" ><p class="p_label">비공개 </p></label>
                             </c:if>
                             <br/> <span id="phoneCheckMsg"></span>
                             </div>

@@ -249,8 +249,8 @@ function fn_removeImage() {
 <div class="resumeRegist">
 <form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
-			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
         <header>
+			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
                <div class="b">이력서 등록</div>
