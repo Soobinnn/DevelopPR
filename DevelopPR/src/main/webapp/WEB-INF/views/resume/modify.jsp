@@ -7,6 +7,21 @@
 <%@ include file="../../views/include/tag_header.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">	
+window.onload = function() {
+	  var input = document.getElementById("hash").focus();
+}
+$(function(){
+$('#hash').blur(function(){
+	$('#comment').css('display', 'none');
+	$('#hash').css('border','none');
+})
+$('#hash').focus(function(){
+	$('#comment').css('display','inline-block');
+	$('#hash').css('border','solid 2px #585858');
+	
+})
+})
+
 function fn_uploadImage() 
 {
 	$("#uploadImageFile").click();
@@ -25,6 +40,7 @@ function uploadImageFileChange()
 	    success : function(data){
 	    	$('#uploadImage').attr("src", "${path}/fileDownload?filename="+data);
 	    	$('#imageEditor').css('display', 'inline-block');
+	    	$('#LoadImage').css('display', 'none');
 	    	$('#uploadImg').attr("value", data);
         }
 	});
@@ -35,8 +51,9 @@ function fn_modifyImage() {
 }
 
 function fn_removeImage() {
-	$('#uploadImage').removeAttr("src");
+	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.png");
 	$('#imageEditor').css('display', 'none');
+	$('#LoadImage').css('display', 'inline-block');
 }
 
 	function add_item(){
@@ -45,6 +62,20 @@ function fn_removeImage() {
 		div.classList.add( 'tech' );
 		div.innerHTML = document.getElementById('pre_set').innerHTML;
 		document.getElementById('techs').appendChild(div);
+		 var rangeSlider = function(){
+	    	  var slider = $('.tech'),
+	    	      range = $('.input-range'),
+	    	      value = $('.value');
+	    	    
+	    	  slider.each(function(){
+
+	    	    range.on('input', function(){
+	    	      $(this).next(value).html(this.value);
+	    	    });
+	    	  });
+	    	};
+
+	    	rangeSlider();
 	}
 
 	function remove_item(obj){
@@ -124,7 +155,7 @@ function fn_removeImage() {
 		});
 		$('#commentss').blur(function()
 				{
-						    var userCCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
+						    var userCCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{0,1000}$/;
 						    if(!userCCheck.test($('#commentss').val()))
 						    {
 						        $('#commentss').css({"border" :"2px solid red","background-color":"#FFCECE"});
@@ -145,26 +176,27 @@ function fn_removeImage() {
 </head>
 <body>
 <div class="resumeRegist">
-<form name="form1" method="post" action="${path}/resume/modifyupdate" onsubmit="return checks()">
+<form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
+			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
         <header>
-        <img src="/DevelopPR/resources/resume/${dto.color}.jpg" class="header"/>
             <div class="head">
                <div class="a">DevelopPR</div>
-               <div class="b">이력서 수정</div>
+               <div class="b">이력서 등록</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
-					<img id="uploadImage" src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
-					
-					<input type="hidden" id="uploadImg" value="${dto.profile_photo}" name="profile_photo"/>
+					<img id="uploadImage" src="/DevelopPR/resources/resume/person.png"/>
+					<input type="hidden" id= "uploadImg" name="profile_photo"/>
 					
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
-					<a href="javascript:fn_uploadImage('')" class="btn sty13">Load Image</a>
+					<div id="LoadImage">
+						<a href="javascript:fn_uploadImage('')" class="btn sty13">이력서 사진 변경</a>
+					</div>
 					<div id="imageEditor" style="display:none;">
-						<a href="javascript:fn_modifyImage('');" class="btn sty13">Image Editor</a>
-						<a href="javascript:fn_removeImage('');" class="btn sty13">Delete</a>
+						<a href="javascript:fn_modifyImage('');" class="btn sty13">사진 수정</a>
+						<a href="javascript:fn_removeImage('');" class="btn sty13">사진 삭제</a>
 					</div>	
 					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none"/>
 				</div>
@@ -176,7 +208,7 @@ function fn_removeImage() {
 	        	<input type="text" name="motto" class="hash" id="hash" value="${dto.motto}"/>
 	        </div>
         <div class="colors">
-           		<div>background</div>
+          <div id="HeadBack">헤더 배경 선택</div>
            	<div class="a">
 	           			<input type="radio" id="r01" name="color" class="color" value="black"/>
 	                    <label for="r01" class="la5"><p class="p_label">Black</p></label>
@@ -214,9 +246,10 @@ function fn_removeImage() {
 	           		</div>
            	</div>
         <div id="pills">
+        	<div id="danger">주의사항</div>
 	        <div class="pill">1. * 는 필수 입력 사항입니다.</div>
-	        <div class="pill">2. <input type="button" value="+">을 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
-	    	<div class="pill">3. 자격증, 학력/교육, 경력, tech-stack 정보 기입 시 빈 칸이라면 <input type="button" value="삭제">를 추천합니다.</div>
+	        <div class="pill">2. <input type="button" class="plus" value="+"> 를 누르면 해당 정보를 추가 기입 할 수 있습니다.</div>
+	    	<div class="pill">3. 자격증, 학력/교육, 경력, tech-stack 정보 기입 시 빈 칸이라면 <input type="button" class="x" value="X"> 를 추천합니다.</div>
 	    </div>
         <div class="main">
             <div class="detail">
@@ -268,7 +301,7 @@ function fn_removeImage() {
                             생 일 * 
                             </div>
                             <div class="birth_info">
-                                <input type="date" value="${dto.birthday}" name="birthday" />
+                                <input type="date" id="date" value="${dto.birthday}" name="birthday" />
                             </div>
                         </div>
 
@@ -297,22 +330,24 @@ function fn_removeImage() {
 
                         <div id="email">
                             <div class="name">
-                                이메일 * 
+                           		     이메일 * 
                             </div>
-                            <div class="email_info" style="display:flex;">
+                            <div class="email_info">
                                 <div class="textshort">${dto.email}</div>
                                 <input type="hidden" value="${dto.email}" name="email"/>
-                                <div style="padding-top:20px">
                               	<c:if test="${dto.email_is_open==0}">
-	                                <input type="radio" name="email_is_open" value="1"/>공개
-	                                <input type="radio" name="email_is_open" value="0" checked/>비공개
+	                                <input type="radio" name="email_is_open" id="er1" value="1"/>
+	                                <label for="er1" class="la"><p class="p_label">공개 </p></label>
+	                                <input type="radio" name="email_is_open" id="er2" value="0" checked/>
+	                                <label for="er2" class="la"><p class="p_label">비공개 </p></label>
 	                            </c:if>
 	                            <c:if test="${dto.email_is_open==1}">
-	                                <input type="radio" name="email_is_open" value="1" checked/>공개
-	                                <input type="radio" name="email_is_open" value="0"/>비공개
+	                                <input type="radio" name="email_is_open" id="er1" value="1" checked/>
+	                                <label for="er1" class="la"><p class="p_label">공개 </p></label>
+	                                <input type="radio" name="email_is_open" id="er2" value="0"/>
+	                                <label for="er2" class="la"><p class="p_label">비공개 </p></label>
 	                            </c:if>
 	                            </div>
-                            </div>
                         </div>
 
                         <div id="blog">
@@ -320,24 +355,28 @@ function fn_removeImage() {
                        			     블로그
                             </div>
                             <div class="info">
-                                <input type="text" name="blog" placeholder="정규표현식 추가" value="${dto.blog}" class="textlong"/>
+                                <input type="text" name="blog" placeholder="" value="${dto.blog}" class="textlong"/>
                             </div>
                         </div>
 
                         <div id="address">
                             <div class="name">
-                            주소 *
+                         		   주소 *
                             </div>
                             <div class="info">
                                     <input type="text" name="address" placeholder="정규표현식 추가" value="${dto.address}" class="textshort"/>
                                     
                                 	<c:if test="${dto.address_is_open==0}">    
-		                                <input type="radio" name="address_is_open" value="1"/>공개
-		                                <input type="radio" name="address_is_open" value="0" checked/>비공개
+		                                <input type="radio" id="ar1" name="address_is_open" value="1"/>
+		                                	<label for="ar1" class="la"><p class="p_label">공개 </p></label>
+		                                <input type="radio" id="ar2" name="address_is_open" value="0" checked/>
+		                                	<label for="ar2" class="la"><p class="p_label">공개 </p></label>
 		                            </c:if>
 		                            <c:if test="${dto.address_is_open==1}">    
-		                                <input type="radio" name="address_is_open" value="1" checked/>공개
-		                                <input type="radio" name="address_is_open" value="0"/>비공개
+		                          		<input type="radio" id="ar1" name="address_is_open" value="1" checked/>
+		                                	<label for="ar1" class="la"><p class="p_label">공개 </p></label>
+		                                <input type="radio" id="ar2" name="address_is_open" value="0"/>
+		                                	<label for="ar2" class="la"><p class="p_label">공개 </p></label>
 		                            </c:if>
 		                            
                             </div>
@@ -352,15 +391,6 @@ function fn_removeImage() {
                             </div>
                         </div>
 
-                        <div id="comment">
-                            <div class="name">
-                            소개/ 좌우명/ Comment
-                            </div>
-                            <div class="info">
-                               <input type="text" class="textlong" value="${dto.motto}" placeholder="1~1000자로 입력해주세요." id="commentss" name="motto"/>
-                  			   <br/> <span id="CCheckMsg"></span>
-                            </div>
-                        </div>
            </div>
 
            
@@ -368,7 +398,7 @@ function fn_removeImage() {
                
                
      
-               <div class="acq">
+               <div class="acqall">
 	               <div class="subject">자격 정보 <input type="button" value=" + " class="plus" onclick="add_acqitem()"></div>
 	                    <div class="acq_ok">
 	                       <div id="acqs">
@@ -384,7 +414,7 @@ function fn_removeImage() {
 										 document.write('<div class="acq">'+
 												 '<input type="text" class="textmiddle1" id="acq_date" value="'+dateSplit[i]+'" name="acq_date" placeholder="자격증 취득 날짜"/>'+
 												 '<input type="text" class="textmiddle2" id="acq_name" value="'+nameSplit[i]+'" name="acq_name" placeholder="자격증 이름"/>'+
-							                     '<input type="button" value="삭제" onclick="remove_acqitem(this)"/></div>'); 
+							                     '<input type="button" class="x" value="X" onclick="remove_acqitem(this)"/></div>'); 
 									 }
 	                          </script>
                           </div>
@@ -406,7 +436,7 @@ function fn_removeImage() {
                 
                 
                 
-                <div class="edu">
+                <div class="eduall">
                     <div class="subject">학력/교육 정보 <input type="button" value=" + " class="plus" onclick="add_eduitem()"></div>
                     <div class="edu_ok">
                        <div id="edus">
@@ -422,7 +452,7 @@ function fn_removeImage() {
  							for (var i in gdateSplit){
 								 document.write('<div class="edu"><input type="text" class="textmiddle1" id="edu_date" value="'+ gdateSplit[i] +'" name="gradu_year" placeholder="학력/교육 해당 년도"/>'+
 										 		'<input type="text" class="textmiddle2" id="edu_name" value="'+ enameSplit[i]+ '" name="edu_info" placeholder="학력/교육 이름"/>'+
-						                        '<input type="button" value="삭제" onclick="remove_eduitem(this)"/></div>'); 
+						                        '<input type="button"  class="x" value="X" onclick="remove_eduitem(this)"/></div>'); 
 							 }
                           </script> 
 							
@@ -445,10 +475,10 @@ function fn_removeImage() {
                 </div>
                 
                 
-                <div class="career">
+                <div class="careerall">
                     <div class="subject">경력 정보 <input type="button" value=" + " class="plus" onclick="add_caritem()"></div>
                     <div class="career_ok">
-                        
+                    
                        <div id="careers">
                        		   <script type="text/javascript">
                       
@@ -462,7 +492,7 @@ function fn_removeImage() {
 									 document.write('<div class="career">'+
 											 '<input type="text" class="textmiddle1" id="career_date" value="' + cdateSplit[i] +'" name="career_year" placeholder="경력 해당 년도"/>'+
 											 '<input type="text" class="textmiddle2" id="career_name" value="'+ cnameSplit[i]+ '" name="career_info" placeholder="회사 이름"/>'+
-							                 '<input type="button" value="삭제" onclick="remove_caritem(this)"/></div>'); 
+							                 '<input type="button" value="X" class="x" onclick="remove_caritem(this)"/></div>'); 
 								 }
 	                          </script>   
                        </div>
@@ -503,11 +533,31 @@ function fn_removeImage() {
 							 var percentSplit = tech_percent.split(',');
 							 
 							for (var i=0; i<abbSplit.length;i++){
-								 document.write('<div class="tech"><div><input type="text" class="abb" value="'+abbSplit[i]+'" name="abb"/></div>'+
-										 		'<div class="techinfo"><input type="text" class="techname" value="'+nameSplit[i]+ '" placeholder="기술 명" name="tech_name"/><br/>'+
-												'<input class="input-range" type="range" value="'+ percentSplit[i] +'"min="0" max="100" value="0" name="tech_percent"/>'+
-												'</div><input type="button" value="삭제" class="removebutton" onclick="remove_item(this)"></div>'); 
-							}
+										 		'<input type="text" placeholder="기술약자" value="'+abbSplit[i]+'" class="abb" name="abb"/>'+
+												'<input type="text" class="techname" placeholder="기술 명" value="'+nameSplit[i]+'" name="tech_name"><br/>'+
+												'<input class="input-range" type="range" min="0" step="5" max="100" value="'+percentSplit[i]+'" name="tech_percent"/>'+
+												'<div class="value">'+percentSplit[i]+'</div><br/><input type="button" class="x" value="X" onclick="remove_item(this)">';
+							}; 
+						    
+								    var rangeSlider = function(){
+								    	  var slider = $('.tech'),
+								    	      range = $('.input-range'),
+								    	      value = $('.value');
+								    	    
+								    	  slider.each(function(){
+
+								    	    value.each(function(){
+								    	      var value = $(this).prev().attr('value');
+								    	      $(this).html(value);
+								    	    });
+
+								    	    range.on('input', function(){
+								    	      $(this).next(value).html(this.value);
+								    	    });
+								    	  });
+								    	};
+
+								    	rangeSlider();
 							 </script>
 					
 					
@@ -525,32 +575,30 @@ function fn_removeImage() {
     </div>
 
 					<div id="pre_set" style="display:none">
-							<div>
-						       <input type="text" class="abb" name="abb"/>
-						    </div>
-						    <div class="techinfo">
-						       <input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
-						       <input class="input-range" type="range" min="0" max="100" value="0" name="tech_percent"/>
-						    </div>
-						       <input type="button" value="삭제" class="removebutton" onclick="remove_item(this)">
+							<input type="text" placeholder="기술약자" class="abb" name="abb"/>
+							<input type="text" class="techname" placeholder="기술 명" name="tech_name"><br/>
+							<input class="input-range" type="range" min="0" step="5" max="100" value="0" name="tech_percent"/>
+							 <div class="value">0</div>
+							<br/>
+							<input type="button" class="x" value="X" onclick="remove_item(this)">			
 					</div>
 					
 					<div id="career" style="display:none">
 	                       <input type="text" class="textmiddle1" id="career_date" name="career_year" placeholder="경력 해당 년도"/>
 	                       <input type="text" class="textmiddle2" id="career_name" name="career_info" placeholder="회사 이름"/>
-	                       <input type="button" value="삭제" onclick="remove_caritem(this)"/>
+	                       <input type="button" class="x" value="X" onclick="remove_caritem(this)"/>
 	                </div>
 					
 					<div id="edu" style="display:none">
                        <input type="text" class="textmiddle1" id="edu_date" name="gradu_year" placeholder="학력/교육 해당 년도"/>
                        <input type="text" class="textmiddle2" id="edu_name" name="edu_info" placeholder="학력/교육 이름"/>
-                       <input type="button" value="삭제" onclick="remove_eduitem(this)"/>
+                       <input type="button" class="x" value="X" onclick="remove_eduitem(this)"/>
 					</div>
 					
 					<div id="acq" style="display:none">
                        <input type="text" class="textmiddle1" id="acq_date" name="acq_date" placeholder="자격증 취득 날짜"/>
                        <input type="text" class="textmiddle2" id="acq_name" name="acq_name" placeholder="자격증 이름"/>
-                        <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
+                        <input type="button" class="x" value="X" onclick="remove_acqitem(this)"/>
                    	</div>
 </form>
 </div>

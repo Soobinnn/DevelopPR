@@ -358,7 +358,8 @@
    font-size:1.2rem;
    color: #fff;
    text-shadow: -1px 1px 5px black, 1px -1px 5px black;
-   width:650px;
+   width:640px;
+   padding-left:10px;
    text-align:start;
    border-radius:10px;
    border:none;
@@ -711,7 +712,7 @@
   border: 2px solid white;
   cursor: pointer;
   transition: .3s ease-in-out;
-}ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â¹
+}ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹
   input[type="range"]::-webkit-slider-thumb:hover {
     background-color: white;
     border: 2px solid #02456F;
