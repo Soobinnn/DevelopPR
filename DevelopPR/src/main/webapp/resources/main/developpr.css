@@ -337,12 +337,18 @@ section.main_section
     position:relative;
     top:28px;
     right:10px;
+    border-radius:10px;
+    border:solid 2px #585858;
+    padding:3px;
 }
 
 .search #keyword{
     font-size:15pt;
     position:relative;
-    top:25px;
+    top:24px;
+    border:solid 2px #585858;
+    border-radius:10px;
+    height:30px;
 }
 
 .search #search_submit{
@@ -350,13 +356,18 @@ section.main_section
     position:relative;
     left:10px;
     top:25px;
+    width:80px;
+    border-radius:10px;
+    background-color:white;
+    border:solid 2px #585858;
+    padding:4px;
 }
 
 .search #search_submit:hover{
   font-size:14pt;
   position:relative;
   top:25px;
-  background:darkblue;
+  background:#585858;
   color:white;
 }
 
