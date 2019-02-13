@@ -328,8 +328,8 @@
 	display:flex;
 	margin-top:45px;
 	padding-bottom:23px;
-	width:1340px;
-	padding-left:30px;
+	width:1330px;
+	padding-left:40px;
 	border-bottom:solid 2px #585858;
 }
 
@@ -479,8 +479,6 @@
 	    display:inline-block;
         width: 20px;
         height: 20px;
-        margin-left:20px;
-        margin-right:5px;
         background: url('20_off.png');
 }
 
@@ -492,6 +490,37 @@
         width:20px;
         height:20px;
 }
+.resumeRegist .la{
+	margin-left:50px;
+	margin-right:50px;
+}
+
+.resumeRegist .la2{
+	margin-right:60px;
+	margin-left:25px;
+}
+
+.resumeRegist .la1{
+	    margin-left:35px;
+        margin-right:60px;
+}
+.resumeRegist .la4{
+	    margin-left:35px;
+        margin-right:30px;
+}
+.resumeRegist .la5{
+	    margin-left:35px;
+        margin-right:30px;
+}
+.resumeRegist .la6{
+	    margin-left:35px;
+        margin-right:30px;
+}
+.resumeRegist .p_label{
+	margin-left:25px;
+	width:60px;
+}
+
 
 .resumeRegist .name{
    text-align:left;
@@ -682,7 +711,7 @@
   border: 2px solid white;
   cursor: pointer;
   transition: .3s ease-in-out;
-}Ã¢â‚¬â€¹
+}ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â¹
   input[type="range"]::-webkit-slider-thumb:hover {
     background-color: white;
     border: 2px solid #02456F;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html class="resumeRegist">
+<html>
 <head>
 <title>이력서 수정</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
@@ -143,6 +143,7 @@ function fn_removeImage() {
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
 </head>
 <body>
+<div class="resumeRegist">
 <form name="form1" method="post" action="${path}/resume/modifyupdate" onsubmit="return checks()">
     <div class="container">
         <header>
@@ -525,5 +526,6 @@ function fn_removeImage() {
                         <input type="button" value="삭제" onclick="remove_acqitem(this)"/>
                    	</div>
 </form>
+</div>
 </body>
 </html>
