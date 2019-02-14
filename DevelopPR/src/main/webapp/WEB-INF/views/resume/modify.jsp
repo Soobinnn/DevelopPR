@@ -51,7 +51,7 @@ function fn_modifyImage() {
 }
 
 function fn_removeImage() {
-	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.png");
+	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg.png");
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
 }
@@ -186,7 +186,7 @@ function fn_removeImage() {
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
-					<img id="uploadImage" src="/DevelopPR/resources/resume/person.png"/>
+					<img id="uploadImage" src="/DevelopPR/resources/resume/person.jpg"/>
 					<input type="hidden" id= "uploadImg" name="profile_photo"/>
 					
 				</div>
