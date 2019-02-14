@@ -66,5 +66,18 @@
 		<property name="redirectUri" value="http://localhost:8080/DevelopPR/user/googleCallback"/>
 	</bean>
     
+    <!-- Facebook 소셜 로그인 연결 설정 -->
+    <bean id="connectionFactory"
+        class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+        <constructor-arg value="2261313500824102" />
+        <constructor-arg value="4f6490609776bda6451caa67b426c0c3" />
+    </bean>
+ 
+    <bean id="oAuth2Parameters"
+        class="org.springframework.social.oauth2.OAuth2Parameters">
+        <property name="scope" value="email" />
+        <property name="redirectUri" value="https://developpr.org/user/facebookcallback" />
+    </bean>
+    
 </beans>
 

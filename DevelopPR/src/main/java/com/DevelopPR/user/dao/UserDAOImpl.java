@@ -37,10 +37,10 @@ public class UserDAOImpl implements UserDAO
 	 }
 	// 이메일 찾기 ----- 준형
 	 @Override
-	 public String findId(String phone)
+	 public List findId(String phone)
 	 {
 		//DB에서 phone번호에 매칭되는 email을 하나 리턴(가입할때 폰번호 중복허용하려면 selectList로..)
-		return sqlSession.selectOne("user.findEmail", phone);
+		return sqlSession.selectList("user.findEmail", phone);
 	 }
 	// 이메일 찾기 ------ 준형
 	 
@@ -146,10 +146,10 @@ public class UserDAOImpl implements UserDAO
 		   return sqlSession.selectOne("user.modifyform", userEmail);
 	   }
 	   
-	 //회원 정보 수정
+	 //회원 정보 수정 - 준형
 	   @Override
 	   public void modifyInfo(UserVO vo) {
-		  sqlSession.update("modifyInfo",vo);
+		  sqlSession.update("user.modifyInfo",vo);
 	   }
 	 //회원 탈퇴 비밀번호 확인 - 준형
 	   @Override
@@ -164,13 +164,18 @@ public class UserDAOImpl implements UserDAO
 		   sqlSession.delete("user.deleteUser", userEmail);
 	   }
 	   
-	   
 	   //장기 미접속 인원 가져오기
 	   @Override
 	   public List<UserVO> longUnAccess()
 	   {
 		   List<UserVO> listUnAccess = sqlSession.selectList("user.longUnAccess");
 		   return listUnAccess;
+	   }
+	   
+	 //이메일 찾기 Ajax 핸드폰 번호인증 추가 :: 준형
+	   @Override
+	   public int checkphone(String phone) {
+		   return sqlSession.selectOne("user.checkPhone",phone);
 	   }
 
 }

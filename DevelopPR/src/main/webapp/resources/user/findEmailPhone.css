@@ -1,0 +1,174 @@
+.findEmailPhone
+{
+    margin-bottom:100px;
+    margin-top:100px;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+.findEmailPhone .findEmailPhone_sec {
+   display: flex;
+   flex-direction: row;
+   width: auto;
+   height: 540px;
+   
+}
+.findEmailPhone #findEmailPhone_sec1{
+  
+   width : 50%;
+}
+.findEmailPhone #findEmailPhone_sec2{
+   display : flex;
+   flex-shrink: 0;
+   flex-basis: 700px;
+   border: 2px solid #B9B9B9;
+   border-radius : 15px;
+   width : auto;
+   justify-content : center;
+}
+.findEmailPhone #findEmailPhone_ul
+{
+ list-style-type:none;
+ width : 350px;
+ height: 400px;
+ position: relative;
+ top : 90px;
+ 
+}
+.findEmailPhone #findEmailPhone_li1
+{
+   color : white;
+   margin-bottom : 60px;
+  text-align:center;
+  position:relative;
+  bottom:40px;
+}
+.findEmailPhone #findEmailPhone_li2
+{
+	font-size:1.4rem;
+	position:relative;
+	bottom:50px;    
+}
+.findEmailPhone #findEmailPhone_img
+{
+    width:35px;
+    position:relative;
+    top:8px;
+}
+
+.findEmailPhone #findEmailPhone_span
+{
+   font-size : 2.4rem;
+   color : #585858;
+   position:relative;
+   
+}
+.findEmailPhone #findEmailPhone_span2
+{
+	position:relative;
+	left:5px;
+}
+.findEmailPhone #findEmailPhone_li3
+{
+   color : white;
+   margin-bottom : 30px;
+}
+.findEmailPhone #phone_Num
+{
+ border-radius: 7px 7px 7px 7px / 7px 7px 7px 7px;
+ height : 40px;
+ width : 200px;
+  box-shadow: none;
+  padding-left:10px;
+border : 2px solid #585858;
+
+}
+.findEmailPhone #phone_Btn
+{
+   height : 40px;
+   width : 90px;
+   position : relative;
+   top : 0.5px;
+   left : 40px;
+   background : white;
+   color : #585858;
+   border : 2px solid #585858;
+   border-radius: 100px 100px / 100px 100px;
+}
+.findEmailPhone #phone_Btn:hover
+{
+    background: #585858;
+    color : white;
+}
+.findEmailPhone #findEmailPhone_li4
+{
+   color : white;
+   margin-bottom : 80px;
+}
+.findEmailPhone #authNum
+{
+   padding-left:10px;
+    border-radius: 7px 7px / 7px 7px;
+   width : 200px;
+   height : 40px;
+   border : 2px solid #585858;
+}
+.findEmailPhone #findEmailPhone_Confirm
+{
+   position : relative;
+   left : 40px;
+   top : 0.5px;
+   height : 40px;
+   width: 90px;
+   background : white;
+   border : 2px solid #585858;
+   border-radius: 100px 100px / 100px 100px;
+   color : #585858;
+}
+.findEmailPhone #findEmailPhone_Confirm:hover
+{
+    background:#585858;
+    color:white;
+}
+.findEmailPhone #findEmailPhone_li5
+{
+   color : white;
+   
+}
+.findEmailPhone #hiddenBtn
+{
+ width: 170px;
+ height: 55px;
+ font-size:1.1rem;
+ position : relative;
+ left : 90px;
+ bottom:10px;
+ background :  white;
+ border : 1px solid #585858;
+ color : #585858;
+ border-radius: 130px 130px / 130px 130px;
+}
+.findEmailPhone #hiddenBtn:hover
+{
+    background:#585858;
+    color:white;
+}
+.findEmailPhone #findEmailPhone_sec3{
+   width : 50%;
+}
+.findEmailPhone input:focus
+{
+    outline: none;
+border-radius:5px;
+border: 2px solid #585858;
+}
+
+
+.findEmailPhone *:focus
+{
+   outline:none;
+}
+
+.findEmailPhone input[type=text]::-ms-clear 
+   {
+  display:none;
+}

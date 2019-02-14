@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,11 +14,16 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.social.MissingAuthorizationException;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.User;
+import org.springframework.social.facebook.api.UserOperations;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
+import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.google.api.impl.GoogleTemplate;
 import org.springframework.social.google.api.plus.Person;
@@ -35,6 +41,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.DevelopPR.resume.model.dto.ResumeVO;
 import com.DevelopPR.resume.service.ResumeService;
 import com.DevelopPR.user.dto.UserVO;
@@ -47,7 +54,6 @@ import com.DevelopPR.util.NaverloginBO;
 import com.DevelopPR.util.TempKey;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.github.scribejava.core.model.Parameter;
 
 @Controller
 @RequestMapping("/user/*")
@@ -62,6 +68,11 @@ public class UserController
   @Inject
   BCryptPasswordEncoder passwordEncoder;
   
+  //페이스북 oAuth 관련
+  @Inject
+  private FacebookConnectionFactory connectionFactory;
+  @Inject
+  private OAuth2Parameters oAuth2Parameters;
   
   
   // naver api
@@ -78,10 +89,10 @@ public class UserController
   private OAuth2Parameters googleOAuth2Parameters;
   private OAuth2Operations oauthOperations;
   
-//준형 findPwEmail 추가
+  //findPwEmail 추가
   @Inject 
   private JavaMailSender mailSender;
-//
+
   
   // 회원 목록
   @RequestMapping("list")
@@ -112,7 +123,7 @@ public class UserController
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
-	  
+	  System.out.println(vo);
 	  userService.insertUser(vo);
 	  
 	  String userEmail = vo.getUserEmail();
@@ -121,7 +132,6 @@ public class UserController
 	  model.addAttribute("userName", userName);
 	  return "basic/user/joining";
   }
-//--이메일 찾기 수정 : 준형---------------------------------------------------------------------------------------------------------
   // 이메일 찾기 폼
   @RequestMapping("findEmail")
   public String userFindEmail()
@@ -150,14 +160,16 @@ public class UserController
 	  
 	  return mav;
   }
-  // 이메일 찾기 결과
+  // 이메일 찾기 결과 , list로 받기 :: 준형
+  @SuppressWarnings("unchecked")
   @RequestMapping("findEmailResult")
   public ModelAndView findId(String phone) throws Exception {
 
 	  System.out.println(phone);
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
-	  String email = userService.findId(phone);
+	  List<String> email = new ArrayList<String>();
+	  email = userService.findId(phone);
 	  // email 담고,
 	  System.out.println(email);
 	  
@@ -167,13 +179,20 @@ public class UserController
 	  
 	  return mav;
   }
-//--이메일 찾기 수정 : 준형------------------------------------------------------------------------------------------------------------
- 
-//Pw 찾기 준형 --------------------------------------------------------------------------------------------------------------------
+  //이메일 찾기 본인인증 폰번호 체크 Ajax :: 준형-----------------------------------------------------------------------------------
+  @RequestMapping("PhoneCheck")
+  @ResponseBody
+  public int PhoneCheck(String phone) throws Exception{
+	  System.out.println(phone);
+	  int temp = userService.checkphone(phone);
+	  System.out.println(temp);
+	return temp;
+  }
+ //--------------------------------------------------------------------------------------------------------------------
  //PW 찾기 폼으로 이동 , 기능매핑에 추가해야함. 
  @RequestMapping(value="findPasswordForm")
  public String userFindPwForm() {
-	  return "user/findPasswordForm";
+	  return "basic/user/findPasswordForm"; // tiles basic 추가 :: 준형-------------------------------------------------
  }
  
  // PW 찾기 할때 Ajax 이메일 중복체크
@@ -212,10 +231,10 @@ public class UserController
 	  System.out.println(keyCode);
 	  System.out.println(userEmail);
 	  
-	  return "user/findPwEmail";
+	  return "basic/user/findPwEmail"; // tiles basic 추가 :: 준형------------------------------------------------------------
  }
  
- //Pw 찾기 인증번호 ajax : 준형
+ //Pw 찾기 인증번호 ajax
  @RequestMapping(value="findPwAuth")
  @ResponseBody
  public boolean userFindPwAuth(HttpSession session, String AuthNum) {
@@ -232,7 +251,7 @@ public class UserController
 }
 
  
- //Pw 찾기 재설정 : 준형
+ //Pw 찾기 재설정
  @RequestMapping(value="findPwReset" , method=RequestMethod.POST)
  public String userFindPwReset(@ModelAttribute UserVO vo) {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
@@ -241,25 +260,45 @@ public class UserController
 	
 	  return "user/findPwResetConfirm";
  }
-//Pw 찾기 준형 ------------------------------------------------------------------------------------------------------------------------
- 
  
   // 로그인 화면(GET)
   @RequestMapping(value="login", method=RequestMethod.GET)
-  public String userLogin()
+  public String userLogin(HttpServletResponse response, Model model)
   {
+	  //페이스북 api
+	  OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+      String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
+  
+      model.addAttribute("facebook_url", facebook_url);
 	  return "basic/user/login";
   }
   
+ /* //facebook api
+ @RequestMapping(value = "facebookLogin", method = { RequestMethod.GET, RequestMethod.POST })
+ public String facebookLogin(HttpServletResponse response, Model model) 
+ {    
+     OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+     String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
+ 
+     model.addAttribute("facebook_url", facebook_url);
+
+     return "user/facebooklogin";
+ }*/
+  
   // 로그인 화면 (POST)
   @RequestMapping(value="login", method=RequestMethod.POST)
-  public ModelAndView Login(String selectedId)
+  public ModelAndView Login(HttpServletResponse response, String selectedId)
   {
+	  //페이스북 api
+	  OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+      String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
+  
 	  ModelAndView mv = new ModelAndView();
 	  // 이메일 찾고나서 해당 이메일 라디오 버튼 누르고 로그인 페이지로 갔을때
 	  // 이메일 입력란에 해당 이메일 바로 보여주기 위해 selectedId 사용
 	  mv.addObject("selectedId", selectedId);
 	  mv.setViewName("basic/user/login");
+	  mv.addObject("facebook_url", facebook_url);
 	  
 	  return mv;
 	  
@@ -442,7 +481,7 @@ public class UserController
 
     // 세션 등록
     UserVO vo2 = new UserVO();
-    vo2.setUserEmail(vo.getUserEmail());
+    vo2.setUserEmail(vo.getUserEmail()+"_kakao");
     vo2.setUserNick(vo.getUserNick());
     vo2.setUserName(vo.getUserName());
     vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -501,7 +540,7 @@ public class UserController
 	      }
 	      // 세션 등록
 	      UserVO vo2 = new UserVO();
-	      vo2.setUserEmail(vo.getUserEmail());
+	      vo2.setUserEmail(vo.getUserEmail()+"_naver.com");
 	      vo2.setUserNick(vo.getUserNick());
 	      vo2.setUserName(vo.getUserName());
 	      vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -573,7 +612,7 @@ public class UserController
 
       // 세션 등록
       UserVO vo2 = new UserVO();
-      vo2.setUserEmail(vo.getUserEmail());
+      vo2.setUserEmail(vo.getUserEmail()+"_google");
       vo2.setUserNick(vo.getUserNick());
       vo2.setUserName(vo.getUserName());
       vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -608,14 +647,14 @@ public class UserController
       return "redirect:/main";
   }
 //회원정보 수정 폼 : 준형-------------------------------------------------------------------------------------------------------------------
-  @RequestMapping(value="modifyInfoform", method= RequestMethod.GET)
-  public String userModifyInfoform(HttpSession session, Model model)
+  @RequestMapping(value="modifyInfoform", method= RequestMethod.GET) 
+  public String userModifyInfoform(HttpSession session, Model model) throws Exception
   {
 	  String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
 	  UserVO vo = userService.modifyform(userEmail);
 	  System.out.println(vo);
 	  model.addAttribute("vo", vo);
-	  return "user/modifyInfo";
+	  return "basic/user/modifyInfo";
 	  
   }
 //회원정보 수정
@@ -654,11 +693,12 @@ public class UserController
   }
   // 회원 탈퇴 : 준형
   @RequestMapping(value="goodbye", method=RequestMethod.POST)
-	  public String goodbye(String userPw, HttpSession session) {
-	  String userEmail = (String) session.getAttribute("userEmail");
-	  userService.deleteUser(userEmail);
-	  session.invalidate();
-	  return "user/goodbyeConfirm";
+	  public String goodbye(String userPw, HttpSession session) 
+  	  {
+	  	String userEmail = (String) session.getAttribute("userEmail");
+	  	userService.deleteUser(userEmail);
+	  	session.invalidate();
+	  	return "user/goodbyeConfirm";
 	  }
   
   // 장기미접속유저 메일 보내기
@@ -668,5 +708,59 @@ public class UserController
 	// 6개월 / 9개월 / 1년 7일전  미접속 인원 가져온다.
 	List<UserVO> longUnAccess = userService.longUnAccess();	
 	userService.unAccessSendMail(longUnAccess);
+  }
+  
+
+
+  
+ //facebook api 콜백
+  @RequestMapping(value = "facebookSignInCallback", method = { RequestMethod.GET, RequestMethod.POST })
+  public String facebookSignInCallback(@RequestParam String code) throws Exception 
+  {
+
+      try {
+           String redirectUri = oAuth2Parameters.getRedirectUri();
+          System.out.println("Redirect URI : " + redirectUri);
+          System.out.println("Code : " + code);
+
+          OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+          AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUri, null);
+          String accessToken = accessGrant.getAccessToken();
+          System.out.println("AccessToken: " + accessToken);
+          Long expireTime = accessGrant.getExpireTime();
+      
+          
+          if (expireTime != null && expireTime < System.currentTimeMillis()) 
+          {
+              accessToken = accessGrant.getRefreshToken();
+              logger.info("accessToken is expired. refresh token = {}", accessToken);
+          };
+          
+      
+          Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
+          Facebook facebook = connection == null ? new FacebookTemplate(accessToken) : connection.getApi();
+          UserOperations userOperations = facebook.userOperations();
+          
+          try
+
+          {            
+              String [] fields = { "id", "email",  "name"};
+              User userProfile = facebook.fetchObject("me", User.class, fields);
+              System.out.println("유저이메일 : " + userProfile.getEmail());
+              System.out.println("유저 id : " + userProfile.getId());
+              System.out.println("유저 name : " + userProfile.getName());
+          } catch (MissingAuthorizationException e) {
+              e.printStackTrace();
+          }
+
+      
+      } catch (Exception e) 
+      {
+
+          e.printStackTrace();
+
+      }
+      return "redirect:/join";
+
   }
 }

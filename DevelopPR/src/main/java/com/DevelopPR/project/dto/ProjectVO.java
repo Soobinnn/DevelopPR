@@ -18,7 +18,6 @@ public class ProjectVO
 	private String email;
 	
 	
-	
 	public int getPno() {
 		return pno;
 	}

@@ -28,7 +28,7 @@ height:100px;
 		    border-radius : 30px;
 		}
 
-.co_detail #btnModify:hover{ /* 수정 버튼 호버 시 투명 효과*/
+.re_list #btnModify:hover{ /* 수정 버튼 호버 시 투명 효과*/
  background-color:rgba( 255, 255, 255, 0.1 );
 			color: black;
 }
@@ -43,7 +43,7 @@ height:100px;
         <c:forEach var="row" items="${list}">
         <tr>    
             <td>
-                ${row.replyer}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
+                ${row.replyer}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm"/>) <%--입력 시간 초단위 삭제 --%>
                 <br>
                 ${row.replytext}
                 <br>

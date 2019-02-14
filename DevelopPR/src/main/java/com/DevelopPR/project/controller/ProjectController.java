@@ -40,7 +40,7 @@ UserService userService;
 public String projectRegistForm(HttpSession session) throws Exception
 {
 
-	return "project/registForm";
+	return "basic/project/registForm";
 
 }
 
@@ -50,7 +50,6 @@ public String projectRegistForm(HttpSession session) throws Exception
 @RequestMapping(value="/project/regist", method=RequestMethod.POST)
 public String projectRegist(HttpSession session, @RequestParam(value="techstack", required=false) String techstack, @ModelAttribute ProjectVO vo) throws Exception
 {
-
 	  UserVO uservo = (UserVO)session.getAttribute("login");
 	  vo.setEmail(uservo.getUserEmail());
 	  projectService.regist(vo);
@@ -67,7 +66,7 @@ public String projectModifyForm(@PathVariable("pno") int pno, Model model) throw
 	  System.out.println(pno);
 	  model.addAttribute("dto", projectService.modifyForm(pno));
 
-    return "/project/modifyForm";
+    return "basic/project/modifyForm";
 }
 
 @RequestMapping("/project/modify")
