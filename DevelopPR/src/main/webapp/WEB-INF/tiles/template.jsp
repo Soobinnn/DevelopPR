@@ -79,6 +79,14 @@
 			$('#alarm').css({"display" : "none"});
 		}
 	}
+	/* 배포 시 경로변경해야함 */
+	function modifyplz()
+	{
+		alert("이력서를 등록하시려면 구직자로 변경하셔야 사용가능합니다.");
+		window.location.href = "http://localhost:8080/DevelopPR/user/modifyInfoform";
+		
+		
+	}
 	$(document).ready(function()
 	{
 		console.log("msg의 상태가??" +success);
@@ -134,9 +142,8 @@
 			<li class="fullmenulist"><a href='${path}/resume/regist'>이력서 등록</a></li>
 			</c:if>
 			<c:if test="${sessionScope.login.userIs_seek == 0}">
-			<li class="fullmenulist"><a href='${path}/community/list'>허얼</a></li>
+			<li class="fullmenulist"><a href='javascript:modifyplz();'>이력서 등록</a></li>
 			</c:if>
-			<li class="fullmenulist"><a href='${path}/user/goodbyeform'>USER WITHDRAWAL</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
