@@ -7,10 +7,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmailResult.css'/>"/>
 <meta charset="UTF-8">
 <title>이메일 찾기 성공</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script>
+$(document).ready(function(){
+	$(document).scrollTop(350); 
+});
+</script>
 </head>
    <body>
    <div class="findEmailResult">
@@ -25,7 +31,7 @@
             <form action="${path}/user/login" method="post">  
             <ul id="findEmailResult_ul">
               <li id="findemailResult_com">
-                 <span id="com_span"><strong>이메일 찾기 완료</strong></span>
+                 <span id="com_span"><strong>이메일 찾기 </strong></span>
                  </li>  
               <li id="findemailResult_emailList">
               	 <img id="findEmailResult_img" src="${path}/resources/user/marker.png">
@@ -38,7 +44,7 @@
                </li>
                <li id="findEmailResult_Pw">               
                <span id="findPw_span">*</span> <span id="findPw_span2">비밀번호를 찾으시나요?</span>                                                                     
-               <button id="findemailResult_findPwbtn" type="button" onclick="location='${path}/user/findPassword'">비밀번호 찾기</button>
+               <button id="findemailResult_findPwbtn" type="button" onclick="location='${path}/user/findPasswordForm'">비밀번호 찾기</button>
                   </li>
                   <button id="findemailResult_loginbtn" type="submit" onclick="location='${path}/user/login'">로그인</button>
             </ul>

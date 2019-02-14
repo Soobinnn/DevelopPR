@@ -9,6 +9,11 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findPasswordForm.css'/>"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	$(document).scrollTop(500);
+	$('#findPw_email').focus();
+});
+
 
 $(function(){
 	 
@@ -19,6 +24,14 @@ $('#findPw_next').click(function(){
     var _userEmail = $('#findPw_email').val();
     var param = "userEmail="+_userEmail;
     
+    if($('#findPw_email').val() =="")
+	{
+	$('#findPw_email').css({"border" :"2px solid red","background-color":"#FBF5EF"});
+    $('#findPw_email').focus();
+    $('#emailCheckMsg').text('이메일을 입력해주세요.').css("color","red");
+	}
+    
+    else{
     $.ajax({
         async : true,
         type :'POST',
@@ -28,16 +41,10 @@ $('#findPw_next').click(function(){
         {
             if(!userEmailCheck.test(_userEmail))
             {		
-                $('#findPw_email').css({"border" :"2px solid red","background-color":"#FFCECE"});
+                $('#findPw_email').css({"border" :"2px solid red","background-color":"#FBF5EF"});
                 $('#findPw_email').focus();
                 $('#emailCheckMsg').text('이메일형식에 맞게 입력해주세요.').css("color","red");
             }
-            else if($('#findPw_email').val() =="")
-            	{
-            	$('#findPw_email').css({"border" :"2px solid red","background-color":"#FFCECE"});
-                $('#findPw_email').focus();
-                $('#emailCheckMsg').text('이메일을 입력해주세요.').css("color","red");
-            	}
             else 
             {
                 /* 중복이 없을경우 */
@@ -49,7 +56,8 @@ $('#findPw_next').click(function(){
                 }
                 else if(result == '1')
                 {	
-                	$('#findPw_next').css({"background-color" : "#585858" , "color":"white"});
+                	$('#findPw_email').css({"border" :"2px solid green","background-color":"white"});
+                	$('#emailCheckMsg').text('이메일이 일치합니다.').css("color","green");
                 	alert('이메일이 확인되었습니다.')
                 	FindPwform.action="${path}/user/findPwEmail";
                 	FindPwform.submit();
@@ -58,13 +66,10 @@ $('#findPw_next').click(function(){
             }
          }
       });
-   });
-$('input[type="text"]').keydown(function() {
-    if (event.keyCode === 13) {
-        event.preventDefault();
     }
+   });
 });
-});
+
 
 </script>
 </head>

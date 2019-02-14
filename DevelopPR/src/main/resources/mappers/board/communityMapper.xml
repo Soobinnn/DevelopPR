@@ -4,9 +4,9 @@
    <!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
 <select id="listAll" resultType="CommunityVO">
     
-   <!-- 목록 조회 및 페이징 전체 쿼리 -->
+   <!-- 목록 조회 및 페이징 전체 쿼리 -->   <!-- user를 writer로 변경해서 게시판 리스트에 나오는 것을 닉네임으로 변경한다. -->
      <include refid="pagingHeader"></include>
-            SELECT ROWNUM, bno, title, content, b.regdate, viewcnt, name AS userName, 
+            SELECT ROWNUM, bno, title, content, b.regdate, viewcnt, b.writer, 
                     <!-- ** 댓글숫자표시 -->
                     (SELECT COUNT(*) FROM tbl_reply WHERE bno=b.bno) AS recnt
             FROM tbl_board b, pr_user u

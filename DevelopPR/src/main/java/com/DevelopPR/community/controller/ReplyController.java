@@ -75,7 +75,7 @@ public class ReplyController {
       int end = replyPager.getPageEnd();
       List<ReplyVO> list = replyService.list(bno, start, end, session);
       // 뷰이름 지정
-      mav.setViewName("community/replyList");
+      mav.setViewName("basic/community/replyList");
       // 뷰에 전달할 데이터 지정
       mav.addObject("list", list);
       mav.addObject("replyPager", replyPager);
@@ -116,7 +116,7 @@ public class ReplyController {
       int end = replyPager.getPageEnd();
       List<ReplyVO> list = replyService.list(bno, start, end, session);
       // 뷰이름 지정
-      mav.setViewName("community/replyList");
+      mav.setViewName("basic/community/replyList");
       // 뷰에 전달할 데이터 지정
       mav.addObject("list", list);
       mav.addObject("replyPager", replyPager);
@@ -132,7 +132,7 @@ public class ReplyController {
   public ModelAndView replyDetail(@PathVariable("rno") Integer rno, ModelAndView mav){
       ReplyVO vo = replyService.detail(rno);
       // 뷰이름 지정
-      mav.setViewName("community/replyDetail");
+      mav.setViewName("basic/community/replyDetail");
       // 뷰에 전달할 데이터 지정
       mav.addObject("vo", vo);
       // replyDetail.jsp로 포워딩

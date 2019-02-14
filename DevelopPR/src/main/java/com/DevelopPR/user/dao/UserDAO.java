@@ -24,7 +24,7 @@ public interface UserDAO
 	   public UserVO viewId(String email);
 
 	// 이메일 찾기 -- 준형
-	   public String findId(String phone) throws Exception;
+	   public List findId(String phone) throws Exception;
 	// 이메일 찾기 -- 준형
 	   
 	   

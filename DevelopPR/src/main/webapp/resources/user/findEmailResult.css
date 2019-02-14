@@ -1,7 +1,7 @@
 .findEmailResult
 {
-    margin-bottom:180px;
-    margin-top:180px;
+    margin-bottom:100px;
+    margin-top:100px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -10,7 +10,7 @@
    display: flex;
    flex-direction: row;
    width: auto;
-   height: 600px;
+   height: 540px;
    
 }
 .findEmailResult #sec1{
@@ -19,10 +19,10 @@
 .findEmailResult #sec2{
    display : flex;
    flex-shrink: 0;
-   flex-basis: 800px;
+   flex-basis: 700px;
    border :2px solid #B9B9B9;
    border-radius : 15px;
-   width : 800px;
+   width : 700px;
    justify-content: center;
 
 }
@@ -30,8 +30,12 @@
 {
    margin-top : 40px;
    text-align : center;
-   margin-bottom: 55px;
+   margin-bottom: 0px;
    color: white;
+   position:relative;
+   bottom: 30px;
+   font-size:2.4rem;
+   
 }
 .findEmailResult #findEmailResult_ul
 {
@@ -76,9 +80,10 @@
 .findEmailResult #findemailResult_email_EL
 {
    color : #585858;
-   font-size : 1.1rem;
+   font-size : 1rem;
    position:relative;
-   bottom:10px;
+   bottom:20px;
+   left:25px;
 }
 .findEmailResult #findEmailResult_Pw
 {
@@ -87,17 +92,18 @@
 }
 .findEmailResult #findPw_span
 {
-    font-size: 1.8rem;
+ font-size: 1.8rem;
  color : #585858;
  position:relative;
- top:12px;
- left:30px;
+ top:70px;
+ left:49px;
 }
 .findEmailResult #findPw_span2
 {
    color : black;
    position:relative;
-   left:30px;
+   left:46px;
+   top:59px;
 }
 
 .findEmailResult #findemailResult_findPwbtn
@@ -105,6 +111,7 @@
    margin-bottom: 70px;
    position: relative;
    left : 180px;
+   top: 58px;
    background : white;
    color : black;
    border : 1px solid #585858;
@@ -118,11 +125,11 @@
 }
 .findEmailResult #findemailResult_loginbtn
 {
-   height :60px;
-   width : 150px;
-   top :10px;
+   height :55px;
+   width : 170px;
+   top :40px;
    position: relative;
-   left : 180px;
+   left : 165px;
    background : white;
    color : black;
    border : 1px solid #585858;
@@ -170,353 +177,8 @@
 .findEmailResult #findemailResult_label
 {
 	position:relative;
-   bottom:7px;
-}.findEmailResult
-{
-    margin-bottom:180px;
-    margin-top:180px;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-
-.findEmailResult .findEmailResult_sec {
-   display: flex;
-   flex-direction: row;
-   width: auto;
-   height: 600px;
-   
-}
-.findEmailResult #sec1{
-   width : 50%;
-}
-.findEmailResult #sec2{
-   display : flex;
-   flex-shrink: 0;
-   flex-basis: 800px;
-   border :2px solid #B9B9B9;
-   border-radius : 15px;
-   width : 800px;
-   justify-content: center;
-
-}
-.findEmailResult #findemailResult_com
-{
-   margin-top : 40px;
-   text-align : center;
-   margin-bottom: 55px;
-   color: white;
-}
-.findEmailResult #findEmailResult_ul
-{
-   position: relative;
-   top : 40px;
-   width : 500px;
-   height: 500px;
-}
-.findEmailResult #com_span
-{
-   color : black;
-   font-size: 2.7rem;
-}
-.findEmailResult #emailList_span
-{
-  position : relative;
-  left:7px;
-   color : black;
-}
-.findEmailResult #findemailResult_emailList
-{
-   color :#0B173B;
-   margin-bottom: 50px;
-   
-}
-.findEmailResult #findemailResult_emailList2
-{
-   color :white;
-   position : relative;
-   bottom : 20px;
-}
-.findEmailResult #emailList_span
-{
-   color : black;
-    font-size:1.4rem;
-}
-.findEmailResult #findemailResult_email
-{
-   margin-bottom: 80px;
-   color : black;
-}
-.findEmailResult #findemailResult_email_EL
-{
-   color : #585858;
-   font-size : 1.1rem;
-   position:relative;
-   bottom:10px;
-}
-.findEmailResult #findEmailResult_Pw
-{
-    margin-top:40px;
-   color : white;
-}
-.findEmailResult #findPw_span
-{
-    font-size: 1.8rem;
- color : #585858;
- position:relative;
- top:12px;
- left:30px;
-}
-.findEmailResult #findPw_span2
-{
-   color : black;
-   position:relative;
-   left:30px;
-}
-
-.findEmailResult #findemailResult_findPwbtn
-{
-   margin-bottom: 70px;
-   position: relative;
-   left : 180px;
-   background : white;
-   color : black;
-   border : 1px solid #585858;
-   border-radius: 130px 130px / 130px 130px;
-   height: 38px;
-}
-.findEmailResult #findemailResult_findPwbtn:hover
-{
-    background:#585858;
-    color:white;
-}
-.findEmailResult #findemailResult_loginbtn
-{
-   height :60px;
-   width : 150px;
-   top :10px;
-   position: relative;
-   left : 180px;
-   background : white;
-   color : black;
-   border : 1px solid #585858;
-   border-radius: 150px;
-   font-size:1.2rem;
-}
-.findEmailResult #findemailResult_loginbtn:hover
-{
-    background:#585858;
-    color:white;
-
-}
-.findEmailResult #sec3{
-   width : 50%;
-} 
-.findEmailResult input[type='radio']{
-	display:none;
-}
-
-.findEmailResult input[type='radio'] + label{
-	    
-	    display:inline-block;
-        width: 20px;
-        height: 20px;
-        margin-left:20px;
-        margin-right:5px;
-        background: url('../../resources/resume/20_off.png');
-}
-
-.findEmailResult input[type='radio']:checked + label{ 
-  
-		display:inline-block;
-        background: url('../../resources/resume/20_on.png');  
-        width:20px;
-        height:20px;
-}
-
-.findEmailResult #findEmailResult_img
-{
-    width:35px;
-    height:35px;
-    position:relative;
-    top : 9px;
-}
-.findEmailResult #findemailResult_label
-{
-	position:relative;
-   bottom:7px;
-}.findEmailResult
-{
-    margin-bottom:180px;
-    margin-top:180px;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-
-.findEmailResult .findEmailResult_sec {
-   display: flex;
-   flex-direction: row;
-   width: auto;
-   height: 600px;
-   
-}
-.findEmailResult #sec1{
-   width : 50%;
-}
-.findEmailResult #sec2{
-   display : flex;
-   flex-shrink: 0;
-   flex-basis: 800px;
-   border :2px solid #B9B9B9;
-   border-radius : 15px;
-   width : 800px;
-   justify-content: center;
-
-}
-.findEmailResult #findemailResult_com
-{
-   margin-top : 40px;
-   text-align : center;
-   margin-bottom: 55px;
-   color: white;
-}
-.findEmailResult #findEmailResult_ul
-{
-   position: relative;
-   top : 40px;
-   width : 500px;
-   height: 500px;
-}
-.findEmailResult #com_span
-{
-   color : black;
-   font-size: 2.7rem;
-}
-.findEmailResult #emailList_span
-{
-  position : relative;
-  left:7px;
-   color : black;
-}
-.findEmailResult #findemailResult_emailList
-{
-   color :#0B173B;
-   margin-bottom: 50px;
-   
-}
-.findEmailResult #findemailResult_emailList2
-{
-   color :white;
-   position : relative;
-   bottom : 20px;
-}
-.findEmailResult #emailList_span
-{
-   color : black;
-    font-size:1.4rem;
-}
-.findEmailResult #findemailResult_email
-{
-   margin-bottom: 80px;
-   color : black;
-}
-.findEmailResult #findemailResult_email_EL
-{
-   color : #585858;
-   font-size : 1.1rem;
-   position:relative;
-   bottom:10px;
-}
-.findEmailResult #findEmailResult_Pw
-{
-    margin-top:40px;
-   color : white;
-}
-.findEmailResult #findPw_span
-{
-    font-size: 1.8rem;
- color : #585858;
- position:relative;
- top:12px;
- left:30px;
-}
-.findEmailResult #findPw_span2
-{
-   color : black;
-   position:relative;
-   left:30px;
-}
-
-.findEmailResult #findemailResult_findPwbtn
-{
-   margin-bottom: 70px;
-   position: relative;
-   left : 180px;
-   background : white;
-   color : black;
-   border : 1px solid #585858;
-   border-radius: 130px 130px / 130px 130px;
-   height: 38px;
-}
-.findEmailResult #findemailResult_findPwbtn:hover
-{
-    background:#585858;
-    color:white;
-}
-.findEmailResult #findemailResult_loginbtn
-{
-   height :60px;
-   width : 150px;
-   top :10px;
-   position: relative;
-   left : 180px;
-   background : white;
-   color : black;
-   border : 1px solid #585858;
-   border-radius: 150px;
-   font-size:1.2rem;
-}
-.findEmailResult #findemailResult_loginbtn:hover
-{
-    background:#585858;
-    color:white;
-
-}
-.findEmailResult #sec3{
-   width : 50%;
-} 
-.findEmailResult input[type='radio']{
-	display:none;
-}
-
-.findEmailResult input[type='radio'] + label{
-	    
-	    display:inline-block;
-        width: 20px;
-        height: 20px;
-        margin-left:20px;
-        margin-right:5px;
-        background: url('../../resources/resume/20_off.png');
-}
-
-.findEmailResult input[type='radio']:checked + label{ 
-  
-		display:inline-block;
-        background: url('../../resources/resume/20_on.png');  
-        width:20px;
-        height:20px;
-}
-
-.findEmailResult #findEmailResult_img
-{
-    width:35px;
-    height:35px;
-    position:relative;
-    top : 9px;
-}
-.findEmailResult #findemailResult_label
-{
-	position:relative;
-   bottom:7px;
+   bottom:16px;
+   left:25px;
 }
 .findEmailResult *:focus
 {

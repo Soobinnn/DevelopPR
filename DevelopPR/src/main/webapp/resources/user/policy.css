@@ -5,7 +5,7 @@
 
 #policy .container {
 	position: relative;
-	left: 650px;
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -16,6 +16,8 @@
 	background: white;
 	border-radius : 15px;
 	margin-bottom : 100px;
+	flex-shrink : 0;
+	flex-basis : 650px;
 }
 
 #policy .area1 {
@@ -206,6 +208,7 @@
 	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
 	font-weight : 900;
 	font-size : 1rem;
+	outline : none;
 }
 
 #policy #agree_btn:hover {
@@ -223,6 +226,8 @@
 	border-radius:15% 15% 15% 15% / 50% 50% 50% 50%;
 	font-weight : 700;
 	font-size :1rem;
+	outline : none;
+
 }
 
 #policy #disagree_btn:hover {
@@ -234,9 +239,8 @@
 {
 	position : relative;
 	display: block;
-	width : 1980px;
-	padding-top : 50px;
-	padding-bottom : 50px;
+	margin-top : 50px;
+	margin-bottom : 50px;
 	font-weight :900;
 	font-size : 3rem;
 }
@@ -252,4 +256,19 @@
 #policy #content3
 {
 	border : 2px solid #585858;
+}
+#policy ._section
+{
+	display :flex;
+    flex-direction: row; 
+    width: auto;
+}
+
+#policy .sec1
+{
+	width : 40%;
+}
+#policy .sec2
+{
+	width : 40%;
 }

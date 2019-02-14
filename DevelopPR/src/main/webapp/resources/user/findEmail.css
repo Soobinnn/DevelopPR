@@ -1,7 +1,7 @@
 .findEmail
 {
-    margin-bottom:180px;
-    margin-top:180px;
+    margin-bottom:100px;
+    margin-top:100px;
     font-family: 'Noto Sans KR', sans-serif;
     }
 .findEmail .findEmail_sec {
@@ -38,6 +38,8 @@
  margin-bottom : 60px;
  text-align : center;
  color : white;
+ position:relative;
+ top:10px;
 }
 
 .findEmail #findEmail_li2
@@ -91,6 +93,7 @@
 {
     position:relative;
    left : 11px;
+   top:35px;
    color:black;
 }
 
@@ -103,14 +106,16 @@
 .findEmail #span_Pw
 {
    position:relative;
-   left : 40px;
+   left : 51px;
+   top:24px;
    color : #02456F;
    font-size : 1rem;
 }
 .findEmail #span_Pw2
 {
     position:relative;
-   left : 40px;
+   left : 51px;
+   top:24px;
    color : black;
 }
 .findEmail #radio
@@ -125,14 +130,16 @@
 }
 .findEmail #findPw
 {
-  background: white;
+   background: white;
 	border: 2px solid #585858;
 	border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
   	font-size: 0.8rem; 
    position: relative;
-   left : 150px;
+   left : 184px;
+   top:25px;
    border-radius: 150px / 150px;
    height : 40px;
+   color:#585858;
 }
 .findEmail #findPw:hover
 {
@@ -143,25 +150,32 @@
 {
  font-size:1.2rem;
    width : 170px;
-   height: 53px;
+   height: 55px;
    background: white;
    border: 2px solid #585858;
    border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
    position: relative;
    left : 170px;
-   top : 30px;
+   top : 20px;
    border-radius: 120px / 120px;
-  
+   color:#585858;
 }
 .findEmail #nextStep:hover
 {
    background: #585858;
 	color: white;
 }
-#findEmail_img
+#findEmail_img1
 {
     position:relative;
     top: 9px;
+	width:35px;
+	height:35px;
+}
+#findEmail_img2
+{
+    position:relative;
+    top: 43px;
 	width:35px;
 	height:35px;
 }

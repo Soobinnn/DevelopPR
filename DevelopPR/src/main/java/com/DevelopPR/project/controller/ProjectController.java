@@ -39,7 +39,9 @@ UserService userService;
 @RequestMapping(value = "/project/registForm", method= RequestMethod.GET)
 public String projectRegistForm(HttpSession session) throws Exception
 {
+
 	return "project/registForm";
+
 }
 
 
@@ -48,6 +50,7 @@ public String projectRegistForm(HttpSession session) throws Exception
 @RequestMapping(value="/project/regist", method=RequestMethod.POST)
 public String projectRegist(HttpSession session, @RequestParam(value="techstack", required=false) String techstack, @ModelAttribute ProjectVO vo) throws Exception
 {
+
 	  UserVO uservo = (UserVO)session.getAttribute("login");
 	  String myemail = uservo.getUserEmail();
 	  vo.setNick(userService.viewId(myemail).getUserNick());

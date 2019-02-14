@@ -8,17 +8,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmail.css'/>"/>
 <title>이메일 찾기</title>
 <script type="text/JavaScript">
    
-   function nextStep(authform) {
+$(document).ready(function(){
+	$(document).scrollTop(350); 
+});
+
+  function nextStep(authform) {
       var url = "${path}/user/findEmailPhone";      
       var obj = document.getElementById('radio');
+      
       if(obj.checked == false) {
          alert("본인인증 수단을 선택해주세요.");
          return false;
+      }
+      else {
+    	  $('#nextStep').hover(function()
+    			  {
+    			  	if(obj.checked == true)
+    			  	{
+    			  		$('#confirm').css({"background-color":"#b9b9b9"});
+    			  	}
+    			  },function()
+    			  {
+    			  	if(obj.checked == true)
+    			  	{
+    			  		$('#confirm').css({"background-color":"#585858", "border":"2px solid #585858", "color":"white"});
+    			  	}
+    			  });
       }
       location.href=url;
    }
@@ -38,11 +59,11 @@
                               <strong>이메일 찾기</strong></span>
                         </li>
                         <li id="findEmail_li2">
-							<img id="findEmail_img" src="${path}/resources/user/marker.png">                        
+							<img id="findEmail_img1" src="${path}/resources/user/marker.png">                        
                            <span id="span_Email2"> 이메일 찾기를 위한 본인확인 방법을 선택해주세요.</span>
                         </li>
                        <li id="findEmail_li3">
-                       	   <img id="findEmail_img" src="${path}/resources/user/marker.png"> 	
+                       	   <img id="findEmail_img2" src="${path}/resources/user/marker.png"> 	
                            <span id="span_sell1">내 명의로 가입된 휴대폰으로 본인 확인을 진행합니다.</span></li>
                         <li id="findEmail_li4">
                            <span id="span_Pw">＊</span><span id="span_Pw2"> 비밀번호를 찾으시나요?</span>
@@ -54,7 +75,7 @@
                                  <input type="radio" id="radio">
                               
                               <label for="radio" id="findEmail_label"></label>
-                              <label for="radio" id="findEmail_label2">휴대폰 인증</label>
+                              <label for="radio" id="findEmail_label2">휴대폰 본인인증</label>
                   </ul>   
             </div>
          <div id="sec3"></div>

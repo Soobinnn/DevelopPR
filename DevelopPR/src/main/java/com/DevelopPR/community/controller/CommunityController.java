@@ -39,10 +39,10 @@ public class CommunityController {
    CommunityService communityService;
 
    @RequestMapping("list")
-   public ModelAndView communitylist(@RequestParam(defaultValue = "title") String searchOption,
+   public ModelAndView communitylist(@ModelAttribute UserVO vo, @RequestParam(defaultValue = "title") String searchOption,
          @RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage, HttpSession session)
          throws Exception {
-	   System.out.println("list----------" + session.getAttribute("login"));
+	   System.out.println("list----------" + session.getAttribute("login")); //로그인 값이 있는지 체크, 나중에 반드시 지울 것.
       int count = communityService.countArticle(searchOption, keyword);
      
       
@@ -61,7 +61,7 @@ public class CommunityController {
 
       ModelAndView mav = new ModelAndView();
       mav.addObject("map", map); 
-      mav.setViewName("community/list"); 
+      mav.setViewName("basic/community/list"); 
 
       return mav; 
    }
@@ -71,7 +71,7 @@ public class CommunityController {
    public String communityRegistForm(@ModelAttribute CommunityVO vo, HttpSession session) 
    {
 	   System.out.println("form----------" + session.getAttribute("login"));
-	   return "community/registForm"; //
+	   return "basic/community/registForm"; //
    }
 
    // 03..
@@ -100,7 +100,7 @@ public class CommunityController {
   
       ModelAndView mav = new ModelAndView();
 
-      mav.setViewName("/community/detail");
+      mav.setViewName("basic/community/detail");
 
  
       mav.addObject("dto", communityService.detail(bno));
@@ -113,7 +113,7 @@ public class CommunityController {
 
       ModelAndView mav = new ModelAndView();
       mav.addObject("dto", communityService.modifyForm(bno));
-      mav.setViewName("/community/modifyForm"); // 
+      mav.setViewName("basic/community/modifyForm"); // 
 
       return mav; // 
    }
@@ -125,7 +125,7 @@ public class CommunityController {
     { 
       communityService.modify(vo); 
        ModelAndView mav = new ModelAndView();
-       mav.setViewName("/community/detail");
+       mav.setViewName("basic/community/detail");
        mav.addObject("dto", communityService.detail(bno));
        return mav;
     }
@@ -155,7 +155,7 @@ public class CommunityController {
 
       map.addAttribute("item", vo);
 
-      return "community/update";
+      return "basic/community/update";
 
    }
 
@@ -165,7 +165,7 @@ public class CommunityController {
 
       communityService.reply(vo);
 
-      return "redirect:/community/list";
+      return "redirect:list";
    }
 
    /*네이버 스마트 에디터 사진업로드 구현 컨트롤러*/

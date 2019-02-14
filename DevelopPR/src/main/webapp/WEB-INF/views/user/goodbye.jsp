@@ -51,10 +51,9 @@ $(function(){
 	        $('#goodbye_msg').text('비밀번호 형식에 맞게 입력해주세요.').css("color","red");
 	        $('#goodbye_Pw').focus();
 	    } 
-	    
-	    
-	    var userPw = $('#goodbye_Pw').val();
-	    var param = "userPw="+userPw;
+	    else{
+	    	var userPw = $('#goodbye_Pw').val();
+	    	var param = "userPw="+userPw;
 	    
 	    $.ajax({
 	    	async: true,
@@ -77,7 +76,7 @@ $(function(){
 	    		}
 	    			
 	    	});
-	    	
+	    }	
 	    	
 	   
 	});

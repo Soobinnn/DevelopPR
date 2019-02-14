@@ -5,9 +5,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Reply List</title>
 <%@ include file="../include/tag_header.jsp" %>
+<style>
+.re_list
+{
+margin : 0 auto;
+height:100px;
+}
+
+.re_list #btnModify {  
+			background-color: #f6f6f6;
+			padding: 5px 10px;
+			margin: 2px;
+			border: 1px solid silver;
+			color: black;
+			text-align: center;
+			text-decoration: none;
+			font-size: 1rem;
+			display: inline-block;
+			cursor: pointer;
+			-webkit-transition-duration: 0.4s;
+			transition-duration: 0.4s;
+		    border-radius : 30px;
+		}
+
+.co_detail #btnModify:hover{ /* 수정 버튼 호버 시 투명 효과*/
+ background-color:rgba( 255, 255, 255, 0.1 );
+			color: black;
+}
+
+
+</style>
 </head>
 <body>
-    <table style="width:700px">
+<div class="re_list">
+ <table style="width:700px; margin : 0 auto;">
         <!-- 댓글 목록 -->
         <c:forEach var="row" items="${list}">
         <tr>    
@@ -61,5 +92,8 @@
     
     <!-- 댓글 수정 영역-->
     <div id="modifyReply"></div>
+
+</div> <%-- end of re_list --%>
+
 </body>
 </html>

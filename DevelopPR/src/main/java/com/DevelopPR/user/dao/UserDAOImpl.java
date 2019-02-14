@@ -37,10 +37,10 @@ public class UserDAOImpl implements UserDAO
 	 }
 	// 이메일 찾기 ----- 준형
 	 @Override
-	 public String findId(String phone)
+	 public List findId(String phone)
 	 {
 		//DB에서 phone번호에 매칭되는 email을 하나 리턴(가입할때 폰번호 중복허용하려면 selectList로..)
-		return sqlSession.selectOne("user.findEmail", phone);
+		return sqlSession.selectList("user.findEmail", phone);
 	 }
 	// 이메일 찾기 ------ 준형
 	 

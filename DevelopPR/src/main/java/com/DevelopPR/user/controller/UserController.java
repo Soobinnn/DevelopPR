@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.DevelopPR.resume.model.dto.ResumeVO;
 import com.DevelopPR.resume.service.ResumeService;
 import com.DevelopPR.user.dto.UserVO;
@@ -47,7 +48,6 @@ import com.DevelopPR.util.NaverloginBO;
 import com.DevelopPR.util.TempKey;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.github.scribejava.core.model.Parameter;
 
 @Controller
 @RequestMapping("/user/*")
@@ -149,14 +149,16 @@ public class UserController
 	  
 	  return mav;
   }
-  // 이메일 찾기 결과
+  // 이메일 찾기 결과 , list로 받기 :: 준형
+  @SuppressWarnings("unchecked")
   @RequestMapping("findEmailResult")
   public ModelAndView findId(String phone) throws Exception {
 
 	  System.out.println(phone);
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
-	  String email = userService.findId(phone);
+	  List<String> email = new ArrayList<String>();
+	  email = userService.findId(phone);
 	  // email 담고,
 	  System.out.println(email);
 	  
@@ -446,7 +448,7 @@ public class UserController
 
     // 세션 등록
     UserVO vo2 = new UserVO();
-    vo2.setUserEmail(vo.getUserEmail());
+    vo2.setUserEmail(vo.getUserEmail()+"_kakao");
     vo2.setUserNick(vo.getUserNick());
     vo2.setUserName(vo.getUserName());
     vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -612,14 +614,14 @@ public class UserController
       return "redirect:/main";
   }
 //회원정보 수정 폼 : 준형-------------------------------------------------------------------------------------------------------------------
-  @RequestMapping(value="modifyInfoform", method= RequestMethod.GET)
-  public String userModifyInfoform(HttpSession session, Model model)
+  @RequestMapping(value="modifyInfoform", method= RequestMethod.GET) 
+  public String userModifyInfoform(HttpSession session, Model model) throws Exception
   {
 	  String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
 	  UserVO vo = userService.modifyform(userEmail);
 	  System.out.println(vo);
 	  model.addAttribute("vo", vo);
-	  return "user/modifyInfo";
+	  return "basic/user/modifyInfo";
 	  
   }
 //회원정보 수정
