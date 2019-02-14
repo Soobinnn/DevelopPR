@@ -1,6 +1,7 @@
 <style>
 
 
+
 .co_registForm{
 	margin : 0 auto;
 }
@@ -14,7 +15,7 @@
 .co_registForm #form1{
 	
 	width:850px;
-	height:700px;
+	height:650px; /*이 값이 테두리선 높이를 정한다.*/
     flex-shrink : 0;
 	margin : 0 auto; /*제목과 내용 div들 가운데 정렬*/
 	
@@ -24,9 +25,9 @@
     width:900px;
     border-radius:20px;
     padding-top:3px;
-   display:flex;
+    display:flex;
     flex-direction:column;
-    margin-bottom:30px;
+    margin-bottom:10px;
     min-height:650px;
     margin : 0 auto;
    
@@ -57,26 +58,27 @@
     }
 
 .co_registForm #title {
-    min-width : 103px;
+    min-width : 100px;
     height:50px;
     font-size:1.2rem;
     text-align : center;
     background-color : #f6f6f6;
     margin-bottom:5px;
     padding-top:10px;
+    margin-right:5px;
 }
 
 .co_registForm #titleInput{
      width : 120px; 
 }
 .co_registForm #_title{
-    border:solid 2px #02456F;
+    border:solid 2px #585858;
 }
 
 .co_registForm .content_input{
    display : flex;
    flex-direction : row;
-   height : 450px;  
+   height : 430px;  
    
 }
 
@@ -86,11 +88,15 @@
     font-size:1.2rem;
     height : 410px;
     /* padding-left:40px; */
-    align-items:center;
+    align-items:center; /*글자 위아래 가운데 정렬*/
+    text-align : center;
     background-color : #f6f6f6;
+    margin-right:5px;
+    
+    
 }
-.co_registForm #contentInput{
-    width : 600px;
+.co_registForm #contentInput{   /*textarea를 담는 div*/
+    width : 740px;
     /* padding : 7px; */
 }
 
@@ -136,9 +142,10 @@
 }
 /*---------button-------------*/
 
-.co_registForm .footer
+.co_registForm .regist_footer
 {
     display : flex;
+    flex-shrink:0;
     flex-direction : column;
     height: 100px;
     width : 700px;
@@ -156,12 +163,13 @@
 /*-----------돌아가기, 취소, 등록 버튼--------*/
 
 .co_registForm .btn{
-border:solid 1px #585858;
+    border:solid 2px #585858;
     padding:8px;
     padding-left:15px;
     padding-right:15px;
     background-color:white;
-    border-radius:15px;	
+    border-radius:15px;
+
 }
 .co_registForm .btn:hover{  
     background-color:#f6f6f6;
@@ -173,7 +181,7 @@ border:solid 1px #585858;
 }
 .co_registForm #btnSave{
 	position : relative;
-	left : 700px;
+	left : 680px;
 }
 
 </style>

@@ -13,10 +13,27 @@
 <%@ include file="../include/tag_header.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/community/community.css'/>"/>
+<style type="text/css">
+.co_registForm *:focus{
+outline : none;
+}
+
+
+.co_registForm #co_title{
+font-size:2rem;
+margin-top : 50px;
+margin-bottom : 50px;
+items-align : center;
+align-items : stretch;
+justify-content: center;
+text-align : center;
+}
+</style>
 
 <script>
     $(document).ready(function(){
-        
+    	$(document).scrollTop(610);
+    	
     	$("#btnBack").click(function(){
         location.href="${path}/community/list";		
           return;    
@@ -112,14 +129,11 @@
     
     }); // end of document ready function
 
-
-
-
-  
     </script>
 </head>
 <body>
     <div class="co_registForm">
+        <div id="co_title">Community</div>
         <div class="container">
              <div id="input">
             <form name="form1" id="form1" method="post" action="${path}/community/regist" enctype="multipart/form-data">
@@ -127,26 +141,27 @@
                    <div class="regist_body">
                     <div class="title_input">
                     <div id="title">제목</div>
-                    <div id="titleInput"><input name="title" id="_title" style="height:40px; width:745px; text-align:left; padding-left:5px;" size="60" placeholder="제목을 입력해주세요"></div>
+                    <div id="titleInput"><input name="title" id="_title" style="height:45px; width:730px; text-align:left; padding-left:5px; border-radius:15px;" size="60" placeholder="제목을 입력해주세요"></div>
                   </div> <%--제목과 입력란 종료--%>
                
                <div class="content_input">
-                  <div id="contents">내용</div>
-                  <div id="contentInput"><textarea name="content" style="min-width:700px; width:100%; height:350px; text-align : left; padding-left : 8px;" id="content" placeholder="내용을 입력해주세요"></textarea></div>
+                  <div style="text-align : center;" id="contents">&nbsp;&nbsp;&nbsp;&nbsp;내용</div>
+                  <div id="contentInput"><textarea name="content" style="min-width:98%; height:350px; text-align : left; padding-left : 8px;" id="content" placeholder="내용을 입력해주세요"></textarea></div>
               </div>  <%--내용과 입력란 종료--%> 
           
-              <div class="footer">
+              <div class="regist_footer">
               
                <div class="list_write">
                    <button type="button" class="btn" id="btnBack">돌아가기</button>      
                    <button type="button" class="btn" id="btnSave">등록</button>      
+              </div> <%-- end of list_write --%>
+               
+               </div> <%-- end of footer --%>
               </div> <%-- end of regist_body --%>
-               </div>
-              </div> <%-- end of footer --%>
                </form>
               </div>
      
-      </div> <%--전체 틀 종료 --%>
+      </div> <%--container 종료 --%>
       
       </div><%--co_registForm 종료 --%>
       </body>
