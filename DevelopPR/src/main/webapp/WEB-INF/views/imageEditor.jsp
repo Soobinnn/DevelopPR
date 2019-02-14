@@ -17,6 +17,8 @@
     <img id="editableImage"/>
         
     <div id="PaintWebTarget"></div>
+    
+    
 	<script type="text/javascript">
 var srcImg = null, img1 =null;
 
@@ -46,9 +48,6 @@ function initEditor() {
 function afterImageSave(){
 	window.close();
 }
-
-
 </script>
 </body>
-
 </html>

@@ -53,8 +53,8 @@ System.out.println(RV +"서비스단에서 값을 가져오는가?");
 }
 
 @Override
-public List<ProjectVO> projectList(String nick) throws Exception {
-	return projectDao.projectList(nick);
+public List<ProjectVO> projectList(String email) throws Exception {
+	return projectDao.projectList(email);
 }
 
 

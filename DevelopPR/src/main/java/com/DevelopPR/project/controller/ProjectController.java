@@ -50,10 +50,8 @@ public String projectRegistForm(HttpSession session) throws Exception
 @RequestMapping(value="/project/regist", method=RequestMethod.POST)
 public String projectRegist(HttpSession session, @RequestParam(value="techstack", required=false) String techstack, @ModelAttribute ProjectVO vo) throws Exception
 {
-
-	  UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
-	  String myemail = uservo.getUserEmail();                         // uservo형태의 이메일 값을 스트링 타입 변수인 myemail에 담는다.
-	  vo.setNick(userService.viewId(myemail).getUserNick());          // 
+	  UserVO uservo = (UserVO)session.getAttribute("login");
+	  vo.setEmail(uservo.getUserEmail());
 	  projectService.regist(vo);
 		
 	  return "redirect:registForm"; //나중에 연결할 페이지를 수정해서 표시한다.
