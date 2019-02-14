@@ -4,7 +4,7 @@
     padding-left : 15px;
     padding-right : 15px;
     margin: 50px auto;
-    background: white;
+    background : #f6f6f6;
     display: flex;
     flex-direction: column;
     border : 2px solid #b9b9b9;
@@ -105,7 +105,7 @@
       
       flex-direction: row;
       flex-shrink: 0;
-      flex-basis: 650px;
+      flex-basis: 580px;
       height : 650px;        
     }
     .login_section
@@ -277,14 +277,16 @@
     #text1
     {
         position : relative;
-        left : 100px;
+        bottom : 15px;
+        left : 20px;
         margin-bottom : 5px;
     }
     
     #text2
     {
         position : relative;
-        left : 180px;
+        left : 100px;
+        bottom : 15px;
         margin-bottom : 5px;
     }
     
@@ -327,7 +329,7 @@
     }
     #emailSave_span
     {
-        color: gray;
+        color: black;
         font-size:15px;
         position: relative;
         bottom : 11px;

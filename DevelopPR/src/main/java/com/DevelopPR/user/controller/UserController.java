@@ -17,7 +17,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.social.MissingAuthorizationException;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.User;
+import org.springframework.social.facebook.api.UserOperations;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
+import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.google.api.impl.GoogleTemplate;
 import org.springframework.social.google.api.plus.Person;
@@ -62,6 +68,11 @@ public class UserController
   @Inject
   BCryptPasswordEncoder passwordEncoder;
   
+  //페이스북 oAuth 관련
+  @Inject
+  private FacebookConnectionFactory connectionFactory;
+  @Inject
+  private OAuth2Parameters oAuth2Parameters;
   
   
   // naver api
@@ -246,20 +257,42 @@ public class UserController
  
   // 로그인 화면(GET)
   @RequestMapping(value="login", method=RequestMethod.GET)
-  public String userLogin()
+  public String userLogin(HttpServletResponse response, Model model)
   {
+	  //페이스북 api
+	  OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+      String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
+  
+      model.addAttribute("facebook_url", facebook_url);
 	  return "basic/user/login";
   }
   
+ /* //facebook api
+ @RequestMapping(value = "facebookLogin", method = { RequestMethod.GET, RequestMethod.POST })
+ public String facebookLogin(HttpServletResponse response, Model model) 
+ {    
+     OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+     String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
+ 
+     model.addAttribute("facebook_url", facebook_url);
+
+     return "user/facebooklogin";
+ }*/
+  
   // 로그인 화면 (POST)
   @RequestMapping(value="login", method=RequestMethod.POST)
-  public ModelAndView Login(String selectedId)
+  public ModelAndView Login(HttpServletResponse response, String selectedId)
   {
+	  //페이스북 api
+	  OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+      String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
+  
 	  ModelAndView mv = new ModelAndView();
 	  // 이메일 찾고나서 해당 이메일 라디오 버튼 누르고 로그인 페이지로 갔을때
 	  // 이메일 입력란에 해당 이메일 바로 보여주기 위해 selectedId 사용
 	  mv.addObject("selectedId", selectedId);
 	  mv.setViewName("basic/user/login");
+	  mv.addObject("facebook_url", facebook_url);
 	  
 	  return mv;
 	  
@@ -654,11 +687,12 @@ public class UserController
   }
   // 회원 탈퇴 : 준형
   @RequestMapping(value="goodbye", method=RequestMethod.POST)
-	  public String goodbye(String userPw, HttpSession session) {
-	  String userEmail = (String) session.getAttribute("userEmail");
-	  userService.deleteUser(userEmail);
-	  session.invalidate();
-	  return "user/goodbyeConfirm";
+	  public String goodbye(String userPw, HttpSession session) 
+  	  {
+	  	String userEmail = (String) session.getAttribute("userEmail");
+	  	userService.deleteUser(userEmail);
+	  	session.invalidate();
+	  	return "user/goodbyeConfirm";
 	  }
   
   // 장기미접속유저 메일 보내기
@@ -668,5 +702,59 @@ public class UserController
 	// 6개월 / 9개월 / 1년 7일전  미접속 인원 가져온다.
 	List<UserVO> longUnAccess = userService.longUnAccess();	
 	userService.unAccessSendMail(longUnAccess);
+  }
+  
+
+
+  
+ //facebook api 콜백
+  @RequestMapping(value = "facebookSignInCallback", method = { RequestMethod.GET, RequestMethod.POST })
+  public String facebookSignInCallback(@RequestParam String code) throws Exception 
+  {
+
+      try {
+           String redirectUri = oAuth2Parameters.getRedirectUri();
+          System.out.println("Redirect URI : " + redirectUri);
+          System.out.println("Code : " + code);
+
+          OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+          AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUri, null);
+          String accessToken = accessGrant.getAccessToken();
+          System.out.println("AccessToken: " + accessToken);
+          Long expireTime = accessGrant.getExpireTime();
+      
+          
+          if (expireTime != null && expireTime < System.currentTimeMillis()) 
+          {
+              accessToken = accessGrant.getRefreshToken();
+              logger.info("accessToken is expired. refresh token = {}", accessToken);
+          };
+          
+      
+          Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
+          Facebook facebook = connection == null ? new FacebookTemplate(accessToken) : connection.getApi();
+          UserOperations userOperations = facebook.userOperations();
+          
+          try
+
+          {            
+              String [] fields = { "id", "email",  "name"};
+              User userProfile = facebook.fetchObject("me", User.class, fields);
+              System.out.println("유저이메일 : " + userProfile.getEmail());
+              System.out.println("유저 id : " + userProfile.getId());
+              System.out.println("유저 name : " + userProfile.getName());
+          } catch (MissingAuthorizationException e) {
+              e.printStackTrace();
+          }
+
+      
+      } catch (Exception e) 
+      {
+
+          e.printStackTrace();
+
+      }
+      return "redirect:/join";
+
   }
 }

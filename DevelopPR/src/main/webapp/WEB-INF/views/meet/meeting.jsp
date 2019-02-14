@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/meet/meeting.css'/>" />
 <head>
 <title>메신저</title>
-<link rel="stylesheet" type="text/css" href="meeting.css" />
 <script>
 	var socket = null;
 	var nick = '${login.userNick}';
@@ -109,11 +108,11 @@
 		
 		if(nick===msg.message_sender)
 		{
-			$("#chatArea").append("<div id='sendchat' style='text-align : right'>" + msg.message_content + "</div><br>");
+			$("#chatArea").append("<div id='sendchat' style='text-align : right'><span class ='sendchat_msg'id='sendchat_msg_right'>" + msg.message_content + "</span></div><br>");
 		}
 		else
 		{
-			$("#chatArea").append("<div id='sendchat' style='text-align : left'>" + msg.message_content + "</div><br>");	
+			$("#chatArea").append("<div id='sendchat' style='text-align : left'><span class ='sendchat_msg' id='sendchat_msg_left'>" + msg.message_content + "</span></div><br>");	
 		}
 		var chatAreaHeight = $("#chat").height();
 		var maxScroll = $("#chatArea").height() - chatAreaHeight;
@@ -183,6 +182,7 @@
 	        	//카운트 사라지게
 	         }
 		})
+	
 	}
 	// 본인의 채팅방리스트 불러옴
 	function getList(message)
@@ -209,6 +209,8 @@
 	        	 }
 	         }
 		})
+		console.log("호이잇"+lookRoom);
+		
 	}
 	//채팅방 리스트를 불러옴
 	function viewList(getlist)
@@ -224,11 +226,11 @@
 			console.log("세션 = Receiver");
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div></div>");	
 			}
 		}
 		else
@@ -236,11 +238,11 @@
 			console.log("세션 = sender");
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'></div></div>");
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div></div>");
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'>"+getlist.unReadCount+"</div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div></div>");	
 			}
 		}
     	var RoomAreaHeight = $(".listAll").height();
@@ -333,6 +335,8 @@
 			var listChatRoom = $(this).find('#listChatRoom');
 			var listChatThat = $(this).find('#listChatThat');
 			getRoom(listChatRoom.text(),listChatThat.text(), 1);
+			$(this).css({"background-color":"#E6E6E6"});
+			var lookRoom_css = $(this);
 		});
 	});	
 	 // date format 함수  : Date 내장 객체에 format함수 추가
@@ -384,12 +388,11 @@
 		$(".mlist").scrollTop(RoomMaxScroll);
 		
     });
-   
-    
-    
+  
 </script>
 </head>
 <body>
+	<div class="_meet">
 	<div class="container">
 		<div id="list">
 			<div class="subject">메신저 목록</div>
@@ -419,7 +422,7 @@
 						<div class="down">
 							<div class="m_info">${row.lastMessage}</div>
 							<c:if test="${row.unReadCount >0}">
-							<div class="m_readcount">${row.unReadCount}</div>
+							<div class="m_readcount"><span id='_readcount'>${row.unReadCount}</span></div>
 							</c:if>
 						</div>
 					</div>
@@ -441,8 +444,8 @@
 		<div id="nav">
 			<div id="myinfo">
 				<div id="my_img">사진</div>
-				<div id="my_name">${sessionScope.userName}
-					${sessionScope.userNick}</div>
+				<div id="my_name">${sessionScope.userNick} 
+					( ${sessionScope.userName} )</div>
 			</div>
 
 			<div id="css_tabs">
@@ -452,19 +455,22 @@
 				<div class="tab1_content">
 					<c:forEach items="${followingList}" var="list">
 						<div>
-							<a href="javascript:readyRoom('${list.following_nick}');">${list.following_nick}</a>
+							<a class="_following" href="javascript:readyRoom('${list.following_nick}');">
+							<span class="profile_image"></span><span class="follow_name">${list.following_nick}</span></a>
 						</div>
 					</c:forEach>
 				</div>
 				<div class="tab2_content">
 					<c:forEach items="${followerList}" var="list">
 						<div>
-							<a href="javascript:readyRoom('${list.follower_nick}');">${list.follower_nick}</a>
+							
+							<a class="_follower" href="javascript:readyRoom('${list.follower_nick}');"><span class="profile_image"></span><span class="follow_name">${list.follower_nick}</span></a>
 						</div>
 					</c:forEach>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
