@@ -107,7 +107,7 @@ public class ResumeController {
 	  map.put("following_nick", name);
 	
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
-	  model.addAttribute("project", projectService.projectList(name));
+	  model.addAttribute("project", projectService.projectList(email));
 	  GoodVO goodvo = new GoodVO();
 	  goodvo.setGood_email(email);
 	  goodvo.setGood_nick(myname);

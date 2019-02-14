@@ -59,8 +59,8 @@ return listLook;
 }
 
 @Override
-public List<ProjectVO> projectList(String nick) throws Exception {
-		return sqlSession.selectList("project.projectlist", nick);
+public List<ProjectVO> projectList(String email) throws Exception {
+		return sqlSession.selectList("project.projectlist", email);
 }
 
 

@@ -52,8 +52,7 @@ public String projectRegist(HttpSession session, @RequestParam(value="techstack"
 {
 
 	  UserVO uservo = (UserVO)session.getAttribute("login");
-	  String myemail = uservo.getUserEmail();
-	  vo.setNick(userService.viewId(myemail).getUserNick());
+	  vo.setEmail(uservo.getUserEmail());
 	  projectService.regist(vo);
 		
 	  return "redirect:registForm"; //나중에 연결할 페이지를 수정해서 표시한다.

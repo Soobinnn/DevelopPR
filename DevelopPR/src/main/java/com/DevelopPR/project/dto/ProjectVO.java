@@ -15,7 +15,7 @@ public class ProjectVO
     private String techstack;       //테크스택(사용가능 언어)
 	private String project_grade;       //프로젝트 등급 (상용화, 팀프로젝트...)
 	private String tech_name_input;   //검색어 ajax 통신에 이용되는 변수, 검색어 값을 담는다.
-	private String nick;
+	private String email;
 	
 	
 	
@@ -25,11 +25,12 @@ public class ProjectVO
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public String getNick() {
-		return nick;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getTech_name_input() 
 	{
