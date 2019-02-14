@@ -83,6 +83,8 @@ $(function(){
 <body>
 <div id="policy">
 	<h1 align="center">DevelopPR</h1>
+	<div class="_section">
+		<div class="sec1"></div>
 		<div class="container">
 			<div class="area1" id="area1_1">
 				<label for="chkAll">이용약관, 개인정보 수집 및 이용에 모두 동의합니다. 
@@ -236,5 +238,7 @@ $(function(){
 				</div>
 			</div>
 		</div>
+		<div class="sec2"></div>
+	</div>
 	</div>
 </body>
