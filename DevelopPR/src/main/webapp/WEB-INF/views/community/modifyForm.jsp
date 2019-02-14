@@ -8,9 +8,31 @@
 <title>게시글 수정</title>
 <%@ include file="../include/tag_header.jsp" %>
 <style>
+
 .co_modify{
-	margin : 0 auto;
+height:820px;
+
 }
+
+
+.co_modify *:focus{
+outline : none;
+}
+
+
+.co_modify #co_title{
+font-size:2rem;
+margin-top : 50px;
+margin-bottom : 50px;
+items-align : center;
+align-items : stretch;
+justify-content: center;
+text-align : center;
+}
+
+
+
+
 .co_modify .container{   /*전체 틀 */
   margin : 0 auto;
    height:730px;
@@ -21,7 +43,7 @@
 .co_modify #form1{
 	
 	width:850px;
-	height:700px;
+	height:650px; /*이 값이 테두리선 높이를 정한다.*/
     flex-shrink : 0;
 	margin : 0 auto; /*제목과 내용 div들 가운데 정렬*/
 	
@@ -31,9 +53,9 @@
     width:900px;
     border-radius:20px;
     padding-top:3px;
-   display:flex;
+    display:flex;
     flex-direction:column;
-    margin-bottom:30px;
+    margin-bottom:10px;
     min-height:650px;
     margin : 0 auto;
    
@@ -64,26 +86,27 @@
     }
 
 .co_modify #title {
-    min-width : 103px;
+    min-width : 100px;
     height:50px;
     font-size:1.2rem;
     text-align : center;
     background-color : #f6f6f6;
     margin-bottom:5px;
     padding-top:10px;
+    margin-right:5px;
 }
 
 .co_modify #titleInput{
      width : 120px; 
 }
 .co_modify #_title{
-    border:solid 2px #02456F;
+    border:solid 2px #585858;
 }
 
 .co_modify .content_input{
    display : flex;
    flex-direction : row;
-   height : 450px;  
+   height : 430px;  
    
 }
 
@@ -93,13 +116,16 @@
     font-size:1.2rem;
     height : 410px;
     /* padding-left:40px; */
-    align-items:center;
+    align-items:center; /*글자 위아래 가운데 정렬*/
     text-align : center;
     background-color : #f6f6f6;
+    margin-right:5px;
+    
+    
 }
-.co_modify #contentInput{
-    width : 600px;
-     padding : 7px;
+.co_modify #contentInput{   /*textarea를 담는 div*/
+    width : 740px;
+    /* padding : 7px; */
 }
 
 
@@ -144,9 +170,10 @@
 }
 /*---------button-------------*/
 
-.co_modify .footer
+.co_modify .modify_footer
 {
     display : flex;
+    flex-shrink:0;
     flex-direction : column;
     height: 100px;
     width : 700px;
@@ -164,12 +191,13 @@
 /*-----------돌아가기, 취소, 등록 버튼--------*/
 
 .co_modify .btn{
-border:solid 1px #585858;
+    border:solid 2px #585858;
     padding:8px;
     padding-left:15px;
     padding-right:15px;
     background-color:white;
-    border-radius:15px;	
+    border-radius:15px;
+
 }
 .co_modify .btn:hover{  
     background-color:#f6f6f6;
@@ -177,24 +205,29 @@ border:solid 1px #585858;
 
 .co_modify #btnBack{
 	position : relative;
-	left : 10px;
+	left : 5px;
 }
 
 .co_modify #btnCancel{
-    position : relative;
-    left : 20px;
+   position : relative;
+   left : 10px;
+
 }
 
 .co_modify #btnSave{
 	position : relative;
-	left : 650px;
+	left : 632px;
 }
-
 
 </style>
 <script>
     $(document).ready(function(){
-        
+    	 $(document).scrollTop(635);
+    	   $('#pageName').focus();
+
+    	
+    	
+    	
     	$("#btnBack").click(function(){
         location.href="${path}/community/list";		
           return;    
@@ -253,6 +286,7 @@ border:solid 1px #585858;
 <div class="co_modify"> 
  
  <div class="container">
+     <div id="co_title">Community</div>  
        <div id="input">
       <form name="form1" id="form1" method="post" action="${path}/community/modify">
       <input type="hidden" name="bno" id="bno" value="${dto.bno}">
@@ -262,20 +296,20 @@ border:solid 1px #585858;
       <div id="modify_body">
       <div class="title_input">
           <div id="title">제목</div>
-          <div id="titleInput"><input name="title" id="_title" style="height:40px; width:745px; text-align:left; padding-left:5px;" size="60" value="${dto.title}"></div>
+          <div id="titleInput"><input name="title" id="_title" style="height:45px; width:730px; text-align:left; padding-left:5px; border-radius:15px;" size="60" value="${dto.title}"></div>
         </div> <%--제목과 입력란 종료--%>
      
      <div class="content_input">
-        <div id="contents">내용</div>
-        <div id="contentInput"><textarea name="content" style="min-width:700px; width:100%; height:350px; text-align : left; padding-left : 8px;" id="content">${dto.content}</textarea></div>
+        <div id="contents">&nbsp;&nbsp;&nbsp;&nbsp;내용</div>
+        <div id="contentInput"><textarea name="content" style="min-width:98%; width:100%; height:350px; text-align : left; padding-left : 8px;" id="content">${dto.content}</textarea></div>
     </div>  <%--내용과 입력란 종료--%> 
-    <div class="footer">
+    <div class="modify_footer">
      <div class="list_write">
      <button type="button" class="btn" id="btnBack">돌아가기</button>
      <button type="reset" class="btn" id="btnCancel">취소</button>
-     <button class="btn" type="button" id="btnSave">수정</button>      
+     <button type="button" class="btn" id="btnSave">수정</button>      
  </div> 
- </div>
+ </div>  <%--modify_footer 종료 --%>
     </div> 
 </form>
 </div> <%-- div id="input" 종료 --%>

@@ -1,194 +1,163 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <link rel="stylesheet" type="text/css" href="community_detail.css?ver=1"> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 보기</title>
 <%@ include file="../include/tag_header.jsp" %>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script> 
+<meta charset="utf-8">
 <style>
 
-.co_detail{
-margin : 0 auto;
-}
+.co_detail *{
 
-.co_detail .container{
-  min-height:500px;
-  display:flex;
-  flex-direction:column;
-  width:800px;
-  min-width : 350px;
-  margin : 0 auto;
- 
- 
-  }
-
-
-.co_detail #form1{
-margin : 0 auto;
-display:flex;
-flex-direction:column;
-height:750px;
 
 }
 
 
-.co_detail ul,li
-{
-  list-style : none;
-}
-.co_detail #name, #viewcnt, #title_reg, #name_cnt, #content{
-  display : flex;
-  flex-basis : 50px;
+.co_detail *:focus{
+outline : none;
 }
 
-.co_detail #title_reg
-{
- background-color:#f6f6f6;
- display : flex;
- flex-direction : row;
- flex-shrink : 0;
- border-bottom : 1px solid silver;
- border-radius : 10px;
- /* vertical-align:baseline; */
- 
-}
-.co_detail #title{
-  padding-top : 10px;
-  padding-left : 10px;
-  flex-basis : 570px;
-     vertical-align:baseline;
-     }
-.co_detail #regdate{
-  flex-basis : 220px;
-  padding-top : 10px;
-        }
-.co_detail #name
-{
- padding-top : 10px;
- padding-left : 10px;
- display : flex;
- flex-basis : 100px;
-margin-right : 464px; 
-}
-.co_detail #viewcnt
-{
-  padding-top : 10px;
-  flex-basis : 120px;
-}
-.co_detail #content
-{
-  display : flex;
-  padding-top : 40px;
-  padding-bottom : 20px;
-  padding-left : 20px;
-  flex-basis : 420px; 
-  flex-shrink:0;
-  border-bottom : 1px solid silver;
-  overflow: scroll;
-}
-
-.co_detail #modifyReply {
-        width: 600px;
-        height: 130px;
-        background-color: gray;
-        padding: 10px;
-        z-index: 10;
-        visibility: hidden;
+.co_detail #co_title{
+    font-size : 2rem;
+    margin : 0 auto;
+    margin-top : 50px;
+    margin-bottom : 50px;
+    text-align : center;
     }
 
-.co_detail #listReply
-{
-margin : 0 auto;
-height:100px;
-}
-
-.co_detail .btn {   /* 검색 버튼의 속성  */
-			background-color: #f6f6f6;
-			padding: 5px 10px;
-			margin: 2px;
-			border: 1px solid silver;
-			color: black;
-			text-align: center;
-			text-decoration: none;
-			font-size: 1rem;
-			display: inline-block;
-			cursor: pointer;
-			-webkit-transition-duration: 0.4s;
-			transition-duration: 0.4s;
-		    border-radius : 30px;
-		}
-
-.co_detail .btn:hover{ /*검색 버튼 호버 시 투명 효과*/
- background-color:rgba( 255, 255, 255, 0.1 );
-			color: black;
-}
-
-.co_detail .btns{
-
-
-display:flex;
-height:50px;
-width:800px;
-margin-top:10px;
-margin : 0 auto;               
-               }
-
-.co_detail #btnlist{
-position:relative;
-left:400px;
-}
-
-.co_detail #btnReply{
-			background-color: #f6f6f6;
-			padding: 5px 10px;
-			margin: 2px;
-			border: 1px solid silver;
-			color: black;
-			text-align: center;
-			text-decoration: none;
-			font-size: 1rem;
-			display: inline-block;
-			cursor: pointer;
-			-webkit-transition-duration: 0.4s;
-			transition-duration: 0.4s;
-		    border-radius : 30px;
-}
-.co_detail #btnReply:hover{ /*검색 버튼 호버 시 투명 효과*/
- background-color:rgba( 255, 255, 255, 0.1 );
-			color: black;
-}
-.co_detail #de_reply{
-margin : 0 auto;
-display : flex;
-flex-direction:row;
-flex-basis:60px;
+.co_detail .container{
+display :flex;
+width : 900px;
+flex-direction: column;
+height:100%;    /*댓글 목록과 입력창까지 포함하기 위해 높이를 800에서 100%로 변경*/
 flex-shrink:0;
-
+margin : 0 auto;
 }
 
-.co_detail #btnUpdete {
+.co_detail .header{ /*제목, 날짜, 닉네임, 조회수가 들어가는 div*/
+display:flex;
+flex-direction : column;
+height:120px;
+width : 904px;
+background-color:#f6f6f6;
+border-radius : 20px;
+border-bottom : 1px solid #585858;
+}
+
+
+.co_detail .title_reg{ /*제목, 날짜가 들어있는 div*/
+display:flex;
+height : 60px;
+flex-direction:row;
+}
+
+.co_detail #titleInput{
+line-height:60px;
+height:60px;
+display:table-cell;
+vertical-align:middle;
+align-items:center;
+width : 700px;
+padding-left : 10px;
+font-size : 1rem;
+}
+
+.co_detail #regdate{
+    line-height:60px;
+    height:60px;
+    text-align:center;
+    width:200px;
+    
+   
+}
+
+.co_detail .nick_cnt{
+display:flex;
+height:60px;
+width:900px;
+flex-direction:row;
+}
+
+.co_detail #nick{
+display:flex;
+height: 60px;
+line-height: 60px;
+flex-basis:688px;    /*원래 width값은 700이다.*/
+flex-shrink:0;
+padding-left:10px;
+}
+
+.co_detail #viewcnt{
+    display:table-cell;
+    width:200px;
+    height:60px;
+    line-height:60px;
+    
+   }
+.co_detail #view_cnt{    /*span태그로 감싸서 따로 정렬한다.*/
 position : relative;
-left : 5px;
+left : 100px;
+
 }
 
+.co_detail #content{
+display:flex;
+flex-shrink:0;
+flex-direction : row;
+height:450px;
+width: 900px;
+overflow:auto; /*글 내용이 범위를 벗어날 때만 스크롤바 생성*/
+}
+
+.co_detail #content_text{  /*글 내용을 span 태그로 감싼다.*/ 
+display:flex;
+position : relative;
+top : 20px;
+padding-left:20px;
+font-size : 1.1rem;
+height:420px;
+}
+
+
+.co_detail #btns  /*버튼이 담긴 div*/
+{
+height:80px;
+line-height:80px;
+width:900px;
+text-align : right;
+}    
+
+.co_detail .btn{
+border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+}
+.co_detail .btn:hover{
+background-color:#f6f6f6;
+}
 .co_detail #btnDelete{
-position : relative;
-left : 12px;
+margin-left:5px;
+margin-right:5px;
 }
 .co_detail #btnList{
-position : relative;
-left : 620px;
+margin-right:5px;
+
 }
-
-
 
 </style>
 <script>
 
 $(document).ready(function(){
-    /* 게시글 관련 */
+	 $(document).scrollTop(630);
+	
+	
+	/* 게시글 관련 */
     // 1. 게시글 수정
     $("#btnUpdete").click(function(){
         
@@ -358,63 +327,58 @@ function showReplyModify(rno){
 </head>
 <body>
 <div class="co_detail">
-<form name="form1" id="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">
-    
-    <div class="container">
-   <div id="title_reg">
-   <div id="title">${dto.title}</div>
-   <div id="regdate"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/></div>
+<div id="co_title">Community</div>
+ <form name="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">    
+   <div class="container">
+   
+  <div class="header"> 
+   
+   <div class="title_reg">
+   <div id="titleInput">${dto.title}</div>
+   <div id="regdate"><fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm"/></div> <%-- 초 단위 삭제 --%>
   </div>
-      <div id="name_cnt">
-        <div id="name">${dto.writer}</div> 
-        <div id="viewcnt">조회수 : ${dto.viewcnt}</div>
+      <div class="nick_cnt">
+        <div id="nick">${dto.writer}</div> 
+        <div id="viewcnt"><span id="view_cnt">조회수 : ${dto.viewcnt}</span></div>
       </div>
-     <div id="content"><pre>${dto.content}</pre></div>  
-  </div>
   
-  
-  <!-- 게시물번호를 hidden으로 처리 -->
-     <input type="hidden" id="bno" name="bno" value="${dto.bno}">
-     <input type="hidden" name="title" value="${dto.title}">
-     <input type="hidden" name="userName" value="${dto.userName}"> 
-     <input type="hidden" name="writer" value="${dto.writer}">
-  
-  
-  <div class="btns">
-  <!-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 -->
+  </div>  <%-- end of header --%>
+     
+     <div id="content"><span id="content_text"><pre>${dto.content}</pre></span></div>  
+  <div id="btns">
+  <%-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 --%>
     <c:if test="${sessionScope.userNick == dto.writer}"> 
          <button type="button" class="btn"  id="btnUpdete">수정</button>
          <button type="button" class="btn"  id="btnDelete">삭제</button>
     </c:if>  
-        <!-- 상세보기 화면에서 게시글 목록화면으로 이동 -->
+        <%-- 상세보기 화면에서 게시글 목록화면으로 이동 --%>
       <button type="button" class="btn" id="btnList">목록</button>
  </div>
- <!-- 댓글 목록 출력할 위치 -->
+   
+   <%-- 댓글 목록 출력할 위치 --%>
     <div id="listReply"></div>
+     
      <div id="de_reply">
         <br>
-        <!-- 로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
+        <%-- 로그인 한 회원에게만 댓글 작성폼이 보이게 처리 --%>
         <c:if test="${sessionScope.userNick != null}">    
             <textarea rows="3" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
             <br>
            <button type="button" id="btnReply">댓글 작성</button>
         </c:if>
       </div>
-   
-   </form>        
-   
+ 
+  <%-- 게시물번호를 hidden으로 처리 --%>
+     <input type="hidden" id="bno" name="bno" value="${dto.bno}">
+     <input type="hidden" name="title" value="${dto.title}">
+     <input type="hidden" name="userName" value="${dto.userName}"> 
+     <input type="hidden" name="writer" value="${dto.writer}">
+  
+    </div> <%-- end of container --%>
 
-
-
+</form>
 
  </div> <%-- co_detail  종료 --%>   
-   
-   
-   
-     
-    
-    
-    
    
 </body>
 </html>

@@ -10,9 +10,6 @@
     function list(page){
         location.href="${path}/resume/list?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
     }
-    
-    
-    
 </script>
 </head>
 <body>
@@ -26,7 +23,7 @@
 			            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >전체</option>
 			            <option value="name" <c:out value="${map.searchOption == 'name'?'selected':''}"/> >이름</option>
 			            <option value="prefer_place" <c:out value="${map.searchOption == 'prefer_place'?'selected':''}"/> >희망 지역</option>
-			            <option value="acq_name" <c:out value="${map.searchOption == 'acq_name'?'selected':''}"/> >tech-stack</option>
+			            <option value="acq_name" <c:out value="${map.searchOption == 'acq_name'?'selected':''}"/> >Tech-Stack</option>
 			            <option value="tech_name" <c:out value="${map.searchOption == 'tech_name'?'selected':''}"/> >자격증</option>
 			        </select>
 			        <input name="keyword" id="keyword" value="${map.keyword}">
@@ -133,7 +130,7 @@
                 
                 <!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
                 <c:if test="${map.resumePager.curBlock > 1}">
-                    <a href="javascript:list('${map.resumePager.prevPage}')">[이전]</a>
+                    <a id="pagestart" href="javascript:list('${map.resumePager.prevPage}')">[이전]</a>
                 </c:if>
                 
                 <!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
@@ -151,12 +148,11 @@
                 
                 <!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
                 <c:if test="${map.resumePager.curBlock <= map.resumePager.totBlock}">
-                    <a href="javascript:list('${map.resumePager.nextPage}')">[다음]</a>
+                    <a id="pagedaum" href="javascript:list('${map.resumePager.nextPage}')">[다음]</a>
                 </c:if>
-                
-                <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+                               <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
                 <c:if test="${map.resumePager.curPage <= map.resumePager.totPage}">
-                    <a href="javascript:list('${map.resumePager.totPage}')">[끝]</a>
+                    <a id="pageend" href="javascript:list('${map.resumePager.totPage}')">[끝]</a>
                 </c:if>
 		</div>
 	</section>

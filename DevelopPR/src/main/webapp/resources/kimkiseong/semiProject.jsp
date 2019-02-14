@@ -13,6 +13,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+.1{
+display:flex;
+flex-direction : column;
+width:100%;
+margin: 0 auto;
+}
 .mySlides {display:none}
 
 .w3-container{
@@ -22,12 +28,12 @@ text-align:center;
 }
 </style>
 <body>
-
+<div class="1">
 <div class="w3-container">
 Project Name : MUSED
 </div>
 
-<div class="w3-content" style="max-width:800px">
+<div class="w3-content">
   <img class="mySlides" src="${path}/resources/kimkiseong/semi_photo/2.PNG" style="width:100%">
   <img class="mySlides" src="${path}/resources/kimkiseong/semi_photo/3.PNG" style="width:100%">
   <img class="mySlides" src="${path}/resources/kimkiseong/semi_photo/4.PNG" style="width:100%">
@@ -130,7 +136,7 @@ Project Name : MUSED
   
  
 </div>
-
+</div> <%-- end of 1 --%>
 <script>
 var slideIndex = 1;
 showDivs(slideIndex);
