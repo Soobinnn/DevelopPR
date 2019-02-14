@@ -118,7 +118,12 @@
 						<a href='${path}/user/login'></a>
 						</c:when>
 						<c:otherwise>
-						<a href="${path}/resume/regist"></a>
+						<c:if test="${sessionScope.login.userIs_seek == 1}">
+							<li class="fullmenulist"><a href='${path}/resume/regist'></a></li>
+						</c:if>
+						<c:if test="${sessionScope.login.userIs_seek == 0}">
+							<li class="fullmenulist"><a href='javascript:modifyplz();'></a></li>
+						</c:if>
 						</c:otherwise>
 						</c:choose>
 					</figure>		
