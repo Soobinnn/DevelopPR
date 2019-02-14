@@ -1,133 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <!-- jstl í¬ë§· íƒœê·¸ -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ÀÌ¸ŞÀÏ Ã£±â ¼º°ø</title>
-
-<style>
-.findEmailResult_header
-{
-   
-   height:160px;
-}
-.findEmailResult_sec {
-   display: flex;
-   flex-direction: row;
-   width: auto;
-   height: 600px;
-   border :1px solid black;
-}
-#sec1{
-   border :1px solid black;
-   width : 50%;
-}
-#sec2{
-   display : flex;
-   flex-shrink: 0;
-   flex-basis: 800px;
-   border :1px solid black;
-   width : 800px;
-   justify-content: center;
-}
-#findemailResult_com
-{
-   margin-top : 40px;
-   text-align : center;
-   margin-bottom: 55px;
-   color: white;
-}
-#findEmailResult_ul
-{
-   position: relative;
-   top : 40px;
-   width : 500px;
-   height: 500px;
-}
-#com_span
-{
-   color : black;
-   font-size: 40px;
-}
-#emailList_span
-{
-   font-size : 20px;
-   color : black;
-}
-#findemailResult_emailList
-{
-   color :#0B173B;
-   margin-bottom: 50px;
-   
-}
-#findemailResult_emailList2
-{
-   color :white;
-   position : relative;
-   bottom : 20px;
-}
-#emailList_span
-{
-   color : black;
-}
-#findemailResult_email
-{
-   margin-bottom: 80px;
-   color : black;
-}
-#findemailResult_email_EL
-{
-   color : black;
-}
-#findEmailResult_Pw
-{
-   color : white;
-}
-#findPw_span
-{
- color : #0B173B;
-}
-#findPw_span2
-{
-   color : black;
-}
-
-#findemailResult_findPwbtn
-{
-   margin-bottom: 70px;
-   position: relative;
-   left : 180px;
-   background : #0B173B;
-   color : white;
-   border : 1px solid #0B173B;
-   border-radius: 5px 5px / 5px 5px;
-   height: 30px;
-}
-#findemailResult_loginbtn
-{
-   height :50px;
-   width : 120px;
-   top :10px;
-   position: relative;
-   left : 190px;
-   background : #0B173B;
-   color : white;
-   border : 1px solid #0B173B;
-   border-radius: 10px 10px / 10px 10px;
-}
-#sec3{
-   border :1px solid black;
-   width : 50%;
-}
-.findEmailResult_ft
-{
- border :1px solid black;
-}
-
-</style>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmailResult.css'/>"/>
+<meta charset="UTF-8">
+<title>ì´ë©”ì¼ ì°¾ê¸° ì„±ê³µ</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script>
+$(document).ready(function(){
+	$(document).scrollTop(350); 
+});
+</script>
 </head>
    <body>
+   <div class="findEmailResult">
       <header class="findEmailResult_header">
             
       </header>
@@ -139,21 +31,22 @@
             <form action="${path}/user/login" method="post">  
             <ul id="findEmailResult_ul">
               <li id="findemailResult_com">
-                 <span id="com_span"><strong>ÀÌ¸ŞÀÏ Ã£±â ¿Ï·á</strong></span>
+                 <span id="com_span"><strong>ì´ë©”ì¼ ì°¾ê¸° </strong></span>
                  </li>  
               <li id="findemailResult_emailList">
-                 <span id="emailList_span">°í°´´ÔÀÇ Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â ÀÌ¸ŞÀÏ ¸ñ·ÏÀÔ´Ï´Ù.</span>
+              	 <img id="findEmailResult_img" src="${path}/resources/user/marker.png">
+                 <span id="emailList_span">ê³ ê°ë‹˜ì˜ ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ì´ë©”ì¼ ëª©ë¡ì…ë‹ˆë‹¤.</span>
               </li>
               <li id="findEmailResult_emailList2">   
-              <label for="findemailResult_email">
                <input id="findemailResult_email" type="radio" name="selectedId" value="${email}">
-               <span id="findemailResult_email_EL">${email}</span></label>
+               <label for="findemailResult_email" id="findemailResult_label"></label>
+               <label for="findemailResult_email" id="findemailResult_email_EL">${email}</label>
                </li>
                <li id="findEmailResult_Pw">               
-               <span id="findPw_span">*</span> <span id="findPw_span2">ºñ¹Ğ¹øÈ£¸¦ Ã£À¸½Ã³ª¿ä?</span>                                                                     
-               <button id="findemailResult_findPwbtn" type="button" onclick="location='${path}/user/findPassword'">ºñ¹Ğ¹øÈ£ Ã£±â</button>
+               <span id="findPw_span">*</span> <span id="findPw_span2">ë¹„ë°€ë²ˆí˜¸ë¥¼ ì°¾ìœ¼ì‹œë‚˜ìš”?</span>                                                                     
+               <button id="findemailResult_findPwbtn" type="button" onclick="location='${path}/user/findPasswordForm'">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</button>
                   </li>
-                  <button id="findemailResult_loginbtn" type="submit" onclick="location='${path}/user/login'">·Î±×ÀÎ</button>
+                  <button id="findemailResult_loginbtn" type="submit" onclick="location='${path}/user/login'">ë¡œê·¸ì¸</button>
             </ul>
          </form>
       </div>
@@ -162,5 +55,6 @@
       <footer class="findEmailResult_ft">
 
       </footer>
+      </div>
    </body>
 </html>

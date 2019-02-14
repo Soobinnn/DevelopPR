@@ -333,34 +333,48 @@ section.main_section
   flex-direction:column;
   align-items:center;
   margin-top:50px;
-  height:100px;
+  height:36.8px;
+  margin-bottom:90px;
 }
 
 .search #search_select{
     font-size:16pt;
+    border-radius:10px;
+    border:solid 2px #585858;
+    height:36.8px;
     position:relative;
-    top:28px;
-    right:10px;
+    right:15px;
+    top:10px;
 }
 
 .search #keyword{
-    font-size:15pt;
+    font-size:1.2rem;
+    border:solid 2px #585858;
+    padding-left:10px;
+    border-radius:10px;
+    height:30.8px;
     position:relative;
-    top:25px;
+    right:5px;
+    top:8px;
 }
 
 .search #search_submit{
     font-size:14pt;
+    width:80px;
+    border-radius:10px;
+    background-color:white;
+    border:solid 2px #585858;
+    height:36.8px;
     position:relative;
     left:10px;
-    top:25px;
+    top:10px;
 }
 
 .search #search_submit:hover{
   font-size:14pt;
   position:relative;
   top:25px;
-  background:darkblue;
+  background:#585858;
   color:white;
 }
 

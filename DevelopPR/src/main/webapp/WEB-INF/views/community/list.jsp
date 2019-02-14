@@ -8,6 +8,10 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 <style type="text/css">
 
+
+.co_list *:focus{
+outline : none;
+}
 .co_list body{
         display : flex;
         line-height:2em;        /*line-height는 줄 높이 속성이다. 원래 값 2em */
@@ -23,7 +27,7 @@
 
 .co_list #mainWrapper{   
        width:850px;
-       height:500px;
+       height:600px;
        margin:0 auto; /*틀 안에서 가운데 정렬*/
        line-height: 2.2em;
        margin-top : 5px;
@@ -44,6 +48,7 @@
         /* background-color:#c9c9c9; */
         font-weight:bold;
         text-align:center;
+        font-size: 1.2rem;
 }
 
 .co_list #ulTable > li > ul {
@@ -55,10 +60,11 @@
 .co_list #ulTable > li > ul > li { 
         margin-top : 5px;
         float:left;
-        font-size:0.8rem;
+        font-size:0.9rem;
         /* border-bottom:1px solid silver; */  /*게시글 간 경계선 아예 지운다.*/
         vertical-align:baseline;
         border-radius : 8px;
+        line-height : 35px;   /*게시글 행간 간격*/
 }    
 
 .co_list #content{
@@ -76,11 +82,11 @@ border-radius : 8px;
 }
 
 
-.co_list #ulTable > li > ul > li:first-child                {width:13%; font-size:0.8rem;} /*No 열 크기*/
-.co_list #ulTable > li > ul > li:first-child +li            {width:40%; font-size:0.9rem;} /*제목 열 크기*/
-.co_list #ulTable > li > ul > li:first-child +li+li         {width:20%; font-size:0.8rem;} /*작성일 열 크기*/
-.co_list #ulTable > li > ul > li:first-child +li+li+li      {width:14%; font-size:0.8rem;} /*작성자 열 크기*/
-.co_list #ulTable > li > ul > li:first-child +li+li+li+li   {width:10%; font-size:0.8rem;} /*조회수 열 크기*/
+.co_list #ulTable > li > ul > li:first-child                {width:13%; font-size:0.9rem;} /*No 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li            {width:40%; font-size:0.9.rem;} /*제목 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li         {width:20%; font-size:0.9rem;} /*작성일 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li+li      {width:14%; font-size:0.9rem;} /*작성자 열 크기*/
+.co_list #ulTable > li > ul > li:first-child +li+li+li+li   {width:10%; font-size:0.9rem;} /*조회수 열 크기*/
 
 .co_list #divPaging {
         border: 1px solid;
@@ -119,6 +125,8 @@ border-radius : 8px;
 height:100px;
 padding-top : 40px;
 margin : 0 auto;
+margin-bottom : 50px;
+
 
 }
 
@@ -136,6 +144,7 @@ margin : 0 auto;
 			-webkit-transition-duration: 0.4s;
 			transition-duration: 0.4s;
 		    border-radius : 30px;
+		    border : solid 2px #585858;
 		}
 .co_list .lookup:hover{ /*검색 버튼 호버 시 투명 효과*/
  background-color:rgba( 255, 255, 255, 0.1 );
@@ -157,6 +166,10 @@ margin : 0 auto;
 			transition-duration: 0.4s;
 		    border-radius : 30px;
 		    margin-top : 10px;
+		    position : relative;
+		    left : 200px;
+		    border : solid 2px #585858;   
+		    
 		}
 .co_list .btn_write:hover{ /* 글쓰기 버튼 호버 시 투명 효과*/
  background-color:rgba( 255, 255, 255, 0.1 );
@@ -165,21 +178,27 @@ margin : 0 auto;
 
 .co_list #searchbox{
 width:auto;
-height:35px;
+height:34px;
 font-size:1rem;
 text-align:center;
 border-radius : 30px;
+border : solid 2px #585858;
 }
+
+
+
 
 .co_list #svalue{
 font-size:15px;
+text-align : center;
 }
 
 .co_list #keyword{   /*검색창*/
-height:20px;
+height:28px;
 font-size : 1rem;
 border-radius : 5px;
 margin-top : 5px;
+border : solid 2px #585858;
 }
 
 
@@ -187,6 +206,15 @@ margin-top : 5px;
 .co_list a:visited { color: black; text-decoration: none;}
 .co_list a:hover { color: black; text-decoration: underline;}
 
+.co_list #co_title{
+font-size:2rem;
+margin-top : 50px;
+margin-bottom : 50px;
+items-align : center;
+align-items : stretch;
+justify-content: center;
+text-align : center;
+}
 
 
 
@@ -197,7 +225,10 @@ margin-top : 5px;
 
 <script>
     $(document).ready(function(){
-        $("#btnWrite").click(function(){
+     $(document).scrollTop(530);
+    	
+    	
+    	$("#btnWrite").click(function(){
             // 페이지 주소 변경(이동)
             location.href = "${path}/community/registForm";
         });
@@ -212,7 +243,7 @@ margin-top : 5px;
 </head>
 <body>
 <div class="co_list"> <%--전체를 감싸는 div --%>
-    
+   <div id="co_title">Community</div>
     
     <!-- 레코드의 갯수를 출력 -->
    <%--  ${map.count}개의 게시물이 있습니다. --%>
@@ -304,19 +335,20 @@ margin-top : 5px;
 
          <select id="searchbox" name="searchOption">
             <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-            <option id="svalue" value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/>>All</option>
-            <option id="svalue" value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >Nick</option>
-            <option id="svalue" value="content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
-            <option id="svalue" value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+            <option id="svalue" value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/>>&nbsp;&nbsp;All</option>
+            <option id="svalue" value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >닉네임</option>
+            <option id="svalue" value="content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >&nbsp;&nbsp;내용</option>
+            <option id="svalue" value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >&nbsp;&nbsp;제목</option>
         </select>  
-      
+      &nbsp;
       </li>
         <input id="keyword" name="keyword" value="${map.keyword}">
+      &nbsp;&nbsp;  
         <input class="lookup" type="submit" value="조회">
     <!-- 로그인한 사용자만 글쓰기 버튼을 활성화 -->
     <%-- <c:if test="${sessionScope.userId != null}"> --%>
     
-    <c:if test="${sessionScope.userName != null}">
+    <c:if test="${sessionScope.userNick != null}">
         <button class="btn_write" type="button" id="btnWrite">글쓰기</button>
     </c:if>
 

@@ -2,34 +2,18 @@
 <!-- jstl 코어 태그 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Project Regist Form</title>
-  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/project/pr_registForm.css'/>"/>
-   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  
-<style>
-.pr_regist .techstacklist{
-              display : flex;      /* ... */
-              flex-wrap :wrap;
-			  width: 360px;
-		 	  margin-left: 148px;
-                            }
-.pr_regist .techstacklist > li{
-              width : 100px;
-              height : 50px;
-              text-align: center;
-                                   }
-
-
-</style>
-<script>
+<html class="projectRegist">
+ <%-- ${path}를 쓰려면 jstl 코어태그와 함께 컨텍스트 패스를 써야 한다. --%>
+ <head>
+        <meta charset="utf-8">
+        <title>DevelopPR-프로젝트 등록</title>
+      <link href="../include/css/developpr.css" rel="stylesheet" type="text/css">
+       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+       
+        <script>
           $(document).ready(function()
             {
-        	  document.getElementById("techstack_hidden_show").style.display = "none";
-        	          	  
         	  <%--프로젝트명 추가부분, 프로젝트 등급 버튼 --%>
         	  var ul = document.querySelector('.techstacklist'); 
  		     $('.gradebtn').click(function(){
@@ -135,20 +119,18 @@
          	    data: param,
          	    method: "POST",
          	    success: function (result) {
-         	        if (tech_name_input == "" || tech_name_input == null) {       // techstack 입력란이 비워져 있을 경우
-         	        	document.getElementById("techstack_hidden_show").style.display = "hidden";  	        	                                                                 	 //start of if
-         	            $('ul').empty();            
-                      } else {                                                  //end of if and start of else
-         	            var output = document.createElement('span');            //div에서 span으로 변경
-         	            for (var i in result)                                   // result에서 받아온 값의 개수만큼 for문을 돌린다
+         	        if (tech_name_input === "" || tech_name_input === null) { // techstack 입력란이 비워져 있을 경우
+         	            //start of if
+         	            $('ul').empty();             //입력값이 있을 경우 td에 출력이 되는데  입력값이 없을 경우 td안의 값을 비운다.
+         	        } else {                             //end of if and start of else
+         	            var output = document.createElement('div');
+         	            for (var i in result)        // result에서 받아온 값의 개수만큼 for문을 돌린다
          	            {
          	                var techName = result[i].tech_name_input;
          	                
          	                var listBtn = document.createElement('button');
-         	               
-         	               document.getElementById("techstack_hidden_show").style.display = "block";
-
-         	               listBtn.textContent = techName;
+        	                
+         	                listBtn.textContent = techName;
          	                listBtn.type = 'button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
          	                listBtn.value = techName;
          	                listBtn.style.marginTop = '6px';
@@ -186,54 +168,75 @@
         	
     });
             
-              	  
-}); //end of document.ready          
+           
+            }); //end of document.ready          
           </script>
-
-</head>
-<body>
-
-<!--ProjectVO에 있는 변수명과  여기의 name값이 일치해야 한다. -->
-<div class="pr_regist">
-<div class="container">
-<form name="form1" id="form1" method="post" action="${path}/project/regist" enctype="multipart/form-data">  
-  <div id="project_make"><span id="main_title">프로젝트 만들기</span><br><span id="subtitle_make">쉽고 빠르게 프로젝트를 등록해보세요.</span></div>
-  
-    <div id="title_line_top"><hr id="title_top"></div>
-  <div class="title_input">
    
-   <div id="title">*제목</div>
-   <div id="titleWrite"><input type="text" id="textarea_title" name="project_name"/></div>
-   <div class="title_warn"><!--자바스크립트로 경고 메시지를 띄운다.--></div>
-  </div> <!--end of title_input-->
+   <style>
+           .projectRegist .techstacklist
+            {
+                display : flex; /*....*/
+                flex-wrap :wrap;
+				width: 360px;
+				margin-left: 148px;
+            }
+           .projectRegist .techstacklist > li
+            {
+                width : 100px;
+                height : 50px;
+                text-align: center;
+            }
 
-  <div class="introduce">
-   <div id="introMenu">요약</div>
-   <div id="introWrite"><textarea id="textarea_introduce" name="project_content" cols="80" rows="4" placeholder="프로젝트를 요약하는 문구를 씁니다." ></textarea></div>    
-  </div> <!-- end of introduce-->
-  
-  <div class="regdate_term">
-    <div id="regdate_term_title">날짜 / 기간</div>
-    <div id="regdate_calendar">
-    <input type="date" id="project_term1" name="project_term1"/>
-    &nbsp; ~ &nbsp;
-    <input type="date" id="project_term2" name="project_term2"/>
-    
-    
-    <!--시작일~종료일 달력 메뉴 --></div>
-  </div> <!-- end of regdate_trem-->
+         <%--파일 업로드  폼 추가 --%>
+        .projectRegist iframe{
+        width: 600px;
+        height: 100px;
+        border: 1px;
+        border-style: solid;
+        }
+        </style>
+    </head>
 
-  <div class="TechStack">
-   <div id="techstack_q"><span id="techstack_font">어떤 Tech Stack을 사용하셨나요?</span></div>
-      <div id="techstack_hidden_show"> <!--버튼을 누르면 테크스택들이 입력되는 곳(입력이 없을 땐 숨긴다.)  -->
-        <ul class="techstacklist"></ul>
-      </div>
-   
-   <div id="techstack_input">
-   <input type="text" class="project_tech_name" name="project_tech_name" placeholder="...Tech Stack"/> <!-- 입력폼 -->
-   <!--테크스택을 직접 입력하는 textarea, placeholder를 쓴다.--></div>
-   <div id="techstack_btns">
-    <!--테크스택 버튼들을 나열하는 곳.-->
+    <body>
+        <div class="container">
+            <form name="form1" id="form1" method="post" action="${path}/project/regist" enctype="multipart/form-data">
+             <header class="second_header">
+                
+            </header>
+            <section class="project_section">
+                <div class="projectform">
+                    <div id="projectname" class="projectformt">
+                        <h3 class="project_h3">프로젝트</h3>
+                        <h1 class="project_h1">빠르고 쉽게 프로젝트를 등록하세요.</h1>
+                        <label for="project_name" class="project_label">제목</label>
+                        <input type="text" id="project_name" name="project_name" autofocus/>
+                    </div>
+                    <div id="projectcontent" class="projectformt">
+                        <label for="project_content" id="project_content_label"class="project_label">내용</label>
+                        <textarea id="project_content" name="project_content"></textarea>
+                    </div>
+                    
+                    
+                    <%--파일 업로드 폼 --%>
+                    <div id="projectupload" class="projectformt"> 
+                       <label for="project_upload_file" class="project_label">업로드</label><br>
+                        <input type="file" id="project_upload_file" name="project_upload_file"/>
+                         
+                     </div>
+                    
+                    
+                    
+                    <div id="projectterm" class="projectformt">
+                            <label for="project_term" class="project_label">날짜/기간</label>
+                            <input type="date" id="project_term1" name="project_term1"/>
+                            ~
+                            <input type="date" id="project_term2" name="project_term2"/>
+                    </div>
+                    <div id="projecttech" class="projectformt">
+                            <label for="project_tech_name" class="project_label">Tech Stack</label>
+                            <input type="text" class="project_tech_name" name="project_tech_name" placeholder="...Tech Stack"/> <%-- 입력폼 --%>
+                            <ul class="techstacklist"></ul>
+                            <br>
                             <input type="checkbox" id="techstack_javascript" name="techstack" value="JavaScript" class="techstack">
                             <label for="techstack_javascript">Javascript</label>
                             <input type="checkbox" id="techstack_java" name="techstack" value="Java" class="techstack">
@@ -268,60 +271,39 @@
                             <label for="techstack_objective-c">objective-c</label>
                             <input type="checkbox" id="techstack_c"name="techstack" value="c" class="techstack">
                             <label for="techstack_c">c</label>
-                          </div> <%-- end of techstack_btns --%>
-  </div> <!-- end of tachStack-->
-
-  <div class="projectUpload">
-    <div id="upload_title"><span id="upload_font">pdf 또는 ppt파일을 업로드해주세요.</span></div>
-         <div id="upload_subtitle">프로젝트를 소개할 ppt, pdf 파일이 있나요?</div>
-    <div id="file_upload">
-        <input type="file" id="project_upload_file" name="project_upload_file"/>
-    
-    </div>
-
-  </div> <!-- end of projectUpload-->
- 
-  <div class="projectLvl">
-    <div id="projectLvl_title"><span id="lvl_font">프로젝트 등급</span></div>
-    <div id="projectLvl_q">프로젝트의 등급이 어떻게 되나요?</div>
-    
-    
-       <div id="projectLvl_input">
-      <input type="text" id="project_grade" name="project_grade"/>
-      <div id="projectLvl_txt">수준</div>   
+                    </div>
+                    <div id="projectimage" class="projectformt">
+                            <label for="project_image" class="project_label">관련 이미지(데베 추가해야함)</label>
+                            <input type="file" id="project_image" name="project_image"/>
+                    </div>
+                    <div id="projectgrade" class="projectformt">
+                        <label for="project_grade" class="project_label">프로젝트 등급</label>
+                        <input type="text" id="project_grade" name="project_grade"/>
+                        <br></br> <%--type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. --%>
+                        <button type="button" value="상용화" class="gradebtn">상용화</button>
+                        <button type="button" value="베타테스트" class="gradebtn">베타테스트</button>
+                        <button type="button" value="알파테스트" class="gradebtn">알파테스트</button>
+                        <button type="button" value="튜토리얼" class="gradebtn">튜토리얼</button>
+                        <button type="button" value="과제" class="gradebtn">과제</button>
+                        <button type="button" value="연구" class="gradebtn">연구</button>
+                        <button type="button" value="개인프로젝트" class="gradebtn">개인프로젝트</button>
+                        <button type="button" value="팀프로젝트" class="gradebtn">팀프로젝트</button>
+                    </div>
+                    <div id="projectregist" class="projectformt">
+                    <button type="reset">취소</button>
+                   <button type="button" id="btnSave">등록</button>                
+            
+                    </div>
+                 </div>
+            </section>
+            
+            
+            
+            
+            <footer>
+                3
+            </footer>
+</form>
         </div>
-      
-    
-
-    <div id="projectLvl_btns">
-         
-             <!--type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. -->
-                
-              <button type="button" value="상용화" class="gradebtn">상용화</button>
-              <button type="button" value="베타테스트" class="gradebtn">베타테스트</button>
-                <button type="button" value="알파테스트" class="gradebtn">알파테스트</button>
-                <button type="button" value="튜토리얼" class="gradebtn">튜토리얼</button>
-                <button type="button" value="과제" class="gradebtn">과제</button>
-                <button type="button" value="연구" class="gradebtn">연구</button>
-                <button type="button" value="개인프로젝트" class="gradebtn">개인프로젝트</button>
-                <button type="button" value="팀프로젝트" class="gradebtn">팀프로젝트</button>
-    </div>
-  
-  
-  </div> <!-- end of projectLvl-->
-
-   <div class="final_btns">
-   <!--이곳에 등록 버튼을 만든다.-->
-                   <button type="reset">취소</button>
-                   <button type="button" id="btnSave">등록</button>
-   </div>
-
-
-</form> <!-- end of form1 -->
-
-
-</div>  <!--end of container-->
-</div>  <!--css선택자 추가용 div-->
-
-</body>
+    </body>
 </html>

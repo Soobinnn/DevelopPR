@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService
 	   }
 	   // 이메일 찾기
 	   @Override
-	   public String findId(String phone) throws Exception
+	   public List findId(String phone) throws Exception
 	   {
 		   // phone 번호로 email 찾아줌
 		   return userDao.findId(phone);
@@ -297,5 +297,10 @@ public class UserServiceImpl implements UserService
 				}				
 			}
 		   
+	   }
+	 //이메일 찾기 Ajax 핸드폰 번호인증 추가 ::준형
+	   @Override
+	   public int checkphone(String phone) {
+		   return userDao.checkphone(phone);
 	   }
 }

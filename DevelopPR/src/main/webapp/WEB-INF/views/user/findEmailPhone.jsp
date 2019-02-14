@@ -5,177 +5,121 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmailPhone.css'/>"/>
 <title>휴대폰 인증</title>
 <script type="text/JavaScript">
-function authCheck() {
-   var phone = auth_form.phone.value;
 
-   if(auth_form.authNum.value != "" && auth_form.authNum.value == "${authNum}") {
-      
-      alert("인증되었습니다.");
-            
-      hiddenBtn.style.display='block';
-      hidden_form.phone_hid.value = phone;
-      /* opener.document.join_form.phone.value = phone;    */   
-      
-   } else{
-      alert("인증번호가 틀립니다.");
-      return false;
-   }
+$(document).ready(function(){
+	$(document).scrollTop(350); 
+	$('#phone_Num').focus();
+});
+
+$(function(){
+	$('#phone_Btn').click(function(){
+		// 핸드폰 숫자형식 9~11자
+		var userPhoneCheck = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/
+		var phone = $('#phone_Num').val();
+		var param = "phone="+phone;
+		
+		if($('#phone_Num').val() ==""){
+    		alert('번호를 입력해주세요.')
+    	    $('#phone_Num').focus();
+    	}
+    	else if(!userPhoneCheck.test($('#phone_Num').val()))
+    	{
+    	    alert('휴대폰 번호 11자리를 입력해주세요.')
+    	    $('#phone_Num').focus();
+    	}
+    	else{
+		$.ajax({
+			async : true,
+	        type :'POST',
+	        data : param,
+	        url : "${path}/user/PhoneCheck",
+	        success : function(result)
+	        {
+	        	
+	        		if(result=='1')
+	        			{
+	    	        	alert('확인 버튼을 누르면 인증번호가 발송됩니다.')
+	    	        	findEmailPhone_form.action="${path}/user/findEmailPhoneCheck";
+	    	        	findEmailPhone_form.submit();
+	    	        	$(document).scrollTop(350);
+	    	        	$('#authNum').focus();
+	        			}
+	        		else if(result=='0')
+	        			{
+	        			alert('휴대폰 번호가 일치하지 않습니다. 다시 입력해 주세요.')
+	        			$('#phone_Num').focus();
+	        			}
+	        			
+	        	}
+	        });
+	        
+		}
+		
+	});
+});
+function authCheck(){
+	   var phone = findEmailPhone_form.phone.value;
+	  
+	   if(findEmailPhone_form.authNum.value != "" && findEmailPhone_form.authNum.value == "${authNum}") {
+	      
+	      alert("인증되었습니다.");
+	            
+	      hiddenBtn.style.display='block';
+	      hidden_form.phone_hid.value = phone;
+	      /* opener.document.join_form.phone.value = phone;    */   
+	      
+	   }
+	   else if($('#authNum').val()=="")
+		   {
+		   alert('인증번호를 입력해주세요.')
+		   }
+	   else{
+	      alert("인증번호가 틀립니다.");
+	      return false;
+	   }
 }
 
-/* function findIdResult() {
-   location.href="${path}/user/findIdResult"
-} 
-*/
 </script>
-<style>
-.authCheck_header
-{
-   text-align : center;
-   font-size: 100px;
-   border :1px solid black;
-   height:160px;
-}
-.authCheck_sec {
-   display: flex;
-   flex-direction: row;
-   width: auto;
-   height: 600px;
-   border :1px solid black;
-  
-}
-#sec1{
-   border :1px solid black;
-   width : 50%;
-}
-#sec2{
-   display : flex;
-   flex-shrink: 0;
-   flex-basis: 730px;
-   border :1px solid black;
-   width : auto;
-   justify-content : center;
-   height : auto;
-}
-#authCheck_ul
-{
- 
- width : 350px;
- height: 400px;
- position: relative;
- top : 90px;
-}
-#authCheck_li1
-{
-   color : white;
-   margin-bottom : 70px;
-}
-#authCheck_span
-{
-   font-size : 35px;
-   color : black;
-}
-#authCheck_li2
-{
-   color : white;
-   margin-bottom : 20px;
-}
-#phone_Num
-{
- height : 40px;
- width : 200px;
-}
-#phone_Btn
-{
-   height : 40px;
-   width : 90px;
-   position : relative;
-   top : 0.5px;
-   left : 20px;
-   background :  #0B173B;
-   color : white;
-   border : 1px solid white;
-   border-radius: 7px 7px / 7px 7px;
-}
-#authCheck_li3
-{
-   color : white;
-   margin-bottom : 60px;
-}
-#authNum
-{
-   width : 200px;
-   height : 40px;
-}
-#authOk
-{
-   position : relative;
-   left : 20px;
-   top : 0.5px;
-   height : 40px;
-   width: 90px;
-   background : #0B173B;
-   border : 1px solid white;
-   border-radius: 7px 7px / 7px 7px;
-   color : white;
-}
-#authCheck_li4
-{
-   color : white;
-   
-}
-#hiddenBtn
-{
- width: 150px;
- height: 50px;
- position : relative;
- left : 90px;
- background :  #0B173B;
- border : 1px solid white;
- color : white;
- border-radius: 11px 11px / 11px 11px;
-}
-#sec3{
-   border :1px solid black;
-   width : 50%;
-}
-
-.authCheck_ft
-{
- border :1px solid black;
-}
-
-</style>
 </head>
 <body>
-   <header class="authCheck_header">
+<div class="findEmailPhone">  
+ <header class="findEmailPhone_header">
 
    </header>
-   <section class="authCheck_sec">
+   <section class="findEmailPhone_sec">
       
-  <div id="sec1">
+  <div id="findEmailPhone_sec1">
    		</div>
-   <div id="sec2">
-      <ul id="authCheck_ul">
-      <form name="auth_form" action="${path}/user/findEmailPhoneCheck" method="post">  
-      <li id="authCheck_li1">
-         <span id="authCheck_span"><strong>휴대폰 본인 인증</strong></span>
+   <div id="findEmailPhone_sec2">
+      <ul id="findEmailPhone_ul">
+      <form name="findEmailPhone_form" method="post">  
+      <li id="findEmailPhone_li1">
+         <span id="findEmailPhone_span"><strong>이메일 찾기</strong></span>
       </li>
-       <li id="authCheck_li2">
-          <input id="phone_Num" type="text" name="phone" value="${phone}" placeholder="휴대폰 번호" autocomplete="off">
-          <input id="phone_Btn" type="submit" value="본인인증">
+      <li id="findEmailPhone_li2">
+         <img id="findEmailPhone_img" src="${path}/resources/user/marker.png"> 
+      	 <span id="findEmailPhone_span2">휴대폰 본인인증</span>
+       <li id="findEmailPhone_li3">
+         <input id="phone_Num" type="text" name="phone" value="${phone}" placeholder=" '-'를 제외한 휴대폰 번호" autocomplete="off">
+          <input id="phone_Btn" type="button" value="본인인증">
+      	
       </li>      
               
-        <li id="authCheck_li3"> 
+        <li id="findEmailPhone_li4"> 
            <input type="text" id="authNum" name="authNum"
-                  maxlength="6" placeholder=" 인증번호" autocomplete="off">
-          <input id="authOk" type="button" name="authOk" value="확인" onclick="authCheck()" />
+                  maxlength="6" placeholder=" 인증번호 6자리를 입력해주세요." autocomplete="off">
+          <input id="findEmailPhone_Confirm" type="button" name="authOk" value="확인" onclick="authCheck()" />
          </li>
          </form>      
       
       <form name="hidden_form" action="${path}/user/findEmailResult" method="post">
-           <li id="authCheck_li4">
+           <li id="findEmailPhone_li5">
               <input type="hidden" id="phone_hid" name="phone" value="">
                <input type="submit" id="hiddenBtn" name="nextStep" value="다음 단계" style="display: none">
             </li> 
@@ -183,11 +127,12 @@ function authCheck() {
       </form>
    </ul>
    </div>
-  		 <div id="sec3">
+  		 <div id="findEmailPhone_sec3">
      	 </div>
    </section>
-   <footer class="authCheck_ft">
+   <footer class="findEmailPhone_ft">
       
    </footer>
+   </div>
 </body>
 </html>

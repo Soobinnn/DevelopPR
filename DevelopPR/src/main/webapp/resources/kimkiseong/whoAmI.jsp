@@ -14,7 +14,7 @@
 <style>
 .kks_whoAmI .container{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     flex-basis: 600px;
     
     
@@ -39,7 +39,7 @@ height:100%;
  <div class="kks_whoAmI"> 
     <div class="container">
      <div id="photo">
-     <img src="${path}/resources/kimkiseong/myPhoto/whoiskks.PNG" width="500px">
+     <img src="${path}/resources/kimkiseong/myPhoto/whoiskks.PNG" width="600px">
      </div> <!--end of photo-->
      
      <div id="introduce">

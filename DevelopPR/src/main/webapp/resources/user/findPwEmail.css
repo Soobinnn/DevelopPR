@@ -1,0 +1,336 @@
+		.findPwEmail
+		{
+		    margin-bottom:300px;
+    		margin-top:100px;
+    		font-family: 'Noto Sans KR', sans-serif;
+		}
+        
+        .findPwEmail #findPwEmail_sec
+        {
+         
+            display : flex;
+            flex-direction: row;
+            width: auto;
+            height : 580px;
+        }
+        .findPwEmail .findPwEmail_sec_area1
+        {
+            width : 50%; 
+            opacity : 0.9;
+        }
+        .findPwEmail .findPwEmail_sec_area2
+        {
+            display : flex;
+            flex-shrink: 0;
+            flex-basis : 800px;
+            flex-direction : column;
+            word-break:break-all;
+            word-wrap:break-word;
+            position : relative;
+            right : 0px;
+            height:800px;
+           border: 2px solid #B9B9B9;
+           border-radius:15px;
+            
+        }
+        .findPwEmail .findPwEmail_sec_area3
+        {
+            width : 50%;
+            opacity : 0.9;
+        }
+        
+        .findPwEmail #msg
+        {
+            width : 125px;
+            height: 125px;
+            position : relative;
+            top : 23px;
+            left : 350px;
+            margin-bottom:15px;
+        }
+        .findPwEmail #findPwEmail_ul
+        {
+            position : relative;
+            left:100px;
+            bottom: 95px;
+            right : 15px;
+            width: 640px;
+            height : 400px; 
+        }
+        .findPwEmail #findPwEmail_li1
+        {
+            color:white;
+            margin-bottom:30px;
+        }
+        .findPwEmail #findPwEmail_li2
+        {
+            color:white;
+            margin-bottom:15px;
+        }
+        .findPwEmail #findPwEmail_li3
+        {
+            color:white;
+            margin-bottom:15px;
+        }
+        .findPwEmail #findPwEmail_li4
+        {
+            color:white;
+        }
+        .findPwEmail #findPwEmail_p1
+        {
+            position : relative;
+            left : 155px;
+            color : black;
+            font-size : 2rem;
+            top:14px;
+        }
+        .findPwEmail #findPwEmail_p2
+        {
+            position : relative;
+            top : 26px;
+            left:35px;
+            color : black;
+            font-size:1.1rem
+        }
+        .findPwEmail #findPwEmail_p3
+        {
+            position : relative;
+            color : black;
+            font-size:1.1rem;
+            top : 72px;
+            left:35px;
+        }
+        .findPwEmail #findPwEmail_p4
+        {
+            position : relative;
+            top : 104px;
+            left:35px;
+            font-size:1.1rem;
+            color : black;
+        }
+        .findPwEmail #findPwEmail_p5
+        {
+            position : relative;
+            top : 119px;
+            left:36.5px;
+            font-size:1.1rem;
+            color : black;
+        }
+        .findPwEmail #findPwEmail_p6
+        {
+            position : relative;
+            top : 88px;
+            left:36px;
+            font-size:1.1rem;
+            color : black;
+        }
+        .findPwEmail #findPwEmail_Confirm
+        {
+            position: relative;
+            left:55px;
+            top:1.5px;
+            font-size:1rem;
+            width: 130px;
+            height : 50px;
+            background:white;
+            border :2px solid #585858;
+            color : #585858;
+            border-radius: 150px  150px/  150px  150px;
+        }
+         .findPwEmail #findPwEmail_Confirm:hover
+         {
+                background:#595959;
+                color:white;       
+         }
+        .findPwEmail #findPwEmail_num
+        {
+            padding-left:10px;
+            width:250px;
+            height: 48px;
+            border-radius: 11px/ 11px;
+            border:2px solid #585858;
+        }
+        .findPwEmail #findPwEmail_Msg
+        {
+            position: relative;
+            right:260px;
+            top : 38px;
+        }
+        .findPwEmail #findPwEmail_div
+        {
+            position: relative;
+            bottom:140px;
+            left : 178px;
+            width: 560px;
+            height: 50px;
+            
+        }
+        .findPwEmail #findPwEmailReset
+        {
+            position:relative;
+            left:105px;
+            bottom:70px;
+
+            width:620px;
+            display:none;
+        }
+        .findPwEmail #findPwEmailReset_ul
+        {
+           list-style-type:none;
+        }
+        .findPwEmail #findPwEmailReset_li1
+        {
+                margin-bottom:15px;
+        }
+        .findPwEmail #findPwEmailReset_li2
+        {
+                margin-bottom:25px;
+        }
+        .findPwEmail #findPwEmailReset_li3
+        {
+
+             
+        }
+        .findPwEmail #findPwEmailReset_li4
+        {
+            position: relative;
+            top: 0px;
+        }
+        .findPwEmail #findPwEmailReset_li5
+        {
+            position: relative;
+            left: 100px;
+        }
+        .findPwEmail #findPwEmailReset_span
+        {
+            position: relative;
+            bottom:7px;
+            color: black;
+            left : 33px;
+            font-size:1.4rem;
+            bottom:20px;
+        }
+        .findPwEmail #findPwEmailReset_p
+        {   
+            position:relative;
+            bottom:18px;
+            color: red;
+            left:60px;
+            font-size :0.8rem;
+        }
+        .findPwEmail #findPwEmailReset_Pw
+        {
+            padding-left:10px;
+            border : 2px solid #585858;
+            border-radius: 15px;
+            width: 300px;
+            height: 40px;
+            position:relative;
+            left:50px;
+        }
+        .findPwEmail #findPwEmailResetConfirm_Pw
+        {
+                padding-left:10px;
+            border : 2px solid #585858;
+            border-radius: 15px;
+            width : 300px;
+            height: 40px;
+            position:relative;
+            left:50px;
+        }
+        .findPwEmail #findPwEmailReset_btn
+        {
+            position : relative;
+            top: 33px;
+            width:220px;
+            height:60px;
+            border : 2px solid #585858;
+            color: #585858;
+            background: white;
+            border-radius: 150px 150px / 150px 150px;
+            position: relative;
+            bottom: 62px;
+            left: 85px;
+            font-size:1.2rem;
+        }
+        /* .findPwEmail #findPwEmailReset_btn:hover
+        {
+                background:#585858;
+                color:white;
+        } */
+        /* .findPwEmail #findPwEmail_main
+        {
+            position: relative;
+            left: 460px;
+            top: 116px;
+            width:150px;
+            height:102px;
+            border : 1px solid #585858;
+            color: #585858;
+            background: white;
+            border-radius: 150px 150px / 150px 150px;
+            color : #585858;
+            display: none;
+            font-size:1rem;
+           
+        }
+        .findPwEmail #findPwEmail_main:hover
+        {
+                background:#585858;
+                color:white;
+        } */
+        .findPwEmail #findPwEmailCheckMsg
+        {
+            position: relative;
+            left: 55px;
+        }
+        .findPwEmail #findPwEmailCheckMsg2
+        {
+            position: relative;
+            left: 55px;
+        }
+        .findPwEmail *:focus
+        {
+                outline:none;
+        }
+        .findPwEmail #findPwEmail_img1
+        {
+                width:35px;
+                position:relative;
+                top:88px;
+                height:35px;
+                left:90px;
+        }
+        .findPwEmail #findPwEmail_img2
+        {
+                width:35px;
+                position:relative;
+                top:131px;
+                height:35px;
+                left:90px;
+        }
+        .findPwEmail #findPwEmail_img3
+        {
+                width:35px;
+                height:35px;
+                position:relative;
+                top:178px;
+                left:90px;
+        }
+        .findPwEmail *:focus
+ 		{
+        outline:none;
+		}
+        .findPwEmail input[type=text]::-ms-clear 
+   		{
+  		display:none;
+		}
+        .findPwEmail input[type=text]::-ms-reveal 
+        {
+   		display: none;
+
+		}		
+		.findPwEmail #findPwEmail_span
+		{
+             color: #02456F;
+        }

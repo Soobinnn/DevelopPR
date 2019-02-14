@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,6 +41,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.DevelopPR.resume.model.dto.ResumeVO;
 import com.DevelopPR.resume.service.ResumeService;
 import com.DevelopPR.user.dto.UserVO;
@@ -53,7 +54,6 @@ import com.DevelopPR.util.NaverloginBO;
 import com.DevelopPR.util.TempKey;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.github.scribejava.core.model.Parameter;
 
 @Controller
 @RequestMapping("/user/*")
@@ -89,10 +89,10 @@ public class UserController
   private OAuth2Parameters googleOAuth2Parameters;
   private OAuth2Operations oauthOperations;
   
-//준형 findPwEmail 추가
+  //findPwEmail 추가
   @Inject 
   private JavaMailSender mailSender;
-//
+
   
   // 회원 목록
   @RequestMapping("list")
@@ -123,7 +123,7 @@ public class UserController
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
-	  
+	  System.out.println(vo);
 	  userService.insertUser(vo);
 	  
 	  String userEmail = vo.getUserEmail();
@@ -132,7 +132,6 @@ public class UserController
 	  model.addAttribute("userName", userName);
 	  return "basic/user/joining";
   }
-//--이메일 찾기 수정 : 준형---------------------------------------------------------------------------------------------------------
   // 이메일 찾기 폼
   @RequestMapping("findEmail")
   public String userFindEmail()
@@ -161,14 +160,16 @@ public class UserController
 	  
 	  return mav;
   }
-  // 이메일 찾기 결과
+  // 이메일 찾기 결과 , list로 받기 :: 준형
+  @SuppressWarnings("unchecked")
   @RequestMapping("findEmailResult")
   public ModelAndView findId(String phone) throws Exception {
 
 	  System.out.println(phone);
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
-	  String email = userService.findId(phone);
+	  List<String> email = new ArrayList<String>();
+	  email = userService.findId(phone);
 	  // email 담고,
 	  System.out.println(email);
 	  
@@ -178,13 +179,20 @@ public class UserController
 	  
 	  return mav;
   }
-//--이메일 찾기 수정 : 준형------------------------------------------------------------------------------------------------------------
- 
-//Pw 찾기 준형 --------------------------------------------------------------------------------------------------------------------
+  //이메일 찾기 본인인증 폰번호 체크 Ajax :: 준형-----------------------------------------------------------------------------------
+  @RequestMapping("PhoneCheck")
+  @ResponseBody
+  public int PhoneCheck(String phone) throws Exception{
+	  System.out.println(phone);
+	  int temp = userService.checkphone(phone);
+	  System.out.println(temp);
+	return temp;
+  }
+ //--------------------------------------------------------------------------------------------------------------------
  //PW 찾기 폼으로 이동 , 기능매핑에 추가해야함. 
  @RequestMapping(value="findPasswordForm")
  public String userFindPwForm() {
-	  return "user/findPasswordForm";
+	  return "basic/user/findPasswordForm"; // tiles basic 추가 :: 준형-------------------------------------------------
  }
  
  // PW 찾기 할때 Ajax 이메일 중복체크
@@ -223,10 +231,10 @@ public class UserController
 	  System.out.println(keyCode);
 	  System.out.println(userEmail);
 	  
-	  return "user/findPwEmail";
+	  return "basic/user/findPwEmail"; // tiles basic 추가 :: 준형------------------------------------------------------------
  }
  
- //Pw 찾기 인증번호 ajax : 준형
+ //Pw 찾기 인증번호 ajax
  @RequestMapping(value="findPwAuth")
  @ResponseBody
  public boolean userFindPwAuth(HttpSession session, String AuthNum) {
@@ -243,7 +251,7 @@ public class UserController
 }
 
  
- //Pw 찾기 재설정 : 준형
+ //Pw 찾기 재설정
  @RequestMapping(value="findPwReset" , method=RequestMethod.POST)
  public String userFindPwReset(@ModelAttribute UserVO vo) {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
@@ -252,8 +260,6 @@ public class UserController
 	
 	  return "user/findPwResetConfirm";
  }
-//Pw 찾기 준형 ------------------------------------------------------------------------------------------------------------------------
- 
  
   // 로그인 화면(GET)
   @RequestMapping(value="login", method=RequestMethod.GET)
@@ -641,14 +647,14 @@ public class UserController
       return "redirect:/main";
   }
 //회원정보 수정 폼 : 준형-------------------------------------------------------------------------------------------------------------------
-  @RequestMapping(value="modifyInfoform", method= RequestMethod.GET)
-  public String userModifyInfoform(HttpSession session, Model model)
+  @RequestMapping(value="modifyInfoform", method= RequestMethod.GET) 
+  public String userModifyInfoform(HttpSession session, Model model) throws Exception
   {
 	  String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
 	  UserVO vo = userService.modifyform(userEmail);
 	  System.out.println(vo);
 	  model.addAttribute("vo", vo);
-	  return "user/modifyInfo";
+	  return "basic/user/modifyInfo";
 	  
   }
 //회원정보 수정

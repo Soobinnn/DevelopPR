@@ -6,7 +6,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/joinForm.css'/>"/>
-<script type="text/javascript">   
+<script type="text/javascript"> 
+
 var userIs_seekCheck = false;
 var CheckEmail = false;
 var CheckName = false;

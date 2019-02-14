@@ -1,8 +1,9 @@
-#joinForm
+.modifyInfo
 {
 	font-family: 'Noto Sans KR', sans-serif;
+	margin-bottom:100px;
 }
-#joinForm .user_header
+.modifyInfo .user_header
 {
     display : flex;
     flex-direction : column;
@@ -13,21 +14,21 @@
     line-height : 100px;
 }
 
-#joinForm .head2
+.modifyInfo .head2
 {
 
     text-align : center;
 	font-weight :900;
 	font-size : 3rem;
 }
-#joinForm #information
+.modifyInfo #information
 {
     font-size : 2rem;
     position : relative;
     left : 10px;
     top : 40px;
 }
-#joinForm #obligatory
+.modifyInfo #obligatory
 {
     position : relative;
     left : 380px;
@@ -35,25 +36,25 @@
     top : 40px;
     font-size : 1.1rem;
 }
-#joinForm .head3
+.modifyInfo .head3
 {
 
 }
 
-#joinForm .user_section{
+.modifyInfo .user_section{
     display :flex;
     flex-direction: row; 
     width: auto;
 }
 
-#joinForm .sec1
+.modifyInfo .sec1
 {
     
     height : 700px;
     width : 40%;
 }
 
-#joinForm .sec2
+.modifyInfo .sec2
 {
     
     display: flex;
@@ -64,12 +65,12 @@
     border : 2px solid #b9b9b9;
    border-radius : 15px;
 }
-#joinForm #sec2_1
+.modifyInfo #sec2_1
 {
     
     width : 10%;
 }
-#joinForm #sec2_2
+.modifyInfo #sec2_2
 {
     
     display : flex;
@@ -78,7 +79,7 @@
     width : 800px;
 }
 
-#joinForm #top
+.modifyInfo #top
 {
     position : relative;
     border-bottom:2px solid #585858;
@@ -86,30 +87,30 @@
     margin-left : 50px;
     margin-right : 50px;   
 }
-#joinForm #middle
+.modifyInfo #middle
 {
     position : relative;
     height : 655px;
     width: 800px;
 
 }
-#joinForm .radio_
+.modifyInfo .radio_
 {
     position:relative;
     height : 70px;
 }
-#joinForm .radio_ , .radio_1, .radio_2
+.modifyInfo .radio_ ,.modifyInfo .radio_1,.modifyInfo .radio_2
 {
     color : black;
     font-size : 1.2rem;
 
 }
-#joinForm .radio_1, .radio_2
+.modifyInfo .radio_1,.modifyInfo .radio_2
 {
     position: relative;
     bottom : 17px;
 }
-#joinForm #user_ul{
+.modifyInfo #user_ul{
     position: relative;
     width : 640px;
     left : 60px;
@@ -119,50 +120,50 @@
   
     
 }
-#joinForm .user_li1,.user_li2,.user_li3,.user_li4,.user_li5,.user_li6,.user_li7,.user_li8
+.modifyInfo .user_li1,.modifyInfo .user_li2,.modifyInfo .user_li3,.modifyInfo .user_li4,.modifyInfo .user_li5,.modifyInfo .user_li6,.modifyInfo .user_li7,.modifyInfo .user_li8
 {
     font-size : 1rem;
 }
-#joinForm .user_li2
+.modifyInfo .user_li2
 {
     margin-bottom : 10px;
 }
-#joinForm .user_li3
+.modifyInfo .user_li3
 {
     margin-bottom : 5px;
 }
-#joinForm .user_li4
+.modifyInfo .user_li4
 {
     margin-bottom : 6px;
 }
-#joinForm .user_li5
+.modifyInfo .user_li5
 {
     margin-bottom : 10px;
 }
-#joinForm .user_li6
+.modifyInfo .user_li6
 {
     margin-bottom : 10px;
 }
-#joinForm .user_li7
+.modifyInfo .user_li7
 {
     margin-bottom : 30px;
 }
 
-#joinForm #userEmail, #userName, #userPw, #userPwChk, #userNick,#userPhone
+.modifyInfo #userEmail,.modifyInfo #userName,.modifyInfo #userPw,.modifyInfo #userPwChk,.modifyInfo #userNick,.modifyInfo #userPhone
 {
     width:380px;
 }
 
-#joinForm #sec2_3
+.modifyInfo #sec2_3
 {
     width : 10%;
 }
-#joinForm .sec3
+.modifyInfo .sec3
 {
     height : 800px;
     width : 40%;
 }
-#joinForm #p1,#p2,#p3,#p4,#p5,#p6,#p7
+.modifyInfo #p1,.modifyInfo #p2,.modifyInfo #p3,.modifyInfo #p4,.modifyInfo #p5,.modifyInfo #p6,.modifyInfo #p7
 {
     color : #A4A4A4;
     position:relative;
@@ -173,55 +174,55 @@
     margin-bottom : 5px;
     width : 500px;
 }
-#joinForm #p1
+.modifyInfo #p1
 {
     position:relative;
     bottom : 3px;
     left : 4px;
 }
-#joinForm #p2
+.modifyInfo #p2
 {
     position:relative;
     bottom : 12px;
     left : 4px;
 }
-#joinForm #p3
+.modifyInfo #p3
 {
     position:relative;
     bottom : 6px;
     left : 4px;
 }
-#joinForm #p4
+.modifyInfog #p4
 {
     position:relative;
     bottom : 5px;
     left : 4px;
 }
-#joinForm #p5
+.modifyInfo #p5
 {
     position:relative;
     bottom : 5px;
     left : 4px;
 }
-#joinForm #p6
+.modifyInfo #p6
 {
     position:relative;
     bottom : 5px;
     left : 4px;
 }
-#joinForm #p7
+.modifyInfo #p7
 {
     position : relative;
     bottom : 5px;
     left : 4px;
 }
-#joinForm #explain
+.modifyInfo #explain
 {
     width : 380px;
     height : 50px;
     box-shadow: 0 0 0 50px white inset;
 }
-#joinForm #bottom
+.modifyInfo #bottom
 {
     display : flex;
     position : relative;
@@ -233,7 +234,7 @@
     
 }
 
-#joinForm #confirm
+.modifyInfo #modify
 {
     background : white;
     position : relative;
@@ -247,7 +248,7 @@
 	font-size :1rem;
 }
 
-#joinForm #cancel
+.modifyInfo #cancel
 {
     background : white;
     position : relative;
@@ -260,86 +261,80 @@
 	font-weight : 700;
 	font-size :1rem;
 }
-#joinForm #cancel:hover
+.modifyInfo #cancel:hover
 {
     background: #585858;
 	color: white;
 }
-#joinForm #userPhone
+.modifyInfo #userPhone
 {
 position : relative;
 
 }
 
-#joinForm #joinForm_form
+.modifyInfo #modifyInfo_form
 {
     width:700px;
     margin-left : 50px;
     height: 770px;
 }
-#joinForm #userIs_seekMsg,#emailCheckMsg,#nameCheckMsg,#pwCheckMsg,#pwchCheckMsg,#nickCheckMsg,#phoneCheckMsg,#userjobCheckMsg
+.modifyInfo #userIs_seekMsg,.modifyInfo #emailCheckMsg,.modifyInfo #nameCheckMsg,.modifyInfo #pwCheckMsg,.modifyInfo #pwchCheckMsg,.modifyInfo #nickCheckMsg,.modifyInfo #phoneCheckMsg,.modifyInfo #userjobCheckMsg
 {
     position: relative;
     left: 7px;
 }
 
-#joinForm #radio, #radio + label
+.modifyInfo #radio, #radio + label
 {
     position : relative;
     top : 40px;
 }
 
-#joinForm #radio2, #radio2 + label
+.modifyInfo #radio2, #radio2 + label
 {
     position : relative;
     left : 10px;
     top : 40px;
 }
-#joinForm #emailCheckMsg, #nameCheckMsg, #pwCheckMsg, #pwchCheckMsg, #nickCheckMsg, #phoneCheckMsg
+.modifyInfo #emailCheckMsg,.modifyInfo #nameCheckMsg,.modifyInfo #pwCheckMsg,.modifyInfo #pwchCheckMsg,.modifyInfo #nickCheckMsg,.modifyInfo #phoneCheckMsg
 {
     font-size : 1rem;
 }
 
-#joinForm #userEmail,#userName,#userPw, #userPwChk, #userNick, #userPhone, #explain
+.modifyInfo #userEmail,.modifyInfo #userName,.modifyInfo #userPw,.modifyInfo  #userPwChk,.modifyInfo #userNick,.modifyInfo #userPhone,.modifyInfo #explain
 {
     height : 50px;
     border : 2px solid #585858;
     border-radius : 10px;
 }
-#joinForm input:focus
+.modifyInfo input:focus
 {
     outline : none;
 }
-#joinForm input
+.modifyInfo input
 {
     font-size : 1rem;
 }
-#joinForm .user_li2
+.modifyInfo .user_li2
 {
     position : relative;
     top : 10px;
     height : 110px;
 }
-#joinForm .user_li3, .user_li4, .user_li5, .user_li6, .user_li7
+.modifyInfo .user_li3,.modifyInfo .user_li4,.modifyInfo .user_li5,.modifyInfo .user_li6,.modifyInfo .user_li7
 {
     position : relative;
     top : 10px;
     height : 90px;
 }
 
-#joinForm #radio4, #radio4 +label, #radio6, #radio6 + label
+.modifyInfo #radio4,.modifyInfo #radio4 +label,.modifyInfo #radio6, #radio6 + label
 {
 	position:relative;
 	left : 10px;
 }
-/* 준형 추가 */
-#joinForm *:focus
- 		{
-        outline:none;
-		}
-#joinForm input
+
+.modifyInfo input
 {
 	padding-left:8px;
-}		
-		
-/**/
+}

@@ -154,4 +154,11 @@
 		OR (unaccess_mail =1 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTODSINTERVAL(270,'DAY')))
 		OR (unaccess_mail =2 AND SYSDATE+9/24 >= (RECENT_ACCESS + NUMTOYMINTERVAL(1,'year')-7))
 	</select>
+	
+	<!-- 이메일 찾기 Ajax 폰번호 체크  :: 준형-->
+	<select id="checkPhone" resultType="int">
+		SELECT  NVL(COUNT(*),0)
+		FROM pr_user 
+		WHERE PHONE = #{phone}
+	</select>
  </mapper>
