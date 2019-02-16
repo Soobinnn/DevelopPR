@@ -5,7 +5,8 @@
 <head>
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resumedetail.css'/>"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 window.onload = function (){
 	if('${chkFollow}'=='1'){
@@ -152,11 +153,9 @@ function ungood()
 <div class="container">
    <div class="head">
     	<img id="color" src='<c:url value="/resources/resume/${dto.color}.jpg"/>'/>
-   </div>
-    <div class="img">
         <div class="comment">${dto.motto}</div>
-        <img src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
-        
+   </div>        
+        <img id="mainimage" src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
         <div class="information">
             <div class="textshort1">
 		       <c:if test="${dto.is_work==0}"><p id="is_work">구직중</p></c:if>
@@ -184,7 +183,6 @@ function ungood()
             </div>
             
         </div>
-    </div>
     <div class="content">
     	<div class="up">
                 <div class="left">
@@ -348,23 +346,25 @@ function ungood()
                 </div>
        </div> 
                     <div class="projects">
-                        <div class="subject">프로젝트</div> 
+                        <div class="subject">프로젝트
                         	<c:if test="${sessionScope.userEmail==dto.email}">
-                        		<a href="${path}/project/registForm">프로젝트 추가</a>
+                        		<a id="plusproject" href="${path}/project/registForm">프로젝트 추가</a>
 							</c:if>
+                        </div> 
                         <div class="project">
         	                <c:forEach var="project" items="${project}" varStatus="status">	
         	                
 								<div class="pros">
 								  	<img src='<c:url value="/resources/photo/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
 									<div class="pro">
-										<div class="proname">${project.project_name} ${project.pno}</div>
+										<div class="proname">${project.project_name}
+											<c:if test="${sessionScope.userEmail==dto.email}">
+												<a id="projectmodify" href="${path}/project/modifyForm/${project.pno}">수정</a>
+												<a id="projectdelete" href="${path}/project/remove/${project.pno}">삭제</a>
+											</c:if>
+										</div>
 										<div class="proterm">기간 : ${project.project_term1} ~ ${project.project_term2}</div>
 										<div class="prostack">기술 : ${project.techstack}</div>
-											<c:if test="${sessionScope.userEmail==dto.email}">
-												<a href="${path}/project/modifyForm/${project.pno}">수정</a>
-												<a href="${path}/project/remove/${project.pno}">삭제</a>
-											</c:if>
         							</div>
 								</div>
                           	</c:forEach>
@@ -399,12 +399,12 @@ function ungood()
     </div>
 </div>
 	<div class="button">
-		<a href="history.back()">BACK</a>
-		<a href="${path}/resume/list">LIST</a>
-		<a href="${path}/main">HOME</a>
+		<a id="buttonlist" href="${path}/resume/list">
+		 <label for="buttonList">LIST</label></a>
+		<a id="buttonhome"href="${path}/main">HOME</a>
 		<c:if test="${sessionScope.userEmail==dto.email}">
 			<input type="hidden" value="${dto.email}" name="email"/>
-			<a href="${path}/resume/modify/${dto.email}/">MODIFY</a>
+			<a id="buttonmodify" href="${path}/resume/modify/${dto.email}/">MODIFY</a>
 		</c:if>
 	</div>
     <footer>

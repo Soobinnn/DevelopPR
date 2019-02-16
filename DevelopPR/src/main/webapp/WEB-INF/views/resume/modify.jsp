@@ -5,6 +5,8 @@
 <head>
 <title>이력서 수정</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">	
 window.onload = function() {
 	  var input = document.getElementById("hash").focus();
