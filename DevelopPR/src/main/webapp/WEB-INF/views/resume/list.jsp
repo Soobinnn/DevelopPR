@@ -138,7 +138,7 @@
                     <!-- **현재페이지이면 하이퍼링크 제거 -->
                     <c:choose>
                         <c:when test="${num == map.resumePager.curPage}">
-                            <span style="color: red">${num}</span>&nbsp;
+                            <span style="color: #02456F">${num}</span>&nbsp;
                         </c:when>
                         <c:otherwise>
                             <a href="javascript:list('${num}')">${num}</a>&nbsp;

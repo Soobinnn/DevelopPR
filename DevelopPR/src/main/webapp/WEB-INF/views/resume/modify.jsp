@@ -11,6 +11,64 @@
 window.onload = function() {
 	  var input = document.getElementById("hash").focus();
 }
+
+$(document).ready(function () {
+	$('.color').click(function () {
+		var color = $('input[name="color"]:checked').val();
+		var param = "color="+color;
+		 $.ajax({
+		        async : true,
+		        type :'POST',
+		        data : param,
+		        url : '${path}/resume/background',
+		        success : function(data)
+		        {
+		        	console.log("success:"+data);
+		        	$(".header").attr("src", data);
+		        }
+		    })
+	})
+})
+window.onload = function(){
+    const color = '${dto.color}';
+    if( color == 'black' ) {
+		document.getElementById('r01').checked=true;
+    }
+    if( color == 'bluewhite' ) {
+		document.getElementById('r02').checked=true;
+    }
+    if( color == 'brown' ) {
+		document.getElementById('r03').checked=true;
+    }
+    if( color == 'colorful' ) {
+		document.getElementById('r04').checked=true;
+    }
+    if(color=='colorful2') {
+    	document.getElementById('r05').checked=true;
+    }
+    if( color == 'gray' ) {
+		document.getElementById('r06').checked=true;
+    }
+    if( color == 'green' ) {
+		document.getElementById('r07').checked=true;
+    }
+    if( color == 'mint' ) {
+		document.getElementById('r08').checked=true;
+    }
+    if( color == 'pink' ) {
+		document.getElementById('r09').checked=true;
+    }
+    if( color == 'purple' ) {
+		document.getElementById('r10').checked=true;
+    }
+    if( color == 'white' ) {
+		document.getElementById('r11').checked=true;
+    }
+    if( color == 'yellow' ) {
+		document.getElementById('r12').checked=true;
+    }
+}
+
 $(function(){
 $('#hash').blur(function(){
 	$('#comment').css('display', 'none');
@@ -84,24 +142,7 @@ function fn_removeImage() {
 		document.getElementById('techs').removeChild(obj.parentNode);
 	}
 	
-	
-	$(document).ready(function () {
-		$('.color').click(function () {
-			var color = $('input[name="color"]:checked').val();
-			var param = "color="+color;
-			 $.ajax({
-			        async : true,
-			        type :'POST',
-			        data : param,
-			        url : '${path}/resume/background',
-			        success : function(data)
-			        {
-			        	console.log("success:"+data);
-			        	$(".header").attr("src", data);
-			        }
-			    })
-		})
-	})
+
 	
 	function checks(){
 		
@@ -173,13 +214,13 @@ function fn_removeImage() {
 	});
 
 </script>	
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/modify.css'/>"/>
 </head>
 <body>
-<div class="resumeRegist">
+<div class="resumeModify">
 <form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
     <div class="container">
-			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
+			<img src="/DevelopPR/resources/resume/${dto.color}.jpg" class="header"/>
         <header>
             <div class="head">
                <div class="a">DevelopPR</div>
@@ -533,10 +574,10 @@ function fn_removeImage() {
 							 var percentSplit = tech_percent.split(',');
 							 
 							for (var i=0; i<abbSplit.length;i++){
-										 		'<input type="text" placeholder="기술약자" value="'+abbSplit[i]+'" class="abb" name="abb"/>'+
+								document.write('<div class="tech"><input type="text" placeholder="기술약자" value="'+abbSplit[i]+'" class="abb" name="abb"/>'+
 												'<input type="text" class="techname" placeholder="기술 명" value="'+nameSplit[i]+'" name="tech_name"><br/>'+
 												'<input class="input-range" type="range" min="0" step="5" max="100" value="'+percentSplit[i]+'" name="tech_percent"/>'+
-												'<div class="value">'+percentSplit[i]+'</div><br/><input type="button" class="x" value="X" onclick="remove_item(this)">';
+												'<div class="value">'+percentSplit[i]+'</div><br/><input type="button" class="x" value="X" onclick="remove_item(this)"></div>');
 							}; 
 						    
 								    var rangeSlider = function(){

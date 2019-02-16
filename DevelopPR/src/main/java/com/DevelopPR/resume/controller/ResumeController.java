@@ -79,7 +79,7 @@ public class ResumeController {
 	   String email = uservo.getUserEmail();
 	   model.addAttribute("dto", userService.viewId(email));
 	   
-      return "menu/resume/regist";
+      return "resume/regist";
    }
    
    //이력서 등록 처리

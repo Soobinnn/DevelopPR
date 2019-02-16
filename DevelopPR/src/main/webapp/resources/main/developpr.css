@@ -384,6 +384,17 @@ section.main_section
    padding-bottom:50px;
 }
 
+.resume_paging a{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+}
+ .resume_paging span{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+ }
+
 .main1
 {
 	margin-top : 50px;

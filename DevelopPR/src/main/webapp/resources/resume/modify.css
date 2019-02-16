@@ -1,22 +1,22 @@
 /*------------------------- resumeRegist --------------------------*/
 
-.resumeRegist .container{
+.resumeModify .container{
    display:flex;
    flex-direction: column;
    align-items: center;
    font-family: 'Noto Sans KR', sans-serif;
 }
-.resumeRegist input{
+.resumeModify input{
 	text-align:center;
 }
 /*---------------header----------------*/
 
-.resumeRegist .container header{
+.resumeModify .container header{
 	margin-top:20px;
    display:flex;
    height:250px;
 }
-.resumeRegist .header{
+.resumeModify .header{
 	z-index:-3;
 	width:100%;
 	height:320px;
@@ -24,7 +24,7 @@
 	opacity:0.5;
 }
 
-.resumeRegist .colors{
+.resumeModify .colors{
 	display:flex;
 	margin-top:20px;
 	padding-bottom:10px;
@@ -33,27 +33,27 @@
 	border-bottom:solid 2px #585858;
 }
 
-.resumeRegist #HeadBack{
+.resumeModify #HeadBack{
 	font-weight:bold;
 }
-.resumeRegist .head{
+.resumeModify .head{
    padding:50px;
    width:800px;
 }
 
-.resumeRegist .head .a{
+.resumeModify .head .a{
    height:100px;
    font-size:50px;
    font-weight:900;
 }
 
-.resumeRegist .head .b{
+.resumeModify .head .b{
    height:70px;
    font-size:30px;
    font-weight:600;
 }
 
-.resumeRegist .hash{
+.resumeModify .hash{
    font-size:1.2rem;
    color: #fff;
    text-shadow: -1px 1px 5px black, 1px -1px 5px black;
@@ -68,19 +68,19 @@
    position:relative;
    bottom:20px;
 }
-.resumeRegist #comments{
+.resumeModify #comments{
 	position:relative;
 	right:115px;
 	bottom:10px;
 	display:flex;
 	height:55px;
 }
-.resumeRegist #comment{
+.resumeModify #comment{
 	 font-size:1.2rem;
      font-weight:bold;
 }
 
-.resumeRegist #uploadImage{
+.resumeModify #uploadImage{
    background-color:white;
    width:200px;
    height:200px;
@@ -94,12 +94,12 @@
    top:20px;
 }
 
-.resumeRegist #img #upload_button{
+.resumeModify #img #upload_button{
 	position:relative;
 	right:55px;
 	bottom:10px;
 }
-.resumeRegist .btn.sty13{
+.resumeModify .btn.sty13{
 	border-radius:10px;
 	border:solid 2px #585858;
 	padding:6px;
@@ -110,12 +110,12 @@
 	font-weight:bold;
 	background-color:#f6f6f6;
 }
-.resumeRegist .btn.sty13:hover{
+.resumeModify .btn.sty13:hover{
 	background-color:#585858;
 	color:white;
 }
 /*---------------main-----------------*/
-.resumeRegist #pills{
+.resumeModify #pills{
 	font-weight: bold;
 	width:750px;
 	position:relative;
@@ -128,23 +128,23 @@
     border:solid 2px #585858;
 	border-radius:15px;
 }
-.resumeRegist #danger{
+.resumeModify #danger{
 	font-size:1.2rem;
 }
-.resumeRegist .pill{
+.resumeModify .pill{
    font-size:17px;
    padding-top:10px;
    margin-top:10px;
    margin-bottom:10px;
 }
 
-.resumeRegist .main{
+.resumeModify .main{
    display:flex;
    flex-wrap: wrap;
    width:1300px;
 }
 
-.resumeRegist .subject{
+.resumeModify .subject{
 	width:570px;
    text-align:left;
    font-size:23px;
@@ -155,25 +155,25 @@
    font-weight: bold;
    border-bottom: solid 2px #585858;
 }
-.resumeRegist .detail{
+.resumeModify .detail{
 	margin-right:100px;
 }
 
 
-.resumeRegist .content .state{
+.resumeModify .content .state{
    display: flex;
 }
-.resumeRegist .content .s_info{
+.resumeModify .content .s_info{
    margin-top:15px;
    display:flex;
    font-size:14pt;
    margin-left:90px;
 }
 
-.resumeRegist input[type='radio']{
+.resumeModify input[type='radio']{
 	display:none;
 }
-.resumeRegist input[type='radio'] + label{
+.resumeModify input[type='radio'] + label{
 	    position: relative;
         top: 3px;
 	    display:inline-block;
@@ -182,7 +182,7 @@
         background: url('20_off.png');
 }
 
-.resumeRegist input[type='radio']:checked + label{ 
+.resumeModify input[type='radio']:checked + label{ 
     position: relative;
         top: 3px;
 		display:inline-block;
@@ -190,32 +190,32 @@
         width:20px;
         height:20px;
 }
-.resumeRegist .la{
+.resumeModify .la{
 	margin-left:100px;
 }
 
-.resumeRegist .la2{
+.resumeModify .la2{
 	margin-right:60px;
 	margin-left:25px;
 }
 
-.resumeRegist .la1{
+.resumeModify .la1{
 	    margin-left:35px;
         margin-right:60px;
 }
-.resumeRegist .la4{
+.resumeModify .la4{
 	    margin-left:35px;
         margin-right:30px;
 }
-.resumeRegist .la5{
+.resumeModify .la5{
 	    margin-left:35px;
         margin-right:30px; 
 }
-.resumeRegist .la6{
+.resumeModify .la6{
 	    margin-left:35px;
         margin-right:30px;
 }
-.resumeRegist .p_label{
+.resumeModify .p_label{
 	margin-left:25px;
 	position:relative;
 	bottom:20px;
@@ -224,23 +224,23 @@
 }
 
 
-.resumeRegist .name{
+.resumeModify .name{
    text-align:left;
    padding:15px;
    padding-left:40px;
    font-size:15pt;
    width:160px;
-   
 }
 
-.resumeRegist .birth_info{
+
+.resumeModify .birth_info{
    width:300px;
    height:20px;
    font-size:14pt;
    border-radius: 5%;
    
 }
-.resumeRegist .textshort, .textlong, input#date{
+.resumeModify .textshort, .textlong, input#date{
    width:300px;
    height:35px;
    font-size:1.1rem;
@@ -251,42 +251,45 @@
    margin-bottom:10px;
    text-align:center;
 }
-.resumeRegist .content, .resumeRegist #p_name, .resumeRegist #p_age, .resumeRegist #birth,.resumeRegist #phone,.resumeRegist #email,.resumeRegist #blog,.resumeRegist #address,.resumeRegist #hopeaddress{
+.resumeModify .content, .resumeModify #p_name, .resumeModify #p_age, .resumeModify #birth,.resumeModify #phone,.resumeModify #email,.resumeModify #blog,.resumeModify #address,.resumeModify #hopeaddress{
    display:flex;
    flex-direction: row;
    width:610px;
    border-bottom:solid 1px #f6f6f6;
 }
 
-.resumeRegist #p_name .textshort, .resumeRegist #email .textshort{
+.resumeModify .phone_info, .resumeModify .info{
+	width:354px;
+}
+.resumeModify #p_name .textshort, .resumeModify #email .textshort{
 	padding-top:6px;
 	height:29px;
 }
-.resumeRegist #date{
+.resumeModify #date{
 	padding-left:40px;
 	width:260px;
 }
-.resumeRegist #birth{
+.resumeModify #birth{
 	padding-bottom:10px;
 }
 
-.resumeRegist .detail{
+.resumeModify .detail{
 	display:flex;
 	flex-direction:column;
 	border-style:none;
    	border-bottom: solid 2px #585858;
    	width:600px;
 }
-.resumeRegist .detail .subject{
+.resumeModify .detail .subject{
 	padding-bottom:30px;
 }
 /*--------------information----------------*/
 
-.resumeRegist .information{
+.resumeModify .information{
    width:600px;
 }
 
-.resumeRegist .textmiddle1{
+.resumeModify .textmiddle1{
    margin-top:10px;
    margin-left:65px;
    margin-right:10px;
@@ -297,7 +300,7 @@
    font-size:1.1rem;
 }
 
-.resumeRegist .textmiddle2{
+.resumeModify .textmiddle2{
    margin-top:10px;
    margin-left:15px;
    margin-right:10px;
@@ -308,30 +311,30 @@
    font-size:1.1rem;
 }
 
-.resumeRegist .acq_ok,.resumeRegist .edu_ok,.resumeRegist .career_ok{
+.resumeModify .acq_ok,.resumeModify .edu_ok,.resumeModify .career_ok{
    border-bottom:solid 2px #585858;
    width:610px;
 }
 
-.resumeRegist .acq, .resumeRegist .edu, .resumeRegist .career{
+.resumeModify .acq, .resumeModify .edu, .resumeModify .career{
 	padding-bottom:10px;
 	border-bottom:solid 1px #f6f6f6;
 }
 /*---------------------skill------------------------*/
-.resumeRegist .skill{
+.resumeModify .skill{
    display:flex;
    flex-direction: column;
    border-bottom:solid 2px #585858;
    margin-bottom:50px;
 }
 
-.resumeRegist .skill .subject{
+.resumeModify .skill .subject{
    padding-top:50px;
    width:1260px;
    margin-bottom:20px;
 }
 
-.resumeRegist #techs{
+.resumeModify #techs{
    display:flex;
    flex-direction: row;
    width:1250px;
@@ -340,12 +343,12 @@
    margin-bottom:20px;
    margin-left:10px;
 }
-.resumeRegist .tech .x{
+.resumeModify .tech .x{
 	 position:relative;
 	 top:55px;
 	 right:170px;
 }
-.resumeRegist .tech{
+.resumeModify .tech{
    display:flex;
    flex-direction: row;
    width:320px;
@@ -353,7 +356,7 @@
    margin-left:70px;
 }
 
-.resumeRegist .tech .abb{
+.resumeModify .tech .abb{
    width:80px;
    height:80px;
    border-radius: 20% 20% 20% 20%;
@@ -370,7 +373,7 @@
 }
 
 
-.resumeRegist .tech .techname{
+.resumeModify .tech .techname{
    font-size:14pt;
    border: solid 2px #585858;
    border-radius:10px;
@@ -380,7 +383,7 @@
    height:35px;
 }
 
-.resumeRegist .value {
+.resumeModify .value {
   text-align: center;
   font-weight: bold;
   font-size: 1.2em;
@@ -389,7 +392,7 @@
   top:53px;
   right:185px;
 }
-.resumeRegist input[type="range"] {
+.resumeModify input[type="range"] {
   display: block;
   -webkit-appearance: none;
   background-color: #bdc3c7;
@@ -402,7 +405,7 @@
   right:200px;
   top:65px;
 }
-.resumeRegist input[type="range"]::-webkit-slider-thumb {
+.resumeModify input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: #585858;
   width: 30px;
@@ -412,12 +415,12 @@
   cursor: pointer;
   transition: .3s ease-in-out;
 }
-.resumeRegist input[type="range"]::-webkit-slider-thumb:hover {
+.resumeModify input[type="range"]::-webkit-slider-thumb:hover {
     background-color: white;
     border: 2px solid #02456F;
   }
 
-.resumeRegist input[type="range"]::-webkit-slider-thumb:active {
+.resumeModify input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1.2);
     background-color: #02456F;
   }
@@ -426,12 +429,12 @@
 
 /*------------resume--regist--button--------------*/
 
-.resumeRegist #button{
+.resumeModify #button{
    display:flex;
    flex-direction: row;
 }
 
-.resumeRegist .button1{
+.resumeModify .button1{
    height:45px;
    font-size: 15pt;
    margin-bottom: 40px;
@@ -441,12 +444,12 @@
    border:solid 2px #585858;
    background-color:white;
 }
-.resumeRegist .button1:hover{
+.resumeModify .button1:hover{
 	background-color:#02456F;
 	color:white;
 }
 
-.resumeRegist .button2{
+.resumeModify .button2{
 	background-color:#585858;
 	color:white;
    flex:0 1 200px;
@@ -456,17 +459,17 @@
    border-radius:25px;
    border:solid 2px #585858;
 }
-.resumeRegist .button2:hover{
+.resumeModify .button2:hover{
 	background-color:#02456F;
     color:white;
 }
 
 
-.resumeRegist .holl{
+.resumeModify .holl{
    flex-grow:3;
 }
 
-.resumeRegist .plus{
+.resumeModify .plus{
 	color:white;
 	background-color:#02456F;
 	font-size:20pt;
@@ -479,7 +482,7 @@
 	position:relative;
 	top:3px;
 }
-.resumeRegist .x{
+.resumeModify .x{
 	color:white;
 	background-color:#02456F;
 	font-size:14pt;
