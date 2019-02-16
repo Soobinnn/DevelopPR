@@ -5,6 +5,8 @@
 <head>
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resumedetail.css'/>"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
@@ -353,7 +355,6 @@ function ungood()
                         </div> 
                         <div class="project">
         	                <c:forEach var="project" items="${project}" varStatus="status">	
-        	                
 								<div class="pros">
 								  	<img src='<c:url value="/resources/photo/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
 									<div class="pro">
@@ -389,8 +390,8 @@ function ungood()
 							 
 							for (var i=0; i<abbSplit.length-1;i++){
 								 document.write('<div class="tech"><div class="abb">' + abbSplit[i] + '</div><div class="techinfo"><div class="tech_name">'+nameSplit[i]+ '</div>'
-						       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/>'
-						       		   + percentSplit[i] + '</div></div>'); 
+						       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/><div class="percent">'
+						       		   + percentSplit[i] + '</div></div></div>'); 
 							}
 							 </script>
             	</div>
@@ -400,15 +401,12 @@ function ungood()
 </div>
 	<div class="button">
 		<a id="buttonlist" href="${path}/resume/list">
-		 <label for="buttonList">LIST</label></a>
-		<a id="buttonhome"href="${path}/main">HOME</a>
+		 <label for="buttonList">목록으로</label></a>
+		<a id="buttonhome"href="${path}/main">메인으로</a>
 		<c:if test="${sessionScope.userEmail==dto.email}">
 			<input type="hidden" value="${dto.email}" name="email"/>
-			<a id="buttonmodify" href="${path}/resume/modify/${dto.email}/">MODIFY</a>
+			<a id="buttonmodify" href="${path}/resume/modify/${dto.email}/">수정하기</a>
 		</c:if>
 	</div>
-    <footer>
-        footer 고정
-    </footer>
 </body>
 </html>

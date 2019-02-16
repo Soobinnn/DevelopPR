@@ -28,7 +28,7 @@
 	display:flex;
 	margin-top:45px;
 	padding-bottom:23px;
-	width:1330px;
+	width:1380px;
 	padding-left:40px;
 	border-bottom:solid 2px #585858;
 }
@@ -211,15 +211,15 @@
 }
 .resumeRegist .la5{
 	    margin-left:35px;
-        margin-right:30px;
+        margin-right:30px; 
 }
 .resumeRegist .la6{
 	    margin-left:35px;
         margin-right:30px;
 }
 .resumeRegist .p_label{
-	margin-left:25px;
-	width:60px;
+	margin-left:23px;
+	height:20px;
 }
 
 
@@ -412,8 +412,8 @@
   border: 2px solid white;
   cursor: pointer;
   transition: .3s ease-in-out;
-}ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹
-  input[type="range"]::-webkit-slider-thumb:hover {
+}
+.resumeRegist input[type="range"]::-webkit-slider-thumb:hover {
     background-color: white;
     border: 2px solid #02456F;
   }

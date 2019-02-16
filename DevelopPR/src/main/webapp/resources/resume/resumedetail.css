@@ -3,11 +3,13 @@
 	height:400px;
 	width:100%;
 	z-index:-3;
+	opacity:0.5;
 }
 .resumeDetail .container {
    display:flex;
    flex-direction:column;
    align-items: center;
+     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .resumeDetail .container .head{
@@ -76,9 +78,9 @@
 }
 
 .resumeDetail .information .textshort2{
-	flex:0 1 97px;
-	padding-top:2px;
-	padding-left:9px;
+	flex:0 1 94px;
+	padding-bottom:2px;
+	padding-left:12px;
 	font-weight:bold;
 	height:29px;
 	border:solid 2px #585858;
@@ -259,7 +261,7 @@
 .resumeDetail .projects .subject{
 	width:98.3%;
 }
-.resumeDetail .projects .subject #plusproject{
+.resumeDetail .projects #plusproject{
 	border:solid 2px #585858;
 	padding:5px;
 	font-size:1.1rem;
@@ -268,7 +270,7 @@
 	border-radius:10px;
 	margin-left:20px;
 }
-.resumeDetail .projects .subject #plusproject:hover{
+.resumeDetail .projects #plusproject:hover{
 	background-color:#585858;
 	color:white;
 }
@@ -293,7 +295,6 @@
 }
 
 .resumeDetail .projects{
-	padding-bottom:20px;
 	margin-left:150px;
 	width:81%;
 	height:100%;
@@ -310,10 +311,8 @@
 	display:flex;
 	padding-bottom:20px;
 	padding-top:20px;
-	margin-left:20px;
-	margin-right:20px;
 	padding-left:200px;
-	border-bottom:solid 2px #585858;
+	border-bottom:solid 1px #b9b9b9;
 }
 
 .resumeDetail .pro{
@@ -360,7 +359,8 @@
 
 .resumeDetail .abb{
    width:80px;
-   height:80px;
+   height:55px;
+   padding-top:25px;
    border-radius: 20% 20% 20% 20%;
    
    background-color: rgba(255,255,255,0.5);
@@ -369,7 +369,7 @@
    font-weight: bold;
    border-style: solid;
 
-   margin-left:20px;
+   margin-left:40px;
    margin-bottom:20px;
    margin-right:10px;
 }
@@ -383,19 +383,78 @@
 .resumeDetail .tech .techinfo .tech_name{
    font-size:14pt;
    border-style: solid;
-   margin-bottom:10px;
-   width:185px;
+   padding-bottom:10px;
+   width:205px;
+   padding-left:10px;
+   border-radius:10px;
 }
 
-.resumeDetail #buttonhome{
+.resumeDetail input[type="range"] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: #bdc3c7;
+  width: 180px;
+  height: 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  outline: 0;
+  position:relative;
+  top:15px;
+  right:18px;
+}
+.resumeDetail .percent{
+	position:relative;
+	left:193px;
+	top:1px;
+	font-size:1.1rem;
+	font-weight:600;
+}
+.resumeDetail input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #02456F;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+.resumeDetail input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: white;
+    border: 2px solid #02456F;
+  }
+
+.resumeDetail input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+    background-color: #02456F;
+  }
+
+.resumeDetail .button{
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+.resumeDetail #buttonhome, .resumeDetail #buttonmodify, .resumeDetail #buttonlist{
 	border:solid 2px #585858;
-	border-radius:10px;
-	padding:5px;
+	border-radius:30px;
+	padding:10px;
+	position:relative;
+	left:700px;
+	text-decoration:none;
+	color:black;
+	font-size:1.2rem;
+	font-weight:bold;
+	padding-left:30px;
+	padding-right:30px;
+	margin-left:20px;
 }
 
-.resumeDetail #buttonhome:hover{
+.resumeDetail #buttonhome:hover, .resumeDetail #buttonmodify:hover, .resumeDetail #buttonlist:hover{
 	background-color:#585858;
+	color:white;
 }
+
+
 
 /*------------------footer---------------------*/
 
