@@ -8,7 +8,7 @@
 <script>
     // **원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
     function list(page){
-        location.href="${path}/resume/list?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
+        location.href="${path}/resume/list?curPage="+page+"&searchOption=${map.searchOption}"+"&keyword=${map.keyword}";
     }
 </script>
 </head>
@@ -23,7 +23,7 @@
 			            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >전체</option>
 			            <option value="name" <c:out value="${map.searchOption == 'name'?'selected':''}"/> >이름</option>
 			            <option value="prefer_place" <c:out value="${map.searchOption == 'prefer_place'?'selected':''}"/> >희망 지역</option>
-			            <option value="acq_name" <c:out value="${map.searchOption == 'acq_name'?'selected':''}"/> >Tech-Stack</option>
+			            <option value="acq_name" <c:out value="${map.searchOption == 'acq_name'?'selected':''}"/> >기술</option>
 			            <option value="tech_name" <c:out value="${map.searchOption == 'tech_name'?'selected':''}"/> >자격증</option>
 			        </select>
 			        <input name="keyword" id="keyword" value="${map.keyword}">

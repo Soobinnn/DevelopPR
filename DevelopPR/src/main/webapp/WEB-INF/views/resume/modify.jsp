@@ -5,7 +5,6 @@
 <head>
 <title>이력서 수정</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">	
 window.onload = function() {
 	  var input = document.getElementById("hash").focus();
@@ -51,7 +50,7 @@ function fn_modifyImage() {
 }
 
 function fn_removeImage() {
-	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg.png");
+	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg");
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
 }
@@ -188,7 +187,6 @@ function fn_removeImage() {
 	            <div style="min-height: 260px">
 					<img id="uploadImage" src="/DevelopPR/resources/resume/person.jpg"/>
 					<input type="hidden" id= "uploadImg" name="profile_photo"/>
-					
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
 					<div id="LoadImage">

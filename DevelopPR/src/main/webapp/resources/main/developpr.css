@@ -86,18 +86,15 @@ nav
 {
   display : none;
   position : absolute;
-  right : 65px;
-  top : 68px;
+  left : 50px;
+  top : 70px;
   width : 50px;
   height : 50px;
-  border-radius : 50% 10% 50% 50%/ 50% 10% 50% 50%;
-  background-color : #FE2E2E;
+  border-radius : 50%;
+  background-color : red;
   color : white;
   text-align : center;
   line-height: 45px; 
-  font-size : 1.2rem;
-  font-weight : bold;
-  
 }
 #navimg
 {
@@ -119,15 +116,14 @@ nav
 {
   position: relative;
   display : none;
-  background: #FE2E2E;
+  background: red;
   width : 40px;
   height : 40px;
   bottom : 50px;
   left : 280px;
+  text-align: center;
   border-radius: 50%;
   line-height: 40px;
-  font-size : 1.2rem;
-  font-weight : bold;
 }
 nav#min:hover > #navspan
 {
@@ -341,7 +337,10 @@ section.main_section
     font-size:1.2rem;
     border-radius:10px;
     border:solid 2px #585858;
-  	outline:none;
+    height:36.8px;
+    position:relative;
+    right:15px;
+    top:10px;
 }
 
 .search #keyword{
@@ -349,7 +348,10 @@ section.main_section
     border:solid 2px #585858;
     padding-left:10px;
     border-radius:10px;
-  outline:none;
+    height:30.8px;
+    position:relative;
+    right:5px;
+    top:8px;
 }
 
 .search #search_submit{
@@ -358,10 +360,14 @@ section.main_section
     border-radius:10px;
     background-color:white;
     border:solid 2px #585858;
+    height:36.8px;
+    position:relative;
+    left:10px;
+    top:10px;
 }
 
 .search #search_submit:hover{
-  font-size:14pt;
+  font-size:1.2rem;
   background:#585858;
   color:white;
 }

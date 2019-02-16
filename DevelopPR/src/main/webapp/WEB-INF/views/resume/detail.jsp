@@ -6,7 +6,6 @@
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 window.onload = function (){
 	if('${chkFollow}'=='1'){
@@ -160,33 +159,28 @@ function ungood()
         
         <div class="information">
             <div class="textshort1">
-            	정보 공개 
-            	
-            </div>
-            <div class="textshort1">
-		       <c:if test="${dto.is_work==0}">구직중</c:if>
-		       <c:if test="${dto.is_work==1}">재직중</c:if>
-		       
+		       <c:if test="${dto.is_work==0}"><p id="is_work">구직중</p></c:if>
+		       <c:if test="${dto.is_work==1}"><p id="is_work">재직중</p></c:if>
 	       	</div>
-            <div class="textshort2">포트폴리오</div>
+            <div class="textshort2"><a href="#" id="ppt">포트폴리오</a></div>
              
              
             <div id="unfollow" style="opacity:0">
                <!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->       
                	  <input type="hidden"  value="${dto.email}"> 
-                  <input type="button" onclick="unfollow()" name="unfollow" value="언팔로우">
+                  <input type="button" id="is_unfollow" onclick="unfollow()" name="unfollow" value="언팔로우">
             </div>
             <div id="follow" style="opacity:0">      
             	  <input type="hidden" value="${dto.email}" > 
-                  <input type="button" onclick="follow()" name="follow"  value="팔로우">
+                  <input type="button" id="is_follow" onclick="follow()" name="follow"  value="팔로우">
             </div>
             
             <div id="ungood" style="opacity:0">
                <!-- 팔로우가 되어 있다면 언팔로우, 언팔이면 팔로우 뜨게.. -->       
-                  <input type="button" onclick="ungood()" name="ungood" value="좋아요 취소">
+                  <input type="button" id="is_ungood" onclick="ungood()" name="ungood" value="좋아요 취소">
             </div>
             <div id="good" style="opacity:0">      
-                  <input type="button" onclick="good()" name="good"  value="좋아요">
+                  <input type="button" id="is_good" onclick="good()" name="good"  value="좋아요">
             </div>
             
         </div>
@@ -360,10 +354,11 @@ function ungood()
 							</c:if>
                         <div class="project">
         	                <c:forEach var="project" items="${project}" varStatus="status">	
+        	                
 								<div class="pros">
 								  	<img src='<c:url value="/resources/photo/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
 									<div class="pro">
-										<div class="proname">${project.project_name}</div>
+										<div class="proname">${project.project_name} ${project.pno}</div>
 										<div class="proterm">기간 : ${project.project_term1} ~ ${project.project_term2}</div>
 										<div class="prostack">기술 : ${project.techstack}</div>
 											<c:if test="${sessionScope.userEmail==dto.email}">
