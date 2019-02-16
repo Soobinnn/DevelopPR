@@ -30,9 +30,13 @@
      <definition name="menu/*/*" extends="menu">
          <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
      </definition>
+    <!-- 메뉴 + 푸터  -->
+    <definition name="footmenu" template="/WEB-INF/tiles/templatefootmenu.jsp">
+		 <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+    </definition>
     
-    <definition name="*/*/*.part" extends="Empty">
-        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
-    </definition>        
+     <definition name="footmenu/*/*" extends="footmenu">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>     
     
 </tiles-definitions>
