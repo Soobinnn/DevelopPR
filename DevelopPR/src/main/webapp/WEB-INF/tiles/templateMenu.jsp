@@ -150,7 +150,7 @@
 	</nav>
 	</c:otherwise>
 	</c:choose>
-  <tiles:insertAttribute name="body" />
-  
+
+   <tiles:insertAttribute name="body" />
 </body>
 </html>

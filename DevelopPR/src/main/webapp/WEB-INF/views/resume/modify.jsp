@@ -6,7 +6,6 @@
 <title>이력서 수정</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">	
 window.onload = function() {
 	  var input = document.getElementById("hash").focus();
@@ -356,14 +355,14 @@ function fn_removeImage() {
                                 <input type="radio" id="pr1" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen"/>
                                 <label for="pr1" class="la" ><p class="p_label">공개 </p></label>
                                 <input type="radio" id="pr2" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose" checked/>
-                                <label for="pr2" class="la" ><p class="p_label">비공개 </p></label>
+                                <label for="pr2" class="lala" ><p class="p_label">비공개 </p></label>
                        
                             </c:if>
                           	<c:if test="${dto.cnum_is_open==1}">
                                  <input type="radio" id="pr1" name="cnum_is_open" value="1" class="phone_radio" value="phoneopen" checked/>
                                 <label for="pr1" class="la" ><p class="p_label">공개 </p></label>
                                 <input type="radio" id="pr2" name="cnum_is_open" value="0" class="phone_radio" value="phoneclose"/>
-                                <label for="pr2" class="la" ><p class="p_label">비공개 </p></label>
+                                <label for="pr2" class="lala" ><p class="p_label">비공개 </p></label>
                             </c:if>
                             <br/> <span id="phoneCheckMsg"></span>
                             </div>
@@ -380,13 +379,13 @@ function fn_removeImage() {
 	                                <input type="radio" name="email_is_open" id="er1" value="1"/>
 	                                <label for="er1" class="la"><p class="p_label">공개 </p></label>
 	                                <input type="radio" name="email_is_open" id="er2" value="0" checked/>
-	                                <label for="er2" class="la"><p class="p_label">비공개 </p></label>
+	                                <label for="er2" class="lala"><p class="p_label">비공개 </p></label>
 	                            </c:if>
 	                            <c:if test="${dto.email_is_open==1}">
 	                                <input type="radio" name="email_is_open" id="er1" value="1" checked/>
 	                                <label for="er1" class="la"><p class="p_label">공개 </p></label>
 	                                <input type="radio" name="email_is_open" id="er2" value="0"/>
-	                                <label for="er2" class="la"><p class="p_label">비공개 </p></label>
+	                                <label for="er2" class="lala"><p class="p_label">비공개 </p></label>
 	                            </c:if>
 	                            </div>
                         </div>
@@ -411,13 +410,13 @@ function fn_removeImage() {
 		                                <input type="radio" id="ar1" name="address_is_open" value="1"/>
 		                                	<label for="ar1" class="la"><p class="p_label">공개 </p></label>
 		                                <input type="radio" id="ar2" name="address_is_open" value="0" checked/>
-		                                	<label for="ar2" class="la"><p class="p_label">공개 </p></label>
+		                                	<label for="ar2" class="lala"><p class="p_label">비공개 </p></label>
 		                            </c:if>
 		                            <c:if test="${dto.address_is_open==1}">    
 		                          		<input type="radio" id="ar1" name="address_is_open" value="1" checked/>
 		                                	<label for="ar1" class="la"><p class="p_label">공개 </p></label>
 		                                <input type="radio" id="ar2" name="address_is_open" value="0"/>
-		                                	<label for="ar2" class="la"><p class="p_label">공개 </p></label>
+		                                	<label for="ar2" class="lala"><p class="p_label">비공개 </p></label>
 		                            </c:if>
 		                            
                             </div>
