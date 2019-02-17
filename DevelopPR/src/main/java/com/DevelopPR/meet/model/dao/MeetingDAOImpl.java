@@ -73,4 +73,23 @@ public class MeetingDAOImpl implements MeetingDAO
 		int _alarm = session.selectOne("meet.alarm", userNick);
 		return _alarm;
 	}
+	
+	/* 채팅방 나가기*/
+	@Override
+	public void exitRoom(String chatroom_id, String userNick)
+	{
+		ChatRoomVO Room = new ChatRoomVO();
+		Room.setChatroom_id(chatroom_id);
+		Room.setSend_user_id(userNick);
+		
+		session.update("meet.exitRoom", Room);
+		
+		String _exitCheck = session.selectOne("meet.exitCheck", chatroom_id);
+		System.out.println("똑똑 다나가셧나요 "+_exitCheck);
+		// 다나갔을 경우 채팅방, 메시지 삭제
+		if(_exitCheck.equals("EXIT,EXIT"))
+		{
+			session.delete("meet.deleteRoom", chatroom_id);
+		}
+	}
 }

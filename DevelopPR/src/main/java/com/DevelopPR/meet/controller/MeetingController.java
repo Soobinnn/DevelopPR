@@ -121,5 +121,16 @@ public class MeetingController
 		return msgList;
 	}
 	
+	//채팅방 나가기
+	@RequestMapping(value="/exitRoom", method =RequestMethod.POST)
+	@ResponseBody
+	public List<ChatRoomVO> exitRoom(@RequestParam("chatroom_id") String chatroom_id,  @RequestParam("userNick") String userNick) throws Exception
+	{
+		System.out.println("닉확인 "+userNick);
+		meetingService.exitRoom(chatroom_id, userNick);
+		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);
+		return listChatRoom; 
+	}
+	
 	
 }

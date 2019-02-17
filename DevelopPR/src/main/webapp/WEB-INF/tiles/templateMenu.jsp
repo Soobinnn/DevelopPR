@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!-- jstl 코어 태그 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- jstl 포맷 태그 -->
@@ -9,7 +7,7 @@
 <!-- 컨택스트  패스-->
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
  	<meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -17,6 +15,7 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+
 	<script>
 	var socket = null;
 	var success = null;
@@ -109,7 +108,7 @@
 
 </head>
 <body>
-<nav id="min"class="top_nav">
+  <nav id="min"class="top_nav">
   		<div id="alarm"></div>
 		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
 		<span id="navspan">MENU</span>
@@ -124,7 +123,7 @@
 			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"></li>
+			<li class="fullmenulist"><a href="${path}/user/login">이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
 		</ul>
@@ -151,7 +150,7 @@
 	</nav>
 	</c:otherwise>
 	</c:choose>
-   <tiles:insertAttribute name="body" />
-   <tiles:insertAttribute name="footer" />
+  <tiles:insertAttribute name="body" />
+  
 </body>
 </html>

@@ -62,4 +62,11 @@ public class MeetingServiceImpl implements MeetingService
 	{
 		return meetingDao.alarm(userNick);
 	}
+	
+	/* 채팅방 나가기*/
+	@Override
+	public void exitRoom(String chatroom_id, String userNick)
+	{
+		meetingDao.exitRoom(chatroom_id, userNick);
+	}
 }

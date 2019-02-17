@@ -6,7 +6,6 @@
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resume.css'/>"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 window.onload = function (){
 	if('${chkFollow}'=='1'){

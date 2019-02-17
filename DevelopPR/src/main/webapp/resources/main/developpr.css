@@ -527,7 +527,7 @@ section.main_section
 }
 footer
 {
-    border : 0px solid;
+	display : flex;
     text-align : center;
     flex-basis: 300px;
     background: #f6f6f6;
@@ -998,3 +998,104 @@ footer
   }
 }
 /*-------------------animation-end---------------------*/
+#area1_foot
+{
+	width : 10%;
+}
+#area2_foot
+{
+	width : 10%;
+}
+#left_foot
+{
+	position:relative;
+	flex-basis : 900px;
+	height : 300px;
+	flex-shrink :0;
+	border : 1px solid red;
+
+}
+#right_foot
+{
+	border : 1px solid blue;
+	flex-shrink :0;
+	flex-basis : 900px;
+}
+#adminintro
+{
+	position :relative;
+	margin-top : 25px;
+	margin-left : 50px;
+	margin-right : 50px;
+	width : 700px;
+	height : 250px;
+	border : 2px solid #585858;
+	border-radius : 20px;
+}
+#admintitle
+{
+	display :inline-block;
+	position :relative;
+	border-bottom : 2px solid #b9b9b9;
+	width : 600px;
+	padding : 15px;
+	font-size : 1.4rem;
+	font-weight : bold;
+	text-align : left;
+}
+#adminpic
+{
+	position :relative;
+	display :flex;
+	width : 600px;
+	left : 35px;
+	top : 10px;
+	height : 100px;
+}
+#adminpic > #admin1
+{
+	border : 2px solid #b9b9b9;
+	flex-basis : 100px;
+	height : 90px;
+	margin-left : 20px;
+	flex-shrink :0;
+	border-radius : 15px;
+	background-image : url("isb.png");
+	background-size : 100px;
+}
+#adminpic > #admin2
+{
+	position : relative;
+	border : 2px solid #b9b9b9;
+	width : 100px;
+	height : 90px;
+	margin-left : 50px;
+	flex-shrink : 0;
+	border-radius : 15px;
+	background-image : url("kks.png");
+	background-size : 100px;
+}
+#adminpic > #admin3
+{
+	position : relative;
+		border : 2px solid #b9b9b9;
+	width : 100px;
+	height : 90px;
+	margin-left : 50px;
+	flex-shrink : 0;
+	border-radius : 15px;
+	background-image : url("ksj.png");
+	background-size : 100px;
+}
+#adminpic > #admin4
+{
+	position : relative;
+	border : 2px solid #b9b9b9;
+	width : 100px;
+	height : 90px;
+	margin-left : 50px;
+	flex-shrink : 0;
+	border-radius : 15px;
+	background-image : url("ljh.png");
+	background-size : 100px;
+}

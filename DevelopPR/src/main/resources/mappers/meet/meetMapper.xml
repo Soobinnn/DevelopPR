@@ -57,7 +57,17 @@
 
 <!-- 채팅방 나갈 시 채팅테이블 변경 -->
 <update id="exitRoom">
-	UPDATE PR_CHATROOM SET GET_ROOM = REPLACE(GET_ROOM, #{userNick}, 'EXIT') 
+	UPDATE PR_CHATROOM SET GET_ROOM = REPLACE(GET_ROOM, #{send_user_id}, 'EXIT') 
 	WHERE chatroom_id = #{chatroom_id}
 </update>
+<!-- 두명 다 채팅방을 나갔는지 확인 -->
+<select id="exitCheck" resultType ="String">
+	SELECT GET_ROOM FROM PR_CHATROOM
+	WHERE chatroom_id = #{chatroom_id}
+</select>
+<!-- 채팅방 삭제  -->
+<delete id="deleteRoom">
+	DELETE FROM pr_chatroom 
+	WHERE chatroom_id = #{chatroom_id} AND get_room = 'EXIT,EXIT' 
+</delete>
 </mapper>
