@@ -547,7 +547,7 @@ footer
 	display : flex;
     text-align : center;
     flex-basis: 300px;
-    background: #f6f6f6;
+    background: #f9f9f9;
 }
 /* nav*/
 @keyframes expand

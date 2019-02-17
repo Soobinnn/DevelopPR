@@ -19,15 +19,15 @@
 <!-- 메세지 전송-->
 <insert id = "insertMessage">
 	INSERT INTO PR_MESSAGE (CHATROOM_CHATROOM_ID, MESSAGE_SENDER , MESSAGE_RECEIVER, MESSAGE_CONTENT, MESSAGE_SENDTIME,
-	 SEND_USER_ID , RECEIVER_USER_ID, SEND_USER_NAME, RECEIVER_USER_NAME)
-	VALUES (#{chatroom_id},#{message_sender}, #{message_receiver}, #{message_content},SYSDATE+9/24, #{send_user_id}, #{receiver_user_id}, #{send_user_name}, #{receiver_user_name})
+	 SEND_USER_ID , RECEIVER_USER_ID, SEND_USER_NAME, RECEIVER_USER_NAME, GET_LOOK)
+	VALUES (#{chatroom_id},#{message_sender}, #{message_receiver}, #{message_content},SYSDATE+9/24, #{send_user_id}, #{receiver_user_id}, #{send_user_name}, #{receiver_user_name}, #{chatroom_id})
 </insert>
 
 <!-- 개인 채팅방 입장 (내용) -->
 <select id = "getRoom" resultType = "MessageVO">
 	SELECT CHATROOM_CHATROOM_ID AS chatroom_id, message_sender, send_user_id, send_user_name, message_receiver,receiver_user_id, receiver_user_name, message_content, message_sendtime, message_read 
 	FROM PR_MESSAGE 
-	WHERE chatroom_chatRoom_id = #{chatroom_id}
+	WHERE chatroom_chatRoom_id = #{chatroom_id}  AND GET_LOOK LIKE '%'||#{send_user_id}||'%'
 	ORDER BY MESSAGE_SENDTIME ASC
 </select>
 
@@ -55,11 +55,18 @@
 	where message_receiver = #{userNick} AND MESSAGE_READ = 1
 </select>	
 
-<!-- 채팅방 나갈 시 채팅테이블 변경 -->
+<!-- 채팅방 나갈 시 채팅방테이블 변경 -->
 <update id="exitRoom">
 	UPDATE PR_CHATROOM SET GET_ROOM = REPLACE(GET_ROOM, #{send_user_id}, 'EXIT') 
 	WHERE chatroom_id = #{chatroom_id}
 </update>
+
+<!-- 채팅방 나갈 시 채팅메시지테이블 변경 -->
+<update id="exitMessage">
+	UPDATE PR_MESSAGE SET GET_LOOK = REPLACE(GET_LOOK, #{send_user_id}, 'EXIT') 
+	WHERE chatroom_chatroom_id = #{chatroom_id}
+</update>
+
 <!-- 두명 다 채팅방을 나갔는지 확인 -->
 <select id="exitCheck" resultType ="String">
 	SELECT GET_ROOM FROM PR_CHATROOM
@@ -70,4 +77,8 @@
 	DELETE FROM pr_chatroom 
 	WHERE chatroom_id = #{chatroom_id} AND get_room = 'EXIT,EXIT' 
 </delete>
+<update id="reconnectRoom">
+	UPDATE pr_chatroom SET get_room = chatroom_id 
+	WHERE get_room LIKE '%EXIT%'
+</update>
 </mapper>

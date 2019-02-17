@@ -37,9 +37,9 @@ public class MeetingServiceImpl implements MeetingService
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public List<MessageVO> getRoom(String chatroom_id)
+	public List<MessageVO> getRoom(String chatroom_id, String userNick)
 	{
-		return meetingDao.getRoom(chatroom_id);
+		return meetingDao.getRoom(chatroom_id, userNick);
 	}
 	
 	/*개인 채팅방 전체 목록*/

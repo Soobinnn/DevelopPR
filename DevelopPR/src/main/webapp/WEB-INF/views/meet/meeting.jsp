@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../views/include/tag_header.jsp"%>
-<!DOCTYPE html>
 <html class="m">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/meet/meeting.css'/>" />
 <head>
@@ -162,7 +161,8 @@
 	// 채팅방의 채팅내용 가져오기
 	function getRoom(chatroom_id, receiver_user_id, bool)
 	{
-		var param = "chatroom_id="+chatroom_id;
+		var param = "chatroom_id="+chatroom_id+"&message_sender="+nick;
+		
 		//내가 보고있는 룸 넣기
 		lookRoom = chatroom_id;
 		if(bool == true)
@@ -178,10 +178,12 @@
 	         {
 	        	 $("#chatArea").empty();
 	        	 var messagelist;
+	        	 console.log("뭐고2"+data);
 	        	 for(var i in data)
 	        	 {
 	        		 messagelist =data[i];
 	        		 appendMessage(messagelist);
+	        		 console.log("뭐고"+messagelist);
 	        	 }
 	        	//대상변경
         		 readyChat(receiver_user_id);
@@ -213,6 +215,7 @@
 	        		/* 	 console.log(getlist); */
 	        		 viewList(getlist);
 	        	 }
+	        	 
 	         }
 		})
 		console.log("호이잇"+lookRoom);
@@ -340,6 +343,7 @@
 		{
 			var listChatRoom = $(this).find('#listChatRoom');
 			var listChatThat = $(this).find('#listChatThat');
+			
 			getRoom(listChatRoom.text(),listChatThat.text(), 1);
 			$(this).css({"background-color":"#E6E6E6"});
 			var lookRoom_css = $(this);
@@ -374,8 +378,7 @@
 		         {
 		        	var messagelist;
 		        	var _chatRoomId; 
-		        	 for(var i in data)
-		        	 {
+		        	console.log("왜않대1");
 		        		 $('.listAll').empty();
 		 	        	/*  console.log("ajax처리했능가 : "+data); */
 		 	        	 var getlist;
@@ -385,7 +388,7 @@
 		 	        		/* 	 console.log(getlist); */
 		 	        		 viewList(getlist);
 		 	        	 }
-		        	 }
+		        	 
 		        	 lookRoom = _chatRoomId;
 		        	// 채팅방 위에 닉네임초기화
 		     		$("#chat_info_nick").empty();

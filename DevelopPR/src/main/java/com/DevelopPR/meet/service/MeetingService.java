@@ -15,7 +15,7 @@ public interface MeetingService
 	public void insertMessage(MessageVO vo) throws Exception;
 	
 	/* 개인 채팅방 입장 */
-	public List<MessageVO> getRoom(String chatroom_id);
+	public List<MessageVO> getRoom(String chatroom_id, String userNick);
 	
 	/*개인 채팅방 전체 목록*/
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception;
