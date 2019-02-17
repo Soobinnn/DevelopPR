@@ -5,10 +5,8 @@
 <head>
 <title>이력서 상세보기</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/resume/resumedetail.css'/>"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 window.onload = function (){
 	if('${chkFollow}'=='1'){
@@ -35,6 +33,7 @@ window.onload = function (){
 		var gg=document.getElementById('good');
 		gg.style="opacity:1";
 	}
+
 }
 function follow()
 {
@@ -149,6 +148,8 @@ function ungood()
         }
     })
 }
+
+
 </script>
 </head>
 <body> 
@@ -350,7 +351,7 @@ function ungood()
                     <div class="projects">
                         <div class="subject">프로젝트
                         	<c:if test="${sessionScope.userEmail==dto.email}">
-                        		<a id="plusproject" href="${path}/project/registForm">프로젝트 추가</a>
+                        		<a class="plusproject" href="${path}/project/registForm">프로젝트 추가</a>
 							</c:if>
                         </div> 
                         <div class="project">
@@ -360,7 +361,8 @@ function ungood()
 									<div class="pro">
 										<div class="proname">${project.project_name}
 											<c:if test="${sessionScope.userEmail==dto.email}">
-												<a id="projectmodify" href="${path}/project/modifyForm/${project.pno}">수정</a>
+											
+ 												<a id="projectmodify" href="${path}/project/modifyForm/${project.pno}">수정</a>
 												<a id="projectdelete" href="${path}/project/remove/${project.pno}">삭제</a>
 											</c:if>
 										</div>

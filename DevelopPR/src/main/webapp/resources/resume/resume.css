@@ -27,7 +27,7 @@
 .resumeRegist .colors{
 	display:flex;
 	margin-top:20px;
-	padding-bottom:10px;
+	padding-bottom:30px;
 	width:1380px;
 	padding-left:40px;
 	border-bottom:solid 2px #585858;
@@ -191,7 +191,13 @@
         height:20px;
 }
 .resumeRegist .la{
-	margin-left:100px;
+	position:relative;
+	right:40px;
+}
+
+.resumeRegist .lala{
+	position:relative;
+	left:40px;
 }
 
 .resumeRegist .la2{
@@ -218,7 +224,6 @@
 .resumeRegist .p_label{
 	margin-left:25px;
 	position:relative;
-	bottom:20px;
 	height:20px;
 	width:60px;
 }
@@ -386,7 +391,7 @@
   font-size: 1.2em;
   width:10px;
   position:relative;
-  top:53px;
+  top:58px;
   right:185px;
 }
 .resumeRegist input[type="range"] {

@@ -79,7 +79,7 @@ public class ResumeController {
 	   String email = uservo.getUserEmail();
 	   model.addAttribute("dto", userService.viewId(email));
 	   
-      return "resume/regist";
+      return "menu/resume/regist";
    }
    
    //이력서 등록 처리
@@ -120,7 +120,7 @@ public class ResumeController {
 	  // 하지만 팔로우를 누르면 insert되어 count를 1로 리턴받아 언팔로우 버튼으로 바뀌어야하는데, DB와 즉각적으로 동기화가 되지 않아 버튼이 변경되지 않습니다.) => Ajax로 변경.
 	  // 이 과정을 통해 detail.jsp에서 팔로우, 언팔로우 버튼을 각 계정마다 선택적으로 보여줍니다.
 	  model.addAttribute("chkGood", resumeService.is_good(goodvo));
-      return "resume/detail";
+      return "footmenu/resume/detail";
    }
    
    //이력서 수정하기
@@ -129,7 +129,7 @@ public class ResumeController {
 	  System.out.println("modify:"+email);
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
 
-      return "resume/modify";
+      return "footmenu/resume/modify";
    }
 
 
