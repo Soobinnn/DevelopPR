@@ -9,8 +9,8 @@
 			<span id="foot_title_border"></span>
 			<span id="foot_beta">Beta</span>
 		</span>
-		<span id="printro1">#웹포트폴리오 #꿈나무 #개발자</span>
-		<span id="printro2">본 사이트는 학생 프로젝트용 사이트 입니다.</span>
+		<span id="printro1">#웹포트폴리오 #취업 #꿈나무 #개발자</span>
+		<span id="printro2">본 사이트는 학생 프로젝트용 사이트 입니다.  Contact | Email admin@developpr.org</span>
 		<span id="_copylight">© 2019 DevelopPR  All rights reserved. 1.0.0v </span>
 	</div>
 	<div id= "right_foot">
