@@ -481,7 +481,7 @@ public class UserController
 
     // 세션 등록
     UserVO vo2 = new UserVO();
-    vo2.setUserEmail(vo.getUserEmail()+"_kakao");
+    vo2.setUserEmail(vo.getUserEmail());
     vo2.setUserNick(vo.getUserNick());
     vo2.setUserName(vo.getUserName());
     vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -540,7 +540,7 @@ public class UserController
 	      }
 	      // 세션 등록
 	      UserVO vo2 = new UserVO();
-	      vo2.setUserEmail(vo.getUserEmail()+"_naver.com");
+	      vo2.setUserEmail(vo.getUserEmail());
 	      vo2.setUserNick(vo.getUserNick());
 	      vo2.setUserName(vo.getUserName());
 	      vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -612,7 +612,7 @@ public class UserController
 
       // 세션 등록
       UserVO vo2 = new UserVO();
-      vo2.setUserEmail(vo.getUserEmail()+"_google");
+      vo2.setUserEmail(vo.getUserEmail());
       vo2.setUserNick(vo.getUserNick());
       vo2.setUserName(vo.getUserName());
       vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -763,4 +763,17 @@ public class UserController
       return "redirect:/join";
 
   }
+ /* //카카오 로그아웃
+  @RequestMapping(value = "kakaologout", produces = "application/json")
+  public String Logout(HttpSession session) 
+  {
+      //kakao restapi 객체 선언
+	  Kakaologinapi kr = new Kakaologinapi();
+      //노드에 로그아웃한 결과값음 담아줌 매개변수는 세션에 잇는 token을 가져와 문자열로 변환
+      JsonNode node = kr.Logout(session.getAttribute("token").toString());
+      //결과 값 출력
+      System.out.println("로그인 후 반환되는 아이디 : " + node.get("id"));
+      return "redirect:/main";
+  }    */
+
 }

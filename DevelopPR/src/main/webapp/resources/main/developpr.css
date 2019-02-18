@@ -546,7 +546,7 @@ footer
 {
 	display : flex;
     text-align : center;
-    flex-basis: 300px;
+    flex-basis: 250px;
     background: #f9f9f9;
 }
 /* nav*/
@@ -566,7 +566,7 @@ footer
 }
 
 /* test */
-.test 
+/* .test 
 {
     position :relative;
     display :block;
@@ -576,7 +576,7 @@ footer
     height: 50px;
     background-color: coral;
     animation: square-to-circle 2s .5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
-}
+} */
 @keyframes rotates
 {
   to
@@ -1029,37 +1029,37 @@ footer
 	display :flex;
 	flex-direction :column;
 	flex-basis : 900px;
-	height : 300px;
+	height : 250px;
 	flex-shrink :0;
 	font-weight : bold;
-	border : 1px solid red;
+	
 
 }
 #right_foot
 {
-	border : 1px solid blue;
+	display :flex;
 	flex-shrink :0;
 	flex-basis : 900px;
 }
 #adminintro
 {
 	position :relative;
-	margin-top : 25px;
-	margin-left : 50px;
-	margin-right : 50px;
-	width : 700px;
-	height : 250px;
+	margin-top : 45px;
+	margin-left : 20px;
+	margin-right : 20px;
+	width : 500px;
+	height : 190px;
 	border : 2px solid #585858;
-	border-radius : 20px;
+	border-radius : 15px;
 }
 #admintitle
 {
 	display :inline-block;
 	position :relative;
 	border-bottom : 2px solid #b9b9b9;
-	width : 600px;
+	width : 400px;
 	padding : 15px;
-	font-size : 1.4rem;
+	font-size : 1.2rem;
 	font-weight : bold;
 	text-align : left;
 }
@@ -1067,163 +1067,156 @@ footer
 {
 	position :relative;
 	display :flex;
-	width : 600px;
+	width : 500px;
 	left : 35px;
 	top : 10px;
-	height : 100px;
+	height : 70px;
 }
 #adminpic > #admin1
 {
 	border : 2px solid #b9b9b9;
-	flex-basis : 100px;
-	height : 90px;
-	margin-left : 20px;
+	flex-basis : 80px;
+	height : 70px;
+	margin-left : 10px;
 	flex-shrink :0;
 	border-radius : 15px;
 	background-image : url("isb.png");
-	background-size : 100px;
+	background-size :80px;
 }
 #adminpic > #admin2
 {
 	position : relative;
 	border : 2px solid #b9b9b9;
-	width : 100px;
-	height : 90px;
-	margin-left : 50px;
+	width : 80px;
+	height : 70px;
+	margin-left : 30px;
 	flex-shrink : 0;
 	border-radius : 15px;
 	background-image : url("kks.png");
-	background-size : 100px;
+	background-size : 80px;
 }
 #adminpic > #admin3
 {
 	position : relative;
-		border : 2px solid #b9b9b9;
-	width : 100px;
-	height : 90px;
-	margin-left : 50px;
+	border : 2px solid #b9b9b9;
+	width : 80px;
+	height : 70px;
+	margin-left : 30px;
 	flex-shrink : 0;
 	border-radius : 15px;
 	background-image : url("ksj.png");
-	background-size : 100px;
+	background-size : 80px;
 }
 #adminpic > #admin4
 {
 	position : relative;
 	border : 2px solid #b9b9b9;
-	width : 100px;
-	height : 90px;
-	margin-left : 50px;
+	width : 80px;
+	height : 70px;
+	margin-left : 30px;
 	flex-shrink : 0;
 	border-radius : 15px;
 	background-image : url("ljh.png");
-	background-size : 100px;
-}
-#admincontent
-{
-	position : relative;
-	display:flex;
-	top : 15px;
-	
-}
-#admincontent > #_admin1
-{
-	border : 1px solid black;
-	flex-basis : 100px;
-	height : 30px;
-	margin-left : 55px;
-	border-radius : 10px;
-	flex-shrink:0;
-
-}
-#admincontent > #_admin2
-{
-	border : 1px solid red;
-	flex-basis : 100px;
-	margin-left : 50px;
-	border-radius : 10px;
-	flex-shrink:0;
-}
-#admincontent > #_admin3
-{
-	border : 1px solid blue;
-	flex-basis : 100px;
-	margin-left : 55px;
-	border-radius : 10px;
-	flex-shrink:0;
-}
-#admincontent > #_admin4
-{
-	border : 1px solid green;
-	flex-basis : 100px;
-	margin-left : 50px;
-	border-radius : 10px;
-	flex-shrink:0;
+	background-size : 80px;
 }
 
 #admincontent
 {
 	position : relative;
 	display:flex;
-	top : 15px;
+	top : 21px;
+
 	
 }
 #admincontent > #_admin1
 {
-	border : 1px solid black;
-	flex-basis : 100px;
-	height : 30px;
-	margin-left : 55px;
-	border-radius : 10px;
+	border : 2px solid #b9b9b9;
+	flex-basis : 80px;
+	height : 25px;
+	margin-left : 45px;
+	border-radius : 5px;
 	flex-shrink:0;
+	font-size : 1rem;
+	font-weight : bold;
+	line-height : 25px;
 
 }
 #admincontent > #_admin2
 {
-	border : 1px solid red;
-	flex-basis : 100px;
-	margin-left : 50px;
-	border-radius : 10px;
+	border : 2px solid #b9b9b9;
+	flex-basis : 80px;
+	margin-left : 30px;
+	border-radius : 5px;
 	flex-shrink:0;
+		font-size : 1rem;
+	font-weight : bold;
+	line-height : 25px;
+
 }
 #admincontent > #_admin3
 {
-	border : 1px solid blue;
-	flex-basis : 100px;
-	margin-left : 55px;
-	border-radius : 10px;
+	border : 2px solid #b9b9b9;
+	flex-basis : 80px;
+	margin-left : 30px;
+	border-radius : 5px;
 	flex-shrink:0;
+	font-size : 1rem;
+	font-weight : bold;
+	line-height : 25px;
 }
 #admincontent > #_admin4
 {
-	border : 1px solid green;
-	flex-basis : 100px;
-	margin-left : 50px;
-	border-radius : 10px;
+	border : 2px solid #b9b9b9;
+	flex-basis : 80px;
+	margin-left : 30px;
+	border-radius : 5px;
 	flex-shrink:0;
+	font-size : 1rem;
+	font-weight : bold;
+	line-height : 25px;
 }
 #printro0
 {
-	flex-basis :100px;
+	flex-basis :50px;
+	width : 380px;
+	position :relative;
+	top : 40px;
+	left : 100px;
+
 }
 #printro1
 {
 	position : relative;
-	flex-basis : 30px;
-	width : 300px;
-	top : 45px;
-	left : 250px;
+	flex-basis : 40px;
+	font-size : 1.2rem;
+	width : 500px;
+	top : 53px;
+	left : 165px;
 }
+
 #printro2
 {
 	position : relative;
 	flex-basis : 30px;
-	top : 50px;
+	width :400px;
+	top : 60px;
+	left : 138px;
+}
+#printro3
+{
+	position : relative;
+	flex-basis : 30px;
+	width : 400px;	
+	top : 60px;
+	left : 125px;
+	
 }
 #_copylight
 {
 	position:relative;
-	top : 50px;
+	top : 55px;
+	left : 100px;
+	width : 500px;
 	flex-basis : 30px;
 	line-height : 30px;
 }
@@ -1262,4 +1255,90 @@ footer
     80%  {opacity:1} 
 	90% {opacity:0}
     100% {opacity:1} 
+}
+
+#adminintroduce
+{
+	
+	width : 400px;
+	height : 200px;
+	position : relative;
+	top : 35px;
+	
+}
+#introduce_content
+{
+	display :inline-block;
+	
+	position : relative;
+	font-size : 1.5rem;
+	font-weight :bold;
+	top : 145px;
+	right : 30px;
+	width : 250px;
+	height : 50px;
+	line-height : 50px;
+
+}
+/* -------------- Clock -------------- */
+
+.clock{
+    
+    border-radius: 50%;
+    border: 5px solid black;
+    height: 50px;
+    width: 50px;
+  	position :absolute;
+  	top : 140px;
+  	left : 300px;
+
+}
+.clock:after{
+    content: "";
+    position: absolute;
+    background-color: black;
+    top:2px;
+    left: 48%;
+    height: 24px;
+    width: 4px;
+    border-radius: 5px;
+    -webkit-transform-origin: 50% 97%;
+            transform-origin: 50% 97%;
+    -webkit-animation: grdAiguille 2s linear infinite;
+            animation: grdAiguille 2s linear infinite;
+}
+
+@-webkit-keyframes grdAiguille{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes grdAiguille{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.clock:before{
+    content: "";
+    position: absolute;
+    background-color: black;
+    top:6px;
+    left: 48%;
+    height: 20px;
+    width: 4px;
+    border-radius: 5px;
+    -webkit-transform-origin: 50% 94%;
+            transform-origin: 50% 94%;
+    -webkit-animation: ptAiguille 12s linear infinite;
+            animation: ptAiguille 12s linear infinite;
+}
+
+@-webkit-keyframes ptAiguille{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes ptAiguille{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
 }

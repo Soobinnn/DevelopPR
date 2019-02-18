@@ -45,7 +45,7 @@
 </select>
 <update id = "readUpdate">
 	update PR_MESSAGE SET MESSAGE_READ = 0
-	WHERE CHATROOM_CHATROOM_ID = #{chatroom_id} AND MESSAGE_RECEIVER = #{message_receiver}
+	WHERE CHATROOM_CHATROOM_ID = #{chatroom_id} AND MESSAGE_RECEIVER = #{send_user_id}
 </update>
 
 <!-- 다른 페이지에 있을 시 실시간 알림 -->
@@ -72,6 +72,7 @@
 	SELECT GET_ROOM FROM PR_CHATROOM
 	WHERE chatroom_id = #{chatroom_id}
 </select>
+
 <!-- 채팅방 삭제  -->
 <delete id="deleteRoom">
 	DELETE FROM pr_chatroom 

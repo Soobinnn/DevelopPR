@@ -72,10 +72,10 @@ public class MeetingDAOImpl implements MeetingDAO
 	@Override
 	public void readUpdate(String chatroom_id,String userNick)
 	{
-		MessageVO vo = new MessageVO();
-		vo.setChatroom_id(chatroom_id);
-		vo.setMessage_receiver(userNick);
-		session.update("meet.readUpdate",vo);
+		ChatRoomVO Room = new ChatRoomVO();
+		Room.setChatroom_id(chatroom_id);
+		Room.setSend_user_id(userNick);
+		session.update("meet.readUpdate",Room);
 	}
 	
 	/* 실시간 알람*/
@@ -96,6 +96,7 @@ public class MeetingDAOImpl implements MeetingDAO
 		
 		session.update("meet.exitRoom", Room);
 		session.update("meet.exitMessage", Room);
+		session.update("meet.readUpdate",Room);
 		String _exitCheck = session.selectOne("meet.exitCheck", chatroom_id);
 		
 		System.out.println("똑똑 다나가셧나요 "+_exitCheck);

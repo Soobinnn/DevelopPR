@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/main/developpr.css'/>"/>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 
 	<script>
@@ -103,6 +104,21 @@
 			// $('.navx').rotate({animateTo:-360 , duration:1000});
 			$('.fullmenu').fadeOut(200,function(){$('.fullmenu').fadeTo(500,1);});
 		})
+		// 카카오 로그아웃시키기
+		$(document).on("click","#_logout",function(event)
+		{
+			event.stopPropagation();
+			var kakao_email = '${login.userEmail}';
+			/* console.log("카카오냐?"+ kakao_email);	 */
+			if(kakao_email.indexOf("_kakao") != -1)
+			{
+				window.open("https://developers.kakao.com/logout", "kakaologout","width=400, height=350");
+			}
+			if(_email.indexOf("_naver") != -1)
+			{
+				window.open("http://nid.naver.com/nidlogin.logout", "kakaologout","width=400, height=350");
+			}
+		});
 	})
 	</script>
 
@@ -145,12 +161,12 @@
 			<li class="fullmenulist"><a href='javascript:modifyplz();'>이력서 등록</a></li>
 			</c:if>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
+			<li id="fulllogin"class="fullbtn"><a id="_logout" href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
 	</nav>
 	</c:otherwise>
 	</c:choose>
-
-   <tiles:insertAttribute name="body" />
+  <tiles:insertAttribute name="body" />
+  
 </body>
 </html>

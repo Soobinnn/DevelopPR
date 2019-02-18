@@ -284,7 +284,19 @@
 	}
 	$(document).ready(function() 
 	{
-		
+		//test
+		/* var languages = [
+		"ActionScript", "AppleScript", "Asp","BASIC", "C",
+		"C++", "Clojure", "COBOL", "ColdFusion", "Erlang",
+		"Fortran", "Groovy", "Haskell", "Java", "JavaScript",
+		"Lisp", "Perl", "PHP", "Python", "Ruby",
+		"Scala", "Scheme"
+		];
+
+		$( "#s_text" ).autocomplete({
+		source: languages
+		});
+	 */
 		$("#chat_text").focus();
 		$('#chat_text').keypress(function(event) 
 		{	
@@ -321,7 +333,7 @@
 			});
 		});   */
 		
-		$('#s_text').keyup(function(event) 
+	/* 	$('#s_text').keyup(function(event) 
 		{	
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			var s_textContext = $('#s_text').val();
@@ -335,9 +347,9 @@
 		         {
 		        	getList(data);
 		         }
-			})
+			}) 
 
-		});
+		});*/
 		// ajax으로 생성된 채팅리스트도 커버하기 위해 document객체를 불러와서 클릭이벤트 발생
 		$(document).on("click", ".mlist",function(event)
 		{
