@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmail.css'/>"/>
 <title>이메일 찾기</title>

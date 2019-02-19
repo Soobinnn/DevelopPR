@@ -1,26 +1,23 @@
 .modifyInfo
 {
 	font-family: 'Noto Sans KR', sans-serif;
-	margin-bottom:100px;
+	margin-bottom:130px;
 }
+
 .modifyInfo .user_header
 {
-    display : flex;
-    flex-direction : column;
-    flex-shrink: 0;
     height : 120px;
-    margin-top : 50px;
-    margin-bottom : 20px;
+    margin-top : 100px;
+    margin-bottom : 100px;
     line-height : 100px;
-}
+	align-content:center;
 
-.modifyInfo .head2
-{
-
-    text-align : center;
+	font-size:3rem;
+	 text-align : center;
 	font-weight :900;
 	font-size : 3rem;
 }
+
 .modifyInfo #information
 {
     font-size : 2rem;
@@ -28,6 +25,7 @@
     left : 10px;
     top : 40px;
 }
+
 .modifyInfo #obligatory
 {
     position : relative;
@@ -35,10 +33,6 @@
     color : red;
     top : 40px;
     font-size : 1.1rem;
-}
-.modifyInfo .head3
-{
-
 }
 
 .modifyInfo .user_section{
@@ -49,33 +43,35 @@
 
 .modifyInfo .sec1
 {
-    
-    height : 700px;
+    height : 1215px;
     width : 40%;
+    text-align:center;
+    background:#f9f9f9;
+
 }
 
 .modifyInfo .sec2
 {
-    
     display: flex;
-    height : 1030px;
+    height : 1215px;
     width : 800px;
     flex-shrink : 0;
-    flex-basis : 600px;
+    flex-basis : 800px;
     border : 2px solid #b9b9b9;
    border-radius : 15px;
+   
 }
+
 .modifyInfo #sec2_1
 {
-    
     width : 10%;
 }
+
 .modifyInfo #sec2_2
 {
-    
     display : flex;
     flex-direction: column;
-    height: 800px;
+    height: 1215px;
     width : 800px;
 }
 
@@ -90,9 +86,8 @@
 .modifyInfo #middle
 {
     position : relative;
-    height : 655px;
+    height : 1215px;
     width: 800px;
-
 }
 .modifyInfo .radio_
 {
@@ -110,48 +105,41 @@
     position: relative;
     bottom : 17px;
 }
-.modifyInfo #user_ul{
+.modifyInfo #user_ul
+{
     position: relative;
-    width : 640px;
-    left : 60px;
+    width : 680px;
+    left : 80px;
     top : 0px;
-    border : 1px solid white;
-    height: 750px;
-  
-    
+    height: 630px;
+
+    margin-top:150px;
 }
-.modifyInfo .user_li1,.modifyInfo .user_li2,.modifyInfo .user_li3,.modifyInfo .user_li4,.modifyInfo .user_li5,.modifyInfo .user_li6,.modifyInfo .user_li7,.modifyInfo .user_li8
+.modifyInfo .user_li1,.modifyInfo .user_li2,.modifyInfo .user_li3,.modifyInfo .user_li6,.modifyInfo .user_li7,.modifyInfo .user_li8
 {
     font-size : 1rem;
 }
 .modifyInfo .user_li2
 {
-    margin-bottom : 10px;
+    margin-top : 0px;
 }
 .modifyInfo .user_li3
 {
-    margin-bottom : 5px;
+    margin-bottom : 0px;
 }
-.modifyInfo .user_li4
-{
-    margin-bottom : 6px;
-}
-.modifyInfo .user_li5
-{
-    margin-bottom : 10px;
-}
+
 .modifyInfo .user_li6
 {
-    margin-bottom : 10px;
+    margin-bottom : 0px;
 }
 .modifyInfo .user_li7
 {
     margin-bottom : 30px;
 }
 
-.modifyInfo #userEmail,.modifyInfo #userName,.modifyInfo #userPw,.modifyInfo #userPwChk,.modifyInfo #userNick,.modifyInfo #userPhone
+.modifyInfo #userEmail,.modifyInfo #userName,.modifyInfo #userNick,.modifyInfo #userPhone
 {
-    width:380px;
+    width: 380px;
 }
 
 .modifyInfo #sec2_3
@@ -160,8 +148,11 @@
 }
 .modifyInfo .sec3
 {
-    height : 800px;
+     height : 1215px;
     width : 40%;
+    text-align:center;
+    background:#f9f9f9;
+
 }
 .modifyInfo #p1,.modifyInfo #p2,.modifyInfo #p3,.modifyInfo #p4,.modifyInfo #p5,.modifyInfo #p6,.modifyInfo #p7
 {
@@ -192,18 +183,6 @@
     bottom : 6px;
     left : 4px;
 }
-.modifyInfog #p4
-{
-    position:relative;
-    bottom : 5px;
-    left : 4px;
-}
-.modifyInfo #p5
-{
-    position:relative;
-    bottom : 5px;
-    left : 4px;
-}
 .modifyInfo #p6
 {
     position:relative;
@@ -224,28 +203,31 @@
 }
 .modifyInfo #bottom
 {
-    display : flex;
     position : relative;
-    top : 70px;
-    flex-shrink: 0;
-    flex-basis : 20px;
     border-top: 2px solid #585858;
     height : 80px;
-    
+    margin-left : 50px;
+    margin-right : 50px; 
 }
 
 .modifyInfo #modify
 {
     background : white;
     position : relative;
-    left : 200px;;
+    left : 180px;
     top : 35px;
-    height : 45px;
-    width : 120px;
-    border: 2px solid #B9B9B9;
-	border-radius:15% 15% 15% 15% / 50% 50% 50% 50%;
+    height : 50px;
+    width : 130px;
+    border: 2px solid #585858;
+	border-radius:150px;
 	font-weight : 700;
 	font-size :1rem;
+}
+
+.modifyInfo #modify:hover
+{
+	background:#585858;
+	color:white;
 }
 
 .modifyInfo #cancel
@@ -254,30 +236,26 @@
     position : relative;
     left : 250px;
     top : 35px;
-    height : 45px;
-    width : 120px;
+    height : 50px;
+    width : 130px;
     border: 2px solid #585858;
-	border-radius:15% 15% 15% 15% / 50% 50% 50% 50%;
+	border-radius:150px;
 	font-weight : 700;
 	font-size :1rem;
 }
+
 .modifyInfo #cancel:hover
 {
     background: #585858;
 	color: white;
 }
+
 .modifyInfo #userPhone
 {
 position : relative;
 
 }
 
-.modifyInfo #modifyInfo_form
-{
-    width:700px;
-    margin-left : 50px;
-    height: 770px;
-}
 .modifyInfo #userIs_seekMsg,.modifyInfo #emailCheckMsg,.modifyInfo #nameCheckMsg,.modifyInfo #pwCheckMsg,.modifyInfo #pwchCheckMsg,.modifyInfo #nickCheckMsg,.modifyInfo #phoneCheckMsg,.modifyInfo #userjobCheckMsg
 {
     position: relative;
@@ -296,6 +274,49 @@ position : relative;
     left : 10px;
     top : 40px;
 }
+
+.modifyInfo #radio4
+{
+	position : relative;
+    left: 30px;
+}
+
+.modifyInfo #radio6
+{
+	position : relative;
+    left:18px;
+}
+
+.modifyInfo #radio2 + label
+{
+	position:relative;
+	left:15px;	
+}
+
+.modifyInfo #radio3 + label
+{
+	position : relative;
+	left:5px;
+}
+
+.modifyInfo #radio4 + label
+{
+	position : relative;
+	left:35px;
+}
+
+.modifyInfo #radio5 + label
+{
+	position : relative;
+	left:5px;
+}
+
+.modifyInfo #radio6 + label
+{
+	position : relative;
+	left:25px;
+}
+
 .modifyInfo #emailCheckMsg,.modifyInfo #nameCheckMsg,.modifyInfo #pwCheckMsg,.modifyInfo #pwchCheckMsg,.modifyInfo #nickCheckMsg,.modifyInfo #phoneCheckMsg
 {
     font-size : 1rem;
@@ -307,34 +328,179 @@ position : relative;
     border : 2px solid #585858;
     border-radius : 10px;
 }
+
 .modifyInfo input:focus
 {
     outline : none;
 }
+
 .modifyInfo input
 {
     font-size : 1rem;
 }
+
 .modifyInfo .user_li2
 {
     position : relative;
     top : 10px;
-    height : 110px;
+    height : 100px;
 }
+
 .modifyInfo .user_li3,.modifyInfo .user_li4,.modifyInfo .user_li5,.modifyInfo .user_li6,.modifyInfo .user_li7
 {
     position : relative;
     top : 10px;
-    height : 90px;
-}
-
-.modifyInfo #radio4,.modifyInfo #radio4 +label,.modifyInfo #radio6, #radio6 + label
-{
-	position:relative;
-	left : 10px;
+    height : 100px;
 }
 
 .modifyInfo input
 {
 	padding-left:8px;
+}
+
+.modifyInfo #visit
+{
+	display : none;
+}
+
+.modifyInfo #job
+{
+	display : none;
+}
+
+.modifyInfo #uploadImage{
+	display:block;
+    margin-left:auto;
+    margin-right:auto;
+   background-color:white;
+   width:200px;
+   height:200px;
+   border:solid 4px #B9B9B9;
+   border-radius: 15% 15% 15% 15%;
+	align-items:center;
+   color:#B9B9B9;
+   position: relative;
+   align-content:center;
+   top:75px;
+}
+.modifyInfo *:focus
+{
+outline:none;
+}
+.modifyInfo .img_btn1{
+	border-radius:150px;
+	border:solid 2px #585858;
+	padding:10px;
+	position:relative;
+	top:120px;
+	right:5px;
+	text-decoration:none;
+	color:#585858;
+	font-size:1rem;
+	margin-left:10px;
+	font-weight:bold;
+	background-color:#f6f6f6;
+}
+.modifyInfo .img_btn2{
+	border-radius:150px;
+	border:solid 2px #585858;
+	padding:10px;
+	text-decoration:none;
+	color:#585858;
+	font-size:1rem;
+	margin-left:10px;
+	font-weight:bold;
+	background-color:#f6f6f6;
+	position:relative;
+	right:10px;
+	top:120px;
+}
+.modifyInfo .img_btn3{
+	border-radius:150px;
+	border:solid 2px #585858;
+	padding:10px;
+	text-decoration:none;
+	color:#585858;
+	font-size:1rem;
+	margin-left:10px;
+	font-weight:bold;
+	background-color:#f6f6f6;
+	position:relative;
+	top:120px;
+}
+.modifyInfo .img_btn1:hover{
+	background-color:#585858;
+	color:white;
+}
+.modifyInfo .img_btn2:hover{
+	background-color:#585858;
+	color:white;
+}
+.modifyInfo .img_btn3:hover{
+	background-color:#585858;
+	color:white;
+}
+.modifyInfo #function_div
+{
+	display: inline-block;
+	width:200px;
+	border:2px solid #B9B9B9;
+	border-radius:10px;
+	position:relative;
+	top:100px;
+	height:270px;
+	background:white;
+	
+}
+.modifyInfo #function_div a
+{
+	text-decoration:none;
+	color: #585858;
+	border-bottom: 1px solid #B9B9B9;
+	padding-bottom:5px;
+}
+
+.modifyInfo #function_div a:hover
+{
+	color: #02456f;
+}
+.modifyInfo #function_img
+{
+	
+}
+.modifyInfo #function_list
+{
+	align-content:center;
+	align-items:center;
+	font-size:1.3rem;
+
+		
+}
+.modifyInfo #function_li1
+{
+	margin-bottom:50px;
+	margin-top:50px;
+
+}
+.modifyInfo #function_li2
+{
+	margin-bottom:50px;
+}
+.modifyInfo #function_li3
+{
+	margin-bottom:0px;
+}
+
+.modifyInfo #function_a1
+{
+	
+}
+.modifyInfo #function_a2
+{
+
+}
+.modifyInfo #function_a3
+{
+	padding-left:20px;
+	padding-right:20px;
 }

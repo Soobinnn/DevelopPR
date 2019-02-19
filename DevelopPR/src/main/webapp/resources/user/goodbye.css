@@ -1,0 +1,329 @@
+
+.goodbye
+{
+margin-bottom:180px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.goodbye .goodbye_header
+{
+    height : 120px;
+    margin-top : 80px;
+    margin-bottom : 60px;
+    line-height : 100px;
+	align-content:center;
+	font-size:3rem;
+	text-align : center;
+	font-weight :900;
+	font-size : 3rem;
+}
+
+.goodbye .goodbye_sec {
+   display: flex;
+   flex-direction: row;
+   width: auto;
+   height: 790px;
+  
+}
+
+.goodbye #goodbye_sec1{
+	background:#f9f9f9;
+   width : 40%;
+   text-align:center;
+}
+
+.goodbye #goodbye_sec2{
+    
+   display : flex;
+   flex-shrink: 0;
+   flex-basis: 800px;
+   border : 2.5px solid #B9B9B9;
+   border-radius :15px;
+   width : 800px;
+   height : 790px;
+}
+
+.goodbye #goodbye_ul
+{
+ position: relative;
+ left: 35px;
+ border-top :2px solid #B9B9B9;
+ border-bottom :2px solid #B9B9B9;
+ width : 730px;
+ height: 620px;
+ position: relative;
+ top : 60px;
+ list-style-type :none;
+
+}
+
+.goodbye #goodbye_li1
+{
+   color : white;
+   margin-bottom : 70px;
+}
+
+.goodbye #goodbye_span1
+{
+   font-size : 2.1rem;
+   color : #585858;
+   position:relative;
+   left:10px;
+   bottom: 50px;
+}
+.goodbye #goodbye_span2
+{	
+  position:relative;
+  bottom:65px;
+  left:84px;
+  font-size:1.3rem;
+}
+.goodbye #goodbye_span3
+{
+	font-size:1.1rem;
+	color:#02456F;
+	position:relative;
+	left:358px;
+	bottom:22px;
+}
+.goodbye #goodbye_li3
+{
+   color : white;
+   margin-bottom : 20px;
+}
+
+.goodbye #goodbye_li4
+{
+   color : white;
+   margin-bottom : 60px;
+}
+
+.goodbye #goodbye_PwChk
+{
+   width : 250px;
+   height : 40px;
+}
+.goodbye #goodbye_li5
+{
+   color : white;
+   
+}
+
+.goodbye #goodbye_li6
+{
+
+}
+
+.goodbye #goodbye_li7
+{
+
+}
+
+.goodbye #goodbye_p1
+{
+	color:black;
+	position:relative;
+	left:122px;
+	bottom:50px;
+	font-size:1.2rem;
+}
+
+.goodbye #goodbye_p2
+{
+	color:#585858;
+	position:relative;
+	left:132px;
+	bottom:30px;
+	font-size:1.1rem;
+}
+
+.goodbye #goodbye_p3
+{
+	color:black;
+	font-size:1.2rem;
+	position:relative;
+	left:122px;
+	bottom:27px;
+}
+
+.goodbye #goodbye_p4
+{
+	font-size:1.1rem;
+	color:#585858;
+	position:relative;
+	left:131px;
+	bottom:5px;
+}
+
+.goodbye #goodbye_p5
+{
+	font-size:1.1rem;
+	color:#585858;
+	position:relative;
+	left:132px;
+	bottom:10px;
+}
+
+.goodbye #goodbye_p6
+{
+	font-size:1.1rem;
+	color:#585858;
+	position:relative;
+	left:132px;
+
+}
+
+.goodbye #goodbye_p7
+{
+	color:black;
+	font-size:1.2rem;
+	position:relative;
+	left:122px;
+	bottom:39px;
+}
+
+.goodbye #goodbye_sec3{
+
+   width : 40%;
+   background:#f9f9f9;
+}
+
+.goodbye .goodbye_ft
+{
+
+}
+
+.goodbye *:focus
+{
+	outline:none;
+}
+.goodbye #goodbye_img1
+{
+	width:35px;
+	position:relative;
+	bottom:22px;
+	left:78px;
+}
+.goodbye #goodbye_img2
+{
+	width:35px;
+	position:relative;
+	left:78px;
+}
+.goodbye #goodbye_img3
+{
+	width:35px;
+	position:relative;
+	bottom:12px;
+	left:78px;
+}
+
+.goodbye #goodbye_email
+{
+	width:350px;
+	height:40px;
+	position:relative;
+	left:185px;
+	top:10px;
+	border : 2px solid #585858;
+	border-radius : 15px; 
+	padding-left:10px;
+}
+
+.goodbye #goodbye_Pw
+{
+ height : 40px;
+ width : 350px;
+ position:relative;
+	left:185px;
+	top:30px;
+	border : 2px solid #585858;
+	border-radius : 15px; 
+	padding-left:10px;
+}
+
+
+.goodbye #goodbye_delete
+{
+   position : relative;
+   left : 300px;
+   top : 105px;
+   height : 48px;
+   width: 140px;
+   background : white;
+   border : 2px solid #585858;
+   border-radius: 150px 150px / 150px 150px;
+   color : #585858;
+   font-size:1.1rem;
+}
+
+.goodbye #goodbye_delete:hover
+{
+	background:#585858;
+	color:white;
+}
+
+.goodbye #function_div
+{
+	display: inline-block;
+	width:200px;
+	border:2px solid #B9B9B9;
+	border-radius:10px;
+	position:relative;
+	top:100px;
+	height:270px;
+	background:white;
+	
+}
+.goodbye #function_div a
+{
+	text-decoration:none;
+	color: #585858;
+	border-bottom: 1px solid #B9B9B9;
+	padding-bottom:5px;
+}
+
+.goodbye #function_div a:hover
+{
+	color: #02456f;
+}
+.goodbye #function_img
+{
+	
+}
+.goodbye #function_list
+{
+	align-content:center;
+	align-items:center;
+	font-size:1.3rem;
+
+		
+}
+.goodbye #function_li1
+{
+	margin-bottom:50px;
+	margin-top:50px;
+
+}
+.goodbye #function_li2
+{
+	margin-bottom:50px;
+}
+.goodbye #function_li3
+{
+	margin-bottom:0px;
+}
+
+.goodbye #function_a1
+{
+	
+}
+.goodbye #function_a2
+{
+
+}
+.goodbye #function_a3
+{
+	padding-left:20px;
+	padding-right:20px;
+}

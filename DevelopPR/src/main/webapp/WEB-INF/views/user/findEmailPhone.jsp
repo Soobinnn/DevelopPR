@@ -6,8 +6,6 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmailPhone.css'/>"/>
 <title>휴대폰 인증</title>
 <script type="text/JavaScript">

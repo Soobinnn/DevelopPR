@@ -6,35 +6,8 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findPwEmail.css'/>"/>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
  
-function checks()
-{
-// 비밀번호 최소8자리, 숫자,문자, 특수문자 최소 1개
-var userPwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&^.,/`~;:])[A-Za-z\d$@$!%*#?&^.,/`~;:]{8,}$/;
-var confirm = confirm("비밀번호 재설정을 하시겠습니까?");
-
- if($('#findPwEmailReset_Pw').val() =="")
- {
-    alert("비밀번호를 입력해주세요.");
-    $("#findPwEmailReset_Pw").focus();
-    return false;
- } 
-// 유효성검사
-if(!userPwCheck.test($('#findPwEmailReset_Pw').val()))
-{
-    alert('최소8자리, 숫자, 문자, 특수문자 최소 1자리를 입력해주세요.')
-    $('#findPwEmailReset_Pw').focus();
-    return false;
-}
-	return true;
-
-	
-}
- 	
 $(function(){
 
 	// 처음에 재설정 활성화 끄기
@@ -44,18 +17,21 @@ $(function(){
 	    {
 	    // 비밀번호 최소8자리, 숫자,문자, 특수문자 최소 1개
 	    var userPwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&^.,/`~;:])[A-Za-z\d$@$!%*#?&^.,/`~;:]{8,}$/;
-	    if(!userPwCheck.test($('#findPwEmailReset_Pw').val()))
+	    
+	    if($('#findPwEmailReset_Pw').val()=="")
+    	{
+    	$('#findPwEmailReset_Pw').css({"border" :"2px solid red","background-color":"#FBF5EF"});
+        $('#findPwEmailCheckMsg').text('비밀번호를 입력해주세요.').css("color","red");
+    	} 
+	    
+	    else if(!userPwCheck.test($('#findPwEmailReset_Pw').val()))
 	    {
 	        
 	        $('#findPwEmailReset_Pw').css({"border" :"2px solid red","background-color":"#FBF5EF"});
 	        $('#findPwEmailCheckMsg').text('비밀번호 형식에 맞게 입력해주세요.').css("color","red");
 	        $('#findPwEmailReset_Pw').focus();
 	    }
-	    else if($('#findPwEmailReset_Pw').val()=="")
-	    	{
-	    	$('#findPwEmailReset_Pw').css({"border" :"2px solid red","background-color":"#FBF5EF"});
-	        $('#findPwEmailCheckMsg').text('비밀번호를 입력해주세요.').css("color","red");
-	    	} 
+	    
 	    else   
 	    {
 	        $('#findPwEmailReset_Pw').css({"border" :"2px solid green","background-color":"white"});
@@ -102,6 +78,20 @@ $(function(){
         	}
          }
 	  });
+	
+	$('#findPwEmailReset_btn').click(function()
+			{
+			if(confirm("비밀번호를 재설정하시겠습니까?") == true)
+			{
+				findPwEmail_form1.action="${path}/user/findPwReset";
+				findPwEmail_form1.submit();
+        	    }
+        	    else{
+        	    	return;
+        	    }
+		
+		
+		});
    });
    
 $(document).ready(function(){
@@ -185,7 +175,7 @@ $(document).ready(function(){
                         </div>
                
     
-                   <form name="findPwEmail_form1" id="findPwEmail_form" action="${path}/user/findPwReset" method="POST" onsubmit="return checks()">
+                   <form name="findPwEmail_form1" id="findPwEmail_form" method="POST">
                     <div id="findPwEmailReset">
                      <ul id="findPwEmailReset_ul">
                        <li  id="findPwEmailReset_li1"><span id="findPwEmailReset_span"><strong>비밀번호 재설정</strong></span></li>
@@ -195,7 +185,7 @@ $(document).ready(function(){
                         <li id="findPwEmailReset_li4"><input type="password" id="findPwEmailResetConfirm_Pw" placeholder=" 비밀번호를 한번 더 입력해주세요." autocomplete="off">
                         <span id="findPwEmailCheckMsg2"></span>                 
                         </li>
-                        <li id="findPwEmailReset_li5"><button id="findPwEmailReset_btn" type="submit">재설정</button></li> 
+                        <li id="findPwEmailReset_li5"><input id="findPwEmailReset_btn" type="button" value="재설정"></li> 
                     </ul> 
                     <input type="hidden" name="userEmail" value="${userEmail}">
                    </div>

@@ -113,7 +113,8 @@
         	NICK AS userNick,
         	PHONE AS userPhone,
         	JOB AS userJob,
-        	JOB_DETAIL AS userJob_detail
+        	JOB_DETAIL AS userJob_detail,
+        	PROFILE AS profile
         FROM pr_user
         WHERE EMAIL = #{userEmail}
     </select>
@@ -122,14 +123,12 @@
     <update id="modifyInfo">
     	UPDATE pr_user 
     	SET 
-    	EMAIL = #{userEmail}, 
     	IS_SEEK = #{userIs_seek}, 
     	NICK = #{userNick}, 
-    	PW = #{userPw}, 
-    	NAME = #{userName}, 
     	JOB = #{userJob}, 
     	JOB_DETAIL = #{userJob_detail}, 
-    	PHONE = #{userPhone}
+    	PHONE = #{userPhone},
+    	PROFILE = #{profile}
     WHERE
     	EMAIL = #{userEmail}
     </update>

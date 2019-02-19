@@ -211,6 +211,8 @@ public class UserServiceImpl implements UserService
 	 //비밀번호 재설정 - 준형
 	@Override
 	public void updatePasswd(UserVO vo) {
+		System.out.println(vo);
+		  System.out.println("--------Pw 변경 Service-------");
 		userDao.updatePasswd(vo);
 	}
 	

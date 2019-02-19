@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmailResult.css'/>"/>
 <meta charset="UTF-8">
 <title>이메일 찾기 성공</title>

@@ -179,7 +179,7 @@ public class UserController
 	  
 	  return mav;
   }
-  //이메일 찾기 본인인증 폰번호 체크 Ajax :: 준형-----------------------------------------------------------------------------------
+  //이메일 찾기 본인인증 폰번호 체크 Ajax 
   @RequestMapping("PhoneCheck")
   @ResponseBody
   public int PhoneCheck(String phone) throws Exception{
@@ -188,11 +188,11 @@ public class UserController
 	  System.out.println(temp);
 	return temp;
   }
- //--------------------------------------------------------------------------------------------------------------------
+
  //PW 찾기 폼으로 이동 , 기능매핑에 추가해야함. 
  @RequestMapping(value="findPasswordForm")
  public String userFindPwForm() {
-	  return "basic/user/findPasswordForm"; // tiles basic 추가 :: 준형-------------------------------------------------
+	  return "basic/user/findPasswordForm"; 
  }
  
  // PW 찾기 할때 Ajax 이메일 중복체크
@@ -231,7 +231,7 @@ public class UserController
 	  System.out.println(keyCode);
 	  System.out.println(userEmail);
 	  
-	  return "basic/user/findPwEmail"; // tiles basic 추가 :: 준형------------------------------------------------------------
+	  return "basic/user/findPwEmail"; 
  }
  
  //Pw 찾기 인증번호 ajax
@@ -256,10 +256,27 @@ public class UserController
  public String userFindPwReset(@ModelAttribute UserVO vo) {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
+	  System.out.println(vo);
+	  System.out.println("--------Pw 찾기 재설정-------");
 	  userService.updatePasswd(vo);
-	
 	  return "user/findPwResetConfirm";
  }
+ 
+ //비밀번호 변경 추가 : 준형---------------------------------------------------------------
+ @RequestMapping(value="changePw" , method=RequestMethod.POST)
+ public String userchangePw(@ModelAttribute UserVO vo) {
+	  System.out.println(vo);
+	  System.out.println("--------");
+	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
+	  
+	  System.out.println("---컨트롤러 암호화 pw---");
+	  vo.setUserPw(pwdBycrypt);
+	  System.out.println(vo);
+	  userService.updatePasswd(vo);
+	  return "user/changePwConfirm";
+ }
+ 
+//---------------------------------------------------------------------------------
  
   // 로그인 화면(GET)
   @RequestMapping(value="login", method=RequestMethod.GET)
@@ -409,7 +426,7 @@ public class UserController
 	  }
   }
 
-  // 카카오 api 로그인 시
+  // 카카오 api 로그인 시 
   @RequestMapping(value = "kakaooauth" , produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
   public String kakaoLogin(@RequestParam("code") String code , HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception
   {
@@ -646,40 +663,42 @@ public class UserController
       }
       return "redirect:/main";
   }
-//회원정보 수정 폼 : 준형-------------------------------------------------------------------------------------------------------------------
+//회원정보 수정 폼 : 준형------------------------------------------------------------------------------------------------------------------
   @RequestMapping(value="modifyInfoform", method= RequestMethod.GET) 
   public String userModifyInfoform(HttpSession session, Model model) throws Exception
   {
 	  String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
+	  
 	  UserVO vo = userService.modifyform(userEmail);
 	  System.out.println(vo);
 	  model.addAttribute("vo", vo);
 	  return "basic/user/modifyInfo";
 	  
   }
-//회원정보 수정
+//회원정보 수정-------------프로필 사진 값 가져오기 추가 ------------------------------------------------------------------------------------------
   @RequestMapping(value="modifyInfo", method= RequestMethod.POST)
   public String userModifyInfo(@ModelAttribute UserVO vo) {
-	  
-	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
-	  vo.setUserPw(pwdBycrypt);
+	  String userProfile = vo.getProfile();
+	  String profileURL = "/DevelopPR/resources/profile/"+userProfile;
+	  vo.setProfile(profileURL);
 	  userService.modifyInfo(vo);
 	  return "user/modifyInfoConfirm";
   }
   
-  //회원 탈퇴 폼 : 준형
+  //회원 탈퇴 폼 : 준형 , 이메일 세션값 추가-----------------------------------------------------------------------------------------------------
   @RequestMapping(value="goodbyeform", method=RequestMethod.GET)
-  public String goodbyeform() {
-	  return "user/goodbye";
+  public String goodbyeform(HttpSession session, Model model) {
+	  String userEmail = (String) session.getAttribute("userEmail");
+	  model.addAttribute("userEmail", userEmail);
+	  return "basic/user/goodbye";
 	  
   }
   
-  //회원 탈퇴 Ajax : 준형
+  //회원 탈퇴 Ajax : 준형 , 비밀번호 변경시 현재비밀번호 확인 
   @RequestMapping(value="goodbyeChk", method=RequestMethod.POST)
   @ResponseBody
   public boolean goodbye(@RequestParam String userPw ,HttpSession session, Model model) {
 	  String userEmail = (String) session.getAttribute("userEmail");
-
 	  String userPassword = userPw;
 	  String encodedPassword = userService.checkPw(userEmail);
 	  
@@ -697,7 +716,6 @@ public class UserController
   	  {
 	  	String userEmail = (String) session.getAttribute("userEmail");
 	  	userService.deleteUser(userEmail);
-	  	session.invalidate();
 	  	return "user/goodbyeConfirm";
 	  }
   
@@ -762,5 +780,14 @@ public class UserController
       }
       return "redirect:/join";
 
+  }
+  
+  //비밀번호 변경 폼: 준형--------------------------------------------------------
+  @RequestMapping(value="changePwform", method=RequestMethod.GET)
+  public String ChangePw(HttpSession session, Model model) {
+	String userEmail = (String) session.getAttribute("userEmail");
+	  System.out.println(userEmail);
+	  model.addAttribute("userEmail",userEmail);
+	  return "basic/user/changePw";
   }
 }

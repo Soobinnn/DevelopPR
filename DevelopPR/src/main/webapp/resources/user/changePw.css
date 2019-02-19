@@ -1,0 +1,293 @@
+	.changePw
+        {
+        margin-bottom:180px;
+    	font-family: 'Noto Sans KR', sans-serif;
+        text-decoration: none;
+        }
+     .changePw .changePw_header
+	{
+    height : 120px;
+    margin-top : 80px;
+    margin-bottom : 60px;
+    line-height : 100px;
+	align-content:center;
+	font-size:3rem;
+	 text-align : center;
+	font-weight :900;
+	font-size : 3rem;
+		}
+        
+        .changePw #changePw_sec{
+            display:flex;
+            width : auto;
+            height:730px;
+        }
+        .changePw #changePw_sec_1
+        {
+            width : 40%;
+            text-align:center;
+            background:#f9f9f9;
+            height:800px;
+        }
+        .changePw #changePw_sec_2
+        {
+            display : flex;
+             flex-direction: column;
+            flex-shrink: 0;
+            flex-basis: 800px;
+            width : 800px;
+            border:2.5px solid #B9B9B9;
+            border-radius:15px;
+            position : relative;
+            height:800px;
+            
+        }
+        .changePw #changePw_Top
+        {
+            height: 75px;
+        }
+        .changePw #changePw_span1
+        {
+           
+            position: relative;
+            top: 25px;
+            left:60px;
+            font-size:1.8rem;
+            color:#585858;
+        }
+        .changePw #changePw_mid
+        {
+                height:595px;
+                width:740px;
+                border-top:2px solid #B9B9B9;
+                border-bottom:2px solid #B9B9B9;
+                position:relative;
+                left:30px;
+        }
+        .changePw #changePw_img
+        {
+            position: relative;
+            left : 280px;
+            top : 50px;
+            width :170px;
+            height:170px;
+        }
+        .changePw #changePw_p
+        {
+            position: relative;
+            left: 275px;
+            top : 70px;
+            font-size:1.3rem;
+            color:#585858;
+        }
+        .changePw #changePw_p2
+        {
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            font-size:0.9rem;
+            color:#3574A7;
+        }
+        .changePw #changePw_span2
+        {
+            position: relative;
+            left: 245px;
+            color : #3574A7;
+            top : 78px;
+            font-size:1.3rem;
+
+        }
+        .changePw #changePw_span3
+        {
+            position: relative;
+            left: 245px;
+            top : 78px;
+            font-size:1.3rem;
+            color:#585858;
+        }      
+        .changePw #changePw_ul
+        {
+            list-style-type:none;
+        }
+        .changePw #changePw_li1
+        {
+                width:590px;
+                position:relative;
+                left:178px;
+                top:130px;
+
+        }
+        .changePw #changePw_li2
+        {       
+                width:590px;
+                position:relative;
+                left:178px;
+                top:130px;
+ 
+
+        }
+        .changePw #changePw_li3
+        {
+                width:400px;
+                position:relative;
+                left:188px;
+                top:128px;
+
+        }
+        .changePw #changePw_li4
+        {
+                position:relative;
+                left:178px;
+                top:130px;
+
+                 width:590px;
+        }
+        .changePw #changePw_li5
+        {
+
+        }
+        .changePw #changePw_pw
+        {
+                width:300px;
+                height:43px;
+                padding-left:8px;
+                border:2px solid #585858;
+                border-radius:15px;
+                margin-bottom:15px;
+                
+        }
+        .changePw #changePw_NewPw
+        {
+                width:300px;
+                height:43px;
+                padding-left:8px;
+                border:2px solid #585858;
+                border-radius:15px;
+                margin-bottom:7px;
+                
+        }
+        .changePw #changePw_NewPwConfirm
+        {
+                width:300px;
+                height:43px;
+                padding-left:8px;
+                border:2px solid #585858;
+                border-radius:15px;
+                margin-top:15px;
+
+        }
+        .changePw #changePwCheckMsg
+        {
+                position:relative;
+                left:500px;
+                width:250px;
+                bottom:110px;
+        }
+        .changePw #changePwCheckMsg2
+        {
+                position:relative;
+                left:7.5px;
+        }
+        .changePw #changePwCheckMsg3
+        {
+                position:relative;
+                left:7.5px;
+        }
+        .changePw #changePw_changebtn
+        {
+            position: relative;
+            top:225px;
+            left:270px;
+            width: 190px;
+            height :55px;
+            background : white;
+            border : 2px solid #585858;
+            color : black;
+            border-radius: 150px 150px/150px 150px;
+            font-size:1.2rem;
+
+        }
+      
+        .changePw #changePw_sec_3
+        {
+            width : 40%;
+            background:#f9f9f9;
+            height:800px;
+        }
+		.changePw *:focus
+ 		{
+        outline:none;
+		}
+
+		.changePw input[type=text]::-ms-clear 
+   		{
+  		display:none;
+		}
+		.changePw #function_img
+{
+	
+}
+.changePw #function_div
+{
+	display: inline-block;
+	width:200px;
+	border:2px solid #B9B9B9;
+	border-radius:10px;
+	position:relative;
+	top:100px;
+	height:270px;
+	background:white;
+	
+}
+.changePw #function_div a
+{
+	text-decoration:none;
+	color: #585858;
+	border-bottom: 1px solid #B9B9B9;
+	padding-bottom:5px;
+}
+
+.changePw #function_div a:hover
+{
+	color: #02456f;
+}
+.changePw #function_img
+{
+	
+}
+.changePw #function_list
+{
+	align-content:center;
+	align-items:center;
+	font-size:1.3rem;
+
+		
+}
+.changePw #function_li1
+{
+	margin-bottom:50px;
+	margin-top:50px;
+
+}
+.changePw #function_li2
+{
+	margin-bottom:50px;
+}
+.changePw #function_li3
+{
+	margin-bottom:0px;
+}
+
+.changePw #function_a1
+{
+	
+}
+.changePw #function_a2
+{
+
+}
+.changePw #function_a3
+{
+	padding-left:20px;
+	padding-right:20px;
+}

@@ -136,7 +136,6 @@
 			<c:if test="${sessionScope.login.userIs_seek == 0}">
 			<li class="fullmenulist"><a href='${path}/community/list'>허얼</a></li>
 			</c:if>
-			<li class="fullmenulist"><a href='${path}/user/goodbyeform'>USER WITHDRAWAL</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
