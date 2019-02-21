@@ -127,8 +127,9 @@ public class ResumeController {
    @RequestMapping(value="modify/{email}/")
    public String resumeModifyform(@PathVariable("email") String email, Model model) throws Exception{
 	  System.out.println("modify:"+email);
+	  
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
-
+	  
       return "footmenu/resume/modify";
    }
 
