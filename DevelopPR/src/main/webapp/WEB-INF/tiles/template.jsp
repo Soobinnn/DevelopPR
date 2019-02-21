@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
-
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 	<script>
 	var socket = null;
 	var success = null;
@@ -120,6 +120,21 @@
 			}
 			
 		});
+		// 메인헤더 애니메이션
+		var $black = $("#black").css("clip", "");
+		var w = 2000, h = 700;
+		var t = 0, r = w, b = h, l = 0;
+		TweenLite.set($black, {clip: "rect("+[0,w,h,0].join()+")"});
+		this.tl && tl.stop();
+		tl = new TimelineLite();
+		l = w/2 + 105;
+		tl.to($black, 0.35, {clip: "rect("+[t,r,b,l].join()+")"}, 0.5);
+		 b = h/2 -68;
+		tl.to($black, 0.35, {clip: "rect("+[t,r,b,l].join()+")"});
+		r = w/2 + 243;
+		tl.to($black, 0.35, {clip: "rect("+[t,r,b,l].join()+")"});
+		t = h/2 - 175;
+		tl.to($black, 1.75, {clip: "rect("+[t,r,b,l].join()+")", ease: Elastic.easeOut});
 	})
 	</script>
 

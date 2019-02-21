@@ -9,6 +9,8 @@
 <body>
 <div class="container">
 	<section class="main_section">
+		<div class="main0">
+		</div>
 		<div class="main1">	
 		<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="2">	
 				<div class="PR${status.count}">
@@ -143,7 +145,8 @@
 					</figure>		
 			</div>
 		</div>
-	
+		<div class="main4">
+		</div>
 		<div class="animation">
 			<img id="animation_img" src="<c:url value='/resources/main/image/배경.png'/>"/>
 				<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="0">
