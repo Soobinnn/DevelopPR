@@ -147,7 +147,7 @@ $('.element').novacancy({
                             <span class="word belize">개발자</span>
                             <span class="word pomegranate">취업준비</span>
                             <span class="word green">이력서</span>
-                            <span class="word midnight">매력뿜뿜</span>
+                            <span class="word midnight">웹사이트</span>
                         </p>
                         
                     </div>

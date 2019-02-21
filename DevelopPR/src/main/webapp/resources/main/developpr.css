@@ -681,8 +681,8 @@ footer
     right: 7%;
     bottom: 45%;
     /* border: 1px solid white; */
-    border: 1px solid black;
-    border-width: 1px 1px 0;
+  	border: 2px solid black;
+    border-width: 2px 2px 0;
     z-index : 3;
   }
   figure.prpic .heading 
