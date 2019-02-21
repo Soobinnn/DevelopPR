@@ -28,8 +28,18 @@ public class MeetingDAOImpl implements MeetingDAO
 	{
 		ChatRoomVO roomVO = null;
 		roomVO = session.selectOne("meet.isRoom", vo);
+		// 채팅방나갔을 때 다시 문자갔을 경우, 다시 변경
+		if(roomVO != null)
+		{		
+			if(roomVO.getGet_room().indexOf("EXIT") >= 0)
+			{
+				session.update("meet.reconnectRoom");
+			}
+		}
+		System.out.println("roomVO?"+roomVO);
 		return roomVO;
 	}
+	
 	/* 메시지 전송 내용 저장 */
 	@Override
 	public void insertMessage(MessageVO vo) throws Exception
@@ -39,10 +49,12 @@ public class MeetingDAOImpl implements MeetingDAO
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public List<MessageVO> getRoom(String chatroom_id)
+	public List<MessageVO> getRoom(String chatroom_id, String userNick)
 	{
-		// TODO Auto-generated method stub
-		List<MessageVO> mvo = session.selectList("meet.getRoom",chatroom_id);	
+		ChatRoomVO roomVO = new ChatRoomVO();
+		roomVO.setChatroom_id(chatroom_id);
+		roomVO.setSend_user_id(userNick);
+		List<MessageVO> mvo = session.selectList("meet.getRoom",roomVO);	
 		return mvo;
 	}
 	
@@ -60,10 +72,10 @@ public class MeetingDAOImpl implements MeetingDAO
 	@Override
 	public void readUpdate(String chatroom_id,String userNick)
 	{
-		MessageVO vo = new MessageVO();
-		vo.setChatroom_id(chatroom_id);
-		vo.setMessage_receiver(userNick);
-		session.update("meet.readUpdate",vo);
+		ChatRoomVO Room = new ChatRoomVO();
+		Room.setChatroom_id(chatroom_id);
+		Room.setSend_user_id(userNick);
+		session.update("meet.readUpdate",Room);
 	}
 	
 	/* 실시간 알람*/
@@ -72,5 +84,26 @@ public class MeetingDAOImpl implements MeetingDAO
 	{
 		int _alarm = session.selectOne("meet.alarm", userNick);
 		return _alarm;
+	}
+	
+	/* 채팅방 나가기*/
+	@Override
+	public void exitRoom(String chatroom_id, String userNick)
+	{
+		ChatRoomVO Room = new ChatRoomVO();
+		Room.setChatroom_id(chatroom_id);
+		Room.setSend_user_id(userNick);
+		
+		session.update("meet.exitRoom", Room);
+		session.update("meet.exitMessage", Room);
+		session.update("meet.readUpdate",Room);
+		String _exitCheck = session.selectOne("meet.exitCheck", chatroom_id);
+		
+		System.out.println("똑똑 다나가셧나요 "+_exitCheck);
+		// 다나갔을 경우 채팅방, 메시지 삭제
+		if(_exitCheck.equals("EXIT,EXIT"))
+		{
+			session.delete("meet.deleteRoom", chatroom_id);
+		}
 	}
 }

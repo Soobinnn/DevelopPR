@@ -37,9 +37,9 @@ public class MeetingServiceImpl implements MeetingService
 	
 	/* 개인 채팅방 입장 */
 	@Override
-	public List<MessageVO> getRoom(String chatroom_id)
+	public List<MessageVO> getRoom(String chatroom_id, String userNick)
 	{
-		return meetingDao.getRoom(chatroom_id);
+		return meetingDao.getRoom(chatroom_id, userNick);
 	}
 	
 	/*개인 채팅방 전체 목록*/
@@ -61,5 +61,12 @@ public class MeetingServiceImpl implements MeetingService
 	public int alarm(String userNick)
 	{
 		return meetingDao.alarm(userNick);
+	}
+	
+	/* 채팅방 나가기*/
+	@Override
+	public void exitRoom(String chatroom_id, String userNick)
+	{
+		meetingDao.exitRoom(chatroom_id, userNick);
 	}
 }

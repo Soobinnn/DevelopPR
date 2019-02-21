@@ -4,5 +4,4 @@
 <header class="main_header">
 		DevelopPR
 </header>
- <div class="test"></div>
 </div> 

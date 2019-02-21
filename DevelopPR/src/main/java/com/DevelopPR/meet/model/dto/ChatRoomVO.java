@@ -10,7 +10,7 @@ public class ChatRoomVO
 	private Date lastTime;
 	private String lastMessage;
 	private int unReadCount;
-	
+	private String get_room;
 	public String getChatroom_id() 
 	{
 		return chatroom_id;
@@ -56,6 +56,13 @@ public class ChatRoomVO
 	public void setUnReadCount(int unReadCount) {
 		this.unReadCount = unReadCount;
 	}
+	public String getGet_room() {
+		return get_room;
+	}
+	public void setGet_room(String get_room) {
+		this.get_room = get_room;
+	}
 	
-	
+
+
 }

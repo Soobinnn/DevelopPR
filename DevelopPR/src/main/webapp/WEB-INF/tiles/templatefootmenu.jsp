@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!-- jstl 코어 태그 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- jstl 포맷 태그 -->
@@ -9,14 +7,16 @@
 <!-- 컨택스트  패스-->
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
  	<meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/main/developpr.css'/>"/>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+
 	<script>
 	var socket = null;
 	var success = null;
@@ -104,12 +104,27 @@
 			// $('.navx').rotate({animateTo:-360 , duration:1000});
 			$('.fullmenu').fadeOut(200,function(){$('.fullmenu').fadeTo(500,1);});
 		})
+		// 카카오 로그아웃시키기
+		$(document).on("click","#_logout",function(event)
+		{
+			event.stopPropagation();
+			var kakao_email = '${login.userEmail}';
+			/* console.log("카카오냐?"+ kakao_email);	 */
+			if(kakao_email.indexOf("_kakao") != -1)
+			{
+				window.open("https://developers.kakao.com/logout", "kakaologout","width=400, height=350");
+			}
+			if(_email.indexOf("_naver") != -1)
+			{
+				window.open("http://nid.naver.com/nidlogin.logout", "kakaologout","width=400, height=350");
+			}
+		});
 	})
 	</script>
 
 </head>
 <body>
-<nav id="min"class="top_nav">
+  <nav id="min"class="top_nav">
   		<div id="alarm"></div>
 		<img id="navimg" src="<c:url value='/resources/main/image/nav.png'/>" alt="nav" />
 		<span id="navspan">MENU</span>
@@ -124,7 +139,7 @@
 			<li class="fullmenulist"><a href='${path}/user/login'>RESUME LIST</a></li>
 			<li class="fullmenulist"><a href='${path}/community/list'>COMMUNITY</a></li>
 			<li class="fullmenulist"><a href='${path}/user/login'>CHAT / FOLLOW</a></li>
-			<li class="fullmenulist"></li>
+			<li class="fullmenulist"><a href="${path}/user/login">이력서 등록</a></li>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/policy">JOIN US</a></li>
 			<li id="fulllogin"class="fullbtn"><a href="${path}/user/login">LOGIN</a></li>
 		</ul>
@@ -146,12 +161,13 @@
 			<li class="fullmenulist"><a href='javascript:modifyplz();'>이력서 등록</a></li>
 			</c:if>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
-			<li id="fulllogin"class="fullbtn"><a href="${path}/user/logout">LOGOUT</a></li>
+			<li id="fulllogin"class="fullbtn"><a id="_logout" href="${path}/user/logout">LOGOUT</a></li>
 		</ul>
 	</nav>
 	</c:otherwise>
 	</c:choose>
-   <tiles:insertAttribute name="body" />
-      <tiles:insertAttribute name="footer" />
+  <tiles:insertAttribute name="body" />
+  <tiles:insertAttribute name="footer" />
+  
 </body>
 </html>

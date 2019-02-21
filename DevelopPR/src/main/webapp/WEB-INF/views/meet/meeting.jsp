@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../views/include/tag_header.jsp"%>
-<!DOCTYPE html>
 <html class="m">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/meet/meeting.css'/>" />
 <head>
@@ -112,7 +111,7 @@
 		}
 		else
 		{
-			$("#chatArea").append("<div id='sendchat' style='text-align : left'><span class ='sendchat_msg' id='sendchat_msg_left'>" + msg.message_content + "</span></div><br>");	
+			$("#chatArea").append("<div id='sendchat' style='text-align : left'><span class='sendchat_nick'>"+msg.message_sender+"</span><span class ='sendchat_msg' id='sendchat_msg_left'>" + msg.message_content + "</span></div><br>");	
 		}
 		var chatAreaHeight = $("#chat").height();
 		var maxScroll = $("#chatArea").height() - chatAreaHeight;
@@ -124,6 +123,9 @@
 	function readyChat(follow)
 	{
 		receiverNick =follow;
+		// 채팅방 위에 닉네임
+		$("#chat_info_nick").empty();
+		$("#chat_info_nick").append("<span id='chat_info_receiver'>"+follow+"</span>");
 	}
 	
 	// 팔로워/팔로잉 유저에게 처음 채팅할때
@@ -146,17 +148,21 @@
 	        	 {
 	        		 messagelist = data[i];	 
 	        		 _chatRoomId = data[i].chatroom_id;
-	        		 console.log("왓더~"+_chatRoomId);
+	        		/*  console.log("왓더~"+_chatRoomId); */
 	        		 appendMessage(messagelist);
 	        	 }
 	        	 lookRoom = _chatRoomId;
+	        	// 채팅방 위에 닉네임
+	     		$("#chat_info_nick").empty();
+	     		$("#chat_info_nick").append("<span id='chat_info_receiver'>"+follow+"</span>");
 	         }
 		})
 	}
 	// 채팅방의 채팅내용 가져오기
 	function getRoom(chatroom_id, receiver_user_id, bool)
 	{
-		var param = "chatroom_id="+chatroom_id;
+		var param = "chatroom_id="+chatroom_id+"&message_sender="+nick;
+		
 		//내가 보고있는 룸 넣기
 		lookRoom = chatroom_id;
 		if(bool == true)
@@ -172,10 +178,12 @@
 	         {
 	        	 $("#chatArea").empty();
 	        	 var messagelist;
+	        	 console.log("뭐고2"+data);
 	        	 for(var i in data)
 	        	 {
 	        		 messagelist =data[i];
 	        		 appendMessage(messagelist);
+	        		 console.log("뭐고"+messagelist);
 	        	 }
 	        	//대상변경
         		 readyChat(receiver_user_id);
@@ -199,7 +207,7 @@
 	         success : function(data)
 	         {
 	        	 $('.listAll').empty();
-	        	 console.log("ajax처리했능가 : "+data);
+	        	/*  console.log("ajax처리했능가 : "+data); */
 	        	 var getlist;
 	        	 for(var i in data)
 	        	 {
@@ -207,6 +215,7 @@
 	        		/* 	 console.log(getlist); */
 	        		 viewList(getlist);
 	        	 }
+	        	 
 	         }
 		})
 		console.log("호이잇"+lookRoom);
@@ -226,11 +235,11 @@
 			console.log("세션 = Receiver");
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div><div id='chatroomsetting1'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
 			}
 		}
 		else
@@ -238,11 +247,11 @@
 			console.log("세션 = sender");
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div></div>");
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div><div id='chatroomsetting1'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
 			}
 		}
     	var RoomAreaHeight = $(".listAll").height();
@@ -275,7 +284,19 @@
 	}
 	$(document).ready(function() 
 	{
-		
+		//test
+		/* var languages = [
+		"ActionScript", "AppleScript", "Asp","BASIC", "C",
+		"C++", "Clojure", "COBOL", "ColdFusion", "Erlang",
+		"Fortran", "Groovy", "Haskell", "Java", "JavaScript",
+		"Lisp", "Perl", "PHP", "Python", "Ruby",
+		"Scala", "Scheme"
+		];
+
+		$( "#s_text" ).autocomplete({
+		source: languages
+		});
+	 */
 		$("#chat_text").focus();
 		$('#chat_text').keypress(function(event) 
 		{	
@@ -312,7 +333,7 @@
 			});
 		});   */
 		
-		$('#s_text').keyup(function(event) 
+	/* 	$('#s_text').keyup(function(event) 
 		{	
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			var s_textContext = $('#s_text').val();
@@ -326,18 +347,71 @@
 		         {
 		        	getList(data);
 		         }
-			})
+			}) 
 
-		});
+		});*/
 		// ajax으로 생성된 채팅리스트도 커버하기 위해 document객체를 불러와서 클릭이벤트 발생
 		$(document).on("click", ".mlist",function(event)
 		{
 			var listChatRoom = $(this).find('#listChatRoom');
 			var listChatThat = $(this).find('#listChatThat');
+			
 			getRoom(listChatRoom.text(),listChatThat.text(), 1);
 			$(this).css({"background-color":"#E6E6E6"});
 			var lookRoom_css = $(this);
 		});
+		
+		$(document).on("click","#chatroom_icon",function(event)
+		{
+			event.stopPropagation();
+			var $_next = $(this).next();
+			$_next.toggle();
+			/* var listChatRoom = $(this).find('#listChatRoom');
+			var listChatThat = $(this).find('#listChatThat'); */
+			/* getRoom(listChatRoom.text(),listChatThat.text(), 1);
+			$(this).css({"background-color":"#E6E6E6"}); */
+			/* var lookRoom_css = $(this); */
+		});
+		
+		$(document).on("click","#chatroom_exit",function(event)
+		{
+			event.stopPropagation();
+			var $_target = $(this).closest(".mlist");
+			console.log("타게뜨"+$_target.attr('id'));
+			var targetRoom = $_target.attr('id');
+			//방 삭제
+			var param = "userNick="+nick+"&chatroom_id="+targetRoom;
+			$.ajax({                                                                                                                          
+				 async : true,
+		         type :'POST',
+		         data : param,
+		         url : "${path}/exitRoom",
+		         success : function(data)
+		         {
+		        	var messagelist;
+		        	var _chatRoomId; 
+		        	console.log("왜않대1");
+		        		 $('.listAll').empty();
+		 	        	/*  console.log("ajax처리했능가 : "+data); */
+		 	        	 var getlist;
+		 	        	 for(var i in data)
+		 	        	 {
+		 	        		 getlist = data[i];
+		 	        		/* 	 console.log(getlist); */
+		 	        		 viewList(getlist);
+		 	        	 }
+		        	 
+		        	 lookRoom = _chatRoomId;
+		        	// 채팅방 위에 닉네임초기화
+		     		$("#chat_info_nick").empty();
+		        	// 채팅, 내용 대상 초기화
+		     		receiverNick = null;
+		     		$("#chatArea").empty();
+
+		         }
+			})
+		});
+		
 	});	
 	 // date format 함수  : Date 내장 객체에 format함수 추가
     Date.prototype.format = function(f) 
@@ -423,7 +497,18 @@
 							<div class="m_info">${row.lastMessage}</div>
 							<c:if test="${row.unReadCount >0}">
 							<div class="m_readcount"><span id='_readcount'>${row.unReadCount}</span></div>
+							<div id='chatroomsetting1'>
+								<div id='chatroom_icon'></div>
+								<div id='chatroom_exit'>나가기</div>
+							</div>
 							</c:if>
+							<c:if test="${row.unReadCount ==0}">
+								<div id='chatroomsetting2'>
+									<div id='chatroom_icon'></div>
+									<div id='chatroom_exit'>나가기</div>
+								</div>
+							</c:if>
+							
 						</div>
 					</div>
 				</c:forEach>
@@ -432,6 +517,10 @@
 		</div>
 
 		<div id="info">
+			<div id="chat_info">
+				<div id="chat_info_img"></div>
+				<div id="chat_info_nick"></div>
+			</div>
 			<div id="chat" style="overflow-y: scroll;">
 				<div id="chatArea"></div>
 			</div>
@@ -462,8 +551,7 @@
 				</div>
 				<div class="tab2_content">
 					<c:forEach items="${followerList}" var="list">
-						<div>
-							
+						<div>						
 							<a class="_follower" href="javascript:readyRoom('${list.follower_nick}');"><span class="profile_image"></span><span class="follow_name">${list.follower_nick}</span></a>
 						</div>
 					</c:forEach>

@@ -59,7 +59,7 @@ public class MeetingController
 	@ResponseBody
 	public List<MessageVO> getRoom(Model model, @ModelAttribute MessageVO messageVO)
 	{
-		List<MessageVO> messageList = meetingService.getRoom(messageVO.getChatroom_id());
+		List<MessageVO> messageList = meetingService.getRoom(messageVO.getChatroom_id(),messageVO.getMessage_sender());
 		return messageList;
 	}
 	// 채팅방목록불러오기
@@ -100,6 +100,7 @@ public class MeetingController
 	@ResponseBody
 	public List<MessageVO> checkRoom(@ModelAttribute ChatRoomVO chatRoomVo) throws Exception
 	{
+		System.out.println("올레"+chatRoomVo.getSend_user_id());
 		ChatRoomVO checkRoom = meetingService.isRoom(chatRoomVo);
 		System.out.println("후움"+checkRoom);
 		/*System.out.println("가꼬온나 : "+checkRoom.getChatroom_id());*/
@@ -115,10 +116,22 @@ public class MeetingController
 		}
 		else
 		{
-			msgList  = meetingService.getRoom(checkRoom.getChatroom_id());
+			msgList  = meetingService.getRoom(checkRoom.getChatroom_id(),chatRoomVo.getSend_user_id());
 		}
 		
 		return msgList;
+	}
+	
+	//채팅방 나가기
+	@RequestMapping(value="/exitRoom", method =RequestMethod.POST)
+	@ResponseBody
+	public List<ChatRoomVO> exitRoom(@RequestParam("chatroom_id") String chatroom_id,  @RequestParam("userNick") String userNick) throws Exception
+	{
+		System.out.println("닉확인 "+userNick);
+		meetingService.exitRoom(chatroom_id, userNick);
+		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);
+		System.out.println("뭐시여"+listChatRoom);
+		return listChatRoom; 
 	}
 	
 	

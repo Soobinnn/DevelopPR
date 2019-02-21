@@ -113,6 +113,43 @@ public class Kakaologinapi
 		return returnNode;
 
 	}
+	  public static JsonNode Logout(String autorize_code) 
+	  {
+	        final String RequestUrl = "https://kapi.kakao.com/v2/user/logout";
+	 
+	        final HttpClient client = HttpClientBuilder.create().build();
+	        final HttpPost post = new HttpPost(RequestUrl);
+	        post.addHeader("Authorization", "Bearer " + autorize_code);
+	        JsonNode returnNode = null;
+	 
+	        try {
+	 
+	            final HttpResponse response = client.execute(post);
+	 
+	            ObjectMapper mapper = new ObjectMapper();
+	 
+	            returnNode = mapper.readTree(response.getEntity().getContent());
+	 
+	        } catch (UnsupportedEncodingException e) {
+	 
+	            e.printStackTrace();
+	 
+	        } catch (ClientProtocolException e) {
+	 
+	            e.printStackTrace();
+	 
+	        } catch (IOException e) {
+	 
+	            e.printStackTrace();
+	 
+	        } finally {
+	 
+	        }
+	 
+	        return returnNode;
+	 
+	    }
+
 
 /*	public static UserVO changeData(JsonNode userInfo) 
 	{
