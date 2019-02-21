@@ -9,6 +9,8 @@
 <body>
 <div class="container">
 	<section class="main_section">
+		<div class="main0">
+		</div>
 		<div class="main1">	
 		<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="2">	
 				<div class="PR${status.count}">
@@ -24,8 +26,7 @@
 									tech-stack : ${list.tech_name}<br/>
 									comment : ${list.motto}<br/><br/>
 									follow_${list.followCount} &nbsp;&nbsp;
-									♥_${list.goodCount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									    
+									♥_${list.goodCount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		    
 									<input type="button" class="pp" value="이력서"/>
 								</p>
 								<div class="heading">
@@ -129,7 +130,8 @@
 					</figure>		
 			</div>
 		</div>
-	
+		<div class="main4">
+		</div>
 		<div class="animation">
 			<img id="animation_img" src="<c:url value='/resources/main/image/배경.png'/>"/>
 				<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="0">
