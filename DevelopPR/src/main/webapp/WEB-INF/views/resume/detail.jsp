@@ -202,11 +202,20 @@ function ungood()
 	                            </div>
 	                        </div>
 	                        
+		                        <div class="p_name">             
+		                            <div class="name">
+		                               		 희망 직종
+		                            </div> 
+		                             <div class="textshort">
+			                            ${dto.prefer_job}
+		                            </div>
+		                        </div>
+	                        
 	                        <div class="p_name">
 	                            <div class="name" >
 	                           		 이 름 
 	                            </div>
-	                            <div >
+	                            <div>
 	                            	<div class="textshort">${dto.name}</div>
 	                            </div>
 	                        </div>

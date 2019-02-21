@@ -316,7 +316,16 @@ function fn_removeImage() {
                             </div>
                         </div>
                     </div>
-                        
+                       <div class="content">
+	                        <div class="state">             
+	                            <div class="name">
+	                               		 희망 직종 *
+	                            </div> 
+	                            <div class="p_info">
+	                               <input type="text" class="textshort" value="${dto.prefer_job}" name="prefer_job"/>
+	                            </div>
+	                        </div>
+	                    </div>
                         <div id="p_name">
                             <div class="name" >
                        		     이 름 *
