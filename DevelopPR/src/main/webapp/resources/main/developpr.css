@@ -73,6 +73,38 @@ header.main_header > header_sec3
 {
 	width : 5%;
 }
+header.sub_header
+{
+	display:flex;
+    text-align : center;
+    flex-basis : 350px;
+    background: url("mainheader2.png") no-repeat fixed;
+    background-size : 1920px 740px;
+}
+header.sub_header > header_sec1
+{
+	width : 5%;
+}
+header.sub_header > header_sec2
+{
+	width : 1910px;
+	flex-shrink:0;
+}
+header.sub_header > header_sec3
+{
+	width : 5%;
+}
+#_subheader_title
+{
+	position : relative;
+	top : 50px;
+	left : 550px;
+	width : 800px;
+	height : 200px;
+	background : url('subtitle2.png') 100% 100%;
+	animation-name: appear;
+    animation-duration: 1.3s;
+}
 #black 
 {
   position: absolute;
@@ -582,6 +614,7 @@ footer
     transform:rotate(-180deg);
   }
 }   
+
 
   @keyframes square-to-circle 
   {
@@ -1337,7 +1370,6 @@ footer
     100%{transform:rotate(360deg);}
 }
 
-
 /*-------------resume-list---------------*/
 .search{
   display:flex;
@@ -1425,4 +1457,9 @@ footer
 .profile{
 	width:400px;
 	height:400px;
+}
+@keyframes appear
+{
+	0%{opacity : 0;}
+	100%{opacity : 1;}
 }
