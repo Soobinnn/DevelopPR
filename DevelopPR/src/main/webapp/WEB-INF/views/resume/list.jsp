@@ -36,7 +36,7 @@
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -49,10 +49,9 @@
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
 									희망 직종 : ${list.prefer_job}<br/>
-									comment : ${list.motto}... overflow hidden<br/><br/>
-									
+									comment : ${list.motto}<br/>
 									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
-									♥ : ${list.goodCount}&nbsp;&nbsp;
+									♥ : ${list.goodCount}
 									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
@@ -73,7 +72,7 @@
 				<div class="PR${status.count+3}">
 					<div class="filter${status.count+3}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -86,10 +85,9 @@
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
 									희망 직종 : ${list.prefer_job}<br/>
-									comment : ${list.motto}... overflow hidden<br/><br/>
-									
+									comment : ${list.motto}<br/>
 									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
-									♥ : ${list.goodCount}&nbsp;&nbsp;
+									♥ : ${list.goodCount}
 									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
@@ -109,7 +107,7 @@
 				<div class="PR${status.count+6}">
 					<div class="filter${status.count+6}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -122,10 +120,10 @@
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
 									희망 직종 : ${list.prefer_job}<br/>
-									comment : ${list.motto}... overflow hidden<br/><br/>
+									comment : ${list.motto}<br/>
 									
 									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
-									♥ : ${list.goodCount}&nbsp;&nbsp;
+									♥ : ${list.goodCount}
 									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">

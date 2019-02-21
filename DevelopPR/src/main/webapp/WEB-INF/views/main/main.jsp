@@ -14,19 +14,23 @@
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;&nbsp;
-									♥_${list.goodCount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									    
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}<br/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -48,18 +52,23 @@
 				<div class="PR${status.count+3}">
 					<div class="filter${status.count+3}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
-								<p>
+							<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}<br/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -82,18 +91,23 @@
 				<div class="PR${status.count+6}">
 					<div class="filter${status.count+6}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}<br/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
