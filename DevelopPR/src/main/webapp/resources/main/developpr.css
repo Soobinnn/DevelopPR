@@ -416,6 +416,25 @@ section.main_section
 {
 	flex-basis : 300px;
 	flex-shrink : 0;
+	font-size:1.5rem;
+	text-align:center;
+	font-weight:bold;
+}
+#p1{
+	position:relative;
+	top:60px;	
+}
+#p2{
+	position:relative;
+	top:90px;	
+}
+#p3{
+	position:relative;
+	top:120px;	
+}
+#p4{
+	position:relative;
+	top:150px;	
 }
 .main1, .main2, .main3, .detail
 {
@@ -800,6 +819,8 @@ footer
 .animation #element13, 
 .animation #element14, 
 .animation #element15{
+	width:170px;
+	height:170px;
 	position:absolute;
 	transform: rotateY(0deg);
 	  animation-name: tutsFade;
@@ -808,11 +829,6 @@ footer
 	  animation-direction: alternate;
 
 
-}
-#element1,#element2, #element3, #element4,
-#element5,#element6, #element7, #element8{
-	width:170px;
-	height:170px;
 }
 
 .animation #element111,
@@ -830,6 +846,8 @@ footer
 .animation #element1313, 
 .animation #element1414, 
 .animation #element1515{
+	width:210px;
+	height:210px;
 	position:absolute;
  	transform:rotateY(0deg);
   	animation-name: tutsFade1;
@@ -873,63 +891,58 @@ footer
 .animation #element11,.animation #element8{
 	border:solid 20px #59ad9d;
 } 
- 
-#element111, #element22,#element33,#element44,#element55,#element66,#element77,#element88{
- 	width:210px;
-	height:210px;
-}
 #element1, #element111{
-	top:2105px;
+	top:3105px;
 	left:690px;
 	animation-delay: 1s;
 	animation-duration:4s;
 }
 #element2, #element22{
 	left:690px;
-	top:2350px;
+	top:3350px;
 	animation-delay:2s;
 	animation-duration:4s;
  }
 #element3, #element33{
 	left:690px;
-	top:2600px;
+	top:3600px;
 	animation-delay: 1s;
 	animation-duration:4s;
 }
-#element4, #element44{
+#element4, #element44{	
 	left:930px;
-	top:2175px;
+	top:3175px;
 	animation-delay: 3s;
 	animation-duration:4s;
 }
-#element5, #element55{
+#element5, #element55{	
 	left:930px;
-	top:2425px;
+	top:3425px;
 	animation-delay: 1s;
 	animation-duration:4s;
 }
-#element6, #element66{
+#element6, #element66{	
 	left:930px;
-	top:2670px;
+	top:3670px;
 	animation-delay: 3s;
 	animation-duration:4s;
 }
 #element7, #element77{
 	left:1170px;
-	top:2140px;
+	top:3140px;
 	animation-delay: 2s;
 	animation-duration:4s;
 }
-#element8, #element88{
+#element8, #element88{	
 	left:455px;
-	top:2345px;
+	top:3345px;
 	animation-delay: 1s;
 		  animation-duration:4s;
 }
 
-#element9, #element99{
+#element9, #element99{	
 	left:1170px;
-	top:2385px;
+	top:3385px;
 	animation-delay: 3s;
 	animation-duration:4s;
 }
@@ -941,9 +954,9 @@ footer
 	width:270px;
 	height:165px;
 }
-#element10, #element1010{
+#element10, #element1010{	
 	left:1170px;
-	top:2580px;
+	top:3580px;
 	animation-delay: 2s;
 		  animation-duration:4s;
    }
@@ -955,9 +968,9 @@ footer
 	width:150px;
 	height:255px;
 }
-#element11, #element1111{
+#element11, #element1111{	
 	left:515px;
-	top:2590px;
+	top:3590px;
 	animation-delay: 2s;
 	animation-duration:4s;
 }
@@ -970,9 +983,9 @@ footer
 	height:265px;
 }
 
-#element12, #element1212{
+#element12, #element1212{	
 	left:550px;
-	top:2140px;
+	top:3140px;
 	animation-delay: 3s;
 	animation-duration:4s;
    }
@@ -984,9 +997,9 @@ footer
 	width:110px;
 	height:175px;
 }
-#element13, #element1313{	
+#element13, #element1313{		
 	left:320px;
-	top:2590px;
+	top:3590px;
 	animation-delay: 3s;
 		  animation-duration:4s;
 }
@@ -1001,7 +1014,7 @@ footer
 
 #element14, #element1414{
 	left:1345px;
-	top:2582px;
+	top:3582px;
 	animation-delay: 1s;
 	animation-duration:4s;
 }
@@ -1013,9 +1026,9 @@ footer
 	width:165px;
 	height:115px;
 }
-#element15, #element1515{
+#element15, #element1515{	
 	left:320px;
-	top:2440px;
+	top:3440px;
 	animation-delay: 2s;
 	animation-duration:4s;
 }
@@ -1454,10 +1467,12 @@ footer
 	left:35px;
 	
 }
+
 .profile{
 	width:400px;
 	height:400px;
 }
+
 @keyframes appear
 {
 	0%{opacity : 0;}

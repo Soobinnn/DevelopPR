@@ -10,8 +10,13 @@
 <div class="container">
 	<section class="main_section">
 		<div class="main0">
+			<p id="p1">이력서 작성하는 데 어려움을 느끼시나요?</p>
+			<p id="p2">개발자들의 이력서, 포트폴리오를 보다 간편하게 작성하여 자신을 알리는 웹포트폴리오 플랫폼입니다.</p>
+			<p id="p3">이력서, 포트폴리오의 정보를 공유하며 다른 개발자들과 채팅 할 수 있습니다.</p>
+			<p id="p4">당신의 날개를 펼치세요. Spread Your Wings.</p>
 		</div>
 		<div class="main1">	
+		
 		<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="2">	
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
