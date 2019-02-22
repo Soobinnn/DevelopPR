@@ -7,13 +7,18 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findPasswordForm.css'/>"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	$(document).scrollTop(500);
 	$('#findPw_email').focus();
-});
+	
+	$(document).keypress(function(e) //엔터키 막기 추가 
+			{ 
+		if (e.keyCode == 13) e.preventDefault(); 
+		});
 
+});
 
 $(function(){
 	 
@@ -31,6 +36,12 @@ $('#findPw_next').click(function(){
     $('#emailCheckMsg').text('이메일을 입력해주세요.').css("color","red");
 	}
     
+    else if(!userEmailCheck.test(_userEmail))
+    {		
+        $('#findPw_email').css({"border" :"2px solid red","background-color":"#FBF5EF"});
+        $('#findPw_email').focus();
+        $('#emailCheckMsg').text('이메일형식에 맞게 입력해주세요.').css("color","red");
+    }
     else{
     $.ajax({
         async : true,
@@ -39,14 +50,6 @@ $('#findPw_next').click(function(){
         url : "${path}/user/findPassword",
         success : function(result)
         {
-            if(!userEmailCheck.test(_userEmail))
-            {		
-                $('#findPw_email').css({"border" :"2px solid red","background-color":"#FBF5EF"});
-                $('#findPw_email').focus();
-                $('#emailCheckMsg').text('이메일형식에 맞게 입력해주세요.').css("color","red");
-            }
-            else 
-            {
                 /* 중복이 없을경우 */
                 if(result == '0')
                 {						
@@ -64,7 +67,6 @@ $('#findPw_next').click(function(){
                                  
                 }
             }
-         }
       });
     }
    });
@@ -77,7 +79,8 @@ $('#findPw_next').click(function(){
 <div class="findPasswordForm">
     <section id="findPw_sec">
             
-        <div id="findPw_sec_1"></div>
+        <div id="findPw_sec_1">
+        </div>
         <div id="findPw_sec_2">
     
             <div id="findPw_sec_2_1"></div>

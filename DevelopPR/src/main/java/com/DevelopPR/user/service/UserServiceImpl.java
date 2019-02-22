@@ -1,5 +1,6 @@
 package com.DevelopPR.user.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -132,11 +133,50 @@ public class UserServiceImpl implements UserService
 	       return userDao.viewlogin(vo);
 	   }
 	   // 이메일 찾기
-	   @Override
+	   @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
+	@Override
 	   public List findId(String phone) throws Exception
 	   {
-		   // phone 번호로 email 찾아줌
-		   return userDao.findId(phone);
+		  // phone 번호로 email 찾아줌
+		  List<String> emailList = new ArrayList<String>();
+		  emailList = userDao.findId(phone);
+		  
+		 //이메일 찾기할때 다른계정은 구별해주기 위해
+		for(int i=0; i<emailList.size(); i++)
+		{
+		  if(emailList.indexOf("_kakao")>-1) // 리스트 안에 문자열 중 카카오가 있으면
+		  {
+			  int kakao = emailList.indexOf("_kakao");	//리스트 안에 문자열이 해당하는 index 위치를 담는다.	 
+			  String kakao_email = "카카오 계정 : "+emailList.get(kakao); // index 위치에 있는 값을 변수에 저장.
+			  emailList.set(kakao, kakao_email); // 변수에 저장한 값을 다시 리스트에 저장해서 값을 변경한다. 
+			  break;
+		  }
+		  
+		  else if(emailList.indexOf("_google")>-1)
+		  {
+			  int google = emailList.indexOf("_google");	 
+			  String google_email = "구글 계정 : "+emailList.get(google); 
+			  emailList.set(google, google_email); 
+			  break;
+		  }
+		  
+		  else if(emailList.indexOf("_naver")>-1)
+		  {
+			  int naver = emailList.indexOf("_naver");		 
+			  String naver_email = "네이버 계정 : "+emailList.get(naver); 
+			  emailList.set(naver, naver_email); 
+			  break;
+		  }
+		  
+		  else if(emailList.indexOf("_facebook")>-1)
+		  {
+			  int facebook = emailList.indexOf("_facebook");	
+			  String facebook_email = "페이스북 계정 : "+emailList.get(facebook);
+			  emailList.set(facebook, facebook_email); 
+			  break;
+		  }
+		}
+		  return emailList;
 	   }
 	   
 	   // 회원 로그아웃
@@ -211,6 +251,8 @@ public class UserServiceImpl implements UserService
 	 //비밀번호 재설정 - 준형
 	@Override
 	public void updatePasswd(UserVO vo) {
+		System.out.println(vo);
+		  System.out.println("--------Pw 변경 Service-------");
 		userDao.updatePasswd(vo);
 	}
 	
@@ -223,7 +265,8 @@ public class UserServiceImpl implements UserService
 	//회원 정보 수정
 	@Override
 	public void modifyInfo(UserVO vo) {
-		   userDao.modifyInfo(vo);
+		System.out.println("----------------------------------------------------수정------------------------------------------------------"+vo);
+		userDao.modifyInfo(vo);
 	   }
 	  
 	//회원 탈퇴 비밀번호 확인 - 준형

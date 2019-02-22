@@ -175,6 +175,7 @@
 			</c:if>
 			<c:if test="${sessionScope.login.userIs_seek == 0}">
 			<li class="fullmenulist"><a href='javascript:modifyplz();'>이력서 등록</a></li>
+
 			</c:if>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a id="_logout" href="${path}/user/logout">LOGOUT</a></li>

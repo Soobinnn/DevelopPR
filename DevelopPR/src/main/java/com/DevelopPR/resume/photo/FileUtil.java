@@ -57,14 +57,15 @@ public class FileUtil {
     }
     
     public void fileDownload(HttpServletResponse response, String path, String filename) {
-        String realPath = "";
+        
+    	String realPath = "";
         
         try {
             filename = URLEncoder.encode(filename, "UTF-8");
         } catch (UnsupportedEncodingException ex) {
             System.out.println("UnsupportedEncodingException");
         }
-        
+               
         realPath = path + filename;
 
         File file1 = new File(realPath);
