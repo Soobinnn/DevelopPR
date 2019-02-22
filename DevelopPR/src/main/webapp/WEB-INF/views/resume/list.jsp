@@ -21,7 +21,7 @@
 			        <select id="search_select" name="searchOption">
 			            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 			            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >전체</option>
-			            <option value="name" <c:out value="${map.searchOption == 'name'?'selected':''}"/> >이름</option>
+			            <option value="prefer_job" <c:out value="${map.searchOption == 'prefer_job'?'selected':''}"/> >희망 직종</option>
 			            <option value="prefer_place" <c:out value="${map.searchOption == 'prefer_place'?'selected':''}"/> >희망 지역</option>
 			            <option value="acq_name" <c:out value="${map.searchOption == 'acq_name'?'selected':''}"/> >기술</option>
 			            <option value="tech_name" <c:out value="${map.searchOption == 'tech_name'?'selected':''}"/> >자격증</option>
@@ -39,16 +39,21 @@
 						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}... overflow hidden<br/><br/>
 									
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}&nbsp;&nbsp;
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -71,15 +76,21 @@
 						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}... overflow hidden<br/><br/>
+									
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}&nbsp;&nbsp;
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -101,15 +112,21 @@
 						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}... overflow hidden<br/><br/>
+									
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}&nbsp;&nbsp;
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -121,7 +138,7 @@
 					</figure>
 				</div>
 		</c:forEach>
-    	</div>		
+    	</div>
 		<div class="resume_paging">
 		 	                <!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
                 <c:if test="${map.resumePager.curBlock > 1}">

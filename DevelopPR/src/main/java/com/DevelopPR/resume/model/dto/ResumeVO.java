@@ -27,10 +27,22 @@ public class ResumeVO {
 	private int followCount;
 	private int goodCount;
 	private String color;
+	private String prefer_job;
 	
 	
 	
-	
+	public String getPrefer_job() {
+		return prefer_job;
+	}
+
+
+
+	public void setPrefer_job(String prefer_job) {
+		this.prefer_job = prefer_job;
+	}
+
+
+
 	public String getColor() {
 		return color;
 	}
