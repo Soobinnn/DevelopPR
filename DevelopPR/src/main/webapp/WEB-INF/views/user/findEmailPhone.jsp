@@ -40,15 +40,14 @@ $(function(){
 	        success : function(result)
 	        {
 	        	
-	        		if(result=='1')
+	        		if(result== 1 || 2 || 3 || 4) //다른 계정로그인인 이메일 구별 위해 ||로 조건 추가.
 	        			{
 	    	        	alert('확인 버튼을 누르면 인증번호가 발송됩니다.')
 	    	        	findEmailPhone_form.action="${path}/user/findEmailPhoneCheck";
 	    	        	findEmailPhone_form.submit();
 	    	        	$(document).scrollTop(350);
-	    	        	$('#authNum').focus();
 	        			}
-	        		else if(result=='0')
+	        		else if(result== 0)
 	        			{
 	        			alert('휴대폰 번호가 일치하지 않습니다. 다시 입력해 주세요.')
 	        			$('#phone_Num').focus();

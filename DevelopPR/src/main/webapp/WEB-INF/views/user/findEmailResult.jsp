@@ -36,11 +36,15 @@ $(document).ready(function(){
               	 <img id="findEmailResult_img" src="${path}/resources/user/marker.png">
                  <span id="emailList_span">고객님의 정보와 일치하는 이메일 목록입니다.</span>
               </li>
+              
+              <c:forEach items="${emailList}" var="list">
+              
               <li id="findEmailResult_emailList2">   
-               <input id="findemailResult_email" type="radio" name="selectedId" value="${email}">
+               <input id="findemailResult_email" type="radio" name="selectedId" value="${list}">
                <label for="findemailResult_email" id="findemailResult_label"></label>
-               <label for="findemailResult_email" id="findemailResult_email_EL">${email}</label>
+               <label for="findemailResult_email" id="findemailResult_email_EL">${list}</label>
                </li>
+               </c:forEach>
                <li id="findEmailResult_Pw">               
                <span id="findPw_span">*</span> <span id="findPw_span2">비밀번호를 찾으시나요?</span>                                                                     
                <button id="findemailResult_findPwbtn" type="button" onclick="location='${path}/user/findPasswordForm'">비밀번호 찾기</button>

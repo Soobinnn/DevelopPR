@@ -58,9 +58,6 @@ public class FileUtil {
     
     public void fileDownload(HttpServletResponse response, String path, String filename) {
         
-    	System.out.println(path);
-    	System.out.println(filename);
-    	System.out.println("------------------------------------------다운로드--------------------------------------");
     	String realPath = "";
         
         try {

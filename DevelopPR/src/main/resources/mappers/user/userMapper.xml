@@ -120,7 +120,7 @@
     </select>
     
     <!-- 회원 정보 수정  : 준형-->
-    <update id="modifyInfo">
+    <update id="modifyInfo" >
     	UPDATE pr_user 
     	SET 
     	IS_SEEK = #{userIs_seek}, 
@@ -160,4 +160,5 @@
 		FROM pr_user 
 		WHERE PHONE = #{phone}
 	</select>
+
  </mapper>

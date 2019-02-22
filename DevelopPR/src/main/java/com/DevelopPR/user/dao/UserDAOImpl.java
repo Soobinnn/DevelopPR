@@ -179,5 +179,5 @@ public class UserDAOImpl implements UserDAO
 	   public int checkphone(String phone) {
 		   return sqlSession.selectOne("user.checkPhone",phone);
 	   }
-
+	   
 }

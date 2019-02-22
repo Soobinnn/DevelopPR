@@ -15,13 +15,15 @@
 	
 	var profile  = "${vo.profile}";
 	
-	if(profile == null && profile == "")
+	if(profile == "" || null) // 처음 회원가입한 회원들
 	{
-	$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg");
+	$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
+	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
 	}
-	else 
+	else //그렇지 않으면
 		{
 		 $('#uploadImage').attr("src",profile);
+		 $('#uploadImg').val(profile);
 		}
 		
 }); 
@@ -51,9 +53,10 @@ function uploadImageFileChange() {
 function fn_modifyImage() {
 	var w = window.open("../imageEditor", "", "width=800,height=650,top=0px,left=200px,status=, resizable=false,scrollbars=no");
 }
-
+//사진 삭제 버튼
 function fn_removeImage() {
 	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg");
+	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 값으로 기본 사진 경로를 넣어줌. 안 넣어주면 기존 사진 값이 DB에 들어감.
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
 }
@@ -105,15 +108,22 @@ $(function(){
 		$('#job').css({"display" : "block"});
 	}
 	
-
+//수정 버튼 클릭 이벤트
 $('#modify').click(function()
 {
     // 글자수만 제한
     var userNickCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
     var _userNick = $('#userNick').val();
     var param = "userNick="+_userNick;
-    var userNick = "<%=(String)session.getAttribute("userNick")%>"
-	// 핸드폰 숫자형식 9~11자
+    var userNick = "<%=(String)session.getAttribute("userNick")%>" 
+    												/*↑ 일반회원 로그인 세션값 닉네임 */
+    //스크립트에서는 = ; 이런 경우 실행이 되질 않는다. 주의!
+   if("${vo.userNick}" != null) // 무조건 닉 안에 값이 있으면 
+	   {
+	   userNick = "${vo.userNick}"; // 변수에 받아온 nick을 넣어준다. 
+	   }
+   
+    // 핸드폰 숫자형식 9~11자
     var userPhoneCheck = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
  	// 핸드폰 숫자형식 9~11자
     var userPhoneCheck_num = /^[0-9]*$/;
@@ -153,7 +163,7 @@ $('#modify').click(function()
         return false;
     }
     
-    else if(_userNick == userNick)
+    else if(_userNick == userNick ) // 다른계정 로그인 땜에 닉네임 추가 , 기존에 닉네임 값을 변경하지 않고 수정을 누를경우. 중복체크를 하지 않기위해
     	{
     	    $('#userNick').css({"border" :"2px solid green","background-color":"white"});
     	    
@@ -165,7 +175,7 @@ $('#modify').click(function()
     	    	return;
     	    }
     	}
-    else
+    else // 닉네임을 수정할 경우 중복체크
     {
     	$.ajax({
     
@@ -199,7 +209,7 @@ $('#modify').click(function()
                     	    	return;
                     	    }
                     }
-                    else if(data == '1')
+                    else if(data == '1') // 중복인 경우
                     {               
                         $('#userNick').css({"border" :"2px solid red","background-color":"#FBF5EF"});
                         $('#nickCheckMsg').text('이미 사용된 닉네임입니다.').css({"color":"red"});
@@ -212,6 +222,7 @@ $('#modify').click(function()
     }
 });
 
+// 휴대폰번호 유효성 검사
 $('#userPhone').keyup(function()
 {
     // 핸드폰 숫자형식 9~11자
@@ -232,6 +243,7 @@ $('#userPhone').keyup(function()
 
     }
 });
+//취소버튼 클릭 
 $('#cancel').click(function()
 		{
 	if(confirm("정말 취소하시겠습니까?") == true){

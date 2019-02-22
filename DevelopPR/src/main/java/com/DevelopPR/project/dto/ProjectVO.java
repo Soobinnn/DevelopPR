@@ -9,14 +9,13 @@ public class ProjectVO
 	
 	private int pno;
 	private String project_name;
-	private String project_content;    //프로젝트 내용 소개란
-    private Date project_term1;        //프로젝트 시작일
-	private Date project_term2;        //프로젝트 종료일
-    private String techstack;          //테크스택(사용가능 언어)
-	private String project_grade;      //프로젝트 등급 (상용화, 팀프로젝트...)
-	private String tech_name_input;    //검색어 ajax 통신에 이용되는 변수, 검색어 값을 담는다.
-	private String nick;               //닉네임, 세션값을 받아서 UserVO형태로 담아온다.
-	
+	private String project_content; //프로젝트 내용 소개란
+    private Date project_term1;    //프로젝트 시작일
+	private Date project_term2;      //프로젝트 종료일
+    private String techstack;       //테크스택(사용가능 언어)
+	private String project_grade;       //프로젝트 등급 (상용화, 팀프로젝트...)
+	private String tech_name_input;   //검색어 ajax 통신에 이용되는 변수, 검색어 값을 담는다.
+	private String email;
 	
 	
 	public int getPno() {
@@ -25,11 +24,12 @@ public class ProjectVO
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public String getNick() {
-		return nick;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getTech_name_input() 
 	{

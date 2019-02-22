@@ -5,7 +5,6 @@
 <head>
 <title>이력서 등록</title>
 <%@ include file="../../views/include/tag_header.jsp" %>
-
 <script>	
 window.onload = function() {
 	  var input = document.getElementById("hash").focus();
@@ -380,7 +379,7 @@ function fn_removeImage() {
                                 <input type="radio" name="cnum_is_open" value="1" class="phone_radio" id="pr1" value="phoneopen" checked/>
                                 	<label for="pr1" class="la" ><p class="p_label">공개 </p></label>
                                 <input type="radio" name="cnum_is_open" value="0" class="phone_radio" id="pr2" value="phoneclose"/>
-                                <label for="pr2" class="la"><p class="p_label">비공개 </p></label>
+                                <label for="pr2" class="lala"><p class="p_label">비공개 </p></label>
                                 <br/> <span id="phoneCheckMsg"></span>
                             </div>
                         </div>
@@ -395,7 +394,7 @@ function fn_removeImage() {
                                 <input type="radio" name="email_is_open" value="1" id="er1" checked/>
                                 	<label for="er1" class="la"><p class="p_label">공개 </p></label>
                                 <input type="radio" name="email_is_open" value="0" id="er2"/>
-                                	<label for="er2" class="la"><p class="p_label">비공개 </p></label>
+                                	<label for="er2" class="lala"><p class="p_label">비공개 </p></label>
                             </div>
                         </div>
 
@@ -417,7 +416,7 @@ function fn_removeImage() {
                                 <input type="radio" id="ar1" name="address_is_open" value="1" checked/>
                                 	<label for="ar1" class="la"><p class="p_label">공개 </p></label>
                                 <input type="radio" id="ar2" name="address_is_open" value="0"/>
-                                  	<label for="ar2" class="la"><p class="p_label">비공개 </p></label>
+                                  	<label for="ar2" class="lala"><p class="p_label">비공개 </p></label>
                             </div>
                         </div>
 

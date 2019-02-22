@@ -330,4 +330,86 @@
     font-weight : 600;
     font-size : 1.1rem;
 }
+._meet .sendchat_nick
+{
+    display :inline-block;
+    width : 50px;
+    padding : 10px;
+}
+._meet #chat_info
+{
+    position :absolute;
+    top :  580px;
+    left : 580px;
+    width : 500px;
 
+    height : 60px;
+}
+
+._meet #chat_info > #chat_info_img
+{
+    position :relative;
+    width : 60px;
+    height : 60px;
+    border : 1px solid black;
+    border-radius : 15px;
+}
+._meet  #chat_info > #chat_info_nick
+{
+      position :relative;
+      bottom : 60px;
+      left : 80px;
+      width : 400px;
+      height : 50px;  
+      line-height : 60px;
+      font-size : 1.5rem;
+      font-weight : bold;
+}
+._meet #chatroomsetting1
+{
+    position : relative;
+    left : 33px;
+    top : 15px;
+    width : 90px;
+    height : 30px;
+}
+._meet #chatroomsetting2
+{
+    position : relative;
+    top : 15px;
+    left : 80px;
+    width : 90px;
+    height : 30px;
+}
+
+._meet #chatroom_icon
+{
+    position : relative;
+    width :20px;
+    top : 3px;
+    left : 5px;
+    height : 20px;
+    background-image : url("set.png");
+    background-size : 20px;
+}
+._meet #chatroom_exit
+{
+    position: relative;
+    display :none;
+    bottom : 27px;
+    left : 40px;
+    width : 50px;
+    height : 30px;
+    border : 1px solid #b8b8b8;
+    background-color : white;
+    font-size : 0.8rem;
+    text-align : center;
+    line-height :30px;
+    font-weight :bold;
+    border-radius : 10pt 5pt 5pt 10% / 10pt 5pt 5pt 10%
+}
+._meet #chatroom_exit:hover
+{
+   background-color : #819FF7;
+   color :white;
+}

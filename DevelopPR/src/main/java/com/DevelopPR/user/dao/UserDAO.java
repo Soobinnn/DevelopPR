@@ -75,6 +75,7 @@ public interface UserDAO
 	  public List<UserVO> longUnAccess();
 	//이메일 찾기 Ajax 핸드폰 번호인증 추가 :: 준형
 	   public int checkphone(String phone);
+	  
 }
 
 

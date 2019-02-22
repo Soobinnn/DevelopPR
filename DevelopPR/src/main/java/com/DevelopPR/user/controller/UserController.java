@@ -34,6 +34,7 @@ import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -168,12 +169,13 @@ public class UserController
 	  System.out.println(phone);
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
-	  List<String> email = new ArrayList<String>();
-	  email = userService.findId(phone);
-	  // email 담고,
-	  System.out.println(email);
+	  List<String> emailList = new ArrayList<String>();
+	  emailList = userService.findId(phone);
 	  
-	  mav.addObject("email", email);
+	  // email 담고,
+	  System.out.println("-----------------------------이메일 목록 --------------------------------"+emailList);
+	  
+	  mav.addObject("emailList", emailList);
 	  // findIdResult.jsp로 넘긴다.
 	  mav.setViewName("basic/user/findEmailResult");
 	  
@@ -498,7 +500,7 @@ public class UserController
 
     // 세션 등록
     UserVO vo2 = new UserVO();
-    vo2.setUserEmail(vo.getUserEmail()+"_kakao");
+    vo2.setUserEmail(vo.getUserEmail());
     vo2.setUserNick(vo.getUserNick());
     vo2.setUserName(vo.getUserName());
     vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -557,7 +559,7 @@ public class UserController
 	      }
 	      // 세션 등록
 	      UserVO vo2 = new UserVO();
-	      vo2.setUserEmail(vo.getUserEmail()+"_naver.com");
+	      vo2.setUserEmail(vo.getUserEmail());
 	      vo2.setUserNick(vo.getUserNick());
 	      vo2.setUserName(vo.getUserName());
 	      vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -629,7 +631,7 @@ public class UserController
 
       // 세션 등록
       UserVO vo2 = new UserVO();
-      vo2.setUserEmail(vo.getUserEmail()+"_google");
+      vo2.setUserEmail(vo.getUserEmail());
       vo2.setUserNick(vo.getUserNick());
       vo2.setUserName(vo.getUserName());
       vo2.setUserIs_seek(vo.getUserIs_seek());
@@ -663,29 +665,108 @@ public class UserController
       }
       return "redirect:/main";
   }
-//회원정보 수정 폼 : 준형------------------------------------------------------------------------------------------------------------------
+//회원정보 수정 폼 : 준형 , 다른 계정 로그인 프로필 사진 추가-------------------------------------------
   @RequestMapping(value="modifyInfoform", method= RequestMethod.GET) 
   public String userModifyInfoform(HttpSession session, Model model) throws Exception
   {
-	  String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
-	  
-	  UserVO vo = userService.modifyform(userEmail);
-	  System.out.println(vo);
-	  model.addAttribute("vo", vo);
+	 String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
+	 UserVO userEmail_other = (UserVO)session.getAttribute("login"); //다른 계정 로그인 세션값
+	 String userEmail_otherEmail = userEmail_other.getUserEmail(); // 수정할때 조건을 위해 이메일을 빼옴.
+	 String userNick_other =  userEmail_other.getUserNick(); // 다른계정로그인 닉네임 값을 jsp에 넘겨주기 위해 가져옴.
+	 
+	 //사진을 불러올때 _가 있으면 다른계정로그인을 통한 이메일로 불러온다
+	 if(userEmail_otherEmail.indexOf("_")>-1)
+	 {
+		 UserVO vo2 = (UserVO)userService.modifyform(userEmail_otherEmail);
+		 model.addAttribute("vo",vo2);
+		 model.addAttribute("userNick",userNick_other);
+	 }
+	 else // 일반회원
+	 {
+		 UserVO vo = userService.modifyform(userEmail);		 
+		  model.addAttribute("vo", vo);
+	 }
 	  return "basic/user/modifyInfo";
 	  
   }
-//회원정보 수정-------------프로필 사진 값 가져오기 추가 ------------------------------------------------------------------------------------------
+private UserVO setUserNick(String userNick_other) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+private String getUserEmail(UserVO userEmail2) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@SuppressWarnings("unused")
+private HttpSession getSession() {
+	// TODO Auto-generated method stub
+	return null;
+}
+//---------------------------------------------------------------------------
+
+//회원정보 수정 , 세션 추가 
   @RequestMapping(value="modifyInfo", method= RequestMethod.POST)
-  public String userModifyInfo(@ModelAttribute UserVO vo) {
+  public String userModifyInfo(@ModelAttribute UserVO vo ,HttpSession session) {
+	  
 	  String userProfile = vo.getProfile();
-	  String profileURL = "/DevelopPR/resources/profile/"+userProfile;
-	  vo.setProfile(profileURL);
-	  userService.modifyInfo(vo);
-	  return "user/modifyInfoConfirm";
+	  System.out.println("-----------------------------------------------프로필 사진 값 확인2 ------------------------------"+userProfile);
+	  
+	  String userEmail = vo.getUserEmail();
+	  
+	  if(userEmail.indexOf("_") > -1) // 다른계정 이메일인 경우에 세션 값 변경, 세션을 그냥  다시  넣어도 변경 됨.
+	  {
+		  UserVO vo2 = vo;
+		 
+		  vo2.setUserEmail(vo.getUserEmail());
+	      vo2.setUserNick(vo.getUserNick());
+	      vo2.setUserName(vo.getUserName());
+	      vo2.setUserIs_seek(vo.getUserIs_seek());
+	      session.setAttribute("login", vo2 );
+		  
+	  }
+	  else // 일반회원 이메일인 경우 세션 값 변경
+	  {
+		  	UserVO vo2 = vo;
+		  	session.setAttribute("userEmail", vo2.getUserEmail());
+     		session.setAttribute("userNick", vo2.getUserNick());
+     		session.setAttribute("userName", vo2.getUserName());
+     		session.setAttribute("userIs_seek", vo2.getUserIs_seek());
+     		session.setAttribute("login", vo2);
+		  
+	  }
+	  
+	  if(userProfile.matches(".*Develop.*")) 
+	  {
+		vo.setProfile(userProfile);
+		userService.modifyInfo(vo);
+		
+	  }
+	  else if(userProfile.matches(".*http.*")) // 다른 계정으로 로그인 할 경우 수정할때 경로에 http가 있으면
+	  {
+		  vo.setProfile(userProfile);
+			userService.modifyInfo(vo);
+			
+	  }
+	  else if(userProfile == "")
+	  {
+		  vo.setProfile(userProfile);
+		  userService.modifyInfo(vo);
+		  
+	  }
+	  else
+	  	{
+		  String profileURL = "/DevelopPR/resources/profile/"+userProfile;
+		  System.out.println("-----------------------------------------------프로필 사진 값 확인3 -----------------------------"+profileURL);
+		  vo.setProfile(profileURL);
+		  userService.modifyInfo(vo);
+		  
+	  	}
+	 return "user/modifyInfoConfirm";
   }
-  
-  //회원 탈퇴 폼 : 준형 , 이메일 세션값 추가-----------------------------------------------------------------------------------------------------
+ 
+  //회원 탈퇴 폼 : 준형 , 이메일 세션값 추가
   @RequestMapping(value="goodbyeform", method=RequestMethod.GET)
   public String goodbyeform(HttpSession session, Model model) {
 	  String userEmail = (String) session.getAttribute("userEmail");
@@ -782,7 +863,7 @@ public class UserController
 
   }
   
-  //비밀번호 변경 폼: 준형--------------------------------------------------------
+  //비밀번호 변경 폼: 준형
   @RequestMapping(value="changePwform", method=RequestMethod.GET)
   public String ChangePw(HttpSession session, Model model) {
 	String userEmail = (String) session.getAttribute("userEmail");
@@ -790,4 +871,18 @@ public class UserController
 	  model.addAttribute("userEmail",userEmail);
 	  return "basic/user/changePw";
   }
+
+ /* //카카오 로그아웃
+  @RequestMapping(value = "kakaologout", produces = "application/json")
+  public String Logout(HttpSession session) 
+  {
+      //kakao restapi 객체 선언
+	  Kakaologinapi kr = new Kakaologinapi();
+      //노드에 로그아웃한 결과값음 담아줌 매개변수는 세션에 잇는 token을 가져와 문자열로 변환
+      JsonNode node = kr.Logout(session.getAttribute("token").toString());
+      //결과 값 출력
+      System.out.println("로그인 후 반환되는 아이디 : " + node.get("id"));
+      return "redirect:/main";
+  }    */
+
 }

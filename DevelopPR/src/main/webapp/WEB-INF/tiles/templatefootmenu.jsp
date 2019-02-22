@@ -108,9 +108,9 @@
 		$(document).on("click","#_logout",function(event)
 		{
 			event.stopPropagation();
-			var _email = '${login.userEmail}';
-			console.log("카카오냐?"+ _email);	 
-			if(_email.indexOf("_kakao") != -1)
+			var kakao_email = '${login.userEmail}';
+			/* console.log("카카오냐?"+ kakao_email);	 */
+			if(kakao_email.indexOf("_kakao") != -1)
 			{
 				window.open("https://developers.kakao.com/logout", "kakaologout","width=400, height=350");
 			}
@@ -118,7 +118,6 @@
 			{
 				window.open("http://nid.naver.com/nidlogin.logout", "kakaologout","width=400, height=350");
 			}
-			
 		});
 	})
 	</script>
@@ -160,7 +159,6 @@
 			</c:if>
 			<c:if test="${sessionScope.login.userIs_seek == 0}">
 			<li class="fullmenulist"><a href='javascript:modifyplz();'>이력서 등록</a></li>
-
 			</c:if>
 			<li id="fulljoin"class="fullbtn"><a href="${path}/user/modifyInfoform">MODIFICATION</a></li>
 			<li id="fulllogin"class="fullbtn"><a id="_logout" href="${path}/user/logout">LOGOUT</a></li>
@@ -168,7 +166,6 @@
 	</nav>
 	</c:otherwise>
 	</c:choose>
-  <tiles:insertAttribute name="header" />
   <tiles:insertAttribute name="body" />
   <tiles:insertAttribute name="footer" />
   
