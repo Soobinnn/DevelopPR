@@ -21,6 +21,6 @@ public interface ProjectService
 	public List<ProjectVO> lookup(String tech_name_input) throws Exception;
 
 //프로젝트 목록
-	public List<ProjectVO> projectList(String email) throws Exception;
+	public List<ProjectVO> projectList(String nick) throws Exception;
 
 }

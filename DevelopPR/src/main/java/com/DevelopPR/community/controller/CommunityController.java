@@ -11,13 +11,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +40,16 @@ import com.DevelopPR.user.dto.UserVO;
 @Controller 
 @RequestMapping("/community/")
 public class CommunityController {
+	
+	@Resource
+	private Validator validator;
+	
+	 @InitBinder
+	    private void initBinder(WebDataBinder binder){
+	        binder.setValidator(this.validator);
+	    }	
 
-   @Inject
+  @Inject
    CommunityService communityService;
 
    @RequestMapping("list")
@@ -76,8 +90,12 @@ public class CommunityController {
 
    // 03..
    @RequestMapping(value = "regist", method = RequestMethod.POST)
-   public String communityRegist(@ModelAttribute CommunityVO vo, HttpSession session, HttpServletRequest request) throws Exception 
+   public String communityRegist(@ModelAttribute @Valid CommunityVO vo, HttpSession session, HttpServletRequest request, BindingResult bindingResult) throws Exception 
    {
+	
+	   
+	   
+	   
 	   System.out.println("doodo----------" + session.getAttribute("login"));
 	   UserVO userVo = (UserVO) session.getAttribute("login");
 	  

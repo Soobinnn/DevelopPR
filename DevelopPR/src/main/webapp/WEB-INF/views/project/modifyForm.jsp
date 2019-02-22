@@ -2,56 +2,136 @@
 <!-- jstl 코어 태그 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<html class="projectRegist">
- <%-- ${path}를 쓰려면 jstl 코어태그와 함께 컨텍스트 패스를 써야 한다. --%>
- <head>
-        <meta charset="utf-8">
-        <title>DevelopPR-프로젝트 등록</title>
-      <link href="../include/css/developpr.css" rel="stylesheet" type="text/css">
-       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-       <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-       
-        <script>
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+
+
+
+<meta charset="UTF-8">
+<title>Project Regist Form</title>
+
+  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/project/pr_registForm.css'/>"/>
+   
+  
+<style>
+.pr_regist .techstacklist{
+              display : flex;      /* ... */
+              flex-wrap :wrap;
+			  width: 360px;
+		 	  margin-left: 148px;
+                            }
+.pr_regist .techstacklist > li{
+              width : 100px;
+              height : 50px;
+              text-align: center;
+                                   }
+
+#techstack_btns {position: relative;}
+ #techstack_btns input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
+ position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip:rect(0,0,0,0);
+border: 0 
+}
+ 
+#techstack_btns input[type="checkbox"] + label {
+ display: inline-block;
+position: relative;
+cursor: pointer;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none; }
+
+#techstack_btns input[type="checkbox"] + label:before { /* 가짜 체크박스 */
+ content: ' '; display: inline-block; width: 21px; /* 체크박스의 너비를 지정 */
+  height: 21px; /* 체크박스의 높이를 지정 */
+   line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+    margin: -2px 8px 0 0;
+     text-align: center;
+      vertical-align: middle;
+       background: #fafafa; border: 1px solid #cacece;
+        border-radius : 3px;
+         box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05); }
+
+ #techstack_btns input[type="checkbox"] + label:active:before,
+  #techstack_btns input[type="checkbox"]:checked + label:active:before {
+       box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1); 
+} 
+
+#techstack_btns input[type="checkbox"]:checked + label:before { /* 체크박스를 체크했을때 */
+ content: '\2714'; /* 체크표시 유니코드 사용 */
+  color: #99a1a7; 
+  text-shadow: 1px 1px #fff; 
+  background: #e9ecee; 
+  border-color: #adb8c0; 
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+   }
+
+
+
+ 
+</style>
+<script>
           $(document).ready(function()
             {
+        	  $(document).scrollTop(550);
+        	  
+        	  
+        	  document.getElementById("techstack_hidden_show").style.display = "none";
+        	          	  
         	  <%--프로젝트명 추가부분, 프로젝트 등급 버튼 --%>
-        	  const ul = document.querySelector('.techstacklist'); 
+        	  var ul = document.querySelector('.techstacklist'); 
  		     $('.gradebtn').click(function(){
-                       const text =  $(this).val();
+                       var text =  $(this).val();
                        $('#project_grade').val(text);
                    });
    
             
               <%--값 전송 버튼 시작 --%>  
  		      $("#btnSave").click(function(){
-                    const project_name = $("#project_name").val();
-                    const project_content = $("#project_content").val();
-                    const project_term1 = $("#project_term1").val();
-                    const project_term2 = $("#project_term2").val();
+                    var project_name = $("#project_name").val();
+                    var project_content = $("#project_content").val();
+                    var project_term1 = $("#project_term1").val();
+                    var project_term2 = $("#project_term2").val();
                     
                     console.log(project_name);
                     console.log(project_content);
                     console.log(project_term1);
                     console.log(project_term2);
                     
-                    if(project_name === ""){
-                        alert("프로젝트 제목을 입력하세요");
+                    
+                    /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
+                    var project_name = $('#textarea_title').val();
+                    var project_content = $('#textarea_introduce').val();
+                    
+                    
+                    
+                    if (project_name.replace(/ |　/gi, '') == ''){ 
+                        alert("프로젝트 제목을 입력해주세요.");
                         document.form1.project_name.focus();
-                        return;
+                        return; 
                     }
-                    if(project_content === ""){
-                        alert("프로젝트 내용을 입력하세요");
+                    
+                    if (project_content.replace(/ |　/gi, '') == ''){ 
+                        alert("프로젝트 내용을 입력해주세요.");
                         document.form1.project_content.focus();
-                        return;
+                        return; 
                     }
+                    
                   
-                    if(project_term1 === ""){
+                    if(project_term1 == ""){
                     	alert("프로젝트 시작 날짜를 입력하세요");
                     	document.form1.project_term1.focus();
                     	return;
                     }
                     
-                    if(project_term2 === ""){
+                    if(project_term2 == ""){
                     	alert("프로젝트 종료 날짜를 입력하세요");
                     	document.form1.project_term2.focus();
                         return;
@@ -64,180 +144,275 @@
                 });  
                      <%--값 전송 및 유효성 검증 종료 --%>            
             
-            	
-                  <%--테크스택 체크박스 로직 시작 --%>   
-                  $('input:checkbox[name="techstack"]').on('click', function(){      //테크스택 체크박스를 클릭하면 아래의 매개변수를 생성하는데, 그 안에는 각각 작업하는 데 쓰일 태그가 담긴다.
-                    var stacklist = document.createElement('li');                   
-                    var stackText = document.createElement('span');
-                    var stackbtn =  document.createElement('button');
-
-                      if(this.checked)
-                      {//checked 처리된 항목의 값
-                          stacklist.appendChild(stackText);   //   <li><span></span></li>
-                          stackText.textContent = this.value; //<li><span>입력된 값</span></li>
-                          stacklist.appendChild(stackbtn);   // <li><span>입력된 값<button></button>X</span></li>
-                          stackbtn.textContent = 'X';
-                          stacklist.id = this.id +'li';
-
-                          ul.appendChild(stacklist);
-                          
-                          stackbtn.onclick = function(e)    //X자 버튼을 누르면 ul에 담긴 요소들을 삭제한다.
-                         {
-                              ul.removeChild(stacklist);
-                              var _subs = stacklist.id;
-                              var subs = _subs.substring(0, _subs.length-2);
-                              $('input:checkbox[id="'+ subs +'"]').prop('checked',false);
-                              // $('input:checkbox[id="'+subs+'"]').checked =false;                   
-                         } //end of stackbtn.onclick
-                      }
-                      else if(this.checked===false)
-                      {  
-                          $('#'+this.id+'li').remove();
-                      }       
-
-                  }); // end of input checkbox     
-           
+         <%-- project_tech_name을 가져와서 버튼이 체크된상태로 페이지가 시작되게 한다. --%>            
+                     
 
 
+       
+         
+         $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
+              var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
+              var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
+              for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
+           	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
+           		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
+           		  	 chkbox_obj[k].checked = true;                    //체크하고
+           		  }
+           		  else {
+           			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
+           		  }
+           	   }
+              }
+           }); //end of button-check            
+                     
+                     
             
             
             
            
-      /* ajax 검색 로직 추가 */           
+      
+         
+         
+         
+         /* ajax 검색 로직 추가 */           
     $(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
         $(".project_tech_name").keyup(function() {
-				console.log('키이벤트작동하는가?');
+				
         	
-		    var tech_name_input = $('.project_tech_name').val();
-        	var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-        	console.log('값이 담기는가 :' +tech_name_input);
-        	$.ajax({ // Ajax 요청을 작성
-                url: "${path}/project/autocomplete",
-                data: param,
-                method: "POST",
-                success : function(result) 
-            {    
-                if (tech_name_input === "" || tech_name_input === null) // techstack 입력란이 비워져 있을 경우
-                	{                                     //start of if
-                    	$( 'ul' ).empty();             //입력값이 있을 경우 td에 출력이 되는데  입력값이 없을 경우 td안의 값을 비운다.
-                 	} else {                             //end of if and start of else
-                        
-                 		var output = document.createElement('div');     
-                 	   for(var i in result)        // result에서 받아온 값의 개수만큼 for문을 돌린다.
-            	         	{
-                               var techName = result[i].tech_name_input;
-                        	  /*  var listItem = document.createElement('li'); */
-                 			   var listBtn = document.createElement('button');
-                                                            
-                              /* output.appendChild(listItem); */
-                             listBtn.textContent = techName;
-                              output.appendChild(listBtn);
-                              listBtn.type='button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
-                              listBtn.value="techbutton";
-                              listBtn.id=techName;  //각 버튼의 value를 지정한다.
-            	             
-                              
-                              $(".techstacklist").html(output);
-            	         	
-                            <%--버튼 체크박스 연동 로직 추가 --%>
-                  		     $('button').click(function(){
-                  		    	var buttons = $('button');
-                  		    	
-                  		    
-                  		    	$('input:checkbox[name = "techstack"]').each(function(){
-                  		    		
-                  		    		if(this.value === listBtn.id){
-                  		    			this.checked = true;
-                  		    		   console.log('if문 작동하는가?')
-                  		    		}
-                  		    	});
-                  		   	
-                  		
-                  		     }); //end of button-check
-            	
-            	         	
-            	         	} //end of for
-                              
-                 	} //end of else
-                  		
-        } // end of success
+        	console.log('키이벤트작동하는가?');
+        	
+		        var tech_name_input = $('.project_tech_name').val();
+        	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
+         	console.log('값이 담기는가 :' +tech_name_input);
+        	
+         	$.ajax({ // Ajax 요청을 작성
+         	    url: "${path}/project/autocomplete",
+         	    data: param,
+         	    method: "POST",
+         	    success: function (result) {
+         	        if (tech_name_input == "" || tech_name_input == null) {       // techstack 입력란이 비워져 있을 경우
+         	        	document.getElementById("techstack_hidden_show").style.display = "hidden";  	        	                                                                 	 //start of if
+         	            $('ul').empty();            
+                      } else {                                                  //end of if and start of else
+         	            var output = document.createElement('div');            //div에서 span으로 변경
+         	            for (var i in result)                                   // result에서 받아온 값의 개수만큼 for문을 돌린다
+         	            {
+         	                var techName = result[i].tech_name_input;
+         	                
+         	                var listBtn = document.createElement('button');
+         	               
+         	               document.getElementById("techstack_hidden_show").style.display = "block";
 
- 
-        	}); //end of ajax
-     
-       
+         	               listBtn.textContent = techName;
+         	                listBtn.type = 'button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
+         	                listBtn.value = techName;
+         	                listBtn.style.marginTop = '6px';
+         	                listBtn.style.marginRight = '6px';
+         	                listBtn.setAttribute('class', "techbuttons");  //각 버튼의 value를 지정한다.
+         	                output.appendChild(listBtn);
+
+         	                $(".techstacklist").html(output);
+
+         	                $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
+         	                   var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
+         	                   var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
+         	                   for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
+         	                	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
+         	                		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
+         	                		  	 chkbox_obj[k].checked = true;                    //체크하고
+         	                		  }
+         	                		  else {
+         	                			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
+         	                		  }
+         	                	   }
+         	                   }
+         	                }); //end of button-check
+
+         	            } //end of for
+
+         	        } //end of else
+
+         	    } // end of success
+
+
+         	}); //end of ajax
+
     }); // end of keyup function
         	
     });
-            
-           
-            }); //end of document.ready          
-          </script>
-   
-   <style>
-           .projectRegist .techstacklist
-            {
-                display : flex;
-                flex-wrap :wrap;
 
-            }
-           .projectRegist .techstacklist > li
-            {
-                width : 100px;
-                height : 50px;
-                text-align: center;
-            }
+         
+    	 function addFilePath(msg){
+    	        console.log(msg); // 파일명 콘솔 출력
+    	        document.getElementById("form2").reset(); // ifream에 업로드결과를 출력 후 form에 저장된 데이터 초기화
+    	    }
+ 
+             
+///////////////체크박스 체크 로직 시작.
+     
+     	var chk_received = "${dto.techstack}";                   //techstack값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
+        var chk_split = chk_received.split(',');               //받아온 값을 콤마 단위로 잘라서 저장한다.
+                                                                         
+        if(chk_split.indexOf("Java")>-1) 
 
-         <%--파일 업로드  폼 추가 --%>
-        .projectRegist iframe{
-        width: 600px;
-        height: 100px;
-        border: 1px;
-        border-style: solid;
-        }
-        </style>
-    </head>
-
-    <body>
-        <div class="container">
-            <form name="form1" id="form1" method="post" action="${path}/project/modify" enctype="multipart/form-data">
-             <header class="second_header">
+         {
+   $("#techstack_java").prop("checked", true);
+          }
+        
+         if(chk_split.indexOf("JavaScript")>-1) 
+        {
+  $("#techstack_javascript").prop("checked", true);
+         }
                 
-            </header>
-            <section class="project_section">
-                <div class="projectform">
-                    <div id="projectname" class="projectformt">
-                        <h3 class="project_h3">프로젝트</h3>
-                        <h1 class="project_h1">빠르고 쉽게 프로젝트를 등록하세요.</h1>
-                        <label for="project_name" class="project_label">제목</label>
-                        <input type="text" id="project_name" name="project_name" value="${dto.project_name}" autofocus/>
-                    </div>
-                    <div id="projectcontent" class="projectformt">
-                        <label for="project_content" id="project_content_label"class="project_label">내용</label>
-                        <textarea id="project_content" name="project_content">${dto.project_content}</textarea>
-                    </div>
-                    
-                    
-                    <%--파일 업로드 폼 --%>
-                    <div id="projectupload" class="projectformt"> 
-                       <label for="project_upload_file" class="project_label">업로드</label><br>
-                        <input type="file" id="project_upload_file" name="project_upload_file"/>
-                         
-                     </div>
-                    
-                    
-                    
-                    <div id="projectterm" class="projectformt">
-                            <label for="project_term" class="project_label">날짜/기간</label>
-                            <input type="date" id="project_term1" name="project_term1" value="${dto.project_term1}"/>
-                            ~
-                            <input type="date" id="project_term2" name="project_term2" value="${dto.project_term2}"/>
-                    </div>
-                    <div id="projecttech" class="projectformt">
-                            <ul class="techstacklist"></ul>
-                            <label for="project_tech_name" class="project_label">Tech Stack</label>
-                            <input type="text" class="project_tech_name" name="project_tech_name" placeholder="...Tech Stack"/> <%-- 입력폼 --%>
-                            <br>
+        
+         if(chk_received.indexOf("C#")>-1) 
+        {
+  $("#techstack_c3").prop("checked", true);
+         }
+        
+         if(chk_received.indexOf("php")>-1) 
+
+        {
+  $("#techstack_php").prop("checked", true);
+         }
+        
+         if(chk_received.indexOf("android")>-1) 
+
+        {
+  $("#techstack_android").prop("checked", true);
+         }
+        
+         if(chk_received.indexOf("jquery")>-1) 
+
+        {
+  $("#techstack_jquery").prop("checked", true);
+         }
+        
+         if(chk_received.indexOf("python")>-1) 
+
+        {
+  $("#techstack_python").prop("checked", true);
+         }
+        
+         if(chk_received.indexOf("html")>-1) 
+
+        {
+  $("#techstack_html").prop("checked", true);
+         }
+        if(chk_received.indexOf("c++")>-1) 
+
+        {
+  $("#techstack_c2").prop("checked", true);
+         }
+        if(chk_received.indexOf("ios")>-1) 
+
+        {
+  $("#techstack_ios").prop("checked", true);
+         }
+
+        if(chk_received.indexOf("css")>-1) 
+
+        {
+  $("#techstack_css").prop("checked", true);
+         }
+        if(chk_received.indexOf("mySql")>-1) 
+
+        {
+  $("#techstack_mysql").prop("checked", true);
+         }
+        
+        if(chk_split.indexOf("Oracle")>-1) 
+
+        {
+  $("#techstack_oracle").prop("checked", true);
+         }
+        
+
+        if(chk_split.indexOf("asp")>-1){
+  $("#techstack_asp").prop("checked", true);
+         }
+        
+        if(chk_received.indexOf("ruby-on-rails")>-1) 
+
+        {
+  $("#techstack_ruby-on-rails").prop("checked", true);
+         }
+        if(chk_received.indexOf("objective-c")>-1) 
+
+        {
+  $("#techstack_objective-c").prop("checked", true);
+         }
+        if(chk_received.indexOf("c")>-1) 
+
+        {
+  $("#techstack_c").prop("checked", true);
+         }    
+             
+/////////////////////////////체크박스 체크 로직 종료        
+            
+            
+            
+            
+            
+            
+            
+            }); //end of document.ready  
+
+          </script>
+
+</head>
+<body>
+
+<!--ProjectVO에 있는 변수명과  여기의 name값이 일치해야 한다. -->
+<div class="pr_regist">
+<div class="container">
+<%-- <form name="form1" id="form1" method="post" action="${path}/project/regist" enctype="multipart/form-data"> --%>  
+<form name="form1" id="form1" action="${path}/project/regist" method ="post" enctype="multipart/form-data">
+  <div id="project_make"><span id="main_title">프로젝트 수정하기</span><br><span id="subtitle_make">쉽고 빠르게 프로젝트를 등록해보세요.</span></div>
+  <div id="title_line_top"> <!--라인 넣기용 div--><hr id="title_top"></div>
+  
+  
+  <div class="title_input">
+   
+   <div id="title">*제목</div>
+   <div id="titleWrite"><input type="text" size="30" id="textarea_title" name="project_name" value="${dto.project_name}" autofocus/></div>
+   <div class="title_warn"><!--자바스크립트로 경고 메시지를 띄운다.--></div>
+  </div> <!--end of title_input-->
+
+  <div class="introduce">
+   <div id="introMenu">요약</div>
+   <div id="introWrite"><textarea id="textarea_introduce" name="project_content" cols="80" rows="4" placeholder="프로젝트를 요약하는 문구를 씁니다." >${dto.project_content}</textarea></div>    
+  </div> <!-- end of introduce-->
+  
+  <div class="regdate_term"><div id="regdate_hr_">  <hr id="regdate_top"></div>
+    <div id="regdate_term_title">&nbsp;&nbsp;날짜 / 기간</div>
+    <div id="regdate_calendar">
+    <input type="date" id="project_term1" name="project_term1" value="${dto.project_term1}"/>
+    &nbsp; ~ &nbsp;
+    <input type="date" id="project_term2" name="project_term2" value="${dto.project_term2}"/>
+    
+    
+    <!--시작일~종료일 달력 메뉴 --></div>
+  </div> <!-- end of regdate_trem-->
+
+  <div class="TechStack"> <div id="techstack_top_"><hr id="techstack_top"></div>
+   <div id="techstack_q"><div id="techstack_font">&nbsp;&nbsp;어떤 Tech Stack을 사용하셨나요?</div></div>
+      
+   
+   <div id="techstack_input">
+   <input type="text" class="project_tech_name" name="project_tech_name" placeholder="...Tech Stack"/> <!-- 입력폼 -->
+   
+   <div id="techstack_hidden_show"> <!--버튼을 누르면 테크스택들이 입력되는 곳(입력이 없을 땐 숨긴다.)  -->
+        <ul class="techstacklist"></ul>
+      </div>
+   
+   
+   
+   <!--테크스택을 직접 입력하는 textarea, placeholder를 쓴다.--></div>
+   <div id="techstack_btns">
+   <!--테크스택 버튼들을 나열하는 곳.-->
+   
+                         <br>
                             <input type="checkbox" id="techstack_javascript" name="techstack" value="JavaScript" class="techstack">
                             <label for="techstack_javascript">Javascript</label>
                             <input type="checkbox" id="techstack_java" name="techstack" value="Java" class="techstack">
@@ -246,7 +421,7 @@
                             <label for="techstack_c#">c#</label>
                             <input type="checkbox" id="techstack_php"name="techstack" value="php" class="techstack">
                             <label for="techstack_php">php</label>
-                            <input type="checkbox" id="techstack_android"name="techstack" value="android" class="techstack">
+                            <input type="checkbox" id="techstack_android" name="techstack" value="android" class="techstack">
                             <label for="techstack_android">android</label>
                             <input type="checkbox" id="techstack_jquery"name="techstack" value="jquery" class="techstack">
                             <label for="techstack_jquery">jquery</label>
@@ -264,50 +439,80 @@
                             <label for="techstack_mysql">mysql</label>
                             <input type="checkbox" id="techstack_oracle"name="techstack" value="Oracle" class="techstack">
                             <label for="techstack_oracle">oracle</label>
-                            <input type="checkbox" id="techstack_asp.net"name="techstack" value="asp.net" class="techstack">
-                            <label for="techstack_asp.net">asp.net</label>
+                            <input type="checkbox" id="techstack_asp"name="techstack" value="asp" class="techstack">
+                            <label for="techstack_asp">asp</label>
                             <input type="checkbox" id="techstack_ruby-on-rails"name="techstack" value="ruby-on-rails" class="techstack">
                             <label for="techstack_ruby-on-rails">ruby-on-rails</label>
                             <input type="checkbox" id="techstack_objective-c"name="techstack" value="objective-c" class="techstack">
                             <label for="techstack_objective-c">objective-c</label>
                             <input type="checkbox" id="techstack_c"name="techstack" value="c" class="techstack">
-                            <label for="techstack_c">c</label>
-                    </div>
-                    
-                    <div id="projectimage" class="projectformt">
-                            <label for="project_image" class="project_label">관련 이미지(데베 추가해야함)</label>
-                            <input type="file" id="project_image" name="project_image"/>
-                    </div>
-                    
-                    <div id="projectgrade" class="projectformt">
-                        <label for="project_grade" class="project_label">프로젝트 등급</label>
-                        <input type="text" id="project_grade" name="project_grade" value="${dto.project_grade}"/>
-                        <br></br> <%--type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. --%>
-                        <button type="button" value="상용화" class="gradebtn">상용화</button>
-                        <button type="button" value="베타테스트" class="gradebtn">베타테스트</button>
-                        <button type="button" value="알파테스트" class="gradebtn">알파테스트</button>
-                        <button type="button" value="튜토리얼" class="gradebtn">튜토리얼</button>
-                        <button type="button" value="과제" class="gradebtn">과제</button>
-                        <button type="button" value="연구" class="gradebtn">연구</button>
-                        <button type="button" value="개인프로젝트" class="gradebtn">개인프로젝트</button>
-                        <button type="button" value="팀프로젝트" class="gradebtn">팀프로젝트</button>
-                    </div>
-                    <div id="projectregist" class="projectformt">
-                    <input type="hidden" value="${dto.pno}" name="pno"/>
-                    <button type="reset">취소</button>
-                   <button type="button" id="btnSave">수정</button>                
-            
-                    </div>
-                 </div>
-            </section>
-            
-            
-            
-            
-            <footer>
-                3
-            </footer>
-</form>
+                            <label for="techstack_c">c</label> 
+                          </div>
+  </div> <!-- end of tachStack-->
+
+  <div class="projectUpload"> <div id="projectUpload_top_"><hr id="projectUpload_top"></div>
+    <div id="upload_title"><div id="upload_font">&nbsp;&nbsp;pdf 또는 ppt파일을 업로드해주세요.</div></div>
+         
+        <div class="file_sub"> <!-- 프로젝트 서브 div -->
+         
+         <div id="upload_sub1">프로젝트를 소개할 파일이 있나요?</div> <!--  end of upload_sub1 -->
+         
+         <div id="upload_sub2">
+         <div id="file_upload">
+         <label for="file_label"></label>
+         <input type="file" id="file_label" name="file"> <%-- VO에 name값과 동일한 매개변수를 만든다. --%>
+         </div> <%-- end of file_upload --%>
+          
+          <%-- <div id="file_download"><c:url value="${dto.pr_file_name}"/>프로젝트 파일 다운로드</a></div> --%>
+         <div id="file_download"><a href="${path}/resources/project_upload/${dto.download_name}" download>프로젝트 파일 다운로드</a></div>
+         
+       </div> <!--  end of upload_sub2 -->
+    	
+         </div><!-- end of file_sub -->
+  </div> <!-- end of projectUpload-->
+ 
+  <div class="projectLvl"> <div id="projectLvl_top_"><hr id="projectLvl_top"></div>
+    <div id="projectLvl_title"><div id="lvl_font">&nbsp;&nbsp;프로젝트 등급</div></div>
+    <div id="projectLvl_q">프로젝트의 등급이 어떻게 되나요?</div>
+    
+    
+       <div id="projectLvl_input">
+      <input type="text" id="project_grade" name="project_grade" value="${dto.project_grade}"/>
+      <div id="projectLvl_txt">수준</div>   
         </div>
-    </body>
+      
+    
+
+    <div id="projectLvl_btns">
+         
+             <%-- type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. --%>
+                
+              <button type="button" value="상용화" class="gradebtn">상용화</button>
+              <button type="button" value="베타테스트" class="gradebtn">베타테스트</button>
+              <button type="button" value="알파테스트" class="gradebtn">알파테스트</button>
+              <button type="button" value="튜토리얼" class="gradebtn">튜토리얼</button>
+              <button type="button" value="과제" class="gradebtn">과제</button>
+              <button type="button" value="연구" class="gradebtn">연구</button>
+              <button type="button" value="개인프로젝트" class="gradebtn">개인프로젝트</button>
+              <button type="button" value="팀프로젝트" class="gradebtn">팀프로젝트</button>
+    </div>
+  
+  
+  </div> <!-- end of projectLvl-->
+
+   <div class="final_btns"> <div id="final_top_"><hr id="final_top"></div>
+   <!--이곳에 등록 버튼을 만든다.-->
+     <button type="reset" class="final_btn" id="btnCancel">취소</button>
+     <button type="button" class="final_btn" id="btnSave">수정</button>
+   </div>
+
+
+</form> <!-- end of form1 -->
+
+
+
+</div>  <!--end of container-->
+</div>  <!--css선택자 추가용 div-->
+
+</body>
 </html>

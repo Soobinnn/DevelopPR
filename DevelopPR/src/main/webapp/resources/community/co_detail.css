@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .co_detail *{
 
 
@@ -20,29 +22,36 @@ outline : none;
 display :flex;
 width : 900px;
 flex-direction: column;
-height:100%;    /*댓글 목록과 입력창까지 포함하기 위해 높이를 800에서 100%로 변경*/
+height : 100%;
 flex-shrink:0;
 margin : 0 auto;
 }
 
-.co_detail .header{ /*제목, 날짜, 닉네임, 조회수가 들어가는 div*/
+
+/*제목, 날짜, 닉네임, 조회수가 들어가는 div*/
+.co_detail .header{ 
 display:flex;
 flex-direction : column;
-height:120px;
-width : 904px;
+max-height:125px;
+width : 900px;
+/* width : 904px; */
 background-color:#f6f6f6;
 border-radius : 20px;
-border-bottom : 1px solid #585858;
+
 }
 
+ 
+ /*제목, 날짜가 들어있는 div*/
+.co_detail .title_reg{
 
-.co_detail .title_reg{ /*제목, 날짜가 들어있는 div*/
 display:flex;
 height : 60px;
 flex-direction:row;
 }
 
 .co_detail #titleInput{
+position : relative;
+left : 10px;
 line-height:60px;
 height:60px;
 display:table-cell;
@@ -51,14 +60,17 @@ align-items:center;
 width : 700px;
 padding-left : 10px;
 font-size : 1rem;
+border-bottom : 3px solid white;
 }
 
 .co_detail #regdate{
+    position : relative;
+    right : 10px;
     line-height:60px;
     height:60px;
     text-align:center;
     width:200px;
-    
+    border-bottom : 3px solid white;    
    
 }
 
@@ -70,6 +82,8 @@ flex-direction:row;
 }
 
 .co_detail #nick{
+position : relative;
+left : 10px;
 display:flex;
 height: 60px;
 line-height: 60px;
@@ -79,17 +93,30 @@ padding-left:10px;
 }
 
 .co_detail #viewcnt{
+    position : relative;
+    right : 10px;
     display:table-cell;
     width:200px;
     height:60px;
     line-height:60px;
     
    }
-.co_detail #view_cnt{    /*span태그로 감싸서 따로 정렬한다.*/
+
+   /*span태그로 감싸서 따로 정렬한다.*/
+.co_detail #view_cnt{ 
 position : relative;
 left : 100px;
 
 }
+
+
+/*글 내용과 제목 사이를 구분짓는 라인*/
+.co_detail #header_bottom_line{
+
+border-bottom : 3px solid #585858;
+}
+
+
 
 .co_detail #content{
 display:flex;
@@ -100,7 +127,9 @@ width: 900px;
 overflow:auto; /*글 내용이 범위를 벗어날 때만 스크롤바 생성*/
 }
 
-.co_detail #content_text{  /*글 내용을 span 태그로 감싼다.*/ 
+
+/*글 내용을 span 태그로 감싼다.*/
+.co_detail #content_text{   
 display:flex;
 position : relative;
 top : 20px;
@@ -110,8 +139,8 @@ height:420px;
 }
 
 
-.co_detail #btns  /*버튼이 담긴 div*/
-{
+ /*버튼이 담긴 div*/
+.co_detail #btns{
 height:80px;
 line-height:80px;
 width:900px;
@@ -139,3 +168,74 @@ margin-right:5px;
 }
 
 
+/*댓글입력 text-area와 댓글 버튼이 담기는 div*/
+.co_detail #de_reply{
+display : flex;
+flex-direction : row;
+margin : 0 auto;
+width : 900px;
+height : 58px;
+line-height : 58px;
+}
+
+
+
+/*댓글입력textarea를 직접적으로 감싼 div*/
+.co_detail #reply_write{
+width : 750px;
+height : 100%;
+}
+
+
+/*댓글입력 textarea*/
+.co_detail #replytext{
+padding-left : 10px;
+
+border-radius : 15px;    
+border : 3px solid #585858;
+width : 100%;
+font-size : 1.1rem;
+height : 50px;
+line-height:50px;
+}
+
+.co_detail #reply_btn {
+
+
+    height : 100%;
+    line
+}
+
+
+.co_detail #btnReply{
+
+border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+position : relative;
+left : 30px;
+
+}
+
+.co_detail #btnReply:hover{
+background-color:#f6f6f6;
+}
+
+.co_detail .reply_container{
+
+display : flex;
+flex-direction : column;
+height : 100%;
+width : 100%;
+}
+
+.co_detail #listReply{
+
+
+margin-bottom : 10px;
+padding-top : 10px
+    
+}

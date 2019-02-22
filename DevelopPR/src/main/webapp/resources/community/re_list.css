@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+
+.replyL *{
+
+}
+
+.replyL #btnModify{
+
+border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+position : relative;
+right : 60px;
+
+}
+
+.replyL #btnModify:hover{
+background-color:#f6f6f6;
+}
+
+.replyL *{
+outline : none;
+
+}
+.replyL .reply_container{
+    display: flex;
+    flex-direction : column;
+  height : 100%;
+
+}
+
+.replyL .nick_regdate{
+
+display: flex;
+flex-direction : row;
+height : 50px;
+line-height : 50px;
+background-color : #f6f6f6;
+border-radius : 15px;
+
+}
+
+.replyL #nickname{
+width : 150px;
+padding-left : 20px;
+}
+.replyL #regdate{
+height : 50px;
+line-height : 50px;
+position : relative;
+right : 70px;
+}
+.replyL #reply_contents{
+
+height : 50px;
+line-height : 50px;
+padding-left : 20px;
+}
+
+
+.replyL #btns{
+height :40px;
+line-height : 40px;
+}
+
+.replyL #bottom_line{
+margin-top : 5px;
+border-bottom : 3px solid #585858;
+margin-bottom : 8px;
+}
