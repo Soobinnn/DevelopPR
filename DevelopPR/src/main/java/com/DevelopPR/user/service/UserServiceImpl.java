@@ -92,13 +92,11 @@ public class UserServiceImpl implements UserService
 			// 메시지를 성공적으로 받으면 status를 받는다.
 			if((Boolean) result.get("status") == true) 
 			{			
-				System.out.println("성공");
 				// 성공했을경우 인증번호를 리턴
 				return authNum;
 			} 
 			else 
 			{
-				System.out.println("실패");
 				// 실패할 경우 fail 리턴 
 				return "fail"; 
 			}
@@ -251,8 +249,6 @@ public class UserServiceImpl implements UserService
 	 //비밀번호 재설정 - 준형
 	@Override
 	public void updatePasswd(UserVO vo) {
-		System.out.println(vo);
-		  System.out.println("--------Pw 변경 Service-------");
 		userDao.updatePasswd(vo);
 	}
 	
@@ -265,7 +261,6 @@ public class UserServiceImpl implements UserService
 	//회원 정보 수정
 	@Override
 	public void modifyInfo(UserVO vo) {
-		System.out.println("----------------------------------------------------수정------------------------------------------------------"+vo);
 		userDao.modifyInfo(vo);
 	   }
 	  

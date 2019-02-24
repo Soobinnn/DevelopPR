@@ -116,8 +116,8 @@ $(document).ready(function(){
 				url : "${path}/user/findPwAuth",
 				success : function(data)
 				{
-					console.log(data);
-					
+					/* console.log(data);
+					 */
 					if(data == true){
 						alert("인증번호가 일치합니다.")
 						$('#findPwEmail_div').css("display", "none");

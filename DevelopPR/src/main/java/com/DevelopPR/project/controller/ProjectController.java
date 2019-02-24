@@ -90,13 +90,7 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	    // FileCopyUtils.copy(바이트배열, 파일객체)
 	    FileCopyUtils.copy(file.getBytes(), target);
 
-	 
-	   
-	 	 
-	 	System.out.println("-------------------------------------------------");
-	 	System.out.println("파일명이 제대로 담기는가?   : " + vo.getDownload_name());
-	 	System.out.println("-------------------------------------------------");
-	    
+	
 	    
 	    mav.setViewName("basic/project/registForm");
 	    mav.addObject("savedName", savedName);
@@ -114,9 +108,6 @@ public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Mode
 	     
 
 		/* vo.setDownload_name(file.getOriginalFilename()); */
-	System.out.println("-------------------------------------------------");
-	System.out.println("파일명이 제대로 담기는가?   : " + vo.getDownload_name());
-	System.out.println("-------------------------------------------------");
 	      vo = projectService.modifyForm(pno);
 		  model.addAttribute("dto", vo);
     return "basic/project/modifyForm";
@@ -148,7 +139,6 @@ public String projectRemove(@PathVariable("pno") int pno, HttpSession session) t
 @ResponseBody
 public List<ProjectVO> projectAutocomplete(@RequestParam("tech_name_input") String tech_name_input) throws Exception
 {
-	System.out.println(tech_name_input+"뷰에서 컨트롤러로 값을 가져오는가?");
 //	리턴값으로 경로를 주면 안 되고 값을 담아서 전달할 매개변수를 전달해야 한다.
 	
 

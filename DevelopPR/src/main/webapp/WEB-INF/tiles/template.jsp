@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 	<script>
 	var socket = null;
 	var success = null;
@@ -29,7 +29,7 @@
 		socket.onmessage = onMessage;
 		socket.onopen = function() 
 		{
-		    console.log('open');
+		   /*  console.log('open'); */
 		    // 로그아웃 -> 로그인 할 때, 페이지 넘어 갈때마다 메시지 확인
 		    if(!(nick == null || nick ==""))
 		    {
@@ -90,8 +90,8 @@
 	}
 	$(document).ready(function()
 	{
-		console.log("msg의 상태가??" +success);
-		console.log("세션의 상태가..?" +nick);
+/* 		console.log("msg의 상태가??" +success);
+		console.log("세션의 상태가..?" +nick); */
 		if(!(success==""&&nick==""))
 		{
 			connect();	
@@ -109,7 +109,7 @@
 		{
 			event.stopPropagation();
 			var _email = '${login.userEmail}';
-			console.log("카카오냐?"+ _email);	 
+		/* 	console.log("카카오냐?"+ _email);	  */
 			if(_email.indexOf("_kakao") != -1)
 			{
 				window.open("https://developers.kakao.com/logout", "kakaologout","width=400, height=350");

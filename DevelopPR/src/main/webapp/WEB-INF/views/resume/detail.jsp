@@ -37,7 +37,7 @@ window.onload = function (){
 function follow()
 {
    	var Email = '${dto.email}';
-    console.log(Email);
+    /* console.log(Email); */
 	var param = "email="+Email;
     $.ajax({
         async : true,
@@ -46,7 +46,7 @@ function follow()
         url : "${path}/resume/follow",
         success : function(data)
         {
-        	console.log(data);
+        	/* console.log(data); */
         	if(data=='1'){
         		var f=document.getElementById('unfollow');
         		f.style="opacity:1";
@@ -66,7 +66,7 @@ function follow()
 function unfollow()
 {
    	var Email = '${dto.email}';
-    console.log(Email);
+    /* console.log(Email); */
 	var param = "email="+Email;
     $.ajax({
         async : true,
@@ -75,7 +75,7 @@ function unfollow()
         url : "${path}/resume/unfollow",
         success : function(data)
         {
-         	console.log(data);
+         	/* console.log(data); */
         	if(data=='1'){
         		var f=document.getElementById('unfollow');
         		f.style="opacity:1";
@@ -95,7 +95,7 @@ function unfollow()
 function good()
 {
    	var param = 'good_email='+'${dto.email}'+'&good_nick='+'${sessionScope.userNick}';
-    console.log(param);
+    /* console.log(param); */
     $.ajax({
         async : true,
         type :'POST',
@@ -103,7 +103,7 @@ function good()
         url : "${path}/resume/good",
         success : function(data)
         {
-        	console.log(data);
+        	/* console.log(data); */
         	if(data=='1'){
         		var g=document.getElementById('ungood');
         		g.style="opacity:1";
@@ -123,7 +123,7 @@ function good()
 function ungood()
 {
    	var param = 'good_email='+'${dto.email}'+'&good_nick='+'${sessionScope.userNick}';
-    console.log(param);
+    /* console.log(param); */
     $.ajax({
         async : true,
         type :'POST',
@@ -131,7 +131,7 @@ function ungood()
         url : "${path}/resume/ungood",
         success : function(data)
         {
-         	console.log(data);
+         	/* console.log(data); */
           	if(data=='1'){
         		var g=document.getElementById('ungood');
         		g.style="opacity:1";

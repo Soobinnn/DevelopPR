@@ -124,7 +124,6 @@ public class UserController
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
-	  System.out.println(vo);
 	  userService.insertUser(vo);
 	  
 	  String userEmail = vo.getUserEmail();
@@ -166,14 +165,12 @@ public class UserController
   @RequestMapping("findEmailResult")
   public ModelAndView findId(String phone) throws Exception {
 
-	  System.out.println(phone);
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
 	  List<String> emailList = new ArrayList<String>();
 	  emailList = userService.findId(phone);
 	  
 	  // email 담고,
-	  System.out.println("-----------------------------이메일 목록 --------------------------------"+emailList);
 	  
 	  mav.addObject("emailList", emailList);
 	  // findIdResult.jsp로 넘긴다.
@@ -185,9 +182,7 @@ public class UserController
   @RequestMapping("PhoneCheck")
   @ResponseBody
   public int PhoneCheck(String phone) throws Exception{
-	  System.out.println(phone);
 	  int temp = userService.checkphone(phone);
-	  System.out.println(temp);
 	return temp;
   }
 
@@ -203,7 +198,6 @@ public class UserController
  public int userFindPassword(String userEmail)
  {
 	int temp=userService.checkMail(userEmail);
-	  System.out.println(temp);
 	  return temp;
  }
  //Pw 찾기시 이메일 인증 
@@ -230,8 +224,6 @@ public class UserController
 	  model.addAttribute("keyCode", keyCode);
 	  model.addAttribute("userEmail",userEmail);
 	  
-	  System.out.println(keyCode);
-	  System.out.println(userEmail);
 	  
 	  return "basic/user/findPwEmail"; 
  }
@@ -242,8 +234,6 @@ public class UserController
  public boolean userFindPwAuth(HttpSession session, String AuthNum) {
 	  String keyCode = (String) session.getAttribute("keyCode");
 	  
-	  System.out.println(AuthNum);
-	  System.out.println(keyCode);
 	  
 	  if(AuthNum.equals(keyCode)){ // 문자열 비교 
 		  
@@ -258,8 +248,6 @@ public class UserController
  public String userFindPwReset(@ModelAttribute UserVO vo) {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
-	  System.out.println(vo);
-	  System.out.println("--------Pw 찾기 재설정-------");
 	  userService.updatePasswd(vo);
 	  return "user/findPwResetConfirm";
  }
@@ -267,13 +255,9 @@ public class UserController
  //비밀번호 변경 추가 : 준형---------------------------------------------------------------
  @RequestMapping(value="changePw" , method=RequestMethod.POST)
  public String userchangePw(@ModelAttribute UserVO vo) {
-	  System.out.println(vo);
-	  System.out.println("--------");
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  
-	  System.out.println("---컨트롤러 암호화 pw---");
 	  vo.setUserPw(pwdBycrypt);
-	  System.out.println(vo);
 	  userService.updatePasswd(vo);
 	  return "user/changePwConfirm";
  }
@@ -375,7 +359,6 @@ public class UserController
   public String emailConfirm(String userEmail, Model model) throws Exception 
   { 	
 	  	// 이메일인증
-	   	System.out.println(userEmail);
   		userService.userAuth(userEmail);
   		model.addAttribute("userEmail", userEmail);
   		return "basic/user/joinConfirm";
@@ -413,8 +396,6 @@ public class UserController
   {  
 	  String _userEmail = userEmail;
 	  String _reUserEmail = reUserEmail; 
-	  System.out.println(_userEmail);
-	  System.out.println(reUserEmail);
 	  if(_userEmail.equals(_reUserEmail))
 	  {
 		  userService.reJoining(_reUserEmail);
@@ -437,7 +418,6 @@ public class UserController
     
     JsonNode accessToken = jsonToken.get("access_token");
     
-    System.out.println("accessToken : " + accessToken);
 
     JsonNode userInfo = Kakaologinapi.getKakaoUserInfo(accessToken);
     
@@ -458,12 +438,6 @@ public class UserController
     profile = properties.path("profile_image").asText();
     checMail = kakao_account.path("has_email").asBoolean();
     
-    System.out.println("id : " + id);
-    System.out.println("name : " + name);
-    System.out.println("email : " + email);
-    System.out.println("thumbnail :" + thumbnail);
-    System.out.println("profile : " + profile);
-    System.out.println("이메일 유무테스트" + checMail);
  
     int checkMail =userService.checkMail(email+"_kakao");
 
@@ -518,11 +492,10 @@ public class UserController
 		
 		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
 		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		System.out.println("네이버:" + naverAuthUrl);
+
 		
 		//네이버 
 		model.addAttribute("url", naverAuthUrl);
-		System.out.println(naverAuthUrl);
 		/* 생성한 인증 URL을 View로 전달 */
 
 		return "user/naverlogin";
@@ -573,7 +546,7 @@ public class UserController
   {
       oauthOperations = googleConnectionFactory.getOAuthOperations();
       String url = oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-      System.out.println("/googleLogin, url : " + url);
+  
       model.addAttribute("google_url", url);
 
       return "user/googlelogin";
@@ -599,7 +572,7 @@ public class UserController
 
       Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
       Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
-      System.out.println(connection);
+
 
       PlusOperations plusOperations = google.plusOperations();
       Person profile = plusOperations.getGoogleProfile();
@@ -643,7 +616,6 @@ public class UserController
       // Access Token 취소
       try 
       {
-          System.out.println("Closing Token....");
           String revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=" + accessToken + "";
           URL url = new URL(revokeUrl);
           HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -711,8 +683,7 @@ private HttpSession getSession() {
   public String userModifyInfo(@ModelAttribute UserVO vo ,HttpSession session) {
 	  
 	  String userProfile = vo.getProfile();
-	  System.out.println("-----------------------------------------------프로필 사진 값 확인2 ------------------------------"+userProfile);
-	  
+	   
 	  String userEmail = vo.getUserEmail();
 	  
 	  if(userEmail.indexOf("_") > -1) // 다른계정 이메일인 경우에 세션 값 변경, 세션을 그냥  다시  넣어도 변경 됨.
@@ -758,7 +729,6 @@ private HttpSession getSession() {
 	  else
 	  	{
 		  String profileURL = "/DevelopPR/resources/profile/"+userProfile;
-		  System.out.println("-----------------------------------------------프로필 사진 값 확인3 -----------------------------"+profileURL);
 		  vo.setProfile(profileURL);
 		  userService.modifyInfo(vo);
 		  
@@ -819,14 +789,11 @@ private HttpSession getSession() {
 
       try {
            String redirectUri = oAuth2Parameters.getRedirectUri();
-          System.out.println("Redirect URI : " + redirectUri);
-          System.out.println("Code : " + code);
-
+         
           OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
           AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUri, null);
           String accessToken = accessGrant.getAccessToken();
-          System.out.println("AccessToken: " + accessToken);
-          Long expireTime = accessGrant.getExpireTime();
+         Long expireTime = accessGrant.getExpireTime();
       
           
           if (expireTime != null && expireTime < System.currentTimeMillis()) 
@@ -845,9 +812,6 @@ private HttpSession getSession() {
           {            
               String [] fields = { "id", "email",  "name"};
               User userProfile = facebook.fetchObject("me", User.class, fields);
-              System.out.println("유저이메일 : " + userProfile.getEmail());
-              System.out.println("유저 id : " + userProfile.getId());
-              System.out.println("유저 name : " + userProfile.getName());
           } catch (MissingAuthorizationException e) {
               e.printStackTrace();
           }
@@ -867,7 +831,6 @@ private HttpSession getSession() {
   @RequestMapping(value="changePwform", method=RequestMethod.GET)
   public String ChangePw(HttpSession session, Model model) {
 	String userEmail = (String) session.getAttribute("userEmail");
-	  System.out.println(userEmail);
 	  model.addAttribute("userEmail",userEmail);
 	  return "basic/user/changePw";
   }

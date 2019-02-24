@@ -94,7 +94,7 @@ function fn_removeImage() {
 			        url : '${path}/resume/background',
 			        success : function(data)
 			        {
-			        	console.log("success:"+data);
+			        	/* console.log("success:"+data); */
 			        	$(".header").attr("src", data);
 			        	hash();
 			        }
@@ -160,7 +160,7 @@ function fn_removeImage() {
 		        url : '${path}/resume/backgroundtext',
 		        success : function(data)
 		        {	
-		        	console.log("success:"+data);
+		        	/* console.log("success:"+data); */
 		        	
 		        	$("#hash").attr("value", data);
 		        }

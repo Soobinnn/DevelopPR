@@ -53,7 +53,7 @@ $(document).ready(function() {
           $('.click').text('Welcome to DevelopPR!');
           $('#a1').attr("style","display:none");
           window.location.href="http://localhost:8080/DevelopPR/main";
-          console.log("안");
+          /* console.log("안"); */
           
         });
         
@@ -65,7 +65,7 @@ $(document).ready(function() {
         document.onmousemove = getMousePosition; 
         setInterval("moveImg()", 50); // moveImg 함수 반복 실행하여 이미지 움직이기
         
-        console.log("click success!");
+        /* console.log("click success!"); */
   });
   
   $(document).on("click",".click",function(e){
@@ -73,7 +73,7 @@ $(document).ready(function() {
         $('.click').text('Welcome to DevelopPR!');
         $('#a1').attr("style","display:none");
         window.location.href="http://localhost:8080/DevelopPR/main";
-        console.log("안");
+        /* console.log("안"); */
       });
       
       $('.click').text('회사에 보내주세요.');
@@ -84,7 +84,7 @@ $(document).ready(function() {
       document.onmousemove = getMousePosition; 
       setInterval("moveImg()", 50); // moveImg 함수 반복 실행하여 이미지 움직이기
       
-      console.log("click success!");
+      /* console.log("click success!"); */
 });
     
 

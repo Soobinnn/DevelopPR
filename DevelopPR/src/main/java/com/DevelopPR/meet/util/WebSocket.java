@@ -42,9 +42,6 @@ public class WebSocket extends TextWebSocketHandler
 		
 		users.put(session.getId(), session);
 		sessionList.add(session);
-		System.out.println("세션" + session.toString());
-		System.out.println("세션테스트 : " +session.getAttributes());
-		System.out.println("user:매핑 " + users.toString());
 	}
 	
 	//통신 연결끊었을때실행
@@ -60,7 +57,6 @@ public class WebSocket extends TextWebSocketHandler
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception 
 	{
-		System.out.println("메시지페이로더 : "+ message.getPayload());
 		
 		Map<String, Object> map = null;
 		/*메시지 담기*/
@@ -75,20 +71,16 @@ public class WebSocket extends TextWebSocketHandler
 		
 		if(!messageVO.getMessage_sender().equals(messageVO.getMessage_receiver())) 
 		{
-		    	  System.out.println("a");
 		    	
 		    	  //채팅방목록에 없다면 방생성
 		    	  if(meetService.isRoom(roomVO) == null ) 
 		    	  {
-		    		  System.out.println("b");
 		    		  meetService.createRoom(roomVO);
-		    		  System.out.println("d");
 		    		  croom = meetService.isRoom(roomVO);
 		    	  }
 		    	  // 채팅방목록 있다면
 		    	  else 
 		    	  {
-		    		  System.out.println("C");
 		    		  croom = meetService.isRoom(roomVO);
 		    	  }
 		}
@@ -105,20 +97,13 @@ public class WebSocket extends TextWebSocketHandler
 		for (WebSocketSession websocketSession : sessionList) 
 	    {
 	         map = websocketSession.getAttributes();
-	         System.out.println("******map*******"+map);
 	         UserVO login = (UserVO) map.get("login");
-	         System.out.println("test map : "+login);
 	         
-	      
-	         System.out.println("로긴: "+login.getUserNick());
-	         System.out.println("sender : " +messageVO.getMessage_sender());
-	         System.out.println("receiver : " +messageVO.getMessage_receiver());
 	         //받는사람
 	         if (login.getUserNick().equals(messageVO.getMessage_sender()) || login.getUserNick().equals(messageVO.getMessage_receiver())) 
 	         {
 	            Gson gson = new Gson();
 	            String msgJson = gson.toJson(messageVO);
-	            System.out.println("몇명받니:"+messageVO.toString());
 	            websocketSession.sendMessage(new TextMessage(msgJson));
 	         }
 	    }
@@ -139,7 +124,7 @@ public class WebSocket extends TextWebSocketHandler
 
 	private void log(String logmsg) 
 	{
-		System.out.println(new Date() + " : " + logmsg);
+		/*System.out.println(new Date() + " : " + logmsg);*/
 	}
 
 }

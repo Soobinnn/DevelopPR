@@ -39,7 +39,6 @@ public class ResumeServiceImpl implements ResumeService{
 	@Override
 	public void resumeRegistConfirm(ResumeVO vo) throws Exception 
 	{
-		   System.out.println(vo.toString());
 	       resumeDAO.resumeRegistConfirm(vo);
 	}
 	//이력서 상세보기
@@ -51,7 +50,6 @@ public class ResumeServiceImpl implements ResumeService{
 	//이력서 수정하기
 	@Override
 	public void resumeModify(ResumeVO vo) throws Exception {
-		System.out.println(vo.toString());
 		resumeDAO.resumeModify(vo);
 	}
 	

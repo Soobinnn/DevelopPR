@@ -138,7 +138,7 @@ function listReply2(){
         url: "${path}/reply/listJson?bno=${dto.bno}",
         success: function(result)
         {
-            console.log(result); /* f12를 눌렀을 때 확인가능하다. */
+            /* console.log(result); */ /* f12를 눌렀을 때 확인가능하다. */
             var output = "<table>";
             for(var i in result){
                 output += "<tr>";

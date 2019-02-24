@@ -36,7 +36,6 @@ public class MeetingDAOImpl implements MeetingDAO
 				session.update("meet.reconnectRoom");
 			}
 		}
-		System.out.println("roomVO?"+roomVO);
 		return roomVO;
 	}
 	
@@ -63,7 +62,6 @@ public class MeetingDAOImpl implements MeetingDAO
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
 	{
 		/*List<ChatRoomVO> list = new List<ChatRoomVO>();*/
-		System.out.println("test유저닉"+userNick);
 		return session.selectList("meet.listChatRoom", userNick);
 	
 	}
@@ -99,7 +97,7 @@ public class MeetingDAOImpl implements MeetingDAO
 		session.update("meet.readUpdate",Room);
 		String _exitCheck = session.selectOne("meet.exitCheck", chatroom_id);
 		
-		System.out.println("똑똑 다나가셧나요 "+_exitCheck);
+		
 		// 다나갔을 경우 채팅방, 메시지 삭제
 		if(_exitCheck.equals("EXIT,EXIT"))
 		{

@@ -30,13 +30,11 @@ public void regist(ProjectVO vo) throws Exception
 @Override	
 public void modify(ProjectVO vo) throws Exception
 {
-	System.out.println("dao_modify_success");
 	sqlSession.update("project.modify", vo);
 }
 	
 @Override
 public ProjectVO modifyForm(int pno) throws Exception {
-	System.out.println("dao"+pno);
 	return sqlSession.selectOne("project.modifyForm", pno);
 }
 
@@ -51,9 +49,7 @@ public void remove(int pno) throws Exception
 @Override
 public List<ProjectVO> lookup(String tech_name_input) throws Exception
 {
-System.out.println(tech_name_input + "서비스에서 dao로 값이 전달되는가?");	
 List<ProjectVO> listLook = sqlSession.selectList("project.lookup", tech_name_input);
-System.out.println(listLook + "sql에서 dao로 값을 잘 가져오는가?");
 return listLook;
 
 }

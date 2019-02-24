@@ -56,8 +56,7 @@ public class CommunityController {
    public ModelAndView communitylist(@ModelAttribute UserVO vo, @RequestParam(defaultValue = "title") String searchOption,
          @RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "1") int curPage, HttpSession session)
          throws Exception {
-	   System.out.println("list----------" + session.getAttribute("login")); //로그인 값이 있는지 체크, 나중에 반드시 지울 것.
-      int count = communityService.countArticle(searchOption, keyword);
+	  int count = communityService.countArticle(searchOption, keyword);
      
       
       BoardPager boardPager = new BoardPager(count, curPage);
@@ -84,7 +83,6 @@ public class CommunityController {
    @RequestMapping(value = "registForm", method = RequestMethod.GET)
    public String communityRegistForm(@ModelAttribute CommunityVO vo, HttpSession session) 
    {
-	   System.out.println("form----------" + session.getAttribute("login"));
 	   return "basic/community/registForm"; //
    }
 
@@ -96,12 +94,10 @@ public class CommunityController {
 	   
 	   
 	   
-	   System.out.println("doodo----------" + session.getAttribute("login"));
 	   UserVO userVo = (UserVO) session.getAttribute("login");
 	  
 	   
 	   String writer = userVo.getUserNick();
-	   System.out.println(writer);
 	   
 	   // 
       vo.setWriter(writer);
@@ -203,7 +199,7 @@ public class CommunityController {
                //파일 기본경로 _ 상세경로
                String path = defaultPath + "resource" + File.separator + "photo_upload" + File.separator;             
                File file = new File(path);
-               System.out.println("path:"+path);
+              
                //디렉토리 존재하지 않을경우 디렉토리 생성
                if(!file.exists()) {
                    file.mkdirs();
