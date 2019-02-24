@@ -171,7 +171,6 @@
                 </c:if>
 		</div>
 	</section>
-	<footer></footer>
 	</div>
 </body>
 </html>
