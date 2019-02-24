@@ -104,4 +104,10 @@ public class MeetingDAOImpl implements MeetingDAO
 			session.delete("meet.deleteRoom", chatroom_id);
 		}
 	}
+	
+	/* 개인 프로필가져오기*/
+	public String getPic(String Nick)
+	{
+		return session.selectOne("meet.getPic", Nick);
+	}
 }

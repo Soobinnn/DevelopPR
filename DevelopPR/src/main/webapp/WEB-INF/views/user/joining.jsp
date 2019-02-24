@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/joining.css'/>"/>
 <script>
 $(document).ready(function(){
-	$(document).scrollTop(450);
+	$(document).scrollTop(300);
 });
 
 function joiningErrorSubmit()

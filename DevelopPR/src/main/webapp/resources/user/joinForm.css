@@ -4,22 +4,15 @@
 }
 #joinForm .user_header
 {
-    display : flex;
-    flex-direction : column;
-    flex-shrink: 0;
-    height : 120px;
-    margin-top : 50px;
-    margin-bottom : 20px;
-    line-height : 100px;
+ height:120px;
+ background:#f9f9f9;
 }
 
-#joinForm .head2
+#joinForm #user_ft
 {
-
-    text-align : center;
-	font-weight :900;
-	font-size : 3rem;
+	height:100px;
 }
+
 #joinForm #information
 {
     font-size : 2rem;
@@ -35,20 +28,13 @@
     top : 40px;
     font-size : 1.1rem;
 }
-#joinForm .head3
-{
-
-}
-
 #joinForm .user_section{
-    display :flex;
-    flex-direction: row; 
-    width: auto;
+    display :flex; 
+	 background:#f9f9f9;
 }
 
 #joinForm .sec1
 {
-    
     height : 700px;
     width : 40%;
 }
@@ -57,25 +43,14 @@
 {
     
     display: flex;
+    flex-direction:column;
     height : 1030px;
     width : 800px;
     flex-shrink : 0;
-    flex-basis : 600px;
+    flex-basis : 800px;
     border : 2px solid #b9b9b9;
    border-radius : 15px;
-}
-#joinForm #sec2_1
-{
-    
-    width : 10%;
-}
-#joinForm #sec2_2
-{
-    
-    display : flex;
-    flex-direction: column;
-    height: 800px;
-    width : 800px;
+    background:white;
 }
 
 #joinForm #top
@@ -84,13 +59,15 @@
     border-bottom:2px solid #585858;
     height : 90px;
     margin-left : 50px;
-    margin-right : 50px;   
+    margin-right : 50px;
+  
 }
 #joinForm #middle
 {
     position : relative;
-    height : 655px;
+    height : 800px;
     width: 800px;
+
 
 }
 #joinForm .radio_
@@ -109,12 +86,13 @@
     position: relative;
     bottom : 17px;
 }
-#joinForm #user_ul{
+#joinForm #user_ul
+{
+
     position: relative;
-    width : 640px;
-    left : 60px;
+    width : 670px;
+    left : 130px;
     top : 0px;
-    border : 1px solid white;
     height: 750px;
   
     
@@ -153,10 +131,6 @@
     width:380px;
 }
 
-#joinForm #sec2_3
-{
-    width : 10%;
-}
 #joinForm .sec3
 {
     height : 800px;
@@ -230,8 +204,9 @@
     flex-basis : 20px;
     border-top: 2px solid #585858;
     height : 80px;
-    
-}
+    margin-left : 50px;
+    margin-right : 50px;
+   }
 
 #joinForm #confirm
 {
@@ -273,9 +248,9 @@ position : relative;
 
 #joinForm #joinForm_form
 {
-    width:700px;
-    margin-left : 50px;
-    height: 770px;
+    width:800px;
+    height: 930px;
+
 }
 #joinForm #userIs_seekMsg,#emailCheckMsg,#nameCheckMsg,#pwCheckMsg,#pwchCheckMsg,#nickCheckMsg,#phoneCheckMsg,#userjobCheckMsg
 {
@@ -332,7 +307,7 @@ position : relative;
 	position:relative;
 	left : 10px;
 }
-/* 준형 추가 */
+
 #joinForm *:focus
  		{
         outline:none;
@@ -342,4 +317,3 @@ position : relative;
 	padding-left:8px;
 }		
 		
-/**/

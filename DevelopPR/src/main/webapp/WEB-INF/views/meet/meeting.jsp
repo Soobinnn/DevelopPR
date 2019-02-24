@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../../views/include/tag_header.jsp"%>
 <html class="m">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/meet/meeting.css'/>" />
@@ -12,6 +13,7 @@
 	var name = '${login.userName}';
 	var receiverNick = null;
 	var lookRoom = null;
+	var _targetProfile = null;
 	function connect() 
 	{
 		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
@@ -111,7 +113,7 @@
 		}
 		else
 		{
-			$("#chatArea").append("<div id='sendchat' style='text-align : left'><span class='sendchat_nick'>"+msg.message_sender+"</span><span class ='sendchat_msg' id='sendchat_msg_left'>" + msg.message_content + "</span></div><br>");	
+			$("#chatArea").append("<div id='sendchat' style='text-align : left'><span class='sendchat_nick'><img id='left_target_img' src='"+_targetProfile+"'width='45px' height='45px'></span><span class ='sendchat_msg' id='sendchat_msg_left'>" + msg.message_content + "</span></div><br>");	
 		}
 		var chatAreaHeight = $("#chat").height();
 		var maxScroll = $("#chatArea").height() - chatAreaHeight;
@@ -120,18 +122,35 @@
 	}
 	
 	//보낼대상을 선택함
-	function readyChat(follow)
+	function readyChat(follow, targetProfile)
 	{
 		receiverNick =follow;
-		// 채팅방 위에 닉네임
+		console.log("사진확인1"+ targetProfile);
+		if(targetProfile == null || targetProfile == ""||targetProfile=="null")
+		{
+			_targetProfile = "/DevelopPR/resources/resume/person.jpg";
+		}
+		else
+		{
+			_targetProfile = targetProfile;
+		}
+		console.log("사진확인2"+ _targetProfile); 
+		// 채팅방 위에 닉네임'
 		$("#chat_info_nick").empty();
 		$("#chat_info_nick").append("<span id='chat_info_receiver'>"+follow+"</span>");
+		$("#chat_info_img").empty();
+ 		$("#chat_info_img").append("<img id='target_img' src='"+_targetProfile+"'width='60px' height='60px'>");
 	}
 	
 	// 팔로워/팔로잉 유저에게 처음 채팅할때
-	function readyRoom(follow)
+	function readyRoom(follow, profile)
 	{
 		receiverNick = follow;
+		var _profile = profile;
+		if(_profile == null || _profile == "")
+		{
+			_profile = "/DevelopPR/resources/resume/person.jpg";
+		}
 		//방이있는지 확인하기
 		var param = "send_user_id="+nick+"&receiver_user_id="+receiverNick;
 		$.ajax({                                                                                                                          
@@ -155,11 +174,13 @@
 	        	// 채팅방 위에 닉네임
 	     		$("#chat_info_nick").empty();
 	     		$("#chat_info_nick").append("<span id='chat_info_receiver'>"+follow+"</span>");
+	     		$("#chat_info_img").empty();
+	     		$("#chat_info_img").append("<img id='target_img' src='"+_profile+"'width='60px' height='60px'>");
 	         }
 		})
 	}
 	// 채팅방의 채팅내용 가져오기
-	function getRoom(chatroom_id, receiver_user_id, bool)
+	function getRoom(chatroom_id, receiver_user_id, bool, targetProfile)
 	{
 		var param = "chatroom_id="+chatroom_id+"&message_sender="+nick;
 		
@@ -177,17 +198,16 @@
 	         success : function(data)
 	         {
 	        	 $("#chatArea").empty();
-	        	 var messagelist;
-	        	/*  console.log("뭐고2"+data); */
+
+	        	//대상변경
+        		 readyChat(receiver_user_id, targetProfile);
+	 
+	        	 var messagelist;  	
 	        	 for(var i in data)
 	        	 {
 	        		 messagelist =data[i];
-	        		 appendMessage(messagelist);
-	        		/*  console.log("뭐고"+messagelist); */
+	        		 appendMessage(messagelist); 		 
 	        	 }
-	        	//대상변경
-        		 readyChat(receiver_user_id);
-	        	//카운트 사라지게
 	         }
 		})
 	
@@ -235,11 +255,11 @@
 			/* console.log("세션 = Receiver"); */
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;'>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><span id ='ThatProfile' style='display : none;'>"+getlist.send_profile+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div><div id='chatroomsetting1'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;'>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><span id ='ThatProfile' style='display : none;'>"+getlist.send_profile+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div><div id='chatroomsetting1'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
 			}
 		}
 		else
@@ -247,11 +267,11 @@
 			/* console.log("세션 = sender"); */
 			if(getlist.unReadCount == 0)
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;'>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><span id ='ThatProfile' style='display : none;'>"+getlist.receiver_profile+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");
 			}
 			else
 			{
-				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;''>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div><div id='chatroomsetting1'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
+				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;'>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><span id ='ThatProfile' style='display : none;'>"+getlist.receiver_profile+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div class='m_readcount'><span id='_readcount'>"+getlist.unReadCount+"</span></div><div id='chatroomsetting1'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
 			}
 		}
     	var RoomAreaHeight = $(".listAll").height();
@@ -355,8 +375,9 @@
 		{
 			var listChatRoom = $(this).find('#listChatRoom');
 			var listChatThat = $(this).find('#listChatThat');
-			
-			getRoom(listChatRoom.text(),listChatThat.text(), 1);
+			var targetProfile = $(this).find('#ThatProfile');
+			console.log("사진테스트"+targetProfile.text());
+			getRoom(listChatRoom.text(),listChatThat.text(), 1,targetProfile.text());
 			$(this).css({"background-color":"#E6E6E6"});
 			var lookRoom_css = $(this);
 		});
@@ -483,11 +504,13 @@
 							<c:when test="${sessionScope.login.userNick == row.receiver_user_id}">
 							<span id ="listChatRoom" style="display : none;">${row.chatroom_id}</span>
 							<span id ="listChatThat" style="display : none;">${row.send_user_id}</span>
+							<span id ="ThatProfile" style="display : none;">${row.send_profile}</span>
 							<div class="m_name">${row.send_user_id}</div>
 							</c:when>
 							<c:otherwise>
 							<span id ="listChatRoom" style="display : none;">${row.chatroom_id}</span>
 							<span id ="listChatThat" style="display : none;">${row.receiver_user_id}</span>
+							<span id ="ThatProfile" style="display : none;">${row.receiver_profile}</span>
 							<div class="m_name">${row.receiver_user_id}</div>
 							</c:otherwise>
 						</c:choose>				
@@ -532,11 +555,18 @@
 
 		<div id="nav">
 			<div id="myinfo">
-				<div id="my_img">사진</div>
-				<div id="my_name">${sessionScope.userNick} 
-					( ${sessionScope.userName} )</div>
+				<div id="my_img">
+				<c:if test="${getprofile == null}">
+					<img class="myImage" src="/DevelopPR/resources/resume/person.jpg" width="150px" height="150px">
+				</c:if>
+				<c:if test="${getprofile != null}">
+					<img class="myImage" src="${getprofile}" width="150px" height="150px">
+				</c:if>
+				</div>
+				<div id="my_name">${sessionScope.login.userNick} 
+					( ${sessionScope.login.userName} )</div>
 			</div>
-
+			
 			<div id="css_tabs">
 				<input id="tab1" type="radio" name="tab" checked="checked" /> <input
 					id="tab2" type="radio" name="tab" /> <label for="tab1">팔로잉</label>
@@ -544,15 +574,33 @@
 				<div class="tab1_content">
 					<c:forEach items="${followingList}" var="list">
 						<div>
-							<a class="_following" href="javascript:readyRoom('${list.following_nick}');">
-							<span class="profile_image"></span><span class="follow_name">${list.following_nick}</span></a>
+							<a class="_following" href="javascript:readyRoom('${list.following_nick}','${list.profile}');">
+							<span class="profile_image">
+							<c:if test="${list.profile == null}">
+								<img class="profile_img" src="/DevelopPR/resources/resume/person.jpg"width="48px" height="48px">
+							</c:if>
+							<c:if test="${list.profile != null}">
+								<img class="profile_img" src="${list.profile}"width="48px" height="48px">
+							</c:if>
+							</span>
+							
+							<span class="follow_name">${list.following_nick} ( ${list.name} )</span></a>
 						</div>
 					</c:forEach>
 				</div>
 				<div class="tab2_content">
-					<c:forEach items="${followerList}" var="list">
+					<c:forEach items="${followerList}" var="list"> 
 						<div>						
-							<a class="_follower" href="javascript:readyRoom('${list.follower_nick}');"><span class="profile_image"></span><span class="follow_name">${list.follower_nick}</span></a>
+							<a class="_follower" href="javascript:readyRoom('${list.follower_nick}','${list.profile}');">
+							<span class="profile_image">
+							<c:if test="${list.profile == null}">
+								<img class="profile_img" src="/DevelopPR/resources/resume/person.jpg"width="48px" height="48px">
+							</c:if>
+							<c:if test="${list.profile != null}">
+								<img class="profile_img" src="${list.profile}" width="50px" height="50px">
+							</c:if>
+							</span>
+							<span class="follow_name">${list.follower_nick} ( ${list.name} )</span></a>
 						</div>
 					</c:forEach>
 				</div>

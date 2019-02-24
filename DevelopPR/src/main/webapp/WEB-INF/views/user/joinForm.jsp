@@ -129,6 +129,7 @@ function display_visit()
 {
  visit.style.display = 'block';
  job.style.display = 'none';
+ 
 }
 
 function display_job() 
@@ -353,7 +354,6 @@ $("input:radio[name='userJob']").click(function()
     $('#userjobCheckMsg').text('');
     userJobCheck =true;
 });
-
 });
 
 </script>
@@ -362,17 +362,11 @@ $("input:radio[name='userJob']").click(function()
 <body>
 <div id="joinForm">
 <header class="user_header">
-  <div class="head"></div>
-  <div class="head2">
-     <strong>DevelopPR</strong>
-  </div>
-  <div class="head3"></div>
+
 </header>
 <section class="user_section">
   <div class="sec1"></div>
   <div class="sec2">
-     <div id="sec2_1"></div>
-     <div id="sec2_2">
         <div id="top">
            <span id="information"> <strong>정보 입력</strong></span> <span
               id="obligatory"> 전부 필수 입력사항입니다. </span>
@@ -448,11 +442,13 @@ $("input:radio[name='userJob']").click(function()
         </div>
         </form>
          </div>
-     </div>
-     <div id="sec2_3"></div>
+ 
+
   </div>
   <div class="sec3"></div>
 </section>
+<footer id="user_ft">
+</footer>
 </div>
 </body>
 </html>

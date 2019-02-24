@@ -1,7 +1,5 @@
 .findEmail
 {
-    margin-bottom:100px;
-    margin-top:100px;
     font-family: 'Noto Sans KR', sans-serif;
     }
 .findEmail .findEmail_sec {
@@ -9,6 +7,7 @@
    flex-direction: row;
    width: auto;
    height: 540px;
+   background : #f9f9f9;
 
 }
 .findEmail #sec1{
@@ -217,4 +216,14 @@
 .findEmail *:focus
 {
    outline:none;
+}
+.findEmail .findEmail_header
+{
+	height:140px;
+	background : #f9f9f9;
+}
+
+.findEmail .findEmail_ft
+{
+	height:100px;
 }

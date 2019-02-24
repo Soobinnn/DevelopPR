@@ -106,13 +106,15 @@
 
 	<!-- 팔로잉 목록 -->
 	<select id="followingList" parameterType="String" resultType="FollowVO">
-		SELECT * FROM PR_FOLLOW
+		SELECT a.*, (select profile FROM pr_user where nick = a.following_nick) as profile, (select name from pr_user where nick = a.following_nick) as name
+		FROM PR_FOLLOW a
 		WHERE follower_nick = #{FOLLOWER_NICK}
 	</select>
 	
 	<!-- 팔로워 목록 -->
 	<select id="followerList" parameterType="String" resultType="FollowVO">
-		SELECT * FROM PR_FOLLOW
+		SELECT a.*, (select profile FROM pr_user where nick = a.follower_nick) as profile,  (select name from pr_user where nick = a.follower_nick) as name 
+		FROM PR_FOLLOW a
 		WHERE following_nick = #{following_nick}
 	</select>
 	

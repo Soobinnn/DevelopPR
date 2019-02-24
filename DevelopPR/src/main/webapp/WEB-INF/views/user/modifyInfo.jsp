@@ -15,16 +15,16 @@
 	
 	var profile  = "${vo.profile}";
 	
-	if(profile == "" || null) // 처음 회원가입한 회원들
+	if(profile == "" || profile == "null") // 처음 회원가입한 회원들
 	{
-	$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
-	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
+		$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
+		$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
 	}
 	else //그렇지 않으면
-		{
+	{
 		 $('#uploadImage').attr("src",profile);
 		 $('#uploadImg').val(profile);
-		}
+	}
 		
 }); 
  
@@ -62,6 +62,24 @@ function fn_removeImage() {
 	$("#uploadImageFile").val("");
 }
 
+//다른 계정 로그인일 경우 비밀번호 제한 .
+function pwLimit()
+{
+	alert("다른 계정 로그인인 경우 비밀번호 변경이 불가능 합니다.");
+}
+
+//다른 계정 로그인일 경우 회원탈퇴
+function deleteUser()
+{
+	if(confirm("다른 계정 로그인인 경우 확인버튼을 누르면 별다른 절차 없이 회원 탈퇴가 진행됩니다. 정말 탈퇴하시겠습니까?") == true)
+	{
+		location.href="${path}/user/goodbyeOther";
+	    }
+	    else{
+	    	return;
+	    }
+}
+
 $(function(){
 	//라디오 버튼 값 가져와서 체크하기
 	var visit = ${vo.userIs_seek};
@@ -71,6 +89,7 @@ $(function(){
 			{
 				$('#visit').css({"display" : "block"});
 				$('#job').css({"display" : "none"});
+				$('#radio3').prop("checked", true);
 			});
 
 
@@ -78,6 +97,7 @@ $(function(){
 			{
 				$('#visit').css({"display" : "none"});
 				$('#job').css({"display" : "block"});
+				$('#radio5').prop("checked", true);
 			});
 	
 	if(visit == 0 && job == 0)
@@ -116,14 +136,8 @@ $('#modify').click(function()
     var userNickCheck = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
     var _userNick = $('#userNick').val();
     var param = "userNick="+_userNick;
-    var userNick = "<%=(String)session.getAttribute("userNick")%>" 
-    												/*↑ 일반회원 로그인 세션값 닉네임 */
-    //스크립트에서는 = ; 이런 경우 실행이 되질 않는다. 주의!
-   if("${vo.userNick}" != null) // 무조건 닉 안에 값이 있으면 
-	   {
-	   userNick = "${vo.userNick}"; // 변수에 받아온 nick을 넣어준다. 
-	   }
-   
+    var userNick = "${vo.userNick}"; 
+    										
     // 핸드폰 숫자형식 9~11자
     var userPhoneCheck = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
  	// 핸드폰 숫자형식 9~11자
@@ -132,6 +146,7 @@ $('#modify').click(function()
     if($('#userNick').val() =="")
     {
         alert("닉네임를 입력해주세요.");
+        $('#userNick').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $("#userNick").focus();
         return false;
     }
@@ -139,6 +154,7 @@ $('#modify').click(function()
     else if(!userNickCheck.test($('#userNick').val()))
     {
         alert('2~20자로 입력해주세요.')
+        $('#userNick').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $('#userNick').focus();
         return false;
     }
@@ -164,7 +180,7 @@ $('#modify').click(function()
         return false;
     }
     
-    else if(_userNick == userNick ) // 다른계정 로그인 땜에 닉네임 추가 , 기존에 닉네임 값을 변경하지 않고 수정을 누를경우. 중복체크를 하지 않기위해
+    else if(_userNick == userNick ) // 기존에 가지고 있던 닉네임 값과 입력된 값이 일치하면 수정할 수 있음. 중복체크를 하지 않기위해
     	{
     	    $('#userNick').css({"border" :"2px solid green","background-color":"white"});
     	    
@@ -189,7 +205,6 @@ $('#modify').click(function()
                 if(!userNickCheck.test(_userNick))
                 {      
                     $('#userNick').css({"border" :"2px solid red","background-color":"#FBF5EF"});
-                    /* $('#userEmail').focus(); */
                     $('#nickCheckMsg').text('닉네임 형식(2~20자)에 맞게 입력해주세요.').css({"color":"red"});
                     $("#userNick").focus();
                     
@@ -198,10 +213,7 @@ $('#modify').click(function()
                 {
                     /* 중복이 없을경우 */
                     if(data == '0')
-                    {                  
-                        /* $('#userNick').css({"border" :"2px solid green","background-color":"white"});
-                        $('#nickCheckMsg').text('사용 가능한 닉네임입니다.').css({"color":"green"}); */
-                        
+                    {                   
                         if(confirm("정말 수정하시겠습니까?") == true){
                     	    modifyInfo_form1.action="${path}/user/modifyInfo";
                     	    modifyInfo_form1.submit();
@@ -263,22 +275,41 @@ $('#cancel').click(function()
 <div class="modifyInfo">
 
 <header class="user_header">
-  	<strong>DevelopPR</strong>
+  	
 </header>
 <section class="user_section">
   <div class="sec1">
   		<div id="function_div">
   			<%-- <img id="function_img" src="${path}/resources/user/.png">  --%>		
   			<ul id="function_list">
+  			
   				<li id="function_li1">
   				<a id="function_a1" href="${path}/user/modifyInfoform">회원 정보수정</a>
   				</li>
+  				
+  				<c:choose> 
+  				<c:when test = "${vo.userEmail.indexOf('_') > -1}">
+				<li id="function_li2">
+				<a id="function_a2" href='javascript:pwLimit();'>비밀번호 변경</a>
+				</li> 
+				</c:when>
+				<c:otherwise>
 				<li id="function_li2">
 				<a id="function_a2" href="${path}/user/changePwform">비밀번호 변경</a>
-				</li>  			
-  				<li id="function_li3">
-  				<a id="function_a3" href="${path}/user/goodbyeform">회원 탈퇴</a>
-  				</li>
+				</c:otherwise>
+				</c:choose>
+							
+  				<c:choose> 
+  				<c:when test = "${vo.userEmail.indexOf('_') > -1}">
+				<li id="function_li3">
+				<a id="function_a3" href='javascript:deleteUser();'>회원 탈퇴</a>
+				</li> 
+				</c:when>
+				<c:otherwise>
+				<li id="function_li3">
+				<a id="function_a3" href="${path}/user/goodbyeform">회원 탈퇴</a>
+				</c:otherwise>
+				</c:choose>
   			</ul> 		
   		</div>  
   </div>
@@ -293,6 +324,7 @@ $('#cancel').click(function()
         <form id="modifyInfo_form" name="modifyInfo_form1" method="post">
         	<div id="img">
        				<img id="uploadImage"/>
+       				
        				<input type="hidden" id="uploadImg" name="profile"/>
     		</div>
  			<div id="upload_button" style="text-align:center; margin-top: 5px;">
@@ -306,6 +338,9 @@ $('#cancel').click(function()
 					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none"/>
 			</div>   
               <ul id="user_ul">
+              <li id="user_li0">
+              <span id="user_li0_span1">*</span><span id="user_li0_span2">이력서 등록을 하시려면 구직자로 변경하셔야 합니다.</span>
+              </li>
                  <li class="user_li1">
                     <div class="radio_">
                        <input type="radio" value="0" name="userIs_seek" id="radio">
@@ -352,9 +387,7 @@ $('#cancel').click(function()
                         <span id="userJobCheckMsg"></span>
                     </div>
                  </li>
-                 
-
-                 <li class="user_li8"> <!-- 입력 자동완성 제거 : 준형 -->
+				<li class="user_li8">
                      <input id="explain" type="text" name="userJob_detail" autocomplete="off" value="${vo.userJob_detail}"
                     placeholder="학생이면 학교, 기업이면 기업에 대하여 입력해주세요.">
                       <span id="userjobdetailCheckMsg"></span>   
@@ -372,6 +405,10 @@ $('#cancel').click(function()
   </div>
   <div class="sec3"></div>
 </section>
+<footer id="modifyInfo_ft">
+
+
+</footer>
 </div>
 </body>
 </html>

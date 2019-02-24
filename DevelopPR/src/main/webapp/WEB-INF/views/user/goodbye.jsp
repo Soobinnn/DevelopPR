@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/goodbye.css'/>"/>
 <title>회원 탈퇴</title>
 <script type="text/JavaScript">
@@ -40,17 +39,17 @@ $(function(){
 	    		success:function(data)
 	    		{
 	    		if(data==true){
-	    	        if(confirm("정말 탈퇴하시겠습니까?") == true)
+	    	        if(confirm("정말 회원 탈퇴를 진행하시겠습니까? 삭제된 데이터는 복구되지 않습니다.") == true)
 	     			{
-	     				changePwform.action="${path}/user/changePw";
-	     				changePwform.submit();
+	    	        	goodbve_form.action="${path}/user/goodbye";
+	    	        	goodbve_form.submit();
 	             	    }
 	             	    else{
 	             	    	return;
 	             	    }
 	    		 }
 	    		else if(data==false){
-	    	        alert('비밀번호가  일치하지 않습니다.')	
+	    	        alert('비밀번호가 일치하지 않습니다.')	
 	    		}
 	    		}
 	    			
@@ -66,7 +65,7 @@ $(function(){
 <body>
 <div class="goodbye">
    <header class="goodbye_header">
-  	<strong>DevelopPR</strong>
+
    </header>
    <section class="goodbye_sec">
       

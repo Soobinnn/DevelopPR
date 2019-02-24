@@ -29,4 +29,6 @@ public interface MeetingDAO
 	
 	/* 채팅방 나가기*/
 	public void exitRoom(String chatroom_id, String userNick);
+	/* 개인 프로필가져오기*/
+	public String getPic(String Nick);
 }

@@ -43,11 +43,11 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
-								<c:if test="${sessionScope.userEmail!=null}">
+								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
+								<c:if test="${sessionScope.login.userEmail!=null}">
 									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
-								<c:if test="${sessionScope.userEmail==null}">
+								<c:if test="${sessionScope.login.userEmail==null}">
 									<a href="${path}/user/login"></a>
 								</c:if>
 					</figure>
@@ -81,11 +81,11 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
-								<c:if test="${sessionScope.userEmail!=null}">
+								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
+								<c:if test="${sessionScope.login.userEmail!=null}">
 									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
-								<c:if test="${sessionScope.userEmail==null}">
+								<c:if test="${sessionScope.login.userEmail==null}">
 									<a href="${path}/user/login"></a>
 								</c:if>
 						</figure>
@@ -120,11 +120,11 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
-								<c:if test="${sessionScope.userEmail!=null}">
+								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
+								<c:if test="${sessionScope.login.userEmail!=null}">
 									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
-								<c:if test="${sessionScope.userEmail==null}">
+								<c:if test="${sessionScope.login.userEmail==null}">
 									<a href="${path}/user/login"></a>
 								</c:if>
 					</figure>
@@ -135,7 +135,7 @@
 					<figure class="prpic">	
 						<img src="<c:url value='/resources/main/image/pl.jpg'/>" alt="pr1" />
 						<c:choose>
-						<c:when test="${sessionScope.userEmail == null}">
+						<c:when test="${sessionScope.login.userEmail == null}">
 						<a href='${path}/user/login'></a>
 						</c:when>
 						<c:otherwise>

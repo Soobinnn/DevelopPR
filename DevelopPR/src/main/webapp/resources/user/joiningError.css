@@ -1,7 +1,5 @@
        .joiningError
         {
-                margin-bottom:100px;
-                margin-top:100px;
                 font-family: 'Noto Sans KR', sans-serif;
         }
         .joiningError #joiningError_sec
@@ -10,6 +8,7 @@
             flex-direction: row;
             width: auto;
             height : 600px;
+            background:#f9f9f9;
         }
         .joiningError .joiningError_sec_area1
         {
@@ -27,6 +26,7 @@
             border:2px solid #585858;
             border-radius:15px;
             align-items:center;
+            background:white;
         }
         .joiningError .joiningError_sec_area3
         {
@@ -161,4 +161,14 @@
         input[type=text]::-ms-clear 
         {
                 display:none;
+        }
+        .joiningError #joiningError_header
+        {
+                height:100px;
+                background:#f9f9f9;
+        }
+        .joiningError #joiningError_ft
+        {
+                height:100px;
+                background:#f9f9f9;
         }
