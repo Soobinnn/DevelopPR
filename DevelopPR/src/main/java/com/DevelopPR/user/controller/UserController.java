@@ -323,7 +323,7 @@ public class UserController
     		   
     		  mav.addObject("list", list); 
     		  mav.addObject("msg", "success");
-              mav.setViewName("basic/main/main");
+              mav.setViewName("_main/main/main");
     	  }
     	  // 이메일 인증안했을 경우 로그인
     	  else
@@ -337,7 +337,7 @@ public class UserController
    	   	  // 로그인 실패
           // login.jsp로 이동
           mav.addObject("msg", "failure");
-          mav.setViewName("_main/user/login");
+          mav.setViewName("basic/user/login");
       }
       
       return mav;

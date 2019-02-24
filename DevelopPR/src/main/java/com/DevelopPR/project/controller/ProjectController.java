@@ -77,8 +77,6 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	       
     
      
-     
-     
      projectService.regist(vo);
 				  
 		 
