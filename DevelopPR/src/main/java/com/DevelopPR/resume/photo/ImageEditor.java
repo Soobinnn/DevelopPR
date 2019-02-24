@@ -19,6 +19,7 @@ import sun.misc.BASE64Decoder;
 public class ImageEditor{
 	
     private String filePath = "D:\\git\\DevelopPR\\DevelopPR\\src\\main\\webapp\\resources\\profile\\"; 
+
 /*
 	@RequestMapping("image")
 	public String image() {

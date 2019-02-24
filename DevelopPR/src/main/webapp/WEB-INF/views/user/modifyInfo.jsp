@@ -59,6 +59,7 @@ function fn_removeImage() {
 	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 값으로 기본 사진 경로를 넣어줌. 안 넣어주면 기존 사진 값이 DB에 들어감.
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
+	$("#uploadImageFile").val("");
 }
 
 $(function(){

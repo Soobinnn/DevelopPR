@@ -21,7 +21,7 @@
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
+						<img src='<c:url value="/resources/profile/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -59,7 +59,7 @@
 				<div class="PR${status.count+3}">
 					<div class="filter${status.count+3}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
+						<img src='<c:url value="/resources/profile/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 							<p>
 									<c:if test="${list.is_work==1}">
@@ -98,7 +98,7 @@
 				<div class="PR${status.count+6}">
 					<div class="filter${status.count+6}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
+						<img src='<c:url value="/resources/profile/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -155,10 +155,10 @@
 		<div class="animation">
 			<img id="animation_img" src="<c:url value='/resources/main/image/배경.png'/>"/>
 				<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="0">
-				<div id="element111"></div><img id="element1" src="/DevelopPR/resources/photo/${list.profile_photo}">
+				<div id="element111"></div><img id="element1" src="/DevelopPR/resources/profile/${list.profile_photo}">
 				</c:forEach>
 				<c:forEach var="list" items="${list}" varStatus="status" begin="1" end="15">
-					<div id="element${status.count+1}${status.count+1}"></div><img id="element${status.count+1}" src="/DevelopPR/resources/photo/${list.profile_photo}">
+					<div id="element${status.count+1}${status.count+1}"></div><img id="element${status.count+1}" src="/DevelopPR/resources/profile/${list.profile_photo}">
 				</c:forEach>
 		</div>
 		<div class="detail">
