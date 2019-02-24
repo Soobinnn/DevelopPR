@@ -348,7 +348,7 @@ public class UserController
    	   	  // 로그인 실패
           // login.jsp로 이동
           mav.addObject("msg", "failure");
-          mav.setViewName("basic/user/login");
+          mav.setViewName("_main/user/login");
       }
       
       return mav;
@@ -476,6 +476,9 @@ public class UserController
 	  vo.setUserNick(id);
 	  vo.setUserName(name);
 	  vo.setProfile(profile);
+	 
+	// 세션 등록
+	UserVO vo2 = new UserVO();  
 	  
 	  // DB에 없을 시에
     if(checkMail ==0)
@@ -490,14 +493,17 @@ public class UserController
   	  vo.setUserPhone("010########");
   	  
   	  userService.insertUserApi(vo);
+  	  
+  	 vo2.setUserEmail(vo.getUserEmail());
+     vo2.setUserNick(vo.getUserNick());
+     vo2.setUserName(vo.getUserName());
+     vo2.setUserIs_seek(vo.getUserIs_seek());
     }
-
-    // 세션 등록
-    UserVO vo2 = new UserVO();
-    vo2.setUserEmail(vo.getUserEmail());
-    vo2.setUserNick(vo.getUserNick());
-    vo2.setUserName(vo.getUserName());
-    vo2.setUserIs_seek(vo.getUserIs_seek());
+    else
+    {
+      vo2 =  userService.viewlogin(vo);
+    }
+    
     session.setAttribute("login", vo2 );
     
     return "user/kakaologin";
@@ -538,6 +544,9 @@ public class UserController
 	    vo.setUserEmail(vo.getUserEmail()+"_naver");
 		vo.setUserIs_seek(0);
 		  
+		// 세션 등록
+	    UserVO vo2 = new UserVO();
+	      
 		  // DB에 없을 시에
 	      if(checkMail ==0)
 	      {
@@ -549,15 +558,20 @@ public class UserController
 	    	  vo.setUserJob_detail("네이버계정 로그인 입니다. 정보를 변경해주세요.");
 	    	  vo.setUserAuthStatus(1);
 	    	  vo.setUserPhone("010########");	    	  
-	    	  userService.insertUserApi(vo);	    	      	
+	    	  userService.insertUserApi(vo);
+
+	    	  vo2.setUserEmail(vo.getUserEmail());
+		      vo2.setUserNick(vo.getUserNick());
+		      vo2.setUserName(vo.getUserName());
+		      vo2.setUserIs_seek(vo.getUserIs_seek());
 	      }
-	      // 세션 등록
-	      UserVO vo2 = new UserVO();
-	      vo2.setUserEmail(vo.getUserEmail());
-	      vo2.setUserNick(vo.getUserNick());
-	      vo2.setUserName(vo.getUserName());
-	      vo2.setUserIs_seek(vo.getUserIs_seek());
+	      else
+	      {
+	    	  vo2 =  userService.viewlogin(vo);
+	      }
+	      
 	      session.setAttribute("login", vo2 );
+	      
 		return "user/callback";
   }
 
@@ -607,7 +621,10 @@ public class UserController
 	  vo.setUserNick(profile.getId());
 	  vo.setUserName(profile.getDisplayName());
 	  vo.setProfile(profile.getImageUrl());
-	  
+	       
+      // 세션 Bean생성 
+      UserVO vo2 = new UserVO();
+    		  
 	  // DB에 없을 시에
       if(checkMail ==0)
       {
@@ -620,16 +637,19 @@ public class UserController
     	  vo.setUserAuthStatus(1);
     	  vo.setUserPhone("010########");
     	  
-    	  userService.insertUserApi(vo);	  
+    	  userService.insertUserApi(vo);	
+    	  
+    	  vo2.setUserEmail(vo.getUserEmail());
+          vo2.setUserNick(vo.getUserNick());
+          vo2.setUserName(vo.getUserName());
+          vo2.setUserIs_seek(vo.getUserIs_seek());
       }
-
-      // 세션 등록
-      UserVO vo2 = new UserVO();
-      vo2.setUserEmail(vo.getUserEmail());
-      vo2.setUserNick(vo.getUserNick());
-      vo2.setUserName(vo.getUserName());
-      vo2.setUserIs_seek(vo.getUserIs_seek());
-      
+      else
+      {
+    	  vo2 =  userService.viewlogin(vo);
+      }
+     
+      //세션 등록
       HttpSession session = request.getSession();
       session.setAttribute("login", vo2 );
       

@@ -95,7 +95,7 @@ $(function(){
    });
    
 $(document).ready(function(){
-	  $(document).scrollTop(520); 
+	  $(document).scrollTop(370); 
 	  $('#findPwEmail_num').focus();
 		
 	  $("#findPwEmail_Confirm").click(function()

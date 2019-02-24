@@ -46,10 +46,12 @@ public class MeetingController
 		List<FollowVO> followingList = resumeService.followingList(userNick);
 		// 자신을 팔로우 하는 사람들의 목록을 가지고온다.
 		List<FollowVO> followerList = resumeService.followerList(userNick);
-		
+		// 본인 프로필 사진 불러오기
+		String _profile = meetingService.getPic(userNick);
 		model.addAttribute("list", listChatRoom);
 		model.addAttribute("followingList", followingList);
 		model.addAttribute("followerList", followerList);
+		model.addAttribute("getprofile", _profile);
 		// 모델에 넣어서 전송합니다.
 		return "basic/meet/meeting";
 	}

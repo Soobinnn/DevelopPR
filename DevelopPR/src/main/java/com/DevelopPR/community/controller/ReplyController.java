@@ -63,9 +63,9 @@ public class ReplyController {
       return entity;
   }
   
-  // 2_1. 댓글 목록(@Controller방식 : veiw(화면)를 리턴)
+  // 2_1. 댓글 목록(@Controller방식 : view(화면)를 리턴)
   @RequestMapping("list")
-  public ModelAndView list(@RequestParam int bno,    @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session){
+  public ModelAndView list(@RequestParam int bno, @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session){
       // 페이징 처리 
       int count = replyService.count(bno); // 댓글 갯수
       ReplyPager replyPager = new ReplyPager(count, curPage);
@@ -75,13 +75,15 @@ public class ReplyController {
       int end = replyPager.getPageEnd();
       List<ReplyVO> list = replyService.list(bno, start, end, session);
       // 뷰이름 지정
-      mav.setViewName("basic/community/replyList");
+      mav.setViewName("community/replyList");
       // 뷰에 전달할 데이터 지정
       mav.addObject("list", list);
       mav.addObject("replyPager", replyPager);
       // replyList.jsp로 포워딩
       return mav;
   }
+  
+  
   
   // 2_2. 댓글 목록(@RestController방식 : Json으로 데이터를 리턴)
   @RequestMapping("listJson")
@@ -116,7 +118,7 @@ public class ReplyController {
       int end = replyPager.getPageEnd();
       List<ReplyVO> list = replyService.list(bno, start, end, session);
       // 뷰이름 지정
-      mav.setViewName("basic/community/replyList");
+      mav.setViewName("community/replyList");
       // 뷰에 전달할 데이터 지정
       mav.addObject("list", list);
       mav.addObject("replyPager", replyPager);
@@ -132,7 +134,7 @@ public class ReplyController {
   public ModelAndView replyDetail(@PathVariable("rno") Integer rno, ModelAndView mav){
       ReplyVO vo = replyService.detail(rno);
       // 뷰이름 지정
-      mav.setViewName("basic/community/replyDetail");
+      mav.setViewName("community/replyDetail");
       // 뷰에 전달할 데이터 지정
       mav.addObject("vo", vo);
       // replyDetail.jsp로 포워딩

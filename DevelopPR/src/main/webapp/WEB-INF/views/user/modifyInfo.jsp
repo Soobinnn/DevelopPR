@@ -17,14 +17,14 @@
 	
 	if(profile == "" || profile == "null") // 처음 회원가입한 회원들
 	{
-	$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
-	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
+		$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
+		$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
 	}
 	else //그렇지 않으면
-		{
+	{
 		 $('#uploadImage').attr("src",profile);
 		 $('#uploadImg').val(profile);
-		}
+	}
 		
 }); 
  
@@ -59,6 +59,7 @@ function fn_removeImage() {
 	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 값으로 기본 사진 경로를 넣어줌. 안 넣어주면 기존 사진 값이 DB에 들어감.
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
+	$("#uploadImageFile").val("");
 }
 
 //다른 계정 로그인일 경우 비밀번호 제한 .
@@ -323,6 +324,7 @@ $('#cancel').click(function()
         <form id="modifyInfo_form" name="modifyInfo_form1" method="post">
         	<div id="img">
        				<img id="uploadImage"/>
+       				
        				<input type="hidden" id="uploadImg" name="profile"/>
     		</div>
  			<div id="upload_button" style="text-align:center; margin-top: 5px;">
@@ -385,9 +387,7 @@ $('#cancel').click(function()
                         <span id="userJobCheckMsg"></span>
                     </div>
                  </li>
-                 
-
-                 <li class="user_li8">
+				<li class="user_li8">
                      <input id="explain" type="text" name="userJob_detail" autocomplete="off" value="${vo.userJob_detail}"
                     placeholder="학생이면 학교, 기업이면 기업에 대하여 입력해주세요.">
                       <span id="userjobdetailCheckMsg"></span>   

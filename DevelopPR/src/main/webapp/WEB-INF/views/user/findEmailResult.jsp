@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <script>
 $(document).ready(function(){
-	$(document).scrollTop(350); 
+	$(document).scrollTop(250); 
 });
 </script>
 </head>

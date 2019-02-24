@@ -1,14 +1,18 @@
 @charset "UTF-8";
 
 .pr_regist *{
-border : 1px solid; 
-	        }
+
+}
+
+
+
 .pr_regist *:focus{
     outline : none;
                   }
 
-.pr_regist .container{
 
+/*전체를 담는 컨테이너 div*/
+.pr_regist .container{
 position : relative;
 top : 50px;
 margin : 0 auto;
@@ -20,26 +24,29 @@ height : 2000px;
 border-radius : 15px;
 }
 
-.pr_regist #project_make{ /*프로젝트 만들기 문구 들어가는 곳*/
+/*프로젝트 만들기 문구 들어가는 곳*/
+.pr_regist #project_make{ 
  padding-left : 5px;
  background-color : #f6f6f6; 
-
+ border-radius : 15px;
+ height : 90px;
 }
 
-.pr_regist #main_title{ /*프로젝트 만들기 span*/
+
+/*프로젝트 만들기 span*/
+.pr_regist #main_title{ 
     color :#02456F;
     font-size : 2rem;
     font-weight:bold;
+position : relative;
+top : 10px;
+left : 10px;
 }
 
 
 /*타이틀 구분용 div*/
 .pr_regist #title_line_top{ 
-    
-    
-
-    
-    height : 10px;
+      height : 10px;
     line-height : 10px;
     min-width:100%;
     position :relative; 
@@ -47,74 +54,97 @@ border-radius : 15px;
 
 }
 
-/*메뉴 탑 라인*/
+/*메뉴 탑 라인 구분선*/
 .pr_regist #title_top{
- 
- 
+  
  border : 0;
  height:2px;
  background :#585858;
 }
 
-
-.pr_regist #subtitle_make{  /*쉽고 빠르게 프로젝트를 등록해보세요, span으로 감싼 곳*/
+  /*쉽고 빠르게 프로젝트를 등록해보세요, span으로 감싼 곳*/
+.pr_regist #subtitle_make{
  font-size : 1.3rem;	
- 
+ position : relative;
+ top : 25px;
+ left : 10px; 
 }
 
 
-
-.pr_regist .title_input{  /*제목메뉴 제목 입력칸이 들어가는 div*/
+ /*제목메뉴 제목 입력칸이 들어가는 div*/
+.pr_regist .title_input{ 
 
 display : flex;
 flex-direction:row;
-height: 50px;
+height: 100px;
 width:840px;
 }
 
-.pr_regist #title{ /*  *제목메뉴  */
+
+/*  *제목메뉴  */
+.pr_regist #title{ 
 position : relative;
 left : 5px;
+top : 18px;
+
 height:50px;
 line-height:50px;
 min-width:50px;
 font-size : 1.1rem;
 }
 
-.pr_regist #titleWrite{ /*제목 입력란*/
+/*제목 입력란 */
+.pr_regist #titleWrite{ 
 position : relative;
 left : 10px;
-height:50px;
+height:70px;
+top : 10px;
 line-height: 50px;
 width: 775px;
 padding : 2px;
-}
-
-.pr_regist #textarea_title{
-
-height : 40px;
-width : 530px;
-font-size : 1rem;
+font-size : 1.1rem;
 border-radius : 15px;
 }
 
-.pr_regist .title_warn{ /*제목 미입력시 경고문구*/
+
+
+/*제목 입력하는 input type text*/
+.pr_regist #textarea_title{
+
+position : relative;
+top : 5px;
+height : 40px;
+width : 578px;
+font-size : 1.1rem;
+border-radius : 15px;
+outline : none;
+border : 2px solid #585858;
+padding-left : 10px;
+
+
+}
+
+/*제목 미입력시 경고문구*/
+.pr_regist .title_warn{ 
 
  font-size:0.8rem;
 }
 
-.pr_regist .introduce{  /*요약메뉴와 요약문구를 담는 div */
+ /*요약메뉴와 요약문구를 담는 div */
+.pr_regist .introduce{ 
 display:flex;
 flex-direction : row;
 width:800px;
 height:80px;
 position : relative;
 left:5px;
+bottom : 10px;
 
 
 }
 
-.pr_regist #introMenu{ /* 요약메뉴*/
+/* 요약메뉴*/
+.pr_regist #introMenu{ 
 width:50px;
 height:80px;
 line-height:80px;
@@ -122,220 +152,692 @@ font-size : 1.1rem;
 text-align : center;
 }
 
-.pr_regist #introWrite{ /*요약한 textarea가 담기는 div*/
-width:775px;
+/*요약한 textarea가 담기는 div*/
+.pr_regist #introWrite{ 
+max-width:700x;
 height:80px;
 padding : 2px;
+position : relative;
+left : 5px;
+top 10px;
+
 }
 
-.pr_regist #textarea_introduce{ /*요약내용을 쓰는 textarea*/
+ /*요약내용을 쓰는 textarea*/
+.pr_regist #textarea_introduce{
 border-radius : 15px;
-padding-top : 10px;
+padding-top : 15px;
+border : 2px solid #585858;
+padding-left : 10px;
+
 }
 
-.pr_regist .regdate_term{ /*날짜/기간 메뉴와 date 타입 입력이 담긴 div*/
+
+/*날짜/기간 메뉴와 date 타입 입력이 담긴 div*/
+.pr_regist .regdate_term{ 
  display: flex;
  flex-direction : column;
  width:940px;
- height: 100px;
+ height: 120px;
+ margin-bottom : 20px;
  }
 
-.pr_regist #regdate_term_title{ /*날짜 기간 메뉴*/
-position:relative;
-left : 5px; 
- width:940px;
- height: 45px;
- line-height:45px;
- font-weight: bold;
- font-size : 1.1rem;
+
+/*regdate top 구분 라인을 담는 div*/
+ .pr_regist #regdate_hr_{
+width : 1000px;
+
 }
-.pr_regist #regdate_calendar{ /*date타입 입력이 담기는 div*/
+
+
+/*regdate top 구분 라인*/
+ .pr_regist #regdate_top{
+    border : 0;
+    height:2px;
+    background :#585858;
+
+
+}
+ 
+
+ /*날짜 /기간 제목 div*/
+.pr_regist #regdate_term_title{
+ position:relative;
+ left : 5px; 
+ width:1000px;
+ height: 55px;
+ line-height:55px;
+ font-weight: bold;
+ font-size : 1.2rem;
+ background-color : #f6f6f6;
+ border-radius : 15px;
+
+}
+
+
+/*연-월-일 입력이 담기는 div*/
+.pr_regist #regdate_calendar{ 
 position : relative;
-left : 5px;
+left : 15px;
+top : 10px;
 width : 940px;
 height:55px;
 line-height : 55px;
 }
 
-.pr_regist #project_term1{ /*시작일 입력 date1*/
+/*시작일 입력 date1*/
+.pr_regist #project_term1{ 
 border-radius : 15px;
 text-align:center;
-font-size:0.9rem;
+font-size:1.1rem;
 height:30px;
+border : 2px solid #585858;
+padding-left : 40px;
+width : 140px;
+height : 35px;
 }
 
-.pr_regist #project_term2{ /*시작일 입력 date2*/
+ /*시작일 입력 date2*/
+.pr_regist #project_term2{
     border-radius : 15px;
     text-align:center;
-    font-size:0.9rem;
+    font-size:1.1rem;
     height:30px;
+    border : 2px solid #585858;
+    padding-left : 40px;
+    width : 140px;
+    height : 35px;
 }
 
-.pr_regist .TechStack{ /*테크스택 제목과 버튼들이 담기는 div*/
+
+/*테크스택 제목과 버튼들이 담기는 div*/
+.pr_regist .TechStack{ 
 display:flex;
 flex-direction : column;
 width : 940px;
-height: 220px;
+height: 280px;
 position :relative;
 left : 5px;
 
-
 }
 
-.pr_regist #techstack_font{ /*테크 스택 제목이 담긴 span*/
 
-    font-size : 1.1rem;
+/*테크스택 탑 라인 hr을 담는 div*/
+.pr_regist #techstack_top_{
+padding-top : 10px;
+    width:1000px;
+}
+
+
+/*테크스택 탑 라인 hr*/
+.pr_regist #techstack_top{
+    border : 0;
+    height : 2px;
+    background :#585858;
+}
+
+
+/*어떤 Tech Stack을 사용하셨나요? div*/
+.pr_regist #techstack_font{ 
+
+    height : 55px;
+    line-height : 55px;
+    font-size : 1.2rem;
     font-weight:bold;
     position : relative;
     top : 5px;
-
+    width : 1000px;
+background-color : #f6f6f6;
+border-radius : 15px;
 }
 
 
 
-.pr_regist #techstack_q{ /*어떤 Tech Stack을 사용? ->이 span을 담은 div*/
+ /*어떤 Tech Stack을 사용? ->이 span을 담은 div*/
+.pr_regist #techstack_q{
     width : 940px;
     min-height : 40px;
     
 }
 
 .pr_regist #techstack_hidden_show{ /*여기에 Ajax로 불러온 버튼들이 담김. 일단은 고정 사이즈로 픽스*/
- width : 940px;
- height: 30px;
+  width : 940px;
+ height: 50px;
+ position : relative;
+  left : 150px;
+  bottom : 25px;
+ 
+
 }
 
-.pr_regist #techstack_input{ /*테크스택 textarea를 담는 div*/
+
+ /* ...Tech Stack을 담는 큰 div*/
+.pr_regist #techstack_input{
 width : 940px;
-height: 60px;
-line-height: 60px;
+height: 90px;
+
+position : relative;
+top : 10px;
+font-size: 1rem;
+
 }
 
-.pr_regist .project_tech_name{  /*테크스택을 입력하고 Ajax를 호출하는 textarea*/
+
+  /* ...Tech Stack Ajax를 호출하는 textarea*/
+.pr_regist .project_tech_name{
 position : relative;
 left : 5px;
+top : 60px;
 border-radius : 15px;
 height : 35px;
-font-size : 0.9rem;
-
+font-size : 1rem;
+border : 2px solid #585858;
+padding-left : 10px;
 }
 
 .pr_regist #techstack_btns{ /*테크스택 라디오박스들이 나열되는 곳.*/
 
-padding-top : 10px;
+
 padding-left : 10px;
 width:920px;
 height : 100px;
-line-height : 210%; /*임시로 수직 가운데 정렬한다.*/
-
-
+line-height : 1.8em;
+position : relative;
+top : 5px;
 }
 
-.pr_regist .projectUpload{ /*프로젝트 업로드 제목과 파일 업로드가 담긴 div*/
+/*프로젝트 업로드 제목과 파일 업로드가 담긴 div*/
+.pr_regist .projectUpload{ 
 position : relative;
 left : 5px;
+top : 10px;
 display : flex;
 flex-direction : column;
 width : 940px;
-height : 160px;
+height : 200px;
+
 
 
 }
 
-.pr_regist #upload_title{ /*프로젝트 업로드 제목이 담긴 div*/
+/*pdf업로드 탑 라인 hr담는 div*/
+.pr_regist #projectUpload_top_{
+
+width : 1000px;
+
+}
+
+/*pdf업로드 탑 라인 hr*/
+.pr_regist #projectUpload_top{
+
+    border : 0;
+    height:2px;
+    background :#585858;
+}
+
+
+/* 업로드 전체 div*/
+.pr_regist #upload_title{ 
+    position : relative;
+    
+    bottom : 10px;
     width : 940px;
-    height : 60px;
-    line-height:60px;
+    height : 50px;
+    line-height:50px;
+   
 }
 
-.pr_regist #upload_font{ /*프로젝트 업로드 제목을 감싼 span*/
-
-font-size : 1.1rem;
+/*프로젝트 업로드 제목을 감싼 div*/
+.pr_regist #upload_font{ 
+width : 1000px;
+font-size : 1.2rem;
 font-weight:bold;
+background-color : #f6f6f6;
+border-radius : 15px;
+height : 55px;
+line-height : 55px;
+
+position : relative;
+top : 12px;
 }
 
-.pr_regist #upload_subtitle{ /*프로젝트 업로드 서브타이틀이 담긴 div*/
+/*프로젝트 업로드 서브타이틀이 담긴 div*/
+.pr_regist #upload_subtitle{ 
 width : 940px;
-height : 35px;
+height : 25px;
+position : relative;
+top : 25px;
+left : 8px;
+font-size : 1.1rem;
+
+
 }
 
-.pr_regist #file_upload{ /*파일 업로드가 담긴 div*/
- width : 940px;
- height : 50px;
+.pr_regist .file_sub{
 
+
+position : relative;
+top : 15px;
+left : 10px;
+height : 110px;
 }
 
-.pr_regist #project_upload_file{ /*파일 업로드 버튼*/
-width : 230px;
+
+/*프로젝트를 소개할 파일이 있나요?*/
+.pr_regist #upload_sub1{
+position : relative;
+top : 5px;
+font-size : 1.1rem;
 height : 30px;
 }
 
 
+/*파일선택과 프로젝트 파일 다운로드를 담는 div*/
+.pr_regist #upload_sub2{
+display : flex;
+height : 75px;
+}
 
-.pr_regist .projectLvl{ /*프로젝트 등급의 가장 바깥 div*/
+/*파일 선택 버튼을 감싸고 있는 div*/
+.pr_regist #file_upload{
+	
+position : relative;
+top : 16px;
+max-width : 400px;
+
+}
+
+
+
+
+
+.pr_regist #file_download{
+border : 2px solid #585858;
+position : relative;
+top : 15px;
+font-size : 1.1rem;
+height : 45px;
+left : 20px;
+
+line-height : 45px;
+border-radius : 15px;
+width : 210px;
+text-align : center;
+
+}
+
+
+
+
+
+/*파일 선택 버튼*/
+.pr_regist #file_label{
+ display: inline-block;
+  padding: .5em .75em; 
+  color: #999; 
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd; 
+  cursor: pointer; 
+  border-bottom-color: #e2e2e2; 
+  border-radius: .25em;
+  border : 2px solid #585858;
+}
+
+
+/* 파일 필드 숨기기 */
+/* .pr_regist input[type="file"] { 
+ position: absolute;
+ width: 1px;
+ height: 1px; 
+ padding: 0; 
+ margin: -1px; 
+ overflow: hidden; 
+ clip:rect(0,0,0,0); 
+ border: 0; 
+ }
+ */
+
+
+ 
+
+
+
+ /*파일 업로드가 담긴 div*/
+.pr_regist #file_upload{
+ width : 940px;
+ height : 25px;
+ display : flex;
+
+}
+
+/*프로젝트 이미지 업로드 가장 바깥 div*/
+.pr_regist .images{
+
+height : 500px;
+border : 1px solid;
+}
+
+/*관련 이미지(이미지 div 제목)*/
+.pr_regist #img_title{
+
+height : 50px;
+line-height : 50px;
+position : relative;
+padding-left : 10px;
+font-size : 1.1rem;
+border-radius : 15px;
+font-weight:bold;
+background-color : #f6f6f6;
+}
+
+
+/*프로젝트를 설명하는 이미지가 있나요?(이미지 div 부제목)*/
+.pr_regist #img_subtitle{
+border : 1px solid;
+height : 35px;
+line-height : 35px;
+position : relative;
+left : 10px;
+top : 5px;
+font-size : 0.9rem;
+width : 980px;
+}
+
+/*밑에서 고른 이미지가 추가되어 등록되는 곳*/
+.pr_regist #img_added{
+border : 1px solid;
+height : 200px;
+position : relative;
+top : 30px;
+left : 10px;
+width : 980px;
+}
+
+/*예시 이미지들이 나열되는 곳*/
+.pr_regist #img_exam{
+ border : 1px solid;
+ height : 155px;
+ position : relative;
+ top : 45px;
+ left : 10px;
+ width : 980px;
+ display : flex;
+ justify-content : space-between;
+
+}
+
+
+.pr_regist .small_img{
+position : relative;
+top : 20px;
+
+}
+
+
+ /*프로젝트 등급의 가장 바깥 div*/
+.pr_regist .projectLvl{
    position : relative;
    left : 5px;
+   
    display:flex;
    flex-direction : column;
    width : 940px;
-   height : 240px;
-   
+   height : 260px;
+}
+
+/*프로젝트 등급 hr을 담는 div*/
+.pr_regist #projectLvl_top_{
+width : 1000px;
+
+}
+
+/*프로젝트 등급 탑라인 hr*/
+.pr_regist #projectLvl_top{
+    border : 0;
+    height:3px;
+    background :#585858;
 
 
 }
 
+
 .pr_regist #projectLvl_title{ /*프로젝트 등급 제목span이 담긴 div*/
-    width : 940px;
+   position :relative;
+   bottom : 12px;
+   width : 940px;
     height : 60px;
     line-height : 60px;
 }
 
 .pr_regist #lvl_font{ /*프로젝트 등급 제목  */
     
-    font-size : 1.1rem;
+    font-size : 1.2rem;
     font-weight:bold;
+    width : 1000px;
+    background-color : #f6f6f6;
+    border-radius : 15px;
+    height : 55px;
+    line-height : 55px;
+    position : relative;
+    top : 15px;
 }
 
-
-.pr_regist #projectLvl_q{ /*프로젝트 등급 소제목 div*/
+ /*프로젝트의 등급이 어떻게 되나요? div*/
+.pr_regist #projectLvl_q{
     width : 940px;
     height : 45px;
+    position : relative;
+    top : 10px;
+    left : 5px;
+    font-size : 1.1rem;
+
 }
 
-.pr_regist #projectLvl_input{ /*프로젝트 등급 textarea, 수준 담기는 곳.*/
+ /*프로젝트 등급 textarea, 수준 담기는 곳.*/
+.pr_regist #projectLvl_input{
 width : 240px;
 height : 30px;
 line-height: 30px;
 display:flex;
 flex-direction : row;
+position : relative;
+top : 10px;
+left : 10px;
+border-radius:15px;
 }
 
-.pr_regist #projectLvl_txt{ /*수준(소제목)*/
+
+/*프로젝트 수준이 자동으로 담기는 input type="text"*/
+.pr_regist #project_grade{
+
+font-size : 1.0rem;
+width : 120px;
+border : 2px solid #585858;
+border-radius : 10px;
+padding-left : 10px;
+
+}
+
+
+/*수준(소제목)*/
+.pr_regist #projectLvl_txt{ 
     width : 67px;
     height : 30px;
     line-height : 30px;
     text-align : center;
+    font-size : 1.1rem;
+    position : relative;
 }
 
-.pr_regist #projectLvl_btns{ /*프로젝트 등급 버튼들이 담기는 div*/
+
+ /*프로젝트 등급 버튼들이 담기는 div*/
+.pr_regist #projectLvl_btns{
   width : 940px;
   height : 56px;
   line-height : 56px;
-
+position : relative;
+top : 12px;
+left : 10px;
 }
+
+/*취소, 등록 버튼이 담긴 div*/
 .pr_regist .final_btns{
+    
+    position : relative;
+    bottom : 30px;
+    
     width :960px;
     height : 65px;
 }
 
+/*취소, 등록 div 탑라인 hr을 담은 div*/
+.pr_regist #final_top_{
+width : 1000px;
 
+position : relative;
+bottom : 5px;
+
+
+}
+
+/**/
+.pr_regist #final_top{
+    border : 0;
+    height:2px;
+    background :#585858;
+
+}
+  
+
+  /* ... */
 .pr_regist .techstacklist{
-    display : flex;      /* ... */
+    display : flex;    
     flex-wrap :wrap;
     width: 360px;
      margin-left: 148px;
                   }
+
+
 .pr_regist .techstacklist > li{
     width : 100px;
     height : 50px;
     text-align: center;
                          }
+                         
+/*버튼들 */
+.pr_regist .final_btn{
+    border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+
+}
+.pr_regist .final_btn:hover{  
+    background-color:#f6f6f6;
+}
+
+.pr_regist #btnCancel{
+	position : relative;
+	left : 15px;
+}
+.pr_regist #btnSave{
+ position : relative;
+ left : 20px;
+}
+
+.pr_regist .gradebtn{
+    border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+
+}
+.pr_regist .gradebtn:hover{  
+    background-color:#f6f6f6;
+}
+
+.pr_regist #btnBack{
+	position : relative;
+	left : 10px;
+}
+.pr_regist #btnSave{
+
+}
+
+.pr_regist .techbuttons{
+    border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+
+}
+.pr_regist .techbuttons:hover{  
+    background-color:#f6f6f6;
+}
+
+.pr_regist .techstacklist{
+              display : flex;      /* ... */
+              flex-wrap :wrap;
+			  width: 360px;
+		 	  margin-left: 148px;
+                            }
+.pr_regist .techstacklist > li{
+              width : 100px;
+              height : 50px;
+              text-align: center;
+                                   }
+
+/*드롭다운 칸과 업로드된 리스틀 담는 div*/
+.pr_regist .drop_list{
+	
+	display : flex;
+	flex-direction : row;
+	
+}
+
+/*Ajax 파일 업로드 영역*/
+.pr_regist .fileDrop {
+        width:300px;
+        height: 40px;
+        border: 1px dotted #585858;
+        border-radius : 15px;
+        position : relative;
+        top : 10px;
+
+    }
+
+
+
+/*업로드된 파일들이 출력되는 div*/
+.pr_regist .uploadedList{
+
+
+border-radius : 15px;
+position : relative;
+top : 10px;
+left : 30px;	
+width : 800px;
+height : 40px;
+line-height : 40px;
+padding-left : 10px;
+
+}
+
+
+
+
+.pr_regist small {
+        margin-left: 3px;
+        font-weight: bold;
+        color: gray;
+    }
+
+

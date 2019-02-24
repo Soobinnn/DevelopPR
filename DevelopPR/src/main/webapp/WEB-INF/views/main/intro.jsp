@@ -52,19 +52,42 @@ $(document).ready(function() {
         $('#company').mouseenter(function(){
           $('.click').text('Welcome to DevelopPR!');
           $('#a1').attr("style","display:none");
-          window.location.href="http://localhost:8080/DevelopPR/main";
+         /*  window.location.href="http://localhost:8080/DevelopPR/main"; */
+          window.location.href="https://developpr.org/DevelopPR/main";
           console.log("안");
           
         });
         
         $('.click').text('회사에 보내주세요.');
+        $('.arrow').attr("style","display:none;");
+        $('.arrow2').attr("style","display:inline-block;");
+        
         $('.click').attr("style","height:20px;");
         document.onmousemove = getMousePosition; 
         setInterval("moveImg()", 50); // moveImg 함수 반복 실행하여 이미지 움직이기
         
         console.log("click success!");
   });
- 
+  
+  $(document).on("click",".click",function(e){
+      $('#company').mouseenter(function(){
+        $('.click').text('Welcome to DevelopPR!');
+        $('#a1').attr("style","display:none");
+        /*  window.location.href="http://localhost:8080/DevelopPR/main"; */
+        window.location.href="https://developpr.org/DevelopPR/main";
+        console.log("안");
+      });
+      
+      $('.click').text('회사에 보내주세요.');
+      $('.arrow').attr("style","display:none;");
+      $('.arrow2').attr("style","display:inline-block;");
+      
+      $('.click').attr("style","height:20px;");
+      document.onmousemove = getMousePosition; 
+      setInterval("moveImg()", 50); // moveImg 함수 반복 실행하여 이미지 움직이기
+      
+      console.log("click success!");
+});
     
 
   $('.no').novacancy({ 
@@ -165,6 +188,8 @@ $('.element').novacancy({
                         <li><img class="slide_img" src="<c:url value='/resources/intro/images/event6.jpg'/>" alt="" title="이미지5"></li>
                       </ul>
                 </div>
+                 <div class="arrow"></div>
+                 <div class="arrow2"></div>
                 <div id="sojin">
                     <div id="back">
                         <img id="bb" src="<c:url value='/resources/intro/images/test2.png'/>">
@@ -177,12 +202,10 @@ $('.element').novacancy({
                           <img src="<c:url value='/resources/intro/images/road.png'/>" style="width:1596px;height:100px;">
                           <img id="company" src="<c:url value='/resources/intro/images/company1.png'/>" style="width:350px;height:400px;">
                           <div id='a1'  style="position:absolute; width:171px; height:216px; bottom:11px;left:250px  " ></div>
-                    
                         </div>
                       <div class="click">
-                      <div class="cc"></div>
+                  	    <div class="cc"></div>
                       </div>
-
                 
                       <div class="board">
                               <p class="no">Develop</p><p class="vacancy">PR</p> 

@@ -2,8 +2,8 @@
 .resumeDetail .container #color{
 	height:400px;
 	width:100%;
-	z-index:-3;
 	opacity:0.5;
+	z-index:-1;
 }
 .resumeDetail .container {
    display:flex;
@@ -48,7 +48,6 @@
 
 .resumeDetail .container .content{
    background:rgba(255, 255, 255, 0.55);
-   z-index: -1;
    display: flex;
    flex-direction:column;
    width:80%;
@@ -78,11 +77,11 @@
 }
 
 .resumeDetail .information .textshort2{
-	flex:0 1 94px;
-	padding-bottom:2px;
+	width:94px;
+	padding-top:4px;
 	padding-left:12px;
 	font-weight:bold;
-	height:29px;
+	height:27px;
 	border:solid 2px #585858;
 	border-radius:10px;
 	position:relative;
@@ -113,7 +112,7 @@
 	bottom:40px;
 }
 
-.resumeDetail .information #is_follow:hover,
+.resumeDetail .information #is_unfollow:hover,
 .resumeDetail .information #is_follow:hover,
 .resumeDetail .information #is_ungood:hover,
 .resumeDetail .information #is_good:hover
@@ -177,6 +176,10 @@
 	align-items:center;
 }
 
+.resumeDetail .left .subject{
+	margin-bottom:0;
+}
+
 
 .resumeDetail .right{
 	display:flex;
@@ -221,8 +224,7 @@
    display:flex;
    flex-direction: row;
    border-bottom:solid 1px #b9b9b9;
-   padding-bottom:10px;
-   padding-top:10px;
+   height:45px;
 }
 
 
@@ -270,7 +272,7 @@
 	border-radius:10px;
 	margin-left:20px;
 }
-.resumeDetail .projects .plusproject:hover{
+.resumeDetail .projects .plusproject:hover, #projectmodify:hover, #projectdelete:hover{
 	background-color:#585858;
 	color:white;
 }
@@ -283,6 +285,8 @@
 	border-radius:5px;
 	padding-left:10px;
 	padding-right:10px;
+	position:relative;
+	left:50px;
 }
 .resumeDetail #projectdelete{
 	border:solid 2px #585858;
@@ -292,6 +296,8 @@
 	border-radius:5px;
 	padding-left:10px;
 	padding-right:10px;
+	position:relative;
+	left:60px;
 }
 
 .resumeDetail .projects{

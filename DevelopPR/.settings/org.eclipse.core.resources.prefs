@@ -1,6 +1,4 @@
 =\=\=\=\=\=\=
-<<<<<<<=HEAD
->>>>>>>=branch 'master' of https\://github.com/Soobinnn/DevelopPR.git
 eclipse.preferences.version=1
 encoding//src/main/java/com/DevelopPR/community/service/ReplyService.java=UTF-8
 encoding//src/main/java/com/DevelopPR/community/service/ReplyServiceImpl.java=UTF-8
@@ -14,5 +12,4 @@ encoding//src/main/webapp/resources/slider/slider.css=UTF-8
 encoding//src/main/webapp/resources/slider/slider.html=UTF-8
 encoding//src/main/webapp/resources/user/joinForm.css=UTF-8
 encoding//src/main/webapp/resources/user/user.css=UTF-8
-encoding//target/m2e-wtp/web-resources/META-INF/MANIFEST.MF=UTF-8
 encoding/<project>=UTF-8
