@@ -10,24 +10,34 @@
 <div class="container">
 	<section class="main_section">
 		<div class="main0">
+			<p id="p1">이력서 작성하는 데 어려움을 느끼시나요?</p>
+			<p id="p2">개발자들의 이력서, 포트폴리오를 보다 간편하게 작성하여 자신을 알리는 웹포트폴리오 플랫폼입니다.</p>
+			<p id="p3">이력서, 포트폴리오의 정보를 공유하며 다른 개발자들과 채팅 할 수 있습니다.</p>
+			<p id="p4">당신의 날개를 펼치세요. Spread Your Wings.</p>
 		</div>
 		<div class="main1">	
+		
 		<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="2">	
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;&nbsp;
-									♥_${list.goodCount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		    
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}<br/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -49,18 +59,23 @@
 				<div class="PR${status.count+3}">
 					<div class="filter${status.count+3}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
-								<p>
+							<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}<br/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>
@@ -83,18 +98,23 @@
 				<div class="PR${status.count+6}">
 					<div class="filter${status.count+6}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" />
+						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
+									<c:if test="${list.is_work==1}">
+									  구직중
+									</c:if>
+									<c:if test="${list.is_work==0}">
+									 재직중
+									</c:if><br/>
 									이름 : ${list.name}<br/>
 									나이 : ${list.age}<br/>
 									희망 근무지 : ${list.prefer_place}<br/>
-									자격증 : ${list.acq_name}<br/>
-									tech-stack : ${list.tech_name}<br/>
-									comment : ${list.motto}<br/><br/>
-									follow_${list.followCount} &nbsp;
-									♥_${list.goodCount}&nbsp;
-									<input type="button" class="pp" value="이력서"/>
+									희망 직종 : ${list.prefer_job}<br/>
+									comment : ${list.motto}<br/>
+									Follow : ${list.followCount} &nbsp;&nbsp;|&nbsp;&nbsp;
+									♥ : ${list.goodCount}
+									<img src="/DevelopPR/resources/resume/inin.png" class="inin"/>
 								</p>
 								<div class="heading">
 									<h2><span>${list.name}</span></h2>

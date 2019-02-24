@@ -3,7 +3,7 @@
 <html>
 <head>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<%-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> --%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 수정</title>
 <%@ include file="../include/tag_header.jsp" %>
@@ -264,12 +264,12 @@ text-align : center;
                 console.log(title);
                 console.log(content);
                 
-                if(title === ""){
-                    alert("제목을 입력하세요");
+                if (title.replace(/ |　/gi, '') == ''){ 
+                    alert("제목을 입력해주세요.");
                     document.form1.title.focus();
-                    return;
-                }
-                if(content === ""){
+                    return; 
+                                                     }
+                if(content == ""){
                     alert("내용을 입력하세요");
                     document.form1.content.focus();
                     return;

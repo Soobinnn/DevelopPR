@@ -1,154 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 보기</title>
 <%@ include file="../include/tag_header.jsp" %>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script> 
+<!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<%--  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/co_detail.css'/>"/> --%>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/community/co_detail.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/community/co_detail_reply.css'/>"/>
+
+
 <meta charset="utf-8">
+
 <style>
+ 
 
-.co_detail *{
-
-
-}
-
-
-.co_detail *:focus{
-outline : none;
-}
-
-.co_detail #co_title{
-    font-size : 2rem;
-    margin : 0 auto;
-    margin-top : 50px;
-    margin-bottom : 50px;
-    text-align : center;
-    }
-
-.co_detail .container{
-display :flex;
-width : 900px;
-flex-direction: column;
-height:100%;    /*댓글 목록과 입력창까지 포함하기 위해 높이를 800에서 100%로 변경*/
-flex-shrink:0;
-margin : 0 auto;
-}
-
-.co_detail .header{ /*제목, 날짜, 닉네임, 조회수가 들어가는 div*/
-display:flex;
-flex-direction : column;
-height:120px;
-width : 904px;
-background-color:#f6f6f6;
-border-radius : 20px;
-border-bottom : 1px solid #585858;
-}
-
-
-.co_detail .title_reg{ /*제목, 날짜가 들어있는 div*/
-display:flex;
-height : 60px;
-flex-direction:row;
-}
-
-.co_detail #titleInput{
-line-height:60px;
-height:60px;
-display:table-cell;
-vertical-align:middle;
-align-items:center;
-width : 700px;
-padding-left : 10px;
-font-size : 1rem;
-}
-
-.co_detail #regdate{
-    line-height:60px;
-    height:60px;
-    text-align:center;
-    width:200px;
-    
-   
-}
-
-.co_detail .nick_cnt{
-display:flex;
-height:60px;
-width:900px;
-flex-direction:row;
-}
-
-.co_detail #nick{
-display:flex;
-height: 60px;
-line-height: 60px;
-flex-basis:688px;    /*원래 width값은 700이다.*/
-flex-shrink:0;
-padding-left:10px;
-}
-
-.co_detail #viewcnt{
-    display:table-cell;
-    width:200px;
-    height:60px;
-    line-height:60px;
-    
-   }
-.co_detail #view_cnt{    /*span태그로 감싸서 따로 정렬한다.*/
-position : relative;
-left : 100px;
-
-}
-
-.co_detail #content{
-display:flex;
-flex-shrink:0;
-flex-direction : row;
-height:450px;
-width: 900px;
-overflow:auto; /*글 내용이 범위를 벗어날 때만 스크롤바 생성*/
-}
-
-.co_detail #content_text{  /*글 내용을 span 태그로 감싼다.*/ 
-display:flex;
-position : relative;
-top : 20px;
-padding-left:20px;
-font-size : 1.1rem;
-height:420px;
-}
-
-
-.co_detail #btns  /*버튼이 담긴 div*/
-{
-height:80px;
-line-height:80px;
-width:900px;
-text-align : right;
-}    
-
-.co_detail .btn{
-border:solid 2px #585858;
-    padding:8px;
-    padding-left:15px;
-    padding-right:15px;
-    background-color:white;
-    border-radius:15px;
-}
-.co_detail .btn:hover{
-background-color:#f6f6f6;
-}
-.co_detail #btnDelete{
-margin-left:5px;
-margin-right:5px;
-}
-.co_detail #btnList{
-margin-right:5px;
-
-}
 
 </style>
 <script>
@@ -328,7 +196,7 @@ function showReplyModify(rno){
 <body>
 <div class="co_detail">
 <div id="co_title">Community</div>
- <form name="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">    
+ <form id="form1" name="form1" method="post" action="${path}/upload/uploadForm" enctype="multipart/form-data">    
    <div class="container">
    
   <div class="header"> 
@@ -343,7 +211,8 @@ function showReplyModify(rno){
       </div>
   
   </div>  <%-- end of header --%>
-     
+      <div id="header_bottom_line"></div> <%--제목 구분용 헤더 라인 --%>
+       
      <div id="content"><span id="content_text"><pre>${dto.content}</pre></span></div>  
   <div id="btns">
   <%-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 --%>
@@ -355,19 +224,31 @@ function showReplyModify(rno){
       <button type="button" class="btn" id="btnList">목록</button>
  </div>
    
-   <%-- 댓글 목록 출력할 위치 --%>
-    <div id="listReply"></div>
-     
+   
+     <div class="reply_container">
+   
+    
      <div id="de_reply">
         <br>
         <%-- 로그인 한 회원에게만 댓글 작성폼이 보이게 처리 --%>
         <c:if test="${sessionScope.userNick != null}">    
-            <textarea rows="3" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
-            <br>
+        <div id="reply_write"><textarea rows="3" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea></div>
+            <br>   <%-- end of reply_write --%>
+           
+        <div id="reply_btn">   
            <button type="button" id="btnReply">댓글 작성</button>
+        </div> <%--end of reply_btn --%>
         </c:if>
-      </div>
+        
+      </div> <%-- end of de_reply --%>
  
+   <%-- 댓글 목록 출력할 위치 --%>
+    <div id="listReply"></div>
+  
+  
+  </div> <%-- end of reply_container --%>
+  
+  
   <%-- 게시물번호를 hidden으로 처리 --%>
      <input type="hidden" id="bno" name="bno" value="${dto.bno}">
      <input type="hidden" name="title" value="${dto.title}">

@@ -18,7 +18,8 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
+	
+	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
@@ -51,13 +52,28 @@
 	
 	<beans:bean id="myHandler" class="com.DevelopPR.meet.util.WebSocket"/>
 	
-	<!-- 게시판 파일 업로드 경로 추가 -->
+	<!-- 프로젝트 폼 파일 업로드 경로 추가 -->
 	<!-- String uploadPath = new String("업로드 경로") -->
 <beans:bean id="uploadPath" class="java.lang.String">
     <!-- 파일업로드 디렉토리-->
-    <beans:constructor-arg value="C:\\upload\\"/>
+    <beans:constructor-arg value="C:\finalProject\DevelopPR\DevelopPR\src\main\webapp\resources\project_upload\"/>
    </beans:bean> 
 	
+
+
+<!-- 파일 다운로드 -->
+    <beans:bean id="fileDownload" class="com.DevelopPR.project.controller.FileDownload">
+    </beans:bean>
+    
+    <beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+    <beans:property name="order" value="0">
+    </beans:property>
+    </beans:bean>
+
+
+
+
+
 	
     
      <!-- Tiles -->
@@ -78,4 +94,6 @@
     <!-- Spring task 스케쥴러설정 -->
 	<task:annotation-driven />
 	<task:scheduler id="scheduler" pool-size="10" />
+
+
 </beans:beans>

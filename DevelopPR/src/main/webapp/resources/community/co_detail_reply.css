@@ -1,0 +1,55 @@
+@charset "UTF-8";
+ /*댓글 수정 바깥 div*/
+ #modifyReply {
+        width: 540px;
+        height: 160px;
+        background-color: #f6f6f6;
+        padding: 10px;
+        z-index: 10;
+        visibility: hidden;
+        border-radius : 15px;
+        margin : 0 auto;
+    padding-top : 20px;
+    padding-left : 20px;
+    }
+ 
+ 
+ /*댓글 수정 textarea*/
+ #detailReplytext{
+ border-radius : 15px;
+ border : 2px solid #585858;
+ padding-top : 10px;
+ padding-left : 10px;
+ font-size : 1.1em;
+ margin : 0 auto;
+ margin-top : 7px;
+ max-width : 500px;
+ max-height : 90px;
+ position : relative;
+ left : 7px;
+ }
+
+
+/*댓글수정창 닫기 버튼*/
+#btnReplyUpdate, #btnReplyDelete, #btnReplyClose{
+border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+    margin-top : 5px;
+}
+/*댓글 수정창 닫기 버튼*/
+#btnReplyClose:hover{
+background-color:#f6f6f6;
+}
+
+#btnReplyDelete:hover{
+background-color:#f6f6f6;
+}
+#btnReplyUpdate:hover{
+background-color:#f6f6f6;
+}
+
+
