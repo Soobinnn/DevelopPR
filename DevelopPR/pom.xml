@@ -344,7 +344,7 @@
     </dependencies>
     <build>
       <!-- 배포 Default 설정-->
-      <finalName>DevelopPR</finalName>
+      <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>

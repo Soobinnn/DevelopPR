@@ -75,11 +75,10 @@ header.main_header > header_sec3
 }
 header.sub_header
 {
-   display:flex;
+     display:flex;
     text-align : center;
     flex-basis : 350px;
-    background: url("mainheader2.png") no-repeat fixed;
-    background-size : 1920px 740px;
+    background: #f9f9f9;
 }
 header.sub_header > header_sec1
 {
@@ -101,7 +100,7 @@ header.sub_header > header_sec3
    left : 550px;
    width : 800px;
    height : 200px;
-   background : url('subtitle2.png') 100% 100%;
+   background : url('subtitles2.png') 100% 100%;
    animation-name: appear;
     animation-duration: 1.3s;
 }
@@ -231,6 +230,10 @@ nav#min:hover #navimg
 {
    transform:scale(0.6);
    transition: 0.3s;
+}
+nav#min
+{
+  z-index : 4;
 }
 #full
 {
@@ -739,7 +742,7 @@ footer
     position: absolute;
     display: block;
     width: 1000%;
-    height: 1px;
+    height: 2px;
     content: '';
     /* background: white; */
     background: black;
@@ -1493,4 +1496,14 @@ footer
 {
    0%{opacity : 0;}
    100%{opacity : 1;}
+}
+
+#_subheader_background
+{
+   position : absolute;
+   width : 1890px;
+   height : 350px;
+   background: url("backg.png") no-repeat fixed;
+   background-size : 1920px 740px;
+   opacity : 0.4;
 }

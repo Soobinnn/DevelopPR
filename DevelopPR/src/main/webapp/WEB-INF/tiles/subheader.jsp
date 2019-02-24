@@ -5,6 +5,7 @@
 <header class="sub_header">
 	<div class="header_sec1"></div>
 	<div class="header_sec2">
+		<div id="_subheader_background"></div>
 		<div id="_subheader_title">
 		</div>
 	</div>
