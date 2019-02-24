@@ -7,7 +7,6 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/joiningError.css'/>"/>  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <script>
 $(document).ready(function(){

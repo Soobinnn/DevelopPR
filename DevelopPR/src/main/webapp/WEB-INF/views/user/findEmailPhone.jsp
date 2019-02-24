@@ -6,8 +6,6 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/user/findEmailPhone.css'/>"/>
 <title>휴대폰 인증</title>
 <script type="text/JavaScript">
@@ -42,15 +40,14 @@ $(function(){
 	        success : function(result)
 	        {
 	        	
-	        		if(result=='1')
+	        		if(result== 1 || 2 || 3 || 4) //다른 계정로그인인 이메일 구별 위해 ||로 조건 추가.
 	        			{
 	    	        	alert('확인 버튼을 누르면 인증번호가 발송됩니다.')
 	    	        	findEmailPhone_form.action="${path}/user/findEmailPhoneCheck";
 	    	        	findEmailPhone_form.submit();
 	    	        	$(document).scrollTop(350);
-	    	        	$('#authNum').focus();
 	        			}
-	        		else if(result=='0')
+	        		else if(result== 0)
 	        			{
 	        			alert('휴대폰 번호가 일치하지 않습니다. 다시 입력해 주세요.')
 	        			$('#phone_Num').focus();

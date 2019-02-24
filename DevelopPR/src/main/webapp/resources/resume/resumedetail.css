@@ -2,7 +2,6 @@
 .resumeDetail .container #color{
 	height:400px;
 	width:100%;
-	z-index:-3;
 	opacity:0.5;
 }
 .resumeDetail .container {
@@ -48,7 +47,6 @@
 
 .resumeDetail .container .content{
    background:rgba(255, 255, 255, 0.55);
-   z-index: -1;
    display: flex;
    flex-direction:column;
    width:80%;

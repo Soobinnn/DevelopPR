@@ -8,8 +8,8 @@
      <include refid="pagingHeader"></include>
             SELECT ROWNUM, bno, title, content, b.regdate, viewcnt, b.writer, 
                     <!-- ** 댓글숫자표시 -->
-                    (SELECT COUNT(*) FROM tbl_reply WHERE bno=b.bno) AS recnt
-            FROM tbl_board b, pr_user u
+                    (SELECT COUNT(*) FROM PR_REPLY WHERE bno=b.bno) AS recnt
+            FROM PR_BOARD b, PR_USER u
             <include refid="search"></include>
             ORDER BY bno DESC, b.regdate DESC 
         <include refid="pagingFooter"></include>    
@@ -21,7 +21,7 @@
 <select id="countArticle" resultType="int">
  
     SELECT COUNT(*) 
-    FROM tbl_board b, pr_user u
+    FROM PR_BOARD b, PR_USER u
  
     <!-- WHERE절을 include 태그로 삽입 -->
     <include refid="search"></include>
@@ -42,7 +42,7 @@
             <when test="searchOption == 'all'">
                 WHERE b.writer = u.nick
                 AND    
-                (name like '%'||#{keyword}||'%'
+                (nick like '%'||#{keyword}||'%'
                 OR content like '%'||#{keyword}||'%'
                 OR title like '%'||#{keyword}||'%')
             </when>
@@ -68,7 +68,7 @@
 
     <!-- 02. 게시글 작성 -->
     <insert id="insert">
-        INSERT INTO tbl_board (
+        INSERT INTO PR_BOARD (
           bno, 
           title, 
           content, 
@@ -78,18 +78,17 @@
         
         ) VALUES (
           
-          (SELECT NVL(MAX(bno)+1, 1)FROM tbl_board),
+          (SELECT NVL(MAX(bno)+1, 1)FROM PR_BOARD),
           #{title},
           #{content},
           #{writer},
-          0
-                   
+          0                  
         )
     </insert>
     <!--03. 게시글 상세보기 조회 두 테이블의 공통된사항을 묶을 때, 이름 컬럼으로 하면 중복값이 생기는 경우가 생긴다. nick으로 변경-->
     <select id="view" resultType="CommunityVO">
         SELECT b.*, nick AS userNick
-        FROM tbl_board b, pr_user u 
+        FROM PR_BOARD b, PR_USER u 
         WHERE bno = #{bno} AND b.writer = u.nick
     </select>
     
@@ -99,13 +98,13 @@
     
     <!-- 04. 게시글 조회수 증가처리 -->
     <update id="increaseViewcnt">
-        UPDATE tbl_board SET viewcnt = viewcnt + 1 
+        UPDATE PR_BOARD SET viewcnt = viewcnt + 1 
         WHERE bno = #{bno}
     </update>
     
     <!-- 05. 게시글 수정처리 -->
     <update id="updateArticle">
-        UPDATE tbl_board SET
+        UPDATE PR_BOARD SET
             title = #{title},
             content = #{content},
             writer = #{writer}
@@ -114,13 +113,13 @@
     
     <!-- 06. 게시글 삭제처리 -->
     <delete id="deleteArticle">
-        DELETE FROM tbl_board
+        DELETE FROM PR_BOARD
         WHERE bno = #{bno}
     </delete>
 
 <!-- update폼 -->
 <select id="updateForm" resultType="CommunityVO">
-SELECT * FROM tbl_board
+SELECT * FROM PR_BOARD
 WHERE bno = #{bno}
 </select>
 
@@ -128,7 +127,7 @@ WHERE bno = #{bno}
 
 <update id="addStep" parameterType="CommunityVO">
 
-               update tbl_board set step = step + 1
+               update PR_BOARD set step = step + 1
 
                where ref = #{ref} and step &gt; #{step}
 
@@ -144,20 +143,21 @@ WHERE bno = #{bno}
 
      <insert id="reply" parameterType="CommunityVO">
 
-       insert into tbl_board(bno,title,content,writer,step,depth,ref)
+       insert into PR_BOARD(bno,title,content,writer,step,depth,ref)
        values(#bno}, #{title}, #{content}, #{writer},#{step}+1,#{depth}+1,#{ref})
 
         </insert>
 
 
 <!-- 업로드 파일 정보 입력 처리 추가  -->
+<!-- 
 <insert id="addAttach">
     INSERT INTO tbl_attach (
         fullname, bno
     ) VALUES (
         #{fullName}, seq_board.CURRVAL
-    )
+    ) 
 </insert>
-
+-->
 
 </mapper>

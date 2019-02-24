@@ -4,11 +4,11 @@
 <!-- 프로젝트 등록 -->
     <insert id="insert">
         INSERT INTO PR_PROJECT 
-            (pno, project_name, project_content, project_term1, project_term2, project_tech_name, project_grade, email)
+            (pno, project_name, project_content, project_term1, project_term2, techstack, project_grade, email, pr_file_name, download_name)
         VALUES 
             (
 				(SELECT NVL(MAX(pno)+1, 1)FROM pr_project),
-				#{project_name}, #{project_content}, #{project_term1}, #{project_term2}, #{techstack}, #{project_grade}, #{email})    
+				#{project_name}, #{project_content}, #{project_term1}, #{project_term2}, #{techstack}, #{project_grade}, #{nick}, #{pr_file_name}, #{download_name})    
     </insert>
 
 
@@ -29,7 +29,7 @@
 
 <!-- 프로젝트 목록 보기 -->
 <select id="projectlist" resultType="ProjectVO">
-	SELECT pno, project_name, project_term1, project_term2, project_tech_name as techstack
+	SELECT pno, project_name, project_term1, project_term2, techstack
 	FROM pr_project
 	where email=#{email}
 	order by project_term1 asc
@@ -38,7 +38,7 @@
 
 <!-- 프로젝트 수정 폼 -->
 <select id="modifyForm" resultType="ProjectVO">
-	SELECT pno, project_name, project_term1, project_term2, project_tech_name as techstack
+	SELECT *
 	FROM pr_project
 	where pno=#{pno}
 </select>
@@ -48,7 +48,7 @@
          project_content=#{project_content}, 
          project_term1=#{project_term1}, 
          project_term2=#{project_term2}, 
-         project_tech_name=#{techstack}, 
+         techstack=#{techstack}, 
          project_grade=#{project_grade}
          WHERE pno=#{pno}
 </update>

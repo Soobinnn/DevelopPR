@@ -436,13 +436,18 @@ section.main_section
 	position:relative;
 	top:150px;	
 }
-.main1, .main2, .main3, .detail
+.main1, .main2, .main3
 {
-    
 	flex-basis : 450px;
     text-align : center;
     display:flex;
     flex-shrink: 0;
+}
+.detail{
+	flex-basis : 399px;
+    text-align : center;
+    display:flex;
+    flex-shrink: 0;	
 }
 .main4
 {
@@ -450,9 +455,9 @@ section.main_section
    top : 2400px;
    width : 1900px;
    height : 1200px;
-   border : 1px solid;
    background: url("treeback.jpg") 50% 50%no-repeat fixed;
-   
+   background-size:1920px;
+   opacity:0.3;
    z-index : 0;
    
 }

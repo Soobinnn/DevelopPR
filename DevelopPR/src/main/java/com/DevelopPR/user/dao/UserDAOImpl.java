@@ -137,6 +137,8 @@ public class UserDAOImpl implements UserDAO
 	 //비밀번호 재설정 - 준형 
 	   @Override
 	   public void updatePasswd(UserVO vo) {
+		   System.out.println(vo);
+			  System.out.println("--------Pw 찾기 변경 DAO-------");
 		   sqlSession.update("user.updatePasswd",vo);
 	   }
 	   
@@ -177,5 +179,5 @@ public class UserDAOImpl implements UserDAO
 	   public int checkphone(String phone) {
 		   return sqlSession.selectOne("user.checkPhone",phone);
 	   }
-
+	   
 }
