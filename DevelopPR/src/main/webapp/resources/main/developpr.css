@@ -446,21 +446,24 @@ section.main_section
 }
 .main4
 {
-	flex-basis : 450px;
-	flex-shrink : 0;
-	border : 1px solid;
-	background: url("main_body4.jpg") 500px 50%  no-repeat fixed;
-	background-size : contain;
-	
+   position :absolute;
+   top : 2400px;
+   width : 1900px;
+   height : 1200px;
+   border : 1px solid;
+   background: url("treeback.jpg") 50% 50%no-repeat fixed;
+   
+   z-index : 0;
+   
 }
 .animation{
-	    
-	flex-basis : 950px;
+       
+   flex-basis : 950px;
     text-align : center;
     display:flex;
     flex-shrink: 0;
+    z-index :1;
 }
-
 
 /*  */
 .PR1, .PR4, .PR7
@@ -488,9 +491,8 @@ section.main_section
     border-radius: 5%;
     flex-shrink :0;
     justify-items: center;
-   
-   
 }
+
 /* Filter color */
 .filter1
 {
@@ -801,8 +803,10 @@ footer
 /* ------- */
 /*-----------------animation-start----------------*/
 .animation #animation_img{
-	height:1400px;
-	width:1900px;
+   height:1400px;
+   width:1900px;
+   position:relative;
+   top:40px;
 }
 .animation #element1,
 .animation #element2,
@@ -819,16 +823,19 @@ footer
 .animation #element13, 
 .animation #element14, 
 .animation #element15{
-	width:170px;
-	height:170px;
-	position:absolute;
-	transform: rotateY(0deg);
-	  animation-name: tutsFade;
-	  animation-iteration-count: infinite;
-	  animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
-	  animation-direction: alternate;
+   position:absolute;
+   transform: rotateY(0deg);
+     animation-name: tutsFade;
+     animation-iteration-count: infinite;
+     animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
+     animation-direction: alternate;
 
 
+}
+#element1,#element2, #element3, #element4,
+#element5,#element6, #element7, #element8{
+   width:170px;
+   height:170px;
 }
 
 .animation #element111,
@@ -846,14 +853,12 @@ footer
 .animation #element1313, 
 .animation #element1414, 
 .animation #element1515{
-	width:210px;
-	height:210px;
-	position:absolute;
- 	transform:rotateY(0deg);
-  	animation-name: tutsFade1;
-	animation-iteration-count: infinite;
-	animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
-	animation-direction: alternate;
+   position:absolute;
+    transform:rotateY(0deg);
+     animation-name: tutsFade1;
+   animation-iteration-count: infinite;
+   animation-timing-function: cubic-bezier(1, 0.04, 0, 0.96);
+   animation-direction: alternate;
  }
 
 .animation #element111,
@@ -861,11 +866,11 @@ footer
 .animation #element1414,
 .animation #element77,
 .animation #element1313{
-	background:#378577;
+   background:#378577;
 }
 .animation #element1,.animation #element6,.animation #element14,
 .animation #element7,.animation #element13{
-	border:solid 20px #378577;
+   border:solid 20px #378577;
 }
 
 .animation #element1212,
@@ -873,11 +878,11 @@ footer
 .animation #element22,
 .animation #element1010,
 .animation #element1515{
-   	background:#7ec8bb;
+      background:#7ec8bb;
 }
 .animation #element12,.animation #element5,.animation #element2,
 .animation #element10,.animation #element15{
-	border:solid 20px #7ec8bb;
+   border:solid 20px #7ec8bb;
 }
  
 .animation #element33,
@@ -885,176 +890,182 @@ footer
 .animation #element99,
 .animation #element1111,
 .animation #element88{
-	 background:#59ad9d;
+    background:#59ad9d;
 }
 .animation #element3,.animation #element4,.animation #element9,
 .animation #element11,.animation #element8{
-	border:solid 20px #59ad9d;
+   border:solid 20px #59ad9d;
 } 
+ 
+#element111, #element22,#element33,#element44,#element55,#element66,#element77,#element88{
+    width:210px;
+   height:210px;
+}
 #element1, #element111{
-	top:3105px;
-	left:690px;
-	animation-delay: 1s;
-	animation-duration:4s;
+   top:2495px;
+   left:690px;
+   animation-delay: 1s;
+   animation-duration:4s;
 }
 #element2, #element22{
-	left:690px;
-	top:3350px;
-	animation-delay:2s;
-	animation-duration:4s;
+   left:690px;
+   top:2740px;
+   animation-delay:2s;
+   animation-duration:4s;
  }
 #element3, #element33{
-	left:690px;
-	top:3600px;
-	animation-delay: 1s;
-	animation-duration:4s;
+   left:690px;
+   top:2990px;
+   animation-delay: 1s;
+   animation-duration:4s;
 }
-#element4, #element44{	
-	left:930px;
-	top:3175px;
-	animation-delay: 3s;
-	animation-duration:4s;
+#element4, #element44{
+   left:930px;
+   top:2565px;
+   animation-delay: 3s;
+   animation-duration:4s;
 }
-#element5, #element55{	
-	left:930px;
-	top:3425px;
-	animation-delay: 1s;
-	animation-duration:4s;
+#element5, #element55{
+   left:930px;
+   top:2815px;
+   animation-delay: 1s;
+   animation-duration:4s;
 }
-#element6, #element66{	
-	left:930px;
-	top:3670px;
-	animation-delay: 3s;
-	animation-duration:4s;
+#element6, #element66{
+   left:930px;
+   top:3060px;
+   animation-delay: 3s;
+   animation-duration:4s;
 }
 #element7, #element77{
-	left:1170px;
-	top:3140px;
-	animation-delay: 2s;
-	animation-duration:4s;
+   left:1170px;
+   top:2530px;
+   animation-delay: 2s;
+   animation-duration:4s;
 }
-#element8, #element88{	
-	left:455px;
-	top:3345px;
-	animation-delay: 1s;
-		  animation-duration:4s;
+#element8, #element88{
+   left:455px;
+   top:2735px;
+   animation-delay: 1s;
+        animation-duration:4s;
 }
 
-#element9, #element99{	
-	left:1170px;
-	top:3385px;
-	animation-delay: 3s;
-	animation-duration:4s;
+#element9, #element99{
+   left:1170px;
+   top:2775px;
+   animation-delay: 3s;
+   animation-duration:4s;
 }
 #element9{
-	width:230px;
-	height:125px;
+   width:230px;
+   height:125px;
 }
 #element99{
-	width:270px;
-	height:165px;
+   width:270px;
+   height:165px;
 }
-#element10, #element1010{	
-	left:1170px;
-	top:3580px;
-	animation-delay: 2s;
-		  animation-duration:4s;
+#element10, #element1010{
+   left:1170px;
+   top:2970px;
+   animation-delay: 2s;
+        animation-duration:4s;
    }
 #element10{
-	width:110px;
-	height:215px;
+   width:110px;
+   height:215px;
 }
 #element1010{
-	width:150px;
-	height:255px;
+   width:150px;
+   height:255px;
 }
-#element11, #element1111{	
-	left:515px;
-	top:3590px;
-	animation-delay: 2s;
-	animation-duration:4s;
+#element11, #element1111{
+   left:515px;
+   top:2980px;
+   animation-delay: 2s;
+   animation-duration:4s;
 }
 #element11{
-	width:110px;
-	height:215px;
+   width:110px;
+   height:215px;
 }  
 #element1111{
-	width:150px;
-	height:265px;
+   width:150px;
+   height:265px;
 }
 
-#element12, #element1212{	
-	left:550px;
-	top:3140px;
-	animation-delay: 3s;
-	animation-duration:4s;
+#element12, #element1212{
+   left:550px;
+   top:2530px;
+   animation-delay: 3s;
+   animation-duration:4s;
    }
 #element12{
-	width:70px;
-	height:135px;
+   width:70px;
+   height:135px;
 }
 #element1212{
-	width:110px;
-	height:175px;
+   width:110px;
+   height:175px;
 }
-#element13, #element1313{		
-	left:320px;
-	top:3590px;
-	animation-delay: 3s;
-		  animation-duration:4s;
+#element13, #element1313{   
+   left:320px;
+   top:2980px;
+   animation-delay: 3s;
+        animation-duration:4s;
 }
 #element13{
-	width:130px;
-	height:75px;
+   width:130px;
+   height:75px;
 }
 #element1313{
-	width:170px;
-	height:115px;
+   width:170px;
+   height:115px;
 }
 
 #element14, #element1414{
-	left:1345px;
-	top:3582px;
-	animation-delay: 1s;
-	animation-duration:4s;
+   left:1345px;
+   top:2972px;
+   animation-delay: 1s;
+   animation-duration:4s;
 }
 #element14{
-	width:125px;
-	height:75px;
+   width:125px;
+   height:75px;
 }
 #element1414{
-	width:165px;
-	height:115px;
+   width:165px;
+   height:115px;
 }
-#element15, #element1515{	
-	left:320px;
-	top:3440px;
-	animation-delay: 2s;
-	animation-duration:4s;
+#element15, #element1515{
+   left:320px;
+   top:2830px;
+   animation-delay: 2s;
+   animation-duration:4s;
 }
 #element15{
-	width:75px;
-	height:75px;
+   width:75px;
+   height:75px;
 }
 #element1515{
-	width:115px;
-	height:115px;	
+   width:115px;
+   height:115px;   
 }
 
 @keyframes tutsFade{
   to {
-	z-index:2;
+   z-index:2;
    transform: rotateY(180deg);
   }
 }
  @keyframes tutsFade1{
   to {
-  	z-index:3;
-  	transform:rotateY(180deg);
+     z-index:3;
+     transform:rotateY(180deg);
   
   }
 }
 /*-------------------animation-end---------------------*/
+
 #area1_foot
 {
 	width : 10%;

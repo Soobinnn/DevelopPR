@@ -38,7 +38,7 @@
 
 <!-- 프로젝트 수정 폼 -->
 <select id="modifyForm" resultType="ProjectVO">
-	SELECT *
+	SELECT pno, project_name, project_term1, project_term2, project_tech_name as techstack
 	FROM pr_project
 	where pno=#{pno}
 </select>
