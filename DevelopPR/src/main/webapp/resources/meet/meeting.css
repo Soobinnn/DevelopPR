@@ -317,7 +317,7 @@
    display :inline-block;
     top : 5px;
     left : 5px;
-    border : 1px solid #585858;
+    border : 2px solid #585858;
     border-radius : 15px;
     right : 10px;
     width : 50px;
@@ -334,12 +334,11 @@
 {
     display :inline-block;
     width : 50px;
-    padding : 10px;
 }
 ._meet #chat_info
 {
     position :absolute;
-    top :  580px;
+    top :  430px;
     left : 580px;
     width : 500px;
 
@@ -351,8 +350,6 @@
     position :relative;
     width : 60px;
     height : 60px;
-    border : 1px solid black;
-    border-radius : 15px;
 }
 ._meet  #chat_info > #chat_info_nick
 {
@@ -412,4 +409,22 @@
 {
    background-color : #819FF7;
    color :white;
+}
+.profile_img
+{
+    border-radius : 30%;
+}
+.myImage
+{
+    border-radius : 50%;
+}
+#target_img
+{
+    border : 2px solid #585858;
+    border-radius : 25%;
+}
+#left_target_img
+{
+    position : relative;
+    top : 10px;
 }

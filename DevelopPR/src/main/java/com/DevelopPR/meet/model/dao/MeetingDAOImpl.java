@@ -63,7 +63,6 @@ public class MeetingDAOImpl implements MeetingDAO
 	public List<ChatRoomVO> listChatRoom(String userNick) throws Exception
 	{
 		/*List<ChatRoomVO> list = new List<ChatRoomVO>();*/
-		System.out.println("test유저닉"+userNick);
 		return session.selectList("meet.listChatRoom", userNick);
 	
 	}
@@ -105,5 +104,11 @@ public class MeetingDAOImpl implements MeetingDAO
 		{
 			session.delete("meet.deleteRoom", chatroom_id);
 		}
+	}
+	
+	/* 개인 프로필가져오기*/
+	public String getPic(String Nick)
+	{
+		return session.selectOne("meet.getPic", Nick);
 	}
 }

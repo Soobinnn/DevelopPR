@@ -69,4 +69,11 @@ public class MeetingServiceImpl implements MeetingService
 	{
 		meetingDao.exitRoom(chatroom_id, userNick);
 	}
+	
+	/* 개인 프로필가져오기*/
+	@Override
+	public String getPic(String Nick)
+	{
+		return meetingDao.getPic(Nick);
+	}
 }

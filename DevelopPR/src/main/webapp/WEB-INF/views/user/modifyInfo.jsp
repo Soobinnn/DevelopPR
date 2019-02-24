@@ -17,14 +17,14 @@
 	
 	if(profile == "" || null) // 처음 회원가입한 회원들
 	{
-	$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
-	$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
+		$('#uploadImage').attr("src","/DevelopPR/resources/resume/person.jpg"); // 기존 사진을 불러온다.
+		$('#uploadImg').val("/DevelopPR/resources/resume/person.jpg"); // 히든 input 값에 기존 사진 넣어줌.
 	}
 	else //그렇지 않으면
-		{
+	{
 		 $('#uploadImage').attr("src",profile);
 		 $('#uploadImg').val(profile);
-		}
+	}
 		
 }); 
  
@@ -292,6 +292,7 @@ $('#cancel').click(function()
         <form id="modifyInfo_form" name="modifyInfo_form1" method="post">
         	<div id="img">
        				<img id="uploadImage"/>
+       				
        				<input type="hidden" id="uploadImg" name="profile"/>
     		</div>
  			<div id="upload_button" style="text-align:center; margin-top: 5px;">
@@ -352,7 +353,6 @@ $('#cancel').click(function()
                     </div>
                  </li>
                  
-
                  <li class="user_li8"> <!-- 입력 자동완성 제거 : 준형 -->
                      <input id="explain" type="text" name="userJob_detail" autocomplete="off" value="${vo.userJob_detail}"
                     placeholder="학생이면 학교, 기업이면 기업에 대하여 입력해주세요.">

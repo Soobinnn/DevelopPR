@@ -11,7 +11,11 @@ public class ChatRoomVO
 	private String lastMessage;
 	private int unReadCount;
 	private String get_room;
+	private String send_profile;
+	private String receiver_profile;
+	
 	public String getChatroom_id() 
+
 	{
 		return chatroom_id;
 	}
@@ -61,6 +65,18 @@ public class ChatRoomVO
 	}
 	public void setGet_room(String get_room) {
 		this.get_room = get_room;
+	}
+	public String getSend_profile() {
+		return send_profile;
+	}
+	public void setSend_profile(String send_profile) {
+		this.send_profile = send_profile;
+	}
+	public String getReceiver_profile() {
+		return receiver_profile;
+	}
+	public void setReceiver_profile(String receiver_profile) {
+		this.receiver_profile = receiver_profile;
 	}
 	
 

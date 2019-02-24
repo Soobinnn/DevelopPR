@@ -39,6 +39,8 @@
        ,(select message_content from pr_message where chatroom_chatroom_id = a.chatroom_id ORDER BY MESSAGE_SENDTIME DESC FETCH FIRST 1 ROW ONLY) AS lastMessage
        ,(select message_sendtime from pr_message where chatroom_chatroom_id = a.chatroom_id ORDER BY MESSAGE_SENDTIME DESC FETCH FIRST 1 ROW ONLY) AS lastTime
 	   ,(select count(*) from pr_message where chatroom_chatroom_id=a.chatroom_id AND MESSAGE_READ ='1' AND MESSAGE_RECEIVER = #{userNick}) AS unReadCount
+	  ,(select profile from pr_user where nick =a.send_user_id) as send_profile
+     ,(select profile from pr_user where nick =a.receiver_user_id) as receiver_profile
 	FROM pr_chatroom a
 	WHERE chatroom_id LIKE '%'||#{userNick}||'%' AND (SEND_USER_ID = #{userNick} OR RECEIVER_USER_ID = #{userNick}) AND GET_ROOM LIKE '%'||#{userNick}||'%'
 	ORDER BY LASTTIME DESC
@@ -82,4 +84,11 @@
 	UPDATE pr_chatroom SET get_room = chatroom_id 
 	WHERE get_room LIKE '%EXIT%'
 </update>
+
+<!-- 개인 프로필가져오기 -->
+<select id="getPic" resultType ="String">
+	SELECT profile
+	FROM pr_user
+	WHERE nick = #{Nick}
+</select>
 </mapper>
