@@ -51,6 +51,8 @@ function fn_removeImage() {
 	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg");
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
+	$('#uploadImg').attr("value", "person.jpg");
+	$("#uploadImageFile").val("");
 }
 
 	function add_item(){

@@ -113,6 +113,7 @@ function fn_removeImage() {
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
 	$('#uploadImg').attr("value", "person.jpg");
+	$("#uploadImageFile").val("");
 }
 
 	function add_item(){
@@ -239,7 +240,7 @@ function fn_removeImage() {
 						<a href="javascript:fn_modifyImage('');" class="btn sty13">사진 수정</a>
 						<a href="javascript:fn_removeImage('');" class="btn sty13">사진 삭제</a>
 					</div>	
-					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none"/>
+					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none;"/>
 				</div>
             </div>
              
