@@ -52,7 +52,8 @@ $(document).ready(function() {
         $('#company').mouseenter(function(){
           $('.click').text('Welcome to DevelopPR!');
           $('#a1').attr("style","display:none");
-          window.location.href="http://localhost:8080/DevelopPR/main";
+         /*  window.location.href="http://localhost:8080/DevelopPR/main"; */
+          window.location.href="https://developpr.org/DevelopPR/main";
           console.log("안");
           
         });
@@ -72,7 +73,8 @@ $(document).ready(function() {
       $('#company').mouseenter(function(){
         $('.click').text('Welcome to DevelopPR!');
         $('#a1').attr("style","display:none");
-        window.location.href="http://localhost:8080/DevelopPR/main";
+        /*  window.location.href="http://localhost:8080/DevelopPR/main"; */
+        window.location.href="https://developpr.org/DevelopPR/main";
         console.log("안");
       });
       

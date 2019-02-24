@@ -354,7 +354,7 @@ public class UserController
    	   	  // 로그인 실패
           // login.jsp로 이동
           mav.addObject("msg", "failure");
-          mav.setViewName("basic/user/login");
+          mav.setViewName("_main/user/login");
       }
       
       return mav;

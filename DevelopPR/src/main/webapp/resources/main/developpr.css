@@ -13,35 +13,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+   display: block;
 }
 body {
-	line-height: 1;
+   line-height: 1;
 }
 ol, ul {
-	list-style: none;
+   list-style: none;
 }
 blockquote, q {
-	quotes: none;
+   quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+   content: '';
+   content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+   border-collapse: collapse;
+   border-spacing: 0;
 }
 /* ------------------------------------------------ */
 
@@ -54,7 +54,7 @@ table {
 
 header.main_header
 {
-	display:flex;
+   display:flex;
     text-align : center;
     flex-basis : 600px;
     background: url("mainheader2.png") no-repeat fixed;
@@ -62,20 +62,20 @@ header.main_header
 }
 header.main_header > header_sec1
 {
-	width : 5%;
+   width : 5%;
 }
 header.main_header > header_sec2
 {
-	width : 1910px;
-	flex-shrink:0;
+   width : 1910px;
+   flex-shrink:0;
 }
 header.main_header > header_sec3
 {
-	width : 5%;
+   width : 5%;
 }
 header.sub_header
 {
-	display:flex;
+   display:flex;
     text-align : center;
     flex-basis : 350px;
     background: url("mainheader2.png") no-repeat fixed;
@@ -83,26 +83,26 @@ header.sub_header
 }
 header.sub_header > header_sec1
 {
-	width : 5%;
+   width : 5%;
 }
 header.sub_header > header_sec2
 {
-	width : 1910px;
-	flex-shrink:0;
+   width : 1910px;
+   flex-shrink:0;
 }
 header.sub_header > header_sec3
 {
-	width : 5%;
+   width : 5%;
 }
 #_subheader_title
 {
-	position : relative;
-	top : 50px;
-	left : 550px;
-	width : 800px;
-	height : 200px;
-	background : url('subtitle2.png') 100% 100%;
-	animation-name: appear;
+   position : relative;
+   top : 50px;
+   left : 550px;
+   width : 800px;
+   height : 200px;
+   background : url('subtitle2.png') 100% 100%;
+   animation-name: appear;
     animation-duration: 1.3s;
 }
 #black 
@@ -414,40 +414,40 @@ section.main_section
 
 .main0
 {
-	flex-basis : 300px;
-	flex-shrink : 0;
-	font-size:1.5rem;
-	text-align:center;
-	font-weight:bold;
+   flex-basis : 300px;
+   flex-shrink : 0;
+   font-size:1.5rem;
+   text-align:center;
+   font-weight:bold;
 }
 #p1{
-	position:relative;
-	top:60px;	
+   position:relative;
+   top:60px;   
 }
 #p2{
-	position:relative;
-	top:90px;	
+   position:relative;
+   top:90px;   
 }
 #p3{
-	position:relative;
-	top:120px;	
+   position:relative;
+   top:120px;   
 }
 #p4{
-	position:relative;
-	top:150px;	
+   position:relative;
+   top:150px;   
 }
 .main1, .main2, .main3
 {
-	flex-basis : 450px;
+   flex-basis : 450px;
     text-align : center;
     display:flex;
     flex-shrink: 0;
 }
 .detail{
-	flex-basis : 399px;
+   flex-basis : 399px;
     text-align : center;
     display:flex;
-    flex-shrink: 0;	
+    flex-shrink: 0;   
 }
 .main4
 {
@@ -596,7 +596,7 @@ section.main_section
 }
 footer
 {
-	display : flex;
+   display : flex;
     text-align : center;
     flex-basis: 250px;
     background: #f9f9f9;
@@ -707,7 +707,7 @@ footer
     right: 7%;
     bottom: 45%;
     /* border: 1px solid white; */
-  	border: 2px solid black;
+     border: 2px solid black;
     border-width: 2px 2px 0;
     z-index : 3;
   }
@@ -1073,234 +1073,234 @@ footer
 
 #area1_foot
 {
-	width : 10%;
+   width : 10%;
 }
 #area2_foot
 {
-	width : 10%;
+   width : 10%;
 }
 #left_foot
 {
-	position:relative;
-	display :flex;
-	flex-direction :column;
-	flex-basis : 900px;
-	height : 250px;
-	flex-shrink :0;
-	font-weight : bold;
-	
+   position:relative;
+   display :flex;
+   flex-direction :column;
+   flex-basis : 900px;
+   height : 250px;
+   flex-shrink :0;
+   font-weight : bold;
+   
 
 }
 #right_foot
 {
-	display :flex;
-	flex-shrink :0;
-	flex-basis : 900px;
+   display :flex;
+   flex-shrink :0;
+   flex-basis : 900px;
 }
 #adminintro
 {
-	position :relative;
-	margin-top : 45px;
-	margin-left : 20px;
-	margin-right : 20px;
-	width : 500px;
-	height : 190px;
-	border : 2px solid #585858;
-	border-radius : 15px;
+   position :relative;
+   margin-top : 45px;
+   margin-left : 20px;
+   margin-right : 20px;
+   width : 500px;
+   height : 190px;
+   border : 2px solid #585858;
+   border-radius : 15px;
 }
 #admintitle
 {
-	display :inline-block;
-	position :relative;
-	border-bottom : 2px solid #b9b9b9;
-	width : 400px;
-	padding : 15px;
-	font-size : 1.2rem;
-	font-weight : bold;
-	text-align : left;
+   display :inline-block;
+   position :relative;
+   border-bottom : 2px solid #b9b9b9;
+   width : 400px;
+   padding : 15px;
+   font-size : 1.2rem;
+   font-weight : bold;
+   text-align : left;
 }
 #adminpic
 {
-	position :relative;
-	display :flex;
-	width : 500px;
-	left : 35px;
-	top : 10px;
-	height : 70px;
+   position :relative;
+   display :flex;
+   width : 500px;
+   left : 35px;
+   top : 10px;
+   height : 70px;
 }
 #adminpic > #admin1
 {
-	border : 2px solid #b9b9b9;
-	flex-basis : 80px;
-	height : 70px;
-	margin-left : 10px;
-	flex-shrink :0;
-	border-radius : 15px;
-	background-image : url("isb.png");
-	background-size :80px;
+   border : 2px solid #b9b9b9;
+   flex-basis : 80px;
+   height : 70px;
+   margin-left : 10px;
+   flex-shrink :0;
+   border-radius : 15px;
+   background-image : url("isb.png");
+   background-size :80px;
 }
 #adminpic > #admin2
 {
-	position : relative;
-	border : 2px solid #b9b9b9;
-	width : 80px;
-	height : 70px;
-	margin-left : 30px;
-	flex-shrink : 0;
-	border-radius : 15px;
-	background-image : url("kks.png");
-	background-size : 80px;
+   position : relative;
+   border : 2px solid #b9b9b9;
+   width : 80px;
+   height : 70px;
+   margin-left : 30px;
+   flex-shrink : 0;
+   border-radius : 15px;
+   background-image : url("kks.png");
+   background-size : 80px;
 }
 #adminpic > #admin3
 {
-	position : relative;
-	border : 2px solid #b9b9b9;
-	width : 80px;
-	height : 70px;
-	margin-left : 30px;
-	flex-shrink : 0;
-	border-radius : 15px;
-	background-image : url("ksj.png");
-	background-size : 80px;
+   position : relative;
+   border : 2px solid #b9b9b9;
+   width : 80px;
+   height : 70px;
+   margin-left : 30px;
+   flex-shrink : 0;
+   border-radius : 15px;
+   background-image : url("ksj.png");
+   background-size : 80px;
 }
 #adminpic > #admin4
 {
-	position : relative;
-	border : 2px solid #b9b9b9;
-	width : 80px;
-	height : 70px;
-	margin-left : 30px;
-	flex-shrink : 0;
-	border-radius : 15px;
-	background-image : url("ljh.png");
-	background-size : 80px;
+   position : relative;
+   border : 2px solid #b9b9b9;
+   width : 80px;
+   height : 70px;
+   margin-left : 30px;
+   flex-shrink : 0;
+   border-radius : 15px;
+   background-image : url("ljh.png");
+   background-size : 80px;
 }
 
 #admincontent
 {
-	position : relative;
-	display:flex;
-	top : 21px;
+   position : relative;
+   display:flex;
+   top : 21px;
 
-	
+   
 }
 #admincontent > #_admin1
 {
-	border : 2px solid #b9b9b9;
-	flex-basis : 80px;
-	height : 25px;
-	margin-left : 45px;
-	border-radius : 5px;
-	flex-shrink:0;
-	font-size : 1rem;
-	font-weight : bold;
-	line-height : 25px;
+   border : 2px solid #b9b9b9;
+   flex-basis : 80px;
+   height : 25px;
+   margin-left : 45px;
+   border-radius : 5px;
+   flex-shrink:0;
+   font-size : 1rem;
+   font-weight : bold;
+   line-height : 25px;
 
 }
 #admincontent > #_admin2
 {
-	border : 2px solid #b9b9b9;
-	flex-basis : 80px;
-	margin-left : 30px;
-	border-radius : 5px;
-	flex-shrink:0;
-		font-size : 1rem;
-	font-weight : bold;
-	line-height : 25px;
+   border : 2px solid #b9b9b9;
+   flex-basis : 80px;
+   margin-left : 30px;
+   border-radius : 5px;
+   flex-shrink:0;
+      font-size : 1rem;
+   font-weight : bold;
+   line-height : 25px;
 
 }
 #admincontent > #_admin3
 {
-	border : 2px solid #b9b9b9;
-	flex-basis : 80px;
-	margin-left : 30px;
-	border-radius : 5px;
-	flex-shrink:0;
-	font-size : 1rem;
-	font-weight : bold;
-	line-height : 25px;
+   border : 2px solid #b9b9b9;
+   flex-basis : 80px;
+   margin-left : 30px;
+   border-radius : 5px;
+   flex-shrink:0;
+   font-size : 1rem;
+   font-weight : bold;
+   line-height : 25px;
 }
 #admincontent > #_admin4
 {
-	border : 2px solid #b9b9b9;
-	flex-basis : 80px;
-	margin-left : 30px;
-	border-radius : 5px;
-	flex-shrink:0;
-	font-size : 1rem;
-	font-weight : bold;
-	line-height : 25px;
+   border : 2px solid #b9b9b9;
+   flex-basis : 80px;
+   margin-left : 30px;
+   border-radius : 5px;
+   flex-shrink:0;
+   font-size : 1rem;
+   font-weight : bold;
+   line-height : 25px;
 }
 #printro0
 {
-	flex-basis :50px;
-	width : 380px;
-	position :relative;
-	top : 40px;
-	left : 100px;
+   flex-basis :50px;
+   width : 380px;
+   position :relative;
+   top : 40px;
+   left : 100px;
 
 }
 #printro1
 {
-	position : relative;
-	flex-basis : 40px;
-	font-size : 1.2rem;
-	width : 500px;
-	top : 53px;
-	left : 165px;
+   position : relative;
+   flex-basis : 40px;
+   font-size : 1.2rem;
+   width : 500px;
+   top : 53px;
+   left : 165px;
 }
 
 #printro2
 {
-	position : relative;
-	flex-basis : 30px;
-	width :400px;
-	top : 60px;
-	left : 138px;
+   position : relative;
+   flex-basis : 30px;
+   width :400px;
+   top : 60px;
+   left : 138px;
 }
 #printro3
 {
-	position : relative;
-	flex-basis : 30px;
-	width : 400px;	
-	top : 60px;
-	left : 125px;
-	
+   position : relative;
+   flex-basis : 30px;
+   width : 400px;   
+   top : 60px;
+   left : 125px;
+   
 }
 #_copylight
 {
-	position:relative;
-	top : 55px;
-	left : 100px;
-	width : 500px;
-	flex-basis : 30px;
-	line-height : 30px;
+   position:relative;
+   top : 55px;
+   left : 100px;
+   width : 500px;
+   flex-basis : 30px;
+   line-height : 30px;
 }
 #foot_title
 {
-	font-size : 2rem;
-	padding-right : 2px;
+   font-size : 2rem;
+   padding-right : 2px;
 }
 #foot_title_border
 {
-	font-size : 2rem;
-	border-right : 3px solid black;
-	animation: blink 5s infinite;
+   font-size : 2rem;
+   border-right : 3px solid black;
+   animation: blink 5s infinite;
 }
 #foot_beta
 {
-	position :relative;
-	font-size : 0.8rem;
-	font-weight :bold;
-	left : 8px;
-	bottom : 17px;
-	border : 3px solid;
-	padding : 1.5px;
-	border-radius : 5px;
+   position :relative;
+   font-size : 0.8rem;
+   font-weight :bold;
+   left : 8px;
+   bottom : 17px;
+   border : 3px solid;
+   padding : 1.5px;
+   border-radius : 5px;
 }
 @keyframes blink
 {
-	0% {opacity:1} 
+   0% {opacity:1} 
     10% {opacity:0} 
     20% {opacity:1} 
     30% {opacity:0} 
@@ -1309,31 +1309,31 @@ footer
     60% {opacity:1} 
     70% {opacity:0}
     80%  {opacity:1} 
-	90% {opacity:0}
+   90% {opacity:0}
     100% {opacity:1} 
 }
 
 #adminintroduce
 {
-	
-	width : 400px;
-	height : 200px;
-	position : relative;
-	top : 35px;
-	
+   
+   width : 400px;
+   height : 200px;
+   position : relative;
+   top : 35px;
+   
 }
 #introduce_content
 {
-	display :inline-block;
-	
-	position : relative;
-	font-size : 1.5rem;
-	font-weight :bold;
-	top : 145px;
-	right : 30px;
-	width : 250px;
-	height : 50px;
-	line-height : 50px;
+   display :inline-block;
+   
+   position : relative;
+   font-size : 1.5rem;
+   font-weight :bold;
+   top : 145px;
+   right : 30px;
+   width : 250px;
+   height : 50px;
+   line-height : 50px;
 
 }
 /* -------------- Clock -------------- */
@@ -1344,9 +1344,9 @@ footer
     border: 5px solid black;
     height: 50px;
     width: 50px;
-  	position :absolute;
-  	top : 140px;
-  	left : 300px;
+     position :absolute;
+     top : 140px;
+     left : 300px;
 
 }
 .clock:after{
@@ -1461,14 +1461,14 @@ footer
 }
 
 .resume_paging a{
-	text-decoration:none;
-	color:black;
-	font-weight:bold;
+   text-decoration:none;
+   color:black;
+   font-weight:bold;
 }
  .resume_paging span{
-	text-decoration:none;
-	color:black;
-	font-weight:bold;
+   text-decoration:none;
+   color:black;
+   font-weight:bold;
  }
 /*-------------resume-list---------------*/
 
@@ -1476,21 +1476,21 @@ footer
 /*-----------------sojin-----------------*/
 
 .inin{
-	width:50px;
-	height:50px;
-	position:relative;
-	top:20px;
-	left:35px;
-	
+   width:50px;
+   height:50px;
+   position:relative;
+   top:20px;
+   left:35px;
+   
 }
 
 .profile{
-	width:400px;
-	height:400px;
+   width:400px;
+   height:400px;
 }
 
 @keyframes appear
 {
-	0%{opacity : 0;}
-	100%{opacity : 1;}
+   0%{opacity : 0;}
+   100%{opacity : 1;}
 }

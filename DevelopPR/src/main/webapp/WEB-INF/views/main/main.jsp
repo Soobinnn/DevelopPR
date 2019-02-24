@@ -43,7 +43,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 								<c:if test="${sessionScope.login.userEmail!=null}">
 									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
@@ -81,7 +81,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 								<c:if test="${sessionScope.login.userEmail!=null}">
 									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
@@ -120,7 +120,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-								<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 								<c:if test="${sessionScope.login.userEmail!=null}">
 									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
