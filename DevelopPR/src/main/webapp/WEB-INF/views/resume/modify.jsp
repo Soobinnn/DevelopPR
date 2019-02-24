@@ -112,6 +112,7 @@ function fn_removeImage() {
 	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg");
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
+	$('#uploadImg').attr("value", "person.jpg");
 }
 
 	function add_item(){
@@ -217,7 +218,7 @@ function fn_removeImage() {
 </head>
 <body>
 <div class="resumeModify">
-<form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
+<form name="form1" method="post" action="${path}/resume/modifyupdate" onsubmit="return checks();">
     <div class="container">
 			<img src="/DevelopPR/resources/resume/${dto.color}.jpg" class="header"/>
         <header>
@@ -227,8 +228,8 @@ function fn_removeImage() {
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
-					<img id="uploadImage" src="/DevelopPR/resources/resume/person.jpg"/>
-					<input type="hidden" id= "uploadImg" name="profile_photo"/>
+					<img id="uploadImage" src="/DevelopPR/resources/profile/${dto.profile_photo}"/>
+					<input type="hidden" id= "uploadImg" value="${dto.profile_photo}" name="profile_photo"/>
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
 					<div id="LoadImage">

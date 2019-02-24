@@ -36,7 +36,7 @@
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
+						<img src='<c:url value="/resources/profile/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -72,7 +72,7 @@
 				<div class="PR${status.count+3}">
 					<div class="filter${status.count+3}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
+						<img src='<c:url value="/resources/profile/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">
@@ -107,7 +107,7 @@
 				<div class="PR${status.count+6}">
 					<div class="filter${status.count+6}"></div>
 					<figure class="prpic">
-						<img src='<c:url value="/resources/photo/${list.profile_photo}"/>' alt="pr1" class="profile"/>
+						<img src='<c:url value="/resources/profile/${list.profile_photo}"/>' alt="pr1" class="profile"/>
 							<div class="content">
 								<p>
 									<c:if test="${list.is_work==1}">

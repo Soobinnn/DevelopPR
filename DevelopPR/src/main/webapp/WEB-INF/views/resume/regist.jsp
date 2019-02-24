@@ -257,7 +257,7 @@ function fn_removeImage() {
             <div id="img">
 	            <div style="min-height: 260px">
 					<img id="uploadImage" src="/DevelopPR/resources/resume/person.jpg"/>
-					<input type="hidden" id= "uploadImg" name="profile_photo"/>
+					<input type="hidden" id= "uploadImg" value="person.jpg" name="profile_photo"/>
 					
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
