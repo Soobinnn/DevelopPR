@@ -1,7 +1,5 @@
         .joining
         {
-                margin-bottom:100px;
-                margin-top:100px;
                 font-family: 'Noto Sans KR', sans-serif;
         }
         .joining #joining_sec
@@ -10,6 +8,8 @@
             flex-direction: row;
             width: auto;
             height : 600px;
+            background:#f9f9f9;
+
         }
         .joining .joining_sec_area1
         {
@@ -29,6 +29,7 @@
             border:3px solid #B9B9B9;
             border-radius: 15px;
             align-items:center;
+            background:white;
         }
         .joining .joining_sec_area3
         {
@@ -171,4 +172,13 @@
  		{
         outline:none;
 		}
-     
+		.joining #joining_header
+		{
+        background:#f9f9f9;
+        height:100px;
+		}
+		.joining #joining_ft
+		{
+        background:#f9f9f9;
+        height:100px;
+		}

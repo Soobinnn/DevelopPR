@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <script>
 $(document).ready(function(){
-	$(document).scrollTop(450);
+	$(document).scrollTop(300);
 	$('#joiningError_input').focus();
 });
 

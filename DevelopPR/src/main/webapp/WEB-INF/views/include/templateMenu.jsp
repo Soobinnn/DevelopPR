@@ -148,7 +148,7 @@
 	<c:otherwise>
 	<nav id="full" class="top_nav">
 		<img id="navclose" class="navx" src="<c:url value='/resources/main/image/x.png'/>" alt="x"/>
-		<ul class="fullmenu"><!-- 회원 탈퇴 삭제 : 준형 -->
+		<ul class="fullmenu">
 			<li class="fullmenulist">MENU</li>
 			<li class="fullmenulist"><a href="${path}/main">HOME</a></li>
 			<li class="fullmenulist"><a href='${path}/resume/list'>RESUME LIST</a></li>

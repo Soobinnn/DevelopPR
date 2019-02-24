@@ -11,7 +11,7 @@
 $(function(){
 
 	// 처음에 재설정 활성화 끄기
-	  $('#findPwEmailReset_btn').prop("disabled", true).css("background-color", "#aaaaa");
+	  $('#findPwEmailReset_btn').prop("disabled", true);
 
 	  $('#findPwEmailReset_Pw').blur(function()
 	    {

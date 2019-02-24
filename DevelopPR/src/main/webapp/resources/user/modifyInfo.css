@@ -1,21 +1,12 @@
 .modifyInfo
 {
 	font-family: 'Noto Sans KR', sans-serif;
-	margin-bottom:130px;
 }
 
 .modifyInfo .user_header
 {
-    height : 120px;
-    margin-top : 100px;
-    margin-bottom : 100px;
-    line-height : 100px;
-	align-content:center;
-
-	font-size:3rem;
-	 text-align : center;
-	font-weight :900;
-	font-size : 3rem;
+    height : 150px;
+    background : #f9f9f9;
 }
 
 .modifyInfo #information
@@ -39,6 +30,7 @@
     display :flex;
     flex-direction: row; 
     width: auto;
+    background:#f9f9f9;
 }
 
 .modifyInfo .sec1
@@ -53,26 +45,24 @@
 .modifyInfo .sec2
 {
     display: flex;
-    height : 1215px;
+    height : 1250px;
     width : 800px;
     flex-shrink : 0;
     flex-basis : 800px;
     border : 2px solid #b9b9b9;
+    background:white;
    border-radius : 15px;
    
 }
 
-.modifyInfo #sec2_1
-{
-    width : 10%;
-}
 
 .modifyInfo #sec2_2
 {
     display : flex;
     flex-direction: column;
-    height: 1215px;
+    height: 1250px;
     width : 800px;
+
 }
 
 .modifyInfo #top
@@ -86,7 +76,7 @@
 .modifyInfo #middle
 {
     position : relative;
-    height : 1215px;
+    height : 1250px;
     width: 800px;
 }
 .modifyInfo .radio_
@@ -107,17 +97,20 @@
 }
 .modifyInfo #user_ul
 {
+
     position: relative;
-    width : 680px;
-    left : 80px;
-    top : 0px;
-    height: 630px;
+    width : 650px;
+    left:130px;
+    top:7px;
+
+    height: 660px;
 
     margin-top:150px;
 }
 .modifyInfo .user_li1,.modifyInfo .user_li2,.modifyInfo .user_li3,.modifyInfo .user_li6,.modifyInfo .user_li7,.modifyInfo .user_li8
 {
     font-size : 1rem;
+
 }
 .modifyInfo .user_li2
 {
@@ -142,10 +135,6 @@
     width: 380px;
 }
 
-.modifyInfo #sec2_3
-{
-    width : 10%;
-}
 .modifyInfo .sec3
 {
      height : 1215px;
@@ -464,10 +453,7 @@ outline:none;
 {
 	color: #02456f;
 }
-.modifyInfo #function_img
-{
-	
-}
+
 .modifyInfo #function_list
 {
 	align-content:center;
@@ -503,4 +489,25 @@ outline:none;
 {
 	padding-left:20px;
 	padding-right:20px;
+}
+.modifyInfo #user_li0_span2
+{
+	color: red;
+	position:relative;
+	top:10px;
+	left:16px;
+	font-size:0.9rem;
+}
+
+.modifyInfo #user_li0_span1
+{
+	color: red;
+	position:relative;
+	top:15px;
+	left:15px;
+	font-size:1.2rem;
+}
+.modifyInfo #modifyInfo_ft
+{
+	height:100px;
 }

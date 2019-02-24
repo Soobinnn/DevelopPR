@@ -14,7 +14,7 @@
 <script type="text/JavaScript">
    
 $(document).ready(function(){
-	$(document).scrollTop(350); 
+	$(document).scrollTop(250); 
 });
 
   function nextStep(authform) {
@@ -47,7 +47,7 @@ $(document).ready(function(){
 <body>
 <div class="findEmail">
     <header class="findEmail_header">
-         <strong></strong>
+
     </header>
    <section class="findEmail_sec">
          <div id="sec1"></div>

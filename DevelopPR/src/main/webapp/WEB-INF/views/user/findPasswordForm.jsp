@@ -10,7 +10,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	$(document).scrollTop(500);
+	$(document).scrollTop(370);
 	$('#findPw_email').focus();
 	
 	$(document).keypress(function(e) //엔터키 막기 추가 
@@ -77,6 +77,8 @@ $('#findPw_next').click(function(){
 </head>
 <body>
 <div class="findPasswordForm">
+<header id="findPw_header">
+</header>
     <section id="findPw_sec">
             
         <div id="findPw_sec_1">

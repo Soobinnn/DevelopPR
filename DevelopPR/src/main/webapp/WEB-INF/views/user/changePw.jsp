@@ -15,13 +15,13 @@ var CheckNewConfirm = false;
 
 
 $(document).ready(function(){
-	$(document).scrollTop(580); 
+	$(document).scrollTop(400); 
 });
 
 
 $(function(){
 	// 처음에 변경 활성화 끄기
-	  $('#changePw_changebtn').prop("disabled", true).css({"background-color" : "#aaaaa"});
+	  $('#changePw_changebtn').prop("disabled", true);
 
 	//현재 비밀번호 일치하는지 확인
 	  $('#changePw_pw').blur(function()
@@ -35,7 +35,6 @@ $(function(){
 			    	$('#changePw_pw').css({"border" :"2px solid red","background-color":"#FBF5EF"});
 			        $('#changePwCheckMsg').text('비밀번호를 입력해주세요.').css({"color":"red"});
 			        $('#changePw_pw').focus();
-
 			    	} 
 				    
 				    
@@ -44,7 +43,6 @@ $(function(){
 				        $('#changePw_pw').css({"border" :"2px solid red","background-color":"#FFCECE"});
 				        $('#changePwCheckMsg').text('비밀번호 형식에 맞게 입력해주세요.').css({"color":"red"});
 				        $('#changePw_pw').focus();
-
 				    }
 				    
 				    else{
@@ -62,15 +60,16 @@ $(function(){
 				    		
 				    				$('#changePw_pw').css({"border" :"2px solid green","background-color":"white"});
 				    	        	$('#changePwCheckMsg').text('비밀번호가 확인되었습니다.').css({"color":"green"});
-				    	        	$('#changePw_changebtn').prop("disabled", false);
+				    	        	 Check = true;
+				    	        	
 				    			 }
 				    			else if(data==false){
 				    				$('#changePwCheckMsg').css({"display" : "block"});
 				    				$('#changePw_pw').css({"border" :"2px solid red","background-color":"#FBF5EF"});
 				    	        	$('#changePwCheckMsg').text('현재비밀번호가 일치하지 않습니다.').css({"color":"red"});
-				    	        	$('#changePw_changebtn').css({"background":"#aaaaa"});
-				    	        	$('#changePw_changebtn').prop("disabled", true); 
+				    	        	$('#changePw_changebtn').css({"background":"white","color":"#585858"});
 				    	        	$('#changePw_pw').focus();
+				    	        	 Check = false;
 				    			
 				    		}
 				    		}
@@ -117,40 +116,60 @@ $(function(){
         $('#changePw_NewPwConfirm').css({"border" :"2px solid red","background-color":"#FBF5EF"});
         $('#changePwCheckMsg3').text('비밀번호가 일치하지 않습니다.').css({"color":"red"});
         $('#changePw_changebtn').css({"background":"white","color":"#585858"});
-        $('#changePw_changebtn').prop("disabled", true); 
         CheckNewConfirm = false;
         
     	}
     	else
     		{
        		 if( $('#changePw_NewPwConfirm').val()=='')
-        		{
-            $('#changePw_NewPwConfirm').css({"border" :"2px solid red","background-color":"#FBF5EF"});
-            $('#changePwCheckMsg3').text('비밀번호를 입력하세요.').css({"color":"red"});
-            CheckNewConfirm = false;
+        	{
+            	$('#changePw_NewPwConfirm').css({"border" :"2px solid red","background-color":"#FBF5EF"});
+            	$('#changePwCheckMsg3').text('비밀번호를 입력하세요.').css({"color":"red"});
+            	CheckNewConfirm = false;
         	}
         	else
         	{
-            $('#changePw_NewPwConfirm').css({"border" :"2px solid green","background-color":"white"});
-            $('#changePwCheckMsg3').text('비밀번호가 일치합니다.').css({"color":"green"});
-            $('#changePw_changebtn').css({"background":"#585858","color":"white"});
-            $('#changePw_changebtn').prop("disabled", false); 
-            CheckNewConfirm = true;
-            $('#changePw_changebtn').hover(function()
-      			{
-            	$('#changePw_changebtn').css({"background-color":"#b9b9b9"});
-            			
-            		},function()
-            		{
-            	$('#changePw_changebtn').css({"background-color":"#585858", "border":"2px solid #585858", "color":"white"});
-            		}); 
+            	$('#changePw_NewPwConfirm').css({"border" :"2px solid green","background-color":"white"});
+            	$('#changePwCheckMsg3').text('비밀번호가 일치합니다.').css({"color":"green"});
+            	$('#changePw_changebtn').css({"background" : "#585858", "color" : "white"});
+            	CheckNewConfirm = true;
+            
+            
+            
+            
+            	if(Check && CheckNew && CheckNewConfirm == true)
+		    	{
+		         $('#changePw_changebtn').prop("disabled", false).css({"background" : "#585858", "color" : "white"});
+		    	}
+		    	else
+		    	{
+		    	$('#changePw_changebtn').prop("disabled", true).css({"background":"white","color":"#585858"});	
+		    	}
+
+
+				$('#changePw_changebtn').hover(function()
+					{
+				if(Check && CheckNew && CheckNewConfirm == true)
+					{
+					$('#changePw_changebtn').css({"background-color":"#b9b9b9"});
+					}
+				},function()
+				{
+				if(Check && CheckNew && CheckNewConfirm == true)
+				{
+					$('#changePw_changebtn').css({"background-color":"#585858", "border":"2px solid #585858", "color":"white"});
+				}
+					});
             		
         	}
          }
 	  });
+	  
+			   
 	  // 재차 확인 창 띄우기
 	$('#changePw_changebtn').click(function()
  			{
+		if(Check && CheckNew && CheckNewConfirm == true){
  			if(confirm("비밀번호를 변경하시겠습니까?") == true)
  			{
  				changePwform.action="${path}/user/changePw";
@@ -159,6 +178,7 @@ $(function(){
          	    else{
          	    	return;
          	    }
+		}
  		});
    });
 
@@ -167,7 +187,7 @@ $(function(){
 <body>
 <div class="changePw">
 <header class="changePw_header">
-  	<strong>DevelopPR</strong>
+ 
 </header>
     <section id="changePw_sec">
         <div id="changePw_sec_1">
