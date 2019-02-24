@@ -29,11 +29,11 @@
                     var project_term1 = $("#project_term1").val();
                     var project_term2 = $("#project_term2").val();
                     
-                    console.log(project_name);
+                    /* console.log(project_name);
                     console.log(project_content);
                     console.log(project_term1);
                     console.log(project_term2);
-                    
+                     */
                     if(project_name === ""){
                         alert("프로젝트 제목을 입력하세요");
                         document.form1.project_name.focus();
@@ -108,11 +108,11 @@
         $(".project_tech_name").keyup(function() {
 				
         	
-        	console.log('키이벤트작동하는가?');
+        	/* console.log('키이벤트작동하는가?'); */
         	
 		        var tech_name_input = $('.project_tech_name').val();
         	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-         	console.log('값이 담기는가 :' +tech_name_input);
+         	/* console.log('값이 담기는가 :' +tech_name_input); */
         	
          	$.ajax({ // Ajax 요청을 작성
          	    url: "${path}/project/autocomplete",

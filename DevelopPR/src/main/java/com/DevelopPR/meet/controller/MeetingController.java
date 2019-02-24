@@ -69,7 +69,6 @@ public class MeetingController
 	@ResponseBody
 	public List<ChatRoomVO> getList(Model model,  @RequestParam("userNick") String userNick) throws Exception
 	{
-		/*System.out.println("받아왔능가?" + userNick);*/
 		String _userNick = userNick;
 		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(_userNick);
 		return listChatRoom; 
@@ -102,10 +101,7 @@ public class MeetingController
 	@ResponseBody
 	public List<MessageVO> checkRoom(@ModelAttribute ChatRoomVO chatRoomVo) throws Exception
 	{
-		System.out.println("올레"+chatRoomVo.getSend_user_id());
 		ChatRoomVO checkRoom = meetingService.isRoom(chatRoomVo);
-		System.out.println("후움"+checkRoom);
-		/*System.out.println("가꼬온나 : "+checkRoom.getChatroom_id());*/
 		List<MessageVO> msgList = new ArrayList<MessageVO>();
 		if(checkRoom==null)
 		{
@@ -129,10 +125,8 @@ public class MeetingController
 	@ResponseBody
 	public List<ChatRoomVO> exitRoom(@RequestParam("chatroom_id") String chatroom_id,  @RequestParam("userNick") String userNick) throws Exception
 	{
-		System.out.println("닉확인 "+userNick);
 		meetingService.exitRoom(chatroom_id, userNick);
 		List<ChatRoomVO> listChatRoom = meetingService.listChatRoom(userNick);
-		System.out.println("뭐시여"+listChatRoom);
 		return listChatRoom; 
 	}
 	

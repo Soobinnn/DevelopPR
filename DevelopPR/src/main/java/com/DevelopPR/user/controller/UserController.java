@@ -124,7 +124,6 @@ public class UserController
   {
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
 	  vo.setUserPw(pwdBycrypt);
-	  System.out.println(vo);
 	  userService.insertUser(vo);
 	  
 	  String userEmail = vo.getUserEmail();
@@ -166,14 +165,12 @@ public class UserController
   @RequestMapping("findEmailResult")
   public ModelAndView findId(String phone) throws Exception {
 
-	  System.out.println(phone);
 	  ModelAndView mav = new ModelAndView();
 	  // DB에서 이메일을 찾아 이메일 가져온다.
 	  List<String> emailList = new ArrayList<String>();
 	  emailList = userService.findId(phone);
 	  
 	  // email 담고,
-	  System.out.println("-----------------------------이메일 목록 --------------------------------"+emailList);
 	  
 	  mav.addObject("emailList", emailList);
 	  // findIdResult.jsp로 넘긴다.
@@ -185,9 +182,7 @@ public class UserController
   @RequestMapping("PhoneCheck")
   @ResponseBody
   public int PhoneCheck(String phone) throws Exception{
-	  System.out.println(phone);
 	  int temp = userService.checkphone(phone);
-	  System.out.println(temp);
 	return temp;
   }
 
@@ -203,7 +198,6 @@ public class UserController
  public int userFindPassword(String userEmail)
  {
 	int temp=userService.checkMail(userEmail);
-	  System.out.println(temp);
 	  return temp;
  }
  //Pw 찾기시 이메일 인증 
@@ -230,8 +224,6 @@ public class UserController
 	  model.addAttribute("keyCode", keyCode);
 	  model.addAttribute("userEmail",userEmail);
 	  
-	  System.out.println(keyCode);
-	  System.out.println(userEmail);
 	  
 	  return "basic/user/findPwEmail"; 
  }
@@ -242,8 +234,6 @@ public class UserController
  public boolean userFindPwAuth(HttpSession session, String AuthNum) {
 	  String keyCode = (String) session.getAttribute("keyCode");
 	  
-	  System.out.println(AuthNum);
-	  System.out.println(keyCode);
 	  
 	  if(AuthNum.equals(keyCode)){ // 문자열 비교 
 		  
@@ -256,29 +246,22 @@ public class UserController
  //Pw 찾기 재설정
  @RequestMapping(value="findPwReset" , method=RequestMethod.POST)
  public String userFindPwReset(@ModelAttribute UserVO vo) {
+	 
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
+	  
 	  vo.setUserPw(pwdBycrypt);
-	  System.out.println(vo);
-	  System.out.println("--------Pw 찾기 재설정-------");
 	  userService.updatePasswd(vo);
 	  return "user/findPwResetConfirm";
  }
  
- //비밀번호 변경 추가 : 준형---------------------------------------------------------------
+ //비밀번호 변경 추가 : 준형-
  @RequestMapping(value="changePw" , method=RequestMethod.POST)
  public String userchangePw(@ModelAttribute UserVO vo) {
-	  System.out.println(vo);
-	  System.out.println("--------");
 	  String pwdBycrypt = passwordEncoder.encode(vo.getUserPw());
-	  
-	  System.out.println("---컨트롤러 암호화 pw---");
 	  vo.setUserPw(pwdBycrypt);
-	  System.out.println(vo);
 	  userService.updatePasswd(vo);
 	  return "user/changePwConfirm";
  }
- 
-//---------------------------------------------------------------------------------
  
   // 로그인 화면(GET)
   @RequestMapping(value="login", method=RequestMethod.GET)
@@ -375,7 +358,6 @@ public class UserController
   public String emailConfirm(String userEmail, Model model) throws Exception 
   { 	
 	  	// 이메일인증
-	   	System.out.println(userEmail);
   		userService.userAuth(userEmail);
   		model.addAttribute("userEmail", userEmail);
   		return "basic/user/joinConfirm";
@@ -413,8 +395,6 @@ public class UserController
   {  
 	  String _userEmail = userEmail;
 	  String _reUserEmail = reUserEmail; 
-	  System.out.println(_userEmail);
-	  System.out.println(reUserEmail);
 	  if(_userEmail.equals(_reUserEmail))
 	  {
 		  userService.reJoining(_reUserEmail);
@@ -437,7 +417,6 @@ public class UserController
     
     JsonNode accessToken = jsonToken.get("access_token");
     
-    System.out.println("accessToken : " + accessToken);
 
     JsonNode userInfo = Kakaologinapi.getKakaoUserInfo(accessToken);
     
@@ -458,12 +437,6 @@ public class UserController
     profile = properties.path("profile_image").asText();
     checMail = kakao_account.path("has_email").asBoolean();
     
-    System.out.println("id : " + id);
-    System.out.println("name : " + name);
-    System.out.println("email : " + email);
-    System.out.println("thumbnail :" + thumbnail);
-    System.out.println("profile : " + profile);
-    System.out.println("이메일 유무테스트" + checMail);
  
     int checkMail =userService.checkMail(email+"_kakao");
 
@@ -524,11 +497,10 @@ public class UserController
 		
 		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
 		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		System.out.println("네이버:" + naverAuthUrl);
+
 		
 		//네이버 
 		model.addAttribute("url", naverAuthUrl);
-		System.out.println(naverAuthUrl);
 		/* 생성한 인증 URL을 View로 전달 */
 
 		return "user/naverlogin";
@@ -587,7 +559,7 @@ public class UserController
   {
       oauthOperations = googleConnectionFactory.getOAuthOperations();
       String url = oauthOperations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-      System.out.println("/googleLogin, url : " + url);
+  
       model.addAttribute("google_url", url);
 
       return "user/googlelogin";
@@ -613,7 +585,7 @@ public class UserController
 
       Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
       Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
-      System.out.println(connection);
+
 
       PlusOperations plusOperations = google.plusOperations();
       Person profile = plusOperations.getGoogleProfile();
@@ -663,7 +635,6 @@ public class UserController
       // Access Token 취소
       try 
       {
-          System.out.println("Closing Token....");
           String revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=" + accessToken + "";
           URL url = new URL(revokeUrl);
           HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -685,36 +656,28 @@ public class UserController
       }
       return "redirect:/main";
   }
-//회원정보 수정 폼 : 준형 , 다른 계정 로그인 프로필 사진 추가-------------------------------------------
+//회원정보 수정 폼 : 준형 , 다른 계정 로그인 프로필 사진 추가
   @RequestMapping(value="modifyInfoform", method= RequestMethod.GET) 
   public String userModifyInfoform(HttpSession session, Model model) throws Exception
   {
-	 String userEmail = (String) session.getAttribute("userEmail"); //로그인 할때 올려둔 session 값 중 userEamil을 가져옴
-	 UserVO userEmail_other = (UserVO)session.getAttribute("login"); //다른 계정 로그인 세션값
-	 String userEmail_otherEmail = userEmail_other.getUserEmail(); // 수정할때 조건을 위해 이메일을 빼옴.
-	 String userNick_other =  userEmail_other.getUserNick(); // 다른계정로그인 닉네임 값을 jsp에 넘겨주기 위해 가져옴.
+		
+	 UserVO userEmail= (UserVO)session.getAttribute("login"); //다른 계정 로그인 세션값
+	 String userEmail_ = userEmail.getUserEmail(); // 수정할때 조건을 위해 이메일을 빼옴.
+	 String userNick_ =  userEmail.getUserNick(); // 닉네임 값을 jsp에 넘겨주기 위해 가져옴.
 	 
-	 //사진을 불러올때 _가 있으면 다른계정로그인을 통한 이메일로 불러온다
-	 if(userEmail_otherEmail.indexOf("_")>-1)
-	 {
-		 UserVO vo2 = (UserVO)userService.modifyform(userEmail_otherEmail);
-		 model.addAttribute("vo",vo2);
-		 model.addAttribute("userNick",userNick_other);
-	 }
-	 else // 일반회원
-	 {
-		 UserVO vo = userService.modifyform(userEmail);		 
-		  model.addAttribute("vo", vo);
-	 }
+	 UserVO vo2 = (UserVO)userService.modifyform(userEmail_);
+	 model.addAttribute("vo",vo2);
+	 model.addAttribute("userNick",userNick_);
+	 
 	  return "basic/user/modifyInfo";
 	  
   }
-private UserVO setUserNick(String userNick_other) {
+private UserVO setUserNick(String userNick_) {
 	// TODO Auto-generated method stub
 	return null;
 }
 
-private String getUserEmail(UserVO userEmail2) {
+private String getUserEmail(UserVO userEmail_) {
 	// TODO Auto-generated method stub
 	return null;
 }
@@ -724,38 +687,22 @@ private HttpSession getSession() {
 	// TODO Auto-generated method stub
 	return null;
 }
-//---------------------------------------------------------------------------
 
 //회원정보 수정 , 세션 추가 
   @RequestMapping(value="modifyInfo", method= RequestMethod.POST)
   public String userModifyInfo(@ModelAttribute UserVO vo ,HttpSession session) {
 	  
 	  String userProfile = vo.getProfile();
-	  System.out.println("-----------------------------------------------프로필 사진 값 확인2 ------------------------------"+userProfile);
-	  
+	   
 	  String userEmail = vo.getUserEmail();
-	  
-	  if(userEmail.indexOf("_") > -1) // 다른계정 이메일인 경우에 세션 값 변경, 세션을 그냥  다시  넣어도 변경 됨.
-	  {
-		  UserVO vo2 = vo;
+	 
+	  UserVO vo2 = vo;
 		 
-		  vo2.setUserEmail(vo.getUserEmail());
-	      vo2.setUserNick(vo.getUserNick());
-	      vo2.setUserName(vo.getUserName());
-	      vo2.setUserIs_seek(vo.getUserIs_seek());
-	      session.setAttribute("login", vo2 );
-		  
-	  }
-	  else // 일반회원 이메일인 경우 세션 값 변경
-	  {
-		  	UserVO vo2 = vo;
-		  	session.setAttribute("userEmail", vo2.getUserEmail());
-     		session.setAttribute("userNick", vo2.getUserNick());
-     		session.setAttribute("userName", vo2.getUserName());
-     		session.setAttribute("userIs_seek", vo2.getUserIs_seek());
-     		session.setAttribute("login", vo2);
-		  
-	  }
+	  vo2.setUserEmail(vo.getUserEmail());
+      vo2.setUserNick(vo.getUserNick());
+      vo2.setUserName(vo.getUserName());
+      vo2.setUserIs_seek(vo.getUserIs_seek());
+      session.setAttribute("login", vo2);
 	  
 	  if(userProfile.matches(".*Develop.*")) 
 	  {
@@ -778,7 +725,6 @@ private HttpSession getSession() {
 	  else
 	  	{
 		  String profileURL = "/DevelopPR/resources/profile/"+userProfile;
-		  System.out.println("-----------------------------------------------프로필 사진 값 확인3 -----------------------------"+profileURL);
 		  vo.setProfile(profileURL);
 		  userService.modifyInfo(vo);
 		  
@@ -789,8 +735,9 @@ private HttpSession getSession() {
   //회원 탈퇴 폼 : 준형 , 이메일 세션값 추가
   @RequestMapping(value="goodbyeform", method=RequestMethod.GET)
   public String goodbyeform(HttpSession session, Model model) {
-	  String userEmail = (String) session.getAttribute("userEmail");
-	  model.addAttribute("userEmail", userEmail);
+	  UserVO userEmail= (UserVO)session.getAttribute("login"); 
+	  String userEmail_ = userEmail.getUserEmail(); 
+	  model.addAttribute("userEmail", userEmail_);
 	  return "basic/user/goodbye";
 	  
   }
@@ -799,9 +746,10 @@ private HttpSession getSession() {
   @RequestMapping(value="goodbyeChk", method=RequestMethod.POST)
   @ResponseBody
   public boolean goodbye(@RequestParam String userPw ,HttpSession session, Model model) {
-	  String userEmail = (String) session.getAttribute("userEmail");
+	  UserVO userEmail= (UserVO)session.getAttribute("login");
+	  String userEmail_ = userEmail.getUserEmail(); 
 	  String userPassword = userPw;
-	  String encodedPassword = userService.checkPw(userEmail);
+	  String encodedPassword = userService.checkPw(userEmail_);
 	  
 	  if(passwordEncoder.matches(userPassword, encodedPassword)) 
 	  { // 입력한 PW와 기존 암호화된 PW를 비교
@@ -811,15 +759,27 @@ private HttpSession getSession() {
 		  return false;
 	  }
   }
-  // 회원 탈퇴 : 준형
+  // 회원 탈퇴 : 준형 , 일반 회원
   @RequestMapping(value="goodbye", method=RequestMethod.POST)
-	  public String goodbye(String userPw, HttpSession session) 
+	  public String goodbye(HttpSession session) 
   	  {
-	  	String userEmail = (String) session.getAttribute("userEmail");
-	  	userService.deleteUser(userEmail);
-	  	return "user/goodbyeConfirm";
+	  UserVO userEmail = (UserVO) session.getAttribute("login");
+	  String userEmail_ = userEmail.getUserEmail();
+	  	userService.deleteUser(userEmail_);
+		return "user/goodbyeConfirm";
 	  }
   
+  //회원 탈퇴  : 다른 계정 로그인 회원탈퇴 추가-----------------------------------------------
+  @RequestMapping(value="goodbyeOther", method=RequestMethod.GET)
+  	public String goodbyeOther(HttpSession session)
+  	{
+	  	UserVO userEmail = (UserVO)session.getAttribute("login"); //다른 계정 로그인 세션값
+		String userEmail_= userEmail.getUserEmail(); // 탈퇴할때 조건을 위해 이메일을 빼옴.
+		userService.deleteUser(userEmail_);
+		return "user/goodbyeConfirm";
+  	}
+ //---------------------------------------------------------------------------
+
   // 장기미접속유저 메일 보내기
   @Scheduled(cron="0 0 0 * * ?")
   public void mailSend() throws Exception
@@ -839,14 +799,11 @@ private HttpSession getSession() {
 
       try {
            String redirectUri = oAuth2Parameters.getRedirectUri();
-          System.out.println("Redirect URI : " + redirectUri);
-          System.out.println("Code : " + code);
-
+         
           OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
           AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUri, null);
           String accessToken = accessGrant.getAccessToken();
-          System.out.println("AccessToken: " + accessToken);
-          Long expireTime = accessGrant.getExpireTime();
+         Long expireTime = accessGrant.getExpireTime();
       
           
           if (expireTime != null && expireTime < System.currentTimeMillis()) 
@@ -865,9 +822,6 @@ private HttpSession getSession() {
           {            
               String [] fields = { "id", "email",  "name"};
               User userProfile = facebook.fetchObject("me", User.class, fields);
-              System.out.println("유저이메일 : " + userProfile.getEmail());
-              System.out.println("유저 id : " + userProfile.getId());
-              System.out.println("유저 name : " + userProfile.getName());
           } catch (MissingAuthorizationException e) {
               e.printStackTrace();
           }
@@ -886,9 +840,10 @@ private HttpSession getSession() {
   //비밀번호 변경 폼: 준형
   @RequestMapping(value="changePwform", method=RequestMethod.GET)
   public String ChangePw(HttpSession session, Model model) {
-	String userEmail = (String) session.getAttribute("userEmail");
-	  System.out.println(userEmail);
-	  model.addAttribute("userEmail",userEmail);
+	  UserVO userEmail= (UserVO)session.getAttribute("login");
+	  String userEmail_ = userEmail.getUserEmail(); 
+	  System.out.println("---------------------비밀번호 변경--------------------"+userEmail_);
+	  model.addAttribute("userEmail",userEmail_);
 	  return "basic/user/changePw";
   }
 

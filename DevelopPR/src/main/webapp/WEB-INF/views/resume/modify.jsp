@@ -22,7 +22,7 @@ $(document).ready(function () {
 		        url : '${path}/resume/background',
 		        success : function(data)
 		        {
-		        	console.log("success:"+data);
+		        	/* console.log("success:"+data); */
 		        	$(".header").attr("src", data);
 		        }
 		    })

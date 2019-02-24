@@ -28,7 +28,7 @@
 <script>
 
     function addFilePath(msg){
-        console.log(msg); // 파일명 콘솔 출력
+        /* console.log(msg); // 파일명 콘솔 출력 */
         document.getElementById("form1").reset(); // ifream에 업로드결과를 출력 후 form에 저장된 데이터 초기화
     }
 </script>

@@ -28,7 +28,7 @@
 		socket.onmessage = onMessage;
 		socket.onopen = function() 
 		{
-		    console.log('open');
+		    /* console.log('open'); */
 		    // 로그아웃 -> 로그인 할 때, 페이지 넘어 갈때마다 메시지 확인
 		    if(!(nick == null || nick ==""))
 		    {
@@ -89,8 +89,8 @@
 	}
 	$(document).ready(function()
 	{
-		console.log("msg의 상태가??" +success);
-		console.log("세션의 상태가..?" +nick);
+		/* console.log("msg의 상태가??" +success);
+		console.log("세션의 상태가..?" +nick); */
 		if(!(success==""&&nick==""))
 		{
 			connect();	

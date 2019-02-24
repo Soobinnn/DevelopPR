@@ -82,7 +82,8 @@ $(function(){
 </head>
 <body>
 <div id="policy">
-	<h1 align="center">DevelopPR</h1>
+	<header id="policy_header">
+	</header>
 	<div class="_section">
 		<div class="sec1"></div>
 		<div class="container">
@@ -239,6 +240,10 @@ $(function(){
 			</div>
 		</div>
 		<div class="sec2"></div>
+		
 	</div>
+	<footer id="policy_ft">
+	</footer>
 	</div>
 </body>
+</html>

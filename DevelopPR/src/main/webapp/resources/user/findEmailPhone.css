@@ -1,7 +1,5 @@
 .findEmailPhone
 {
-    margin-bottom:100px;
-    margin-top:100px;
     font-family: 'Noto Sans KR', sans-serif;
     box-sizing: border-box;
 }
@@ -9,6 +7,7 @@
    display: flex;
    flex-direction: row;
    width: auto;
+   background:#f9f9f9;
    height: 540px;
    
 }
@@ -24,6 +23,7 @@
    border-radius : 15px;
    width : auto;
    justify-content : center;
+   background:white;
 }
 .findEmailPhone #findEmailPhone_ul
 {
@@ -171,4 +171,15 @@ border: 2px solid #585858;
 .findEmailPhone input[type=text]::-ms-clear 
    {
   display:none;
+}
+
+.findEmailPhone .findEmailPhone_header
+{
+  height:140px;
+  background:#f9f9f9;
+}
+
+.findEmailPhone .findEmailPhone_ft
+{
+  height:100px;
 }

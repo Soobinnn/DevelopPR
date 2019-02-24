@@ -11,7 +11,7 @@
 <script type="text/JavaScript">
 
 $(document).ready(function(){
-	$(document).scrollTop(350); 
+	$(document).scrollTop(250); 
 	$('#phone_Num').focus();
 });
 

@@ -105,7 +105,6 @@ public class UserDAOImpl implements UserDAO
 	 public boolean checkAuthStatus(String userEmail)
 	 {
 		 int userAuth = sqlSession.selectOne("user.checkAuthStatus", userEmail);
-		 System.out.println(userAuth);
 		 return (userAuth == 1 ? true : false);
 	 }
 	 
@@ -137,8 +136,6 @@ public class UserDAOImpl implements UserDAO
 	 //비밀번호 재설정 - 준형 
 	   @Override
 	   public void updatePasswd(UserVO vo) {
-		   System.out.println(vo);
-			  System.out.println("--------Pw 찾기 변경 DAO-------");
 		   sqlSession.update("user.updatePasswd",vo);
 	   }
 	   

@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>DevelopPR</title>
+</head>
 <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="<c:url value='/resources/intro/javascript/jquery.novacancy.js'/>"></script> 
@@ -54,7 +55,7 @@ $(document).ready(function() {
           $('#a1').attr("style","display:none");
          /*  window.location.href="http://localhost:8080/DevelopPR/main"; */
           window.location.href="https://developpr.org/DevelopPR/main";
-          console.log("안");
+         /*  console.log("안"); */
           
         });
         
@@ -66,7 +67,7 @@ $(document).ready(function() {
         document.onmousemove = getMousePosition; 
         setInterval("moveImg()", 50); // moveImg 함수 반복 실행하여 이미지 움직이기
         
-        console.log("click success!");
+        /* console.log("click success!"); */
   });
   
   $(document).on("click",".click",function(e){
@@ -75,7 +76,7 @@ $(document).ready(function() {
         $('#a1').attr("style","display:none");
         /*  window.location.href="http://localhost:8080/DevelopPR/main"; */
         window.location.href="https://developpr.org/DevelopPR/main";
-        console.log("안");
+       /*  console.log("안"); */
       });
       
       $('.click').text('회사에 보내주세요.');
@@ -86,7 +87,7 @@ $(document).ready(function() {
       document.onmousemove = getMousePosition; 
       setInterval("moveImg()", 50); // moveImg 함수 반복 실행하여 이미지 움직이기
       
-      console.log("click success!");
+      /* console.log("click success!"); */
 });
     
 

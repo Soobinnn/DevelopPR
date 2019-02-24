@@ -1,21 +1,18 @@
 
 .goodbye
 {
-margin-bottom:180px;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
 .goodbye .goodbye_header
 {
     height : 120px;
-    margin-top : 80px;
-    margin-bottom : 60px;
-    line-height : 100px;
-	align-content:center;
-	font-size:3rem;
-	text-align : center;
-	font-weight :900;
-	font-size : 3rem;
+  	background:#f9f9f9;
+}
+
+.goodbye .goodbye_ft
+{
+	height: 80px;
 }
 
 .goodbye .goodbye_sec {
@@ -23,6 +20,7 @@ margin-bottom:180px;
    flex-direction: row;
    width: auto;
    height: 790px;
+   	background:#f9f9f9;
   
 }
 
@@ -41,6 +39,7 @@ margin-bottom:180px;
    border-radius :15px;
    width : 800px;
    height : 790px;
+   	background:white;
 }
 
 .goodbye #goodbye_ul

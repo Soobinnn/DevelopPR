@@ -32,7 +32,7 @@
             // 첫번째 파일
             var file = files[0];
             // 콘솔에서 파일정보 확인
-            console.log(file);
+            /* console.log(file); */
 
             // ajax로 전달할 폼 객체
             var formData = new FormData();

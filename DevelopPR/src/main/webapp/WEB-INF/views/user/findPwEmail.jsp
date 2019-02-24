@@ -11,7 +11,7 @@
 $(function(){
 
 	// 처음에 재설정 활성화 끄기
-	  $('#findPwEmailReset_btn').prop("disabled", true).css("background-color", "#aaaaa");
+	  $('#findPwEmailReset_btn').prop("disabled", true);
 
 	  $('#findPwEmailReset_Pw').blur(function()
 	    {
@@ -95,7 +95,7 @@ $(function(){
    });
    
 $(document).ready(function(){
-	  $(document).scrollTop(520); 
+	  $(document).scrollTop(370); 
 	  $('#findPwEmail_num').focus();
 		
 	  $("#findPwEmail_Confirm").click(function()
@@ -116,8 +116,8 @@ $(document).ready(function(){
 				url : "${path}/user/findPwAuth",
 				success : function(data)
 				{
-					console.log(data);
-					
+					/* console.log(data);
+					 */
 					if(data == true){
 						alert("인증번호가 일치합니다.")
 						$('#findPwEmail_div').css("display", "none");

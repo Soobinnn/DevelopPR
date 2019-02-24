@@ -27,7 +27,7 @@
 	//서버로 메시지 보낼때
 	function onOpen(evt) 
 	{
-		console.log("open");
+		/* console.log("open"); */
 	}
 
 	//서버로 부터 받은 메세지 보내주기
@@ -35,7 +35,7 @@
 	{
 		var data = evt.data;
 
-		console.log("서버로부터 받은 메시지 : "+data);
+		/* console.log("서버로부터 받은 메시지 : "+data); */
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
 	/* 	appendMessage(obj.message_content); */
@@ -72,7 +72,7 @@
 			message.receiver_user_id = '${viewId.userEmail}'
 			message.receiver_user_name = '${viewId.userName}'
 		}
-		console.log(message);
+		/* console.log(message); */
 		
 		/* 보낼대상 선택안할시 예외처리 */
 		if(message.message_receiver==null||message.message_receiver=="")
@@ -198,6 +198,7 @@
 	         success : function(data)
 	         {
 	        	 $("#chatArea").empty();
+
 	        	//대상변경
         		 readyChat(receiver_user_id, targetProfile);
 	 
@@ -237,8 +238,8 @@
 	        	 
 	         }
 		})
-		console.log("호이잇"+lookRoom);
-		
+		/* console.log("호이잇"+lookRoom);
+		 */
 	}
 	//채팅방 리스트를 불러옴
 	function viewList(getlist)
@@ -248,10 +249,10 @@
 		/* console.log("날짜테스트 : "+ date.format("yy-MM-dd hh:mm")); */
 		var checkUserNick = '${sessionScope.login.userNick}';
 		var getlistNick = getlist.receiver_user_id;
-		console.log(getlist);
+		/* console.log(getlist); */
 		if(checkUserNick === getlistNick)
 		{
-			console.log("세션 = Receiver");
+			/* console.log("세션 = Receiver"); */
 			if(getlist.unReadCount == 0)
 			{
 				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;'>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.send_user_id+"</span><span id ='ThatProfile' style='display : none;'>"+getlist.send_profile+"</span><div class='m_name'>"+getlist.send_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");	
@@ -263,7 +264,7 @@
 		}
 		else
 		{
-			console.log("세션 = sender");
+			/* console.log("세션 = sender"); */
 			if(getlist.unReadCount == 0)
 			{
 				$(".listAll").append("<div class='mlist' id='"+getlist.chatroom_id+"'><div class='up'><span id ='listChatRoom' style='display : none;'>"+getlist.chatroom_id +"</span><span id ='listChatThat' style='display : none;'>"+getlist.receiver_user_id+"</span><span id ='ThatProfile' style='display : none;'>"+getlist.receiver_profile+"</span><div class='m_name'>"+getlist.receiver_user_id+"</div><div class='m_lastday'>"+ date.format("yy-MM-dd HH : mm") +"</div></div><div class='down'><div class='m_info'>"+getlist.lastMessage+"</div><div id='chatroomsetting2'><div id='chatroom_icon'></div><div id='chatroom_exit'>나가기</div></div></div>");
@@ -289,7 +290,7 @@
 	function readUpdate(param)
 	{
 		var msg = param+'&userNick='+'${sessionScope.login.userNick}';
-		console.log('업뎃메세징'+msg);
+		/* console.log('업뎃메세징'+msg); */
 		$.ajax({                                                                                                                          
 			 async : true,
 	         type :'POST',
@@ -322,7 +323,7 @@
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			if (keycode == '13') 
 			{
-				console.log("check: c");
+				/* console.log("check: c"); */
 				send();
 			}
 			event.stopPropagation();
@@ -397,7 +398,7 @@
 		{
 			event.stopPropagation();
 			var $_target = $(this).closest(".mlist");
-			console.log("타게뜨"+$_target.attr('id'));
+			/* console.log("타게뜨"+$_target.attr('id')); */
 			var targetRoom = $_target.attr('id');
 			//방 삭제
 			var param = "userNick="+nick+"&chatroom_id="+targetRoom;
@@ -410,7 +411,7 @@
 		         {
 		        	var messagelist;
 		        	var _chatRoomId; 
-		        	console.log("왜않대1");
+		        	/* console.log("왜않대1"); */
 		        		 $('.listAll').empty();
 		 	        	/*  console.log("ajax처리했능가 : "+data); */
 		 	        	 var getlist;

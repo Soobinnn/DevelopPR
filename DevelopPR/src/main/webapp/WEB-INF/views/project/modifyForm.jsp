@@ -99,13 +99,13 @@ cursor: pointer;
                     var project_content = $("#project_content").val();
                     var project_term1 = $("#project_term1").val();
                     var project_term2 = $("#project_term2").val();
-                    
+                    /* 
                     console.log(project_name);
                     console.log(project_content);
                     console.log(project_term1);
                     console.log(project_term2);
                     
-                    
+                     */
                     /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
                     var project_name = $('#textarea_title').val();
                     var project_content = $('#textarea_introduce').val();
@@ -179,11 +179,11 @@ cursor: pointer;
         $(".project_tech_name").keyup(function() {
 				
         	
-        	console.log('키이벤트작동하는가?');
+        	/* console.log('키이벤트작동하는가?'); */
         	
 		        var tech_name_input = $('.project_tech_name').val();
         	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-         	console.log('값이 담기는가 :' +tech_name_input);
+         	/* console.log('값이 담기는가 :' +tech_name_input); */
         	
          	$.ajax({ // Ajax 요청을 작성
          	    url: "${path}/project/autocomplete",
@@ -243,7 +243,7 @@ cursor: pointer;
 
          
     	 function addFilePath(msg){
-    	        console.log(msg); // 파일명 콘솔 출력
+    	        /* console.log(msg); */ // 파일명 콘솔 출력
     	        document.getElementById("form2").reset(); // ifream에 업로드결과를 출력 후 form에 저장된 데이터 초기화
     	    }
  

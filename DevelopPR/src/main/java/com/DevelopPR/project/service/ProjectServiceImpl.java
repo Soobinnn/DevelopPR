@@ -43,10 +43,8 @@ public void remove(int pno) throws Exception
 @Override
 public List<ProjectVO> lookup(String tech_name_input) throws Exception
 {
-	System.out.println(tech_name_input +"컨트롤러에서 서비스로 값이 전달되는가?");
 	List<ProjectVO> RV = projectDao.lookup(tech_name_input); 
 	
-System.out.println(RV +"서비스단에서 값을 가져오는가?");	
 	
   return RV;
 

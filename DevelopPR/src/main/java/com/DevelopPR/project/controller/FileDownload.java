@@ -29,7 +29,7 @@ public class FileDownload {
         String filename = request.getParameter("fileName");
         String downname = request.getParameter("downName");
         String realPath = "";
-        System.out.println("downname: "+downname);
+       
         if (filename == null || "".equals(filename)) {
             filename = downname;
         }
@@ -48,7 +48,6 @@ public class FileDownload {
             System.out.println("UnsupportedEncodingException");
         }
         realPath = path +"/" +downname.substring(0,4) + "/"+downname;
-        System.out.println(realPath);
         File file1 = new File(realPath);
         if (!file1.exists()) {
             return ;
