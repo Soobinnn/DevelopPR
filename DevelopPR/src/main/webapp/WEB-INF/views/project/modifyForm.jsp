@@ -367,7 +367,7 @@ cursor: pointer;
 <div class="pr_regist">
 <div class="container">
 <%-- <form name="form1" id="form1" method="post" action="${path}/project/regist" enctype="multipart/form-data"> --%>  
-<form name="form1" id="form1" action="${path}/project/regist" method ="post" enctype="multipart/form-data">
+<form name="form1" id="form1" action="${path}/project/modify" method ="post" enctype="multipart/form-data">
   <div id="project_make"><span id="main_title">프로젝트 수정하기</span><br><span id="subtitle_make">쉽고 빠르게 프로젝트를 등록해보세요.</span></div>
   <div id="title_line_top"> <!--라인 넣기용 div--><hr id="title_top"></div>
   
@@ -460,7 +460,7 @@ cursor: pointer;
          <div id="upload_sub2">
          <div id="file_upload">
          <label for="file_label"></label>
-         <input type="file" id="file_label" name="file"> <%-- VO에 name값과 동일한 매개변수를 만든다. --%>
+         <input type="file" id="file_label" name="file" value="${dto.download_name}"> <%-- VO에 name값과 동일한 매개변수를 만든다. --%>
          </div> <%-- end of file_upload --%>
           
           <%-- <div id="file_download"><c:url value="${dto.pr_file_name}"/>프로젝트 파일 다운로드</a></div> --%>

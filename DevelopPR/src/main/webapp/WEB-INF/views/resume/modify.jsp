@@ -224,7 +224,7 @@ function fn_removeImage() {
 			<img src="/DevelopPR/resources/resume/${dto.color}.jpg" class="header"/>
         <header>
             <div class="head">
-               <div class="a">DevelopPR</div>
+               <div class="a"><a href="https://developpr.org/DevelopPR/main">DevelopPR</a></div>
                <div class="b">이력서 등록</div>
             </div>
             <div id="img">
@@ -321,7 +321,7 @@ function fn_removeImage() {
                        <div class="content">
 	                        <div class="state">             
 	                            <div class="name">
-	                               		 희망 직종 *
+	                               		 희망 직종 
 	                            </div> 
 	                            <div class="p_info">
 	                               <input type="text" class="textshort" value="${dto.prefer_job}" name="prefer_job"/>

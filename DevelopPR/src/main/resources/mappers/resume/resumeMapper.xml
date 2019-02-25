@@ -139,4 +139,9 @@
 		AND good_email = #{good_email}
 	</select>
 	
+	<select id="is_regist" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM PR_RESUME
+		WHERE email=#{email}
+	</select>
 </mapper>

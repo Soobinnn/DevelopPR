@@ -102,8 +102,7 @@ cursor: pointer;
                        var text =  $(this).val();
                        $('#project_grade').val(text);
                    });
-   
-            
+ 		   
               <%--값 전송 버튼 시작 --%>  
  		      $("#btnSave").click(function(){
                     var project_name = $("#project_name").val();
@@ -298,7 +297,7 @@ cursor: pointer;
 <div class="pr_regist">
 <div class="container">
 <%-- <form name="form1" id="form1" method="post" action="${path}/project/regist" enctype="multipart/form-data"> --%>  
-<form name="form1" id="form1" action="${path}/project/regist" method ="post" enctype="multipart/form-data">
+<form name="form1" id="form1" action="${path}/project/registsuccess" method ="post" enctype="multipart/form-data">
   <div id="project_make"><span id="main_title">프로젝트 만들기</span><br><span id="subtitle_make">쉽고 빠르게 프로젝트를 등록해보세요.</span></div>
   <div id="title_line_top"> <!--라인 넣기용 div--><hr id="title_top"></div>
   

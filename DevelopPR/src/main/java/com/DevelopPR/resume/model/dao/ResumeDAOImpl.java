@@ -102,5 +102,7 @@ public class ResumeDAOImpl implements ResumeDAO{
 	public String is_good(GoodVO vo) throws Exception {
 		return SqlSession.selectOne("resume.is_good", vo);
 	}
-	
+	public int is_regist(String email) throws Exception{
+		return SqlSession.selectOne("resume.is_regist",email);
+	}
 }

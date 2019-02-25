@@ -46,7 +46,10 @@
    font-size:50px;
    font-weight:900;
 }
-
+.resumeRegist .head .a a{
+	text-decoration:none;
+	color:black;
+}
 .resumeRegist .head .b{
    height:70px;
    font-size:30px;

@@ -77,8 +77,6 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	       
     
      
-     
-     
      projectService.regist(vo);
 				  
 		 
@@ -99,8 +97,13 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	    
 }
 
-
-
+@RequestMapping(value="/project/registsuccess", method=RequestMethod.POST)
+public String projectRegistsuccess(HttpSession session) throws Exception
+{
+	UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
+	 
+	 return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/";
+}
 //02. 프로젝트 수정 폼
 @RequestMapping("/project/modifyForm/{pno}")
 public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Model model) throws Exception
