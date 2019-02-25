@@ -82,7 +82,7 @@
 
 <!-- 밸리데이터 등록 -->
 <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
-     
+
     
 </beans>
 

@@ -445,19 +445,16 @@ public class UserController
  
 
     UserVO vo = new UserVO();
-    logger.info("카톡메일체크" + checMail);
-    logger.info("1111"+email);
+    logger.info("카톡메일체크"+email);
     
     // 이메일 허용 체크 안했을 경우 예외처리
     if(checMail && email !="" && email !=null)
     {
       vo.setUserEmail(email+"_kakao");
-      logger.info("카톡메일체크1");
     }
     else
     {
     	vo.setUserEmail(id+"@daum.net_kakao");
-    	logger.info("카톡메일체크2");
     }
 	  vo.setUserIs_seek(0);
 	  vo.setUserNick(id);
@@ -806,7 +803,6 @@ private HttpSession getSession() {
   @RequestMapping(value = "facebookcallback", method = { RequestMethod.GET, RequestMethod.POST })
   public String facebookSignInCallback(@RequestParam String code, HttpSession session) throws Exception 
   {
-	  logger.info("페북1");
       try {
            String redirectUri = oAuth2Parameters.getRedirectUri();
          
@@ -822,15 +818,13 @@ private HttpSession getSession() {
               logger.info("accessToken is expired. refresh token = {}", accessToken);
           };
           
-          logger.info("페북2");
           Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
           Facebook facebook = connection == null ? new FacebookTemplate(accessToken) : connection.getApi();
           UserOperations userOperations = facebook.userOperations();
           
           try
           {   
-        	  logger.info("페북3");
-              String [] fields = { "id", "email",  "name", "link"};
+              String [] fields = { "id", "email", "name"};
               User userProfile = facebook.fetchObject("me", User.class, fields);
               
               int checkMail =userService.checkMail(userProfile.getEmail()+"_facebook");
@@ -841,7 +835,7 @@ private HttpSession getSession() {
         	  vo.setUserIs_seek(0);
         	  vo.setUserNick(userProfile.getId());
         	  vo.setUserName(userProfile.getName());
-        	  // vo.setProfile(userProfile.getLink());
+        	  vo.setProfile("null");
         	  
         	  // 세션 등록
         	  UserVO vo2 = new UserVO();  

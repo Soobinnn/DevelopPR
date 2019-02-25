@@ -257,15 +257,16 @@
 {
        display : block;
        position:relative;
-        margin-bottom: 35px;     
-        width: 354px;
-        background: white;
-        border:1px solid black;
-        font-size : 20px;
-        height : 75px;
-        font-size : 23px;
-        border-radius: 11px/ 11px;
-        border : 2px solid;
+       margin-bottom: 35px;     
+       width: 354px;
+       background: white;
+       border:1px solid black;
+       font-size : 20px;
+       height : 75px;
+       font-size : 23px;
+       border-radius: 11px/ 11px;
+       border : 2px solid;
+       outline: 0;
 }
 
     #btn
