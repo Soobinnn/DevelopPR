@@ -90,4 +90,8 @@ public class ResumeServiceImpl implements ResumeService{
 		return resumeDAO.is_good(vo);
 	}
 	
+	public int is_regist(String email) throws Exception{
+		return resumeDAO.is_regist(email);
+	}
+	
 }

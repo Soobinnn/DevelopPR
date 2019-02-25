@@ -74,11 +74,21 @@ public class ResumeController {
 	//이력서 등록 폼 보기
    @RequestMapping(value="regist", method=RequestMethod.GET)
    public String resumeRegist(HttpSession session, Model model) throws Exception{
+	   
 	   UserVO uservo = (UserVO)session.getAttribute("login");
 	   String email = uservo.getUserEmail();
-	   model.addAttribute("dto", userService.viewId(email));
+
+	   int chkRegist = resumeService.is_regist(email);
+	   if(chkRegist==1) {
+		   return "redirect:modify/"+email+"/";
+	   }
+		   
+	   else {
+		   
+		   model.addAttribute("dto", userService.viewId(email));
 	   
-      return "footmenu/resume/regist";
+	   		return "footmenu/resume/regist";
+	   }
    }
    
    //이력서 등록 처리

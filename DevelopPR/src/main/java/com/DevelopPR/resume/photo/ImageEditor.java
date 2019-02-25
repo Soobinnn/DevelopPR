@@ -18,7 +18,7 @@ import sun.misc.BASE64Decoder;
 @Controller
 public class ImageEditor{
 	
-    private String filePath = "C:\\Users\\LGE\\git\\DevelopPR\\DevelopPR\\src\\main\\webapp\\resources\\profile\\"; 
+    private String filePath = "/opt/apache-tomcat-9.0.14/webapps/DevelopPR/resources/resources/profile/"; 
 
 /*
 	@RequestMapping("image")
