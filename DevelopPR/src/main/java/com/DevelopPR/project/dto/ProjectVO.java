@@ -22,10 +22,30 @@ public class ProjectVO
 	private MultipartFile file;      // 프로젝트 업로드 파일의 주소를 담는 매개변수
 	private String pr_file_name;
 	private String download_name;    // view에서 상대경로로 다운로드 하기 위해 절대경로를 제외하고 파일명만 담아서 전달할 매개변수.
+	private String project_image;    // 프로젝트 관련 이미지 경로를 담을 매개변수.
+	private String email;
 	
 	
 	
 	
+	
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getProject_image() {
+		return project_image;
+	}
+
+	public void setProject_image(String project_image) {
+		this.project_image = project_image;
+	}
+
 	public String getDownload_name() {
 		return download_name;
 	}
@@ -243,7 +263,7 @@ public class ProjectVO
     {
         return "ProjectVO [pno=" + pno + ", project_name=" + project_name + ", project_content=" + project_content + ", project_term1="
                 + project_term1 +", project_term2=" +project_term2+ ", techstack=" + techstack + ", project_grade=" + project_grade + ", tech_name_input=" 
-              + tech_name_input + ", nick=" + nick+ ",file=" +file + ",pr_file_name" + pr_file_name + "]";
+              + tech_name_input + ", nick=" + nick+ ",file=" +file + ",pr_file_name=" + pr_file_name + ", project_image=" + project_image + "]";
     }  
      	
 	

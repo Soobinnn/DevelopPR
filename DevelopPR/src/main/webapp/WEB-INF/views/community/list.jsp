@@ -348,7 +348,7 @@ text-align : center;
     <!-- 로그인한 사용자만 글쓰기 버튼을 활성화 -->
     <%-- <c:if test="${sessionScope.userId != null}"> --%>
     
-    <c:if test="${sessionScope.userNick != null}">
+    <c:if test="${sessionScope.login.userNick != null}">
         <button class="btn_write" type="button" id="btnWrite">글쓰기</button>
     </c:if>
 
