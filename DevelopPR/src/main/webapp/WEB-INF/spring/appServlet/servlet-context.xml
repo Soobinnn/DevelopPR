@@ -56,7 +56,7 @@
 	<!-- String uploadPath = new String("업로드 경로") -->
 <beans:bean id="uploadPath" class="java.lang.String">
     <!-- 파일업로드 디렉토리-->
-    <beans:constructor-arg value="C:\finalProject\DevelopPR\DevelopPR\src\main\webapp\resources\project_upload\"/>
+    <beans:constructor-arg value="C:\Users\srkks\git\DevelopPR\DevelopPR\src\main\webapp\resources\project_upload\"/>
    </beans:bean> 
 	
 
@@ -66,9 +66,7 @@
     </beans:bean>
     
     <beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-    <beans:property name="order" value="0">
-    </beans:property>
-    </beans:bean>
+       </beans:bean>
 
 
 

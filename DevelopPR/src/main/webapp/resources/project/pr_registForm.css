@@ -300,7 +300,8 @@ border-radius : 15px;
     
 }
 
-.pr_regist #techstack_hidden_show{ /*여기에 Ajax로 불러온 버튼들이 담김. 일단은 고정 사이즈로 픽스*/
+ /*여기에 Ajax로 불러온 버튼들이 담김. 일단은 고정 사이즈로 픽스*/
+.pr_regist #techstack_hidden_show{
   width : 940px;
  height: 50px;
  position : relative;
@@ -335,7 +336,8 @@ border : 2px solid #585858;
 padding-left : 10px;
 }
 
-.pr_regist #techstack_btns{ /*테크스택 라디오박스들이 나열되는 곳.*/
+/*테크스택 라디오박스들이 나열되는 곳.*/
+.pr_regist #techstack_btns{ 
 
 
 padding-left : 10px;
@@ -355,9 +357,6 @@ display : flex;
 flex-direction : column;
 width : 940px;
 height : 200px;
-
-
-
 }
 
 /*pdf업로드 탑 라인 hr담는 div*/
@@ -448,7 +447,16 @@ max-width : 400px;
 }
 
 
+.pr_regist #file_name{
 
+    
+height : 40px;
+line-height : 40px;
+position : relative;
+top : 17px;
+width : auto;
+overflow : hidden;
+}
 
 
 .pr_regist #file_download{
@@ -483,6 +491,8 @@ text-align : center;
   border-bottom-color: #e2e2e2; 
   border-radius: .25em;
   border : 2px solid #585858;
+height : 25px;
+line-height : 25px;
 }
 
 
@@ -515,8 +525,11 @@ text-align : center;
 /*프로젝트 이미지 업로드 가장 바깥 div*/
 .pr_regist .images{
 
-height : 500px;
-border : 1px solid;
+height : auto;
+overflow: hidden;
+position : relative;
+left : 5px;
+
 }
 
 /*관련 이미지(이미지 div 제목)*/
@@ -535,37 +548,41 @@ background-color : #f6f6f6;
 
 /*프로젝트를 설명하는 이미지가 있나요?(이미지 div 부제목)*/
 .pr_regist #img_subtitle{
-border : 1px solid;
+
 height : 35px;
 line-height : 35px;
 position : relative;
 left : 10px;
 top : 5px;
-font-size : 0.9rem;
+font-size : 1.1rem;
 width : 980px;
 }
 
 /*밑에서 고른 이미지가 추가되어 등록되는 곳*/
 .pr_regist #img_added{
-border : 1px solid;
-height : 200px;
+
+height : auto;
+overflow : hidden;
 position : relative;
 top : 30px;
 left : 10px;
 width : 980px;
+
 }
 
-/*예시 이미지들이 나열되는 곳*/
+
+
+
+/* 이미지들이 나열되는 곳*/
 .pr_regist #img_exam{
- border : 1px solid;
+
  height : 155px;
  position : relative;
  top : 45px;
- left : 10px;
- width : 980px;
+ width : 990px;
  display : flex;
  justify-content : space-between;
-
+ border-top : 2px solid #b9b9b9;
 }
 
 
@@ -602,8 +619,8 @@ width : 1000px;
 
 }
 
-
-.pr_regist #projectLvl_title{ /*프로젝트 등급 제목span이 담긴 div*/
+/*프로젝트 등급 제목span이 담긴 div*/
+.pr_regist #projectLvl_title{ 
    position :relative;
    bottom : 12px;
    width : 940px;
@@ -611,7 +628,8 @@ width : 1000px;
     line-height : 60px;
 }
 
-.pr_regist #lvl_font{ /*프로젝트 등급 제목  */
+/*프로젝트 등급 제목  */
+.pr_regist #lvl_font{ 
     
     font-size : 1.2rem;
     font-weight:bold;
