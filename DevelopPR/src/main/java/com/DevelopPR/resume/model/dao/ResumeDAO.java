@@ -47,5 +47,5 @@ public interface ResumeDAO {
 	//팔로잉 중인지 체크
 	public String is_good(GoodVO vo) throws Exception;
 		
-	
+	public int is_regist(String email) throws Exception;
 }

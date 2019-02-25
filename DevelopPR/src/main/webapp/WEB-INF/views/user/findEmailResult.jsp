@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <script>
 $(document).ready(function(){
-	$(document).scrollTop(350); 
+	$(document).scrollTop(250); 
 });
 </script>
 </head>
@@ -39,16 +39,14 @@ $(document).ready(function(){
               
               <c:forEach items="${emailList}" var="list">
               
-              <li id="findEmailResult_emailList2">   
-               <input id="findemailResult_email" type="radio" name="selectedId" value="${list}">
-               <label for="findemailResult_email" id="findemailResult_label"></label>
-               <label for="findemailResult_email" id="findemailResult_email_EL">${list}</label>
+              <li id="findEmailResult_emailList2">
+               	 <p id="findEmailResult_p1">${list}</p>
                </li>
                </c:forEach>
-               <li id="findEmailResult_Pw">               
+               <div id="findEmailResult_Pw">               
                <span id="findPw_span">*</span> <span id="findPw_span2">비밀번호를 찾으시나요?</span>                                                                     
                <button id="findemailResult_findPwbtn" type="button" onclick="location='${path}/user/findPasswordForm'">비밀번호 찾기</button>
-                  </li>
+                  </div>
                   <button id="findemailResult_loginbtn" type="submit" onclick="location='${path}/user/login'">로그인</button>
             </ul>
          </form>

@@ -22,7 +22,7 @@ $(document).ready(function () {
 		        url : '${path}/resume/background',
 		        success : function(data)
 		        {
-		        	console.log("success:"+data);
+		        	/* console.log("success:"+data); */
 		        	$(".header").attr("src", data);
 		        }
 		    })
@@ -112,6 +112,8 @@ function fn_removeImage() {
 	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg");
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
+	$('#uploadImg').attr("value", "person.jpg");
+	$("#uploadImageFile").val("");
 }
 
 	function add_item(){
@@ -217,18 +219,18 @@ function fn_removeImage() {
 </head>
 <body>
 <div class="resumeModify">
-<form name="form1" method="post" action="${path}/resume/registConfirm" onsubmit="return checks();">
+<form name="form1" method="post" action="${path}/resume/modifyupdate" onsubmit="return checks();">
     <div class="container">
 			<img src="/DevelopPR/resources/resume/${dto.color}.jpg" class="header"/>
         <header>
             <div class="head">
-               <div class="a">DevelopPR</div>
+               <div class="a"><a href="https://developpr.org/DevelopPR/main">DevelopPR</a></div>
                <div class="b">이력서 등록</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
-					<img id="uploadImage" src="/DevelopPR/resources/resume/person.jpg"/>
-					<input type="hidden" id= "uploadImg" name="profile_photo"/>
+					<img id="uploadImage" src="/DevelopPR/resources/profile/${dto.profile_photo}"/>
+					<input type="hidden" id= "uploadImg" value="${dto.profile_photo}" name="profile_photo"/>
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
 					<div id="LoadImage">
@@ -238,7 +240,7 @@ function fn_removeImage() {
 						<a href="javascript:fn_modifyImage('');" class="btn sty13">사진 수정</a>
 						<a href="javascript:fn_removeImage('');" class="btn sty13">사진 삭제</a>
 					</div>	
-					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none"/>
+					<input type="file" id="uploadImageFile" onchange="uploadImageFileChange()" style="display:none;"/>
 				</div>
             </div>
              
@@ -319,7 +321,7 @@ function fn_removeImage() {
                        <div class="content">
 	                        <div class="state">             
 	                            <div class="name">
-	                               		 희망 직종 *
+	                               		 희망 직종 
 	                            </div> 
 	                            <div class="p_info">
 	                               <input type="text" class="textshort" value="${dto.prefer_job}" name="prefer_job"/>

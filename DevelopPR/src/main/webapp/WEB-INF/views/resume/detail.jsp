@@ -37,7 +37,7 @@ window.onload = function (){
 function follow()
 {
    	var Email = '${dto.email}';
-    console.log(Email);
+    /* console.log(Email); */
 	var param = "email="+Email;
     $.ajax({
         async : true,
@@ -46,7 +46,7 @@ function follow()
         url : "${path}/resume/follow",
         success : function(data)
         {
-        	console.log(data);
+        	/* console.log(data); */
         	if(data=='1'){
         		var f=document.getElementById('unfollow');
         		f.style="opacity:1";
@@ -66,7 +66,7 @@ function follow()
 function unfollow()
 {
    	var Email = '${dto.email}';
-    console.log(Email);
+    /* console.log(Email); */
 	var param = "email="+Email;
     $.ajax({
         async : true,
@@ -75,7 +75,7 @@ function unfollow()
         url : "${path}/resume/unfollow",
         success : function(data)
         {
-         	console.log(data);
+         	/* console.log(data); */
         	if(data=='1'){
         		var f=document.getElementById('unfollow');
         		f.style="opacity:1";
@@ -95,7 +95,7 @@ function unfollow()
 function good()
 {
    	var param = 'good_email='+'${dto.email}'+'&good_nick='+'${sessionScope.userNick}';
-    console.log(param);
+    /* console.log(param); */
     $.ajax({
         async : true,
         type :'POST',
@@ -103,7 +103,7 @@ function good()
         url : "${path}/resume/good",
         success : function(data)
         {
-        	console.log(data);
+        	/* console.log(data); */
         	if(data=='1'){
         		var g=document.getElementById('ungood');
         		g.style="opacity:1";
@@ -123,7 +123,7 @@ function good()
 function ungood()
 {
    	var param = 'good_email='+'${dto.email}'+'&good_nick='+'${sessionScope.userNick}';
-    console.log(param);
+    /* console.log(param); */
     $.ajax({
         async : true,
         type :'POST',
@@ -131,7 +131,7 @@ function ungood()
         url : "${path}/resume/ungood",
         success : function(data)
         {
-         	console.log(data);
+         	/* console.log(data); */
           	if(data=='1'){
         		var g=document.getElementById('ungood');
         		g.style="opacity:1";
@@ -157,7 +157,7 @@ function ungood()
     	<img id="color" src='<c:url value="/resources/resume/${dto.color}.jpg"/>'/>
         <div class="comment">${dto.motto}</div>
    </div>        
-        <img id="mainimage" src='<c:url value="/resources/photo/${dto.profile_photo}"/>'/>
+        <img id="mainimage" src='<c:url value="/resources/profile/${dto.profile_photo}"/>'/>
         <div class="information">
             <div class="textshort1">
 		       <c:if test="${dto.is_work==0}"><p id="is_work">구직중</p></c:if>
@@ -365,7 +365,7 @@ function ungood()
                         <div class="project">
         	                <c:forEach var="project" items="${project}" varStatus="status">	
 								<div class="pros">
-								  	<img src='<c:url value="/resources/photo/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
+								  	<img src='<c:url value="/resources/profile/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
 									<div class="pro">
 										<div class="proname">${project.project_name}
 											<c:if test="${sessionScope.userEmail==dto.email}">
@@ -397,12 +397,19 @@ function ungood()
 							 
 							 var tech_percent = "${dto.tech_percent}";
 							 var percentSplit = tech_percent.split(',');
-							 
-							for (var i=0; i<abbSplit.length-1;i++){
-								 document.write('<div class="tech"><div class="abb">' + abbSplit[i] + '</div><div class="techinfo"><div class="tech_name">'+nameSplit[i]+ '</div>'
-						       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/><div class="percent">'
-						       		   + percentSplit[i] + '</div></div></div>'); 
-							}
+							 if(abb!=","){
+								for (var i=0; i<abbSplit.length-1;i++){
+									 document.write('<div class="tech"><div class="abb">' + abbSplit[i] + '</div><div class="techinfo"><div class="tech_name">'+nameSplit[i]+ '</div>'
+							       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/><div class="percent">'
+							       		   + percentSplit[i] + '</div></div></div>'); 
+								}
+							 }else{
+								 for (var i=1; i<abbSplit.length-1;i++){
+									 document.write('<div class="tech"><div class="abb">' + abbSplit[i] + '</div><div class="techinfo"><div class="tech_name">'+nameSplit[i]+ '</div>'
+							       		   + '<input class="input-range" type="range" value="'+ percentSplit[i] +'" readonly/><div class="percent">'
+							       		   + percentSplit[i] + '</div></div></div>'); 
+								}
+							 }
 							 </script>
             	</div>
    				 </div>

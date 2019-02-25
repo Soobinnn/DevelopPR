@@ -102,21 +102,17 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
      String pr_test= vo.getProject_image();
  	 if(pr_test == null || pr_test =="") {
  		 pr_test = "입력된 이미지가 없습니다.";
- 	vo.setProject_image(pr_test);
+ 		 vo.setProject_image(pr_test);
  	 } 
  	 
      projectService.regist(vo);
-				  
-		 
-     
-     
+				 
      File target = new File(uploadPath, savedName);
 
 	    // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
 	    // FileCopyUtils.copy(바이트배열, 파일객체)
 	    FileCopyUtils.copy(file.getBytes(), target);
-		
-	   
+
 	    mav.setViewName("basic/project/registForm");
 	    /* return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/"; */
 	    mav.addObject("savedName", savedName);
@@ -125,8 +121,13 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	    
 }
 
-
-
+@RequestMapping(value="/project/registsuccess", method=RequestMethod.POST)
+public String projectRegistsuccess(HttpSession session) throws Exception
+{
+	UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
+	 
+	 return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/";
+}
 //02. 프로젝트 수정 폼
 @RequestMapping("/project/modifyForm/{pno}")
 public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Model model) throws Exception
@@ -134,9 +135,6 @@ public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Mode
 	     
 
 		/* vo.setDownload_name(file.getOriginalFilename()); */
-	System.out.println("-------------------------------------------------");
-	System.out.println("파일명이 제대로 담기는가?   : " + vo.getDownload_name());
-	System.out.println("-------------------------------------------------");
 	      vo = projectService.modifyForm(pno);
 		  model.addAttribute("dto", vo);
     return "basic/project/modifyForm";
@@ -183,7 +181,6 @@ public String projectRemove(@PathVariable("pno") int pno, HttpSession session) t
 @ResponseBody
 public List<ProjectVO> projectAutocomplete(@RequestParam("tech_name_input") String tech_name_input) throws Exception
 {
-	System.out.println(tech_name_input+"뷰에서 컨트롤러로 값을 가져오는가?");
 //	리턴값으로 경로를 주면 안 되고 값을 담아서 전달할 매개변수를 전달해야 한다.
 	
 

@@ -335,7 +335,7 @@ svg
   flex-shrink: 0;
 	width:800px;
 	position: absolute;
-  top:545px;
+ 	top:545px;
   
 }
 
@@ -386,12 +386,13 @@ svg
 
 .click{
   position: absolute;
-  top:630px;
-  left:200px;
+  top:600px;
+  left:240px;
   background:white;
+  opacity:0.8;
   height: 73px;
   padding:10px;
-  border:solid 2px black;
+  border:solid 2px #585858;
   border-radius: 30px 30px 0px 30px;
   font-weight: 900;
 }
@@ -430,4 +431,50 @@ svg
 	display :inline-block;
 	width : 45px;
 	height : 45px;
+}
+
+
+.arrow{
+	height:80px;
+	width:68px;
+	position:absolute;
+	top:560px;
+	left:330px;
+	z-index:11;
+	background:url(images/lay8.png); 
+	animation:bounce 3s 0s infinite;
+}         
+@keyframes bounce{
+  0% {
+      top: 560px;
+  }
+  50% {
+      top: 600px;
+  }
+  100% {
+      top: 560px;
+  }
+}
+
+.arrow2{
+	display:none;
+	height:80px;
+	width:68px;
+	position:absolute;
+	top:390px;
+	left:1700px;
+	z-index:11;
+	background:url(images/lay8.png); 
+	animation:bounce2 3s 0s infinite;
+}         
+@keyframes bounce2{
+  0% {
+      top: 390px;
+  }
+  50% {
+      top: 430px;
+  }
+  100% {
+      top: 390px;
+  }
 }

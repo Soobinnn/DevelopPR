@@ -51,6 +51,8 @@ function fn_removeImage() {
 	$('#uploadImage').attr("src", "/DevelopPR/resources/resume/person.jpg");
 	$('#imageEditor').css('display', 'none');
 	$('#LoadImage').css('display', 'inline-block');
+	$('#uploadImg').attr("value", "person.jpg");
+	$("#uploadImageFile").val("");
 }
 
 	function add_item(){
@@ -92,7 +94,7 @@ function fn_removeImage() {
 			        url : '${path}/resume/background',
 			        success : function(data)
 			        {
-			        	console.log("success:"+data);
+			        	/* console.log("success:"+data); */
 			        	$(".header").attr("src", data);
 			        	hash();
 			        }
@@ -109,37 +111,37 @@ function fn_removeImage() {
 					text=" # 이력서   # 포트폴리오  # 면접  # 두근두근  # 누가볼지궁금";
 				}
 			   else if(color=="bluewhite") {
-				   text=" # 이력서   # 포트폴리오  # 나무보다숲  # 두근두근  # 누가볼지궁금";
+				   text=" # 카페인을 분해하여 코드로 배출합니다";
 			   }
 			   else if(color=="brown") {
-				   text="brown";
+				   text=" # Just code IT # 나 잘짜요 ";
 			   }
 			   else if(color=="colorful") {
-				   text="colorful";
+				   text=" # 팀장님 콘서트 갔어요   # 지금 떼창 중   # 부럽..   # 수료증 안줌 내꺼";
 			   }
 			   else if(color=="colorful2") {
-				   text="colorful2";
+				   text=" # 윤대명 선생님 # 우유빛깔  # 감사합니다";
 			   }
 			   else if(color=="gray") {
-				   text="gray";
+				   text=" # 매일 야근 가능  # 아메리카노 필수";
 			   }
 			   else if(color=="green") {
-				   text="green";
+				   text=" # 풀스택 개발자  # 뚝딱뚝딱  # 누구보다 빠르게 남들과는 다르게";
 			   }
 			   else if(color=="mint") {
-				   text="mint";
+				   text=" # 코딩의 즐거움을 모르는 당신이 불쌍해";
 			   }
 			   else if(color=="pink") {
-				   text="pink";
+				   text=" # 개발자 # 버그는 실력의  어머니";
 			   }
 			   else if(color=="purple") {
-				   text="purple";
+				   text=" # 열정 빼면 시체  # PM 10:00";
 			   }
 			   else if(color=="white") {
-				   text="white";
+				   text=" # 노력은 배신하지 않는다  # 배신 당했나..?";
 			   }
 			   else if(color=="yellow") {
-				   text="yellow";
+				   text=" # I반 여러분 7개월동안 고생했어요 # 취업 화이팅";
 			   }
 			   else {
 				   text="실패..";
@@ -158,7 +160,7 @@ function fn_removeImage() {
 		        url : '${path}/resume/backgroundtext',
 		        success : function(data)
 		        {	
-		        	console.log("success:"+data);
+		        	/* console.log("success:"+data); */
 		        	
 		        	$("#hash").attr("value", data);
 		        }
@@ -251,13 +253,13 @@ function fn_removeImage() {
 			<img src="/DevelopPR/resources/resume/black.jpg" class="header"/>
         <header>
             <div class="head">
-               <div class="a">DevelopPR</div>
+               <div class="a"><a href="https://developpr.org/DevelopPR/main">DevelopPR</a></div>
                <div class="b">이력서 등록</div>
             </div>
             <div id="img">
 	            <div style="min-height: 260px">
 					<img id="uploadImage" src="/DevelopPR/resources/resume/person.jpg"/>
-					<input type="hidden" id= "uploadImg" name="profile_photo"/>
+					<input type="hidden" id= "uploadImg" value="person.jpg" name="profile_photo"/>
 					
 				</div>
 				<div id="upload_button" style="text-align:center; margin-top: 5px;">
@@ -343,7 +345,7 @@ function fn_removeImage() {
                           <div class="content">
                         <div class="state">             
                             <div class="name">
-                               		 희망 직종 *
+                               		 희망 직종
                             </div> 
                             <div class="p_info">
                                <input type="text" class="textshort" name="prefer_job"/>

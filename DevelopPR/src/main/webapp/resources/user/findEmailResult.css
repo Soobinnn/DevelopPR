@@ -1,7 +1,5 @@
 .findEmailResult
 {
-    margin-bottom:100px;
-    margin-top:100px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -11,10 +9,11 @@
    flex-direction: row;
    width: auto;
    height: 540px;
-   
+   background:#f9f9f9;
 }
 .findEmailResult #sec1{
    width : 50%;
+   background:#f9f9f9;
 }
 .findEmailResult #sec2{
    display : flex;
@@ -24,6 +23,7 @@
    border-radius : 15px;
    width : 700px;
    justify-content: center;
+   background:white;
 
 }
 .findEmailResult #findemailResult_com
@@ -87,15 +87,18 @@
 }
 .findEmailResult #findEmailResult_Pw
 {
-    margin-top:40px;
    color : white;
+
+   height:40px;
+   position:relative;
+   top:60px;
 }
 .findEmailResult #findPw_span
 {
  font-size: 1.8rem;
  color : #585858;
  position:relative;
- top:70px;
+  top:11px;
  left:49px;
 }
 .findEmailResult #findPw_span2
@@ -103,7 +106,6 @@
    color : black;
    position:relative;
    left:46px;
-   top:59px;
 }
 
 .findEmailResult #findemailResult_findPwbtn
@@ -111,10 +113,9 @@
    margin-bottom: 70px;
    position: relative;
    left : 180px;
-   top: 58px;
    background : white;
    color : black;
-   border : 1px solid #585858;
+   border : 2px solid #585858;
    border-radius: 130px 130px / 130px 130px;
    height: 38px;
 }
@@ -127,12 +128,12 @@
 {
    height :55px;
    width : 170px;
-   top :40px;
+   top :115px;
    position: relative;
    left : 165px;
    background : white;
    color : black;
-   border : 1px solid #585858;
+   border : 2px solid #585858;
    border-radius: 150px;
    font-size:1.2rem;
 }
@@ -144,6 +145,7 @@
 }
 .findEmailResult #sec3{
    width : 50%;
+   background:#f9f9f9;
 } 
 .findEmailResult input[type='radio']{
 	display:none;
@@ -183,4 +185,25 @@
 .findEmailResult *:focus
 {
    outline:none;
+}
+
+.findEmailResult #findEmailResult_p1
+{
+    font-size:1rem;
+    color:#585858;
+    margin-bottom:15px;
+    position: relative;
+    bottom:20px;
+    left:48px;
+    width:400px;
+}
+
+.findEmailResult .findEmailResult_header
+{
+    height:140px;
+    background:#f9f9f9;
+}
+.findEmailResult .findEmailResult_ft
+{
+    height:100px;
 }

@@ -1,17 +1,26 @@
 		.findPwEmail
 		{
-		    margin-bottom:300px;
-    		margin-top:100px;
+
     		font-family: 'Noto Sans KR', sans-serif;
 		}
+		.findPwEmail #findPwEmail_header
+		{
+		        height: 120px;
+		        background:#f9f9f9;
+		}
         
+        .findPwEmail #findPwEmail_ft
+        {
+                height:80px;
+        }
         .findPwEmail #findPwEmail_sec
         {
          
             display : flex;
             flex-direction: row;
             width: auto;
-            height : 580px;
+            height : 800px;
+            background:#f9f9f9;
         }
         .findPwEmail .findPwEmail_sec_area1
         {
@@ -31,6 +40,7 @@
             height:800px;
            border: 2px solid #B9B9B9;
            border-radius:15px;
+           background:white;
             
         }
         .findPwEmail .findPwEmail_sec_area3
@@ -241,7 +251,7 @@
         .findPwEmail #findPwEmailReset_btn
         {
             position : relative;
-            top: 33px;
+            top: 37px;
             width:220px;
             height:60px;
             border : 2px solid #585858;

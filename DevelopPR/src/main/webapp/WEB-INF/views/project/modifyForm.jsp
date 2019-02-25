@@ -703,9 +703,6 @@ if( $("#img_added> #del_server").length >0 ){
                     var project_content = $("#project_content").val();
                     var project_term1 = $("#project_term1").val();
                     var project_term2 = $("#project_term2").val();
-                    
-                                 
-                    
                     /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
                     var project_name = $('#textarea_title').val();
                     var project_content = $('#textarea_introduce').val();
@@ -810,14 +807,8 @@ if( $("#img_added> #del_server").length >0 ){
          /* ajax 검색 로직 추가 */           
     $(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
         $(".project_tech_name").keyup(function() {
-				
-        	
-
-        	
-		        var tech_name_input = $('.project_tech_name').val();
+                var tech_name_input = $('.project_tech_name').val();
         	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-         	
-        	
          	$.ajax({ // Ajax 요청을 작성
          	    url: "${path}/project/autocomplete",
          	    data: param,
@@ -873,9 +864,6 @@ if( $("#img_added> #del_server").length >0 ){
     }); // end of keyup function
         	
     });
-
-         
-         
 ///////////////체크박스 체크 로직 시작.
      
      	var chk_received = "${dto.techstack}";                   //techstack값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
@@ -977,14 +965,7 @@ if( $("#img_added> #del_server").length >0 ){
          }    
              
 /////////////////////////////체크박스 체크 로직 종료        
-            
-            
-            
-            
-            
-            
-            
-            }); //end of document.ready  
+              }); //end of document.ready  
 
           </script>
 
@@ -1107,10 +1088,7 @@ if( $("#img_added> #del_server").length >0 ){
        <div id="img_title">관련 이미지</div>
         <div id="img_subtitle">프로젝트를 설명하는 이미지가 있나요?</div>
          <div id="img_added"><!-- 밑에서 고른 이미지가 추가되는 곳. -->
-         
-         
-         
-             
+
          </div>
            <div id="img_exam"><!-- 예시 이미지들이 나열되는 곳. -->
            
@@ -1131,11 +1109,6 @@ if( $("#img_added> #del_server").length >0 ){
  
      </div> <!-- end of images -->
  
- 
- 
- 
- 
- 
  <!-- 프로젝트 관련 이미지 업로드 종료 -->
  
   <div class="projectLvl"> <div id="projectLvl_top_"><hr id="projectLvl_top"></div>
@@ -1147,9 +1120,7 @@ if( $("#img_added> #del_server").length >0 ){
       <input type="text" id="project_grade" name="project_grade" value="${dto.project_grade}"/>
       <div id="projectLvl_txt">수준</div>   
         </div>
-      
-    
-
+  
     <div id="projectLvl_btns">
          
              <%-- type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. --%>
@@ -1172,7 +1143,6 @@ if( $("#img_added> #del_server").length >0 ){
      <button type="reset" class="final_btn" id="btnCancel">취소</button>
      <button type="button" class="final_btn" id="btnSave">수정</button>
    </div>
-
 
 </form> <!-- end of form1 -->
 

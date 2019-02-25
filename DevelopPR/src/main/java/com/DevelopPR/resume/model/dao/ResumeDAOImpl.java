@@ -48,7 +48,6 @@ public class ResumeDAOImpl implements ResumeDAO{
 	//이력서 등록 처리
 	@Override
 	public void resumeRegistConfirm(ResumeVO vo) throws Exception {
-		System.out.println(vo.toString());
 		 SqlSession.insert("resume.registConfirm", vo);
 	}
 	//이력서 상세보기
@@ -59,7 +58,6 @@ public class ResumeDAOImpl implements ResumeDAO{
 	//이력서 수정 처리
 	@Override
 	public void resumeModify(ResumeVO vo) throws Exception {
-		System.out.println(vo.toString());
 		SqlSession.update("resume.modify", vo);
 	}
 
@@ -104,5 +102,7 @@ public class ResumeDAOImpl implements ResumeDAO{
 	public String is_good(GoodVO vo) throws Exception {
 		return SqlSession.selectOne("resume.is_good", vo);
 	}
-	
+	public int is_regist(String email) throws Exception{
+		return SqlSession.selectOne("resume.is_regist",email);
+	}
 }

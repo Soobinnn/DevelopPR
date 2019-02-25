@@ -78,8 +78,8 @@ text-align : center;
                 // 이부분에 에디터 validation 검증
                 var title = $("#_title").val();
                 var content = $("#content").val();
-                console.log(title);
-                console.log(content);
+                /* console.log(title);
+                console.log(content); */
                 
                 
                 //뒤의 공백은 일본어 스페이스바.
@@ -130,7 +130,7 @@ text-align : center;
                  contentType: false,
                  // ajax 업로드 요청이 성공적으로 처리되면
                  success: function(data){
-                     console.log(data);
+                     /* console.log(data); */
                      // 첨부 파일의 정보
                      var fileInfo = getFileInfo(data);
                      // 하이퍼링크

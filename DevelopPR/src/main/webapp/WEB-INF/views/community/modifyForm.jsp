@@ -261,8 +261,8 @@ text-align : center;
                 // 이부분에 에디터 validation 검증
                 const title = $("#_title").val();
                 const content = $("#content").val();
-                console.log(title);
-                console.log(content);
+                /* console.log(title);
+                console.log(content); */
                 
                 if (title.replace(/ |　/gi, '') == ''){ 
                     alert("제목을 입력해주세요.");

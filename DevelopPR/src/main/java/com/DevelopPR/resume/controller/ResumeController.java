@@ -67,7 +67,6 @@ public class ResumeController {
 		 ModelAndView mav = new ModelAndView();
 	     mav.addObject("map", map); 
 	     mav.setViewName("basic/resume/list");
-	     System.out.println(list);
 	     
 		   return mav;
 		}
@@ -75,11 +74,21 @@ public class ResumeController {
 	//이력서 등록 폼 보기
    @RequestMapping(value="regist", method=RequestMethod.GET)
    public String resumeRegist(HttpSession session, Model model) throws Exception{
+	   
 	   UserVO uservo = (UserVO)session.getAttribute("login");
 	   String email = uservo.getUserEmail();
-	   model.addAttribute("dto", userService.viewId(email));
+
+	   int chkRegist = resumeService.is_regist(email);
+	   if(chkRegist==1) {
+		   return "redirect:modify/"+email+"/";
+	   }
+		   
+	   else {
+		   
+		   model.addAttribute("dto", userService.viewId(email));
 	   
-      return "menu/resume/regist";
+	   		return "footmenu/resume/regist";
+	   }
    }
    
    //이력서 등록 처리
@@ -111,7 +120,6 @@ public class ResumeController {
 	  GoodVO goodvo = new GoodVO();
 	  goodvo.setGood_email(email);
 	  goodvo.setGood_nick(myname);
-	  System.out.println(model);
 	  model.addAttribute("chkFollow", resumeService.is_following(map));
 	  // 내 계정이 다른 계정을 팔로우 하고 있는지 아닌지 확인합니다.
 	  // resumeMapper.xml 에서 is_follow로 만약 내 계정이 다른 임의의 계정을 팔로우 하고있다면
@@ -126,7 +134,6 @@ public class ResumeController {
    //이력서 수정하기
    @RequestMapping(value="modify/{email}/")
    public String resumeModifyform(@PathVariable("email") String email, Model model) throws Exception{
-	  System.out.println("modify:"+email);
 	  
 	  model.addAttribute("dto", resumeService.resumeDetail(email));
 	  
@@ -149,7 +156,6 @@ public class ResumeController {
    @ResponseBody
    public String follow(@RequestParam("email") String email, HttpSession session) throws Exception
    {
-	  System.out.println(email);
 	  UserVO uservo = (UserVO)session.getAttribute("login");
 	  String myemail = uservo.getUserEmail();
 	  String Fname = userService.viewId(myemail).getUserNick();
@@ -167,7 +173,6 @@ public class ResumeController {
 	   resumeService.following(vo);
 
 	   String chkFollow = resumeService.is_following(map);
-	   System.out.println("follow:"+Fname+","+name+","+chkFollow);
 	  return chkFollow;
    }
     
@@ -178,7 +183,6 @@ public class ResumeController {
    @ResponseBody
    public String unfollow(@RequestParam("email") String email, HttpSession session) throws Exception
    {
-	  System.out.println(email);
 	  UserVO uservo = (UserVO)session.getAttribute("login");
 	  String myemail = uservo.getUserEmail();
 	  String Fname = userService.viewId(myemail).getUserNick();
@@ -196,7 +200,6 @@ public class ResumeController {
 	   resumeService.unfollowing(vo);
 
 	   String chkFollow = resumeService.is_following(map);
-	   System.out.println("unfollow:"+Fname+","+name+","+chkFollow);
 	  return chkFollow;
    }
    
@@ -208,7 +211,6 @@ public class ResumeController {
 	   resumeService.good(vo);
 
 	   String chkGood = resumeService.is_good(vo);
-	   System.out.println("good:"+ vo + ", " + chkGood);
 	  return chkGood;
    }
    
@@ -219,7 +221,6 @@ public class ResumeController {
 	   resumeService.ungood(vo);
 
 	   String chkGood = resumeService.is_good(vo);
-	   System.out.println("ungood:"+ vo + ", " + chkGood);
 	  return chkGood;
    }
    
@@ -227,7 +228,6 @@ public class ResumeController {
    @ResponseBody
    public String color(@RequestParam("color") String color) throws Exception
    {
-	   System.out.println("color:"+color);
 	   String url="/DevelopPR/resources/resume/"+color+".jpg";
 	   return url;
    }

@@ -31,7 +31,7 @@
 <select id="projectlist" resultType="ProjectVO">
 	SELECT pno, project_name, project_term1, project_term2, techstack
 	FROM pr_project
-	where nick=#{nick}
+	where email=#{email}
 	order by project_term1 asc
 </select>
 
