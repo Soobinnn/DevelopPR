@@ -318,7 +318,8 @@
 		source: languages
 		});
 	 */
-		$("#chat_text").focus();
+	/* 	$("#chat_text").focus(); */
+	 	$(document).scrollTop(350);
 		$('#chat_text').keypress(function(event) 
 		{	
 			var keycode = (event.keyCode ? event.keyCode : event.which);

@@ -225,7 +225,7 @@ text-align : center;
 
 <script>
     $(document).ready(function(){
-     $(document).scrollTop(530);
+     $(document).scrollTop(230);
     	
     	
     	$("#btnWrite").click(function(){

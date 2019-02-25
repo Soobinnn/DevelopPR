@@ -448,7 +448,7 @@ public class UserController
     UserVO vo = new UserVO();
     
     // 이메일 허용 체크 안했을 경우 예외처리
-    if(checMail)
+    if(checMail && (email !="" || email != null))
     {
       vo.setUserEmail(email+"_kakao");
     }
@@ -799,7 +799,7 @@ private HttpSession getSession() {
   
  //facebook api 콜백
   @RequestMapping(value = "facebookcallback", method = { RequestMethod.GET, RequestMethod.POST })
-  public String facebookSignInCallback(@RequestParam String code) throws Exception 
+  public String facebookSignInCallback(@RequestParam String code, HttpSession session) throws Exception 
   {
 
       try {
@@ -825,9 +825,50 @@ private HttpSession getSession() {
           try
 
           {            
-              String [] fields = { "id", "email",  "name"};
+              String [] fields = { "id", "email",  "name", "link"};
               User userProfile = facebook.fetchObject("me", User.class, fields);
-          } catch (MissingAuthorizationException e) {
+              
+              int checkMail =userService.checkMail(userProfile.getEmail()+"_facebook");
+             
+              UserVO vo = new UserVO();
+            
+              vo.setUserEmail(userProfile.getEmail()+"_facebook");
+        	  vo.setUserIs_seek(0);
+        	  vo.setUserNick(userProfile.getId());
+        	  vo.setUserName(userProfile.getName());
+        	  vo.setProfile(userProfile.getLink());
+        	  
+        	  // 세션 등록
+        	  UserVO vo2 = new UserVO();  
+        		  
+        	  // DB에 없을 시에
+        	  if(checkMail ==0)
+        	  {
+        	  	  String pw = new TempKey().getKey(20, false);
+        	  	  String pwBycrypt = passwordEncoder.encode(pw);
+        	  	  	    
+        	  	  vo.setUserPw(pwBycrypt);
+        	  	  vo.setUserJob("0");
+        	  	  vo.setUserJob_detail("페이스북계정 로그인 입니다. 정보를 변경해주세요.");
+        	  	  vo.setUserAuthStatus(1);
+        	  	  vo.setUserPhone("010########");
+        	  	  
+        	  	  userService.insertUserApi(vo);
+        	  	  
+        	  	  vo2.setUserEmail(vo.getUserEmail());
+        	  	  vo2.setUserNick(vo.getUserNick());
+        	  	  vo2.setUserName(vo.getUserName());
+        	  	  vo2.setUserIs_seek(vo.getUserIs_seek());
+        	  }
+        	  else
+        	  {
+        	      vo2 =  userService.viewlogin(vo);
+        	  }
+        	  
+        	 session.setAttribute("login", vo2 );
+      
+          } 
+          catch (MissingAuthorizationException e) {
               e.printStackTrace();
           }
 
