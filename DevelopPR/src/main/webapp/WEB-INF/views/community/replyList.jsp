@@ -16,6 +16,12 @@ height:100px;
  */
 
 </style>
+<script>
+$(document).on("click","#btnModify",function(e){
+	        var offset = $("#modifyReply").offset();
+	        $('html, body').animate({scrollTop : offset.top}, 400);
+});
+</script>
 </head>
 <body>
 <div class="replyL">
