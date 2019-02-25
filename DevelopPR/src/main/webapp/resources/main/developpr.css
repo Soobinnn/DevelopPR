@@ -173,17 +173,19 @@ nav
 }
 #alarm
 {
-  display : none;
+ display : none;
   position : absolute;
-  left : 50px;
+  right : 60px;
   top : 70px;
   width : 50px;
   height : 50px;
-  border-radius : 50%;
-  background-color : red;
+  border-radius : 50% 15% 50% 50% / 50% 15% 50% 50%;
+  background-color : #FE2E2E;
   color : white;
   text-align : center;
   line-height: 45px; 
+  font-size : 1.2rem;
+  font-weight : bold;
 }
 #navimg
 {
@@ -205,14 +207,15 @@ nav
 {
   position: relative;
   display : none;
-  background: red;
+  background: #FE2E2E;
   width : 40px;
   height : 40px;
   bottom : 50px;
   left : 280px;
   text-align: center;
-  border-radius: 50%;
-  line-height: 40px;
+  border-radius: 40%;
+  line-height: 36px;
+  font-weight : bold;
 }
 nav#min:hover > #navspan
 {

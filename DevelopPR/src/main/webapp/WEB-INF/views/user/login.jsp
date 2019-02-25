@@ -183,7 +183,7 @@
     </div>
 
     <div class="login_connect">
-       <a href="https://kauth.kakao.com/oauth/authorize?client_id=ddf96236e7a9d02c46ce6f523dc484a3&redirect_uri=http://localhost:8080/DevelopPR/user/kakaooauth&response_type=code "><img id="kakao" src="<c:url value='/resources/user/kakao.png'/>"></a> 
+       <a href="https://kauth.kakao.com/oauth/authorize?client_id=ddf96236e7a9d02c46ce6f523dc484a3&redirect_uri=https://developpr.org/DevelopPR/user/kakaooauth&response_type=code "><img id="kakao" src="<c:url value='/resources/user/kakao.png'/>"></a> 
        <a href="${path}/user/naverLogin"><img id="naver" src="<c:url value='/resources/user/naver.png'/>"></a>
        <a href="${facebook_url}"><img id="facebook" src="<c:url value='/resources/user/facebook.png'/>"></a>
        <a href="${path}/user/googleLogin"><img id="google" src="<c:url value='/resources/user/google.png'/>"></a>

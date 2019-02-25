@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService
 			sendMail.setSubject("[DevelopPR] 회원가입 이메일 인증");
 			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-					.append("<a href='http://localhost:8080/DevelopPR/user/joinConfirm?userEmail=")
+					.append("<a href='https://developpr.org/DevelopPR/user/joinConfirm?userEmail=")
 					.append(vo.getUserEmail())
 					.append("&authkey=")
 					.append(authkey)					
@@ -236,7 +236,7 @@ public class UserServiceImpl implements UserService
 			sendMail.setSubject("[DevelopPR] (재전송) 회원가입 이메일 인증");
 			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-					.append("<a href='http://localhost:8080/DevelopPR/user/joinConfirm?userEmail=")
+					.append("<a href='https://developpr.org/DevelopPR/user/joinConfirm?userEmail=")
 					.append(reUserEmail)
 					.append("&authkey=")
 					.append(authkey)					

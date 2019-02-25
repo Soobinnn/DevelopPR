@@ -323,7 +323,7 @@ public class UserController
     		   
     		  mav.addObject("list", list); 
     		  mav.addObject("msg", "success");
-              mav.setViewName("basic/main/main");
+              mav.setViewName("_main/main/main");
     	  }
     	  // 이메일 인증안했을 경우 로그인
     	  else
@@ -337,7 +337,7 @@ public class UserController
    	   	  // 로그인 실패
           // login.jsp로 이동
           mav.addObject("msg", "failure");
-          mav.setViewName("_main/user/login");
+          mav.setViewName("basic/user/login");
       }
       
       return mav;
@@ -347,9 +347,14 @@ public class UserController
   public ModelAndView logout(HttpSession session)
   {
       userService.logout(session);
+      //페이스북 api
+	  OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
+      String facebook_url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
       ModelAndView mav = new ModelAndView();
       mav.addObject("msg", "logout");
+      mav.addObject("facebook_url", facebook_url);
       mav.setViewName("basic/user/login");
+  
       return mav;
   }
   
@@ -793,7 +798,7 @@ private HttpSession getSession() {
 
   
  //facebook api 콜백
-  @RequestMapping(value = "facebookSignInCallback", method = { RequestMethod.GET, RequestMethod.POST })
+  @RequestMapping(value = "facebookcallback", method = { RequestMethod.GET, RequestMethod.POST })
   public String facebookSignInCallback(@RequestParam String code) throws Exception 
   {
 
@@ -842,7 +847,7 @@ private HttpSession getSession() {
   public String ChangePw(HttpSession session, Model model) {
 	  UserVO userEmail= (UserVO)session.getAttribute("login");
 	  String userEmail_ = userEmail.getUserEmail(); 
-	  System.out.println("---------------------비밀번호 변경--------------------"+userEmail_);
+	 /* System.out.println("---------------------비밀번호 변경--------------------"+userEmail_);*/
 	  model.addAttribute("userEmail",userEmail_);
 	  return "basic/user/changePw";
   }
