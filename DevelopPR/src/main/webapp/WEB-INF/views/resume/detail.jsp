@@ -365,9 +365,20 @@ function ungood()
                         <div class="project">
         	                <c:forEach var="project" items="${project}" varStatus="status">	
 								<div class="pros">
-								  	<img src='<c:url value="/resources/profile/${dto.profile_photo}"/>' style="width:100px;height:100px;"/>
+								<script>
+									var image = "${project.project_image}";
+									var image_split = image.split(",");
+									var split=image_split[0];
+									console.log("split:"+split);
+									if(split=="" || split=="입력된 이미지가 없습니다."){
+									document.write('<img id="image" style="width:100px;height:100px;"/>'); 
+									}else{
+										document.write('<img id="image" src="'+split+'" style="width:100px;height:100px;"/>'); 
+									}
+								</script>
+
 									<div class="pro">
-										<div class="proname">${project.project_name}
+										<div class="proname"> <a id="projectdetail" href="${path}/project/detail/${project.pno}">${project.project_name}</a>
 											<c:if test="${sessionScope.login.userEmail==dto.email}">
 											
  												<a id="projectmodify" href="${path}/project/modifyForm/${project.pno}">수정</a>

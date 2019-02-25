@@ -189,7 +189,14 @@ return result;
 } 
 
 
-
+@RequestMapping("/project/detail/{pno}")
+public String projectDetail(ProjectVO vo, @PathVariable("pno") int pno, Model model) throws Exception{
+	 vo = projectService.detail(pno);
+	  model.addAttribute("dto", vo);
+	
+	 
+	return "basic/project/detail";
+}
 
 
 } //end of class

@@ -54,6 +54,8 @@ public List<ProjectVO> lookup(String tech_name_input) throws Exception
 public List<ProjectVO> projectList(String email) throws Exception {
 	return projectDao.projectList(email);
 }
-
+public ProjectVO detail(int pno) throws Exception{
+	return projectDao.detail(pno);
+}
 
 }
