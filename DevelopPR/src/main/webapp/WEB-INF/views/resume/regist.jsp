@@ -399,9 +399,8 @@ function fn_removeImage() {
                             <div class="name">
                                 이메일 * 
                             </div>
-                           		<input type="hidden" name="email" value="${dto.userEmail}"/> 
                             <div class="email_info">
-                                <p class="textshort">${dto.userEmail}</p>
+                           		<input type="text" class="textshort" name="email" value="${dto.userEmail}"/> <br/>
                                 <input type="radio" name="email_is_open" value="1" id="er1" checked/>
                                 	<label for="er1" class="la"><p class="p_label">공개 </p></label>
                                 <input type="radio" name="email_is_open" value="0" id="er2"/>
