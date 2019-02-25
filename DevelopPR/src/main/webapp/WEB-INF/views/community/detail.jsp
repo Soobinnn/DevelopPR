@@ -22,7 +22,7 @@
 <script>
 
 $(document).ready(function(){
-	 $(document).scrollTop(630);
+	 $(document).scrollTop(230);
 	
 	
 	/* 게시글 관련 */

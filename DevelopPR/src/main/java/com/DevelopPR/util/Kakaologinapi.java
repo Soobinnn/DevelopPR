@@ -26,7 +26,7 @@ public class Kakaologinapi
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
         postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
         postParams.add(new BasicNameValuePair("client_id", "ddf96236e7a9d02c46ce6f523dc484a3"));
-        postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/DevelopPR/user/kakaooauth"));
+        postParams.add(new BasicNameValuePair("redirect_uri", "https://developpr.org/DevelopPR/user/kakaooauth"));
         postParams.add(new BasicNameValuePair("code", autorize_code));
 
 		final HttpClient client = HttpClientBuilder.create().build();

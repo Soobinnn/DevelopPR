@@ -72,15 +72,12 @@
           bno, 
           title, 
           content, 
-          writer
-        
+          writer 
         ) VALUES (
-          
           (SELECT NVL(MAX(bno)+1, 1)FROM PR_BOARD),
           #{title},
           #{content},
-          #{writer}
-                            
+          #{writer}         
         )
     </insert>
     <!--03. 게시글 상세보기 조회 두 테이블의 공통된사항을 묶을 때, 이름 컬럼으로 하면 중복값이 생기는 경우가 생긴다. nick으로 변경-->

@@ -63,7 +63,7 @@
  
 	<bean id = "googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
 		<property name="scope" value="https://www.googleapis.com/auth/userinfo.email"></property>
-		<property name="redirectUri" value="http://localhost:8080/DevelopPR/user/googleCallback"/>
+		<property name="redirectUri" value="https://developpr.org/DevelopPR/user/googleCallback"/>
 	</bean>
     
     <!-- Facebook 소셜 로그인 연결 설정 -->
@@ -76,7 +76,7 @@
     <bean id="oAuth2Parameters"
         class="org.springframework.social.oauth2.OAuth2Parameters">
         <property name="scope" value="email" />
-        <property name="redirectUri" value="https://developpr.org/user/facebookcallback" />
+        <property name="redirectUri" value="https://developpr.org/DevelopPR/user/facebookcallback" />
     </bean>
 
 

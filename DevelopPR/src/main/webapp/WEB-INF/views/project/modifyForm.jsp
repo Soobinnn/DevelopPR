@@ -80,7 +80,7 @@ cursor: pointer;
 <script>
           $(document).ready(function()
             {
-        	  $(document).scrollTop(550);
+        	  $(document).scrollTop(10);
 
 //////////////////////////프로젝트 관련 이미지 받아오기 시작//////////////////////        	  
 
@@ -769,7 +769,7 @@ if( $("#img_added> #del_server").length >0 ){
                    }
              ////////////////프로젝트 관련 이미지 밸리데이션 종료/////////////////// 
                     
-                    
+                    alert("submit");
                     document.form1.submit();
                 });  
                      <%--값 전송 및 유효성 검증 종료 --%>            
@@ -1140,8 +1140,8 @@ if( $("#img_added> #del_server").length >0 ){
 
    <div class="final_btns"> <div id="final_top_"><hr id="final_top"></div>
    <!--이곳에 등록 버튼을 만든다.-->
-     <button type="reset" class="final_btn" id="btnCancel">취소</button>
-     <button type="button" class="final_btn" id="btnSave">수정</button>
+     <button type="reset" class="final_btn" onclick="history.back();" id="btnCancel">취소</button>
+     <button type="submit" class="final_btn" id="btnSave">수정</button>
    </div>
 
 </form> <!-- end of form1 -->

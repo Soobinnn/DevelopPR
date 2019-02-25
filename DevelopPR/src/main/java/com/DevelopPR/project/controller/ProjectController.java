@@ -140,7 +140,7 @@ public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Mode
     return "basic/project/modifyForm";
 }
 
-@RequestMapping("/project/modify")
+@RequestMapping(value="/project/modify", method=RequestMethod.POST)
 public String projectModify(MultipartFile file, @ModelAttribute ProjectVO vo, @RequestParam(value="pr_file_name", required=false) String pr_file_name, HttpSession session) throws Exception
 {
 	

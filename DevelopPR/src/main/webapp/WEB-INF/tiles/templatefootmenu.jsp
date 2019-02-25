@@ -13,9 +13,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/main/developpr.css'/>"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script type="text/javascript" src="//beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+	<script src="<c:url value='/resources/main/jQueryRotateCompressed.js'/>"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="<c:url value='/resources/main/sub_icon.ico'/>"/>
 	<script>
 	var socket = null;
 	var success = null;
@@ -24,7 +25,8 @@
 	
 	function connect() 
 	{
-		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
+		/* socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws"); */
+		socket = new WebSocket("wss://developpr.org/DevelopPR/chat-ws");
 		socket.onmessage = onMessage;
 		socket.onopen = function() 
 		{
@@ -83,9 +85,7 @@
 	function modifyplz()
 	{
 		alert("이력서를 등록하시려면 구직자로 변경하셔야 사용가능합니다.");
-		window.location.href = "http://localhost:8080/DevelopPR/user/modifyInfoform";
-		
-		
+		window.location.href = "https://developpr.org/DevelopPR/user/modifyInfoform";	
 	}
 	$(document).ready(function()
 	{
@@ -98,7 +98,7 @@
 		
 		$(".top_nav").click(function()
 		{
-			$('.navx').fadeOut(100,function(){$('.navx').fadeTo(500,1,function(){$('.navx').css({'animation-iteration-count':'1'})})});
+			$('.navx').fadeOut(100,function(){$('.navx').fadeTo(500,1,function(){$('.navx').css({'-webkit-animation-iteration-count':'1','-ms-animation-iteration-count':'1'})})});
 			$('#full').animate({width: "toggle", height: "toggle"},400,'easeOutQuad');
 			// $('.navx').rotate({animateTo:-360 , duration:1000});
 			$('.fullmenu').fadeOut(200,function(){$('.fullmenu').fadeTo(500,1);});

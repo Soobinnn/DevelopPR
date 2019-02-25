@@ -1,5 +1,4 @@
 var words = document.getElementsByClassName('word');
-console.log(words);
 var wordArray = [];
 var currentWord = 0;
 words[currentWord].style.opacity = 1;
