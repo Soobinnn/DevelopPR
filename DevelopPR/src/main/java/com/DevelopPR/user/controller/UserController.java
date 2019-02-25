@@ -838,7 +838,7 @@ private HttpSession getSession() {
           e.printStackTrace();
 
       }
-      return "redirect:/join";
+      return "redirect:/main";
 
   }
   
