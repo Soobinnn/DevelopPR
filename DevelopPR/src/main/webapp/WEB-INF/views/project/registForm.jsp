@@ -437,24 +437,18 @@ if( $("#img_added> #del_server").length >0 ){
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_server.png");
 	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
+   //end of img_add_java()
 		 return;       					
 }
 });
-
       $('.server_pic').click(function(){
     	 $('del_server').remove(); 
-      
-      });
-      
+        });
       
       $(".java_pic").click(function(){
           var del_p = document.getElementById("img_added");
           var del = document.getElementById("del_java");
-            
-          delete del;
+            delete del;
           return;
                                         });
 

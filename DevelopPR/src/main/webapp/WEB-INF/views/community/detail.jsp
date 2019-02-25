@@ -216,7 +216,7 @@ function showReplyModify(rno){
      <div id="content"><span id="content_text"><pre>${dto.content}</pre></span></div>  
   <div id="btns">
   <%-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 --%>
-    <c:if test="${sessionScope.userNick == dto.writer}"> 
+    <c:if test="${sessionScope.login.userNick == dto.writer}"> 
          <button type="button" class="btn"  id="btnUpdete">수정</button>
          <button type="button" class="btn"  id="btnDelete">삭제</button>
     </c:if>  
@@ -231,7 +231,7 @@ function showReplyModify(rno){
      <div id="de_reply">
         <br>
         <%-- 로그인 한 회원에게만 댓글 작성폼이 보이게 처리 --%>
-        <c:if test="${sessionScope.userNick != null}">    
+        <c:if test="${sessionScope.login.userNick != null}">    
         <div id="reply_write"><textarea rows="3" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea></div>
             <br>   <%-- end of reply_write --%>
            
