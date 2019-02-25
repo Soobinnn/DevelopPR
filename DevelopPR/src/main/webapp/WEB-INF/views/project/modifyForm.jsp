@@ -81,8 +81,612 @@ cursor: pointer;
           $(document).ready(function()
             {
         	  $(document).scrollTop(550);
+
+//////////////////////////프로젝트 관련 이미지 받아오기 시작//////////////////////        	  
+
+	
+	var chk_img = "${dto.project_image}";                   //project_image값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
+    var img_split = chk_img.split(',');                 //받아온 값을 콤마 단위로 잘라서 저장한다.
+                                                                         
+        if(img_split.includes("java")>-1){
+               var elem = document.createElement("img");
+    	 	   elem.setAttribute("src", img_split);
+    	 	   elem.setAttribute("height", "140");
+    	 	   elem.setAttribute("width", "140");
+    	 	   elem.setAttribute("id","del_java");
+    	 	   elem.setAttribute("class", "java_pic");
+    	 	   document.getElementById("img_added").appendChild(elem);
+    	       
+    	 	   var elem_h = document.createElement("input");
+    	 	       elem_h.setAttribute("type", "hidden");
+    	 	       elem_h.setAttribute("name", "project_image");
+    	 	       elem_h.setAttribute("value",img_split);
+    	 	       document.getElementById("img_added").appendChild(elem_h);
+       return;
+        }  // end of if	  
+      
+        if(img_split.includes("android")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_android");
+ 	 	   elem.setAttribute("class", "android_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("sharp")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_c_sharp");
+ 	 	   elem.setAttribute("class", "c_sharp_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("db")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_db");
+ 	 	   elem.setAttribute("class", "db_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("desktop")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_desktop");
+ 	 	   elem.setAttribute("class", "desktop_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("html")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_html");
+ 	 	   elem.setAttribute("class", "html_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("iphone")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_ophone");
+ 	 	   elem.setAttribute("class", "iphone_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("jquery")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_jquery");
+ 	 	   elem.setAttribute("class", "jquery_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("js")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_js");
+ 	 	   elem.setAttribute("class", "js_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("mysql")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_mysql");
+ 	 	   elem.setAttribute("class", "mysql_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("php")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_php");
+ 	 	   elem.setAttribute("class", "php_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("python")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_python");
+ 	 	   elem.setAttribute("class", "python_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("server")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_server");
+ 	 	   elem.setAttribute("class", "server_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+     
+         
+ //////////////////////////프로젝트 관련 이미지 받아오기 종료//////////////////////        	  
         	  
         	  
+        	  
+        	  
+//////////////////////////////프로젝트 관련 이미지 추가//////////////////////
+        	  
+$("#java_clicked").click(function(){
+	  if( $("#img_added> #del_java").length >0 ){
+		  var del_p = document.getElementById("img_added");  	
+		  var del = document.getElementById("del_java");
+	        	del_p.removeChild(del);
+		        				 
+	  } else if ( $("#img_added> #del_java").length == 0) {
+	      var elem = document.createElement("img");
+ 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_java.png");
+ 	   elem.setAttribute("height", "140");
+ 	   elem.setAttribute("width", "140");
+ 	   elem.setAttribute("id","del_java");
+ 	   elem.setAttribute("class", "java_pic");
+ 	   document.getElementById("img_added").appendChild(elem);
+       
+ 	   var elem_h = document.createElement("input");
+ 	       elem_h.setAttribute("type", "hidden");
+ 	       elem_h.setAttribute("name", "project_image");
+ 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_java.png");
+ 	       document.getElementById("img_added").appendChild(elem_h);
+ 	   
+ 	   //end of img_add_java()
+			 return;       					
+	  }
+  });
+
+$("#android_clicked").click(function(){
+if( $("#img_added> #del_android").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_android");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_android").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_android.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_android");
+	   elem.setAttribute("class","android_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_android.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#c_sharp_clicked").click(function(){
+if( $("#img_added> #del_c_sharp").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_c_sharp");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_c_sharp").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_c_sharp.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_c_sharp");
+	   elem.setAttribute("class","c_sharp_pic");
+	
+	   document.getElementById("img_added").appendChild(elem);
+    
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_c_sharp.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#db_clicked").click(function(){
+if( $("#img_added> #del_db").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_db");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_db").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_db.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_db");
+	   elem.setAttribute("class","db_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+    
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_db.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#desktop_clicked").click(function(){
+if( $("#img_added> #del_desktop").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_desktop");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_desktop").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_desktop.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_desktop");
+	   elem.setAttribute("class","desktop_pic");
+	  	   document.getElementById("img_added").appendChild(elem);
+      
+	  	 var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_desktop.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	  	   
+	  	   
+	  	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#html_clicked").click(function(){
+if( $("#img_added> #del_html").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_html");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_html").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_html.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_html");
+	   elem.setAttribute("class","html_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_html.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#iphone_clicked").click(function(){
+if( $("#img_added> #del_iphone").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_iphone");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_iphone").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_iphone.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_iphone");
+	   elem.setAttribute("class","iphone_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_iphone.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#jquery_clicked").click(function(){
+if( $("#img_added> #del_jquery").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_jquery");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_jquery").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_jquery.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_jquery");
+	   elem.setAttribute("class","jquery_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_jquery.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#js_clicked").click(function(){
+if( $("#img_added> #del_js").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_js");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_js").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_js.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_js");
+	   elem.setAttribute("class","js_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_js.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#mysql_clicked").click(function(){
+if( $("#img_added> #del_mysql").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_mysql");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_mysql").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_mysql.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_mysql");
+	   elem.setAttribute("class","mysql_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_mysql.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#php_clicked").click(function(){
+if( $("#img_added> #del_php").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_php");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_php").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_php.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_php");
+	   elem.setAttribute("class","php_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_php.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+$("#python_clicked").click(function(){
+if( $("#img_added> #del_python").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_python");
+      	del_p.removeChild(del);
+				 
+} else if ( $("#img_added> #del_python").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_python.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_python");
+	   elem.setAttribute("class","python_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+       
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_python.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+
+$("#server_clicked").click(function(){
+if( $("#img_added> #del_server").length >0 ){
+	  var del_p = document.getElementById("img_added");  	
+	  var del = document.getElementById("del_server");
+      	del_p.removeChild(del);
+	        				 
+} else if ( $("#img_added> #del_server").length == 0) {
+    var elem = document.createElement("img");
+	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_server.png");
+	   elem.setAttribute("height", "140");
+	   elem.setAttribute("width", "140");
+	   elem.setAttribute("id","del_server");
+	   elem.setAttribute("class","server_pic");
+	   
+	   document.getElementById("img_added").appendChild(elem);
+	   var elem_h = document.createElement("input");
+	       elem_h.setAttribute("type", "hidden");
+	       elem_h.setAttribute("name", "project_image");
+	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_server.png");
+	       document.getElementById("img_added").appendChild(elem_h);
+	   
+	   
+	   //end of img_add_java()
+		 return;       					
+}
+});
+
+      $('.server_pic').click(function(){
+    	 $('del_server').remove(); 
+      
+      });
+      
+      
+      $(".java_pic").click(function(){
+          var del_p = document.getElementById("img_added");
+          var del = document.getElementById("del_java");
+            
+          delete del;
+          return;
+                                        });
+
+        	  
+//////////////////////////////프로젝트 관련 이미지 종료//////////////////////        	  
         	  document.getElementById("techstack_hidden_show").style.display = "none";
         	          	  
         	  <%--프로젝트명 추가부분, 프로젝트 등급 버튼 --%>
@@ -99,13 +703,6 @@ cursor: pointer;
                     var project_content = $("#project_content").val();
                     var project_term1 = $("#project_term1").val();
                     var project_term2 = $("#project_term2").val();
-                    /* 
-                    console.log(project_name);
-                    console.log(project_content);
-                    console.log(project_term1);
-                    console.log(project_term2);
-                    
-                     */
                     /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
                     var project_name = $('#textarea_title').val();
                     var project_content = $('#textarea_introduce').val();
@@ -136,8 +733,41 @@ cursor: pointer;
                     	document.form1.project_term2.focus();
                         return;
                     }
-                      
-
+                     
+    /////////////////테크스택 체크박스 밸리데이션 시작/////////////////////    
+                    var cbox = document.forms["form1"]["techstack"];
+                   if (
+                     cbox[0].checked == false &&
+                     cbox[1].checked == false &&
+                     cbox[2].checked == false &&
+                     cbox[3].checked == false &&
+                     cbox[4].checked == false &&
+                     cbox[5].checked == false &&
+                     cbox[6].checked == false &&
+                     cbox[7].checked == false &&
+                     cbox[8].checked == false &&
+                     cbox[9].checked == false &&
+                     cbox[10].checked == false &&
+                     cbox[11].checked == false &&
+                     cbox[12].checked == false &&
+                     cbox[13].checked == false &&
+                     cbox[14].checked == false &&
+                     cbox[15].checked == false &&
+                     cbox[16].checked == false
+                     
+                   ) {
+                     alert("테크스택을 하나 이상 체크해주세요.");
+                     return false;
+                   } 
+                 /////////////////테크스택 체크박스 밸리데이션 종료/////////////////////
+                    
+            ////////////////프로젝트 관련 이미지 밸리데이션 시작///////////////////      
+                   if( $("#img_added > #img_checking").length == 0){
+                   	alert("프로젝트를 대표할 이미지 하나 이상 선택해주세요.")
+                   	document.form1.project_image.focus();
+                  return;
+                   }
+             ////////////////프로젝트 관련 이미지 밸리데이션 종료/////////////////// 
                     
                     
                     document.form1.submit();
@@ -177,14 +807,8 @@ cursor: pointer;
          /* ajax 검색 로직 추가 */           
     $(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
         $(".project_tech_name").keyup(function() {
-				
-        	
-        	/* console.log('키이벤트작동하는가?'); */
-        	
-		        var tech_name_input = $('.project_tech_name').val();
+                var tech_name_input = $('.project_tech_name').val();
         	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-         	/* console.log('값이 담기는가 :' +tech_name_input); */
-        	
          	$.ajax({ // Ajax 요청을 작성
          	    url: "${path}/project/autocomplete",
          	    data: param,
@@ -240,14 +864,6 @@ cursor: pointer;
     }); // end of keyup function
         	
     });
-
-         
-    	 function addFilePath(msg){
-    	        /* console.log(msg); */ // 파일명 콘솔 출력
-    	        document.getElementById("form2").reset(); // ifream에 업로드결과를 출력 후 form에 저장된 데이터 초기화
-    	    }
- 
-             
 ///////////////체크박스 체크 로직 시작.
      
      	var chk_received = "${dto.techstack}";                   //techstack값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
@@ -349,14 +965,7 @@ cursor: pointer;
          }    
              
 /////////////////////////////체크박스 체크 로직 종료        
-            
-            
-            
-            
-            
-            
-            
-            }); //end of document.ready  
+              }); //end of document.ready  
 
           </script>
 
@@ -463,13 +1072,44 @@ cursor: pointer;
          <input type="file" id="file_label" name="file" value="${dto.download_name}"> <%-- VO에 name값과 동일한 매개변수를 만든다. --%>
          </div> <%-- end of file_upload --%>
           
-          <%-- <div id="file_download"><c:url value="${dto.pr_file_name}"/>프로젝트 파일 다운로드</a></div> --%>
+          <div id="file_name">${dto.download_name}</div>
          <div id="file_download"><a href="${path}/resources/project_upload/${dto.download_name}" download>프로젝트 파일 다운로드</a></div>
          
        </div> <!--  end of upload_sub2 -->
     	
          </div><!-- end of file_sub -->
   </div> <!-- end of projectUpload-->
+ 
+ 
+ 
+ <!--프로젝트 관련 이미지 업로드 추가  -->
+ 
+ <div class="images"> <!-- 프로젝트 관련 이미지를 담는 div, display:flex 시작 -->
+       <div id="img_title">관련 이미지</div>
+        <div id="img_subtitle">프로젝트를 설명하는 이미지가 있나요?</div>
+         <div id="img_added"><!-- 밑에서 고른 이미지가 추가되는 곳. -->
+
+         </div>
+           <div id="img_exam"><!-- 예시 이미지들이 나열되는 곳. -->
+           
+           <span class="small_img" id="small_java"><img id="java_clicked" src='${path}/resources/project_imgs/presets_logo_java.png' height="58" width="58"></span>
+           <span class="small_img" id="small_android"><img id="android_clicked" src='${path}/resources/project_imgs/presets_logo_android.png' height="58" width="58"></span>
+           <span class="small_img" id="small_c_sharp"><img id="c_sharp_clicked" src='${path}/resources/project_imgs/presets_logo_c_sharp.png' height="58" width="58"></span>
+           <span class="small_img" id="small_db"><img id="db_clicked" src='${path}/resources/project_imgs/presets_logo_db.png' height="58" width="58"></span>
+           <span class="small_img" id="small_desktop"><img id="desktop_clicked" src='${path}/resources/project_imgs/presets_logo_desktop.png' height="58" width="58" ></span>
+           <span class="small_img" id="small_html"><img id="html_clicked" src='${path}/resources/project_imgs/presets_logo_html.png' height="58" width="58" ></span>
+           <span class="small_img" id="small_iphone"><img id="iphone_clicked" src='${path}/resources/project_imgs/presets_logo_iphone.png' height="58" width="58"> </span>
+           <span class="small_img" id="small_jquery"><img id="jquery_clicked" src='${path}/resources/project_imgs/presets_logo_jquery.png' height="58" width="58"></span>
+           <span class="small_img" id="small_js"><img id="js_clicked" src='${path}/resources/project_imgs/presets_logo_js.png' height="58" width="58"></span>
+           <span class="small_img" id="small_mysql"><img id="mysql_clicked" src='${path}/resources/project_imgs/presets_logo_mysql.png' height="58" width="58" ></span>
+           <span class="small_img" id="small_php"><img id="php_clicked" src='${path}/resources/project_imgs/presets_logo_php.png' height="58" width="58"></span>
+           <span class="small_img" id="small_python"><img id="python_clicked" src='${path}/resources/project_imgs/presets_logo_python.png' height="58" width="58"></span>
+           <span class="small_img" id="small_server"><img id="server_clicked" src='${path}/resources/project_imgs/presets_logo_server.png' height="58" width="58" ></span>      
+           </div>
+ 
+     </div> <!-- end of images -->
+ 
+ <!-- 프로젝트 관련 이미지 업로드 종료 -->
  
   <div class="projectLvl"> <div id="projectLvl_top_"><hr id="projectLvl_top"></div>
     <div id="projectLvl_title"><div id="lvl_font">&nbsp;&nbsp;프로젝트 등급</div></div>
@@ -480,9 +1120,7 @@ cursor: pointer;
       <input type="text" id="project_grade" name="project_grade" value="${dto.project_grade}"/>
       <div id="projectLvl_txt">수준</div>   
         </div>
-      
-    
-
+  
     <div id="projectLvl_btns">
          
              <%-- type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. --%>
@@ -505,7 +1143,6 @@ cursor: pointer;
      <button type="reset" class="final_btn" id="btnCancel">취소</button>
      <button type="button" class="final_btn" id="btnSave">수정</button>
    </div>
-
 
 </form> <!-- end of form1 -->
 

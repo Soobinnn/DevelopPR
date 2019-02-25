@@ -59,7 +59,7 @@
 								</div>
 							</div>
 						<a href="${path}/resume/detail/${list.email}/">
-						<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+						<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 						</a>
 					</figure>
 				</div>
@@ -95,7 +95,7 @@
 								</div>
 							</div>
 						<a href="${path}/resume/detail/${list.email}/">
-						<input type="hidden" name="email" value="${sessionScope.userEmail}"/>
+						<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 						</a>					
 					</figure>
 				</div>

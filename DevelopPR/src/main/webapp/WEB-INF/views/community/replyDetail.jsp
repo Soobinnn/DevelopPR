@@ -72,7 +72,7 @@ margin : 0 auto;
     <textarea id="detailReplytext" rows="5" cols="82">${vo.replytext}</textarea>
     <div style="text-align: center;">
         <!-- 본인 댓글만 수정, 삭제가 가능하도록 처리 -->
-        <c:if test="${sessionScope.userNick == vo.replyer}">
+        <c:if test="${sessionScope.login.userNick == vo.replyer}">
             <button type="button" id="btnReplyUpdate" >수정</button>
             <button type="button" id="btnReplyDelete" >삭제</button>
         </c:if>

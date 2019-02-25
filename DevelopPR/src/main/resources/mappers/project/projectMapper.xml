@@ -4,11 +4,11 @@
 <!-- 프로젝트 등록 -->
     <insert id="insert">
         INSERT INTO PR_PROJECT 
-            (pno, project_name, project_content, project_term1, project_term2, techstack, project_grade, email, pr_file_name, download_name)
+            (pno, project_name, project_content, project_term1, project_term2, techstack, project_grade, email, pr_file_name, download_name, project_image)
         VALUES 
             (
 				(SELECT NVL(MAX(pno)+1, 1)FROM pr_project),
-				#{project_name}, #{project_content}, #{project_term1}, #{project_term2}, #{techstack}, #{project_grade}, #{nick}, #{pr_file_name}, #{download_name})    
+				#{project_name}, #{project_content}, #{project_term1}, #{project_term2}, #{techstack}, #{project_grade}, #{email}, #{pr_file_name}, #{download_name}, #{project_image})    
     </insert>
 
 
@@ -49,7 +49,8 @@
          project_term1=#{project_term1}, 
          project_term2=#{project_term2}, 
          techstack=#{techstack}, 
-         project_grade=#{project_grade}
+         project_grade=#{project_grade},
+         project_image=#{project_image}
          WHERE pno=#{pno}
 </update>
 

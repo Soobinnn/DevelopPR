@@ -56,14 +56,30 @@ public String projectRegistForm(HttpSession session) throws Exception
 
 //02. 프로젝트 등록 및 파일 업로드, registForm에서  post 방식으로 입력받은 값들을 service->dao->mapper를 통해 db에 등록한다.
 @RequestMapping(value="/project/regist", method=RequestMethod.POST)
-public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSession session, @RequestParam(value="techstack", required=false) String techstack, @ModelAttribute ProjectVO vo) throws Exception
+public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSession session, @RequestParam(value="techstack", required=false, defaultValue="none") String techstack, @RequestParam(value="pr_file_name", required=false, defaultValue="false") String pr_file_name, @RequestParam(value="project_image", required=false, defaultValue="false") String project_image,  @ModelAttribute ProjectVO vo) throws Exception
 {
 
-	  UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
+	
+	UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
 	  String myemail = uservo.getUserEmail();                         // uservo형태의 이메일 값을 스트링 타입 변수인 myemail에 담는다.
-	  String file_name = uploadPath+file.getOriginalFilename();
-	  vo.setPr_file_name(file_name); 
+	  vo.setEmail(uservo.getUserEmail());
 	 
+	  String Fname = file.getOriginalFilename(); 
+	  
+	  System.out.println("파일 이름 잘 갖고 오는지 확인!!!!!! : "+Fname);
+	  
+	  String file_name = uploadPath+file.getOriginalFilename();
+	  String empty_value="파일 업로드가 없습니다.";
+	  
+	  if(Fname == null || Fname == "") {
+		  
+		vo.setPr_file_name(empty_value);
+	  
+	  } else if(Fname != null) {
+		  vo.setPr_file_name(file_name); 
+	  }
+
+	  
       vo.setDownload_name(file.getOriginalFilename());
 	  
 	  vo.setNick(userService.viewId(myemail).getUserNick());          // 세션에서 Email값을 가져와서 email값과 일치하는 db의 닉네임을 가져와서 setNick에 넣는다.
@@ -76,21 +92,29 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
  	  String savedName = file.getOriginalFilename();      
 	       
     
+ 	 if(Fname == null || Fname == "") {
+		  savedName = "not_uploded.good";
+ 		
+ 	  } else if(Fname != null) {
+ 		 savedName = file.getOriginalFilename();
+ 	  }
      
+     String pr_test= vo.getProject_image();
+ 	 if(pr_test == null || pr_test =="") {
+ 		 pr_test = "입력된 이미지가 없습니다.";
+ 		 vo.setProject_image(pr_test);
+ 	 } 
+ 	 
      projectService.regist(vo);
-				  
-		 
-     
-     
+				 
      File target = new File(uploadPath, savedName);
 
 	    // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
 	    // FileCopyUtils.copy(바이트배열, 파일객체)
 	    FileCopyUtils.copy(file.getBytes(), target);
 
-	
-	    
 	    mav.setViewName("basic/project/registForm");
+	    /* return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/"; */
 	    mav.addObject("savedName", savedName);
 
 	    return mav; // registForm.jsp(결과화면)로 포워딩
@@ -117,12 +141,27 @@ public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Mode
 }
 
 @RequestMapping("/project/modify")
-public String projectModify(@ModelAttribute ProjectVO vo, HttpSession session) throws Exception
+public String projectModify(MultipartFile file, @ModelAttribute ProjectVO vo, @RequestParam(value="pr_file_name", required=false) String pr_file_name, HttpSession session) throws Exception
 {
-	 UserVO uservo = (UserVO)session.getAttribute("login");
 	
-	 projectService.modify(vo);
+	UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
+	  String myemail = uservo.getUserEmail();  
+	
+	String file_name = uploadPath+file.getOriginalFilename();
+	  vo.setPr_file_name(file_name); 
+	  vo.setDownload_name(file.getOriginalFilename());
 	  
+	  logger.info("파일이름 :"+file.getOriginalFilename());
+	  logger.info("파일크기 : "+file.getSize());
+	  logger.info("컨텐트 타입 : "+file.getContentType());
+      String savedName = file.getOriginalFilename();    
+	 
+	  projectService.modify(vo);
+	  File target = new File(uploadPath, savedName);
+     
+	  // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
+	  // FileCopyUtils.copy(바이트배열, 파일객체)
+	  FileCopyUtils.copy(file.getBytes(), target);
     return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/";
 }
 
