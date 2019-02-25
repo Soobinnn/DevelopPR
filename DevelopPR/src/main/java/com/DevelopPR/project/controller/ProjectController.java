@@ -113,7 +113,7 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	    // FileCopyUtils.copy(바이트배열, 파일객체)
 	    FileCopyUtils.copy(file.getBytes(), target);
 
-	    mav.setViewName("basic/project/registForm");
+	    mav.setViewName("redirect:/resume/detail/"+myemail+"/");
 	    /* return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/"; */
 	    mav.addObject("savedName", savedName);
 
