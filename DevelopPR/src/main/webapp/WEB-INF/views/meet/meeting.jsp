@@ -39,17 +39,18 @@
 		/* console.log("서버로부터 받은 메시지 : "+data); */
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
-	/* 	appendMessage(obj.message_content); */
+		/* 	appendMessage(obj.message_content); */
 		
 		// 내가 보고있는 채팅방일 경우에만, 메시지 띄워주기
 		if(lookRoom == obj.chatroom_id)
 		{
 			appendMessage(obj);
 		}
-		
-		//채팅 리스트
-		getList(obj);
-		
+		if(obj !="ping")
+		{
+			//채팅 리스트
+			getList(obj);
+		}
 		/* if (data.substring(0, 4) == "msg:") 
 		{
 			appendMessage(data.substring(4));

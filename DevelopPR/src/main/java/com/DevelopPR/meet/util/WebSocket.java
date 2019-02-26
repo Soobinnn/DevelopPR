@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -126,6 +127,24 @@ public class WebSocket extends TextWebSocketHandler
 	{
 		/*System.out.println(new Date() + " : " + logmsg);*/
 	}
-
+	
+	@Scheduled(cron="*/30 * * * * *")
+	public void ping() throws Exception 
+	{
+		Map<String, Object> map = null;
+	
+		for (WebSocketSession websocketSession : sessionList) 
+	    {
+	         map = websocketSession.getAttributes();
+	         UserVO login = (UserVO) map.get("login");
+	         
+	         Gson gson = new Gson();
+	         
+	         String msg = gson.toJson("ping");
+	         websocketSession.sendMessage(new TextMessage(msg));
+	         
+	    }
+	}
+	
 }
 	

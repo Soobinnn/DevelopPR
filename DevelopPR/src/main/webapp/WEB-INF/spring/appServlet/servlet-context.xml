@@ -68,8 +68,6 @@
     </beans:bean>
    
 
-
-    
      <!-- Tiles -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <beans:property name="definitions">
