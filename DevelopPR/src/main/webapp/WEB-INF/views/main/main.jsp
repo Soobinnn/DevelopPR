@@ -47,7 +47,7 @@
 							</div>
 								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 								<c:if test="${sessionScope.login.userEmail!=null}">
-									<a href="${path}/resume/detail/${list.loginemail}/"></a>
+									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
 								<c:if test="${sessionScope.login.userEmail==null}">
 									<a href="${path}/user/login"></a>
@@ -85,7 +85,7 @@
 							</div>
 								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 								<c:if test="${sessionScope.login.userEmail!=null}">
-									<a href="${path}/resume/detail/${list.loginemail}/"></a>
+									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
 								<c:if test="${sessionScope.login.userEmail==null}">
 									<a href="${path}/user/login"></a>
@@ -124,7 +124,7 @@
 							</div>
 								<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 								<c:if test="${sessionScope.login.userEmail!=null}">
-									<a href="${path}/resume/detail/${list.loginemail}/"></a>
+									<a href="${path}/resume/detail/${list.email}/"></a>
 								</c:if>
 								<c:if test="${sessionScope.login.userEmail==null}">
 									<a href="${path}/user/login"></a>

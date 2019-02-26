@@ -400,7 +400,7 @@ function fn_removeImage() {
                                 이메일 * 
                             </div>
                             <div class="email_info">
-                           		<input type="text" class="textshort" name="email" value="${dto.userEmail}"/> <br/>
+                           		<input type="text" class="textshort" name="loginemail" value="${dto.userEmail}"/> <br/>
                                 <input type="radio" name="email_is_open" value="1" id="er1" checked/>
                                 	<label for="er1" class="la"><p class="p_label">공개 </p></label>
                                 <input type="radio" name="email_is_open" value="0" id="er2"/>

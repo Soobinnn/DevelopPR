@@ -15,11 +15,11 @@
 	
 	<select id="resumeList" resultType="ResumeVO">
 		<include refid="pagingHeader"></include>           
-			SELECT a.name, a.age, a.prefer_job, a.prefer_place, a.motto, a.loginemail, a.profile_photo,
+			SELECT a.name, a.age, a.prefer_job, a.prefer_place, a.motto, a.email, a.profile_photo,
 			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
 			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
 			FROM pr_resume a, pr_user b
-			where a.loginemail = b.email
+			where a.email = b.email
             and <include refid="search"></include>
         <include refid="pagingFooter"></include>    
 	</select>
@@ -38,10 +38,10 @@
    <update id="modify">   
           UPDATE pr_resume SET 
           motto = #{motto}, is_work=#{is_work}, profile_photo=#{profile_photo}, name=#{name}, birthday=#{birthday}, cell_num=#{cell_num}, cnum_is_open=#{cnum_is_open}, 
-		  email=#{email}, email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
+		  loginemail=#{loginemail}, email_is_open=#{email_is_open}, blog=#{blog}, address=#{address}, address_is_open=#{address_is_open}, prefer_place=#{prefer_place}, 
 		  acq_date=#{acq_date}, acq_name=#{acq_name}, gradu_year=#{gradu_year}, edu_info=#{edu_info}, 
 		  career_year=#{career_year}, career_info=#{career_info}, abb=#{abb}, tech_name=#{tech_name}, tech_percent=#{tech_percent}, age=#{age}, color=#{color}, prefer_job=#{prefer_job}
-          WHERE loginemail=#{loginemail}
+          WHERE email=#{email}
     </update>
 
 
@@ -75,11 +75,11 @@
 	</sql>
 	
 	<select id="mainList" resultType="ResumeVO">
-		SELECT a.name, a.age, a.prefer_place, a.prefer_place, a.motto, a.loginemail, a.profile_photo,
+		SELECT a.name, a.age, a.prefer_place, a.prefer_place, a.motto, a.email, a.profile_photo,
 			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
 			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
 			FROM pr_resume a, pr_user b
-			where a.loginemail = b.email
+			where a.email = b.email
 			ORDER BY dbms_random.value
 	</select>
 	
@@ -142,6 +142,6 @@
 	<select id="is_regist" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM PR_RESUME
-		WHERE loginemail=#{email}
+		WHERE email=#{email}
 	</select>
 </mapper>

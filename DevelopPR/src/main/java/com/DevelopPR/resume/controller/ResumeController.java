@@ -77,7 +77,7 @@ public class ResumeController {
 	   
 	   UserVO uservo = (UserVO)session.getAttribute("login");
 	   String email = uservo.getUserEmail();
-	   
+
 	   int chkRegist = resumeService.is_regist(email);
 	   if(chkRegist==1) {
 		   return "redirect:modify/"+email+"/";
@@ -94,11 +94,12 @@ public class ResumeController {
    //이력서 등록 처리
    @RequestMapping(value="registConfirm", method=RequestMethod.POST)
    public String resumeRegistConfirm(HttpSession session, @ModelAttribute ResumeVO vo, @RequestParam("profile_photo") String file) throws Exception{
-	   UserVO uservo = (UserVO)session.getAttribute("login");
-	   String loginemail = uservo.getUserEmail();
 	   
+	   UserVO uservo = (UserVO)session.getAttribute("login");
+	   String email = uservo.getUserEmail();
+	   
+	  vo.setEmail(email);
 	  vo.setProfile_photo(file.toString());
-	  vo.setLoginemail(loginemail);
 	  resumeService.resumeRegistConfirm(vo);
 	  
       return "redirect:list";  
