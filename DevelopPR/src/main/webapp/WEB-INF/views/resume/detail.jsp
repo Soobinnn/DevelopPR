@@ -369,7 +369,7 @@ function ungood()
 									var image = "${project.project_image}";
 									var image_split = image.split(",");
 									var split=image_split[0];
-									console.log("split:"+split);
+			
 									if(split=="" || split=="입력된 이미지가 없습니다."){
 									document.write('<img id="image" style="width:100px;height:100px;"/>'); 
 									}else{

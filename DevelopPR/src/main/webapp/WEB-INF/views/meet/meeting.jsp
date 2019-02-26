@@ -40,7 +40,6 @@
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
 		/* 	appendMessage(obj.message_content); */
-		console.log("무슨문제일까" + obj+ "흠" + obj[obj]);
 		if(obj !="ping")
 		{
 			// 내가 보고있는 채팅방일 경우에만, 메시지 띄워주기
