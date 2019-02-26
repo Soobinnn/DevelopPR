@@ -400,12 +400,11 @@ text-align : center;
 
 /*프로젝트 이미지 업로드 가장 바깥 div*/
 .pr_detail .images{
-
 height : auto;
 overflow: hidden;
 position : relative;
 left : 5px;
-
+height:200px;
 }
 
 /*관련 이미지(이미지 div 제목)*/
@@ -436,6 +435,7 @@ width : 980px;
 /*밑에서 고른 이미지가 추가되어 등록되는 곳*/
 .pr_detail #img_added{
 
+padding-left:20px;
 height : 100px;
 overflow : hidden;
 position : relative;
@@ -444,7 +444,9 @@ left : 10px;
 width : 980px;
 
 }
-
+.pr_detail #image{
+    margin-right:10px;
+}
 
 
 

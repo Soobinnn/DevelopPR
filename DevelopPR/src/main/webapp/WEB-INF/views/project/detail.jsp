@@ -66,10 +66,15 @@
      <div class="images"> <!-- 프로젝트 관련 이미지를 담는 div, display:flex 시작 -->
        <div id="img_title">관련 이미지</div>
          <div id="img_added"><!-- 밑에서 고른 이미지가 추가되는 곳. -->
-        		 이미지 수정에서 따올 예정
-         
-         
-             
+         <script>
+					var image = "${dto.project_image}";
+					var image_split = image.split(",");
+					console.log("split:"+image_split);
+					
+					for(var i in image_split){
+						document.write('<img id="image" src="'+ image_split[i] + '" style="width:100px;height:100px;"/>'); 
+					}
+         </script>
          </div>
            
  
