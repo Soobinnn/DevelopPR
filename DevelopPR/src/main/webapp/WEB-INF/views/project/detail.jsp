@@ -69,7 +69,6 @@
          <script>
 					var image = "${dto.project_image}";
 					var image_split = image.split(",");
-					console.log("split:"+image_split);
 					
 					for(var i in image_split){
 						document.write('<img id="image" src="'+ image_split[i] + '" style="width:100px;height:100px;"/>'); 
