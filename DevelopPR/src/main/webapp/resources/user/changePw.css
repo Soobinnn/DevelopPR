@@ -3,6 +3,11 @@
     	font-family: 'Noto Sans KR', sans-serif;
         text-decoration: none;
         }
+    .changePw #function_img{
+	position:absolute;
+	left:220px;
+	
+}
      .changePw .changePw_header
 	{
     height : 120px;

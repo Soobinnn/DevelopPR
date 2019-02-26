@@ -24,9 +24,9 @@
 	var nick = '${login.userNick}';
 	var t = '${login.userEmail}';
 	var tt = '${login.userIs_seek}';
-	console.log("다계로셰션확인용1"+nick);
+	/* console.log("다계로셰션확인용1"+nick);
 	console.log("다계로셰션확인용2"+t);
-	console.log("다계로셰션확인용3"+tt);
+	console.log("다계로셰션확인용3"+tt); */
 	function connect() 
 	{
 		/* socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws"); */

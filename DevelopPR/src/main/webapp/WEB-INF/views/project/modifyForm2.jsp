@@ -6,11 +6,14 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+
+
+
 <meta charset="UTF-8">
 <title>Project Regist Form</title>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+
   <link rel="stylesheet" type="text/css" href="<c:url value='/resources/project/pr_registForm.css'/>"/>
-  
+   
   
 <style>
 .pr_regist .techstacklist{
@@ -75,9 +78,246 @@ cursor: pointer;
  
 </style>
 <script>
-$(document).ready(function()
-        {
-    	  $(document).scrollTop(550);
+          $(document).ready(function()
+            {
+        	  $(document).scrollTop(550);
+
+//////////////////////////프로젝트 관련 이미지 받아오기 시작//////////////////////        	  
+
+	
+	var chk_img = "${dto.project_image}";                   //project_image값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
+    var img_split = chk_img.split(',');                 //받아온 값을 콤마 단위로 잘라서 저장한다.
+                                                                         
+        if(img_split.includes("java")>-1){
+               var elem = document.createElement("img");
+    	 	   elem.setAttribute("src", img_split);
+    	 	   elem.setAttribute("height", "140");
+    	 	   elem.setAttribute("width", "140");
+    	 	   elem.setAttribute("id","del_java");
+    	 	   elem.setAttribute("class", "java_pic");
+    	 	   document.getElementById("img_added").appendChild(elem);
+    	       
+    	 	   var elem_h = document.createElement("input");
+    	 	       elem_h.setAttribute("type", "hidden");
+    	 	       elem_h.setAttribute("name", "project_image");
+    	 	       elem_h.setAttribute("value",img_split);
+    	 	       document.getElementById("img_added").appendChild(elem_h);
+       return;
+        }  // end of if	  
+      
+        if(img_split.includes("android")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_android");
+ 	 	   elem.setAttribute("class", "android_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("sharp")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_c_sharp");
+ 	 	   elem.setAttribute("class", "c_sharp_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("db")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_db");
+ 	 	   elem.setAttribute("class", "db_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("desktop")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_desktop");
+ 	 	   elem.setAttribute("class", "desktop_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("html")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_html");
+ 	 	   elem.setAttribute("class", "html_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("iphone")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_ophone");
+ 	 	   elem.setAttribute("class", "iphone_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("jquery")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_jquery");
+ 	 	   elem.setAttribute("class", "jquery_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("js")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_js");
+ 	 	   elem.setAttribute("class", "js_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("mysql")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_mysql");
+ 	 	   elem.setAttribute("class", "mysql_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("php")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_php");
+ 	 	   elem.setAttribute("class", "php_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("python")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_python");
+ 	 	   elem.setAttribute("class", "python_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+        if(img_split.includes("server")>-1){
+         	
+     	   var elem = document.createElement("img");
+ 	 	   elem.setAttribute("src", img_split);
+ 	 	   elem.setAttribute("height", "140");
+ 	 	   elem.setAttribute("width", "140");
+ 	 	   elem.setAttribute("id","del_server");
+ 	 	   elem.setAttribute("class", "server_pic");
+ 	 	   document.getElementById("img_added").appendChild(elem);
+ 	       
+ 	 	   var elem_h = document.createElement("input");
+ 	 	       elem_h.setAttribute("type", "hidden");
+ 	 	       elem_h.setAttribute("name", "project_image");
+ 	 	       elem_h.setAttribute("value",img_split);
+ 	 	       document.getElementById("img_added").appendChild(elem_h);
+ 	 	     return;
+        }  // end of if
+     
+         
+ //////////////////////////프로젝트 관련 이미지 받아오기 종료//////////////////////        	  
+        	  
+        	  
+        	  
+        	  
+//////////////////////////////프로젝트 관련 이미지 추가//////////////////////
+        	  
 $("#java_clicked").click(function(){
 	  if( $("#img_added> #del_java").length >0 ){
 		  var del_p = document.getElementById("img_added");  	
@@ -96,7 +336,6 @@ $("#java_clicked").click(function(){
  	   var elem_h = document.createElement("input");
  	       elem_h.setAttribute("type", "hidden");
  	       elem_h.setAttribute("name", "project_image");
- 	       elem_h.setAttribute("id", "img_checking");
  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_java.png");
  	       document.getElementById("img_added").appendChild(elem_h);
  	   
@@ -124,7 +363,6 @@ if( $("#img_added> #del_android").length >0 ){
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
 	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_android.png");
 	       document.getElementById("img_added").appendChild(elem_h);
 	   
@@ -153,7 +391,6 @@ if( $("#img_added> #del_c_sharp").length >0 ){
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
 	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_c_sharp.png");
 	       document.getElementById("img_added").appendChild(elem_h);
 	   
@@ -180,7 +417,6 @@ if( $("#img_added> #del_db").length >0 ){
     
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_db.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -209,7 +445,6 @@ if( $("#img_added> #del_desktop").length >0 ){
 	  	 var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
 	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_desktop.png");
 	       document.getElementById("img_added").appendChild(elem_h);
 	  	   
@@ -236,7 +471,6 @@ if( $("#img_added> #del_html").length >0 ){
        
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_html.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -264,7 +498,6 @@ if( $("#img_added> #del_iphone").length >0 ){
        
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_iphone.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -293,7 +526,6 @@ if( $("#img_added> #del_jquery").length >0 ){
        
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_jquery.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -315,13 +547,12 @@ if( $("#img_added> #del_js").length >0 ){
 	   elem.setAttribute("height", "140");
 	   elem.setAttribute("width", "140");
 	   elem.setAttribute("id","del_js");
-	   elem.setAttribute("clas","js_pic");
+	   elem.setAttribute("class","js_pic");
 	   
 	   document.getElementById("img_added").appendChild(elem);
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
 	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_js.png");
 	       document.getElementById("img_added").appendChild(elem_h);
 	   
@@ -349,7 +580,6 @@ if( $("#img_added> #del_mysql").length >0 ){
        
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_mysql.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -372,11 +602,11 @@ if( $("#img_added> #del_php").length >0 ){
 	   elem.setAttribute("width", "140");
 	   elem.setAttribute("id","del_php");
 	   elem.setAttribute("class","php_pic");
+	   
 	   document.getElementById("img_added").appendChild(elem);
        
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_php.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -404,7 +634,6 @@ if( $("#img_added> #del_python").length >0 ){
        
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_python.png");
 	       document.getElementById("img_added").appendChild(elem_h);
@@ -432,184 +661,297 @@ if( $("#img_added> #del_server").length >0 ){
 	   document.getElementById("img_added").appendChild(elem);
 	   var elem_h = document.createElement("input");
 	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("id", "img_checking");
 	       elem_h.setAttribute("name", "project_image");
 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_server.png");
 	       document.getElementById("img_added").appendChild(elem_h);
-   //end of img_add_java()
+	   
+	   
+	   //end of img_add_java()
 		 return;       					
 }
 });
-      $('.server_pic').click(function(){
-    	 $('del_server').remove(); 
-        });
-      
-      $(".java_pic").click(function(){
-          var del_p = document.getElementById("img_added");
-          var del = document.getElementById("del_java");
-            delete del;
-          return;
-                                        });
 
-document.getElementById("techstack_hidden_show").style.display = "none";
-        	  
-/*프로젝트명 추가부분, 프로젝트 등급 버튼*/
-var ul = document.querySelector('.techstacklist'); 
-$('.gradebtn').click(function(){
-         var text =  $(this).val();
-         $('#project_grade').val(text);
-     });
+           	  
+//////////////////////////////프로젝트 관련 이미지 종료//////////////////////        	  
+        	  document.getElementById("techstack_hidden_show").style.display = "none";
+        	          	  
+        	  <%--프로젝트명 추가부분, 프로젝트 등급 버튼 --%>
+        	  var ul = document.querySelector('.techstacklist'); 
+ 		     $('.gradebtn').click(function(){
+                       var text =  $(this).val();
+                       $('#project_grade').val(text);
+                   });
+   
+            
+              <%--값 전송 버튼 시작 --%>  
+ 		      $("#btnSave").click(function(){
+                    var project_name = $("#project_name").val();
+                    var project_content = $("#project_content").val();
+                    var project_term1 = $("#project_term1").val();
+                    var project_term2 = $("#project_term2").val();
+                    /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
+                    var project_name = $('#textarea_title').val();
+                    var project_content = $('#textarea_introduce').val();
+                    
+                    
+                    
+                    if (project_name.replace(/ |　/gi, '') == ''){ 
+                        alert("프로젝트 제목을 입력해주세요.");
+                        document.form1.project_name.focus();
+                        return; 
+                    }
+                    
+                    if (project_content.replace(/ |　/gi, '') == ''){ 
+                        alert("프로젝트 내용을 입력해주세요.");
+                        document.form1.project_content.focus();
+                        return; 
+                    }
+                    
+                  
+                    if(project_term1 == ""){
+                    	alert("프로젝트 시작 날짜를 입력하세요");
+                    	document.form1.project_term1.focus();
+                    	return;
+                    }
+                    
+                    if(project_term2 == ""){
+                    	alert("프로젝트 종료 날짜를 입력하세요");
+                    	document.form1.project_term2.focus();
+                        return;
+                    }
+                     
+    /////////////////테크스택 체크박스 밸리데이션 시작/////////////////////    
+                    var cbox = document.forms["form1"]["techstack"];
+                   if (
+                     cbox[0].checked == false &&
+                     cbox[1].checked == false &&
+                     cbox[2].checked == false &&
+                     cbox[3].checked == false &&
+                     cbox[4].checked == false &&
+                     cbox[5].checked == false &&
+                     cbox[6].checked == false &&
+                     cbox[7].checked == false &&
+                     cbox[8].checked == false &&
+                     cbox[9].checked == false &&
+                     cbox[10].checked == false &&
+                     cbox[11].checked == false &&
+                     cbox[12].checked == false &&
+                     cbox[13].checked == false &&
+                     cbox[14].checked == false &&
+                     cbox[15].checked == false &&
+                     cbox[16].checked == false
+                     
+                   ) {
+                     alert("테크스택을 하나 이상 체크해주세요.");
+                     return false;
+                   } 
+                 /////////////////테크스택 체크박스 밸리데이션 종료/////////////////////
+                    
+            ////////////////프로젝트 관련 이미지 밸리데이션 시작///////////////////      
+                   if( $("#img_added > #img_checking").length == 0){
+                   	alert("프로젝트를 대표할 이미지 하나 이상 선택해주세요.")
+                   	document.form1.project_image.focus();
+                  return;
+                   }
+             ////////////////프로젝트 관련 이미지 밸리데이션 종료/////////////////// 
+                    
+                    
+                    document.form1.submit();
+                });  
+                     <%--값 전송 및 유효성 검증 종료 --%>            
+            
+         <%-- project_tech_name을 가져와서 버튼이 체크된상태로 페이지가 시작되게 한다. --%>            
+                     
 
 
-/*값 전송 버튼 시작 */  
- $("#btnSave").click(function(){
-      var project_name = $("#project_name").val();
-      var project_content = $("#project_content").val();
-      var project_term1 = $("#project_term1").val();
-      var project_term2 = $("#project_term2").val();
+       
+         
+         $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
+              var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
+              var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
+              for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
+           	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
+           		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
+           		  	 chkbox_obj[k].checked = true;                    //체크하고
+           		  }
+           		  else {
+           			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
+           		  }
+           	   }
+              }
+           }); //end of button-check            
+                     
+                     
+            
+            
+            
+           
       
-          
-      /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
-      var project_name = $('#textarea_title').val();
-      var project_content = $('#textarea_introduce').val();
-      
-      var techstack= $(".techstack").val();
-      var img_is = $("#img_checking").val();
-      
-      if (project_name.replace(/ |　/gi, '') == ''){ 
-          alert("프로젝트 제목을 입력해주세요.");
-          document.form1.project_name.focus();
-          return; 
-      }
-      
-      if (project_content.replace(/ |　/gi, '') == ''){ 
-          alert("프로젝트 내용을 입력해주세요.");
-          document.form1.project_content.focus();
-          return; 
-      }
-      
-    
-      if(project_term1 == ""){
-      	alert("프로젝트 시작 날짜를 입력하세요");
-      	document.form1.project_term1.focus();
-      	return;
-      }
-      
-      if(project_term2 == ""){
-      	alert("프로젝트 종료 날짜를 입력하세요");
-      	document.form1.project_term2.focus();
-          return;
-      }
+         
+         
+         
+         /* ajax 검색 로직 추가 */           
+    $(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
+        $(".project_tech_name").keyup(function() {
+                var tech_name_input = $('.project_tech_name').val();
+        	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
+         	$.ajax({ // Ajax 요청을 작성
+         	    url: "${path}/project/autocomplete",
+         	    data: param,
+         	    method: "POST",
+         	    success: function (result) {
+         	        if (tech_name_input == "" || tech_name_input == null) {       // techstack 입력란이 비워져 있을 경우
+         	        	document.getElementById("techstack_hidden_show").style.display = "hidden";  	        	                                                                 	 //start of if
+         	            $('ul').empty();            
+                      } else {                                                  //end of if and start of else
+         	            var output = document.createElement('div');            //div에서 span으로 변경
+         	            for (var i in result)                                   // result에서 받아온 값의 개수만큼 for문을 돌린다
+         	            {
+         	                var techName = result[i].tech_name_input;
+         	                
+         	                var listBtn = document.createElement('button');
+         	               
+         	               document.getElementById("techstack_hidden_show").style.display = "block";
+
+         	               listBtn.textContent = techName;
+         	                listBtn.type = 'button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
+         	                listBtn.value = techName;
+         	                listBtn.style.marginTop = '6px';
+         	                listBtn.style.marginRight = '6px';
+         	                listBtn.setAttribute('class', "techbuttons");  //각 버튼의 value를 지정한다.
+         	                output.appendChild(listBtn);
+
+         	                $(".techstacklist").html(output);
+
+         	                $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
+         	                   var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
+         	                   var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
+         	                   for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
+         	                	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
+         	                		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
+         	                		  	 chkbox_obj[k].checked = true;                    //체크하고
+         	                		  }
+         	                		  else {
+         	                			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
+         	                		  }
+         	                	   }
+         	                   }
+         	                }); //end of button-check
+
+         	            } //end of for
+
+         	        } //end of else
+
+         	    } // end of success
+
+
+         	}); //end of ajax
+
+    }); // end of keyup function
+        	
+    });
+///////////////체크박스 체크 로직 시작.
+     
+     	var chk_received = "${dto.techstack}";                   //techstack값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
+        var chk_split = chk_received.split(',');               //받아온 값을 콤마 단위로 잘라서 저장한다.
+                                                                         
+        if(chk_split.includes("Java")>-1) 
+
+         {
+   $("#techstack_java").prop("checked", true);
+          }
         
- /////////////////테크스택 체크박스 밸리데이션 시작/////////////////////    
-   var cbox = document.forms["form1"]["techstack"];
-  if (
-    cbox[0].checked == false &&
-    cbox[1].checked == false &&
-    cbox[2].checked == false &&
-    cbox[3].checked == false &&
-    cbox[4].checked == false &&
-    cbox[5].checked == false &&
-    cbox[6].checked == false &&
-    cbox[7].checked == false &&
-    cbox[8].checked == false &&
-    cbox[9].checked == false &&
-    cbox[10].checked == false &&
-    cbox[11].checked == false &&
-    cbox[12].checked == false &&
-    cbox[13].checked == false &&
-    cbox[14].checked == false &&
-    cbox[15].checked == false &&
-    cbox[16].checked == false
-     ) {
-    alert("테크스택을 하나 이상 체크해주세요.");
-    return false;
-  }
-/////////////////테크스택 체크박스 밸리데이션 종료/////////////////////     
-      
-////////////////프로젝트 관련 이미지 밸리데이션 시작///////////////////      
-      if( $("#img_added > #img_checking").length == 0){
-      	alert("프로젝트를 대표할 이미지 하나 이상 선택해주세요.")
-      	document.form1.project_image.focus();
-     return;
-      }
-////////////////프로젝트 관련 이미지 밸리데이션 종료///////////////////      
-      
-      document.form1.submit();
-  });  
-       /*값 전송 및 유효성 검증 종료 */            
+         if(chk_split.includes("JavaScript")>-1) 
+        {
+  $("#techstack_javascript").prop("checked", true);
+         }
+                
+        
+         if(chk_received.includes("C#")>-1) 
+        {
+  $("#techstack_c3").prop("checked", true);
+         }
+        
+         if(chk_received.includes("php")>-1) 
 
-/* ajax 검색 로직 추가 */           
-$(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
-$(".project_tech_name").keyup(function() {
-	
+        {
+  $("#techstack_php").prop("checked", true);
+         }
+        
+         if(chk_received.includes("android")>-1) 
 
-console.log('키이벤트작동하는가?');
+        {
+  $("#techstack_android").prop("checked", true);
+         }
+        
+         if(chk_received.includes("jquery")>-1) 
 
-  var tech_name_input = $('.project_tech_name').val();
-  var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
-console.log('값이 담기는가 :' +tech_name_input);
+        {
+  $("#techstack_jquery").prop("checked", true);
+         }
+        
+         if(chk_received.includes("python")>-1) 
 
-$.ajax({ // Ajax 요청을 작성
-   url: "${path}/project/autocomplete",
-   data: param,
-   method: "POST",
-   success: function (result) {
-       if (tech_name_input == "" || tech_name_input == null) {       // techstack 입력란이 비워져 있을 경우
-       	document.getElementById("techstack_hidden_show").style.display = "hidden";  	        	                                                                 	 //start of if
-           $('ul').empty();            
-        } else {                                                  //end of if and start of else
-           var output = document.createElement('div');            //div에서 span으로 변경
-           for (var i in result)                                   // result에서 받아온 값의 개수만큼 for문을 돌린다
-           {
-               var techName = result[i].tech_name_input;
-               
-               var listBtn = document.createElement('button');
-              
-              document.getElementById("techstack_hidden_show").style.display = "block";
+        {
+  $("#techstack_python").prop("checked", true);
+         }
+        
+         if(chk_received.includes("html")>-1) 
 
-              listBtn.textContent = techName;
-               listBtn.type = 'button'; //버튼의 type을 button으로 지정해주어 눌렀을때 페이지전환을 막는다.
-               listBtn.value = techName;
-               listBtn.style.marginTop = '6px';
-               listBtn.style.marginRight = '6px';
-               listBtn.setAttribute('class', "techbuttons");  //각 버튼의 value를 지정한다.
-               output.appendChild(listBtn);
+        {
+  $("#techstack_html").prop("checked", true);
+         }
+        if(chk_received.includes("c++")>-1) 
 
-               $(".techstacklist").html(output);
+        {
+  $("#techstack_c2").prop("checked", true);
+         }
+        if(chk_received.includes("ios")>-1) 
 
-               $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
-                  var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
-                  var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
-                  for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
-               	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
-               		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
-               		  	 chkbox_obj[k].checked = true;                    //체크하고
-               		  }
-               		  else {
-               			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
-               		  }
-               	   }
-                  }
-               }); //end of button-check
+        {
+  $("#techstack_ios").prop("checked", true);
+         }
 
-           } //end of for
+        if(chk_received.includes("css")>-1) 
 
-       } //end of else
+        {
+  $("#techstack_css").prop("checked", true);
+         }
+        if(chk_received.includes("mySql")>-1) 
 
-   } // end of success
+        {
+  $("#techstack_mysql").prop("checked", true);
+         }
+        
+        if(chk_split.includes("Oracle")>-1) 
 
+        {
+  $("#techstack_oracle").prop("checked", true);
+         }
+        
 
-}); //end of ajax
+        if(chk_split.includes("asp")>-1){
+  $("#techstack_asp").prop("checked", true);
+         }
+        
+        if(chk_received.includes("ruby-on-rails")>-1) 
 
-}); // end of keyup function
+        {
+  $("#techstack_ruby-on-rails").prop("checked", true);
+         }
+        if(chk_received.includes("objective-c")>-1) 
 
-});
-});
+        {
+  $("#techstack_objective-c").prop("checked", true);
+         }
+        if(chk_received.includes("c")>-1) 
 
-	
-
-
+        {
+  $("#techstack_c").prop("checked", true);
+         }    
+             
+/////////////////////////////체크박스 체크 로직 종료        
+              }); //end of document.ready  
 
           </script>
 
@@ -620,29 +962,29 @@ $.ajax({ // Ajax 요청을 작성
 <div class="pr_regist">
 <div class="container">
 <%-- <form name="form1" id="form1" method="post" action="${path}/project/regist" enctype="multipart/form-data"> --%>  
-<form name="form1" id="form1" action="${path}/project/regist" method ="post" enctype="multipart/form-data">
-  <div id="project_make"><span id="main_title">프로젝트 만들기</span><br><span id="subtitle_make">쉽고 빠르게 프로젝트를 등록해보세요.</span></div>
+<form name="form1" id="form1" action="${path}/project/modify" method ="post" enctype="multipart/form-data">
+  <div id="project_make"><span id="main_title">프로젝트 수정하기</span><br><span id="subtitle_make">쉽고 빠르게 프로젝트를 등록해보세요.</span></div>
   <div id="title_line_top"> <!--라인 넣기용 div--><hr id="title_top"></div>
   
   
   <div class="title_input">
    
    <div id="title">*제목</div>
-   <div id="titleWrite"><input type="text" size="30" id="textarea_title" name="project_name"/></div>
+   <div id="titleWrite"><input type="text" size="30" id="textarea_title" name="project_name" value="${dto.project_name}" autofocus/></div>
    <div class="title_warn"><!--자바스크립트로 경고 메시지를 띄운다.--></div>
   </div> <!--end of title_input-->
 
   <div class="introduce">
    <div id="introMenu">요약</div>
-   <div id="introWrite"><textarea id="textarea_introduce" name="project_content" cols="80" rows="4" placeholder="프로젝트를 요약하는 문구를 씁니다." ></textarea></div>    
+   <div id="introWrite"><textarea id="textarea_introduce" name="project_content" cols="80" rows="4" placeholder="프로젝트를 요약하는 문구를 씁니다." >${dto.project_content}</textarea></div>    
   </div> <!-- end of introduce-->
   
   <div class="regdate_term"><div id="regdate_hr_">  <hr id="regdate_top"></div>
     <div id="regdate_term_title">&nbsp;&nbsp;날짜 / 기간</div>
     <div id="regdate_calendar">
-    <input type="date" id="project_term1" name="project_term1"/>
+    <input type="date" id="project_term1" name="project_term1" value="${dto.project_term1}"/>
     &nbsp; ~ &nbsp;
-    <input type="date" id="project_term2" name="project_term2"/>
+    <input type="date" id="project_term2" name="project_term2" value="${dto.project_term2}"/>
     
     
     <!--시작일~종료일 달력 메뉴 --></div>
@@ -705,27 +1047,34 @@ $.ajax({ // Ajax 요청을 작성
 
   <div class="projectUpload"> <div id="projectUpload_top_"><hr id="projectUpload_top"></div>
     <div id="upload_title"><div id="upload_font">&nbsp;&nbsp;pdf 또는 ppt파일을 업로드해주세요.</div></div>
-         <div id="upload_subtitle">프로젝트를 소개할 파일이 있나요?<br>
+         
+        <div class="file_sub"> <!-- 프로젝트 서브 div -->
+         
+         <div id="upload_sub1">프로젝트를 소개할 파일이 있나요?</div> <!--  end of upload_sub1 -->
+         
+         <div id="upload_sub2">
          <div id="file_upload">
          <label for="file_label"></label>
-         <input type="file" id="file_label" name="file" > <%-- VO에 name값과 동일한 매개변수를 만든다. --%>
-  <!--    <input type="file" id="fileUp" name="fileUp"/> -->
-    
-       </div>
+         <input type="file" id="file_label" name="file" value="${dto.download_name}"> <%-- VO에 name값과 동일한 매개변수를 만든다. --%>
+         </div> <%-- end of file_upload --%>
+          
+          <div id="file_name">${dto.download_name}</div>
+         <div id="file_download"><a href="${path}/resources/project_upload/${dto.download_name}" download>프로젝트 파일 다운로드</a></div>
          
-         </div>
+       </div> <!--  end of upload_sub2 -->
     	
-
+         </div><!-- end of file_sub -->
   </div> <!-- end of projectUpload-->
  
-     <div class="images"> <!-- 프로젝트 관련 이미지를 담는 div, display:flex 시작 -->
+ 
+ 
+ <!--프로젝트 관련 이미지 업로드 추가  -->
+ 
+ <div class="images"> <!-- 프로젝트 관련 이미지를 담는 div, display:flex 시작 -->
        <div id="img_title">관련 이미지</div>
         <div id="img_subtitle">프로젝트를 설명하는 이미지가 있나요?</div>
          <div id="img_added"><!-- 밑에서 고른 이미지가 추가되는 곳. -->
-         
-         
-         
-             
+
          </div>
            <div id="img_exam"><!-- 예시 이미지들이 나열되는 곳. -->
            
@@ -746,6 +1095,7 @@ $.ajax({ // Ajax 요청을 작성
  
      </div> <!-- end of images -->
  
+ <!-- 프로젝트 관련 이미지 업로드 종료 -->
  
   <div class="projectLvl"> <div id="projectLvl_top_"><hr id="projectLvl_top"></div>
     <div id="projectLvl_title"><div id="lvl_font">&nbsp;&nbsp;프로젝트 등급</div></div>
@@ -753,24 +1103,22 @@ $.ajax({ // Ajax 요청을 작성
     
     
        <div id="projectLvl_input">
-      <input type="text" id="project_grade" name="project_grade"/>
+      <input type="text" id="project_grade" name="project_grade" value="${dto.project_grade}"/>
       <div id="projectLvl_txt">수준</div>   
         </div>
-      
-    
-
+  
     <div id="projectLvl_btns">
          
              <%-- type="button"을 써서 버튼을 누르자마자 전송되는 것을 막는다. --%>
                 
               <button type="button" value="상용화" class="gradebtn">상용화</button>
               <button type="button" value="베타테스트" class="gradebtn">베타테스트</button>
-                <button type="button" value="알파테스트" class="gradebtn">알파테스트</button>
-                <button type="button" value="튜토리얼" class="gradebtn">튜토리얼</button>
-                <button type="button" value="과제" class="gradebtn">과제</button>
-                <button type="button" value="연구" class="gradebtn">연구</button>
-                <button type="button" value="개인프로젝트" class="gradebtn">개인프로젝트</button>
-                <button type="button" value="팀프로젝트" class="gradebtn">팀프로젝트</button>
+              <button type="button" value="알파테스트" class="gradebtn">알파테스트</button>
+              <button type="button" value="튜토리얼" class="gradebtn">튜토리얼</button>
+              <button type="button" value="과제" class="gradebtn">과제</button>
+              <button type="button" value="연구" class="gradebtn">연구</button>
+              <button type="button" value="개인프로젝트" class="gradebtn">개인프로젝트</button>
+              <button type="button" value="팀프로젝트" class="gradebtn">팀프로젝트</button>
     </div>
   
   
@@ -779,9 +1127,8 @@ $.ajax({ // Ajax 요청을 작성
    <div class="final_btns"> <div id="final_top_"><hr id="final_top"></div>
    <!--이곳에 등록 버튼을 만든다.-->
      <button type="reset" class="final_btn" id="btnCancel">취소</button>
-     <button type="button" class="final_btn" id="btnSave">등록</button>
+     <button type="button" class="final_btn" id="btnSave">수정</button>
    </div>
-
 
 </form> <!-- end of form1 -->
 

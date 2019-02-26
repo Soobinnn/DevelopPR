@@ -444,6 +444,23 @@ section.main_section
    position:relative;
    top:150px;   
 }
+
+#main01{
+   font-size:3rem;
+  position:relative;
+  left:270px;
+  height:50px;
+  margin-bottom:20px;
+  font-weight:bold;
+  width:400px;
+}
+#p5{
+  font-size:2.5rem;
+  position:relative;
+  text-align:center;
+  top:90px;
+  font-weight:bold;
+}
 .main1, .main2, .main3
 {
    flex-basis : 450px;
@@ -460,9 +477,9 @@ section.main_section
 .main4
 {
    position :absolute;
-   top : 2400px;
+   top : 2500px;
    width : 1900px;
-   height : 1200px;
+   height : 1210px;
    background: url("treeback.jpg") 50% 50%no-repeat fixed;
    background-size:1920px;
    opacity:0.3;
@@ -915,57 +932,57 @@ footer
    height:210px;
 }
 #element1, #element111{
-   top:2495px;
+   top:2595px;
    left:690px;
    animation-delay: 1s;
    animation-duration:4s;
 }
 #element2, #element22{
    left:690px;
-   top:2740px;
+   top:2840px;
    animation-delay:2s;
    animation-duration:4s;
  }
 #element3, #element33{
    left:690px;
-   top:2990px;
+   top:3090px;
    animation-delay: 1s;
    animation-duration:4s;
 }
 #element4, #element44{
    left:930px;
-   top:2565px;
+   top:2665px;
    animation-delay: 3s;
    animation-duration:4s;
 }
 #element5, #element55{
    left:930px;
-   top:2815px;
+   top:2915px;
    animation-delay: 1s;
    animation-duration:4s;
 }
 #element6, #element66{
    left:930px;
-   top:3060px;
+   top:3160px;
    animation-delay: 3s;
    animation-duration:4s;
 }
 #element7, #element77{
    left:1170px;
-   top:2530px;
+   top:2630px;
    animation-delay: 2s;
    animation-duration:4s;
 }
 #element8, #element88{
    left:455px;
-   top:2735px;
+   top:2835px;
    animation-delay: 1s;
         animation-duration:4s;
 }
 
 #element9, #element99{
    left:1170px;
-   top:2775px;
+   top:2875px;
    animation-delay: 3s;
    animation-duration:4s;
 }
@@ -979,7 +996,7 @@ footer
 }
 #element10, #element1010{
    left:1170px;
-   top:2970px;
+   top:3070px;
    animation-delay: 2s;
         animation-duration:4s;
    }
@@ -993,7 +1010,7 @@ footer
 }
 #element11, #element1111{
    left:515px;
-   top:2980px;
+   top:3080px;
    animation-delay: 2s;
    animation-duration:4s;
 }
@@ -1008,7 +1025,7 @@ footer
 
 #element12, #element1212{
    left:550px;
-   top:2530px;
+   top:2630px;
    animation-delay: 3s;
    animation-duration:4s;
    }
@@ -1022,7 +1039,7 @@ footer
 }
 #element13, #element1313{   
    left:320px;
-   top:2980px;
+   top:3080px;
    animation-delay: 3s;
         animation-duration:4s;
 }
@@ -1037,7 +1054,7 @@ footer
 
 #element14, #element1414{
    left:1345px;
-   top:2972px;
+   top:3072px;
    animation-delay: 1s;
    animation-duration:4s;
 }
@@ -1051,7 +1068,7 @@ footer
 }
 #element15, #element1515{
    left:320px;
-   top:2830px;
+   top:2930px;
    animation-delay: 2s;
    animation-duration:4s;
 }

@@ -1,0 +1,714 @@
+@charset "UTF-8";
+
+.pr_detail *:focus{
+    outline : none;
+}
+
+
+/*전체를 담는 컨테이너 div*/
+.pr_detail .container{
+position : relative;
+top : 50px;
+margin : 0 auto;
+display: flex;
+flex-direction : column;
+min-width : 1000px;
+width : 1000px;
+border-radius : 15px;
+}
+
+/*프로젝트 만들기 문구 들어가는 곳*/
+.pr_detail #project_make{ 
+ padding-left : 5px;
+ background-color : #f6f6f6; 
+ border-radius : 15px;
+ height : 90px;
+}
+
+
+/*프로젝트 만들기 span*/
+.pr_detail #main_title{ 
+    color :#02456F;
+    font-size : 2rem;
+    font-weight:bold;
+position : relative;
+top : 30px;
+left : 20px;
+}
+
+
+/*타이틀 구분용 div*/
+.pr_detail #title_line_top{ 
+      height : 10px;
+    line-height : 10px;
+    min-width:100%;
+    position :relative; 
+    bottom : 5px;
+
+}
+
+/*메뉴 탑 라인 구분선*/
+.pr_detail #title_top{
+  
+ border : 0;
+ height:2px;
+ background :#585858;
+}
+
+  /*쉽고 빠르게 프로젝트를 등록해보세요, span으로 감싼 곳*/
+.pr_detail #subtitle_make{
+ font-size : 1.3rem;	
+ position : relative;
+ top : 25px;
+ left : 10px; 
+}
+
+
+ /*제목메뉴 제목 입력칸이 들어가는 div*/
+.pr_detail .title_input{ 
+
+display : flex;
+flex-direction:row;
+height: 100px;
+width:840px;
+padding-left:20px;
+}
+
+
+/*  *제목메뉴  */
+.pr_detail #title{ 
+position : relative;
+left : 5px;
+top : 18px;
+
+height:50px;
+line-height:50px;
+min-width:50px;
+font-size : 1.1rem;
+}
+
+/*제목 입력란 */
+.pr_detail #titleWrite{ 
+position : relative;
+left : 10px;
+height:70px;
+top : 10px;
+line-height: 50px;
+width: 775px;
+padding : 2px;
+font-size : 1.1rem;
+border-radius : 15px;
+}
+
+
+
+/*제목 입력하는 input type text*/
+.pr_detail #textarea_title{
+
+position : relative;
+top : 5px;
+height : 50px;
+width : 578px;
+font-size : 1.1rem;
+border-radius : 15px;
+outline : none;
+border : 2px solid #585858;
+padding-left : 10px;
+
+}
+
+/*제목 미입력시 경고문구*/
+.pr_detail .title_warn{ 
+
+ font-size:0.8rem;
+}
+
+ /*요약메뉴와 요약문구를 담는 div */
+.pr_detail .introduce{ 
+display:flex;
+flex-direction : row;
+width:800px;
+height:80px;
+position : relative;
+left:5px;
+bottom : 10px;
+padding-left:20px;
+
+}
+
+/* 요약메뉴*/
+.pr_detail #introMenu{ 
+width:50px;
+height:80px;
+line-height:80px;
+font-size : 1.1rem;
+text-align : center;
+}
+
+/*요약한 textarea가 담기는 div*/
+.pr_detail #introWrite{ 
+max-width:700x;
+height:80px;
+padding : 2px;
+position : relative;
+left : 5px;
+top 10px;
+
+}
+
+ /*요약내용을 쓰는 textarea*/
+.pr_detail #textarea_introduce{
+border-radius : 15px;
+padding-top : 15px;
+border : 2px solid #585858;
+padding-left : 10px;
+height:50px;
+width:580px;
+
+}
+
+
+/*날짜/기간 메뉴와 date 타입 입력이 담긴 div*/
+.pr_detail .regdate_term{ 
+ display: flex;
+ flex-direction : column;
+ width:940px;
+ height: 120px;
+ margin-bottom : 20px;
+ padding-left
+ }
+
+
+/*regdate top 구분 라인을 담는 div*/
+ .pr_detail #regdate_hr_{
+width : 1000px;
+
+}
+
+
+/*regdate top 구분 라인*/
+ .pr_detail #regdate_top{
+    border : 0;
+    height:2px;
+    background :#585858;
+
+
+}
+ 
+
+ /*날짜 /기간 제목 div*/
+.pr_detail #regdate_term_title{
+ position:relative;
+ left : 5px; 
+ width:980px;
+ height: 55px;
+ line-height:55px;
+ font-weight: bold;
+ font-size : 1.2rem;
+ background-color : #f6f6f6;
+ border-radius : 15px;
+padding-left:20px;
+
+}
+
+
+/*연-월-일 입력이 담기는 div*/
+.pr_detail #regdate_calendar{ 
+position : relative;
+left : 15px;
+top : 10px;
+width : 940px;
+height:55px;
+line-height : 55px;
+}
+
+/*시작일 입력 date1*/
+.pr_detail #project_term1{ 
+border-radius : 15px;
+text-align:center;
+font-size:1.1rem;
+height:30px;
+border : 2px solid #585858;
+margin-left:20px;
+margin-top:7px;
+width : 340px;
+height : 50px;
+}
+
+ /*시작일 입력 date2*/
+.pr_detail #project_term2{
+    border-radius : 15px;
+    text-align:center;
+    font-size:1.1rem;
+    height:30px;
+    border : 2px solid #585858;
+    padding-left : 40px;
+    width : 140px;
+    height : 35px;
+}
+
+
+/*테크스택 제목과 버튼들이 담기는 div*/
+.pr_detail .TechStack{ 
+display:flex;
+flex-direction : column;
+width : 940px;
+height: 250px;
+position :relative;
+left : 5px;
+
+}
+
+
+/*테크스택 탑 라인 hr을 담는 div*/
+.pr_detail #techstack_top_{
+padding-top : 10px;
+    width:1000px;
+}
+
+
+/*테크스택 탑 라인 hr*/
+.pr_detail #techstack_top{
+    border : 0;
+    height : 2px;
+    background :#585858;
+}
+
+/*어떤 Tech Stack을 사용하셨나요? div*/
+.pr_detail #techstack_font, .pr_detail #upload_font{
+    height : 55px;
+    line-height : 55px;
+    font-size : 1.2rem;
+    font-weight:bold;
+    position : relative;d
+    top : 5px;
+    width : 980px;
+    background-color : #f6f6f6;
+    border-radius : 15px;
+    padding-left:20px;
+}
+
+
+ /* ...Tech Stack을 담는 큰 div*/
+.pr_detail #techstack_input{
+width : 900px;
+height: 90px;
+border:solid 2px #585858;
+margin-left:30px;
+border-radius:15px;
+font-size: 1rem;
+margin-top:30px;
+padding:20px;
+margin-bottom:10px;
+}
+
+
+/*프로젝트 업로드 제목과 파일 업로드가 담긴 div*/
+.pr_detail .projectUpload{ 
+position : relative;
+left : 5px;
+top : 10px;
+display : flex;
+flex-direction : column;
+width : 1000px;
+height : 280px;
+border-bottom:solid 2px #585858;
+margin-bottom:30px;
+}
+
+/*pdf업로드 탑 라인 hr담는 div*/
+.pr_detail #projectUpload_top_{
+margin-bottom:10px;
+width : 1000px;
+
+}
+
+/*pdf업로드 탑 라인 hr*/
+.pr_detail #projectUpload_top{
+
+    border : 0;
+    height:2px;
+    background :#585858;
+}
+
+
+/* 업로드 전체 div*/
+.pr_detail #upload_title{ 
+    position : relative;
+    
+    bottom : 10px;
+    width : 940px;
+    height : 70px;
+   
+}
+.pr_detail #file_name{
+    height:100px;
+   width : 900px;
+border:solid 2px #585858;
+margin-left:30px;
+border-radius:15px;
+font-size: 1rem;
+margin-top:10px;
+padding:20px;
+}
+
+
+.pr_detail #file_download{
+border : 2px solid #585858;
+position : relative;
+top : 25px;
+font-size : 1.1rem;
+height : 45px;
+left : 20px;
+
+line-height : 45px;
+border-radius : 15px;
+width : 210px;
+text-align : center;
+
+}
+.pr_detail #file_download a{
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+/* 파일 필드 숨기기 */
+/* .pr_detail input[type="file"] { 
+ position: absolute;
+ width: 1px;
+ height: 1px; 
+ padding: 0; 
+ margin: -1px; 
+ overflow: hidden; 
+ clip:rect(0,0,0,0); 
+ border: 0; 
+ }
+ */
+
+
+ 
+
+
+
+ /*파일 업로드가 담긴 div*/
+.pr_detail #file_upload{
+ width : 940px;
+ height : 25px;
+ display : flex;
+
+}
+
+/*프로젝트 이미지 업로드 가장 바깥 div*/
+.pr_detail .images{
+height : auto;
+overflow: hidden;
+position : relative;
+left : 5px;
+height:200px;
+}
+
+/*관련 이미지(이미지 div 제목)*/
+.pr_detail #img_title{
+
+height : 50px;
+line-height : 50px;
+padding-left : 20px;
+font-size : 1.1rem;
+border-radius : 15px;
+font-weight:bold;
+background-color : #f6f6f6;
+}
+
+
+/*프로젝트를 설명하는 이미지가 있나요?(이미지 div 부제목)*/
+.pr_detail #img_subtitle{
+
+height : 35px;
+line-height : 35px;
+position : relative;
+left : 10px;
+top : 5px;
+font-size : 1.1rem;
+width : 980px;
+}
+
+/*밑에서 고른 이미지가 추가되어 등록되는 곳*/
+.pr_detail #img_added{
+
+padding-left:20px;
+height : 100px;
+overflow : hidden;
+position : relative;
+top : 30px;
+left : 10px;
+width : 980px;
+
+}
+.pr_detail #image{
+    margin-right:10px;
+}
+
+
+
+/* 이미지들이 나열되는 곳*/
+.pr_detail #img_exam{
+
+ height : 155px;
+ position : relative;
+ top : 45px;
+ width : 990px;
+ display : flex;
+ justify-content : space-between;
+ border-top : 2px solid #b9b9b9;
+}
+
+
+.pr_detail .small_img{
+position : relative;
+top : 20px;
+
+}
+
+
+ /*프로젝트 등급의 가장 바깥 div*/
+.pr_detail .projectLvl{
+   position : relative;
+   left : 5px;
+   
+   display:flex;
+   flex-direction : column;
+   width : 940px;
+   height : 200px;
+}
+
+/*프로젝트 등급 hr을 담는 div*/
+.pr_detail #projectLvl_top_{
+width : 1000px;
+
+}
+
+/*프로젝트 등급 탑라인 hr*/
+.pr_detail #projectLvl_top{
+    border : 0;
+    height:2px;
+    background :#585858;
+
+
+}
+
+/*프로젝트 등급 제목span이 담긴 div*/
+.pr_detail #projectLvl_title{ 
+   position :relative;
+   bottom : 12px;
+   width : 940px;
+    height : 60px;
+    line-height : 60px;
+}
+
+/*프로젝트 등급 제목  */
+.pr_detail #lvl_font{ 
+    
+    font-size : 1.2rem;
+    font-weight:bold;
+    width : 980px;
+    background-color : #f6f6f6;
+    border-radius : 15px;
+    height : 55px;
+    line-height : 55px;
+    position : relative;
+    top : 15px;
+    padding-left:20px;
+}
+
+
+/*수준(소제목)*/
+.pr_detail #projectLvl_txt{ 
+    width : 200px;
+    padding-top:5px;
+    margin-top:20px;
+    margin-left:20px;
+    height : 35px;
+    line-height : 30px;
+    text-align : center;
+    font-size : 1.1rem;
+    border-radius:15px;
+    border:solid 2px #585858;
+
+}
+
+
+ /*프로젝트 등급 버튼들이 담기는 div*/
+.pr_detail #projectLvl_btns{
+  width : 940px;
+  height : 56px;
+  line-height : 56px;
+position : relative;
+top : 12px;
+left : 10px;
+}
+
+/*취소, 등록 버튼이 담긴 div*/
+.pr_detail .final_btns{
+    
+    position : relative;
+   
+    bottom : 30px;
+    
+    width :960px;
+    height : 65px;
+    margin-bottom:60px;
+}
+
+/*취소, 등록 div 탑라인 hr을 담은 div*/
+.pr_detail #final_top_{
+width : 1000px;
+
+position : relative;
+bottom : 5px;
+
+
+}
+
+/**/
+.pr_detail #final_top{
+    border : 0;
+    height:2px;
+    background :#585858;
+
+}
+  
+
+  /* ... */
+.pr_detail .techstacklist{
+    display : flex;    
+    flex-wrap :wrap;
+    width: 360px;
+     margin-left: 148px;
+                  }
+
+
+.pr_detail .techstacklist > li{
+    width : 100px;
+    height : 50px;
+    text-align: center;
+                         }
+                         
+/*버튼들 */
+.pr_detail .final_btn{
+    border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    font-size:1.1rem;
+    font-weight:bold;
+    border-radius:15px;
+    position:relative;
+}
+
+.pr_detail .final_btn:hover{  
+    background-color:#f6f6f6;
+}
+
+.pr_detail #btnCancel{
+	position : relative;
+	left : 450px;
+	top:20px;
+}
+.pr_detail #btnSave{
+ position : relative;
+ left : 20px;
+}
+
+.pr_detail .gradebtn{
+    border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+
+}
+.pr_detail .gradebtn:hover{  
+    background-color:#f6f6f6;
+}
+
+.pr_detail #btnBack{
+	position : relative;
+	left : 10px;
+}
+.pr_detail #btnSave{
+
+}
+
+.pr_detail .techbuttons{
+    border:solid 2px #585858;
+    padding:8px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    border-radius:15px;
+
+}
+.pr_detail .techbuttons:hover{  
+    background-color:#f6f6f6;
+}
+
+.pr_detail .techstacklist{
+              display : flex;      /* ... */
+              flex-wrap :wrap;
+			  width: 360px;
+		 	  margin-left: 148px;
+                            }
+.pr_detail .techstacklist > li{
+              width : 100px;
+              height : 50px;
+              text-align: center;
+                                   }
+
+/*드롭다운 칸과 업로드된 리스틀 담는 div*/
+.pr_detail .drop_list{
+	
+	display : flex;
+	flex-direction : row;
+	
+}
+
+/*Ajax 파일 업로드 영역*/
+.pr_detail .fileDrop {
+        width:300px;
+        height: 40px;
+        border: 1px dotted #585858;
+        border-radius : 15px;
+        position : relative;
+        top : 10px;
+
+    }
+
+
+
+/*업로드된 파일들이 출력되는 div*/
+.pr_detail .uploadedList{
+
+
+border-radius : 15px;
+position : relative;
+top : 10px;
+left : 30px;	
+width : 800px;
+height : 40px;
+line-height : 40px;
+padding-left : 10px;
+
+}
+
+
+
+
+.pr_detail small {
+        margin-left: 3px;
+        font-weight: bold;
+        color: gray;
+    }
+
+

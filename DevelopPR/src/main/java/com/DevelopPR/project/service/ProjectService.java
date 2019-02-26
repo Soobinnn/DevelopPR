@@ -23,4 +23,6 @@ public interface ProjectService
 //프로젝트 목록
 	public List<ProjectVO> projectList(String email) throws Exception;
 
+	public ProjectVO detail(int pno) throws Exception;
+
 }

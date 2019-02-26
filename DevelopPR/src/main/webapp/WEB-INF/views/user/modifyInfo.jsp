@@ -279,8 +279,8 @@ $('#cancel').click(function()
 </header>
 <section class="user_section">
   <div class="sec1">
+  		 <img id="function_img" src="${path}/resources/user/logogo.png"> 	
   		<div id="function_div">
-  			<%-- <img id="function_img" src="${path}/resources/user/.png">  --%>		
   			<ul id="function_list">
   			
   				<li id="function_li1">

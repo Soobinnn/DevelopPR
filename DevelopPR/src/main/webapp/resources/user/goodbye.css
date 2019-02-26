@@ -3,7 +3,11 @@
 {
   font-family: 'Noto Sans KR', sans-serif;
 }
-
+.goodbye #function_img{
+	position:absolute;
+	left:220px;
+	
+}
 .goodbye .goodbye_header
 {
     height : 120px;

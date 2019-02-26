@@ -330,6 +330,11 @@
 	margin-bottom:10px;
 	font-size:1.2rem;
 }
+.resumeDetail #projectdetail{
+	text-decoration:none;
+	color:#02456F;
+	font-weight:bold;
+}
 .resumeDetail .proterm{
 	margin-bottom:10px;
 	font-size:1.1rem;
