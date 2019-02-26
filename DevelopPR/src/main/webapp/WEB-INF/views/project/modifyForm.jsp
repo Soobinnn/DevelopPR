@@ -10,7 +10,7 @@
 
 
 <meta charset="UTF-8">
-<title>Project Regist Form</title>
+<title>Project Modify Form</title>
 
   <link rel="stylesheet" type="text/css" href="<c:url value='/resources/project/pr_registForm.css'/>"/>
    
@@ -81,612 +81,601 @@ cursor: pointer;
           $(document).ready(function()
             {
         	  $(document).scrollTop(550);
-
 //////////////////////////프로젝트 관련 이미지 받아오기 시작//////////////////////        	  
 
-	
-	var chk_img = "${dto.project_image}";                   //project_image값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
-    var img_split = chk_img.split(',');                 //받아온 값을 콤마 단위로 잘라서 저장한다.
-                                                                         
-        if(img_split.includes("java")>-1){
-               var elem = document.createElement("img");
-    	 	   elem.setAttribute("src", img_split);
-    	 	   elem.setAttribute("height", "140");
-    	 	   elem.setAttribute("width", "140");
-    	 	   elem.setAttribute("id","del_java");
-    	 	   elem.setAttribute("class", "java_pic");
-    	 	   document.getElementById("img_added").appendChild(elem);
-    	       
-    	 	   var elem_h = document.createElement("input");
-    	 	       elem_h.setAttribute("type", "hidden");
-    	 	       elem_h.setAttribute("name", "project_image");
-    	 	       elem_h.setAttribute("value",img_split);
-    	 	       document.getElementById("img_added").appendChild(elem_h);
-       return;
-        }  // end of if	  
-      
-        if(img_split.includes("android")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_android");
- 	 	   elem.setAttribute("class", "android_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("sharp")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_c_sharp");
- 	 	   elem.setAttribute("class", "c_sharp_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("db")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_db");
- 	 	   elem.setAttribute("class", "db_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("desktop")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_desktop");
- 	 	   elem.setAttribute("class", "desktop_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("html")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_html");
- 	 	   elem.setAttribute("class", "html_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("iphone")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_ophone");
- 	 	   elem.setAttribute("class", "iphone_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("jquery")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_jquery");
- 	 	   elem.setAttribute("class", "jquery_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("js")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_js");
- 	 	   elem.setAttribute("class", "js_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("mysql")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_mysql");
- 	 	   elem.setAttribute("class", "mysql_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("php")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_php");
- 	 	   elem.setAttribute("class", "php_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("python")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_python");
- 	 	   elem.setAttribute("class", "python_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-        if(img_split.includes("server")>-1){
-         	
-     	   var elem = document.createElement("img");
- 	 	   elem.setAttribute("src", img_split);
- 	 	   elem.setAttribute("height", "140");
- 	 	   elem.setAttribute("width", "140");
- 	 	   elem.setAttribute("id","del_server");
- 	 	   elem.setAttribute("class", "server_pic");
- 	 	   document.getElementById("img_added").appendChild(elem);
- 	       
- 	 	   var elem_h = document.createElement("input");
- 	 	       elem_h.setAttribute("type", "hidden");
- 	 	       elem_h.setAttribute("name", "project_image");
- 	 	       elem_h.setAttribute("value",img_split);
- 	 	       document.getElementById("img_added").appendChild(elem_h);
- 	 	     return;
-        }  // end of if
-     
-         
- //////////////////////////프로젝트 관련 이미지 받아오기 종료//////////////////////        	  
-        	  
-        	  
-        	  
-        	  
+        		var chk_img = "${dto.project_image}";                   //project_image값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
+       	        
+        		if(chk_img.includes("java")){
+        	       var elem = document.createElement("img");
+        	  	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_java.png");
+            	 	   elem.setAttribute("height", "140");
+        	   	 	   elem.setAttribute("width", "140");
+        	   	 	   elem.setAttribute("id","del_java");
+        	   	 	   elem.setAttribute("class", "java_pic");
+        	   	 	   document.getElementById("img_added").appendChild(elem);
+        	    var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	          elem_h.setAttribute("id", "img_checking");
+        	          elem_h.setAttribute("name", "project_image");
+        	          elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_java.png");
+        	    	  document.getElementById("img_added").appendChild(elem_h);
+        	             }  // end of if
+        	                          
+        	        if(chk_img.includes("android")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_android.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_android");
+     	    	 	   elem.setAttribute("class", "android_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_android.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("sharp")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_c_sharp.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_c_sharp");
+     	    	 	   elem.setAttribute("class", "c_sharp_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_c_sharp.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("db")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_db.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_db");
+     	    	 	   elem.setAttribute("class", "db_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_db.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("desktop")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_desktop.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_desktop");
+     	    	 	   elem.setAttribute("class", "desktop_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_desktop.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("html")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_html.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_html");
+     	    	 	   elem.setAttribute("class", "html_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_html.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("iphone")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_iphone.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_iphone");
+     	    	 	   elem.setAttribute("class", "iphone_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_iphone.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("jquery")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_jquery.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_jquery");
+     	    	 	   elem.setAttribute("class", "jquery_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_jquery.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("js")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_js.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_js");
+     	    	 	   elem.setAttribute("class", "js_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_js.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("mysql")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_mysql.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_mysql");
+     	    	 	   elem.setAttribute("class", "mysql_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_mysql.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("php")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_php.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_php");
+     	    	 	   elem.setAttribute("class", "php_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_php.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("python")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_python.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_python");
+     	    	 	   elem.setAttribute("class", "python_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_python.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	                
+     	                          }  // end of if	   	  
+        	        if(chk_img.includes("server")){
+     	               var elem = document.createElement("img");
+     	    	 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_server.png");
+     	    	 	   elem.setAttribute("height", "140");
+     	    	 	   elem.setAttribute("width", "140");
+     	    	 	   elem.setAttribute("id","del_server");
+     	    	 	   elem.setAttribute("class", "server_pic");
+     	    	 	   document.getElementById("img_added").appendChild(elem);
+     	    	       
+     	    	 	   var elem_h = document.createElement("input");
+     	    	 	       elem_h.setAttribute("type", "hidden");
+     	    	 	     elem_h.setAttribute("id", "img_checking");
+     	    	 	       elem_h.setAttribute("name", "project_image");
+     	    	 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_server.png");
+     	    	 	       document.getElementById("img_added").appendChild(elem_h);
+     	               
+     	                          }  // end of if	   	  
 //////////////////////////////프로젝트 관련 이미지 추가//////////////////////
         	  
-$("#java_clicked").click(function(){
-	  if( $("#img_added> #del_java").length >0 ){
-		  var del_p = document.getElementById("img_added");  	
-		  var del = document.getElementById("del_java");
-	        	del_p.removeChild(del);
-		        				 
-	  } else if ( $("#img_added> #del_java").length == 0) {
-	      var elem = document.createElement("img");
- 	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_java.png");
- 	   elem.setAttribute("height", "140");
- 	   elem.setAttribute("width", "140");
- 	   elem.setAttribute("id","del_java");
- 	   elem.setAttribute("class", "java_pic");
- 	   document.getElementById("img_added").appendChild(elem);
-       
- 	   var elem_h = document.createElement("input");
- 	       elem_h.setAttribute("type", "hidden");
- 	       elem_h.setAttribute("name", "project_image");
- 	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_java.png");
- 	       document.getElementById("img_added").appendChild(elem_h);
- 	   
- 	   //end of img_add_java()
-			 return;       					
-	  }
-  });
+        	  $("#java_clicked").click(function(){
+        	  	  if( $("#img_added> #del_java").length >0 ){
+        	  		  var del_p = document.getElementById("img_added");  	
+        	  		  var del = document.getElementById("del_java");
+        	  	        	del_p.removeChild(del);
+        	  		        				 
+        	  	  } else if ( $("#img_added> #del_java").length == 0) {
+        	  	      var elem = document.createElement("img");
+        	   	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_java.png");
+        	   	   elem.setAttribute("height", "140");
+        	   	   elem.setAttribute("width", "140");
+        	   	   elem.setAttribute("id","del_java");
+        	   	   elem.setAttribute("class", "java_pic");
+        	   	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	   	   var elem_h = document.createElement("input");
+        	   	       elem_h.setAttribute("type", "hidden");
+        	   	     elem_h.setAttribute("id", "img_checking");
+        	   	       elem_h.setAttribute("name", "project_image");
+        	   	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_java.png");
+        	   	       document.getElementById("img_added").appendChild(elem_h);
+        	   	   
+        	   	   //end of img_add_java()
+        	  			 return;       					
+        	  	  }
+        	    });
 
-$("#android_clicked").click(function(){
-if( $("#img_added> #del_android").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_android");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_android").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_android.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_android");
-	   elem.setAttribute("class","android_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_android.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#c_sharp_clicked").click(function(){
-if( $("#img_added> #del_c_sharp").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_c_sharp");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_c_sharp").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_c_sharp.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_c_sharp");
-	   elem.setAttribute("class","c_sharp_pic");
-	
-	   document.getElementById("img_added").appendChild(elem);
-    
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_c_sharp.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#db_clicked").click(function(){
-if( $("#img_added> #del_db").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_db");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_db").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_db.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_db");
-	   elem.setAttribute("class","db_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-    
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_db.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#desktop_clicked").click(function(){
-if( $("#img_added> #del_desktop").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_desktop");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_desktop").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_desktop.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_desktop");
-	   elem.setAttribute("class","desktop_pic");
-	  	   document.getElementById("img_added").appendChild(elem);
-      
-	  	 var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_desktop.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	  	   
-	  	   
-	  	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#html_clicked").click(function(){
-if( $("#img_added> #del_html").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_html");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_html").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_html.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_html");
-	   elem.setAttribute("class","html_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_html.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#iphone_clicked").click(function(){
-if( $("#img_added> #del_iphone").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_iphone");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_iphone").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_iphone.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_iphone");
-	   elem.setAttribute("class","iphone_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_iphone.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#jquery_clicked").click(function(){
-if( $("#img_added> #del_jquery").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_jquery");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_jquery").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_jquery.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_jquery");
-	   elem.setAttribute("class","jquery_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_jquery.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#js_clicked").click(function(){
-if( $("#img_added> #del_js").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_js");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_js").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_js.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_js");
-	   elem.setAttribute("class","js_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_js.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#mysql_clicked").click(function(){
-if( $("#img_added> #del_mysql").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_mysql");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_mysql").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_mysql.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_mysql");
-	   elem.setAttribute("class","mysql_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_mysql.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#php_clicked").click(function(){
-if( $("#img_added> #del_php").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_php");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_php").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_php.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_php");
-	   elem.setAttribute("class","php_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_php.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
-$("#python_clicked").click(function(){
-if( $("#img_added> #del_python").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_python");
-      	del_p.removeChild(del);
-				 
-} else if ( $("#img_added> #del_python").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_python.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_python");
-	   elem.setAttribute("class","python_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-       
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_python.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
+        	  $("#android_clicked").click(function(){
+        	  if( $("#img_added> #del_android").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_android");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_android").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_android.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_android");
+        	  	   elem.setAttribute("class","android_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	       elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_android.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#c_sharp_clicked").click(function(){
+        	  if( $("#img_added> #del_c_sharp").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_c_sharp");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_c_sharp").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_c_sharp.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_c_sharp");
+        	  	   elem.setAttribute("class","c_sharp_pic");
+        	  	
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	      
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_c_sharp.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#db_clicked").click(function(){
+        	  if( $("#img_added> #del_db").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_db");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_db").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_db.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_db");
+        	  	   elem.setAttribute("class","db_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	      
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_db.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#desktop_clicked").click(function(){
+        	  if( $("#img_added> #del_desktop").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_desktop");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_desktop").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_desktop.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_desktop");
+        	  	   elem.setAttribute("class","desktop_pic");
+        	  	  	   document.getElementById("img_added").appendChild(elem);
+        	        
+        	  	  	 var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_desktop.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	  	   
+        	  	  	   
+        	  	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#html_clicked").click(function(){
+        	  if( $("#img_added> #del_html").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_html");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_html").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_html.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_html");
+        	  	   elem.setAttribute("class","html_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_html.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#iphone_clicked").click(function(){
+        	  if( $("#img_added> #del_iphone").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_iphone");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_iphone").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_iphone.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_iphone");
+        	  	   elem.setAttribute("class","iphone_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_iphone.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#jquery_clicked").click(function(){
+        	  if( $("#img_added> #del_jquery").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_jquery");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_jquery").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_jquery.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_jquery");
+        	  	   elem.setAttribute("class","jquery_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_jquery.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#js_clicked").click(function(){
+        	  if( $("#img_added> #del_js").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_js");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_js").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_js.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_js");
+        	  	   elem.setAttribute("class","js_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_js.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#mysql_clicked").click(function(){
+        	  if( $("#img_added> #del_mysql").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_mysql");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_mysql").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_mysql.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_mysql");
+        	  	   elem.setAttribute("class","mysql_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_mysql.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#php_clicked").click(function(){
+        	  if( $("#img_added> #del_php").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_php");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_php").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_php.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_php");
+        	  	   elem.setAttribute("class","php_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	     elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_php.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
+        	  $("#python_clicked").click(function(){
+        	  if( $("#img_added> #del_python").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_python");
+        	        	del_p.removeChild(del);
+        	  				 
+        	  } else if ( $("#img_added> #del_python").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_python.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_python");
+        	  	   elem.setAttribute("class","python_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	         
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	       elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_python.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
 
-$("#server_clicked").click(function(){
-if( $("#img_added> #del_server").length >0 ){
-	  var del_p = document.getElementById("img_added");  	
-	  var del = document.getElementById("del_server");
-      	del_p.removeChild(del);
-	        				 
-} else if ( $("#img_added> #del_server").length == 0) {
-    var elem = document.createElement("img");
-	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_server.png");
-	   elem.setAttribute("height", "140");
-	   elem.setAttribute("width", "140");
-	   elem.setAttribute("id","del_server");
-	   elem.setAttribute("class","server_pic");
-	   
-	   document.getElementById("img_added").appendChild(elem);
-	   var elem_h = document.createElement("input");
-	       elem_h.setAttribute("type", "hidden");
-	       elem_h.setAttribute("name", "project_image");
-	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_server.png");
-	       document.getElementById("img_added").appendChild(elem_h);
-	   
-	   
-	   //end of img_add_java()
-		 return;       					
-}
-});
+        	  $("#server_clicked").click(function(){
+        	  if( $("#img_added> #del_server").length >0 ){
+        	  	  var del_p = document.getElementById("img_added");  	
+        	  	  var del = document.getElementById("del_server");
+        	        	del_p.removeChild(del);
+        	  	        				 
+        	  } else if ( $("#img_added> #del_server").length == 0) {
+        	      var elem = document.createElement("img");
+        	  	   elem.setAttribute("src", "${path}/resources/project_imgs/presets_logo_server.png");
+        	  	   elem.setAttribute("height", "140");
+        	  	   elem.setAttribute("width", "140");
+        	  	   elem.setAttribute("id","del_server");
+        	  	   elem.setAttribute("class","server_pic");
+        	  	   
+        	  	   document.getElementById("img_added").appendChild(elem);
+        	  	   var elem_h = document.createElement("input");
+        	  	       elem_h.setAttribute("type", "hidden");
+        	  	       elem_h.setAttribute("id", "img_checking");
+        	  	       elem_h.setAttribute("name", "project_image");
+        	  	       elem_h.setAttribute("value","${path}/resources/project_imgs/presets_logo_server.png");
+        	  	       document.getElementById("img_added").appendChild(elem_h);
+        	  	   
+        	  	   
+        	  	   //end of img_add_java()
+        	  		 return;       					
+        	  }
+        	  });
 
-      $('.server_pic').click(function(){
-    	 $('del_server').remove(); 
-      
-      });
-      
-      
-      $(".java_pic").click(function(){
-          var del_p = document.getElementById("img_added");
-          var del = document.getElementById("del_java");
-            
-          delete del;
-          return;
-                                        });
-
-        	  
-//////////////////////////////프로젝트 관련 이미지 종료//////////////////////        	  
+        	             	  
+        	  //////////////////////////////프로젝트 관련 이미지 종료//////////////////////     
+        	
         	  document.getElementById("techstack_hidden_show").style.display = "none";
         	          	  
         	  <%--프로젝트명 추가부분, 프로젝트 등급 버튼 --%>
@@ -696,17 +685,19 @@ if( $("#img_added> #del_server").length >0 ){
                        $('#project_grade').val(text);
                    });
    
-            
               <%--값 전송 버튼 시작 --%>  
  		      $("#btnSave").click(function(){
                     var project_name = $("#project_name").val();
                     var project_content = $("#project_content").val();
                     var project_term1 = $("#project_term1").val();
                     var project_term2 = $("#project_term2").val();
+                    
+                                       
+                    
                     /*정규표현식을 이용한 유효성 검증을 위해 값을 담아올 변수를 생성한다.*/
                     var project_name = $('#textarea_title').val();
                     var project_content = $('#textarea_introduce').val();
-                    
+                    var img_is = $("#img_checking").val();  
                     
                     
                     if (project_name.replace(/ |　/gi, '') == ''){ 
@@ -733,8 +724,7 @@ if( $("#img_added> #del_server").length >0 ){
                     	document.form1.project_term2.focus();
                         return;
                     }
-                     
-    /////////////////테크스택 체크박스 밸리데이션 시작/////////////////////    
+                                          /////////////////테크스택 체크박스 밸리데이션 시작/////////////////////    
                     var cbox = document.forms["form1"]["techstack"];
                    if (
                      cbox[0].checked == false &&
@@ -760,14 +750,14 @@ if( $("#img_added> #del_server").length >0 ){
                      return false;
                    } 
                  /////////////////테크스택 체크박스 밸리데이션 종료/////////////////////
-                    
-            ////////////////프로젝트 관련 이미지 밸리데이션 시작///////////////////      
+   ////////////////프로젝트 관련 이미지 밸리데이션 시작///////////////////      
                    if( $("#img_added > #img_checking").length == 0){
                    	alert("프로젝트를 대표할 이미지 하나 이상 선택해주세요.")
                    	document.form1.project_image.focus();
                   return;
                    }
-             ////////////////프로젝트 관련 이미지 밸리데이션 종료/////////////////// 
+             ////////////////프로젝트 관련 이미지 밸리데이션 종료///////////////////                    
+  
                     
                     
                     document.form1.submit();
@@ -780,35 +770,19 @@ if( $("#img_added> #del_server").length >0 ){
 
        
          
-         $(".techbuttons").click(function () {                         //클래스가 techbuttons인 것을 누르면 이 함수가 동작한다
-              var chkbox_obj = document.getElementsByName('techstack');  //chkbox_obj 변수를 설정하는데 이 페이지안에서 name값이 techstack인 것을 찾아온다
-              var chkbox_obj_cnt = chkbox_obj.length;                    //chkbox_obj_cnt에는 위에 담긴 값의 수가 들어간다.
-              for (var k = 0; k < chkbox_obj_cnt; k++) {                 //위에 담긴 수만큼 for문을 돌린다
-           	   if (chkbox_obj[k].value == $(this).val()) {            //chkbox_obj안의 value가 techbuttons을 name으로 가진 value와 같을때
-           		  if (!chkbox_obj[k].checked) {                       //chkbox_obj로 가져온 값이 체킹되어있지 않다면
-           		  	 chkbox_obj[k].checked = true;                    //체크하고
-           		  }
-           		  else {
-           			 chkbox_obj[k].checked = false;                  //아니면 체크값을 해제한다.
-           		  }
-           	   }
-              }
-           }); //end of button-check            
-                     
-                     
-            
-            
-            
-           
-      
-         
-         
-         
+               
+   
          /* ajax 검색 로직 추가 */           
     $(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
         $(".project_tech_name").keyup(function() {
-                var tech_name_input = $('.project_tech_name').val();
+				
+        	
+        	console.log('키이벤트작동하는가?');
+        	
+		        var tech_name_input = $('.project_tech_name').val();
         	    var param = "tech_name_input=" + tech_name_input;    //컨트롤러로 값을 넘기기 위해서 이름을 담은 매개변수 선언
+         	console.log('값이 담기는가 :' +tech_name_input);
+        	
          	$.ajax({ // Ajax 요청을 작성
          	    url: "${path}/project/autocomplete",
          	    data: param,
@@ -852,6 +826,7 @@ if( $("#img_added> #del_server").length >0 ){
          	                   }
          	                }); //end of button-check
 
+         	            
          	            } //end of for
 
          	        } //end of else
@@ -864,6 +839,7 @@ if( $("#img_added> #del_server").length >0 ){
     }); // end of keyup function
         	
     });
+            
 ///////////////체크박스 체크 로직 시작.
      
      	var chk_received = "${dto.techstack}";                   //techstack값을 받아온다. String값이므로 따옴표로 묶지 않으면 에러가 난다.
@@ -965,7 +941,12 @@ if( $("#img_added> #del_server").length >0 ){
          }    
              
 /////////////////////////////체크박스 체크 로직 종료        
-              }); //end of document.ready  
+ 
+            
+            
+            
+            
+            }); //end of document.ready  
 
           </script>
 
