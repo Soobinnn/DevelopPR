@@ -15,8 +15,10 @@
 			<p id="p3">이력서, 포트폴리오의 정보를 공유하며 다른 개발자들과 채팅 할 수 있습니다.</p>
 			<p id="p4">당신의 날개를 펼치세요. Spread Your Wings.</p>
 		</div>
+		<div id="main01">
+		- Developers
+		</div>
 		<div class="main1">	
-		
 		<c:forEach var="list" items="${list}" varStatus="status" begin="0" end="2">	
 				<div class="PR${status.count}">
 					<div class="filter${status.count}"></div>
@@ -150,6 +152,7 @@
 					</figure>		
 			</div>
 		</div>
+			<p id="p5">당신이 열매를 맺을 때까지 함께 하겠습니다.</p>
 		<div class="main4">
 		</div>
 		<div class="animation">
