@@ -1,9 +1,9 @@
 /* ------------------------ resumeDetail ------------------------ */
 .resumeDetail .container #color{
-	height:400px;
-	width:100%;
-	opacity:0.5;
-	z-index:-1;
+   height:400px;
+   width:100%;
+   opacity:0.5;
+   z-index:-1;
 }
 .resumeDetail .container {
    display:flex;
@@ -13,15 +13,15 @@
 }
 
 .resumeDetail .container .head{
-	display:flex;
-	flex-direction:column;
-	height: 400px;
-	width:100%;
+   display:flex;
+   flex-direction:column;
+   height: 400px;
+   width:100%;
 }
 
 .resumeDetail .container .head header{
-	flex-basis:980px;
-	flex-shrink:0;
+   flex-basis:980px;
+   flex-shrink:0;
 }
 
 .resumeDetail .container .comment{
@@ -65,51 +65,51 @@
 }
 
 .resumeDetail .information .textshort1{
-	flex:0 1 83px;
-	padding-left:23px;
-	padding-bottom:10px;
-	height:26px;
-	font-weight:bold;
-	border-bottom:solid 2px #585858;
-	position:relative;
-	left:130px;
-	bottom:100px;
+   flex:0 1 83px;
+   padding-left:23px;
+   padding-bottom:10px;
+   height:26px;
+   font-weight:bold;
+   border-bottom:solid 2px #585858;
+   position:relative;
+   left:130px;
+   bottom:100px;
 }
 
 .resumeDetail .information .textshort2{
-	width:94px;
-	padding-top:4px;
-	padding-left:12px;
-	font-weight:bold;
-	height:27px;
-	border:solid 2px #585858;
-	border-radius:10px;
-	position:relative;
+   width:94px;
+   padding-top:4px;
+   padding-left:12px;
+   font-weight:bold;
+   height:27px;
+   border:solid 2px #585858;
+   border-radius:10px;
+   position:relative;
     right:110px;
-	bottom:40px;
+   bottom:40px;
 }
 .resumeDetail .information .textshort2 #ppt{
-	text-decoration:none;
-	font-size:1.1rem;
-	color:black;
+   text-decoration:none;
+   font-size:1.1rem;
+   color:black;
 }
 .resumeDetail .information .textshort2:hover{
  background-color:#585858;
 }
 .resumeDetail .information .textshort2 #ppt:hover{
-	color:white;
+   color:white;
 }
 .resumeDetail .information #is_unfollow, .resumeDetail .information #is_follow, .resumeDetail .information #is_ungood,.resumeDetail .information #is_good{
-	font-size:1.1rem;
-	font-weight:bold;
-	padding:3.5px;
-	border-radius:10px;
-	width:110px;
+   font-size:1.1rem;
+   font-weight:bold;
+   padding:3.5px;
+   border-radius:10px;
+   width:110px;
 
-	border:solid 2px #585858;
-	background-color:white;
-	position:relative;
-	bottom:40px;
+   border:solid 2px #585858;
+   background-color:white;
+   position:relative;
+   bottom:40px;
 }
 
 .resumeDetail .information #is_unfollow:hover,
@@ -117,28 +117,28 @@
 .resumeDetail .information #is_ungood:hover,
 .resumeDetail .information #is_good:hover
 {
-		background-color:#585858;
-		color:white;
+      background-color:#585858;
+      color:white;
 }
 .resumeDetail .information #is_unfollow{
-	right:86px;
-	z-index:2;
+   right:86px;
+   z-index:2;
 }
 .resumeDetail .information #is_follow{
-	right:196px;
+   right:196px;
 }
 
 .resumeDetail .information #is_ungood{
-	right:170px;
-		z-index:2;
+   right:170px;
+      z-index:2;
 }
 
 .resumeDetail .information #is_good{
-	right:280px;
+   right:280px;
 }
 
 .resumeDetail .information #is_work{
-	margin:0;
+   margin:0;
 }
 
 .resumeDetail .tech-stack{
@@ -151,8 +151,8 @@
 .resumeDetail .subject{
    padding-bottom:20px;
    padding-top:60px;
-	padding-left:20px;
-	margin-bottom:10px;
+   padding-left:20px;
+   margin-bottom:10px;
    color:#02456F;
    font-weight: bold;
    border-bottom: solid 2px #585858;
@@ -163,39 +163,39 @@
 
 
 .resumeDetail .up{
-	display:flex;
-	flex-diretion:row;
-	flex-wrap:wrap;
+   display:flex;
+   flex-diretion:row;
+   flex-wrap:wrap;
 }
 
 .resumeDetail .left{
-	display:flex;
-	flex-direction:column;
-	margin-left:150px;
-	width:600px;
-	align-items:center;
+   display:flex;
+   flex-direction:column;
+   margin-left:150px;
+   width:600px;
+   align-items:center;
 }
 
 .resumeDetail .left .subject{
-	margin-bottom:0;
+   margin-bottom:0;
 }
 
 
 .resumeDetail .right{
-	display:flex;
-	flex-direction:column;
-	margin-left:50px;
-	margin-right:150px;
-	width:550px;
-	align-items:center;
+   display:flex;
+   flex-direction:column;
+   margin-left:50px;
+   margin-right:150px;
+   width:550px;
+   align-items:center;
 }
 
 /*-----------------------------left-detail----------------------------*/
 
 .resumeDetail .detail{
-	display:flex;
-	flex-direction:column;
-	border-style:none;
+   display:flex;
+   flex-direction:column;
+   border-style:none;
    border-bottom: solid 2px #585858;
    width:590px;
 }
@@ -234,25 +234,25 @@
 }
 
 .resumeDetail .certificate, .resumeDetail .edu, .resumeDetail .career{
-	border-bottom:solid 2px #585858;
+   border-bottom:solid 2px #585858;
 }
 
 .resumeDetail .acq{
-	display:flex;
-	width:590px;
-	font-size:13pt;
-	padding-top:8px;
-	padding-bottom:8px;
+   display:flex;
+   width:590px;
+   font-size:13pt;
+   padding-top:8px;
+   padding-bottom:8px;
 }
 .resumeDetail .acqdate{
-	width:130px;
-	padding-left:30px;
-	word-break:break-all;
+   width:160px;
+   padding-left:30px;
+   word-break:break-all;
 }
 .resumeDetail .acqname{
-	width:350px;
-	margin-right:30px;
-	word-break:break-all;
+   width:370px;
+   margin-right:30px;
+   word-break:break-all;
 
 
 }
@@ -261,111 +261,111 @@
 
 /*---------------------project-----------------*/
 .resumeDetail .projects .subject{
-	width:98.3%;
+   width:98.3%;
 }
 .resumeDetail .projects .plusproject{
-	border:solid 2px #585858;
-	padding:5px;
-	font-size:1.1rem;
-	text-decoration:none;
-	color:black;
-	border-radius:10px;
-	margin-left:20px;
+   border:solid 2px #585858;
+   padding:5px;
+   font-size:1.1rem;
+   text-decoration:none;
+   color:black;
+   border-radius:10px;
+   margin-left:20px;
 }
 .resumeDetail .projects .plusproject:hover, #projectmodify:hover, #projectdelete:hover{
-	background-color:#585858;
-	color:white;
+   background-color:#585858;
+   color:white;
 }
 
 .resumeDetail #projectmodify{
-	border:solid 2px #585858;
-	text-decoration:none;
-	color:black;
-	font-weight:600;
-	border-radius:5px;
-	padding-left:10px;
-	padding-right:10px;
-	position:relative;
-	left:50px;
+   border:solid 2px #585858;
+   text-decoration:none;
+   color:black;
+   font-weight:600;
+   border-radius:5px;
+   padding-left:10px;
+   padding-right:10px;
+   position:relative;
+   left:50px;
 }
 .resumeDetail #projectdelete{
-	border:solid 2px #585858;
-	text-decoration:none;
-	font-weight:600;
-	color:black;
-	border-radius:5px;
-	padding-left:10px;
-	padding-right:10px;
-	position:relative;
-	left:60px;
+   border:solid 2px #585858;
+   text-decoration:none;
+   font-weight:600;
+   color:black;
+   border-radius:5px;
+   padding-left:10px;
+   padding-right:10px;
+   position:relative;
+   left:60px;
 }
 
 .resumeDetail .projects{
-	margin-left:150px;
-	width:81%;
-	height:100%;
-	border-bottom:solid 2px #585858;
+   margin-left:150px;
+   width:81%;
+   height:100%;
+   border-bottom:solid 2px #585858;
 }
 
 .resumeDetail .project{
-	display:flex;
-	flex-direction:column;
-	flex-wrap:wrap;
-}	
+   display:flex;
+   flex-direction:column;
+   flex-wrap:wrap;
+}   
 
 .resumeDetail .pros{
-	display:flex;
-	padding-bottom:20px;
-	padding-top:20px;
-	padding-left:200px;
-	border-bottom:solid 1px #b9b9b9;
+   display:flex;
+   padding-bottom:20px;
+   padding-top:20px;
+   padding-left:200px;
+   border-bottom:solid 1px #b9b9b9;
 }
 
 .resumeDetail .pro{
-	margin-left:20px;
-	align-items:center;
+   margin-left:20px;
+   align-items:center;
 }
 
 .resumeDetail .proname{
-	margin-bottom:10px;
-	font-size:1.2rem;
+   margin-bottom:10px;
+   font-size:1.2rem;
 }
 .resumeDetail #projectdetail{
-	text-decoration:none;
-	color:#02456F;
-	font-weight:bold;
+   text-decoration:none;
+   color:#02456F;
+   font-weight:bold;
 }
 .resumeDetail .proterm{
-	margin-bottom:10px;
-	font-size:1.1rem;
+   margin-bottom:10px;
+   font-size:1.1rem;
 
 }
 .resumeDetail .prostack{
-	margin-bottom:10px;
-	font-size:1.1rem;
+   margin-bottom:10px;
+   font-size:1.1rem;
 }
 /*------------------tech-stack--------------------*/
 
 .resumeDetail .tech-stack{
-	margin-left:150px;
-	margin-right:150px;
-	width:81%;
-	height:100%;
+   margin-left:150px;
+   margin-right:150px;
+   width:81%;
+   height:100%;
 }
 
 .resumeDetail .tech-stack .subject{
-	width:98.2%;
+   width:98.2%;
 }
 
 .resumeDetail .techs{
-	display:flex;
-	flex-wrap:wrap;
+   display:flex;
+   flex-wrap:wrap;
 }
 
 .resumeDetail .tech{
-	display:flex;	
-	align-items:center;
-	margin:10px;
+   display:flex;   
+   align-items:center;
+   margin:10px;
 }
 
 .resumeDetail .abb{
@@ -414,11 +414,11 @@
   right:18px;
 }
 .resumeDetail .percent{
-	position:relative;
-	left:193px;
-	top:1px;
-	font-size:1.1rem;
-	font-weight:600;
+   position:relative;
+   left:193px;
+   top:1px;
+   font-size:1.1rem;
+   font-weight:600;
 }
 .resumeDetail input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -441,28 +441,28 @@
   }
 
 .resumeDetail .button{
-	margin-top:50px;
-	margin-bottom:50px;
+   margin-top:50px;
+   margin-bottom:50px;
 }
 
 .resumeDetail #buttonhome, .resumeDetail #buttonmodify, .resumeDetail #buttonlist{
-	border:solid 2px #585858;
-	border-radius:30px;
-	padding:10px;
-	position:relative;
-	left:700px;
-	text-decoration:none;
-	color:black;
-	font-size:1.2rem;
-	font-weight:bold;
-	padding-left:30px;
-	padding-right:30px;
-	margin-left:20px;
+   border:solid 2px #585858;
+   border-radius:30px;
+   padding:10px;
+   position:relative;
+   left:700px;
+   text-decoration:none;
+   color:black;
+   font-size:1.2rem;
+   font-weight:bold;
+   padding-left:30px;
+   padding-right:30px;
+   margin-left:20px;
 }
 
 .resumeDetail #buttonhome:hover, .resumeDetail #buttonmodify:hover, .resumeDetail #buttonlist:hover{
-	background-color:#585858;
-	color:white;
+   background-color:#585858;
+   color:white;
 }
 
 
@@ -470,7 +470,7 @@
 /*------------------footer---------------------*/
 
 .resumeDetail footer{
-	background-color:rgba(255,255,255,0.5);
+   background-color:rgba(255,255,255,0.5);
    height:50px;
    width:100%;
    text-align: center;
