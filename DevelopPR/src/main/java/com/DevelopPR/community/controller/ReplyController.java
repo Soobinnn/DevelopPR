@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.DevelopPR.community.model.dto.ReplyVO;
 import com.DevelopPR.community.service.ReplyPager;
 import com.DevelopPR.community.service.ReplyService;
+import com.DevelopPR.user.dto.UserVO;
 
 //@Controller
 @RestController
@@ -33,8 +34,9 @@ public class ReplyController {
   @RequestMapping("insert")
   public void insert(@ModelAttribute ReplyVO vo, HttpSession session){
       // 세션에 저장된 회원아이디를 댓글작성자에 세팅
-      String userId = (String) session.getAttribute("userId");
-      vo.setReplyer(userId);
+      UserVO uservo = (UserVO)session.getAttribute("login");
+       String userId = uservo.getUserNick();
+       vo.setReplyer(userId);
       // 댓글 입력 메서드 호출
       replyService.create(vo);
   }
@@ -48,7 +50,8 @@ public class ReplyController {
       ResponseEntity<String> entity = null;
       try {
           // 세션에 저장된 회원아이디를 댓글작성자에 세팅
-          String userId = (String) session.getAttribute("userNick"); /* userName에서 userNick으로 변경 */
+         UserVO uservo = (UserVO)session.getAttribute("login");
+          String userId = uservo.getUserNick(); /* userName에서 userNick으로 변경 */
           vo.setReplyer(userId);
           // 댓글입력 메서드 호출
           replyService.create(vo);

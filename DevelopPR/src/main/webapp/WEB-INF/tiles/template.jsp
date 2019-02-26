@@ -123,6 +123,7 @@
 			}
 			
 		});
+		
 		// 메인헤더 애니메이션
 		var $black = $("#black").css("clip", "");
 		var w = 2000, h = 700;
@@ -139,6 +140,12 @@
 		t = h/2 - 175;
 		tl.to($black, 1.05, {clip: "rect("+[t,r,b,l].join()+")", ease: Elastic.easeOut});
 		tl.to($("#black").css("opacity", ""), 0.2, {opacity: "0"});
+		
+		// 서브헤더누를시 메인으로
+		$(document).on("click","#_subheader_title", function(event)
+		{
+			window.location.href = "https://developpr.org/DevelopPR/main";		
+		});
 	})
 	</script>
 

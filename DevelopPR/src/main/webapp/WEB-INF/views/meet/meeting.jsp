@@ -149,7 +149,7 @@
 	{
 		receiverNick = follow;
 		var _profile = profile;
-		if(_profile == null || _profile == "")
+		if(_profile == null || _profile == "" || _profile == 'null')
 		{
 			_profile = "/DevelopPR/resources/resume/person.jpg";
 		}
@@ -559,12 +559,14 @@
 		<div id="nav">
 			<div id="myinfo">
 				<div id="my_img">
-				<c:if test="${getprofile == null}">
+				<c:choose>
+				<c:when test="${getprofile == null || getprofile == 'null'}">
 					<img class="myImage" src="/DevelopPR/resources/resume/person.jpg" width="150px" height="150px">
-				</c:if>
-				<c:if test="${getprofile != null}">
+				</c:when>
+				<c:otherwise>
 					<img class="myImage" src="${getprofile}" width="150px" height="150px">
-				</c:if>
+				</c:otherwise>
+				</c:choose>
 				</div>
 				<div id="my_name">${sessionScope.login.userNick} 
 					( ${sessionScope.login.userName} )</div>
@@ -579,12 +581,14 @@
 						<div>
 							<a class="_following" href="javascript:readyRoom('${list.following_nick}','${list.profile}');">
 							<span class="profile_image">
-							<c:if test="${list.profile == null}">
-								<img class="profile_img" src="/DevelopPR/resources/resume/person.jpg"width="48px" height="48px">
-							</c:if>
-							<c:if test="${list.profile != null}">
-								<img class="profile_img" src="${list.profile}"width="48px" height="48px">
-							</c:if>
+								<c:choose>
+								<c:when test="${list.profile == null || list.profile=='null'}">
+									<img class="profile_img" src="/DevelopPR/resources/resume/person.jpg"width="48px" height="48px">
+								</c:when>
+								<c:otherwise>
+									<img class="profile_img" src="${list.profile}"width="48px" height="48px">
+								</c:otherwise>
+								</c:choose>
 							</span>
 							
 							<span class="follow_name">${list.following_nick} ( ${list.name} )</span></a>
@@ -596,12 +600,14 @@
 						<div>						
 							<a class="_follower" href="javascript:readyRoom('${list.follower_nick}','${list.profile}');">
 							<span class="profile_image">
-							<c:if test="${list.profile == null}">
+							<c:choose>
+							<c:when test="${list.profile == null || list.profile=='null'}">
 								<img class="profile_img" src="/DevelopPR/resources/resume/person.jpg"width="48px" height="48px">
-							</c:if>
-							<c:if test="${list.profile != null}">
+							</c:when>
+							<c:otherwise>	
 								<img class="profile_img" src="${list.profile}" width="50px" height="50px">
-							</c:if>
+							</c:otherwise>
+							</c:choose>
 							</span>
 							<span class="follow_name">${list.follower_nick} ( ${list.name} )</span></a>
 						</div>

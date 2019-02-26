@@ -119,6 +119,7 @@
 				window.open("http://nid.naver.com/nidlogin.logout", "kakaologout","width=400, height=350");
 			}
 		});
+		
 	})
 	</script>
 

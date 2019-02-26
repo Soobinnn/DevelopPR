@@ -18,8 +18,8 @@ height:100px;
 </style>
 <script>
 $(document).on("click","#btnModify",function(e){
-	        var offset = $("#modifyReply").offset();
-	        $('html, body').animate({scrollTop : offset.top}, 400);
+           var offset = $("#modifyReply").offset();
+           $('html, body').animate({scrollTop : offset.top}, 400);
 });
 </script>
 </head>
@@ -37,7 +37,13 @@ $(document).on("click","#btnModify",function(e){
          </div> <!--닉네임과 날짜를 담는 div-->
       
         <div id="reply_contents">${row.replytext}</div>
-        <div id="btns"><input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')"></div><!--버튼-->
+         <!-- 본인 댓글만 수정, 삭제가 가능하도록 처리 -->
+       <c:if test="${sessionScope.login.userNick == row.replyer}"> 
+        <div id="btns">
+       <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')">
+       </div><!--버튼-->
+       </c:if> 
+       
        <div id="bottom_line"></div> <!-- 댓글 간 구분용 div-->
     </div> <!-- end of reply_container-->
 
