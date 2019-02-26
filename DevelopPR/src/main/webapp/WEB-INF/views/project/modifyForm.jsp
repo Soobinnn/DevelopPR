@@ -309,8 +309,10 @@ cursor: pointer;
         	  
         	  $("#java_clicked").click(function(){
         	  	  if( $("#img_added> #del_java").length >0 ){
-        	  		  var del_p = document.getElementById("img_added");  	
+        	  		  var del_p = document.getElementById("img_added");  
         	  		  var del = document.getElementById("del_java");
+        	  		  var del_h = document.getElementById("img_checking");
+        	  		  		del_p.removeChild(del_h); 
         	  	        	del_p.removeChild(del);
         	  		        				 
         	  	  } else if ( $("#img_added> #del_java").length == 0) {
@@ -338,6 +340,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_android").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_android");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_android").length == 0) {
@@ -367,6 +372,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_c_sharp").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_c_sharp");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_c_sharp").length == 0) {
@@ -395,6 +403,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_db").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_db");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_db").length == 0) {
@@ -423,6 +434,9 @@ cursor: pointer;
         	  $("#desktop_clicked").click(function(){
         	  if( $("#img_added> #del_desktop").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	  	  var del = document.getElementById("del_desktop");
         	        	del_p.removeChild(del);
         	  	        				 
@@ -450,6 +464,9 @@ cursor: pointer;
         	  $("#html_clicked").click(function(){
         	  if( $("#img_added> #del_html").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	  	  var del = document.getElementById("del_html");
         	        	del_p.removeChild(del);
         	  	        				 
@@ -508,6 +525,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_jquery").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_jquery");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_jquery").length == 0) {
@@ -536,6 +556,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_js").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_js");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_js").length == 0) {
@@ -564,6 +587,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_mysql").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_mysql");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_mysql").length == 0) {
@@ -592,6 +618,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_php").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_php");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_php").length == 0) {
@@ -620,6 +649,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_python").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_python");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  				 
         	  } else if ( $("#img_added> #del_python").length == 0) {
@@ -649,6 +681,9 @@ cursor: pointer;
         	  if( $("#img_added> #del_server").length >0 ){
         	  	  var del_p = document.getElementById("img_added");  	
         	  	  var del = document.getElementById("del_server");
+    	  		  var del_h = document.getElementById("img_checking");
+	  		  		del_p.removeChild(del_h); 
+
         	        	del_p.removeChild(del);
         	  	        				 
         	  } else if ( $("#img_added> #del_server").length == 0) {
@@ -751,10 +786,11 @@ cursor: pointer;
                    } 
                  /////////////////테크스택 체크박스 밸리데이션 종료/////////////////////
    ////////////////프로젝트 관련 이미지 밸리데이션 시작///////////////////      
-                   if( $("#img_added > #img_checking").length == 0){
+                   if( $("#img_added > #img_checking").length == 0 || $("#img_added > #img_checking").length == ""){
+                	   console.log($("#img_added > #img_checking").length);
                    	alert("프로젝트를 대표할 이미지 하나 이상 선택해주세요.")
                    	document.form1.project_image.focus();
-                  return;
+                  return false;
                    }
              ////////////////프로젝트 관련 이미지 밸리데이션 종료///////////////////                    
   
