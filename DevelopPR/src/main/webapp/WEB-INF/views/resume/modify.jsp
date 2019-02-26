@@ -384,7 +384,10 @@ function fn_removeImage() {
                            		     이메일 * 
                             </div>
                             <div class="email_info">
-                                <input type="text" class="textshort" value="${dto.email}" name="email"/> <br/>
+                            
+                                <input type="hidden" value="${sessionScope.login.userEmail}" name="email"/> 
+                                
+                                <input type="text" class="textshort" value="${dto.loginemail}" name="loginemail"/> <br/>
                               	<c:if test="${dto.email_is_open==0}">
 	                                <input type="radio" name="email_is_open" id="er1" value="1"/>
 	                                <label for="er1" class="la"><p class="p_label">공개 </p></label>

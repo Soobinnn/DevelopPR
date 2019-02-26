@@ -262,7 +262,7 @@ function ungood()
 	                            		<div class="textshort">비공개</div>
 	                            	</c:if>
 	                            	<c:if test="${dto.email_is_open==1}">
-	                                <div class="textshort">${dto.email}</div>
+	                                <div class="textshort">${dto.loginemail}</div>
 	                                </c:if>
 	                            </div>
 	                        </div>

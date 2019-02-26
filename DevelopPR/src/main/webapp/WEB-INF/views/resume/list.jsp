@@ -58,7 +58,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail/${list.loginemail}/">
+						<a href="${path}/resume/detail/${list.email}/">
 						<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 						</a>
 					</figure>
@@ -94,7 +94,7 @@
 									<h2><span>${list.name}</span></h2>
 								</div>
 							</div>
-						<a href="${path}/resume/detail/${list.loginemail}/">
+						<a href="${path}/resume/detail/${list.email}/">
 						<input type="hidden" name="email" value="${sessionScope.login.userEmail}"/>
 						</a>					
 					</figure>
@@ -131,7 +131,7 @@
 								</div>
 							</div>
 							
-						<a href="${path}/resume/detail/${list.loginemail}/">
+						<a href="${path}/resume/detail/${list.email}/">
 						</a>
 					</figure>
 				</div>
