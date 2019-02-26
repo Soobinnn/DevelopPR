@@ -113,7 +113,7 @@ public ModelAndView projectRegist(MultipartFile file, ModelAndView mav, HttpSess
 	    // FileCopyUtils.copy(바이트배열, 파일객체)
 	    FileCopyUtils.copy(file.getBytes(), target);
 
-	    mav.setViewName("basic/project/registForm");
+	    mav.setViewName("redirect:/resume/detail/"+myemail+"/");
 	    /* return "redirect:/resume/detail/"+ uservo.getUserEmail() +"/"; */
 	    mav.addObject("savedName", savedName);
 
@@ -140,7 +140,7 @@ public String projectModifyForm(ProjectVO vo, @PathVariable("pno") int pno, Mode
     return "basic/project/modifyForm";
 }
 
-@RequestMapping("/project/modify")
+@RequestMapping(value="/project/modify", method=RequestMethod.POST)
 public String projectModify(MultipartFile file, @ModelAttribute ProjectVO vo, @RequestParam(value="pr_file_name", required=false) String pr_file_name, HttpSession session) throws Exception
 {
 	
@@ -189,7 +189,14 @@ return result;
 } 
 
 
-
+@RequestMapping("/project/detail/{pno}")
+public String projectDetail(ProjectVO vo, @PathVariable("pno") int pno, Model model) throws Exception{
+	 vo = projectService.detail(pno);
+	  model.addAttribute("dto", vo);
+	
+	 
+	return "basic/project/detail";
+}
 
 
 } //end of class

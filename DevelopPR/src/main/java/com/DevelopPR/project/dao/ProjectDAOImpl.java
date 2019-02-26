@@ -58,7 +58,9 @@ return listLook;
 public List<ProjectVO> projectList(String email) throws Exception {
 		return sqlSession.selectList("project.projectlist", email);
 }
-
+public ProjectVO detail(int pno) throws Exception{
+	return sqlSession.selectOne("project.detail", pno);
+}
 
 	
 } // end of class

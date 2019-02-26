@@ -8,6 +8,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 컨택스트  패스-->
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value='/resources/main/sub_icon.ico'/>"/>
 <!DOCTYPE html>
 <html>
 <head>

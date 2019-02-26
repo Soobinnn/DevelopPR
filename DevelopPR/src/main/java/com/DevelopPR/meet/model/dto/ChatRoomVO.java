@@ -15,7 +15,6 @@ public class ChatRoomVO
 	private String receiver_profile;
 	
 	public String getChatroom_id() 
-
 	{
 		return chatroom_id;
 	}

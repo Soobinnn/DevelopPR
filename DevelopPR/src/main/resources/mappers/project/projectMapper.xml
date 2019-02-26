@@ -23,13 +23,16 @@
   <!-- where name like '%' ||  #{tech_name_input} || '%' -->
 
 
-
-
+<select id="detail" resultType="ProjectVO">
+	SELECT *
+	FROM pr_project
+	where pno=#{pno}
+</select>
 
 
 <!-- 프로젝트 목록 보기 -->
 <select id="projectlist" resultType="ProjectVO">
-	SELECT pno, project_name, project_term1, project_term2, techstack
+	SELECT pno, project_name, project_term1, project_term2, techstack,  project_image
 	FROM pr_project
 	where email=#{email}
 	order by project_term1 asc

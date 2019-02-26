@@ -24,7 +24,7 @@ public class FileDownload {
     @RequestMapping(value = "fileDownload.do")
     public void PrDownload(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
        /* String path =  request.getSession().getServletContext().getRealPath("저장경로"); */
-    	String path =  request.getSession().getServletContext().getRealPath("C:\\finalProject\\DevelopPR\\DevelopPR\\src\\main\\webapp\\resources\\project_upload\\");
+    	String path =  request.getSession().getServletContext().getRealPath("/opt/apache-tomcat-9.0.14/webapps/DevelopPR/resources/project_upload/");
         
         String filename = request.getParameter("fileName");
         String downname = request.getParameter("downName");

@@ -64,16 +64,11 @@
 <!-- 파일 다운로드 -->
     <beans:bean id="fileDownload" class="com.DevelopPR.project.controller.FileDownload">
     </beans:bean>
-        <beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-       </beans:bean>
+    <beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+    </beans:bean>
    
 
 
-
-
-
-
-	
     
      <!-- Tiles -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

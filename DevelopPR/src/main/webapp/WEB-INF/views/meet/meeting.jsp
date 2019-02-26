@@ -16,7 +16,8 @@
 	var _targetProfile = null;
 	function connect() 
 	{
-		socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws");
+		/* socket = new WebSocket("ws://localhost:8080/DevelopPR/chat-ws"); */
+		socket = new WebSocket("wss://developpr.org/DevelopPR/chat-ws");
 		//서버로 메시지 보낼때
 		socket.onopen = onOpen;
 		//서버로 
@@ -317,7 +318,8 @@
 		source: languages
 		});
 	 */
-		$("#chat_text").focus();
+	/* 	$("#chat_text").focus(); */
+	 	$(document).scrollTop(350);
 		$('#chat_text').keypress(function(event) 
 		{	
 			var keycode = (event.keyCode ? event.keyCode : event.which);

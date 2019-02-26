@@ -147,7 +147,7 @@ $('.element').novacancy({
                             <svg width ="1100" height ="900" viewbox="0 0 90 90">
                               <defs>
                                 <mask id="mask" x="0" y="0" width="100" height="100">
-                                  <rect x="0" y="0" width="100" height="100" fill="#fff"/>
+                                  <rect x="0" y="0" width="100" height="100" fill="#ffffff"/>
                                   <text id="tes" text-anchor="middle" x="50" y="16" dy="10">Develop PR</text>
                                 </mask>
                               </defs>
@@ -177,7 +177,7 @@ $('.element').novacancy({
                         <span id="_content5"></span>
                     </div>  
                     <div id="_text_right"></div>  
-                    <div id="move_main"><a href="http://localhost:8080/DevelopPR/main"></a></div>
+                    <div id="move_main"><a href="https://developpr.org/DevelopPR/main"></a></div>
                 </div>
                 <div class="main">
                     <ul class="bxslider">
