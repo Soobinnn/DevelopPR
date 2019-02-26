@@ -9,6 +9,12 @@
     background : #f9f9f9;
 }
 
+.modifyInfo #function_img{
+	position:absolute;
+	left:220px;
+	
+}
+
 .modifyInfo #information
 {
     font-size : 2rem;
@@ -311,13 +317,17 @@ position : relative;
     font-size : 1rem;
 }
 
-.modifyInfo #userEmail,.modifyInfo #userName,.modifyInfo #userPw,.modifyInfo  #userPwChk,.modifyInfo #userNick,.modifyInfo #userPhone,.modifyInfo #explain
+.modifyInfo #userPw,.modifyInfo  #userPwChk,.modifyInfo #userNick,.modifyInfo #userPhone,.modifyInfo #explain
 {
     height : 50px;
     border : 2px solid #585858;
     border-radius : 10px;
 }
-
+.modifyInfo #userEmail,.modifyInfo #userName{
+	height : 50px;
+    border : 2px solid #f6f6f6;
+    border-radius : 10px;
+}
 .modifyInfo input:focus
 {
     outline : none;

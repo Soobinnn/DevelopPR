@@ -191,8 +191,8 @@ $(function(){
 </header>
     <section id="changePw_sec">
         <div id="changePw_sec_1">
+     			 <img id="function_img" src="${path}/resources/user/logogo.png"> 	
         	<div id="function_div">
-  			<%-- <img id="function_img" src="${path}/resources/user/.png">  --%>			
   			<ul id="function_list">
   				<li id="function_li1">
   				<a id="function_a1" href="${path}/user/modifyInfoform">회원 정보수정</a>

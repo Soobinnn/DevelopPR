@@ -76,8 +76,6 @@
 					}
          </script>
          </div>
-           
- 
      </div> <!-- end of images -->
  
  
