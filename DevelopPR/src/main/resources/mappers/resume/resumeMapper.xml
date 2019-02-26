@@ -75,7 +75,7 @@
 	</sql>
 	
 	<select id="mainList" resultType="ResumeVO">
-		SELECT a.name, a.age, a.prefer_place, a.prefer_place, a.motto, a.email, a.profile_photo,
+		SELECT a.name, a.age, a.prefer_place, a.prefer_job, a.motto, a.email, a.profile_photo,
 			 (select count(*) from pr_good WHERE good_email = a.email) as goodCount,
 			 (select count(*) from pr_follow where following_nick=b.nick) as followCount
 			FROM pr_resume a, pr_user b

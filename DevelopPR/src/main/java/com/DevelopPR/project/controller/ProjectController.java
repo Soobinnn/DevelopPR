@@ -146,16 +146,44 @@ public String projectModify(MultipartFile file, @ModelAttribute ProjectVO vo, @R
 	
 	UserVO uservo = (UserVO)session.getAttribute("login");          // 세션 값에서 받아서 형변환 후 uservo에 담는다.
 	  String myemail = uservo.getUserEmail();  
-	
-	String file_name = uploadPath+file.getOriginalFilename();
-	  vo.setPr_file_name(file_name); 
+	  String Fname = file.getOriginalFilename();
+	  String file_name = uploadPath+file.getOriginalFilename();
+	  String empty_value="파일 업로드가 없습니다.";
+	  	 
+	  
+	  if(Fname == null || Fname == "") {
+		  
+			vo.setPr_file_name(empty_value);
+		  
+		  } else if(Fname != null) {
+			  vo.setPr_file_name(file_name); 
+		  }  
 	  vo.setDownload_name(file.getOriginalFilename());
+	
+	
+	vo.setPr_file_name(file_name); 
+	  vo.setDownload_name(file.getOriginalFilename());
+	  
+	  vo.setNick(userService.viewId(myemail).getUserNick());
 	  
 	  logger.info("파일이름 :"+file.getOriginalFilename());
 	  logger.info("파일크기 : "+file.getSize());
 	  logger.info("컨텐트 타입 : "+file.getContentType());
       String savedName = file.getOriginalFilename();    
 	 
+      if(Fname == null || Fname == "") {
+		  savedName = "not_uploded.good";
+ 		
+ 	  } else if(Fname != null) {
+ 		 savedName = file.getOriginalFilename();
+ 	  }
+     
+     String pr_test= vo.getProject_image();
+ 	 if(pr_test == null || pr_test =="") {
+ 		 pr_test = "입력된 이미지가 없습니다.";
+ 		 vo.setProject_image(pr_test);
+ 	 } 
+      
 	  projectService.modify(vo);
 	  File target = new File(uploadPath, savedName);
      
