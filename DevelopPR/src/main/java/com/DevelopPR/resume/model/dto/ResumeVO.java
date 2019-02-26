@@ -28,9 +28,21 @@ public class ResumeVO {
 	private int goodCount;
 	private String color;
 	private String prefer_job;
+	private String loginemail;
 	
 	
-	
+	public String getLoginemail() {
+		return loginemail;
+	}
+
+
+
+	public void setLoginemail(String loginemail) {
+		this.loginemail = loginemail;
+	}
+
+
+
 	public String getPrefer_job() {
 		return prefer_job;
 	}
