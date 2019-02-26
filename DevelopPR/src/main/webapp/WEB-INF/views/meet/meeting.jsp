@@ -40,14 +40,15 @@
 		// 서버 - > view 파싱
 		var obj = JSON.parse(data);
 		/* 	appendMessage(obj.message_content); */
-		
-		// 내가 보고있는 채팅방일 경우에만, 메시지 띄워주기
-		if(lookRoom == obj.chatroom_id)
-		{
-			appendMessage(obj);
-		}
+		console.log("무슨문제일까" + obj+ "흠" + obj[obj]);
 		if(obj !="ping")
 		{
+			// 내가 보고있는 채팅방일 경우에만, 메시지 띄워주기
+			if(lookRoom == obj.chatroom_id)
+			{
+				appendMessage(obj);
+			}
+
 			//채팅 리스트
 			getList(obj);
 		}
